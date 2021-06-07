@@ -1,0 +1,99 @@
+---
+title: Cardano monetary policy
+metaTitle: Cardano monetary policy
+---
+
+Cardano aims to achieve true decentralization with the introduction of the
+Voltaire era later in 2020. Voltaire will include decentralized voting and
+treasury systems to empower the community to influence Cardano's evolution, and
+provide a funding mechanism to transform Cardano into a self-funded,
+self-sustainable environment.
+
+True decentralization does come with its own set of challenges, as factors such
+as security, performance, stability, sustainability, fairness, and crucially,
+economic viability come into play.
+
+Maintaining, developing, and improving a blockchain project requires ongoing
+monetary support. When Voltaire is implemented, the Treasury will perform this
+function, and funding for new features, improvements, etc. will be allocated
+through a decentralized voting system.
+
+## Stake pools
+
+The principles of decentralization and fairness drive Cardano's development.
+Cardano wants to offer equal opportunities to anyone who wishes to become part
+of the network by running a stake pool. But the very freedom to participate
+opens up the possibility of unfair advantage posed by larger stake pool
+operators. This presents the challenge of maintaining the integrity of the chain
+while incentivizing people to create pools and support the chain.
+
+## Incentives mechanism
+
+Cardano's monetary expansion relies on a long-term commitment by stake pool
+operators to provide ongoing support for the chain. This commitment requires a
+solid and stable incentivization mechanism for the operators, so this mechanism
+must ensure that the incentive system does not significantly change in time in a
+way that might adversely affect the operators’ income.
+
+Cardano's incentive system for stake pool operators is designed to balance k
+fully saturated pools (where k is the number of desired pools), so this
+equilibrium means that rewards will be optimal for everybody when all stake is
+delegated uniformly to the k most attractive pools.
+
+## Monetary policy
+
+Cardano's monetary policy addresses two issues:
+
+- The necessity to offer rewards for people who participate in the network
+- Funding the treasury
+
+**Rewards**
+
+The expansion and future improvement of the Cardano blockchain will be greatly
+influenced by its community, who need to be incentivized through rewards to
+participate in Cardano’s development.
+
+Staking rewards for delegators and stake pool operators come from two sources:
+
+- Transaction fees - fees from every transaction from all blocks produced during
+  every epoch go into a virtual 'pot'. A fixed percentage (ρ) of the remaining
+  ada reserves is added to that pot.
+- Monetary expansion - a certain percentage (τ) of the pot is sent to the
+  treasury, and the rest is used as epoch rewards.
+
+This system is designed to ensure that the portion of rewards taken from the
+reserves is high at the beginning, when transaction numbers are still relatively
+low. This incentivizes early adopters to move quickly to benefit from high
+initial rewards. Over time, and as the number of transactions increases,
+additional fees will compensate for smaller reserves.
+
+This mechanism also ensures that available rewards are predictable and do not
+vary dramatically. Instead, rewards change gradually. The fixed percentage taken
+from remaining reserves every epoch guarantees a smooth exponential decline.
+
+**Funding the Treasury**
+
+The Treasury's goal is the provision of funds to develop Cardano activities
+through a voting process. This necessitates a process whereby funds are
+regularly sent to the Treasury to ensure that funds are always available.
+
+## Policy rationale for the ρ and τ values
+
+A lot of thought was put into determining what the values for ρ (fixed
+percentage) and τ (funds going into the Treasury) should be.
+
+**Calculating ρ**
+
+While searching for the right ρ value, the team faced a quandary: A higher value would mean higher rewards for everybody initially, and the Treasury would fill faster. But higher values of ρ would also mean that the reserves would deplete faster. Paying high rewards and incentivizing early adopters is a crucial consideration, but so is to offer a long term perspective for all stakeholders. Therefore, the solution to this quandary requires a tradeoff between these two issues.
+
+Adopting an exponential decay approach to prevent Cardano’s reserve from running out makes sense in this situation.
+
+Calculating the 'reserve half life' (that is, the time that it takes for half of the reserve to be used up) visualizes the impact of choosing a specific value of ρ over another. This was the subject of much discussion, and eventually, the value assigned was 0.3%. The reason why is that mathematical projections showed that a ρ (the fixed percentage of ada going into the virtual pot every epoch) value of 0.3% would mean a reserve half-life of four to five years. In simple terms, just half of the remaining reserve would be used every four to five years.
+
+**Choosing τ**
+
+Determining the right value for τ (the percentage of unclaimed rewards
+automatically going to the reserves every epoch) was equally challenging.
+Following discussions, deliberations, and projections, the value chosen was 20%,
+which means that, initially, 20% of the monetary expansion and the transaction
+fees are sent to the treasury after each epoch.

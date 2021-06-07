@@ -1,0 +1,137 @@
+---
+title: 'Cardano Docs'
+metaTitle: Cardano Docs
+fullWidthTemplate: true
+hasPageHeading: false
+---
+
+import { Link } from 'gatsby'
+
+import Hero from '../src/components/hero'
+import Tile from '../src/components/tile'
+import Breakout from '../src/components/Breakout'
+import SiteWidthWrap from '../src/components/SiteWidthWrap'
+
+import CircuitIco from '../src/components/images/circuit-ico.svg'
+import DiamondsIco from '../src/components/images/diamonds-ico.svg'
+import DocSpeechIco from '../src/components/images/doc-speech-ico.svg'
+import IdeaIco from '../src/components/images/idea-ico.svg'
+
+<Hero
+  heading="Cardano ecosystem"
+  subHeading="Documentation for the"
+  lead="Cardano is a decentralized third-generation proof-of-stake blockchain platform and home to the ada cryptocurrency. It has been designed from the ground up by a team of top engineers and academic experts."
+  text="Cardano has a strong focus on sustainability, scalability, and transparency and is a fully open source project that aims to deliver an inclusive, fair, and resilient infrastructure for financial and social applications on a global scale. It is powered by Ouroboros, the ground-breaking proof-of-stake consensus protocol."
+  label="Get started"
+  ctalink="/introduction/"
+/>
+<Breakout bgHiLight>
+  <SiteWidthWrap>
+    <Grid bottomSpace="10">
+      <GridItem flexFactor="48%" mobFlexFactor="48%" yspace="2">
+        <Tile
+          heading="3rd Gen"
+          text="Cardano is the first blockchain platform to evolve out of a scientific philosophy and a research-first driven approach. It is being designed for function and scale right from the start."
+          label="What is Cardano?"
+          ctalink="/introduction"
+          icon={IdeaIco}
+        />
+      </GridItem>
+      <GridItem flexFactor="48%" mobFlexFactor="48%" yspace="2">
+        <Tile
+          heading="Formally verified"
+          text="The Cardano platform has been designed from the ground up and verified by an industry-leading combination of top engineers and academic experts in the fields of blockchain and cryptography. Cardano uses formal verification methods to ensure that the system behaves as designed."
+          label="High assurance"
+          ctalink="https://iohk.io/en/research/library/"
+          icon={DocSpeechIco}
+        />
+      </GridItem>
+      <GridItem flexFactor="48%" mobFlexFactor="48%" yspace="2">
+        <Tile
+          heading="Secure, scalable, and interoperable"
+          text="Security is one of the founding principles of Cardano. As it is written in the functional language Haskell, it uses pure functions to build the system, where components can be tested in isolation. More advanced features of Haskell, such as basing the implementation on formal and executable specifications, extensive property-based testing, and running tests in simulation provides a range of powerful methods for ensuring code correctness."
+          label="More on security"
+          ctalink="/explore-cardano/cardano-design-rationale"
+          icon={DiamondsIco}
+        />
+      </GridItem>
+      <GridItem flexFactor="48%" mobFlexFactor="48%" yspace="2">
+        <Tile
+          heading="Explore more"
+          text="The high-level architecture of the Cardano platform stack is modular by design and includes various system components that interact together to fulfil different deployment use cases."
+          label="Cardano architecture"
+          ctalink="/explore-cardano/cardano-architecture/overview"
+          icon={CircuitIco}
+        />
+      </GridItem>
+    </Grid>
+  </SiteWidthWrap>
+</Breakout>
+<Grid pullUp="-12">
+  <GridItem flexFactor="100%" mobFlexFactor="100%" single>
+    <Tile
+      bannerTile
+      single
+      heading="New to Cardano?"
+      text="If you are new to Cardano and would like to learn more about the basics we have a range of explainers on the components of blockchain and how Cardano stands out from other solutions. From explanations on cryptocurrency and consensus and diving deeper into the types of wallets and delegation instructions, we aim to make your introduction to Cardano seamless and comprehensive.  
+"
+      label="Get Started"
+      ctalink="/new-to-cardano/introduction"
+      icon=""
+      btn="secondary"
+    />
+  </GridItem>
+</Grid>
+<Grid topSpace="-5">
+  <GridItem flexFactor="48%" mobFlexFactor="48%" yspace="2">
+    <Tile
+      heading="Stake pool operators"
+      text="Committed to the health and diversity of Cardano, stake pool operators (SPOs) act as the driving force of the ecosystem, being responsible for transaction processing and block production. Interested in running your own stake pool? Find out how to set up and operate a stake pool. "
+      label="Learn more"
+      ctalink="/getting-started/operating-a-stake-pool/about-stake-pools"
+      icon=""
+    />
+  </GridItem>
+  <GridItem flexFactor="48%" mobFlexFactor="48%" yspace="2">
+    <Tile
+      heading="Exchanges"
+      text="Many exchanges are part of the Cardano ecosystem, contributing to network sustainability by running their own pools or delegating their stake to the existing ones. If you are an exchange interested in integrating with Cardano, you can find out how to set up your production environment and utilize the latest features of the Cardano blockchain."
+      label="Learn more"
+      ctalink="/getting-started/running-stake-pools-and-delegation-for-exchanges"
+      icon=""
+    />
+  </GridItem>
+</Grid>
+<Grid bottomSpace="4" mobileBottomSpace="2">
+  <GridItem flexFactor="48%" mobFlexFactor="48%" yspace="2">
+    <Tile
+      boxedTile
+      heading="Stake pools"
+      text="A stake pool is a reliable server node that focuses on maintenance and holds the combined stake of various stakeholders in a single entity."
+      label="Stake pools explained"
+      ctalink="/core-concepts/stake-pools"
+      icon=""
+      btn="primary"
+    />
+  </GridItem>
+  <GridItem flexFactor="48%" mobFlexFactor="48%" yspace="2">
+    <Tile
+      boxedTile
+      heading="Delegation"
+      text="Delegation of stake is a mechanism inherent in the Cardano proof of stake (PoS) protocol that allows the protocol to scale even in a setting where the set of stakeholders are highly distributed."
+      label="Delegation explained"
+      ctalink="/core-concepts/delegation"
+      icon=""
+      btn="primary"
+    />
+  </GridItem>
+</Grid>
+<Grid>
+  <GridItem flexFactor="100%" mobFlexFactor="100%">
+    <div style={{'width':'100%', 'display': 'flex', 'justifyContent': 'center', 'marginBottom': '5rem'}}>
+      <a href='https://roadmap.cardano.org/en/'>
+        <Button btn='primary'>Cardano's evolution</Button>
+      </a>
+    </div>
+  </GridItem>
+</Grid>
