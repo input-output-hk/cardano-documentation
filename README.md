@@ -55,3 +55,9 @@ mission of Cardano in this
 looking for a user-friendly wallet for Cardano, please take a look at
 [Daedalus](https://daedaluswallet.io) for a desktop wallet or
 [Yoroi](https://yoroi-wallet.com) for a mobile wallet.
+
+## Creating PRs and suggesting changes to this repository
+
+If you would like to suggest an improvement to this documentation please create
+an issue or checkout a feature branch with with your changes and then create a
+pull request into the `staging` branch.
