@@ -10,7 +10,7 @@ const config = {
     logoLink: '/',
     title: '<p>DOCS</p>',
     githubUrl:
-      'https://github.com/input-output-hk/cardano-org-documentation-iohk',
+      'https://github.com/input-output-hk/cardano-documentation',
     helpUrl: '',
     tweetText: '',
     social: `<li>
@@ -69,7 +69,7 @@ const config = {
     description: 'Documentation for the Cardano ecosystem ',
     ogImage: null,
     docsLocation:
-      'https://github.com/input-output-hk/cardano-org-documentation-iohk/tree/master/content',
+      'https://github.com/input-output-hk/cardano-documentation/tree/staging/content',
     favicon: 'pwa-512.png',
   },
   pwa: {
