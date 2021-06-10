@@ -12,10 +12,6 @@ _Past performance is not indicative of future results. Any investment in blockch
       links: [
         { label: 'Cardano Explorer', href: 'https://cardanoexplorer.com/' },
         { label: 'Cardano Foundation', href: 'https://cardanofoundation.org/' },
-        {
-          label: 'Documentation',
-          href: 'https://cardanodocs.com/introduction/',
-        },
         { label: 'Cardano.org', href: 'https://www.cardano.org/' },
         { label: 'Why Cardano', href: 'https://why.cardano.org/' },
         { label: 'Daedalus', href: 'https://daedaluswallet.io/' },
