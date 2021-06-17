@@ -2,7 +2,7 @@ const config = {
   gatsby: {
     pathPrefix: '/',
     siteUrl: 'https://cardano.org',
-    gaTrackingId: null,
+    gaTrackingId: `UA-119953429-2`,
     trailingSlash: true,
   },
   header: {
