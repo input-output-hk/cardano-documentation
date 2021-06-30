@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connectSearchBox } from 'react-instantsearch-dom'
 
 import styled from '@emotion/styled'
@@ -74,26 +74,29 @@ const Form = styled.form`
 `
 
 export default connectSearchBox(({ refine, ...rest }) => {
+  const [searchValue, setSearchValue] = useState()
    
-  const preventThenSearch = (e, targetValue) => {
-    e.preventDefault()
-    console.log('e', targetValue)
-    console.log('targetValue', targetValue)
-    // e.preventDefault()
-    // refine(targetValue)
-   }
+  const handleChange = (e) => {
+    setSearchValue(e.target.value)
+  }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(searchValue)
+  }
+
+  // onChange={(e) => refine(e.target.value)}
   return (
-    <Form className={'formElement'} onSubmit={(e) => preventThenSearch(e, e.target.value)}>
-      <SearchIcon />
+    <Form className={'formElement'} onSubmit={handleSubmit}>
       <Input
         className={'searchInput '}
         type="text"
         placeholder="Search"
         aria-label="Search"
-        // onChange={(e) => refine(e.target.value)}
+        onChange={handleChange}
         {...rest}
       />
+      <SearchIcon />
     </Form>
   )
 })
