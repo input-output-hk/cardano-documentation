@@ -74,13 +74,17 @@ const Form = styled.form`
 `
 
 export default connectSearchBox(({ refine, ...rest }) => {
-   const preventThenSearch = (e) => {
+   
+  const preventThenSearch = (e, targetValue) => {
     e.preventDefault()
-    refine(e.target.value)
+    console.log('e', targetValue)
+    console.log('targetValue', targetValue)
+    // e.preventDefault()
+    // refine(targetValue)
    }
 
   return (
-    <Form className={'formElement'} onSubmit={(e) => preventThenSearch(e)}>
+    <Form className={'formElement'} onSubmit={(e) => preventThenSearch(e, e.target.value)}>
       <SearchIcon />
       <Input
         className={'searchInput '}
