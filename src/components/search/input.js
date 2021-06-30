@@ -83,6 +83,7 @@ export default connectSearchBox(({ refine, ...rest }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(searchValue)
+    refine(searchValue)
   }
 
   // onChange={(e) => refine(e.target.value)}
