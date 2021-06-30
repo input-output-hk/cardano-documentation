@@ -80,7 +80,7 @@ export default connectSearchBox(({ refine, ...rest }) => {
    }
 
   return (
-    <Form className={'formElement'} onSubmit={preventThenSearch}>
+    <Form className={'formElement'} onSubmit={(e) => preventThenSearch(e)}>
       <SearchIcon />
       <Input
         className={'searchInput '}
