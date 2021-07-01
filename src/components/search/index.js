@@ -1,4 +1,6 @@
-import React, { useState, useEffect, createRef } from 'react'
+import React, { useState, useEffect, createRef, useRef } from 'react'
+import useOnClickOutside from '../../hooks/useOnClickOutside'
+
 import {
   InstantSearch,
   Index,
@@ -124,14 +126,19 @@ const searchClient = algoliasearch(
 
 export default function SearchComponent({ indices, collapse, hitsAsGrid }) {
   const ref = createRef()
+  const resultsRef = useRef()
 
   const [query, setQuery] = useState(``)
+
+  const [searchOpen, setSearchOpen] = useState(false)
 
   const [focus, setFocus] = useState(false)
 
   useClickOutside(ref, () => setFocus(false))
   const displayResult =
     query.length > 0 && focus ? 'showResults' : 'hideResults'
+
+  useOnClickOutside(ref, () => setModalOpen(false))
 
   return (
     <InstantSearch
@@ -140,8 +147,10 @@ export default function SearchComponent({ indices, collapse, hitsAsGrid }) {
       onSearchStateChange={({ query }) => setQuery(query)}
       root={{ Root, props: { ref } }}
     >
-      <Input onFocus={() => setFocus(true)} {...{ collapse, focus }} />
-      <HitsWrapper
+      <Input onFocus={() => {setFocus(true); setSearchOpen(true);}} {...{ collapse, focus }} />
+      <div ref={resultsRef}>
+      {searchOpen && (
+        <HitsWrapper
         className={'hitWrapper ' + displayResult}
         show={query.length > 0 && focus}
         asGrid={hitsAsGrid}
@@ -156,6 +165,8 @@ export default function SearchComponent({ indices, collapse, hitsAsGrid }) {
         })}
         <PoweredBy />
       </HitsWrapper>
+      )}
+      </div>
       <Configure hitsPerPage={5} />
     </InstantSearch>
   )

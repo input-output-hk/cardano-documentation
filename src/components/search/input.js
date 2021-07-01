@@ -88,16 +88,18 @@ export default connectSearchBox(({ refine, ...rest }) => {
 
   // onChange={(e) => refine(e.target.value)}
   return (
-    <Form className={'formElement'} onSubmit={handleSubmit}>
-      <Input
-        className={'searchInput '}
-        type="text"
-        placeholder="Search"
-        aria-label="Search"
-        onChange={handleChange}
-        {...rest}
-      />
-      <SearchIcon />
-    </Form>
+    <div ref={ref}>
+      <Form className={'formElement'} onSubmit={handleSubmit}>
+        <Input
+          className={'searchInput '}
+          type="text"
+          placeholder="Search"
+          aria-label="Search"
+          onChange={handleChange}
+          {...rest}
+          />
+        <SearchIcon />
+      </Form>
+    </div>
   )
 })
