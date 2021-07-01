@@ -148,25 +148,24 @@ export default function SearchComponent({ indices, collapse, hitsAsGrid }) {
       root={{ Root, props: { ref } }}
     >
       <Input onFocus={() => {setFocus(true); setSearchOpen(true);}} {...{ collapse, focus }} />
-      <div ref={resultsRef}>
       {searchOpen && (
         <HitsWrapper
-        className={'hitWrapper ' + displayResult}
-        show={query.length > 0 && focus}
-        asGrid={hitsAsGrid}
-      >
-        {indices.map(({ name, title, hitComp, type }) => {
-          return (
-            <Index key={name} indexName={name}>
-              <Results />
-              <Hits hitComponent={hitComps[hitComp](() => setFocus(false))} />
-            </Index>
-          )
-        })}
-        <PoweredBy />
-      </HitsWrapper>
+          className={'hitWrapper ' + displayResult}
+          show={query.length > 0 && focus}
+          asGrid={hitsAsGrid}
+          ref={resultsRef}
+        >
+          {indices.map(({ name, title, hitComp, type }) => {
+            return (
+              <Index key={name} indexName={name}>
+                <Results />
+                <Hits hitComponent={hitComps[hitComp](() => setFocus(false))} />
+              </Index>
+            )
+          })}
+          <PoweredBy />
+        </HitsWrapper>
       )}
-      </div>
       <Configure hitsPerPage={5} />
     </InstantSearch>
   )
