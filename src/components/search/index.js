@@ -138,7 +138,7 @@ export default function SearchComponent({ indices, collapse, hitsAsGrid }) {
   const displayResult =
     query.length > 0 && focus ? 'showResults' : 'hideResults'
 
-  useOnClickOutside(resultsRef, () => setModalOpen(false))
+  useOnClickOutside(resultsRef, () => setSearchOpen(false))
 
   return (
     <InstantSearch
