@@ -30,7 +30,7 @@ const config = {
     links: [{ text: '', link: '' }],
     search: {
       enabled: true,
-      indexName: process.env.IS_STAGING ? 'cardano_docs_staging_index' : 'cardano_documentation_search_index',
+      indexName: process.env.IS_STAGING ? 'cardano_docs_test' : 'cardano_documentation_search_index',
       algoliaAppId: process.env.GATSBY_ALGOLIA_APP_ID,
       algoliaSearchKey: process.env.GATSBY_ALGOLIA_SEARCH_KEY,
       algoliaAdminKey: process.env.ALGOLIA_ADMIN_KEY,
