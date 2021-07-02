@@ -104,21 +104,6 @@ const Results = connectStateResults(
     (res && res.nbHits === 0 && `No results for '${state.query}'`),
 )
 
-const useClickOutside = (ref, handler, events) => {
-  if (!events) events = [`mousedown`, `touchstart`]
-  const detectClickOutside = event =>
-    ref && ref.current && !ref.current.contains(event.target) && handler()
-
-  useEffect(() => {
-    for (const event of events)
-      document.addEventListener(event, detectClickOutside)
-    return () => {
-      for (const event of events)
-        document.removeEventListener(event, detectClickOutside)
-    }
-  })
-}
-
 const searchClient = algoliasearch(
   config.header.search.algoliaAppId,
   config.header.search.algoliaSearchKey,
@@ -134,9 +119,7 @@ export default function SearchComponent({ indices, collapse, hitsAsGrid }) {
 
   const [focus, setFocus] = useState(false)
 
-  useClickOutside(ref, () => setFocus(false))
-  const displayResult =
-    query.length > 0 && focus ? 'showResults' : 'hideResults'
+  const displayResult = query.length > 0 && focus ? 'showResults' : 'hideResults'
 
   useOnClickOutside(resultsRef, () => setSearchOpen(false))
 
