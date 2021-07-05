@@ -9,45 +9,45 @@ A minting policy is bound by the network protocol and ledger-defined rules. One 
 
 Note: It is possible to verify and pinpoint these specific native asset transactions using [cardano-graphql](https://github.com/input-output-hk/cardano-graphql#overview) or [cardano-rosetta](https://docs.cardano.org/rosetta/learn-rosetta).
 
-## Multi-asset Management Scenarios
+## Multi-asset management scenarios
 Exchanges listing ada usually might encounter two specific scenarios:
 
 - Scenario 1 - Spending a UTXO with a multi-asset attached
 - Scenario 2 - Unexpectedly received multi-asset in cardano-wallet
 
-### Scenario 1: Spending a UTXO with a multi-asset attached
+## Scenario 1: Spending a UTXO with a multi-asset attached
 
-**Note**: This scenario applies to exchanges that manage their own UTXOs.
+> Note: This scenario applies to exchanges that manage their own UTXOs.
 
-#### How to pinpoint UTXOs with a native asset attached
+### How to pinpoint UTXOs with a native asset attached
 
-Exchanges and third-party wallets that manage their own UTXOs often use a local block explorer (cardano-graphql or cardano-rosetta, for example). 
+Exchanges and third-party wallets that manage their own UTXOs often use a local block explorer (`cardano-graphql` or `cardano-rosetta`, for example). 
 
-cardano-graphql is a Cardano API query language and a runtime component for fulfilling queries with existing data extracted from the [cardano-db-sync](https://github.com/input-output-hk/cardano-db-sync#cardano-db-sync) PostgreSQL database. It provides a complete and understandable description of this data, and gives clients the power to request the necessary information. This, in turn, both simplifies the evolution of client APIs’ overtime and enables powerful developer tools.
+`cardano-graphql` is a Cardano API query language and a runtime component for fulfilling queries with existing data extracted from the [cardano-db-sync](https://github.com/input-output-hk/cardano-db-sync#cardano-db-sync) PostgreSQL database. It provides a complete and understandable description of this data, and gives clients the power to request the necessary information. This, in turn, both simplifies the evolution of client APIs’ overtime and enables powerful developer tools.
 
-Cardano has adapted cardano-rosetta (initially developed by Coinbase as blockchain middleware) to help exchanges and third-party wallets extract blockchain data and integrate with Cardano. See this [Readme file](https://github.com/input-output-hk/cardano-rosetta/blob/master/docs/multi-assets-support.md) for more information about extracting multi-asset information from cardano-rosetta.
+Cardano has adapted `cardano-rosetta` (initially developed by Coinbase as blockchain middleware) to help exchanges and third-party wallets extract blockchain data and integrate with Cardano. See this [Readme file](https://github.com/input-output-hk/cardano-rosetta/blob/master/docs/multi-assets-support.md) for more information about extracting multi-asset information from `cardano-rosetta`.
 
-#### Getting started with native assets
+### Getting started with native assets
 
-After understanding what a transaction with native assets might look like, you might want to create or burn some native assets or tokens on the testnet. See [these prerequisites](https://docs.cardano.org/native-tokens/getting-started#prerequisites) and follow the below steps to start minting some native assets.
+After understanding what a transaction with native assets might look like, you might want to create or burn some native assets or tokens on the testnet. See [these prerequisites](https://docs.cardano.org/native-tokens/getting-started#prerequisites) and follow the below steps to start minting some native assets:
 
-- Connect cardano-node to testnet
-- Build cardano-node and connect to testnet
-- Download cardano-cli prebuilt binary or use build from source
+- Connect `cardano-node` to testnet
+- Build `cardano-node` and connect to testnet
+- Download `cardano-cli` prebuilt binary or use build from source
 - Follow [these steps](https://docs.cardano.org/native-tokens/getting-started)
 
-#### Spending UTXO with native assets attached
+### Spending UTXO with native assets attached
 
-When building a transaction with native assets using cardano-cli as outlined in [this section](https://docs.cardano.org/native-tokens/getting-started/#example:mintinganewnativetoken), it is important to account for two things:
+When building a transaction with native assets using `cardano-cli` as outlined in [this section](https://docs.cardano.org/native-tokens/getting-started/#example:mintinganewnativetoken), it is important to account for two things:
 
 1. The ada value you wish to send
 2. The amount of tokens
 
 The above is also true for any exchange or third-party that wants to either spend, return, or store any multi-asset. By definition, receiving a multi-asset is the same as receiving any other Cardano transaction. The only difference is that some other data -like multi-asset- might be attached to the transaction.
 
-We strongly recommend that all exchanges and third-party wallets verify all transactions in the block for multi-asset’s and handle accordingly. How these types of transactions are managed is an enterprise decision.
+We strongly recommend that all exchanges and third-party wallets verify all transactions in the block for multi-assets and handle accordingly. How these types of transactions are managed is an enterprise decision.
 
-#### What to do with unwanted tokens?
+### What to do with unwanted tokens?
 
 The purpose of any multi-asset can be arbitrary, but it is important to remember that, much like ada, a multi-asset is part of the transaction and needs to be handled and balanced in the same way. 
 
@@ -55,7 +55,7 @@ Multi-assets will cause no issue whether located in the issuer’s wallet or the
 
 Ultimately, the decision of what to do with a multi-asset lies with the exchange or the third-party wallet. More specifically, with an exchange that manages their own UTXOs.
 
-[cardano-wallet](https://github.com/input-output-hk/cardano-wallet/releases) uses a UTXO algorithm to handle and manage UTXOs. A multi-asset handled by cardano-wallet on the blockchain could easily go unnoticed.
+[cardano-wallet](https://github.com/input-output-hk/cardano-wallet/releases) uses a UTXO algorithm to handle and manage UTXOs. A multi-asset handled by `cardano-wallet` on the blockchain could easily go unnoticed.
 
 Choosing a UTXO means having to account for the asset attached to that UTXO. If this extra input is not handled correctly, an out-of-balance error will occur.
 
@@ -63,13 +63,13 @@ You control what to do with the native asset. You can either return it to the se
 
 Read the [native tokens topic](https://docs.cardano.org/native-tokens/getting-started#example:mintinganewnativetoken) for more information on creating and balancing a transaction with a native asset attached.
 
-## Scenario 2 - Unexpectedly received multi-asset in cardano-wallet
+## Scenario 2 - Unexpectedly received multi-asset in `cardano-wallet`
 
-**Note**: This scenario only applies to exchanges that use cardano-wallet.
+> Note: This scenario only applies to exchanges that use `cardano-wallet`.
 
 ### Verify that you have received a multi-asset
 
-1. Check the wallet information to confirm.
+1. Check the wallet information to confirm
 2. Run the following curl command to check and verify the wallet information:
 
 **Byron**
@@ -81,7 +81,7 @@ curl http://localhost:8090/v2/byron-wallets/
 http://localhost:8090/v2/wallets
 ```
 
-3. Check the assets section
+3. Check the assets section:
 
 ```
 "assets": {
@@ -102,18 +102,18 @@ http://localhost:8090/v2/wallets
     }
 ```
 
-#### Token redemption or removing unwanted multi-assets from cardano-wallet
+### Token redemption or removing unwanted multi-assets from `cardano-wallet`
 
 Tokens created using a minting policy follow a predefined set of rules. The minting policy might allow token holders to burn or create new tokens, for example. In most cases, if you receive unwanted tokens, you will need to either return them to the issuer or sender, or put them somewhere else for safekeeping. Read the [minting policies topic](https://cardano-ledger.readthedocs.io/en/latest/explanations/policies.html) for more information on minting policies.
 
-**Note**: The minimum cost of sending any amount of native asset is one ada, plus the transaction fee. Read the [minimum ada value requirement topic](https://cardano-ledger.readthedocs.io/en/latest/explanations/min-utxo.html) for more information on the minimum UTXO requirements.
+> Note: The minimum cost of sending any amount of native asset is one ada, plus the transaction fee. Read the [minimum ada value requirement topic](https://cardano-ledger.readthedocs.io/en/latest/explanations/min-utxo.html) for more information on the minimum UTXO requirements.
 
-**Option 1**:  Send tokens back to the issuer or sender
+**Option 1**:  Send tokens back to the issuer or sender:
 
 1. Verify the sender’s address or issuer’s address.
 2. Create a JSON transaction in cardano-wallet with the minimum UTXO amount of one ada and include the native asset.
 
-**Sample transaction for sending multi-asset**
+**Sample transaction for sending the multi-asset:**
 ```
 curl -XPOST \http://localhost:8090/v2/byron-wallets/{wallet_id}/transactions \ 
 -H 'Content-Type: application/json; charset=utf-8' 
@@ -146,7 +146,7 @@ curl http://localhost:8090/v2/wallets
       "available": [] }
 ```
 
-**Option 2**: Move tokens to an address inside the existing wallet
+**Option 2**: Move tokens to an address inside the existing wallet:
 
 1. Verify that you have native tokens in the wallet.
 2. Specify an address within the wallet (or elsewhere) to send the tokens.
