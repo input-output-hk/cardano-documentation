@@ -28,9 +28,8 @@ const config = {
 		  </li>`,
     links: [{ text: '', link: '' }],
     search: {
-      // Disabling while we wait for algolia account setup as this is currently blocking builds
-      enabled: false,
-      indexName: 'cardano_documentation_search_index',
+      enabled: process.env.IS_STAGING ? true : false,
+      indexName: process.env.IS_STAGING ? 'cardano_docs_staging_index' : 'cardano_documentation_search_index',
       algoliaAppId: process.env.GATSBY_ALGOLIA_APP_ID,
       algoliaSearchKey: process.env.GATSBY_ALGOLIA_SEARCH_KEY,
       algoliaAdminKey: process.env.ALGOLIA_ADMIN_KEY,
