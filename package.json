@@ -16,7 +16,6 @@
     "@mdx-js/react": "^1.5.1",
     "@philpl/buble": "^0.19.7",
     "@playlyfe/gql": "^2.6.2",
-    "@react-hook/debounce": "^4.0.0",
     "algoliasearch": "^3.35.1",
     "dotenv": "^8.2.0",
     "emotion": "^10.0.23",

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connectSearchBox } from 'react-instantsearch-dom'
-import { useDebounce } from '@react-hook/debounce'
+import useDebounce from '../../hooks/useDebounce'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import { Search } from 'styled-icons/fa-solid/Search'
@@ -75,11 +75,10 @@ const Form = styled.form`
 
 export default connectSearchBox(({ refine, ...rest }) => {
   const [searchValue, setSearchValue] = useState()
-  const [value] = useDebounce(searchValue, 2000)
+  const [debouncedSearchValue] = useDebounce(searchValue, 2000)
    
   const handleChange = (e) => {
     setSearchValue(e.target.value)
-    refine(value)
   }
 
   const handleSubmit = (e) => {
@@ -87,6 +86,11 @@ export default connectSearchBox(({ refine, ...rest }) => {
     refine(searchValue)
   }
 
+  useEffect(() => {
+    if(debouncedSearchValue) {
+      refine(debouncedSearchValue)
+    }
+  }, [debouncedSearchValue])
   // onChange={(e) => refine(e.target.value)}
   return (
       <Form className={'formElement'} onSubmit={handleSubmit}>
