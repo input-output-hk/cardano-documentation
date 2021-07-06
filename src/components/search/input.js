@@ -74,7 +74,7 @@ const Form = styled.form`
 `
 
 export default connectSearchBox(({ refine, ...rest }) => {
-  const [searchValue, setSearchValue] = useState()
+  const [searchValue, setSearchValue] = useState('')
   const [debouncedSearchValue] = useDebounce(searchValue, 2000)
    
   const handleChange = (e) => {
