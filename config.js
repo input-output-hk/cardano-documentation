@@ -9,8 +9,7 @@ const config = {
     logo: '/images/cardano-logo.svg',
     logoLink: '/',
     title: '<p>DOCS</p>',
-    githubUrl:
-      'https://github.com/input-output-hk/cardano-documentation',
+    githubUrl: 'https://github.com/input-output-hk/cardano-documentation',
     helpUrl: '',
     tweetText: '',
     social: `<li>
@@ -29,7 +28,7 @@ const config = {
 		  </li>`,
     links: [{ text: '', link: '' }],
     search: {
-      enabled: true,
+      enabled: process.env.IS_STAGING ? true : false,
       indexName: process.env.IS_STAGING ? 'cardano_docs_staging_index' : 'cardano_documentation_search_index',
       algoliaAppId: process.env.GATSBY_ALGOLIA_APP_ID,
       algoliaSearchKey: process.env.GATSBY_ALGOLIA_SEARCH_KEY,
@@ -56,7 +55,7 @@ const config = {
       '/marlowe',
       '/rosetta',
       '/community',
-      '/tools'
+      '/tools',
     ],
     links: [{ text: 'Cardano.org', link: 'https://cardano.org' }],
     frontLine: true, // This toggles collapse arrows
