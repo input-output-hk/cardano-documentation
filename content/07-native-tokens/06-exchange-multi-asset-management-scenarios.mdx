@@ -118,12 +118,25 @@ Tokens created using a minting policy follow a predefined set of rules. The mint
 ```
 curl -XPOST \http://localhost:8090/v2/byron-wallets/{wallet_id}/transactions \ 
 -H 'Content-Type: application/json; charset=utf-8' 
--d '{"payments": [{"address":"{destination_address}",
-"amount":{"quantity":3000000,"unit":"lovelace"}, 
-"assets": [{"policy_id":"asset_policy_id", 
-"asset_name": "6e7466636f696e", 
-"quantity": 5}]}], 
-"passphrase":"myfirstpassword"}
+-d '{
+      "payments": [
+      {
+            "address":"{destination_address}",
+            "amount":{
+                   "quantity":3000000,
+                   "unit":"lovelace"
+              }, 
+              "assets": [
+                   {
+                         "policy_id":"asset_policy_id", 
+                         "asset_name": "6e7466636f696e", 
+                         "quantity": 5
+                  }
+              ]
+           }
+      ], 
+      "passphrase":"myfirstpassword"
+  }
 ```
 
 3. Verify that the multi-asset transaction is complete, and that the assets have been moved from the wallet.
