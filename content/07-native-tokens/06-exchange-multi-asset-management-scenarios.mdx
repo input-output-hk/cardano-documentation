@@ -60,7 +60,7 @@ Ultimately, the decision of what to do with a multi-asset lies with the exchange
 
 Choosing a UTXO means having to account for the asset attached to that UTXO. If this extra input is not handled correctly, an out-of-balance error will occur.
 
-You control what to do with the native asset. You can either return it to the sender only if you know the address or alternatively you can move the native asset in and address in your wallet adhering to the network guidelines and the minimum UTXO value.
+You control what to do with the native asset. You can either return it to the sender only if you know the address or alternatively you can move the native asset to an address in your wallet adhering to the network guidelines and the minimum UTXO value.
 
 Read the [native tokens topic](https://docs.cardano.org/native-tokens/getting-started#example:mintinganewnativetoken) for more information on creating and balancing a transaction with a native asset attached.
 
@@ -116,8 +116,8 @@ Tokens created using a minting policy follow a predefined set of rules. The mint
 
 **Sample transaction for sending the multi-asset:**
 ```
-curl -XPOST \http://localhost:8090/v2/byron-wallets/{wallet_id}/transactions \ 
--H 'Content-Type: application/json; charset=utf-8' 
+curl -XPOST http://localhost:8090/v2/byron-wallets/{wallet_id}/transactions \ 
+-H 'Content-Type: application/json \; charset=utf-8' 
 -d '{
       "payments": [
       {
@@ -136,7 +136,7 @@ curl -XPOST \http://localhost:8090/v2/byron-wallets/{wallet_id}/transactions \
            }
       ], 
       "passphrase":"myfirstpassword"
-  }
+  }'
 ```
 
 3. Verify that the multi-asset transaction is complete, and that the assets have been moved from the wallet.
