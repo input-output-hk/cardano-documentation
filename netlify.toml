@@ -6,3 +6,8 @@
   from = "/en/latest/"
   to = "/introduction/"
   status = 301
+
+[[redirects]]
+  from = "/install/install-node.html"
+  to = "/getting-started/installing-the-cardano-node/"
+  status = 301
