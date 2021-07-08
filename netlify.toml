@@ -11,3 +11,28 @@
   from = "/install/install-node.html"
   to = "/getting-started/installing-the-cardano-node/"
   status = 301
+
+[[redirects]]
+  from = "/install/use-cli.html"
+  to = "//getting-started/use-cli/"
+  status = 301
+
+[[redirects]]
+  from = "/getting-started/stake-pool-operators/index.html"
+  to = "/getting-started/operating-a-stake-pool/about-stake-pools/"
+  status = 301
+
+[[redirects]]
+  from = "/getting-started/guidelines-for-operating-large-stake-pools/index.html/"
+  to = "/getting-started/guidelines-for-large-spos/"
+  status = 301
+
+[[redirects]]
+  from = "/getting-started/3rd-party-integration/index.html/"
+  to = "/getting-started/integrating-with-third-parties/"
+  status = 301
+
+[[redirects]]
+  from = "/getting-started/exchanges/index.html"
+  to = "//getting-started/running-stake-pools-and-delegation-for-exchanges/"
+  status = 301
