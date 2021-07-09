@@ -23,7 +23,7 @@ There is also a Docker image available that you can use.
 #### Setting up Docker
 
 1. Download and install Docker/Docker Desktop from the [Docker site](https://docs.docker.com/get-docker/).
-2. Ensure you have allocated enough RAM to Docker (we recommend setting the RAM to 8GB in the Docker Desktop requirements) and start the Docker daemon, as described in the Docker instructions.
+2. If using Windows or Mac, ensure you have allocated enough RAM to Docker (we recommend setting the RAM to 8GB in the Docker Desktop requirements) and start the Docker daemon, as described in the Docker instructions. Note that Docker on Linux, there are no RAM limits for containers by default.
 
 #### Setting up the Cardano node
 1. Download the correct `cardano-node` image:
@@ -35,8 +35,8 @@ where `<TAG>` is the tag for the version that you require (e.g. `latest` for the
 2. Create local `data` and `node-ipc` volumes:
 
 ```
-docker image create data
-docker image create node-ipc
+docker volume create cardano-node-data
+docker volume create cardano-node-ipc
 ```
 
 ## Running the Cardano node
@@ -79,6 +79,12 @@ bash-4.4# ls
 immutable  ledger  lock  protocolMagicId  volatile
 bash-4.4# 
 ```
+
+Alternatively, you can start the node container with a name:
+`docker run --name cardano-node -e NETWORK=mainnet -v cardano-node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node`
+
+In a separate terminal instance, run shell in an existing container:
+`docker exec -it cardano-node bash`
 
 ## Copying files to/from the Docker Container
 To copy files to/from the docker container use `docker cp`.
