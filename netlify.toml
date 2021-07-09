@@ -14,7 +14,7 @@
 
 [[redirects]]
   from = "/install/use-cli.html"
-  to = "//getting-started/use-cli/"
+  to = "/getting-started/use-cli/"
   status = 301
 
 [[redirects]]
@@ -34,5 +34,85 @@
 
 [[redirects]]
   from = "/getting-started/exchanges/index.html"
-  to = "//getting-started/running-stake-pools-and-delegation-for-exchanges/"
+  to = "/getting-started/running-stake-pools-and-delegation-for-exchanges/"
+  status = 301
+
+[[redirects]]
+  from = "/explainers/cardano-explainers/what-is-a-blockchain.html"
+  to = "/new-to-cardano/what-is-a-blockchain/"
+  status = 301
+
+[[redirects]]
+  from = "/explainers/cardano-explainers/what-is-a-cryptocurrency.html"
+  to = "/new-to-cardano/what-is-a-cryptocurrency"
+  status = 301
+
+[[redirects]]
+  from = "/explainers/cardano-explainers/why-use-cardano.html"
+  to = "/new-to-cardano/why-use-cardano/"
+  status = 301
+
+[[redirects]]
+  from = "/explainers/cardano-explainers/proof-of-stake.html"
+  to = "/new-to-cardano/proof-of-stake/"
+  status = 301
+
+[[redirects]]
+  from = "/explainers/getting-started-with-cardano/cardano-nodes.html"
+  to = "/new-to-cardano/cardano-nodes"
+  status = 301
+
+[[redirects]]
+  from = "/explainers/getting-started-with-cardano/tools.html"
+  to = "/new-to-cardano/cardano-tracking-tools/"
+  status = 301
+
+[[redirects]]
+  from = "/explainers/getting-started-with-cardano/how-to-purchase-ada.html"
+  to = "/new-to-cardano/how-to-purchase-ada/"
+  status = 301
+
+[[redirects]]
+  from = "/explainers/cardano-explainers/types-of-wallets.html"
+  to = "/new-to-cardano/types-of-wallets/"
+  status = 301
+
+[[redirects]]
+  from = "/explainers/getting-started-with-cardano/how-to-delegate.html""
+  to = "/new-to-cardano/how-to-delegate/"
+  status = 301
+
+[[redirects]]
+  from = "/getting-started-with-cardano/how-to-delegate.html"
+  to = "/new-to-cardano/how-to-delegate/"
+  status = 301
+
+[[redirects]]
+  from = "/explainers/cardano-explainers/smart-contract-exp.html"
+  to = "/new-to-cardano/what-is-a-smart-contract/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/what-is-a-cardano-node.html"
+  to = "/core-concepts/cardano-node/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/what-is-a-stakepool.html"
+  to = "/core-concepts/stake-pools/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/understanding-the-delegation-mechanism.html"
+  to = "/core-concepts/delegation/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/understanding-pledging-and-rewards.html""
+  to = "/core-concepts/pledging-rewards/"
+  status = 301
+
+[[redirects]]
+  from = "/"
+  to = "/"
   status = 301
