@@ -54,7 +54,7 @@ You may also run the node with specific parameters:
 ### Passing Explicit Configuration Parameters
 If there is no pre-defined network configuration, you will need to download the specified configuration files, copy these to the persistent Docker volume, and pass the parameters on the command line:
 
-``docker run -e NETWORK=mainnet -v node-ipc:/ipc -v data:/data inputoutput/cardano-node run --config ... --topology ... --``
+``docker run -v node-ipc:/ipc -v data:/data inputoutput/cardano-node run --config ... --topology ... --...``
 
 ## Running Cardano CLI commands
 You can now run normal Cardano CLI commands, for example,
