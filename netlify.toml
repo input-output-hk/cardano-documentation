@@ -78,7 +78,7 @@
   status = 301
 
 [[redirects]]
-  from = "/explainers/getting-started-with-cardano/how-to-delegate.html""
+  from = "/explainers/getting-started-with-cardano/how-to-delegate.html"
   to = "/new-to-cardano/how-to-delegate/"
   status = 301
 
@@ -108,11 +108,121 @@
   status = 301
 
 [[redirects]]
-  from = "/explore-cardano/understanding-pledging-and-rewards.html""
+  from = "/explore-cardano/understanding-pledging-and-rewards.html"
   to = "/core-concepts/pledging-rewards/"
   status = 301
 
 [[redirects]]
-  from = "/"
-  to = "/"
+  from = "/explore-cardano/understanding-pledging-and-rewards.html"
+  to = "/core-concepts/pledging-rewards/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/understanding-pledging-and-rewards.html#distributing-rewards"
+  to = "/pledging-rewards/#distributingrewards"
+  status = 301
+
+[[redirects]]
+  from = "/learn/pledging-and-delegating-options.html"
+  to = "/core-concepts/pledging-and-delegation-options/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/understanding-consensus.html"
+  to = "/core-concepts/consensus-explained/"
+  status = 301
+
+[[redirects]]
+  from = "/learn/Cardano-keys.html"
+  to = "/core-concepts/cardano-keys/"
+  status = 301
+
+[[redirects]]
+  from = "/learn/types-addresses.html"
+  to = "/core-concepts/cardano-addresses/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/what-is-a-hard-fork-combinator.html"
+  to = "/core-concepts/about-hard-forks/"
+  status = 301
+
+[[redirects]]
+  from = "/learn/chain-confirmation-v-transaction-confirmation.html"
+  to = "/core-concepts/chain-confirmation-versus-transaction-confirmation/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/design-rationale.html"
+  to = "/explore-cardano/cardano-design-rationale/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/cardano-architecture-overview/index.html"
+  to = "/explore-cardano/cardano-architecture/overview/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/cardano-network.html"
+  to = "/explore-cardano/cardano-network/about-the-cardano-network/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/p2p-networking.html"
+  to = "/explore-cardano/cardano-network/p2p-networking/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/cardano-monetary-policy.html"
+  to = "/explore-cardano/monetary-policy/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/cardano-fee-structure.html"
+  to = "/explore-cardano/fee-structure/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/further-reading.html"
+  to = "/explore-cardano/resources/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/relevant-research-papers-and-specifications.html"
+  to = "/explore-cardano/relevant-research-papers/"
+  status = 301
+
+[[redirects]]
+  from = "/explorer.cardano.org/"
+  to = "/tools/explorer/"
+  status = 301
+
+[[redirects]]
+  from = "/projects/cardano-node/"
+  to = "/cardano-components/cardano-node/"
+  status = 301
+
+[[redirects]]
+  from = "https://github.com/input-output-hk/cardano-graphql#overview"
+  to = "/cardano-components/cardano-graphql/"
+  status = 301
+
+[[redirects]]
+  from = "https://github.com/input-output-hk/cardano-rosetta#cardano-rosetta"
+  to = "/cardano-components/cardano-rosetta/"
+  status = 301
+
+[[redirects]]
+  from = "https://github.com/input-output-hk/cardano-ledger-specs#cardano-ledger"
+  to = "/cardano-components/cardano-ledger-specs/"
+  status = 301
+
+[[redirects]]
+  from = "https://github.com/input-output-hk/cardano-db-sync#cardano-db-sync"
+  to = "/cardano-components/cardano-db-sync/"
+  status = 301
+
+[[redirects]]
+  from = "https://github.com/input-output-hk/cardano-wallet#overview"
+  to = "/cardano-components/cardano-wallet/"
   status = 301
