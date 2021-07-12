@@ -203,6 +203,137 @@
   status = 301
 
 [[redirects]]
-  from = "/"
-  to = "/"
+  from = "/projects/smash/"
+  to = "/cardano-components/smash/"
   status = 301
+
+[[redirects]]
+  from = "/rt-view/rt-view.html"
+  to = "/cardano-components/cardano-rtview/"
+  status = 301
+
+[[redirects]]
+  from = "/native-tokens/learn-about-native-tokens.html"
+  to = "/native-tokens/learn/"
+  status = 301
+
+[[redirects]]
+  from = "/native-tokens/minimum-ada-value-requirement.html"
+  to = "/native-tokens/minimum-ada-value-requirement/"
+  status = 301
+
+[[redirects]]
+  from = "/native-tokens/getting-started-with-native-tokens.html"
+  to = "/native-tokens/getting-started/"
+  status = 301
+
+[[redirects]]
+  from = "/native-tokens/exercises.html"
+  to = "/native-tokens/exercises/"
+  status = 301
+
+[[redirects]]
+  from = "/native-tokens/faqs.html"
+  to = "/native-tokens/faqs/"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/marlowe-explainer.html"
+  to = "/marlowe/learn-about-marlowe/"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/marlowe-get-started.html"
+  to = "/marlowe/marlowe-get-started/"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/marlowe-lang-guide.html"
+  to = "/marlowe/marlowe-language-guide/"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/get-started-blockly.html"
+  to = "/marlowe/writing-marlowe-with-blockly/"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/get-started-haskell.html"
+  to = "/marlowe/using-the-haskell-editor/"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/get-started-js.html"
+  to = "/marlowe/using-javascript-editor/"
+  status = 301
+
+[[redirects]]
+  from = "/rosetta/learn-Rosetta.html"
+  to = "/rosetta/learn-rosetta/"
+  status = 301
+
+[[redirects]]
+  from = "/rosetta/get-started-rosetta.html"
+  to = "/rosetta/get-started-rosetta/"
+  status = 301
+
+[[redirects]]
+  from = "/rosetta/contribute-rosetta.html"
+  to = "/rosetta/contribute-rosetta/"
+  status = 301
+
+[[redirects]]
+  from = "/release-information/comp-matrix.html"
+  to = "/tools/comp-matrix/"
+  status = 301
+
+[[redirects]]
+  from = "/cardano-community/cardano-improvement-proposals.html"
+  to = "/community/cips/"
+  status = 301
+
+[[redirects]]
+  from = "/cardano-community/providing-feedback.html"
+  to = "/community/providing-feedback/"
+  status = 301
+
+[[redirects]]
+  from = "/cardano-community/ambassadors-program.html"
+  to = "/community/ambassador-program/"
+  status = 301
+
+[[redirects]]
+  from = "/cardano-community/community-generated-content.html"
+  to = "/community/community-content/"
+  status = 301
+
+[[redirects]]
+  from = "/cardano-community/get-support.html"
+  to = "/community/getting-support/"
+  status = 301
+
+[[redirects]]
+  from = "/input-output-hk/bech32#bech32-command-line/"
+  to = "/getting-started/use-cli/"
+  status = 301
+
+[[redirects]]
+  from = "/input-output-hk/cardano-addresses#overview/"
+  to = "https://github.com/input-output-hk/cardano-addresses#overview"
+  status = 301
+
+[[redirects]]
+  from = "/latest/reference/cardano-node-cli-reference.html"
+  to = "https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/cardano-node-cli-reference.md"
+  status = 301
+
+[[redirects]]
+  from = "/projects/cardano-serialization-lib/"
+  to = "cardano-components/cardano-serialization-lib/"
+  status = 301
+
+[[redirects]]
+  from = "/explore-cardano/glossary.html"
+  to = "/glossary/"
+  status = 301
+  
