@@ -203,26 +203,6 @@
   status = 301
 
 [[redirects]]
-  from = "https://github.com/input-output-hk/cardano-graphql#overview"
-  to = "/cardano-components/cardano-graphql/"
-  status = 301
-
-[[redirects]]
-  from = "https://github.com/input-output-hk/cardano-rosetta#cardano-rosetta"
-  to = "/cardano-components/cardano-rosetta/"
-  status = 301
-
-[[redirects]]
-  from = "https://github.com/input-output-hk/cardano-ledger-specs#cardano-ledger"
-  to = "/cardano-components/cardano-ledger-specs/"
-  status = 301
-
-[[redirects]]
-  from = "https://github.com/input-output-hk/cardano-db-sync#cardano-db-sync"
-  to = "/cardano-components/cardano-db-sync/"
-  status = 301
-
-[[redirects]]
-  from = "https://github.com/input-output-hk/cardano-wallet#overview"
-  to = "/cardano-components/cardano-wallet/"
+  from = "/"
+  to = "/"
   status = 301
