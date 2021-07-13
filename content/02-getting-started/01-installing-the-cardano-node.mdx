@@ -3,9 +3,13 @@ title: Installing the Cardano node
 metaTitle: Installing the Cardano node
 ---
 
-You can install the Cardano node using
+### Download pre-compiled executables
+
+You can install the Cardano node and cli using
 [pre-compiled executable files](https://github.com/input-output-hk/cardano-node#linux-executable)
 for your platform.
+
+### Build from source
 
 Alternatively, if you want to build from source, there are two options
 available to you. Depending on your build tool preference, you can build from
@@ -17,7 +21,7 @@ the source code using either of the following:
 Once you have installed the node, you need to
 [specify the configuration parameters](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/understanding-config-files.md/).
 
-### How to Run the Cardano node and CLI using Docker
+### Docker image
 There is also a Docker image available that you can use. 
 
 #### Setting up Docker
@@ -32,7 +36,7 @@ There is also a Docker image available that you can use.
 
 where `<TAG>` is the tag for the version that you require (e.g. `latest` for the most recent stable version, or `1.27.0` for node version 1.27.0).
 
-2. Create local `cardano-node-data` and `cardano-node-ipc` volumes:
+2. Create local `data` and `node-ipc` volumes:
 
 ```
 docker volume create cardano-node-data
@@ -43,23 +47,23 @@ docker volume create cardano-node-ipc
 
 1. Run a passive node that is connected to the correct network. For example, for a `mainnet` node:
 
-``docker run -e NETWORK=mainnet -v cardano-node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node``
+``docker run -e NETWORK=mainnet -v node-ipc:/ipc -v data:/data inputoutput/cardano-node``
 
-This creates a persistent docker environment for the node, where `/ipc` in the Docker container is connected to the logical `cardano-node-ipc` volume, and `/data` is connected to the `cardano-node-data` volume.  Note that you should change `NETWORK=mainnet` if you are connecting to a different network (eg a testnet).  
+This creates a persistent docker environment for the node, where `/ipc` in the Docker container is connected to the logical `node-ipc`volume, and `/data` is connected to the `data` volume.  Note that you should change `NETWORK=mainnet` if you are connecting to a different network (eg a testnet).  
 
 You may also run the node with specific parameters:
 
-``docker run -v cardano-node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node run --help``
+``docker run -v node-ipc:/ipc -v data:/data inputoutput/cardano-node run --help``
 
 ### Passing Explicit Configuration Parameters
 If there is no pre-defined network configuration, you will need to download the specified configuration files, copy these to the persistent Docker volume, and pass the parameters on the command line:
 
-``docker run -v cardano-node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node run --config ... --topology ... --...``
+``docker run -v node-ipc:/ipc -v data:/data inputoutput/cardano-node run --config ... --topology ... --...``
 
 ## Running Cardano CLI commands
 You can now run normal Cardano CLI commands, for example,
 ```
-export CLI='docker run -it --entrypoint cardano-cli -e NETWORK=mainnet -e CARDANO_NODE_SOCKET_PATH=/ipc/node.socket -v cardano-node-ipc:/ipc inputoutput/cardano-node'
+export CLI='docker run -it --entrypoint cardano-cli -e NETWORK=mainnet -e CARDANO_NODE_SOCKET_PATH=/ipc/node.socket -v node-ipc:/ipc inputoutput/cardano-node'
 $CLI version
 $CLI query tip --mainnet
 $CLI transaction build-raw ... --mainnet
@@ -69,7 +73,7 @@ You need to specify `CARDANO_NODE_SOCKET_PATH` to point to the correct location 
 ## Running a Shell in the Docker Container
 To run a shell in the container (so that you can inspect or change settings, for example), use the `bash` or `sh` entry point.
 
-``docker run -it --entrypoint bash -v node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node``
+``docker run -it --entrypoint bash -v node-ipc:/ipc -v data:/data inputoutput/cardano-node``
 
 You may now run any commands that you require with full access to the container's file systems.
 
