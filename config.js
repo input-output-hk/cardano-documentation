@@ -28,11 +28,9 @@ const config = {
 		  </li>`,
     links: [{ text: '', link: '' }],
     search: {
-      enabled: process.env.IS_STAGING ? true : false,
-      indexName: process.env.IS_STAGING ? 'cardano_docs_staging_index' : 'cardano_documentation_search_index',
-      algoliaAppId: process.env.GATSBY_ALGOLIA_APP_ID,
-      algoliaSearchKey: process.env.GATSBY_ALGOLIA_SEARCH_KEY,
-      algoliaAdminKey: process.env.ALGOLIA_ADMIN_KEY,
+      enabled: true,
+      indexName: 'cardano',
+      algoliaApiKey: process.env.GATSBY_ALGOLIA_API_KEY,
     },
   },
   sidebar: {
