@@ -16,7 +16,7 @@ export default function() {
       container: '#algoliasearch',
       indexName: config.header.search.indexName,
       apiKey: config.header.search.algoliaApiKey,
-      algoliaOptions: {
+      searchParameters: {
         facetFilters: ['tags:docs'],
       },
     })
