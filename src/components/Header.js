@@ -3,33 +3,14 @@ import styled from '@emotion/styled'
 import { StaticQuery, graphql } from 'gatsby'
 import GitHubButton from 'react-github-btn'
 import Link from './link'
-import Loadable from 'react-loadable'
+import Search from './search/index'
 
 import config from '../../config.js'
-import LoadingProvider from './mdxComponents/loading'
 import { DarkModeSwitch } from './DarkModeSwitch'
 
 const help = require('./images/help.svg')
 
-const isSearchEnabled =
-  config.header.search && config.header.search.enabled ? true : false
-
-let searchIndices = []
-
-if (isSearchEnabled && config.header.search.indexName) {
-  searchIndices.push({
-    name: `${config.header.search.indexName}`,
-    title: `Results`,
-    hitComp: `PageHit`,
-  })
-}
-
 import Sidebar from './sidebar'
-
-const LoadableComponent = Loadable({
-  loader: () => import('./search/index'),
-  loading: LoadingProvider,
-})
 
 function myFunction() {
   var x = document.getElementById('navbar')
@@ -58,7 +39,7 @@ const StyledBgDiv = styled('div')`
   background-color: #f8f8f8;
   position: relative;
   display: none;
-  background: ${(props) => (props.isDarkThemeActive ? '#001932' : undefined)};
+  background: ${props => (props.isDarkThemeActive ? '#001932' : undefined)};
 
   @media (max-width: 767px) {
     display: block;
@@ -87,7 +68,7 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme, theme }) => (
         }
       }
     `}
-    render={(data) => {
+    render={data => {
       const logoImg = require('./images/cardano-logo.svg')
 
       const twitter = require('./images/twitter.svg')
@@ -111,6 +92,9 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme, theme }) => (
 
       const finalLogoLink = logo.link !== '' ? logo.link : 'https://hasura.io/'
 
+      const isSearchEnabled =
+        config.header.search && config.header.search.enabled ? true : false
+
       return (
         <NavBarWrapper className={'navBarWrapper'}>
           <nav className={'navBarDefault'}>
@@ -131,8 +115,8 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme, theme }) => (
             ) : null}
             <div className="top-nav-search-social">
               {isSearchEnabled ? (
-                <div className={'searchWrapper hiddenMobile navBarUL'}>
-                  <LoadableComponent collapse={true} indices={searchIndices} />
+                <div className={'searchWrapper'}>
+                  <Search />
                 </div>
               ) : null}
               <div id="navbar" className={'topnav'}>
@@ -229,11 +213,6 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme, theme }) => (
                 <span className={'iconBar'}></span>
               </span>
             </div>
-            {isSearchEnabled ? (
-              <div className={'searchWrapper'}>
-                <LoadableComponent collapse={true} indices={searchIndices} />
-              </div>
-            ) : null}
           </StyledBgDiv>
         </NavBarWrapper>
       )

@@ -882,12 +882,10 @@ export const baseStyles = injectGlobal`
     .searchWrapper {
       padding: 0px 0;
       padding-top: 0px;
-      position: absolute;
       bottom: 0px;
-      width: calc(100% - 70px);
       position: absolute;
-      left: 40px;
-      top: 8px;
+      right: 100px;
+      top: 17px;
     }
     .hitWrapper {
       width: 100%;
