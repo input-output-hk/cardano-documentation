@@ -3,34 +3,59 @@ title: Cardano keys
 metaTitle: Cardano keys
 ---
 
-Keys are asymmetric cryptography key pairs that are used for:
+Keys are asymmetric cryptography key pairs used for:
 
 - Signing and validating payments and staking certificates
+- Identifying and defining addresses on the Cardano blockchain
 
-- Identifying and defining addresses on the Cardano blockchain.
+## Types of keys
+In Cardano, there are two main key types:
 
-### Types of keys
+- Node keys
+- Address keys
 
-There are two main type of keys:
+### Node keys
+Node keys represent the security of the blockchain and consist of the following keys
 
-#### Node keys
+- Operator/operational key
+- KES key pair
+- VRF keys
 
-Node keys represent the security of the blockchain and consist of the following
-keys:
+#### Operator/operational key 
 
-- Operator/operational key, operator’s offline key pair with cert counter for
-  new certificates.
+These are operators’ offline key pairs that include a certificate counter for new certificates.
 
-- Hot KES key, operator’s hot KES key pair.
+It is the responsibility of the operator to manage both the hot (online), and cold (offline) keys for the pool. Cold keys must be secure and should not reside on a device with internet connectivity. It is recommended to keep multiple backups of cold keys.
 
-- Block signing key, operational VRF key pair, it participates in the right to
-  create and sign the block for the specific slot.
+#### KES key pair
 
-#### Address keys
+To create an operational certificate for a block-producing node, you need a Key Evolving Signature (KES) key pair, which authenticates who you are.
 
-Address keys represent the functions of the addresses derived from the keys for
-identifying funds on the blockchain that consist of the following keys:
+A KES key can only evolve for a certain number of periods and becomes useless afterwards. This is useful, because even if an attacker compromises the key and gets access to the signing key, he can only use that to sign blocks from now on, but not blocks dating from earlier periods, making it impossible for the attacker to rewrite history. 
 
-Payment key, single address key pair usually used for generating UtxO addresses.
-Staking key, stake/reward address key pair usually used for generating
-account/reward addresses.
+After the set number of periods has passed, the node operator must generate a new KES key pair, issue a new operational node certificate with that new key pair, and restart the node with the new certificate.
+
+
+#### VRF keys
+
+Ouroboros Praos adds an extra layer of security to block production via Verifiable Random Function (VRF) keys. 
+
+In other proof-of-stake blockchain protocols (Ouroboros Classic or BFT, for instance), we know who has the right to make the block in each slot, because the slot leader schedule is public. In this case, you only have to prove that you are who you say you are, and everyone can check the public slot leader schedule to verify it. 
+
+However, Ouroboros Praos's slot leader schedule is kept private, which means that nobody knows in advance who is going to be the slot leader, but once someone is, they can prove to everyone else that they are using the VRF key. 
+
+The VRF key is a signing verification key stored within the operational certificate. It proves that a node has the right to create a block in a given slot.
+
+### Address keys
+Address keys represent the functions of the addresses derived from the keys for identifying funds on the blockchain that consist of the following keys:
+
+- Payment key: single address key pair usually used for generating UTXO addresses
+- Staking key: stake/reward address key pair usually used for generating account/reward addresses.
+
+## Further resources
+
+- [Creating keys and addresses](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/keys_and_addresses.md)
+- [Creating KES key pair](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/KES_period.md)
+- [Generating stake pool keys](https://iohk.zendesk.com/hc/en-us/articles/900001331786-Generate-stake-pool-keys)
+- [Generating payment/staking keys and address](https://iohk.zendesk.com/hc/en-us/articles/900001219883-Generating-payment-staking-keys-and-address)
+- [KES period](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/KES_period.md)
