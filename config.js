@@ -2,15 +2,14 @@ const config = {
   gatsby: {
     pathPrefix: '/',
     siteUrl: 'https://cardano.org',
-    gaTrackingId: null,
+    gaTrackingId: `UA-119953429-2`,
     trailingSlash: true,
   },
   header: {
     logo: '/images/cardano-logo.svg',
     logoLink: '/',
     title: '<p>DOCS</p>',
-    githubUrl:
-      'https://github.com/input-output-hk/cardano-documentation',
+    githubUrl: 'https://github.com/input-output-hk/cardano-documentation',
     helpUrl: '',
     tweetText: '',
     social: `<li>
@@ -30,10 +29,8 @@ const config = {
     links: [{ text: '', link: '' }],
     search: {
       enabled: true,
-      indexName: 'test_cardano-docs',
-      algoliaAppId: process.env.GATSBY_ALGOLIA_APP_ID,
-      algoliaSearchKey: process.env.GATSBY_ALGOLIA_SEARCH_KEY,
-      algoliaAdminKey: process.env.ALGOLIA_ADMIN_KEY,
+      indexName: 'cardano',
+      algoliaApiKey: process.env.GATSBY_ALGOLIA_API_KEY,
     },
   },
   sidebar: {
@@ -56,7 +53,7 @@ const config = {
       '/marlowe',
       '/rosetta',
       '/community',
-      '/tools'
+      '/tools',
     ],
     links: [{ text: 'Cardano.org', link: 'https://cardano.org' }],
     frontLine: true, // This toggles collapse arrows
