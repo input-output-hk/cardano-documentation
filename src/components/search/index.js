@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect, createRef, useRef } from 'react'
 import useOnClickOutside from '../../hooks/useOnClickOutside'
 
@@ -10,20 +11,21 @@ import {
   connectStateResults,
 } from 'react-instantsearch-dom'
 import algoliasearch from 'algoliasearch/lite'
+=======
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
+import docsearch from '@docsearch/js'
+>>>>>>> master
 import config from '../../../config.js'
 
-import styled from '@emotion/styled'
-import { css } from '@emotion/core'
-import { PoweredBy } from './styles'
-import { Search } from 'styled-icons/fa-solid/Search'
-import Input from './input'
-import * as hitComps from './hitComps'
+import '@docsearch/css'
 
-const SearchIcon = styled(Search)`
-  width: 1em;
-  pointer-events: none;
+const SearchContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `
 
+<<<<<<< HEAD
 const HitsWrapper = styled.div`
   display: ${props => (props.show ? `grid` : `none`)};
   max-height: 80vh;
@@ -151,5 +153,23 @@ export default function SearchComponent({ indices, collapse, hitsAsGrid }) {
       )}
       <Configure hitsPerPage={5} />
     </InstantSearch>
+=======
+export default function() {
+  useEffect(() => {
+    docsearch({
+      container: '#algoliasearch',
+      indexName: config.header.search.indexName,
+      apiKey: config.header.search.algoliaApiKey,
+      searchParameters: {
+        facetFilters: ['tags:docs'],
+      },
+    })
+  }, [])
+
+  return (
+    <SearchContainer>
+      <div id="algoliasearch" />
+    </SearchContainer>
+>>>>>>> master
   )
 }
