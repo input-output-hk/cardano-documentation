@@ -1,4 +1,4 @@
-  ## Ledger explainer ##
+## Ledger explainer 
 
 Cardano, like any other blockchain, is a distributed ledger or database that records all transactions and blocks created on the chain. This database shares records across all participants and synchronizes continuously with blockchain activities to provide transparent and up-to-date information for anyone to access. 
 
@@ -8,7 +8,7 @@ A block producer validates each transaction before it is [submitted to a block](
 
 Let’s take a closer look at how this works within the Shelley ledger and how Plutus scripts will change this process to support multi-asset transactions and smart contracts. 
 
-### Transaction validation using Shelley native scripts ###
+### Transaction validation using Shelley native scripts
 
 Cardano operates based on the unspent transaction output (UTXO) accounting model. This process means it uses transaction inputs and outputs as records to track fund transfers, ownership, and balances. Users’ funds are stored as unspent transaction outputs, each of which has a quantity that can be spent. Inputs are unspent outputs from previous transactions. As soon as an output is used as input in a transaction, it becomes spent and can never be used again. The output is specified by:
 
@@ -21,7 +21,7 @@ Cardano Shelley supported ada transactions solely. However, the Shelley formal s
 
 Multisig is a very simple language, and it allows working with such four constructors as `RequireSignature`, `RequireAllOf`, `RequireAnyOf`, and `RequireMOf`. However, as more functionality is added to the ledger, scripts should be extended to support additional terms for expressing a range of other conditions.
 
-### Upgrading multisig to Plutus Core ###
+### Upgrading multisig to Plutus Core
 
 With the introduction of [multi-asset support](https://docs.cardano.org/native-tokens/learn) and upcoming smart contracts on Cardano, extending the basic multisig scripting language with more advanced options is essential. Having started the integration of Alonzo rules into the ledger (which signifies the addition of smart contract capabilities to Cardano), we are adding the necessary tools and infrastructure, as well as support for a new scripting language – Plutus Core.
 
