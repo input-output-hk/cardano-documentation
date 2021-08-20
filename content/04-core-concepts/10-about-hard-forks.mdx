@@ -57,7 +57,7 @@ transition to Ouroboros Praos without any further chain interruptions. The BFT
 protocol was carefully designed so that blockchain history would remain
 unchanged, and the blockchain would appear as a single entity.
 
-### Token locking: Shelley protocol update
+### Token locking: Shelley protocol upgrade
 
 _Token locking_ is a new feature that is being added to the Shelley protocol to
 enable various kinds of smart contract use cases, including creating and
@@ -93,14 +93,31 @@ accounting. It can be used in the following scenarios:
   token types, besides ada. Token locking will allow ada tokens to be ‘locked’,
   for example, to create another custom asset of equivalent value.
 
-**How does it affect the community?**
+### Mary: multi-asset support
 
-The introduction of token locking will not negatively affect general ada
-holders, since wallets such as Daedalus and Yoroi will update automatically
-without requiring any action from ada holders.
+*Mary* is the Shelley protocol upgrade implemented in March 2021. It introduces native token and multi-asset support on Cardano. Mary allows users to create uniquely defined (custom) tokens and carry out transactions with them directly on the Cardano blockchain.
 
-All the nodes that are involved in the network maintenance will have to ‘agree’
-on this transition to a new protocol, that is, they will need to reach a
-consensus. Stake pool operators and exchanges that are running nodes will simply
-have to download the new version of the node software and verify its operation
-on the Cardano testnet.
+With Mary upgrade, the ledger’s accounting infrastructure processes not only ada transactions but also transactions that simultaneously carry several asset types. Native support grants distinct advantages for developers as there is no need to create smart contracts to handle custom token creation or transactions. This means that the accounting ledger tracks the ownership and transfer of assets instead, removing extra complexity and potential for manual errors, while ensuring significant cost efficiency.
+
+Developers, businesses, and applications can create general purpose (fungible) or specialized (non-fungible) tokens to achieve commercial or business objectives. These might include the creation of custom payment tokens or rewards for decentralized applications; stablecoins pegged to other currencies; or unique assets that represent intellectual property. All these assets can then be traded, exchanged, or used as payment for products or services.
+
+**Further reading:**
+
+-   [Learn about native tokens](https://docs.cardano.org/native-tokens/learn)
+    
+### Alonzo: smart contract support
+
+*Alonzo* is the next protocol upgrade, which marks Goguen development theme. It builds on top of transaction metadata, token locking, and native asset functionality to allow for functional smart contract development.
+
+This upgrade introduces a versatile platform opening up opportunities for businesses and developers, by allowing the creation of smart contracts and decentralized applications (DApps) for decentralized finance (DeFi).
+
+Such capability is enabled by adding the necessary tools and the infrastructure using the Plutus Platform. Applying a rigorous approach based on formal methods and verification, Alonzo extends the basic multi-signature scripting language (multisig) used in Cardano Shelley. Multisig is being upgraded to the Plutus Core language for more powerful and secure scripting options. For this, Alonzo implements the [extended unspent transaction output (EUTXO) accounting model](https://iohk.io/en/blog/posts/2021/03/12/cardanos-extended-utxo-accounting-model-part-2/).
+
+Alonzo is on testnet stages now, find out more by visiting:
+
+-   [The Alonzo testnet](https://testnets.cardano.org/en/testnets/alonzo-testnet/)
+
+**Further reading:**
+
+-   [Smart contracts - here we come](https://iohk.io/en/blog/posts/2021/04/08/smart-contracts-%E2%80%93-here-we-come/)
+-   [Plutus: what you need to know](https://iohk.io/en/blog/posts/2021/04/13/plutus-what-you-need-to-know/)
