@@ -3,7 +3,7 @@ title: Learn about native tokens
 metaTitle: Learn about native tokens
 ---
 
-*Native tokens* is a new feature that enables the transacting of multi-assets on Cardano. Users can transact with ada, and an unlimited number of user-defined (custom) tokens natively.
+*Native tokens* is a new feature that enables the transacting of multi-assets on [Cardano](https://cardano.org/). Users can transact with ada, and an unlimited number of user-defined (custom) tokens natively.
 
 Native support offers distinct advantages for developers: there is no need to create smart contracts to handle custom tokens, for example, which removes a layer of added complexity and potential for manual errors since the ledger handles all token-related functionality.
 
@@ -42,7 +42,7 @@ The term *asset* can refer to either:
 
 An asset is uniquely identified by an *asset ID*, which is a pair of both the *policy ID* and *asset name*. It is important to note that although ada can *act* as an asset, it is not represented using an explicit policy ID. 
 
-Tokens that have the same asset ID have the property of being fungible with each other, and are not fungible with tokens that have a different asset ID. An asset ID is a unique identifier for a collection of fungible tokens.
+Tokens that have the same asset ID have the property of being fungible with each other, and are *not* fungible with tokens that have a different asset ID. An asset ID is a unique identifier for a collection of fungible tokens.
 
 - *PolicyID* - the unique identifier that is associated with a minting policy. Let’s take a look at two policy ID examples: `NFLPlayerCardsPolicyID` and `RushConcertPolicyID`. The ID is computed by applying a hash function to the policy itself, and is thus a sequence of letters and numbers. For example:
 
@@ -269,4 +269,4 @@ Token holders will hold tokens in their wallets, may pass them on to other users
 
 When tokens become redundant, they can be ***burned***, if desired, in accordance with the underlying monetary policy script. The process of burning destroys these tokens (removes them from circulation), and the total token supply decreases. Any deposits will be returned at this point. The burning process is identical for fungible and non-fungible tokens.
 
-> Note: The multi-asset token lifecycle potentially allows tokens to be obtained and reissued by other parties - token holders who act as *reissuers* for the token. This can be done to e.g. enable trading in multiple asset classes, maintain liquidity in one or more tokens (by acting as a broker), or to eliminate the effort/cost of token minting, issuing or metadata server maintenance. Thus, both reissuers and issuers can gain from such a deal - eliminating cost and effort, maintaining separation and integrity, and injecting value into the asset class. 
+> Note: The multi-asset token lifecycle potentially allows tokens to be obtained and reissued by other parties - token holders who act as *reissuers* for the token. This can be done to e.g., enable trading in multiple asset classes, maintain liquidity in one or more tokens (by acting as a broker), or to eliminate the effort/cost of token minting, issuing or metadata server maintenance. Thus, both reissuers and issuers can gain from such a deal - eliminating cost and effort, maintaining separation and integrity, and injecting value into the asset class. 
