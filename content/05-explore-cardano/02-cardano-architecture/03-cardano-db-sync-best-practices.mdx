@@ -3,13 +3,13 @@ title: Cardano DB Sync best practices
 metaTitle: Cardano DB Sync best practices
 ---
 
-This section outlines some best practices for using the Cardano DB Sync
-component.
+This section outlines some best practices for using the [Cardano DB Sync
+component](https://docs.cardano.org/cardano-components/cardano-db-sync).
 
 ### Purpose of Cardano DB Sync
 
-The cardano-db-sync component is designed to work with a locally running Cardano
-node. The purpose of Cardano DB Sync is to follow the Cardano chain and fetch
+The cardano-db-sync component is designed to work with a locally running [Cardano
+node](https://docs.cardano.org/cardano-components/cardano-node). The purpose of Cardano DB Sync is to follow the Cardano chain and fetch
 information from the chain and an internally-maintained copy of ledger state.
 Data is then extracted from the chain and inserted into a PostgreSQL database.
 SQL queries can then be written directly against the database schema or as
@@ -34,7 +34,7 @@ For details of sample queries, see
 We recommend the following hardware for cardano-db-sync (with both db-sync and
 the node running on the same machine):
 
-- A Linux distribution (for example: Debian, Ubuntu, RHEL, CentOS, Arch)
+- A Linux distribution (for example: Debian, Ubuntu, RHEL, CentOS, or Arch)
 - 8 Gigabytes of RAM
 - 2 CPU cores
 - 50 Gigabytes or more of disk storage
@@ -46,6 +46,7 @@ database. Traffic to a local database is significantly faster than traffic to a
 database on the local area network (LAN) or remotely to another location.
 
 To run cardano-db-sync, you first need to have a locally-running cardano-node.
+
 For more information, see the
 [building and running instructions](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/building-running.md).
 
