@@ -1,0 +1,43 @@
+---
+title: About the collateral mechanism
+metaTitle: About the collateral mechanism
+---
+
+Alonzo has ushered in the era of smart contracts on Cardano. The collateral mechanism is an important feature that has been designed to ensure successful smart contract execution. 
+
+Relying on the guarantees provided by the deterministic design of the Alonzo ledger, Cardano  implements a specific two-phase validation scheme. The main reason for introducing two-phase validation is to limit the amount of uncompensated validation work by nodes. Each phase serves a purpose in achieving this goal:
+
+- The first phase checks whether the transaction is constructed correctly and can pay its processing fee
+- The second phase runs the scripts included in the transaction. 
+
+If the transaction is phase-1 valid, phase-2 scripts run. If phase-1 fails, no scripts run, and the transaction is immediately discarded.
+
+Collateral is used to guarantee that nodes are compensated for their work in case phase-2 validation fails. Thus, collateral is the monetary guarantee a user gives to assure that the contract has been carefully designed and thoroughly tested. Collateral amount is specified at the time of constructing the transaction. Not directly, but by adding collateral inputs to the transaction. The total balance in the UTXOs corresponding to these specially marked inputs is the transaction’s collateral amount. If the user fulfills the conditions of the guarantee, and a contract gets executed, the collateral is safe.
+
+## The scenario
+Without collateral, the user is not charged if a smart contract fails. However, by the time the transaction fails, the network has already incurred some costs to initiate and validate the transaction. This means that a malicious actor could flood the network with invalid transactions, denying service to other users at little cost.
+
+## The solution
+When a user initiates a transaction, they commit enough ada to cover its execution cost. In Alonzo, transactions that call and use non-native smart contracts (known as phase-2 contracts) also need enough collateral to cover costs related to potential transaction failures. This amount can be small, but it is sufficient to make a denial of service (DOS) attack prohibitively expensive. 
+
+Collateral fees are collected only if a transaction fails validation. If the contract passes validation, the transaction fees are collected, but the collateral is not.
+
+## The reasoning:
+An honest user is never at risk of losing their collateral.
+
+The Cardano blockchain is deterministic with respect to transaction costs because these costs depend only on local values and local state. That means a user can calculate the execution cost (in ada) of a transaction before submitting it. This feature is different from other blockchains, including Ethereum, where other network activity can influence the gas cost. The required amount of collateral depends only on the execution cost.
+
+The [Cardano testnet](https://testnets.cardano.org/en/testnets/cardano/overview/) provides a safe environment with free test ada, so distributed application (DApp) developers can thoroughly test their smart contracts before deploying to the mainnet. If transactions succeed on the testnet, the developer can be perfectly sure that all the scripts will indeed succeed.
+
+If the on-chain conditions have changed since the transaction was constructed, that transaction will be rejected entirely, and no fees will be charged. If a signature is missing, for example, no collateral would be charged.
+
+## Technical details
+
+The term collateral refers to the total ada contained in the UTXOs referenced by collateral inputs. A transaction uses collateral inputs to cover its fees if a phase-2 script fails. 
+
+The Shelley formal specification introduced the concept of “multi-signature” scripts. Phase one
+scripts, such as these, are captured entirely by the ledger rules. Execution costs can therefore be easily assessed before they are processed by the implementation, and any fees can be calculated directly within the ledger rule implementation, based on the size of the transaction that includes the script, for example.
+
+In contrast, phase-2 scripts can perform arbitrary (and, in principle, Turing-complete) computations. We require transactions that use phase-2 scripts to have a budget in terms of a number of abstract ExUnits. This budget gives a quantitative bound on resource usage in terms of a number of specific metrics, including memory usage or abstract execution steps. The budget is then used as part of the transaction fee calculation.
+
+The above is extracted from the formal specification for the Alonzo network. For more details, read the [Cardano ledger specification for Plutus Core](https://www.google.com/url?q=https://hydra.iohk.io/build/7172824/download/1/alonzo-changes.pdf&sa=D&source=editors&ust=1631287783465000&usg=AOvVaw09WTwSfKshbLCGW7dyup62).
