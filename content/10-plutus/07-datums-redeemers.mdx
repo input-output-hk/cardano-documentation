@@ -23,7 +23,7 @@ The process of working with datums and redeemers is the following:
 Let’s say that Alice has a UTXO with 100 ADAs:
 ![Alice ada](Alice-ada.png)
 
-And she wants to lock 20 ADAs to the “datum-redeemer” script. She can do that by sending a transaction attaching an arbitrary data (i.e. the number 42) to the new UTXO:
+She wants to lock 20 ADAs to the “datum-redeemer” script. She can do that by sending a transaction attaching an arbitrary data (i.e. the number 42) to the new UTXO:
 ![Alice ada 2](Alice-ada-2.png)
 
 Finally, someone could spend the 20 adas with a new transaction, this time a redeemer has to be specified:
@@ -33,10 +33,10 @@ Finally, someone could spend the 20 adas with a new transaction, this time a red
 
 The most simple example of working with datums and redeemers is to:
 
-1. Lock a UTXO in a script address by attaching a hash of the datum to it
-2. Then, unlock the funds with a redeemer that corresponds to the datum. 
+1. Lock a UTXO in a script address by attaching a hash of the datum to the UTXO.
+2. Unlock the funds with a redeemer that corresponds to the datum. 
 
-This is expressed in the following contract:
+This is expressed in a contract, as follows:
 
 ```
 helloWorld :: Data -> Data -> Data -> ()
@@ -48,10 +48,10 @@ helloWorld datum redeemer context = if datum P.== redeemer
 The function above receives three arguments: *datum*, *redeemer*, and *script context*. However, we use the datum and the redeemer only.
 
 ### Prerequisites
-The Plutus script needs to be built with GHC 8.10.4. One way to install this specific version is to use [ghcup](https://gitlab.haskell.org/haskell/ghcup-hs). Another way is to use Nix. 
+The Plutus script needs to be built with GHC 8.10.4. One way to install this specific version is to use [ghcup](https://gitlab.haskell.org/haskell/ghcup-hs). Alternatively, you can use Nix. 
 
 ### Compiling the contract
-In this tutorial, we are going to modify one of the examples of the [Alonzo testnet repository](https://github.com/input-output-hk/Alonzo-testnet). See the following steps:
+In this tutorial, we are going to modify one of the examples of the [Alonzo testnet repository](https://github.com/input-output-hk/Alonzo-testnet). Follow these steps:
 
 1. Clone the [Alonzo testnet repository](https://github.com/input-output-hk/Alonzo-testnet).
 2. Go to `Alonzo-testnet/resources/plutus-sources/plutus-helloworld` directory.
@@ -67,7 +67,7 @@ with:
 Now that we have compiled the contract, we need to create the script address. For this, use the following cardano-cli command: 
 
 ```
-$ cardano-cli address build --payment-script-file datum-redeemer.plutus --testnet-magic 8 --out-file datum-redeemer.addr
+$ cardano-cli address build --payment-script-file datum-redeemer.plutus --mainnet --out-file datum-redeemer.addr
 ```
 
 ### Querying the script address
@@ -78,7 +78,7 @@ $ cat datum-redeemer.addr
 addr_test1wrj2yjcjnpl37fnv74lcwgtc5meefznj490gp2kkuquwt0c84ezsu
 
 
-$ cardano-cli query utxo --address $(cat datum-redeemer.addr) --testnet-magic 8
+$ cardano-cli query utxo --address $(cat datum-redeemer.addr) --mainnet
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
 ```
@@ -95,7 +95,7 @@ $ cardano-cli transaction hash-script-data --script-data-value 42
 First, we need to query the address that will send the funds to the script address. In this example, we have the address in the file `payment.addr`:
 
 ```
-$ cardano-cli query utxo --address $(cat payment.addr) --testnet-magic 8
+$ cardano-cli query utxo --address $(cat payment.addr) --mainnet
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
 cd4a34a97e8845631c57ec21fed3901e4a4f244e0673eb9e5d478437ec3e9bf4     1        1000000 lovelace + TxOutDatumHashNone
@@ -110,7 +110,7 @@ We use the UTXO that contains 100 ada (d26ccb16e17b7db97b9578c5f787baaeb63e36dc7
 ### Downloading the protocol parameters file
 Before sending our first transaction we need to download the file that contains the parameters of the protocol, we do that with the following command:
 ```
-$ cardano-cli query protocol-parameters --out-file protocol.json --testnet-magic 8
+$ cardano-cli query protocol-parameters --out-file protocol.json --mainnet
 ```
 
 ### Locking funds
@@ -126,7 +126,7 @@ d26ccb16e17b7db97b9578c5f787baaeb63e36dc78134e926bdaeb58a512018d#1 \
 --change-address $(cat payment.addr) \
 --protocol-params-file protocol.json \
 --out-file tx.raw \
---testnet-magic 8
+--mainnet
 ```
 
 As it is an Alonzo-era transaction, we need to specify the `--alonzo-era` flag.
@@ -139,7 +139,7 @@ You can find steps on how to create a transaction on the Alonzo era network in t
 The UTXO at this script address should now have 8 ada and the datum hash attached. To query it, run:
 
 ```
-$ cardano-cli query utxo --address $(cat datum-redeemer.addr) --testnet-magic 8
+$ cardano-cli query utxo --address $(cat datum-redeemer.addr) --mainnet
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
 49ac2bf6a40df00d071b649d1e5b5d3531ddb2bfe6c619f9506cacb557bcb8b6     1        20000000 lovelace + TxOutDatumHash ScriptDataInAlonzoEra "9e1199a988ba72ffd6e9c269cadb3b53b5f360ff99f112d9b2ee30c4d74ad88b"
@@ -161,14 +161,14 @@ This contract succeeds when the datum is equal to the redeemer. We have just loc
 To do that, we need to send a transaction that tries to unlock funds from the script address. We need the UTXO from the script address:
 
 ```
-$ cardano-cli query utxo --address $(cat datum-redeemer.addr) --testnet-magic 8
+$ cardano-cli query utxo --address $(cat datum-redeemer.addr) --mainnet
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
 49ac2bf6a40df00d071b649d1e5b5d3531ddb2bfe6c619f9506cacb557bcb8b6     1        20000000 lovelace + TxOutDatumHash ScriptDataInAlonzoEra "9e1199a988ba72ffd6e9c269cadb3b53b5f360ff99f112d9b2ee30c4d74ad88b"
 
 
 
-$ cardano-cli query utxo --address $(cat payment.addr) --testnet-magic 8
+$ cardano-cli query utxo --address $(cat payment.addr) --mainnet
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
 49ac2bf6a40df00d071b649d1e5b5d3531ddb2bfe6c619f9506cacb557bcb8b6     0        79831551 lovelace + TxOutDatumHashNone
@@ -195,7 +195,7 @@ $ cardano-cli transaction build \
 --change-address $(cat payment.addr) \
 --protocol-params-file protocol.json \
 --out-file tx.raw \
---testnet-magic 8
+--mainnet
 Command failed: transaction build  Error: The following scripts have execution failures:
 the script for transaction input 0 (in the order of the TxIds) failed with The Plutus script evaluation failed: An error has occurred:  User error:
 The provided Plutus code called 'error'.
@@ -218,13 +218,13 @@ $ cardano-cli transaction build \
 --change-address $(cat payment.addr) \
 --protocol-params-file protocol.json \
 --out-file tx.raw \
---testnet-magic 8
+--mainnet
 ```
 In this case we were able to build the transaction, since it has the right values. Now we can sign and submit this transaction.
 ```
-$ cardano-cli transaction sign --tx-body-file tx.raw --signing-key-file payment.skey --testnet-magic 8 --out-file tx.sign
+$ cardano-cli transaction sign --tx-body-file tx.raw --signing-key-file payment.skey --mainnet --out-file tx.sign
 
-$ cardano-cli transaction submit --testnet-magic 8 --tx-file tx.sign
+$ cardano-cli transaction submit --mainnet --tx-file tx.sign
 Transaction successfully submitted.
 ```
 
@@ -232,11 +232,11 @@ Transaction successfully submitted.
 We can query the addresses to ensure that we have unlocked the funds. There is now no UTXO at the script address and a new one with 8 ada has been received.:
 
 ```
-$ cardano-cli query utxo --address $(cat datum-redeemer.addr) --testnet-magic 8
+$ cardano-cli query utxo --address $(cat datum-redeemer.addr) --mainnet
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
 
-$ cardano-cli query utxo --address $(cat payment.addr) --testnet-magic 8
+$ cardano-cli query utxo --address $(cat payment.addr) --mainnet
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
 30ccc513f63452602adf43140e5749a11c6ad14f592acda37bf9683e427971c4     0        19788721 lovelace + TxOutDatumHashNone
