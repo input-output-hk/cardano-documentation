@@ -9,7 +9,7 @@ Cardano, like any other blockchain, is a distributed ledger or database that rec
 
 A block producer validates each transaction before it is [submitted to a block](https://docs.cardano.org/new-to-cardano/cardano-nodes). The sender must have sufficient funds, so there is no double-spending, and all the nodes across the ledger must reach consensus.
 
-Let’s take a closer look at how this works within the Shelley ledger and how Plutus scripts will change this process to support multi-asset transactions and smart contracts. 
+Let’s take a closer look at how this worked within the Shelley ledger and how Plutus scripts change this process to support multi-asset transactions and smart contracts. 
 
 ### Transaction validation using Shelley native scripts
 
@@ -20,13 +20,13 @@ Cardano operates based on the unspent transaction output (UTXO) accounting model
 
 A transaction must be signed by the owner of the private key (also referred to as the signing key), which corresponds to the payment credential included in the address. 
 
-Cardano Shelley supported ada transactions solely. However, the Shelley formal specification introduced the concept of [multi-signature (multisig) scripts](https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/simple-scripts.md#multi-signature-scripts), which, native by their nature, are captured entirely by ledger rules. This multisig scheme allows an unspent transaction output to be used as an input to a new transaction if a predefined combination of signatures is provided. For example, if two individuals have to sign the transaction simultaneously, two out of three keys have to be provided, etc.
+Cardano Shelley supported ada transactions solely. However, the Shelley formal specification introduced the concept of [multi-signature (multisig) scripts](https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/simple-scripts.md#multi-signature-scripts), which, native by their nature, are captured entirely by ledger rules. This multisig scheme allowed an unspent transaction output to be used as an input to a new transaction if a predefined combination of signatures was provided. For example, if two individuals have to sign the transaction simultaneously, two out of three keys have to be provided, etc.
 
 Multisig is a very simple language, and it allows working with such four constructors as `RequireSignature`, `RequireAllOf`, `RequireAnyOf`, and `RequireMOf`. However, as more functionality is added to the ledger, scripts should be extended to support additional terms for expressing a range of other conditions.
 
 ### Upgrading multisig to Plutus Core
 
-With the introduction of [multi-asset support](https://docs.cardano.org/native-tokens/learn) and upcoming smart contracts on Cardano, extending the basic multisig scripting language with more advanced options is essential. Having started the integration of Alonzo rules into the ledger (which signifies the addition of smart contract capabilities to Cardano), we are adding the necessary tools and infrastructure, as well as support for a new scripting language – Plutus Core.
+With the introduction of [multi-asset support](https://docs.cardano.org/native-tokens/learn) and smart contracts on Cardano, extending the basic multisig scripting language with more advanced options is essential. Having integrated Alonzo rules into the ledger (which signifies the addition of smart contract capabilities to Cardano), we have added the necessary tools and infrastructure, as well as support for a new scripting language – Plutus Core.
 
 To upgrade multisig to Plutus Core, the Alonzo ledger implements the [extended unspent transaction output (EUTXO) accounting model](https://iohk.io/en/blog/posts/2021/03/12/cardanos-extended-utxo-accounting-model-part-2/), using Plutus Core to provide powerful scripting capabilities.
 
