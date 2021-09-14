@@ -7,19 +7,19 @@ Cardano uses scripts to validate actions. These scripts, which are pieces of cod
 
 ## What are scripts?
 
-A *script* is a program that decides whether or not the transaction which spends the output is authorized to do so. Such a script is called a validator script, because it validates whether the spending is allowed.
+A *script* is a program that decides whether or not the transaction that spends the output is authorized to do so. Such a script is called a validator script, because it validates whether the spending is allowed.
 
-A simple validator script would be one that checked whether the spending transaction was signed by a particular key - this would exactly replicate the behaviour of simple pay-to-pubkey outputs. However, with a bit of careful extension, we can use scripts to let us express a large amount of useful logic on the chain.
+A simple validator script would check whether the spending transaction was signed by a particular key – this would exactly replicate the behavior of simple pay-to-pubkey outputs. However, with a bit of careful extension, we can use scripts to express useful logic on the chain.
 
 The way the EUTXO model works is that validator scripts are passed three arguments:
 
 - Datum: this is a piece of data attached to the output that the script is locking (strictly, again, just the hash is present). This is typically used to carry state.
-- Redeemer: this is a piece of data attached to the input that is doing the spending. This is typically used to provide an input to the script from the spender.
-- Context: this is a piece of data which represents information about the transaction doing the spending. This is used to make assertions about the way the output is being sent (such as “Bob signed it”).
+- Redeemer: this is a piece of data attached to the spending input. This is typically used to provide an input to the script from the spender.
+- Context: this is a piece of data that represents information about the spending transaction. This is used to make assertions about the way the output is being sent (such as “Bob signed it”).
 
 ## Intuitive example
 
-For example, a kid wants to go on a ferris wheel, but before getting on, they must be taller than the safety sign.
+For example, a kid wants to go on a Ferris wheel, but before getting on, they must be taller than the safety sign.
 
 We could express that idea in pseudo code, like:
 
@@ -39,8 +39,8 @@ michael = {"height":135}
 
 In this example the following applies:
 
-- The datum is the information about this transaction: `michael.hegiht`.
-- The context is the state of the world, at that point meaning: `ferrisWheel.minimumHeght`.
+- The datum is the information about this transaction: `michael.height`.
+- The context is the state of the world, at that point meaning: `ferrisWheel.minimumHeight`.
 - The reedemer, is the action to perform: `getOnFerrisWheel()`
 
 The validator script is the function that uses all that information `isTallEnough`
@@ -66,7 +66,7 @@ You can find real code examples of validator scripts on every smart contract, fo
 
 ## Cost model parameters 
 
-The cost model for Plutus Core scripts has a number of parameters, which are part of the Cardano protocol parameters. Developers can also adjust those parameters individually. 
+The cost model for Plutus Core scripts has a number of parameters, which are part of the Cardano protocol parameters. Developers can adjust those parameters individually. 
 
 See the following for more details:
 
