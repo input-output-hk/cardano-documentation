@@ -6,17 +6,20 @@ metaTitle: Plutus scripts
 Cardano uses scripts to validate actions. These scripts, which are pieces of code, implement pure functions with True or False outputs. Script validation is the process of invoking the script interpreter to run a given script on appropriate arguments.
 
 ## What are scripts?
-A script is a program that decides whether or not the transaction which spends the output is authorized to do so. Such a script is called a validator script, because it validates whether the spending is allowed.
 
-A simple validator script would be one that checked whether the spending transaction was signed by a particular key - this would exactly replicate the behaviour of simple pay-to-pubkey outputs. However, with a bit of careful extension, we can use scripts to let us express a large amount of useful logic on the chain.
+A *script* is a program that decides whether or not the transaction that spends the output is authorized to do so. Such a script is called a validator script, because it validates whether the spending is allowed.
+
+A simple validator script would check whether the spending transaction was signed by a particular key – this would exactly replicate the behavior of simple pay-to-pubkey outputs. However, with a bit of careful extension, we can use scripts to express useful logic on the chain.
 
 The way the EUTXO model works is that validator scripts are passed three arguments:
+
 - Datum: this is a piece of data attached to the output that the script is locking (strictly, again, just the hash is present). This is typically used to carry state.
-- Redeemer: this is a piece of data attached to the input that is doing the spending. This is typically used to provide an input to the script from the spender.
-- Context: this is a piece of data which represents information about the transaction doing the spending. This is used to make assertions about the way the output is being sent (such as “Bob signed it”).
+- Redeemer: this is a piece of data attached to the spending input. This is typically used to provide an input to the script from the spender.
+- Context: this is a piece of data that represents information about the spending transaction. This is used to make assertions about the way the output is being sent (such as “Bob signed it”).
 
 ## Intuitive example
-For example, a kid wants to go on a ferris wheel, but before getting on, they must be taller than the safety sign.
+
+For example, a kid wants to go on a Ferris wheel, but before getting on, they must be taller than the safety sign.
 
 We could express that idea in pseudo code, like:
 
@@ -35,16 +38,19 @@ michael = {"height":135}
 ```
 
 In this example the following applies:
-- The datum is the information about this transaction: `michael.hegiht`.
-- The context is the state of the world, at that point meaning: `ferrisWheel.minimumHeght`.
+
+- The datum is the information about this transaction: `michael.height`.
+- The context is the state of the world, at that point meaning: `ferrisWheel.minimumHeight`.
 - The reedemer, is the action to perform: `getOnFerrisWheel()`
 
 The validator script is the function that uses all that information `isTallEnough`
 
 ## Defi example
+
 Now let’s look at an example from the DeFi domain.
 
 We could implement an atomic swap, as follows:
+
 - The datum contains the keys of the two parties in the swap, and a description of what they are swapping
 - The redeemer is unused.
 - The context contains a representation of the transaction.
@@ -57,3 +63,12 @@ You can find real code examples of validator scripts on every smart contract, fo
 - [Plutus transaction tutorial](https://github.com/input-output-hk/Alonzo-testnet/blob/main/Alonzo-tutorials/Plutus_transactions_tutorial.md#transaction-to-lock-funds): On this validator, it always succeeds.
 - [Plutus Hello World](https://github.com/input-output-hk/Alonzo-testnet/blob/e27563ec0c0c3723376f4d12881cd003a7a7157f/resources/plutus-sources/plutus-helloworld/src/Cardano/PlutusExample/HelloWorld.hs#L47): On this validator if the datum is equal to ‘Hello’ it is converted to an integer.
 - [Plutus Pioneers English Auction](https://github.com/input-output-hk/plutus-pioneer-program/blob/024ebd367bf6c4003b482bfb4c6db7d745ec85aa/code/week01/src/Week01/EnglishAuction.hs#L103): On this line the validator makes sure that the new bid (datum) is superior to the previous one, until time is up.
+
+## Cost model parameters 
+
+The cost model for Plutus Core scripts has a number of parameters, which are part of the Cardano protocol parameters. Developers can adjust those parameters individually. 
+
+See the following for more details:
+
+- [A list of cost model parameters and their brief description](https://plutus.readthedocs.io/en/latest/reference/cost-model-parameters.html)
+- [Sources to find out more about the meaning of parameters](https://plutus.readthedocs.io/en/latest/reference/bibliography.html#id13)
