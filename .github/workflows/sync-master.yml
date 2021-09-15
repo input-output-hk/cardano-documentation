@@ -1,0 +1,22 @@
+# Now that we're deploying changes directly to master we need
+# to make sure staging is kept up to date. This action merges master in to staging
+# when we deploy a change to master.
+
+name: Sync multiple branches
+on:
+  push:
+    branches:
+      - master
+jobs:
+  sync-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Merge master -> staging
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          from_branch: master
+          target_branch: staging
+          github_token: ${{ github.token }}

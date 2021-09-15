@@ -8,12 +8,10 @@ metaTitle: Cardano Glossary
 
 ## ada
 
-digital currency of the Cardano blockchain. One ada = 1,000,000 lovelaces.
+digital currency of the [Cardano blockchain](https://cardano.org/). One ada = 1,000,000 lovelaces.
 
 ## address
-  a data-structure used in transaction outputs to convey various pieces of information. All addresses carry a network discriminant tag to distinguish between different networks (e.g. Mainnet or Testnet) and a proof of ownership (i.e. a proof of who owns the transaction output). Some addresses also carry delegation choices or script references.  
-Adrestia
-  Adrestia is a collection of products which makes it easier to integrate with Cardano. It is made of several Application Programming Interfaces (APIs), Command-line Interfaces (CLIs) and Software Development Kits (SDKs). Alternatively, Adrestia may also refer to the team working on the project itself.
+  a data-structure used in transaction outputs to convey various pieces of information. All addresses carry a network-discriminant tag to distinguish between different networks (e.g., mainnet or testnet) and a proof of ownership (i.e., a proof of who owns the transaction output). Some addresses also carry delegation choices or script references.  
 
 ## Adrestia
   Adrestia is a collection of products which makes it easier to integrate with Cardano. It is made of several application programming interfaces (APIs), command-line interfaces (CLIs), and software development kits (SDKs). Alternatively, Adrestia may also refer to the team working on the project itself.
@@ -39,7 +37,7 @@ integrated.
 
 Byzantine fault tolerance (BFT), is a property in the system that ensures there
 is resistance to certain types of failures. A BFT system can continue to operate
-even if some nodes fail or malicious behavior occurs in the system.
+even if some nodes fail or malicious behavior occurs.
 
 ## block
 
@@ -49,7 +47,7 @@ version of the previous block. As each block is completed, a new block is
 created to extend the chain.
 
 ## Byron
-  first 'boot strap' phase of Cardano development.
+  first 'bootstrap' phase of Cardano development.
 
 ## CFD
   contract for difference. Part of a wider group of trading products known as derivatives, they are a popular method of trading stocks, bonds, and commodities that allow you to speculate on the price.
@@ -69,22 +67,22 @@ which chain to adopt, and to determine the single state of the network.
 
 the total amount of stake that a stake pool controls. It combines the stake that
 is owned by the pool operator with any stake that has been delegated to the pool
-by other ada holders. It can be measured as a total ada amount (e.g. 3M ada), or
-as a percentage of the total supply of ada within the network (e.g. 5%).
+by other ada holders. It can be measured as a total ada amount (e.g., 3 million ada), 
+or as a percentage of the total supply of ada within the network (e.g., 5%).
 
 ## cost per epoch
 
-a fixed fee, in ada, which the stake pool operator takes every epoch from the
-pool rewards to cover the costs of running a stake pool. The cost per epoch is
-subtracted from the total ada that is rewarded to a pool, before the operator
+a fixed fee, in ada, which the stake pool operator takes from the
+pool rewards every epoch to cover the costs of running a stake pool. The cost per epoch is
+subtracted from the total ada  rewarded to a pool, before the operator
 takes their profit margin. Whatever remains is shared proportionally among the
 delegators.
 
 ## Daedalus
 
 a secure wallet for the ada cryptocurrency that manages balances and provides
-the ability to send and receive payments. Daedalus is a full node wallet which
-means that it downloads a full copy of the Cardano blockchain and independently
+the ability to send and receive payments. [Daedalus](https://docs.cardano.org/cardano-components/daedalus-wallet) is a full node wallet, which
+means that it downloads a *full* copy of the Cardano blockchain and independently
 validates every transaction in its history. It has a friendly user interface and
 is recommended for new users to start with.
 
@@ -92,19 +90,28 @@ is recommended for new users to start with.
 
 decentralized application.
 
+## datum
+
+a piece of information that can be associated with a UTXO and is used to carry script state such as its owner or the timing details of when the UTXO can be spent.
+
 ## DeFi
-  decentralized finance which refers to financial instruments and mechanisms built on the blockchain using smart contracts. Examples include atomic loans, swaps, bonding curves, and escrow.
+
+  decentralized finance refers to financial instruments and mechanisms built on the blockchain using smart contracts. Examples include atomic loans, swaps, bonding curves, and escrow.
 
 ## delegation
 
 the process by which ada owners can participate in the network and earn rewards
-by delegating the stake associated with their ada holdings to a stake pool.
+by [delegating the stake](https://docs.cardano.org/new-to-cardano/how-to-delegate) associated with their ada holdings to a stake pool.
+
+## DEX
+
+a decentralized exchange that facilitates peer-to-peer (P2P) cryptocurrency transactions.
 
 ## epoch
   a defined group of slots that constitute a period of time.
   
 ## EUTXO
-  extended unspent transaction output model of Cardano.
+  [extended unspent transaction output](https://iohk.io/en/blog/posts/2021/03/11/cardanos-extended-utxo-accounting-model/) model of Cardano.
 
 ## faucet
 
@@ -126,14 +133,12 @@ third phase of Cardano development in which smart contracts will be delivered.
 
 ## hard fork
 
-a radical change of the network’s protocol changing the state of operational
-flow from one model to a completely different one. Cardano has undergone a hard
-fork to transition from a federated model (Byron) to a decentralized one
-(Shelley).
+a change of the network’s protocol changing the state of operational
+flow from one model to a completely different one.
 
 ## incentive
 
-a way to encourage participants of the system to engage in the network by
+a way to encourage participants in the system to engage in the network by
 rewarding them with a return that is proportional to their efforts. Incentives
 aim to ensure equality and fairness in a distributed network of participants by
 encouraging consistent, active, and strong participation. Cardano's incentives
@@ -151,10 +156,10 @@ a set of two keys: public verification key and private signing key. These keys
 are used to process and approve transactions within the blockchain.
 
 ## ledger
-  a distributed database that is operated in a decentralized manner by multiple nodes across numerous locations.
+  a distributed database operated in a decentralized manner by multiple nodes across numerous locations.
   
 ## live stake
-  the total amount of stake that a stake pool controls. It combines the stake that is owned by the pool operator with any stake that has been delegated to the pool by other ada holders. It can be measured as a total ada amount (e.g. 3M ada), or as a percentage of the total supply of ada within the network (e.g. 5%).
+  the total amount of stake that a stake pool controls. It combines the stake owned by the pool operator with any stake that has been delegated to the pool by other ada holders. It can be measured as a total ada amount (e.g., 3 million ada), or as a percentage of the total supply of ada within the network (e.g., 5%).
 
 ## lovelace
 
@@ -167,10 +172,10 @@ the live blockchain that has been deployed and is in operation. Assets held on
 the mainnet hold value as opposed to assets on a testnet that do not hold value.
 
 ## Marlowe
-  a domain-specific programming language (DSL) that is built on top of Plutus functionality. Marlowe can be used for financial purposes. There is a friendly Marlowe playground - an environment where non-technical users can easily execute smart contracts prewriting specific conditions.
+  a domain-specific programming language (DSL) that is built on top of Plutus functionality. [Marlowe](https://docs.cardano.org/marlowe/learn-about-marlowe) can be used for financial purposes. There is a friendly [Marlowe playground](https://docs.cardano.org/marlowe/marlowe-get-started) - an environment where non-technical users can easily execute smart contracts prewriting specific conditions.
   
 ## Marlowe Playground
-  the browser-based sandbox environment for end-to-end financial smart contract development. Its purpose is to encourage all types of developers, even if you don’t have prior Haskell or Javascript experience, to build financial products on Cardano. A set of tutorials is available that outlines example contracts and overview information on Marlowe and how contracts should be modelled. 
+  the browser-based sandbox environment for end-to-end financial smart contract development. Its purpose is to encourage all types of developers, even if you don’t have prior Haskell or Javascript experience, to build financial products on Cardano. A [set of tutorials](https://play.marlowe-finance.io/doc/marlowe/tutorials/index.html) is available that outlines example contracts and overview information on Marlowe and how contracts should be modelled. 
   
 ## metadata
 
@@ -184,7 +189,7 @@ status, or intellectual rights.
 the technical infrastructure combining Cardano nodes and their relative
 interactions in one unified system.
 
-## non-fungible token
+## non-fungible token (NFT)
 
 a unique asset that is not interchangeable with any other asset(s). Non-fungible
 assets represent specific information (IP rights for example), and act as one
@@ -224,6 +229,10 @@ more sense over a longer period of time.
 a Turing-complete programming platform for writing functional smart contracts on
 the Cardano blockchain. Plutus is based on the Haskell programming language.
 
+## Plutus script
+
+an executable program used in the ledger to perform additional (phase two) transaction validation. 
+
 ## produced blocks
 
 the number of blocks that have been produced by a stake pool in the current
@@ -250,6 +259,10 @@ to determine the participant’s power in the system for maintaining the ledger.
 a term used for consensus reaching methods. For instance, Ouroboros protocol,
 OBFT protocol.
 
+## redeemer
+
+a piece of information that can be associated with a UTXO and attached to the input transaction to unlock funds from a script.
+
 ## reward
 
 an amount contained in each new block that is paid out to the stakeholder by the
@@ -273,6 +286,10 @@ alternative pools so that they can continue earning maximum rewards. Saturation,
 therefore, exists to preserve the interests of both ada holders delegating their
 stake and stake pool operators.
 
+## script context
+
+a summary of the transaction, which is also needed in the Plutus script to validate the transaction.
+
 ## securitization
 
 the process of creating liquid, asset-backed securities from pools of illiquid
@@ -285,10 +302,10 @@ traded. Usually, it represents stocks, bonds, or revenue participation notes.
 Security tokens are subject to federal law governing regulations.
 
 ## Shelley
-  second phase of Cardano development in which network decentralization will be delivered.
+  second phase of Cardano development in which network decentralization was delivered.
  
 ## slot
-  a fixed period of time within an epoch. Each epoch of time is divided into numbered slots. Slots that are inhabited by blocks are called active slots. 
+  a fixed period of time within an [epoch](https://docs.cardano.org/new-to-cardano/cardano-nodes#howdoesitwork?). Each epoch is divided into numbered slots. Slots that are inhabited by blocks are called *active* slots. 
  
 ## slot leader
   elected node that has been selected to create a block within the current slot. A random election process occurs based on the proportional stake.
@@ -300,7 +317,7 @@ Security tokens are subject to federal law governing regulations.
   a reliable block-producing server node that holds the combined stake of various stakeholders in a single entity, or pool.
 
 ## testnet
-  a test network where users can experiment with new features and code and provide their feedback before a live mainnet launch. A testnet can be run locally or in some cases a public is used.
+  a test network where users can experiment with new features and code and provide their feedback before a live mainnet launch. A testnet can be run locally or in some cases a public one is used.
 
 ## token
   cryptographic token that represents a footprint of value defined by the community, market state, or self-governed entity. A token can be fungible or non-fungible, and act as a payment unit, reward, trading asset, or information holder. 

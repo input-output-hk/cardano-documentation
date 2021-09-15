@@ -3,15 +3,18 @@ title: Cardano DB Sync best practices
 metaTitle: Cardano DB Sync best practices
 ---
 
-This section outlines some best practices for using the Cardano DB Sync component.
+This section outlines some best practices for using the [Cardano DB Sync
+component](https://docs.cardano.org/cardano-components/cardano-db-sync).
 
 ### Purpose of Cardano DB Sync
 
-The purpose of Cardano DB Sync is to follow the Cardano chain and fetch information, including the ledger state, from the chain.  
-The Cardano DB Sync component works best with a Cardano node running on the local machine.  
-DB Sync uses the data extracted from the chain to build tables in a PostgreSQL database.  
-You can then run SQL queries against the database schema as queries embedded in any language that has libraries for interacting with an SQL database.  
-Besides running SQL queries from a program, you can interact with the database engine via the command line using [the psql executable](https://www.postgresql.org/docs/current/app-psql.html) that comes with PostgreSQL. With psql, you can execute queries directly and access metadata such as the names of all the tables in the database (/d command) and the columns each table contains.
+The cardano-db-sync component is designed to work with a locally running [Cardano
+node](https://docs.cardano.org/cardano-components/cardano-node). The purpose of Cardano DB Sync is to follow the Cardano chain and fetch
+information from the chain and an internally-maintained copy of ledger state.
+Data is then extracted from the chain and inserted into a PostgreSQL database.
+SQL queries can then be written directly against the database schema or as
+queries embedded in any language with libraries for interacting with an SQL
+database.
 
 Here are some examples of what you can do with a Cardano DB Sync instance on a
 specific network:
@@ -27,7 +30,6 @@ For details of sample queries, see
 **System requirements**
 
 The system requirements for cardano-db-sync (with both db-sync and the node running on the same machine are:
-
 Any of the big, well-known Linux distributions (e.g. Debian, Ubuntu, RHEL, CentOS, Arch, etc.)
 16 Gigabytes of RAM.
 4 CPU cores.
@@ -36,6 +38,7 @@ The recommended configuration is to have the db-sync and the PostgreSQL server o
 
 To run Cardano DB Sync, you first need to run a full Cardano node.  
 For more information, see the [building and running instructions](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/building-running.md).
+
 
 **Sample Cardano DB Sync queries**
 
@@ -47,5 +50,5 @@ You can run these queries using psql. You can connect to the database from the C
 PGPASSFILE=config/pgpass-mainnet psql cexplorer
 ```
 
-You can also find the sample queries in the next section (Working with Cardano DB Sync). 
+[You can find a list of sample queries here.](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/interesting-queries.md) 
 
