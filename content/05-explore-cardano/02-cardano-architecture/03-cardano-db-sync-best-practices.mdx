@@ -19,45 +19,32 @@ database.
 Here are some examples of what you can do with a Cardano DB Sync instance on a
 specific network:
 
-- Look up details of any block, transaction, address, or stake pool on that
-  network, usually by the hash that identifies that item or the index into
-  another table.
+- Retrieve details of any block, transaction, address, or stake pool on that network, usually by the hash that identifies that item or the index into another table.
 - Get the balance of any stake address for a specific epoch.
-- Check the amount of ada that is delegated to each stake pool for a specific
-  epoch.
+- Check the amount of ada that is delegated to each stake pool for a specific epoch.
+
 
 For details of sample queries, see
 [Sample Cardano DB Sync queries](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/interesting-queries.md).
 
-**Recommended Hardware for Cardano DB Sync**
+**System requirements**
 
-We recommend the following hardware for cardano-db-sync (with both db-sync and
-the node running on the same machine):
+The system requirements for cardano-db-sync (with both db-sync and the node running on the same machine are:
+Any of the big, well-known Linux distributions (e.g. Debian, Ubuntu, RHEL, CentOS, Arch, etc.)
+16 Gigabytes of RAM.
+4 CPU cores.
+80 Gigabytes or more of disk storage (preferably SSD, which are 2-5 times faster than electro-mechanical disks).
+The recommended configuration is to have the db-sync and the PostgreSQL server on the same machine. During syncing (getting historical data from the blockchain), there is a huge amount of data traffic between db-sync and the database. Traffic to a local database is significantly faster than traffic to a database on the LAN or remotely to another location.
 
-- A Linux distribution (for example: Debian, Ubuntu, RHEL, CentOS, or Arch)
-- 8 Gigabytes of RAM
-- 2 CPU cores
-- 50 Gigabytes or more of disk storage
+To run Cardano DB Sync, you first need to run a full Cardano node.  
+For more information, see the [building and running instructions](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/building-running.md).
 
-The recommended configuration is to have the db-sync and the PostgreSQL server
-on the same machine. During syncing (where historical data is retrieved from the
-blockchain) there is a huge amount of data traffic between db-sync and the
-database. Traffic to a local database is significantly faster than traffic to a
-database on the local area network (LAN) or remotely to another location.
-
-To run cardano-db-sync, you first need to have a locally-running cardano-node.
-
-For more information, see the
-[building and running instructions](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/building-running.md).
 
 **Sample Cardano DB Sync queries**
 
-We have compiled a list of sample SQL queries that can be run against the
-db-sync database.
+We have compiled a list of [sample SQL queries](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/interesting-queries.md) that you can run against the DB Sync database.
 
-These queries are run using the psql executable that is distributed with
-PostgreSQL. You can connect to the database from the cardano-db-sync git
-checkout using:
+You can run these queries using psql. You can connect to the database from the Cardano DB Sync git checkout using:
 
 ```
 PGPASSFILE=config/pgpass-mainnet psql cexplorer
