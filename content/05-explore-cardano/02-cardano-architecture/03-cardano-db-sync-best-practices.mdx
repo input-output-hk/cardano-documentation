@@ -11,7 +11,7 @@ The purpose of Cardano DB Sync is to follow the Cardano chain and fetch informat
 The Cardano DB Sync component works best with a Cardano node running on the local machine.  
 DB Sync uses the data extracted from the chain to build tables in a PostgreSQL database.  
 You can then run SQL queries against the database schema as queries embedded in any language that has libraries for interacting with an SQL database.  
-Besides running SQL queries from a program, you can interact with the database engine via the command line using [the psql executable](https://www.postgresql.org/docs/current/app-psql.html) that comes with PostgreSQL. With psql, you can execute queries directly, and access metadata such as the names of all the tables in the database (/d command) and the columns each table contains.
+Besides running SQL queries from a program, you can interact with the database engine via the command line using [the psql executable](https://www.postgresql.org/docs/current/app-psql.html) that comes with PostgreSQL. With psql, you can execute queries directly and access metadata such as the names of all the tables in the database (/d command) and the columns each table contains.
 
 Here are some examples of what you can do with a Cardano DB Sync instance on a
 specific network:
@@ -24,18 +24,15 @@ specific network:
 For details of sample queries, see
 [Sample Cardano DB Sync queries](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/interesting-queries.md).
 
-**Recommended Hardware for Cardano DB Sync**
+**System requirements**
 
-We recommend the following hardware for Cardano DB Sync (with both DB Sync and
-the node running on the same machine):
+The system requirements for cardano-db-sync (with both db-sync and the node running on the same machine are:
 
-- A Linux distribution (for example, Debian, Ubuntu, RHEL, CentOS, Arch)
-- 8 Gigabytes of RAM
-- 2 CPU cores
-- 50 Gigabytes or more of disk storage. The Cardano team recommends using SSD for performance. 
-> The disk storage given is for DB Sync. You will need additional storage for synchronization with the blockchain.  
-
-The recommended configuration is to have the DB Sync and the PostgreSQL server on the same machine. During syncing (when retrieving historical data from the blockchain), there is a massive amount of data traffic between DB Sync and the database. Traffic to a local database is significantly faster than traffic to a database on the local area network (LAN) or remotely to another location.
+Any of the big, well-known Linux distributions (e.g. Debian, Ubuntu, RHEL, CentOS, Arch, etc.)
+16 Gigabytes of RAM.
+4 CPU cores.
+80 Gigabytes or more of disk storage (preferably SSD, which are 2-5 times faster than electro-mechanical disks).
+The recommended configuration is to have the db-sync and the PostgreSQL server on the same machine. During syncing (getting historical data from the blockchain), there is a huge amount of data traffic between db-sync and the database. Traffic to a local database is significantly faster than traffic to a database on the LAN or remotely to another location.
 
 To run Cardano DB Sync, you first need to run a full Cardano node.  
 For more information, see the [building and running instructions](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/building-running.md).
