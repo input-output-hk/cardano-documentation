@@ -9,10 +9,14 @@ The Cardano ledger's design is focused on high assurance, security, and proven f
 
 The ability to guarantee the cost of transaction execution and how the transaction behaves on the ledger *before* it is submitted, becomes even more prominent with the introduction of smart contract support. This feature is different from other blockchains, including Ethereum, where other network activity can influence the gas cost. This ability is also guaranteed by the deterministic nature of Cardano and [Plutus scripts](https://docs.cardano.org/plutus/Plutus-validator-scripts). 
 
+## Determinism
+
 *Determinism*, in the context of transaction and script processing, is a synonym for predictability. This means that a user can predict locally (off-chain) how their transaction will impact the on-chain state of the ledger, without encountering the following:
 - unexpected script validation outcomes or failures
 - unexpected fees
 - unexpected ledger or script state updates
+
+## Validation
 
 An important aspect of processing a transaction is validating the actions it is taking. A transaction is *taking an action* when it contains data in the specific field to that action. For example, a transaction is *spending UTXO U* when it contains a reference to U in its input field, and it is *minting* a token X when its mint field contains X. 
 
@@ -26,6 +30,8 @@ Script validation can be performed for the following actions:
 - Applying a certificate: the script that is run is the one whose hash forms the certificate author’s credential.
 
 Besides letting the node know which script to run, all transaction actions indicate how to assemble arguments passed to that script. Alonzo introduces a new approach to transaction validation on Cardano due to the implementation of Plutus scripts.
+
+## Ledger updates
 
 Alonzo changes the data on the ledger as follows: 
 1. Plutus scripts can lock UTXOs.
@@ -51,7 +57,7 @@ The following key points make the outcomes of script and transaction validation 
 
 Script validation failure or success does affect how a transaction is processed. However, the *True* or *False* outcome, as well as ledger changes associated with either outcome, are predictable for a given transaction.
 
-Further reading:
+### Further reading:
 
 - [About the collateral mechanism](https://docs.cardano.org/plutus/collateral-mechanism)
 - [Cost model parameters for Plutus scripts](https://plutus.readthedocs.io/en/latest/reference/cost-model-parameters.html)
