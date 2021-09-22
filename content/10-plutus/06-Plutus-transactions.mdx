@@ -15,7 +15,7 @@ This tutorial outlines what a Plutus transaction is and how to write one. This i
 
 A transaction is a piece of data that contains both inputs and outputs, and as of the Alonzo era, they can also include Plutus scripts. **Inputs** are unspent outputs from previous transactions (UTxO). As soon as an UTxO is used as input in a transaction, it becomes spent and can never be used again. The **output** is specified by an *address* (a public key or public key hash) and a *value* (consisting of an ADA amount and optional additional native token amounts). This flow-diagram gives a better idea of what the components of a transaction are at a technical level:
 
-  
+
 
 ![Plutus-transaction](diagram-plutus-transaction.png)
 
@@ -26,47 +26,47 @@ In short, inputs contain references to UTXOs introduced by previous transactions
 
 It is also important to define what *Plutus Tx* is. Plutus Tx is the name given to specially-delimited sections of a Haskell program that are used to compile the on-chain part of a contract application into Plutus Core (this compiled code is then used for validating a transaction, hence the "Tx"). The resulting Plutus Core expression can be part of transaction data or data stored on the ledger. These pieces of code require special processing on the blockchain and are referred to as *Plutus script*.
 
-  
 
-**Why** 
+
+**Why**
 
 From a Plutus developer perspective, by using transactions, we can control the flow of execution of our Plutus script. Thus, a transaction can also be thought of as messages used to interact with the smart contract. Understanding transactions is a key concept to master the development of smart contracts.
 
-  
+
 
 **When**
 
- 
+
 
 A transaction ought to be created by the wallet while evaluating the off-chain code. For now, we have to assemble the transaction using cardano-cli and place the compiled Plutus script inside. At later stages though, this will be automated by the user's wallet software. The transaction, once submitted, will be validated and, therefore, the Plutus code will be evaluated by a validator node. If the script evaluates successfully, the transaction will be considered as valid. If not, the transaction will be rejected.
 
-  
+
 
 ### Setting up the environment
 
-  
+
 
 If you already have a Haskell development environment set up, feel free to skip this section, otherwise follow along, we will set up a suitable environment for compiling plutus scripts using Nix, alternatively, you can follow this [guide](https://docs.cardano.org/getting-started/installing-the-cardano-node).
 
-  
 
-  
+
+
 
 We will use Nix to provide both Haskell and Cabal, but if you desire, you could also rely on the ghcup tool to manage these dependencies. However, we won't cover this. You can refer to the official [ghcup](https://gitlab.haskell.org/haskell/ghcup-hs) site for instructions on that approach.
 
-  
 
-  
+
+
 
 Nix is an amazing tool that, among other things, allows us to create isolated environments in which we can embed all dependencies needed for an application. These dependencies can even be system-level dependencies. Thus, we can create an isolated environment to ensure the application will work since all required dependencies are available.
 
-  
 
-  
+
+
 
 Install Nix on any **Linux distribution**, **MacOS** or **Windows** (via WSL) via the recommended [multi-user installation](https://nixos.org/manual/nix/stable/#chap-installation). In short, you need to run this at your terminal:
 
-  
+
 
 ```
 sh <(curl -L https://nixos.org/nix/install) --daemon
@@ -88,7 +88,7 @@ Before Nix works in your existing shells, you need to close them and open them a
 Once Nix is installed, log out and then log back in, so it is activated properly in your shell. Clone the following and check out the latest version of the node. Please refer to the [cardano-node releases page](https://github.com/input-output-hk/cardano-node/releases/latest) to ensure you are working with the latest version of this.
 
 ```
-git clone [https://github.com/input-output-hk/cardano-node](https://github.com/input-output-hk/cardano-node)
+git clone https://github.com/input-output-hk/cardano-node
 cd cardano-node
 git fetch --all --recurse-submodules --tags
 git checkout tags/1.29.0
@@ -96,7 +96,7 @@ git checkout tags/1.29.0
 
 Create a file in the root of the git repository we just cloned and save it as `plutus-tutorial.nix`:
 
-  
+
 
 ```
 { version ? "mainnet", pkgs ? import <nixpkgs> { }}:
@@ -110,7 +110,7 @@ in pkgs.mkShell {
 	zlib
     haskell.compiler.ghc8104
     haskellPackages.haskell-language-server
-	
+
     cardano-node-repo.scripts."${version}".node
     cardano-node-repo.cardano-cli
   ];
@@ -143,7 +143,7 @@ This creates an environment with all dependencies listed in the “buildInputs�
 
 Once you have recent versions of GHC and Cabal, make sure to use GHC 8.10.2 or later:
 
- 
+
 ```
 [nix-shell:~]$ ghc --version
 The Glorious Glasgow Haskell Compilation System, version 8.10.4
@@ -160,7 +160,7 @@ Inside the nix-shell start a passive Cardano node, remember to first activate th
 nix-shell plutus-tutorial.nix
 ```
 
-  
+
 
 **[nix-shell:~]**
 
@@ -168,26 +168,26 @@ nix-shell plutus-tutorial.nix
 cardano-node-mainnet
 ```
 
-  
+
 
 At this point, the node will start syncing with the network, which will come useful for submitting our transactions later. We are now ready to start building the Plutus transaction. Keep the node running in this shell, and open a new terminal to continue with the following steps. Remember to enter the nix-shell environment in this new terminal so you have both GHC and Cabal available.
 
-  
+
 
 ### 1. Write your Plutus on chain code
 
-  
+
 
 We need a Haskell program to compile our desired Plutus script. In this example we will use the [plutus-alwayssucceeds](https://github.com/input-output-hk/Alonzo-testnet/tree/main/resources/plutus-sources/plutus-alwayssucceeds) Plutus script.
 
-  
-  
+
+
 
 ```
 git clone https://github.com/input-output-hk/Alonzo-testnet.git
 cd Alonzo-testnet/resources/plutus-sources/plutus-alwayssucceeds
 ```
- 
+
 Note that, even though the program is part of the testnet examples, it will work for us on mainnet just fine.
 
 ### 2. Serialize your Plutus on chain code
@@ -198,7 +198,7 @@ By building the project, we generate a binary that compiles this script.
 cabal update
 cabal build
 ```
-  
+
 
 #### Execute the plutus-alwayssucceeds project
 
@@ -237,12 +237,12 @@ You should see something like this:
 
 We will then have the Plutus script compiled. Now, we need to build the transaction, using the [cardano-cli](https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/cardano-node-cli-reference.md/) project including the Plutus script.
 
- 
+
 
 Ensure that you have the latest tagged version era.
 
 ```
-cardano-cli query tip --mainnet 
+cardano-cli query tip --mainnet
 ```
 
 You should now see the following:
@@ -261,7 +261,7 @@ You should now see the following:
 
 **Note:** Ensure that “era” corresponds to “Alonzo”. If you have just started the node, you might need to wait for your node to sync before you can see this. The node is not actually needed to build a transaction, but it is useful to submit the transaction to the network.
 
-  
+
 #### Generating Wallets
 We must first create a payment key-pair and a wallet address if you haven't already. For this example, we need to generate two addresses as follows. For this step, generate a payment key in the corresponding address:
 
@@ -287,12 +287,12 @@ cat payment.addr
 ```
 
 Make sure to generate an additional wallet using the same steps above, so you can test transactions between these addresses.
-  
+
 
 #### Build and submit a simple (non-Plutus) transaction
 
 In this simple transaction, we send funds from one personal address to another address. Assume that we have these addresses in `payment.addr` and `payment2.addr` files and we want to send 500 ADA from the first address to the second address.
-  
+
 
 First, we need to query the UTXOs in the `payment. addr`:
 
@@ -302,7 +302,7 @@ cardano-cli query utxo --address $(cat payment.addr) --mainnet
 
 Taking into account you address has a balance, you should see something like this:
 
- 
+
 ```
 TxHash                                                             TxIx  Amount
 --------------------------------------------------------------------------------------
@@ -323,12 +323,12 @@ cardano-cli transaction build \
 
 In the `--tx-in` argument we set the UTXO that we are using as input, the format of which is TxHash#TxIx.
 The `--tx-out` argument determines the output of the new UTXOs, the format of which is address+amount.
-  
+
 
 As seen in the flow-diagram above, we can have one or more inputs and outputs.
-  
 
-What follows is to sign and submit the transaction: 
+
+What follows is to sign and submit the transaction:
 ```
 cardano-cli transaction sign \
 --tx-body-file tx.build \
@@ -340,7 +340,7 @@ cardano-cli transaction submit --tx-file tx.signed --mainnet
 ```
 ```
 Transaction successfully submitted.
-``` 
+```
 
 Now if we query payment2.addr we will have a new UTxO containing 30,000 ADAs:
 ```
@@ -367,11 +367,11 @@ We have now sent a simple transaction.
 
 #### Transaction to lock funds
 A transaction to lock funds is very similar to a simple transaction. However, it has two key differences: we lock funds to a script address instead of a common one, and we need to specify a datum hash for every output.
-  
+
 
 We use the **plutus-alwayssucceeds** Plutus validator script that we compiled earlier. This script will not check anything and will always succeed regardless of the value of the datum and redeemer.
 
- 
+
 ```
 {-# INLINABLE mkValidator #-}
 mkValidator :: Data -> Data -> Data -> ()
@@ -408,7 +408,7 @@ cardano-cli query protocol-parameters \
 --mainnet \
 --out-file pparams.json
 ```
-  
+
 
 Now, we should build the transaction that will send ADA to the script address of our plutus-alwayssucceeds script. We write the transaction in a file called `tx-script.build`:
 
@@ -426,7 +426,7 @@ cardano-cli transaction build \
 
 Continue to sign the transaction with the signing key `payment.skey` and save this signed transaction in a file `tx-script.signed`:
 
-  
+
 ```
 cardano-cli transaction sign \
 --tx-body-file tx-script.build \
@@ -434,7 +434,7 @@ cardano-cli transaction sign \
 --mainnet \
 --out-file tx-script.signed
 ```
-  
+
 Finally, submit the transaction:
 ```
 cardano-cli transaction submit --mainnet --tx-file tx-script.signed
@@ -472,7 +472,7 @@ export plutusutxotxin=f5a618d579bc66e6199ae2a1ab4a73e2d8a73cba61a324c939346e9cf3
 ```
 
 Now, we have sent funds to a script.
-   
+
 
 ### 4. Submit transaction to execute Plutus script
 
