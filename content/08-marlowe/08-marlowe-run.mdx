@@ -17,7 +17,7 @@ To access and view the dashboard, follow these steps:
 
 ![demo-launch](demo-launch.png)
 
-For this demo version of Marlowe Run, test wallets with 10k ADA in them are generated so that you can use the service. You can use any wallet that exists on the server as long as you know the public key. This will become the integration point with a real wallet in the full version of Marlowe Run, where only the wallet owner can authorize payments.
+ For this demo version of Marlowe Run, test wallets with 10k ADA in them are generated so that you can use the service. You can use any wallet that exists on the server as  long as you know the public key. This will become the integration point with a real wallet in the full version of Marlowe Run, where only the wallet owner can authorize  payments.
 
 4. Click **Generate demo wallet** to use a demo wallet.
 5. Enter a nickname for your demo wallet. You can only use letters and numbers for the nickname.	
@@ -48,12 +48,22 @@ An overview card is displayed, as follows:
     - role information: buyer, mediator, seller
     - terms: price, payment deadline, complaint deadline, complaint response deadline, mediaton deadline
 11. Then click **Review**.
-A confirmation card is displayed, as follows:
+12. Review the information on the confirmation card.
+13. Then click Pay and start. The contract is now running.
 
 ![pay-start](pay-start.png)
 
-12. Click **Pay and start** to run your contract.
-The running contract dialog is displayed. This shows a counter with the time allocated within which the seller must make a deposit.
+The running contract dialog is displayed on the contracts dashboard. This shows a counter with the time allocated within which the seller must make a deposit.
+
+14. Now the buyer must make their deposit. 
+15. Once they make their deposit, you have two choices:
+    - Click Everything is alright to confirm you are happy to proceed.
+    - Click Report problem if there was an issue with the contract.
+
+Note that if you do not act within the allocated time period, the contract will time out and you will have to close the contract and start again. If this happens, the balance of the account will be redeemed to the owner of the role.
+
+You can click **Close contract** at any time to close the running contract.
+
 
 
 ## Adding Contacts
