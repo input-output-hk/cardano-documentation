@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import Breakout from './Breakout'
 
 import cardanoDots from './images/cardanoDots.svg'
-import heroImg from './images/cardano-docs-mbp.png'
+import heroImg from './images/hero-image.png'
 
 const StyledHero = styled.div`
   .heroHeading {
