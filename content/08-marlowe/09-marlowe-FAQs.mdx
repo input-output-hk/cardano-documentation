@@ -1,0 +1,42 @@
+---
+title: Marlowe FAQs
+metaTitle: Marlowe FAQs
+---
+
+**Q: What is Cardano?**  
+**A:** Cardano is the blockchain platform that is used for building and running Marlowe contracts. It is a third-generation proof-of-stake blockchain that is developed by IOHK - the first to evolve out of a scientific philosophy and a research-first driven approach. Cardano is fully decentralized and is home to the ada cryptocurrency.
+
+**Q: What is Marlowe?**  
+**A:** Marlowe is a new language developed by IOHK for writing and executing financial contracts on blockchain. It is a domain-specific language (DSL) designed for the financial industry. Read our [Marlowe explainer](https://docs.cardano.org/marlowe/learn-about-marlowe) to learn more or jump straight into our [Marlowe tutorials](https://play.marlowe-finance.io/doc/marlowe/tutorials/index.html).
+ 
+**Q: What is a smart contract?**  
+**A:** A smart contract is a digital agreement that tracks, verifies, and executes the binding transactions of a contract between various parties. 
+
+The transactions that are part of the contract are automatically executed when predetermined conditions are met. These contracts are self-executing and reliable and do not require the actions or presence of third parties which means they are both fast and cost effective. Importantly, they cannot be changed, can be easily distributed, and are tamper-proof, as well as being safe due to encryption.
+
+**Q:  What can I do on Marlowe Run?**    
+**A:** Marlowe Run is a fast and easy way to use and run contracts on Cardano. You can try out the prototype version on the [Marlowe website](https://marlowe-finance.io/) where you will find a selection of financial contract templates so you can pick the right smart contract for you. Once you choose a template, you simply add in roles and terms, and then run your contract. You will be using the prototype version of Marlowe Run.
+ 
+**Q: Are there more smart contracts coming on Marlowe Run?**  
+**A:** You have the option to build your own contract using Marlowe Build. Also, we will be creating more contract templates for users to try out and these will be added to the contract catalogue soon.
+	  
+**Q: Can I make changes to my contract once it’s been set up?**  
+**A:** You can make changes to your contract at any time before it has started running. You can simply edit the fields for Roles and Terms. Once it has started running, all terms are set, just as they are with a traditional legal contract.
+
+**Q: Am I using real funds on Marlowe Run?**  
+**A:** No, when you use Marlowe Run you are using test funds to run and execute your contracts.
+
+**Q: Is there a limit on how many contracts I can run at once?**  
+**A:** Good question. We are not imposing hard user-specific limits on the prototype, but may do so in Version 1.0 of Marlowe Run. Keep in mind that there are limits on how many contracts and transactions our servers can handle simultaneously, but this is not user-specific at this time.
+
+**Q: Can I open a contract with someone outside of the Cardano blockchain?**  
+**A:** As all transactions within these financial agreements occur between Cardano wallet addresses in Version 1.0, all agreements need to be made with someone who has a Cardano wallet. In future versions, we may support agreements on other chains, as technically speaking, Marlowe is blockchain-agnostic.
+
+**Q: Can I build my own financial smart contracts on Marlowe Run?**  
+**A:** At this time, you can set up financial agreements using an array of templates available on Marlowe Market - a smart contract template library. If they want to, you can also build your own financial contracts on the Marlowe Playground. You can then upload these to Marlowe Market and run them on Marlowe Run.
+
+**Q: What is the difference between Marlowe Run and Marlowe Build?**  
+**A:** Marlowe Run is a new product designed for non-developer end users, serving a broader audience. The Marlowe Playground is for a technical developer audience where contracts can be built on the Playground and subsequently used on Marlowe Run.
+
+**Q: How do I get help with Marlowe Run contracts?**  
+**A:** If you experience any issues, you can use the ‘Submit Feedback’ email form on the Feedback section of the [Marlowe website](https://marlowe-finance.io/) and we will help you. You can also help us to stress test Marlowe further by signing up to our Marlowe Pioneer Program to work with our team. We will be releasing details about this program soon.
