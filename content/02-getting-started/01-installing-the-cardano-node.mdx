@@ -49,7 +49,7 @@ docker volume create cardano-node-ipc
 
 1. Run a passive node that is connected to the correct network. For example, for a `mainnet` node:
 
-``docker run -e NETWORK=mainnet -v cardano-node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node``
+``docker run -e NETWORK=mainnet -v cardano-node-ipc:/ipc -v cardano-node-data:/data -p 3001:3001 inputoutput/cardano-node``
 
 This creates a persistent docker environment for the node, where `/ipc` in the Docker container is connected to the logical `cardano-node-ipc` volume, and `/data` is connected to the `cardano-node-data` volume.  Note that you should change `NETWORK=mainnet` if you are connecting to a different network (eg a testnet).  
 
