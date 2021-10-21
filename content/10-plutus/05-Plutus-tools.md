@@ -9,7 +9,7 @@ There are different tools that developers can use to evaluate and deploy smart c
 
 ## Plutus Playground
 
-The [Plutus Playground](https://playground.plutus.iohkdev.io/) provides an environment for writing and testing smart contracts before they are released on the Cardano blockchain. It is a lightweight, web-based environment for exploratory Plutus development. As well as providing a web-based simulator for writing and executing smart contracts, the Plutus Playground also allows developers to access popular smart contracts that have already been written. [Tutorials](https://playground.plutus.iohkdev.io/tutorial/tutorials/index.html) are available within the Plutus Playground to help you get started.
+The [Plutus Playground](https://playground.plutus.iohkdev.io/) provides an environment for writing and testing smart contracts before they are released on the Cardano blockchain. It is a lightweight, web-based environment for exploratory Plutus development. As well as providing a web-based simulator for writing and executing smart contracts, the Plutus Playground also allows developers to access popular smart contracts that have already been written. [Tutorials](https://plutus-apps.readthedocs.io/en/latest/marlowe/tutorials/index.html) are available within the Plutus Playground to help you get started.
 
 The Plutus Playground can be accessed through a web browser and there is no need to install software. The interface is split into three sections:
 
