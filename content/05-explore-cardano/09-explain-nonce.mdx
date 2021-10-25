@@ -4,23 +4,29 @@ metaTitle: Explanation of the nonce value
 ---
 ## Issue: 
 When using the Cardano command line interface (cardano-CLI), a user supplies a nonce for a transaction, but when they view the contents of the transaction, the nonce returned is different.  
+
 ## Steps to reproduce: 
-The cardano-cli governance create-update-proposal command creates an update proposal.  
+
+The cardano-cli governance create-update-proposal command creates an update proposal:
+
 ```  
 cardano-cli governance create-update-proposal --epoch 258 --extra-entropy d8b0ee71c3eab43750882bdc0880cf0b46a488d82e5bc9fd5b2fb3e7297bdbd4 --out-file mainnet-258-entropy.proposal $(for i in {1..7}; do echo "--genesis-verification-key-file genesis-keys/genesis$i.vkey "; done)
  ```
 
-The cardano-cli transaction build-raw command creates a transaction.  
+The cardano-cli transaction build-raw command creates a transaction:
+
 ```  
 cardano-cli transaction build-raw --tx-in b2bdbe07d5cd4da8b8dbef9eee67ff6fb1877055d0b8309fbd4718591389eac5#0 --tx-out addr1q9jytwcggewzdn6rtfp8fwx6mlm48vae4pl5428cs3u5x82wkertsmcc7m6zve5y7dlmeaqz03jsw37ug5nc4v9l3j8q54uy5u+$((5000000 - 217553)) --fee 217553 --ttl $(cardano-cli query tip --mainnet | jq '.slot + 5000') --update-proposal-file mainnet-258-entropy.proposal --out-file tx-entropy.txbody
 ```   
 
-The cardano-cli transaction view command displays the transaction contents.  
+The cardano-cli transaction view command displays the transaction contents:
+
 ```  
 cardano-cli transaction view --tx-body-file tx-entropy.txbody  
 ```   
 
-In the output, the nonce is different.  
+In the output, the nonce is different:
+
 ```  
 {
     "auxiliary_data": null,
@@ -53,12 +59,18 @@ In the output, the nonce is different.
     "withdrawals": []
 }  
 ```  
-The fields being compared are  
+The fields being compared are:
+
 `--extra-entropy d8b0ee71c3eab43750882bdc0880cf0b46a488d82e5bc9fd5b2fb3e7297bdbd4`  
+
 And  
+
 `_extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\")`  
+
 ## Explanation:
-Internally, the --extra-entropy argument is hashed using Blake2b-256 before it is placed in the update proposal transaction. This hash is applied to the binary representation, rather than the base16 representation supplied. This additional hash does not affect the quality of the entropy provided. For instance, the above example’s output can be replicated in python with the following sequence of commands:
+
+Internally, the --extra-entropy argument is hashed using Blake2b-256 before it is placed in the update proposal transaction. This hash is applied to the binary representation, rather than the base16 representation supplied. This additional hash does not affect the quality of the entropy provided. For instance, the above example’s output can be replicated in Python with the following sequence of commands:
+
 ```  
 >>> import hashlib
 >>> hashlib.blake2b(bytes.fromhex(
