@@ -17,6 +17,73 @@ Serialization/deserialization code is automatically generated from Cardano’s o
 
 It is also easy to create scripts in Rust or WASM to share with stake pools, or even embed inside an online tool. The library is powerful and flexible enough to be used to power wallets and exchanges.
 
+## Getting started with React
+
+By default webpack does not support wasm. To use this libary you have to setup up a wasm loader. For this react setup we have to override the settings of react-scripts with CRACO. For react you have to do the following:
+Add [CRACO](https://www.npmjs.com/package/@craco/craco) and [wasm-loader](https://www.npmjs.com/package/wasm-loader) to your package.json.
+```
+yarn add @craco/craco wasm-loader
+```
+Create craco.config.js:
+```
+const { addBeforeLoader, loaderByName } = require('@craco/craco');
+
+module.exports = {
+  webpack: {
+    configure: (webpackConfig) => {
+      const wasmExtensionRegExp = /\.wasm$/;
+      webpackConfig.resolve.extensions.push('.wasm');
+
+      webpackConfig.module.rules.forEach((rule) => {
+        (rule.oneOf || []).forEach((oneOf) => {
+          if (oneOf.loader && oneOf.loader.indexOf('file-loader') >= 0) {
+            oneOf.exclude.push(wasmExtensionRegExp);
+          }
+        });
+      });
+
+      const wasmLoader = {
+        test: /\.wasm$/,
+        exclude: /node_modules/,
+        loaders: ['wasm-loader'],
+      };
+
+      addBeforeLoader(webpackConfig, loaderByName('file-loader'), wasmLoader);
+
+      return webpackConfig;
+    },
+  },
+};
+```
+
+Modify the scripts in package.json to use craco instead of react-scripts:
+```
+"scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject"
+  }
+```
+
+import the WASM code using await import(...) instead of import * as ...:
+```
+useEffect(() => {
+    async function start() {
+      const wasm = await import('@emurgo/cardano-serialization-lib-browser');
+    }
+    start();
+  }, []);
+```
+or if you use a class component import it in componentDidMount and add it to your state:
+```
+componentDidMount() {
+    import(
+      "@emurgo/cardano-serialization-lib-browser/cardano_serialization_lib.js"
+    ).then((wasm) => this.setState({ wasm: wasm }));
+  }
+ ```
+ 
 ## Other Cardano versions
 
 If you are looking for legacy bindings, you can find them at:
