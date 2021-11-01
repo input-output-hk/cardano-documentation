@@ -51,8 +51,9 @@ and has to be honored by the pool owners who are delegating to the pool:
 If they collectively delegate less than the declared pledge, pool rewards for that epoch will be zero. Note that the pool will be public, if its operator margin is set to less than 100%.
 
 The rewards that are produced by this formula are now adjusted by pool
-performance: We multiply by β/σ, where β is the fraction of all blocks produced
-by the pool during the epoch.
+performance: we multiply by β/σ<sub>a</sub>, where β is the fraction of all blocks produced
+by the pool during the epoch and σ<sub>a</sub> is the stake delegated to the pool relative to
+the active stake (i.e. total stake that is correctly delegated to a non-retired pool).
 
 For an optimally performing pool (that is, a pool producing all the blocks that it can produce),
 this factor will be 1, on average. The actual value will fluctuate
