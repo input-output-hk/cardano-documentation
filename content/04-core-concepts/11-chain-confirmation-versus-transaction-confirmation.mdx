@@ -9,7 +9,7 @@ When discussing [Cardano](https://cardano.org/), often-repeated questions are *w
 
 **Chain confirmation**
 
-This is *the point beyond which the chain is guaranteed by protocol not to alter any further because of randomness, or random events.*
+This is *the point beyond which the chain is guaranteed by the protocol not to alter any further because of randomness, or random events.*
 
 Chain confirmation occurs at some point in the future, after a certain amount of future k blocks have been minted. The time between now and the point when chain confirmation for a particular transaction occurs is called the *stability window* (that is, the number of slots required for a block to become **stable**, where *stable* is defined as a block that cannot be rolled back). The formula to calculate this window is 3k/f (where k is the security parameter in genesis, and f is the active slot co-efficient parameter in genesis that determines the probability for amount of blocks created in an epoch.)
 
