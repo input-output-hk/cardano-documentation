@@ -21,7 +21,13 @@ The simulator shows how a contract will behave on the Cardano blockchain. An imp
 
 ## Plutus Application Backend 
 
-The Plutus Application Backend (PAB) enables developers to interact with smart contracts. It is an off-chain, backend service for managing and handling the requirements of the application instance throughout its lifecycle. This service includes interaction with external clients (such as wallet frontends) and acts as an intermediary between Plutus applications, the node, the wallet backend, and end users. Such interaction is made possible by PAB commands and mock components that enable convenient simulations and integration of DApps. We will be rolling out a series of versions of the PAB over the coming weeks as we iterate and add new functionality.
+The Plutus Application Backend (PAB) provides the components and environment to help developers interact with smart contracts so that they can create and test DApps, before deploying them to a live production environment. Much like the [Plutus Playground](https://playground.plutus.iohkdev.io/), it is a sandbox environment where developers can try out DApp functionality in advance of any full deployment on Cardano. 
+
+The PAB removes the need for developers to create their own infrastructure from scratch (including chain index, and so on) thereby reducing development time and resources needed. It allows developers to simulate how an application would behave on-chain for prior testing and error elimination, to ensure a flawless transition for launch. 
+
+It is an off-chain, backend service for managing and handling the requirements of the application instance throughout its lifecycle. This includes interaction with external clients (such as wallet frontends) and acts as an intermediary between Plutus applications, the node, the wallet backend, and end users. Such interaction is made possible by PAB commands and mock components that enable convenient simulations and integration of DApps. 
+
+The PAB is a single Haskell library that makes it easier to write this off-chain infrastructure and the on-chain scripts. It helps to build the UTXO transactions for both the read and write paths by getting information from the chain, reacting to events that occur, and constructing the transactions that run the actual Plutus scripts. 
 
 The purpose of the PAB is to:
 
@@ -29,8 +35,12 @@ The purpose of the PAB is to:
 - provide disciplined state management
 - present discoverable interfaces to the external clients
 - track on-chain information for smart contract uses
-- work in an emulated environment
-- deal with requests such as running contract instances, forwarding user input to these instances, and notifying these instances of ledger state change events.
+- allow developers to work in an emulated or non-emulated environment
+- deal with requests such as running contract instances, forwarding user input to these instances, and notifying these instances of ledger state change events
+
+The PAB can switch between emulated and non-emulated (real network) environments seamlessly. This makes it easier to write all kinds of different tests – unit tests, integration tests, property based tests, etc. The PAB allows DApps to easily communicate with it as the backend can receive and deliver messages. Thus, the DApp can send usual requests to endpoints that the PAB has exposed, and which correspond to actions and operations that any particular smart contract is capable of handling.
+
+Applications deployed using the framework’s libraries can run on the PAB, which provides runtime support for access to the blockchain to further perform smart contract operations triggering transactions based on the EUTXO model. Additionally, PAB features functionality for persistence, logging, and monitoring.
 
 The following diagram provides an overview of the PAB architecture:
 
