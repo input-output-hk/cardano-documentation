@@ -65,10 +65,10 @@ If there is no pre-defined network configuration, you will need to download the 
 ### Running Cardano CLI commands
 You can now run normal Cardano CLI commands, for example,
 ```
-export CLI='docker run -it --entrypoint cardano-cli -e NETWORK=mainnet -e CARDANO_NODE_SOCKET_PATH=/ipc/node.socket -v cardano-node-ipc:/ipc inputoutput/cardano-node'
-$CLI version
-$CLI query tip --mainnet
-$CLI transaction build-raw ... --mainnet
+alias cardano-cli='docker run -it --entrypoint cardano-cli -e NETWORK=mainnet -e CARDANO_NODE_SOCKET_PATH=/ipc/node.socket -v cardano-node-ipc:/ipc inputoutput/cardano-node'
+cardano-cli version
+cardano-cli query tip --mainnet
+cardano-cli transaction build-raw ... --mainnet
 ```
 You need to specify `CARDANO_NODE_SOCKET_PATH` to point to the correct location in the container (`/ipc/node.socket` is the standard location).
 
