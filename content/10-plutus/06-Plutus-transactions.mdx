@@ -99,7 +99,7 @@ Create a file in the root of the git repository we just cloned and save it as `p
 
 
 ```
-{ version ? "mainnet", pkgs ? import <nixpkgs> { }}:
+{ version ? "mainnet", pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/6525bbc06a39f26750ad8ee0d40000ddfdc24acb.tar.gz") { }}:
 let
   cardano-node-repo = import ./. { };
 
