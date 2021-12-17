@@ -39,7 +39,7 @@ The most simple example of working with datums and redeemers is to:
 This is expressed in a contract, as follows:
 
 ```
-helloWorld :: Data -> Data -> Data -> ()
+helloWorld :: BuiltinData -> BuiltinData -> BuiltinData -> ()
 helloWorld datum redeemer context = if datum P.== redeemer
                                       then ()
                                       else (P.error ())

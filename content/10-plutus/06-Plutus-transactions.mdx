@@ -375,7 +375,7 @@ We use the **plutus-alwayssucceeds** Plutus validator script that we compiled ea
 
 ```
 {-# INLINABLE mkValidator #-}
-mkValidator :: Data -> Data -> Data -> ()
+mkValidator :: BuiltinData -> BuiltinData -> BuiltineData -> ()
 mkValidator _ _ _ = ()
 ```
 
