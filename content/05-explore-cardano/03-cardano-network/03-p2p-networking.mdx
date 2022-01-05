@@ -64,7 +64,7 @@ The P2P governor needs to establish and maintain:
 
 Using 2–20 hot peers is cost-efficient, as peers exchange only their block headers. The block body, in turn, is typically requested only once, and it tends to follow the shortest path through the connectivity graph. 
 
-The purpose of warm peers is to provide access to those peers that can be quickly promoted to hot ones (in case any of the warm peers fail), and also provide candidates for the churn of hot peers. 
+The purpose of warm peers is to provide access to those peers that can be quickly promoted to hot ones (in case any of the hot peers fail), and also provide candidates for the churn of hot peers. 
 
 The policy for selecting which warm peers to promote to hot relies on the upstream measurements. The purpose of a degree of churn between cold and warm peers is, in part, to discover the network distance between more peers and to allow potentially better warm peers to take over from existing hot peers. This enables further optimization and adjustments. Maintaining diversity in hop distances contributes to better block distribution times across the globally distributed network. 
 
