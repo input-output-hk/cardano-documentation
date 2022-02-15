@@ -71,5 +71,3 @@ Fee calculation requires three pieces of information:
 - **The number of memory units** that the script uses: this represents the number of bytes that the script allocates. Typical scripts should consume less than 1,000,000 memory units (1MB of memory allocation).
 
 To use an estimator, a user just needs to fill in relative information, which can be obtained from the Plutus compiler after building a script in it. There is also no need to run a node for this, which significantly simplifies the process for general users. 
-
-We will share links in due course when these are available.
