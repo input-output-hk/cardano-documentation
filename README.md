@@ -70,4 +70,4 @@ looking for a user-friendly wallet for Cardano, please take a look at
 
 To suggest an improvement to this repository please create
 an issue or checkout a feature branch with your changes and then create a
-pull request into the `staging` branch.
+pull request into the `master` branch.
