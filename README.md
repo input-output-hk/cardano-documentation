@@ -5,23 +5,15 @@
 </p>
 
  <p align="center">
-    Welcome to the central hub for Cardano documentation.
+    Welcome to the central hub for Cardano documentation
     <br />
-    <a href="https://docs.cardano.org">Demo</a>
-    ·
-    <a href="https://github.com/input-output-hk/cardano-documentation/issues/new?">Report Bug</a>
-    ·
-    <a href="https://github.com/input-output-hk/cardano-documentation/issues/new?">Request Feature</a>
-  </p>
+     </p>
 
 Here you will find content
 that describes and supports the components and features that are live on Cardano
 mainnet. If you notice any areas of this documentation that could be improved,
 please open a new issue or feel free to submit a pull request with your
 proposed changes.
-
-The website for Cardano Documentation is hosted at
-[docs.cardano.org](https://docs.cardano.org).
 
 If you are interested in developing on Cardano, experimenting with the Cardano
 testnet, or other test development environments, please visit
