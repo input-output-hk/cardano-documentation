@@ -1,17 +1,19 @@
 # Cardano Documentation
 
-<p align="left">
+<p align="center">
   <img width='150px' src="https://ucarecdn.com/6a470caf-060b-4c44-982e-f9bde302ed6e/CardanoRGB_LogoStackBlue.png" alt='Cardano Logo' />
 </p>
 
-Welcome to the central hub for Cardano documentation, here you will find content
+ <p align="center">
+    Welcome to the central hub for Cardano documentation
+    <br />
+     </p>
+
+Here you will find content
 that describes and supports the components and features that are live on Cardano
 mainnet. If you notice any areas of this documentation that could be improved,
 please open a new issue or feel free to submit a pull request with your
-propeosed changes.
-
-The website for Cardano Documentation is hosted at
-[docs.cardano.org](https://docs.cardano.org).
+proposed changes.
 
 If you are interested in developing on Cardano, experimenting with the Cardano
 testnet, or other test development environments, please visit
@@ -58,6 +60,6 @@ looking for a user-friendly wallet for Cardano, please take a look at
 
 ## Creating PRs and suggesting changes to this repository
 
-If you would like to suggest an improvement to this documentation please create
-an issue or checkout a feature branch with with your changes and then create a
-pull request into the `staging` branch.
+To suggest an improvement to this repository please create
+an issue or checkout a feature branch with your changes and then create a
+pull request into the `master` branch.
