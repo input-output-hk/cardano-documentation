@@ -2,10 +2,11 @@
 title: Explanation of the nonce value
 metaTitle: Explanation of the nonce value
 ---
+
 ## Issue: 
 When using the Cardano command line interface (cardano-CLI), a user supplies a nonce for a transaction, but when they view the contents of the transaction, the nonce returned is different.  
 
-## Steps to reproduce: 
+## Steps to reproduce
 
 The cardano-cli governance create-update-proposal command creates an update proposal:
 
@@ -67,7 +68,8 @@ And
 
 `_extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\")`  
 
-## Explanation:
+
+## Explanation
 
 Internally, the --extra-entropy argument is hashed using Blake2b-256 before it is placed in the update proposal transaction. This hash is applied to the binary representation, rather than the base16 representation supplied. This additional hash does not affect the quality of the entropy provided. For instance, the above example’s output can be replicated in Python with the following sequence of commands:
 

@@ -39,7 +39,7 @@ The most simple example of working with datums and redeemers is to:
 This is expressed in a contract, as follows:
 
 ```
-helloWorld :: Data -> Data -> Data -> ()
+helloWorld :: BuiltinData -> BuiltinData -> BuiltinData -> ()
 helloWorld datum redeemer context = if datum P.== redeemer
                                       then ()
                                       else (P.error ())
@@ -136,7 +136,7 @@ As it is an Alonzo-era transaction, we need to specify the `--alonzo-era` flag.
 You can find steps on how to create a transaction on the Alonzo era network in the Plutus transactions using cardano-cli.  
 
 ### Querying the script address
-The UTXO at this script address should now have 8 ada and the datum hash attached. To query it, run:
+The UTXO at this script address should now have 20 ada and the datum hash attached. To query it, run:
 
 ```
 $ cardano-cli query utxo --address $(cat datum-redeemer.addr) --mainnet
@@ -229,7 +229,7 @@ Transaction successfully submitted.
 ```
 
 ### Querying both payment and script addresses
-We can query the addresses to ensure that we have unlocked the funds. There is now no UTXO at the script address and a new one with 8 ada has been received.:
+We can query the addresses to ensure that we have unlocked the funds. There is no UTXO at the script address, and a new one with the adas received.:
 
 ```
 $ cardano-cli query utxo --address $(cat datum-redeemer.addr) --mainnet
