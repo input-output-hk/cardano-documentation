@@ -66,7 +66,7 @@ const config = {
     description: 'Documentation for the Cardano ecosystem ',
     ogImage: null,
     docsLocation:
-      'https://github.com/input-output-hk/cardano-documentation/tree/staging/content',
+      'https://github.com/input-output-hk/cardano-documentation/tree/master/content',
     favicon: 'pwa-512.png',
   },
   pwa: {
