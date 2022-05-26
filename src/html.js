@@ -41,6 +41,7 @@ export default class HTML extends React.Component {
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
           {this.props.postBodyComponents}
+          {/* This is something we should tidy up. Side effects like this are not ideal and introduce some fragility */}
           <script
             defer
             dangerouslySetInnerHTML={{
@@ -49,7 +50,7 @@ export default class HTML extends React.Component {
               document.getElementById("navbar").classList.toggle("responsive");
             }
             document.addEventListener('click',function(e){
-              if(e.target && e.target.tagName.toLowerCase() === 'a'){
+              if(e.target && e.target.tagName.toLowerCase() === 'a' && !e.target.classList.contains('sectionHeading')){
                 navBarClose();
               }
            });
