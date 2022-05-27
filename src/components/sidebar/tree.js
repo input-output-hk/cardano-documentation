@@ -169,34 +169,41 @@ const Tree = ({ edges }) => {
 
   const defaultCollapsed = {}
 
+  // NOTE: Following two functions edited to always collapse all inner and outer URL's
+
   const matchInnerUrl = (collapsedItems, navItem) => {
     navItem.map(item => {
       let matchUrl = stripNumbers(item.url)
 
-      collapsedItems.map(a => {
+      /* collapsedItems.map(a => {
         if (a === matchUrl) {
           defaultCollapsed[matchUrl] = true
         }
-      })
+      }) */
+
+      defaultCollapsed[matchUrl] = true
 
       item.items &&
         item.items.map(i => {
           let innerMatchUrl = stripNumbers(i.url)
 
-          collapsedItems.map(b => {
+          /* collapsedItems.map(b => {
             if (b === innerMatchUrl) {
               defaultCollapsed[innerMatchUrl] = true
             }
-          })
+          }) */
+
+          defaultCollapsed[innerMatchUrl] = true
 
           i.items &&
             i.items.map(x => {
               let innerInnerMatchUrl = stripNumbers(x.url)
 
               collapsedItems.map(c => {
-                if (c === innerInnerMatchUrl) {
+                /*if (c === innerInnerMatchUrl) {
                   defaultCollapsed[innerInnerMatchUrl] = true
-                }
+                }*/
+                defaultCollapsed[innerInnerMatchUrl] = true
               })
             })
         })
@@ -205,11 +212,14 @@ const Tree = ({ edges }) => {
 
   const matchOuterUrl = (collapsedItems, url) => {
     url = stripNumbers(url)
-    collapsedItems.map(i => {
+
+    /*collapsedItems.map(i => {
       if (i === url) {
         defaultCollapsed[url] = true
       }
-    })
+    })*/
+
+    defaultCollapsed[url] = true
   }
 
   treeData.items.forEach(item => {
