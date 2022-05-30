@@ -116,3 +116,11 @@ Such capability is enabled by adding the necessary tools and the infrastructure 
 **Further reading:**
 -   [Smart contracts - here we come](https://iohk.io/en/blog/posts/2021/04/08/smart-contracts-%E2%80%93-here-we-come/)
 -   [Plutus: what you need to know](https://iohk.io/en/blog/posts/2021/04/13/plutus-what-you-need-to-know/)
+
+### Vasil: Plutus 2.0 and the debut of pipelining
+
+Vasil is the protocol upgrade which will be implemented in June 2022. Named after the late Bulgarian mathematician and prominent Cardano community member Vasil Dabov, the Vasil upgrade introduces five key mechanisms to improve the blockchain's performance: [CIP-31](https://cips.cardano.org/cips/cip31/) (Reference Inputs), [CIP-32](https://cips.cardano.org/cips/cip32/) (Inline Datums), [CIP-33](https://cips.cardano.org/cips/cip33/) (Reference Scripts ), CIP-40 (Collateral Outputs), and diffusion pipelining.
+
+These improvements boost Cardano's usability and scalability by increasing the block size limit to fit more transactions per block. Developers will have a better experience while building on Cardano as Vasil will greatly reduce the complexity of creating and deploying DApps on Cardano.
+
+Plutus scripts are also a main focus of the Vasil upgrade. These scripts will live persistently on-chain so they can be referenced when needed which will improve efficiency, as there will no longer be a need to include the script in the transaction attempting to spend its outputs.
