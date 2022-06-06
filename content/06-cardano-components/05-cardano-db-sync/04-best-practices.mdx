@@ -9,28 +9,28 @@ This section outlines some best practices for using the Cardano DB Sync componen
 
 The recommended configuration is to have node, DB Sync, and PostgreSQL servers on the same machine. During syncing (getting historical data from the blockchain), there is a large amount of data traffic between db-sync and the database. Traffic to a local database is significantly faster than traffic to a database on the LAN or other remote location.
 
-### SSD requirements
+### Disk requirements
 
-It is recommended that you have your SSD with more than 60,000 IOPS.
+It is highly recommended that you use a Solid State Disk (SSD). Also, make sure you use a high-grade SSD that has more than 60,000 IOPS.
 
-### Tuning DB Sync
+### Tuning PostgreSQL
 
-For a better DB Sync experience, it is recommended that you fine-tune your PostgreSQL instance.
+By default, PostgreSQL is not optimized for running in a high-performance environment. For a better DB Sync experience, it is mandatory that you fine-tune your PostgreSQL instance when running a production-grade application.  
 
-You can use [PGTune](https://pgtune.leopard.in.ua/) to generate a configuration file, which you can use to fine-tune your PostgreSQL instance.
-
-To tune your database:
+You can use [PGTune](https://pgtune.leopard.in.ua/) to generate a configuration file, which you can use to fine-tune your PostgreSQL instance. For this:
 
 1.  Go to the [PGTune](https://pgtune.leopard.in.ua/) website.
-2.  Provide basic information about your hardware configuration, which works with the PostgreSQL database.
+2.  Provide basic information about your hardware configuration which works with the PostgreSQL database.
 3.  Click ‘Generate’. The system will calculate optimal results.
 4.  Finally, replace your configuration with suggested numbers.
 
 ### Using snapshots
 
-Blockchain size constantly increases with the number of new transactions and data added to the chain. The time to sync the whole blockchain increases appropriately. Every protocol upgrade presumes that database schemas are updated, which means that the database needs to be synced from scratch.
+Blockchain size constantly increases with the number of new transactions and data added to the chain. The time to sync the whole blockchain increases accordingly. Every protocol upgrade presumes that database schemas are updated, which means that the database needs to be synced from genesis.
 
-Cardano-db-sync snapshot comes as a solution to streamline the syncing process. This snapshot is compatible with both cardano-db-sync and cardano-db-sync with --no-epoch-table.
+IOHK provides new DB Sync database snapshots with each new epoch so that you can quickly sync your DB Sync instance in a few hours instead of days. You can find [the latest snapshots here](https://update-cardano-mainnet.iohk.io/cardano-db-sync/index.html). 
+
+These snapshots are compatible with both cardano-db-sync and cardano-db-sync with --no-epoch-table.
 
 See how to efficiently use snapshots here:
 
@@ -40,29 +40,12 @@ See how to efficiently use snapshots here:
 
 Here are some useful tips to maintain your database.
 
-**Getting data from the tables**
+**Example queries**  
 
-On-chain data is stored in tables the mapping of which is structured (normalized) in a way that avoids data duplication. However, this also means that to extract certain data (like transaction information, for example), you will need to [join multiple tables in a query.](https://www.postgresql.org/docs/11/tutorial-join.html)
+IOHK provides a list of queries to query the PostgreSQL database for commonly required information. You can find some [example queries here](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/interesting-queries.md). 
 
-To show all tables, run this command:
+**Other useful resources**
 
-`\dt`
-
-To show details about a specific table:
-
-`\d+ TABLE_NAME`
-
-Use [SQL queries](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/interesting-queries.md) to get the blockchain data you are looking for.
-
-**Using DB management tools**
-
-Another convenient way to explore database tables is to use a DB management tool like [https://www.pgadmin.org/](https://www.pgadmin.org/).
-
-This tool allows browsing the tables and their definitions (like foreign key dependencies) or developing and executing complex queries.
-
-**Resources**
-
--   [Example SQL queries](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/interesting-queries.md): example SQL and Haskell/Esqueleto queries.
 -   [PoolOfflineData](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/pool-offline-data.md): explanation of stake pool offline data usage.
 -   [Schema documentation](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/schema.md): the database schema documentation.
 -   [Schema management](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/schema-management.md): how the database schema is managed and modified.
