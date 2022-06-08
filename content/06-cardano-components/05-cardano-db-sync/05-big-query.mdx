@@ -1,0 +1,319 @@
+---
+title: Cardano blockchain data on BigQuery
+metaTitle: Cardano blockchain data on BigQuery
+---
+
+## About BigQuery
+
+[BigQuery](https://docs.google.com/document/d/1-FsNfVGE-gR5VF7pVTp_7wmJgJjOt5AJYTOjI--7WUk/edit#) is a fully managed enterprise data warehouse that helps to manage and analyze data with built-in features like machine learning, geospatial analysis, and business intelligence. BigQuery's serverless architecture allows using SQL queries to get the data you are looking for with zero infrastructure management.
+
+**Motivation**
+
+Cardano’s on-chain data has considerably grown over the last few months. This means that the time to sync the whole history of the blockchain increases accordingly. Running a node and a DB Sync process (mapping the on-chain data to a relational database) now requires more time and a more robust software instance. 
+
+Since blockchain data is immutable, it is possible to publicly provide it on Google’s BigQuery. BigQuery makes blockchain data easily accessible and allows querying information at a low cost. Using Google Data Studio, you can also seamlessly create advanced visualizations and dashboards based on the BigQuery data.
+
+Cardano data on BigQuery is organized by epoch numbers. This allows limiting queries to one or several epochs worth of data, which results in a lower cost per query. 
+
+There are several things you should note when working with BigQuery:
+
+1. The data is fetched (updated) from DB Sync every two hours.
+2. The data is only updated to approximately last 20 blocks before the current block height in DB Sync. This is essential to prevent rollbacks of blocks in the case of chain forks.
+
+## Getting started with BigQuery
+
+To get started, go to the [IOG data analytics dataset](https://console.cloud.google.com/bigquery?project=iog-data-analytics&supportedpurview=project&ws=!1m4!1m3!3m2!1siog-data-analytics!2scardano_mainnet).
+
+Note that to start querying data, you need to have a Google project. In case you don’t have a Google project:
+
+1.  Login to the [Google Developer Console](https://console.cloud.google.com/)
+2.  Create a new project and activate the BigQuery API.
+
+## Querying the data
+
+You are now all set to work with the dataset:
+
+1.  Open the [dataset](https://console.cloud.google.com/bigquery?project=iog-data-analytics&supportedpurview=project&ws=!1m4!1m3!3m2!1siog-data-analytics!2scardano_mainnet)
+2.  Select the table you would like to retrieve data from
+3.  Click the ‘query’ option:
+
+![](https://ucarecdn.com/2c5533aa-872d-4e29-bbaa-4668045eebca/)
+
+You can find the example queries in the **query table schemas** section below. 
+
+## Analyzing the data
+
+BigQuery provides seamless integration with [Google Data Studio](https://datastudio.google.com/).
+
+To import the data into the Data Studio:
+
+1.  Create a new report
+2.  Select the BigQuery option:
+
+![](https://ucarecdn.com/eaf8f323-2e05-4c0f-ae28-ed292537e56b/)
+
+You can now create various charts using the Cardano mainnet dataset:
+
+![](https://ucarecdn.com/5aec3c21-acc7-4163-9307-fea581667fb4/)
+
+![](https://ucarecdn.com/041b66fb-07fb-4808-8375-93ca45e7da86/)
+
+See more examples in [this Data Studio report](https://datastudio.google.com/reporting/2b25c7e4-c035-4890-86bc-2d59b8f43054/page/UzeuC).
+
+## Costs
+
+The cost for querying data from BigQuery is paid by an individual querying it. BigQuery charges an amount analogous to the amount of the data being queried.
+
+Usually, the cost is $5 per one table of the data queried. Find more information by visiting the [BigQuery pricing page](https://cloud.google.com/bigquery/pricing).
+
+> **Note** that Cardano data tables are divided by epoch numbers so that queries can be made according to the epoch of choice, incurring less costs.
+
+## Query table schemas
+
+The following tables are available in the dataset:
+
+1. Table: block_hash
+2. Table: block
+3. Table: epoch_param
+4. Table: tx
+5. Table: tx_hash
+6. Table: tx_in_out
+7. Table: rel_addr_txout
+8. Table: rel_stake_txout
+
+![](https://ucarecdn.com/de827d03-71a0-45b8-ad57-f814cd328862/)
+
+### 1. Table: block_hash
+
+The `block_hash` table is clustered by field `epoch_no` and relates `slot_no` to `block_hash`. If the `slot_no` is NULL, then the block is from the genesis.
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED|
+| slot_no | INTEGER | NULLABLE | 
+| block_hash | STRING | REQUIRED
+
+**An example of searching a block by its hash:**
+
+```
+SELECT block.* FROM `iog-data-analytics.cardano_mainnet.block_hash` AS bh
+JOIN `iog-data-analytics.cardano_mainnet.block` AS block
+  ON block.slot_no = bh.slot_no
+ AND block.epoch_no = bh.epoch_no
+WHERE bh.block_hash = '00b6c4bd4024cbf66050fe978f880a7129149be7a1a01310b3e3055053d563b2'
+  AND bh.epoch_no = 329;
+```
+
+### 2. Table: block
+
+The `block` table is clustered by field `epoch_no` and is usually accessed using `epoch_no` and `slot_no`. See the `Table: block_hash` example above.
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED|
+| slot_no | INTEGER | REQUIRED | 
+| block_time | DATETIME | REQUIRED
+| block_size | INTEGER | REQUIRED
+| tx_count | INTEGER | REQUIRED
+| sum_tx_fee | INTEGER | REQUIRED
+| script_count | INTEGER | REQUIRED
+| sum_script_size | INTEGER | REQUIRED
+
+### 3. Table: epoch_param
+
+The `epoch_param` table is very small and can be accessed using `epoch_no`.
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED|
+| min_fee_a| INTEGER | REQUIRED | 
+| min_fee_b | INTEGER | REQUIRED
+| max_block_size | INTEGER | REQUIRED
+| max_tx_size | INTEGER | REQUIRED
+| max_bh_size | INTEGER | REQUIRED
+| key_deposit | INTEGER | REQUIRED
+| pool_deposit | INTEGER | REQUIRED
+| max_epoch | INTEGER | REQUIRED
+| optimal_pool_count | INTEGER | REQUIRED
+| influence | NUMERIC | REQUIRED
+| monetary_expand_rate | NUMERIC | REQUIRED
+| treasury_growth_rate | NUMERIC | REQUIRED
+| decentralisation | NUMERIC | REQUIRED
+| entropy | STRING | NULLABLE
+| protocol_major | INTEGER | REQUIRED
+| protocol_minor | INTEGER | REQUIRED
+| min_utxo_value | INTEGER | REQUIRED
+| min_pool_cost | INTEGER | REQUIRED
+| nonce | STRING | NULLABLE
+| coins_per_utxo_word | INTEGER | NULLABLE
+| cost_model_id | INTEGER | NULLABLE
+| price_mem | NUMERIC | NULLABLE
+| price_step | NUMERIC | NULLABLE
+| max_tx_ex_mem | INTEGER | NULLABLE
+| max_tx_ex_steps | INTEGER | NULLABLE
+| max_block_ex_mem | INTEGER | NULLABLE
+| max_block_ex_steps | INTEGER | NULLABLE 
+| max_val_size | INTEGER | NULLABLE
+| collateral_percent | INTEGER | NULLABLE
+| max_collateral_inputs | INTEGER| NULLABLE
+
+### 4. Table: tx
+
+The `tx` table is clustered by field `epoch_no` and `slot_no`, and can efficiently be accessed using `epoch_no` or `slot_no`.
+
+A transaction is identified by the pair (`slot_no`, `txidx`), identifying the block of the transaction and transaction’s index  in the block. 
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no| INTEGER| REQUIRED
+| tx_hash| STRING | REQUIRED
+|block_time| DATETIME | REQUIRED
+| slot_no | INTEGER | REQUIRED
+| txidx | INTEGER | REQUIRED
+| out_sum | NUMERIC | REQUIRED
+| fee | NUMERIC | REQUIRED
+| deposit | NUMERIC | REQUIRED
+| size | INTEGER| REQUIRED
+| invalid_before | DECIMAL | NULLABLE
+| invalid_after | DECIMAL | NULLABLE
+| valid_script | BOOL | REQUIRED
+| script_size | INTEGER | REQUIRED
+| count_inputs | INTEGER | REQUIRED
+| count_outputs | INTEGER |REQUIRED
+
+### 5. Table: tx_hash
+
+The `tx_hash` table allows to quickly find the slot number and the transaction index in the block given that the hash has been incorporated. The table is clustered by `epoch_no`.
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED
+| slot_no | INTEGER | REQUIRED
+| txidx | INTEGER | REQUIRED
+| tx_hash | STRING | REQUIRED
+
+### 6. Table: tx_in_out
+
+The `tx_in_out` table is clustered by field `epoch_no` and `slot_no`, and can efficiently be accessed using `epoch_no` or `slot_no`.
+
+This table contains a list of inputs and outputs to a transaction, which is identified by the pair (`slot_no`, `txidx`).
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER| REQUIRED
+| slot_no | INTEGER | REQUIRED
+|txidx| INTEGER | REQUIRED
+| inputs | STRING | NULLABLE
+| outputs | STRING | NULLABLE
+
+**Example**
+
+See an [example of transaction details here](https://explorer.cardano.org/en/transaction?id=3c943c2ce4de883a9dcf1c5b29d0794c2b043ac45a7e987eb9fe2ae0038c41bf).
+
+```
+epoch_no: 329
+slot_no: 56785711
+txidx: 0
+```
+This transaction consumes two inputs:
+
+```
+[
+  {
+    "in_slot_no": 56750312,
+    "in_txidx": 13,
+    "in_idx": 2
+  },
+  {
+    "in_slot_no": 56609945,
+    "in_txidx": 1,
+    "in_idx": 0
+  }
+]
+```
+
+and creates four outputs of which only one remains unspent (as of the time this example has been documented):
+
+```
+[
+  {
+    "out_idx": 0,
+    "out_address": "addr1q9cwvremt6n320s2e3agq0jyq82yhrk3htsu0w426xnz5us70z4w0jgvcdkkynmm8wmds66jd9kusnjfpu6raw5fqp0sr07p5w",
+    "out_value": 1000000,
+    "out_ma": null,
+    "consumed_in_tx": [
+      {
+        "in_slot_no": 56865611,
+        "in_txidx": 6
+      }
+    ]
+  },
+  {
+    "out_idx": 1,
+    "out_address": "addr1q894g0fpzjh8aj7mulfpca2wgwz0xznyzvc89y2yly8em75cxj5k9gax0h6lymuvnmf7qhqwu0y0hyxqk2xcfmnva3gqx9fpj7",
+    "out_value": 2500000,
+    "out_ma": null,
+    "consumed_in_tx": null
+  },
+  {
+    "out_idx": 2,
+    "out_address": "addr1qy66guz87dm2dfy8efdx7gm43e3f5f369avgq9thrm5hsjcphuva29yz3chdrakhlds6r24rvyu2qtqjf4s0v2hx5essdgyk9j",
+    "out_value": 46500000,
+    "out_ma": null,
+    "consumed_in_tx": [
+      {
+        "in_slot_no": 56860931,
+        "in_txidx": 11
+      }
+    ]
+  },
+  {
+    "out_idx": 3,
+    "out_address": "addr1q9r7sqenl529jk7ylvht5t4k40t59h32f26k4annkdcnpj4shnq3sq2p4mr0940zqdfmfvgyr7p8zr720zdd3xkuygcqehzxum",
+    "out_value": 740462105,
+    "out_ma": [
+      {
+        "fingerprint": "asset18ry832pk9yye9d5fszehrd5yh3glkeclu40w23",
+        "quantity": 1
+      }
+    ],
+    "consumed_in_tx": [
+      {
+        "in_slot_no": 56871829,
+        "in_txidx": 35
+      }
+    ]
+  }
+]
+```
+
+See the output of the [transaction on Cardano Explorer](https://explorer.cardano.org/en/transaction?id=3c943c2ce4de883a9dcf1c5b29d0794c2b043ac45a7e987eb9fe2ae0038c41bf).
+
+### 7. Table: rel_addr_txout
+
+This table is clustered by `epoch_no` and relates `address` to `outputs` in an epoch. 
+
+The list of outputs are triples of `slot_no`, `txidx`, `index`, which identify the transaction by the pair of `slot_no` and `txidx` and then the output at index in the transaction. 
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED
+| address | STRING | REQUIRED
+| outputs | STRING | REQUIRED
+
+### 8. Table: rel_stake_txout
+
+This table is clustered by `epoch_no` and relates `staking address` to `outputs` in an epoch. 
+
+The list of outputs are triples of `slot_no`, `txidx`, and `index`, which identify the transaction by the pair of `slot_no` and `txidx` and then the output at index in the transaction. 
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED
+| address | STRING | REQUIRED
+| outputs | STRING | REQUIRED
+
+## Further development
+
+The current release does not include all the blockchain data, particularly the staking and staking rewards details. In its future iterations, this dataset on BigQuery will cover all the Cardano data, and we will be updating this section with more details.
+
