@@ -5,13 +5,13 @@ metaTitle: Cardano blockchain data on BigQuery
 
 ## About BigQuery
 
-[BigQuery](https://docs.google.com/document/d/1-FsNfVGE-gR5VF7pVTp_7wmJgJjOt5AJYTOjI--7WUk/edit#) is a fully managed enterprise data warehouse that helps to manage and analyze data with built-in features like machine learning, geospatial analysis, and business intelligence. BigQuery's serverless architecture allows using SQL queries to get the data you are looking for with zero infrastructure management.
+According to its [official description](https://cloud.google.com/bigquery/docs/introduction), BigQuery is a fully managed enterprise data warehouse that helps to manage and analyze data with built-in features like machine learning, geospatial analysis, and business intelligence. BigQuery's serverless architecture allows using SQL queries to get the data you are looking for with zero infrastructure management.
 
 **Motivation**
 
 Cardano’s on-chain data has considerably grown over the last few months. This means that the time to sync the whole history of the blockchain increases accordingly. Running a node and a DB Sync process (mapping the on-chain data to a relational database) now requires more time and a more robust software instance. 
 
-Since blockchain data is immutable, it is possible to publicly provide it on Google’s BigQuery. BigQuery makes blockchain data easily accessible and allows querying information at a low cost. Using Google Data Studio, you can also seamlessly create advanced visualizations and dashboards based on the BigQuery data.
+Google BigQuery makes it easier to look up data without the need to run specialized software. Using Google Data Studio, you can also seamlessly create advanced visualizations and dashboards based on the BigQuery data.
 
 Cardano data on BigQuery is organized by epoch numbers. This allows limiting queries to one or several epochs worth of data, which results in a lower cost per query. 
 
@@ -317,3 +317,4 @@ The list of outputs are triples of `slot_no`, `txidx`, and `index`, which identi
 
 The current release does not include all the blockchain data, particularly the staking and staking rewards details. In its future iterations, this dataset on BigQuery will cover all the Cardano data, and we will be updating this section with more details.
 
+To raise an issue or share your feedback, please reach out to data-analytics@iohk.io. 
