@@ -22,7 +22,7 @@ testnet, or other test development environments, please visit
 ## Cardano explained
 
 Cardano is a decentralized third-generation proof-of-stake blockchain platform
-and home to the ada cryptocurrency. It is the first blockchain platform to
+and home to the ADA cryptocurrency. It is the first blockchain platform to
 evolve out of a scientific philosophy and a research-first driven approach.
 
 The Cardano platform has been designed from the ground up and verified by an
