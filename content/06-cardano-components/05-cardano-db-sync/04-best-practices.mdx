@@ -1,0 +1,44 @@
+---
+title: DB Sync best practices
+metaTitle: DB Sync best practices
+---
+
+This section outlines some best practices for using the Cardano DB Sync component.
+
+### Having all software on the same machine
+
+The recommended configuration is to have node, DB Sync, and PostgreSQL servers on the same machine. During syncing (getting historical data from the blockchain), there is a large amount of data traffic between db-sync and the database. Traffic to a local database is significantly faster than traffic to a database on the LAN or other remote location.
+
+### Disk requirements
+
+It is highly recommended that you use a Solid State Disk (SSD). Also, make sure you use a high-grade SSD that has more than 60,000 IOPS.
+
+### Tuning PostgreSQL
+
+By default, PostgreSQL is not optimized for running in a high-performance environment. For a better DB Sync experience, it is mandatory that you fine-tune your PostgreSQL instance when running a production-grade application.  
+
+You can use [PGTune](https://pgtune.leopard.in.ua/) to generate a configuration file, which you can use to fine-tune your PostgreSQL instance. For this:
+
+1.  Go to the [PGTune](https://pgtune.leopard.in.ua/) website.
+2.  Provide basic information about your hardware configuration which works with the PostgreSQL database.
+3.  Click ‘Generate’. The system will calculate optimal results.
+4.  Finally, replace your configuration with suggested numbers.
+
+### Using snapshots
+
+Blockchain size constantly increases with the number of new transactions and data added to the chain. The time to sync the whole blockchain increases accordingly. Every protocol upgrade presumes that database schemas are updated, which means that the database needs to be synced from genesis.
+
+IOHK provides new DB Sync database snapshots with each new epoch so that you can quickly sync your DB Sync instance in a few hours instead of days. You can find [the latest snapshots here](https://update-cardano-mainnet.iohk.io/cardano-db-sync/index.html). 
+
+These snapshots are compatible with both cardano-db-sync and cardano-db-sync with --no-epoch-table.
+
+See how to efficiently use snapshots here:
+
+-   [State snapshots](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/state-snapshot.md)
+    
+### DB Sync maintenance
+
+**Example queries**  
+
+IOHK provides a list of queries to query the PostgreSQL database for commonly required information. You can find some [example queries here](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/interesting-queries.md). 
+

@@ -1,0 +1,40 @@
+---
+title: Cardano serialization library
+metaTitle: Cardano serialization library
+---
+import { OpenInNew } from 'styled-icons/material/OpenInNew'
+import { User } from 'styled-icons/boxicons-regular/User'
+
+This is a library for serialization and deserialization of data structures used in Cardano’s Haskell implementation of Shelley along with useful utility functions.
+
+## Using the library
+
+Due to the portability of [Rust](https://www.rust-lang.org/), you can bind to the native Rust library from any common programming language (including C and WebAssembly). This library generates both [Typescript](https://www.typescriptlang.org/) and [Flow](https://flow.org/) type definitions, and you can check out possible options by just looking at [Flow types](https://github.com/Emurgo/cardano-serialization-lib/blob/master/rust/pkg/cardano_serialization_lib.js.flow). You can also explore the [example folder](https://github.com/Emurgo/cardano-serialization-lib/tree/master/example) to see how to use this library from Typescript and experiment with it.
+
+### Benefits of using this library
+
+Serialization/deserialization code is automatically generated from Cardano’s official specification, which guarantees it can easily stay up to date. This is enabled due to the use of an EMURGO-written tool called [cddl-codegen](https://github.com/Emurgo/cddl-codegen), which can be re-used for other tasks such as the automatic generation of a Rust library for Cardano [metadata](https://docs.cardano.org/glossary#metadata) specifications.
+
+It is also easy to create scripts in Rust or WASM to share with stake pools, or even embed inside an online tool. The library is powerful and flexible enough to be used to power wallets and exchanges.
+
+## Other Cardano versions
+
+If you are looking for legacy bindings, you can find them at:
+
++ [Byron WASM bindings](https://github.com/input-output-hk/js-cardano-wasm/tree/master/cardano-wallet)
++ [Jormungandr WASM bindings](https://github.com/Emurgo/js-chain-libs)
+
+**Original binary specifications**
+
+You can find original [CDDL](https://cbor.io/tools.html) specifications at:
+
++ Byron: [link](https://github.com/input-output-hk/cardano-ledger-specs/tree/master/eras/byron/cddl-spec)
++ Shelley: [link](https://github.com/input-output-hk/cardano-ledger/blob/master/eras/shelley/test-suite/cddl-files/shelley.cddl)
++ Mary: [link](https://github.com/input-output-hk/cardano-ledger/blob/master/eras/shelley-ma/test-suite/cddl-files/shelley-ma.cddl)
++ Alonzo: [link](https://github.com/input-output-hk/cardano-ledger/tree/master/eras/alonzo/test-suite/cddl-files)
+
+## Instructions
+
+Before you start, see [building, testing and publishing tips here](https://github.com/Emurgo/cardano-serialization-lib/blob/master/README.rst#building). Then proceed exploring more in the [doc folder](https://github.com/Emurgo/cardano-serialization-lib/tree/master/doc/getting-started), or follow the link to the repository below.
+
+> For more information: [Go to GitHub repo <OpenInNew className='content-link' />](https://github.com/Emurgo/cardano-serialization-lib#cardano-serialization-lib)

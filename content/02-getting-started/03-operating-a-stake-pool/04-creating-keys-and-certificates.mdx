@@ -42,14 +42,15 @@ operational key is valid, to prevent malicious interference. The certificate
 identifies the current operational key, and is signed by the offline key.
 
 Certificates are generated with an issue counter number and included in the
-header of each block the node generates. This mechanism enables nodes to verify
-whether a certificate is current, or has already been superseded by a newer one.
+header of each block the node generates. Note that with the Vasil hard fork, an operator would need to create an operational certificate using cold.counter +1. This means that the `OpCert` must be exactly one more than the previously used one. 
+
 Certificates include a kes-period (start date), which indicates the time span
 within which the certificate is valid before you need to create another one.
 
 **Instructions to work with operational certificates:**
 
-- [Generating an operational certificate](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/register_stakepool.md#generate-stake-pool-registration-certificate)
+- [Creating an operational certificate with KES](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/KES_period.md)
+- [Generating a registration certificate](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/register_stakepool.md#generate-stake-pool-registration-certificate)
 - [Registering stake address and creating a registration certificate](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/register_key.md)
 
 The counter becomes significant when an attacker has compromised the KES key, in

@@ -1,0 +1,82 @@
+---
+title: Explanation of the nonce value
+metaTitle: Explanation of the nonce value
+---
+
+## Issue: 
+When using the Cardano command line interface (cardano-CLI), a user supplies a nonce for a transaction, but when they view the contents of the transaction, the nonce returned is different.  
+
+## Steps to reproduce
+
+The cardano-cli governance create-update-proposal command creates an update proposal:
+
+```  
+cardano-cli governance create-update-proposal --epoch 258 --extra-entropy d8b0ee71c3eab43750882bdc0880cf0b46a488d82e5bc9fd5b2fb3e7297bdbd4 --out-file mainnet-258-entropy.proposal $(for i in {1..7}; do echo "--genesis-verification-key-file genesis-keys/genesis$i.vkey "; done)
+ ```
+
+The cardano-cli transaction build-raw command creates a transaction:
+
+```  
+cardano-cli transaction build-raw --tx-in b2bdbe07d5cd4da8b8dbef9eee67ff6fb1877055d0b8309fbd4718591389eac5#0 --tx-out addr1q9jytwcggewzdn6rtfp8fwx6mlm48vae4pl5428cs3u5x82wkertsmcc7m6zve5y7dlmeaqz03jsw37ug5nc4v9l3j8q54uy5u+$((5000000 - 217553)) --fee 217553 --ttl $(cardano-cli query tip --mainnet | jq '.slot + 5000') --update-proposal-file mainnet-258-entropy.proposal --out-file tx-entropy.txbody
+```   
+
+The cardano-cli transaction view command displays the transaction contents:
+
+```  
+cardano-cli transaction view --tx-body-file tx-entropy.txbody  
+```   
+
+In the output, the nonce is different:
+
+```  
+{
+    "auxiliary_data": null,
+    "auxiliary_data_hash": null,
+    "certificates": [],
+    "era": "Mary",
+    "fee": 217553,
+    "inputs": [
+        "b2bdbe07d5cd4da8b8dbef9eee67ff6fb1877055d0b8309fbd4718591389eac5#0"
+    ],
+    "mint": {
+        "lovelace": 0,
+        "policies": {}
+    },
+    "outputs": [
+        {
+            "address": "016445bb08465c26cf435a4274b8dadff753b3b9a87f4aa8f88479431d4eb646b86f18f6f4266684f37fbcf4027c650747dc45278ab0bf8c8e",
+            "amount": {
+                "lovelace": 4782447,
+                "policies": {}
+            }
+        }
+    ],
+    "update": "Update (ProposedPPUpdates (fromList [(KeyHash \"162f94554ac8c225383a2248c245659eda870eaa82d0ef25fc7dcd82\",PParams 
+    {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing}),(KeyHash \"2075a095b3c844a29c24317a94a643ab8e22d54a3a3a72a420260af6\",PParams {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing}),(KeyHash \"268cfc0b89e910ead22e0ade91493d8212f53f3e2164b2e4bef0819b\",PParams {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing}),(KeyHash \"60baee25cbc90047e83fd01e1e57dc0b06d3d0cb150d0ab40bbfead1\",PParams {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing}),(KeyHash \"ad5463153dc3d24b9ff133e46136028bdc1edbb897f5a7cf1b37950c\",PParams {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing}),(KeyHash \"b9547b8a57656539a8d9bc42c008e38d9c8bd9c8adbb1e73ad529497\",PParams {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing}),(KeyHash \"f7b341c14cd58fca4195a9b278cce1ef402dc0e06deb77e543cd1757\",PParams {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing})])) (EpochNo 258)",
+    "validity_interval": {
+        "invalid_before": null,
+        "invalid_hereafter": 26253029
+    },
+    "withdrawals": []
+}  
+```  
+The fields being compared are:
+
+`--extra-entropy d8b0ee71c3eab43750882bdc0880cf0b46a488d82e5bc9fd5b2fb3e7297bdbd4`  
+
+And  
+
+`_extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\")`  
+
+
+## Explanation
+
+Internally, the --extra-entropy argument is hashed using Blake2b-256 before it is placed in the update proposal transaction. This hash is applied to the binary representation, rather than the base16 representation supplied. This additional hash does not affect the quality of the entropy provided. For instance, the above example’s output can be replicated in Python with the following sequence of commands:
+
+```  
+>>> import hashlib
+>>> hashlib.blake2b(bytes.fromhex(
+...   "d8b0ee71c3eab43750882bdc0880cf0b46a488d82e5bc9fd5b2fb3e7297bdbd4"),
+...   digest_size=32).hexdigest()
+'d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa'
+```

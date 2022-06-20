@@ -1,22 +1,7 @@
 ---
-title: About Cardano DB Sync and its components
-metaTitle: About Cardano DB Sync and its components
+title: DB Sync components
+metaTitle: DB Sync components
 ---
-
-[Cardano DB Sync](https://github.com/input-output-hk/cardano-db-sync#cardano-db-sync)
-is one of the core components of the Cardano architecture, as it provides a
-convenient way to find and query historical information from the Cardano
-blockchain through the use of a Structured Query Language (SQL) relational
-database. Db Sync connects to the local node as a client and synchronizes with
-the on-chain activity. The PostgreSQL database then maps the on-chain
-information to the relational model.
-
-DB Sync can be used by Cardano users and developers who wish to find out
-specific details in regards to block production and recent transactions. These
-details include block information that enables users to follow the chain and
-explore transactions within blocks, but exclude cryptographic signatures.
-
-### Architecture of Cardano DB Sync
 
 Cardano-db-sync consists of a set of components:
 
@@ -38,7 +23,7 @@ extended version maintains an `Epoch` table, which the non-extended version will
 also create but _not_ maintain.
 
 The `db-sync-node` is written in a highly modular fashion to allow it to be as
-flexible as possible. It connects to a locally running cardano-node (i.e. the
+flexible as possible. It connects to a locally running cardano-node (i.e., the
 one connected to other nodes in the Cardano network over the internet with
 TCP/IP) using a Unix domain socket. Db-sync-node retrieves blocks, updates its
 internal ledger state, and stores parts of each block in a local PostgreSQL
@@ -53,7 +38,7 @@ relational data without duplication.
 
 The following diagram outlines the interaction between the system components:
 
-![db-sync-architecture](Diagram_DB_Sync@2x.png)
+![db-sync-architecture](https://ucarecdn.com/0a179e23-8258-48f8-8204-339e5233cce6/)
 
 GraphQL and REST API export an interface to the data stored in the database to
 be accessed from spreadsheets, for example.
@@ -96,7 +81,7 @@ for tx submission.
 
 #### Stake Pool Metadata Aggregation Server (SMASH)
 
-The purpose of the Stake Pool Metadata Aggregation Server (SMASH) is to
+The purpose of the [Stake Pool Metadata Aggregation Server (SMASH)](https://docs.cardano.org/cardano-components/smash) is to
 aggregate off-chain metadata that stake pools provide when they register on the
 Cardano blockchain. This metadata includes the name of the stake pool, its
 ticker name, web homepage, and so on.
@@ -122,7 +107,3 @@ metadata aggregation. Multiple aggregation services can be run by different
 organizations following different policies on filtering stake pool metadata.
 This enables wallet users and other consumers of stake pool metadata to choose
 which policy to follow, if any.
-
-SMASH can be configured with policies to filter out metadata based on block
-lists or reserved ticker names. Daedalus can be configured to use any SMASH
-server.

@@ -3,9 +3,9 @@ title: Cardano design rationale
 metaTitle: Cardano design rationale
 ---
 
-Cardano has been built as a resilient and sustainable blockchain using the core
+[Cardano](https://cardano.org/) has been built as a resilient and sustainable blockchain using the core
 principles of security, scalability, and interoperability. Fundamentally, it was
-designed as a proof of stake system which means it is undoubtedly more
+designed as a [proof-of-stake](https://docs.cardano.org/new-to-cardano/proof-of-stake) system, which means it is undoubtedly more
 efficient, by orders of magnitude, than proof of work. Crucially, our
 ground-breaking proof-of-stake consensus protocol
 [Ouroboros](https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization/)
@@ -17,12 +17,12 @@ confidence to users for the management of digital funds. Cardano has been built
 using formal methods to get strong guarantees on the functional correctness of
 core components of the system.
 
-Security is one of the founding principles of Cardano. It is written in Haskell,
-a secure functional programming language. A functional language like Haskell
-encourages building a system using pure functions, which leads to a design where
+Security is one of the founding principles of our blockchain. Cardano is written in Haskell,
+a secure functional programming language that
+encourages building a system using pure functions. This leads to a design where
 components are conveniently testable in isolation. Furthermore, advanced
 features of Haskell enable us to employ a whole range of powerful methods for
-ensuring correctness of the code, such as basing the implementation on formal
+ensuring code correctness, such as basing the implementation on formal
 and executable specifications, extensive property-based testing, and running
 tests in simulation.
 
@@ -44,7 +44,7 @@ open environment.
 
 Another major aim in the design of Cardano is to reduce centralization while
 actively working against economic incentives that would drive the system towards
-centralization. As soon as you have stake pools, you have an economic incentive
+centralization. As soon as you have [stake pools](https://docs.cardano.org/core-concepts/stake-pools), you have an economic incentive
 for these pools to grow, so it was important to make it less attractive for a
 stake pool to become too big. It is more cost-efficient to have a small number
 of large pools, than a large number of small pools. Cardano was designed to work
