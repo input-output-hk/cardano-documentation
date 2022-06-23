@@ -36,6 +36,14 @@ See how to efficiently use snapshots here:
 
 -   [State snapshots](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/state-snapshot.md)
     
+### Using a --disable-ledger flag for faster syncing times
+
+A `--disable-ledger` parameter is a new feature that has been recently added to DB Sync, and is now in its beta version. The upcoming DB Sync version will be compatible with node v.1.35.0-rc4 bringing an option to disable the ledger state. This means that users who don’t require syncing reward details, historical stake data, epoch parameters, etc will be able to run a much lighter version of DB Sync. This will dramatically decrease DB Sync syncing times and RAM requirements. 
+
+See the configuration:
+
+- [--disable-ledger](https://github.com/input-output-hk/cardano-db-sync/blob/ceae179d6bc41008fc2b0f20d7b6fbd27a178941/doc/configuration.md#--disable-ledger)
+
 ### DB Sync maintenance
 
 **Example queries**  
