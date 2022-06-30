@@ -24,13 +24,14 @@ Ouroboros selects participants [-stake pools](https://docs.cardano.org/getting-s
 
 ### Ouroboros implementations
 
-Ouroboros comes in five different versions:
+Ouroboros comes in different versions:
 
-- [Classic](https://eprint.iacr.org/2016/889.pdf)
-- [BFT](https://eprint.iacr.org/2018/1049.pdf)
-- [Praos](https://eprint.iacr.org/2017/573.pdf)
-- [Genesis](https://eprint.iacr.org/2018/378.pdf)
-- [Hydra](https://eprint.iacr.org/2020/299.pdf)
+-   [Ouroboros Classic](https://iohk.io/en/research/library/papers/ouroborosa-provably-secure-proof-of-stake-blockchain-protocol/)
+-   [Ouroboros BFT](https://iohk.io/en/research/library/papers/ouroboros-bfta-simple-byzantine-fault-tolerant-consensus-protocol/)
+-   [Ouroboros Praos](https://iohk.io/en/research/library/papers/ouroboros-praosan-adaptively-securesemi-synchronous-proof-of-stake-protocol/)
+-   [Ouroboros Genesis](https://iohk.io/en/research/library/papers/ouroboros-genesiscomposable-proof-of-stake-blockchains-with-dynamic-availability/)
+-   [Ouroboros Crypsinous](https://iohk.io/en/research/library/papers/ouroboros-crypsinousprivacy-preserving-proof-of-stake/)
+-   [Ouroboros Chronos](https://iohk.io/en/research/library/papers/ouroboros-chronospermissionless-clock-synchronization-via-proof-of-stake/)
 
 #### Ouroboros Classic
 
@@ -57,8 +58,12 @@ Ouroboros Praos introduced substantial security and scalability improvements to 
 
 Once implemented, the fourth iteration of Ouroboros -Genesis- will further improve upon Ouroboros Praos by adding a novel chain selection rule that enables parties to bootstrap from a genesis block without the need for trusted checkpoints or assumptions about past availability. The Genesis paper also provides proof of the protocol’s Universal Composability, which demonstrates that the protocol can be composed with other protocols in arbitrary configurations in a real-world setting, without losing its security properties.
 
-#### Ouroboros Hydra
+#### Ouroboros Crypsinous
 
-The latest iteration is Ouroboros Hydra, an off-chain scalability architecture that addresses three key scalability challenges: high-transaction throughput, low latency, and minimal storage per node.
+[Ouroboros Crypsinous](https://iohk.io/en/research/library/papers/ouroboros-crypsinousprivacy-preserving-proof-of-stake/) equips Genesis with privacy-preserving properties. It is the first formally analyzed privacy-preserving proof-of-stake blockchain protocol, which achieves security against adaptive attacks while maintaining strong privacy guarantees by introducing a new coin evolution technique relying on SNARKs and key-private forward-secure encryption. Crypsinous isn’t currently planned to be implemented on Cardano, but it can be used by other chains for increased privacy-preserving settings.
 
-Ouroboros Hydra enables Cardano to scale horizontally, increasing performance by incorporating additional nodes, rather than vertically, through the addition of more powerful hardware. Early simulations show that each head can perform up to 1,000 TPS. With 1,000 heads, this could be as high as 1,000,000 TPS. Once implemented, Ouroboros Hydra will allow Cardano to scale to the level of, for example, global payment systems.
+#### Ouroboros Chronos
+
+[Chronos](https://iohk.io/en/blog/posts/2021/10/27/ouroboros-chronos-provides-the-first-high-resilience-cryptographic-time-source-based-on-blockchain/)  achieves two goals: first, it shows how blockchain protocols can synchronize clocks securely via a novel time synchronization mechanism and thereby become independent of external time services. Second, it is a cryptographically secure blockchain protocol that additionally provides a cryptographically secure source of time to other protocols. In short, Chronos makes the ledger more resistant to attacks that target time information.
+
+From an application point of view, Chronos can dramatically boost the resilience of critical telecommunications, transport, and other IT infrastructures that require the synchronization of local time to a unified network clock that has no single point of failure.
