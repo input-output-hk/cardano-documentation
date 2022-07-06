@@ -55,7 +55,13 @@ cardano-cli ...
 
 ### Understanding values
 
-cardano-node version 1.35.0 and later of the cli no longer supports ASCII token names, only hexidecimal format is support. The result of running  $ echo -n "assetName" | xxd -ps
+cardano-node version 1.35.0 and later of the cli no longer supports ASCII token names, only hexidecimal format is support. The result of running  
+
+
+```
+$ echo -n "assetName" | xxd -ps
+
+```
 
 Lovelace values can be specified in two ways:
 
@@ -122,13 +128,13 @@ To receive tokens, you just need to specify any address. It is not necessary to 
 To inspect the values in an address, you need to view a UTxO value using:
 
 ```
-cardano-cli query utxo --testnet-magic
+cardano-cli query utxo --testnet-magic 1097911063
 ```
 
 This will show the content of any token bundles that you possess. You can choose to see a specific address using the `--address` `$ADDRESS` option:
 
 ```
-cardano-cli query utxo --address "$ADDRESS" --testnet-magic
+cardano-cli query utxo --address "$ADDRESS" --testnet-magic 1097911063
 ```
 
 ### Token minting policies
@@ -293,7 +299,8 @@ $ ./cardano-cli transaction policyid --script-file ./policy/policy.script
 1. Use this code to build the raw transaction:
 
 ```
-$echo -n "melcoin" | xxd -ps => 6d656c636f696e
+$ echo -n "melcoin" | xxd -ps 
+6d656c636f696e
 
 ./cardano-cli transaction build-raw \
 	     --babbage-era \
