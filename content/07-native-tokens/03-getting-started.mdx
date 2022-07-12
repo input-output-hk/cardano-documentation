@@ -55,7 +55,7 @@ cardano-cli ...
 
 ### Understanding values
 
-cardano-node version 1.35.0 and later of the cli no longer supports ASCII token names, only hexidecimal format is support. The result of running  
+cardano-node version 1.35.0 and later of the cli no longer supports ASCII token names, only hex-encoded format is supported. The result of running  
 
 
 ```
@@ -67,13 +67,14 @@ Lovelace values can be specified in two ways:
 
 - `${quantity} lovelace` (where quantity is a signed integer)
 - `${quantity}` (where quantity is a signed integer)
+- `${assetName}` (where assetName is hex-encoded assetName)
 
 Values for other assets can be specified as:
 
-- `${quantity} ${policyId}.${assetName(hexidecimal format)}`
+- `${quantity} ${policyId}.${assetName}`
 - `${quantity} ${policyId}` 
 
-Where `quantity` is a signed integer and `policyId` is a hex-encoded policy ID [a script hash]), and `assetName` is an alphanumeric asset name.
+Where `quantity` is a signed integer and `policyId` is a hex-encoded policy ID [a script hash]), and `assetName` is a hex-encoded assetName.
 
 #### Syntax of multi-asset values
 
@@ -81,19 +82,19 @@ The `cardano-cli` can specify multi-asset values in transaction outputs and when
 
 - ada values are defined as integer (INT) lovelace, e.g. `42 lovelace`
 - multi-asset values can be defined as:
-  - `INT policyid.assetName(hexidecimal format)`, e.g. `42 $MYPOLICY.assetName(hexidecimal format)`
+  - `INT policyid.assetName`, e.g. `42 $MYPOLICY.assetName`
   - `INT policyid`, e.g. `42 $MYPOLICY` (No asset name specified)
-  - `policyid.assetName(hexidecimal format)`, e.g `$MYPOLICY.assetName(hexidecimal format)` (This will mint only one of `myassetname`)
+  - `policyid.assetName`, e.g `$MYPOLICY.assetName` (This will mint only one of `myassetname`)
 - Multiple assets can be combined in the same multi-asset value using the `+` operator, e.g:
 
-`100 lovelace + 42 $MYPOLICY.foo(hexidecimal format) + -2 $MYPOLICY.bar(hexidecimal format) + 10 lovelace`
+`100 lovelace + 42 $MYPOLICY.666f6f + -2 $MYPOLICY.626172 + 10 lovelace`
 
 **Negating individual values**
 
 Any individual value can be negated using the `-` prefix operator. For example:
 
 - `-42 $MYPOLICY`
-- `-72191 $MYPOLICY.foo(hexidecimal format)`
+- `-72191 $MYPOLICY.666f6f`
 - `-100`
 - `-920 lovelace`
 
@@ -102,8 +103,8 @@ Any individual value can be negated using the `-` prefix operator. For example:
 Values can be combined using the binary operator `+`. For example:
 
 - `42 lovelace + -1 (this would result in a Value of 41 lovelace)`
-- `20 $MYPOLICY + 12 $MYPOLICY.foo(hexidecimal format) + -2 $MYPOLICY.bar(hexidecimal format)`
-- `201 4$MYPOLICY.foo(hexidecimal format) + 12 + -1 + 9 lovelace + 10 $MYPOLICY`
+- `20 $MYPOLICY + 12 $MYPOLICY.666f6f + -2 $MYPOLICY.626172`
+- `201 4$MYPOLICY.666f6f + 12 + -1 + 9 lovelace + 10 $MYPOLICY`
 
 ### Creating a Transaction
 
