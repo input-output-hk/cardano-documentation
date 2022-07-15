@@ -67,7 +67,7 @@ Lovelace values can be specified in two ways:
 
 - `${quantity} lovelace` (where quantity is a signed integer)
 - `${quantity}` (where quantity is a signed integer)
-- `${assetName}` (where assetName is hex-encoded assetName)
+- `${assetName}` (where assetName is hex-encoded 61737365744e616d65)
 
 Values for other assets can be specified as:
 
@@ -82,9 +82,9 @@ The `cardano-cli` can specify multi-asset values in transaction outputs and when
 
 - ada values are defined as integer (INT) lovelace, e.g. `42 lovelace`
 - multi-asset values can be defined as:
-  - `INT policyid.assetName`, e.g. `42 $MYPOLICY.assetName`
-  - `INT policyid`, e.g. `42 $MYPOLICY` (No asset name specified)
-  - `policyid.assetName`, e.g `$MYPOLICY.assetName` (This will mint only one of `myassetname`)
+  - `INT policyid.assetName`, e.g. `42 $MYPOLICY.61737365744e616d65`
+  - `INT policyid`, e.g. `42 $MYPOLICY` (No assetName specified)
+  - `policyid.assetName`, e.g `$MYPOLICY.61737365744e616d65` (This will mint only one of `assetName`)
 - Multiple assets can be combined in the same multi-asset value using the `+` operator, e.g:
 
 `100 lovelace + 42 $MYPOLICY.666f6f + -2 $MYPOLICY.626172 + 10 lovelace`
