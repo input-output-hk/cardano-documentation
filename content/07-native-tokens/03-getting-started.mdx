@@ -55,7 +55,7 @@ cardano-cli ...
 
 ### Understanding values
 
-cardano-node version 1.35.0 and later of the cli no longer supports ASCII token names, only hex-encoded format is supported. The result of running  
+cardano-node version 1.32.1 and later of the cli no longer supports ASCII token names, only hex-encoded format is supported. The result of running  
 
 ```
 $ echo -n "assetName" | xxd -ps
@@ -134,7 +134,6 @@ This will show the content of any token bundles that you possess. You can choose
 
 ```
 cardano-cli query utxo --address "$ADDRESS" --testnet-magic 1097911063
-
 ```
 
 ### Token minting policies
@@ -193,7 +192,6 @@ $ cat pay.vkey
     "description": "Payment Verification Key",
     "cborHex": "582031752dd50ffe7ed90ba136ea775dacd5113ff67d13001a25aac953f719aa1f92"
 }
-
 ```
 
 4. Generate the payment address:
@@ -233,7 +231,6 @@ The response should show no funds:
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
 b1ddb0347fed2aecc7f00caabaaf2634f8e2d17541f6237bbed78e2092e1c414     0        1000000000 lovelace
-
 ```
 
 7. Export the protocol parameters to a file for later use:
@@ -242,7 +239,6 @@ b1ddb0347fed2aecc7f00caabaaf2634f8e2d17541f6237bbed78e2092e1c414     0        10
 cardano-cli  query protocol-parameters \
 --testnet-magic 1097911063 \
 --out-file protocol.json
-
 ```
 
 #### Start the minting process
@@ -271,7 +267,6 @@ cat ./policy/policy.script
   "keyHash": "5805823e303fb28231a736a3eb4420261bb42019dc3605dd83cccd04",
   "type": "sig"
 }
-
 ```
 
 2. Mint the new asset:
@@ -280,7 +275,6 @@ cat ./policy/policy.script
 
 $ ./cardano-cli transaction policyid --script-file ./policy/policy.script 
 328a60495759e0d8e244eca5b85b2467d142c8a755d6cd0592dff47b
-
 ```
 
 #### Build the raw transaction
@@ -297,8 +291,8 @@ $ echo -n "melcoin" | xxd -ps
              --tx-out addr_test1vqvlku0ytscqg32rpv660uu4sgxlje25s5xrpz7zjqsva3c8pfckz+1000000000+"1000000000 328a60495759e0d8e244eca5b85b2467d142c8a755d6cd0592dff47b.6d656c636f696e" \
              --mint="1000000000 328a60495759e0d8e244eca5b85b2467d142c8a755d6cd0592dff47b.6d656c636f696e" \
              --out-file matx.raw
-
 ```
+
 #### Calculate the minimum fee
 
 Use this code to calculate the minimum fee required for the transaction:
@@ -328,7 +322,6 @@ The transaction will now include the fee:
 --tx-out addr_test1vqvlku0ytscqg32rpv660uu4sgxlje25s5xrpz7zjqsva3c8pfckz+999819891+"1000000000 328a60495759e0d8e244eca5b85b2467d142c8a755d6cd0592dff47b.6d656c636f696e" \
 --mint="1000000000 328a60495759e0d8e244eca5b85b2467d142c8a755d6cd0592dff47b.6d656c636f696e" \
 --out-file matx.raw
-
 ```
 
 #### Sign the transaction:
@@ -341,7 +334,6 @@ The transaction will now include the fee:
 --testnet-magic 1097911063 \
 --tx-body-file matx.raw \
  --out-file matx.signed
-
 ```
 
 #### Submit the transaction:
@@ -358,7 +350,6 @@ addr_test1vqvlku0ytscqg32rpv660uu4sgxlje25s5xrpz7zjqsva3c8pfckz
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
 fd0790f3984348f65ee22f35480b873b4eb9862065514f3e3a9c0f04d0a6ad63     0        999821915 lovelace + 1000000000 328a60495759e0d8e244eca5b85b2467d142c8a755d6cd0592dff47b.6d656c636f696e
-
 ```
 
 #### Send the new native asset to another address
@@ -389,7 +380,6 @@ cardano-cli address key-gen \
 
 $ cat recipient/recipientpay.addr 
 addr_test1vp8s8zu6mr73nvlsjf935k0a38n8xvp3fptkyz2vl8pserqkcx5yz
-
 ```
 
 4. Send 1 melcoin to the recipient address:
@@ -461,7 +451,6 @@ $ cat lpconfig/launchpad-shelley-genesis.json | grep minUTxOValue
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
 f90b8457a2cf6a1aba9c0001ae2c7084f653083c6108826115a0a64e862333a3     0        10000000 lovelace + 1 328a60495759e0d8e244eca5b85b2467d142c8a755d6cd0592dff47b.6d656c636f696e
-
 ```
 The recipient address we created now has 10000000 Lovelace and 1 melcoin.
 
