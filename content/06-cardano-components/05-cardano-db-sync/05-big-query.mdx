@@ -9,11 +9,11 @@ According to its [official description](https://cloud.google.com/bigquery/docs/i
 
 **Motivation**
 
-Cardano’s on-chain data has considerably grown over the last few months. This means that the time to sync the whole history of the blockchain increases accordingly. Running a node and a DB Sync process (mapping the on-chain data to a relational database) now requires more time and a more robust software instance. 
+Cardano’s on-chain data has considerably grown over the last few months. This means that the time to sync the whole history of the blockchain increases accordingly. Running a node and a DB Sync process (mapping the on-chain data to a relational database) now requires more time and a more robust software instance.
 
 Google BigQuery makes it easier to look up data without the need to run specialized software. Using Google Data Studio, you can also seamlessly create advanced visualizations and dashboards based on the BigQuery data.
 
-Cardano data on BigQuery is organized by epoch numbers. This allows limiting queries to one or several epochs worth of data, which results in a lower cost per query. 
+Cardano data on BigQuery is organized by epoch numbers. This allows limiting queries to one or several epochs worth of data, which results in a lower cost per query.
 
 There are several things you should note when working with BigQuery:
 
@@ -29,6 +29,10 @@ Note that to start querying data, you need to have a Google project. In case you
 1.  Login to the [Google Developer Console](https://console.cloud.google.com/)
 2.  Create a new project and activate the BigQuery API.
 
+**NB.** If you don't query the dataset from your own project you'll be getting the error:
+"Access Denied: Project iog-data-analytics: User does not have
+bigquery.jobs.create permission in project iog-data-analytics."
+
 ## Querying the data
 
 You are now all set to work with the dataset:
@@ -39,7 +43,7 @@ You are now all set to work with the dataset:
 
 ![](https://ucarecdn.com/2c5533aa-872d-4e29-bbaa-4668045eebca/)
 
-You can find the example queries in the **query table schemas** section below. 
+You can find the example queries in the **query table schemas** section below.
 
 ## Analyzing the data
 
@@ -72,25 +76,58 @@ Usually, the cost is $5 per terabyte (TB) of the data queried. Find more informa
 
 The following tables are available in the dataset:
 
-1. Table: block_hash
-2. Table: block
-3. Table: epoch_param
-4. Table: tx
-5. Table: tx_hash
-6. Table: tx_in_out
-7. Table: rel_addr_txout
-8. Table: rel_stake_txout
+1.  Table: [block](#block)
+2.  Table: [block_hash](#block_hash)
+3.  Table: [collateral](#collateral)
+4.  Table: [cost_model](#cost_model)
+5.  Table: [delegation](#delegation)
+6.  Table: [epoch_param](#epoch_param)
+7.  Table: [ma_minting](#ma_minting)
+8.  Table: [meta](#meta)
+9.  Table: [param_proposal](#param_proposal)
+10. Table: [pool_offline_data](#pool_offline_data)
+11. Table: [pool_owner](#pool_owner)
+12. Table: [pool_retire](#pool_retire)
+13. Table: [pool_update](#pool_update)
+14. Table: [redeemer](#redeemer)
+15. Table: [rel_addr_txout](#rel_addr_txout)
+16. Table: [rel_stake_txout](#rel_stake_txout)
+17. Table: [reward](#reward)
+18. Table: [schema_version](#schema_version)
+19. Table: [script](#script)
+20. Table: [stake_registration](#stake_registration)
+21. Table: [tx](#tx)
+22. Table: [tx_consumed_output](#tx_consumed_output)
+23. Table: [tx_hash](#tx_hash)
+24. Table: [tx_in_out](#tx_in_out)
+25. Table: [tx_metadata](#tx_metadata)
+26. Table: [withdrawal](#withdrawal)
 
 ![](https://ucarecdn.com/d8ba0e26-a9f8-4c0b-be95-94a4d93a5dc4/)
 
-### 1. Table: block_hash
+### 1. Table: block
+
+The `block` table is clustered by field `epoch_no` and is usually accessed using `epoch_no` and `slot_no`. See the `Table: block_hash` example bellow.
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED|
+| slot_no | INTEGER | REQUIRED |
+| block_time | DATETIME | REQUIRED
+| block_size | INTEGER | REQUIRED
+| tx_count | INTEGER | REQUIRED
+| sum_tx_fee | INTEGER | REQUIRED
+| script_count | INTEGER | REQUIRED
+| sum_script_size | INTEGER | REQUIRED
+
+### 2. Table: block_hash
 
 The `block_hash` table is clustered by field `epoch_no` and relates `slot_no` to `block_hash`. If the `slot_no` is NULL, then the block is from the genesis.
 
 |Field name|Data type|Options|
 |--|--|--|
 | epoch_no | INTEGER | REQUIRED|
-| slot_no | INTEGER | NULLABLE | 
+| slot_no | INTEGER | NULLABLE |
 | block_hash | STRING | REQUIRED
 
 **An example of searching a block by its hash:**
@@ -104,70 +141,374 @@ WHERE bh.block_hash = '00b6c4bd4024cbf66050fe978f880a7129149be7a1a01310b3e305505
   AND bh.epoch_no = 329;
 ```
 
-### 2. Table: block
+### 3. Table: collateral
 
-The `block` table is clustered by field `epoch_no` and is usually accessed using `epoch_no` and `slot_no`. See the `Table: block_hash` example above.
-
-|Field name|Data type|Options|
-|--|--|--|
-| epoch_no | INTEGER | REQUIRED|
-| slot_no | INTEGER | REQUIRED | 
-| block_time | DATETIME | REQUIRED
-| block_size | INTEGER | REQUIRED
-| tx_count | INTEGER | REQUIRED
-| sum_tx_fee | INTEGER | REQUIRED
-| script_count | INTEGER | REQUIRED
-| sum_script_size | INTEGER | REQUIRED
-
-### 3. Table: epoch_param
-
-The `epoch_param` table is very small and can be accessed using `epoch_no`.
+The `collateral` table relates a transaction with its collateral inputs (that are unspent transaction outputs). It is clustered by the field `epoch_no` (relating to tx_in, when the collateral was provided).
 
 |Field name|Data type|Options|
 |--|--|--|
 | epoch_no | INTEGER | REQUIRED|
-| min_fee_a| INTEGER | REQUIRED | 
+| slot_no | INTEGER | REQUIRED |
+| txidx | INTEGER | REQUIRED
+| epoch_no_out | INTEGER | REQUIRED
+| slot_no_out | INTEGER | REQUIRED
+| txidx_out | INTEGER | REQUIRED
+| tx_out_index | INTEGER | REQUIRED
+
+### 4. Table: cost_model
+
+CostModel for EpochParam and ParamProposal. The field costs are the actual costs formatted as json.
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED|
+| costs | JSON | REQUIRED |
+
+### 5. Table: delegation
+
+The `delegation` table provides information about delegations. It is clustered by `epoch_no` and `stake_addr_hash`. The `epoch_no` is the epoch of the transaction that contained the delegation.
+The `delegations` JSON field is a list of fields of: (cert_index, pool_hash, tx_hash, active_epoch_no, slot_no, txidx)
+
+|Field name|Data type|Options|
+|--|--|--|
+| stake_addr_hash | STRING | REQUIRED|
+| epoch_no| INTEGER | REQUIRED |
+| delegations | JSON | REQUIRED
+
+example data:
+|epoch_no|stake_addr_hash|delegations
+|--|--|--|
+|210  |e1000988fdc947892b93da25328e16d9911b479454cee287affb59810b  |[{""pool_hash"" : ""65ea43eab7c0143d6bb68f9d56c276bce09377bdc41e1a42ac9535ed"", ""cert_index"" : 1, ""tx_hash"" : ""e689ab28a66086a7cba37b4ae2881b4cae99263a7e3ec24335ab15a61fd59af9"", ““active_epoch_no””:212, ""slot_no"" : 4714600, ""txidx"" : 0}]"  |
+210 |e100133b1980c19219944b78c3d63eb914a29861afebc723367bd6a390 |[{""pool_hash"" : ""1d46e6eaa039ad1d6f4e53200a9c49c6d2693da6207006876455e6e4"", ""cert_index"" : 0, ""tx_hash"" : ""2d667308c2f41cdfe936bdcf8448f62674de6799a8fa9843cfc7228a89f15232"", ““active_epoch_no””:212, ""slot_no"" : 4543820, ""txidx"" : 1}, {""pool_hash"" : ""60397646d7d1ad6fe2ddccfe7efc9cba61f6d3d94d29e8f41de73240"", ""cert_index"" : 1, ""tx_hash"" : ""c5ae6ff25716d3cc08ff94a5178ac857ecf0cc5a31e8b35abd0b17fa7a20c386"", ““active_epoch_no””:212, ""slot_no"" : 4524540, ""txidx"" : 3}]"
+
+### 6. Table: epoch_param
+
+The `epoch_param` table contains the accepted protocol parameters for an epoch. Table `epoch_param` is very small and accessed by `epoch_no`.
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED|
+| min_fee_a | INTEGER | REQUIRED |
 | min_fee_b | INTEGER | REQUIRED
 | max_block_size | INTEGER | REQUIRED
 | max_tx_size | INTEGER | REQUIRED
 | max_bh_size | INTEGER | REQUIRED
 | key_deposit | INTEGER | REQUIRED
-| pool_deposit | INTEGER | REQUIRED
-| max_epoch | INTEGER | REQUIRED
+| pool_deposit | INTEGER | REQUIRED|
+| max_epoch | INTEGER | REQUIRED |
 | optimal_pool_count | INTEGER | REQUIRED
 | influence | NUMERIC | REQUIRED
 | monetary_expand_rate | NUMERIC | REQUIRED
 | treasury_growth_rate | NUMERIC | REQUIRED
-| decentralisation | NUMERIC | REQUIRED
-| entropy | STRING | NULLABLE
+| decentralisation | NUMERIC | REQUIRED|
+| entropy | STRING | NULLABLE |
 | protocol_major | INTEGER | REQUIRED
 | protocol_minor | INTEGER | REQUIRED
 | min_utxo_value | INTEGER | REQUIRED
 | min_pool_cost | INTEGER | REQUIRED
-| nonce | STRING | NULLABLE
-| coins_per_utxo_word | INTEGER | NULLABLE
+| nonce | STRING | NULLABLE |
+| coins_per_utxo_word | INTEGER | NULLABLE |
 | cost_model_id | INTEGER | NULLABLE
 | price_mem | NUMERIC | NULLABLE
 | price_step | NUMERIC | NULLABLE
 | max_tx_ex_mem | INTEGER | NULLABLE
 | max_tx_ex_steps | INTEGER | NULLABLE
-| max_block_ex_mem | INTEGER | NULLABLE
-| max_block_ex_steps | INTEGER | NULLABLE 
+| max_block_ex_mem | INTEGER | NULLABLE |
+| max_block_ex_steps | INTEGER | NULLABLE
 | max_val_size | INTEGER | NULLABLE
 | collateral_percent | INTEGER | NULLABLE
-| max_collateral_inputs | INTEGER| NULLABLE
+| max_collateral_inputs | INTEGER | NULLABLE
 
-### 4. Table: tx
+### 7. Table: ma_minting
+
+The `ma_minting` table contains all the unique policy/name pairs with a CIP14 asset fingerprint. It also contains the multi-Asset mint events.
+The table is clustered by `epoch_no` and `fingerprint`.
+The `minting` JSON field is a list of triples of transaction identifier and quantity (slot_no, txidx, quantity).
+
+|Field name|Data type|Options|
+|--|--|--|
+| fingerprint| STRING| REQUIRED
+| policyid| STRING | REQUIRED
+| name_bytes| BYTES | REQUIRED
+| epoch_no | INTEGER | REQUIRED
+| minting | JSON | REQUIRED
+
+example data:
+|fingerprint | policyid | name (base64 encoded) | epoch_no | minting transactions |
+|--|--|--|--|--|
+| asset1j84xh47st88tz7d55exfu2daurvrvycnc0xy2p |53cc838e833f2e3f1deaaa5efd7ccbe3fc0d285c2bec879ad4ef3677 | Vk9PRE9PVEVERFlCRUFS | 337 |[{"slot_no":60265049,"txidx":3,"quantity":1},{"slot_no":60455411,"txidx":25,"quantity":1}]|
+
+### 8. Table: meta
+
+The `meta` table provides information about network start time and db-sync version.
+
+|Field name|Data type|Options|
+|--|--|--|
+| start_time | DATETIME | REQUIRED|
+| network_name | STRING | REQUIRED |
+| version | STRING | REQUIRED
+
+### 9. Table: param_proposal
+
+The `param_proposal` table contains blockchain parameter change proposals. It is clustered by `epoch_no`.
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED|
+| key | STRING | REQUIRED |
+| min_fee_a | INTEGER | NULLABLE
+| min_fee_b | INTEGER | NULLABLE
+| max_block_size | INTEGER | NULLABLE
+| max_tx_size | INTEGER | NULLABLE
+| max_bh_size | INTEGER | NULLABLE
+| key_deposit | INTEGER | NULLABLE|
+| pool_deposit | INTEGER | NULLABLE |
+| max_epoch | INTEGER | NULLABLE
+| optimal_pool_count | INTEGER | NULLABLE
+| influence | NUMERIC | NULLABLE
+| monetary_expand_rate | NUMERIC | NULLABLE
+| treasury_growth_rate | NUMERIC | NULLABLE
+| decentralisation | NUMERIC | NULLABLE|
+| entropy | STRING | NULLABLE |
+| protocol_major | INTEGER | NULLABLE
+| protocol_minor | INTEGER | NULLABLE
+| min_utxo_value | INTEGER | NULLABLE
+| min_pool_cost | INTEGER | NULLABLE
+| coins_per_utxo_word | INTEGER | NULLABLE
+| cost_model_id | INTEGER | NULLABLE|
+| price_mem | NUMERIC | NULLABLE |
+| price_step | NUMERIC | NULLABLE
+| max_tx_ex_mem | INTEGER | NULLABLE
+| max_tx_ex_steps | INTEGER | NULLABLE
+| max_block_ex_mem | INTEGER | NULLABLE
+| max_block_ex_steps | INTEGER | NULLABLE
+| max_val_size | INTEGER | NULLABLE|
+| collateral_percent | INTEGER | NULLABLE |
+| max_collateral_inputs | INTEGER | NULLABLE
+| registered_tx_id | INTEGER | REQUIRED
+
+### 10. Table: pool_offline_data
+
+The `pool_offline_data` table contains information about off chain pool data. It is sliced by `epoch_no`, which is the epoch of the transaction that the metadata was registered.
+
+|Field name|Data type|Options|
+|--|--|--|
+| pool_hash | STRING | REQUIRED|
+| epoch_no | INTEGER | REQUIRED |
+| ticker_name | STRING | REQUIRED
+| json | STRING | REQUIRED
+| metadata_url | STRING | REQUIRED
+| metadata_hash | BYTES | REQUIRED
+| metadata_registered_tx_hash | STRING | REQUIRED
+
+### 11. Table: pool_owner
+
+This table provides information about pool owners. It is a mapping of pool hashes to addresses that were registered as pool owners on a specific transaction (slot, transaction index combination). It is clustered by `epoch_no`.
+
+|Field name|Data type|Options|
+|--|--|--|
+| pool_hash | STRING | REQUIRED
+| epoch_no | INTEGER | REQUIRED
+| addr_hash | STRING | REQUIRED
+| slot_no | INTEGER | REQUIRED
+| txidx | INTEGER | REQUIRED
+
+### 12. Table: pool_retire
+
+This table provides information about the retirement of pools. It is sliced by `epoch_no` which is the epoch that the pool retirement was announced.
+
+|Field name|Data type|Options|
+|--|--|--|
+| pool_hash | STRING | REQUIRED
+| retiring_epoch | INTEGER | REQUIRED
+| epoch_no | INTEGER | REQUIRED
+| cert_index | INTEGER | REQUIRED
+| announced_tx_hash | STRING | REQUIRED
+| slot_no | INTEGER | REQUIRED
+| announced_txidx | STRING | REQUIRED
+
+### 13. Table: pool_update
+
+The `pool_update` table provides information about pool updates. It is sliced by `epoch_no` which is the epoch number of the transaction that contained the update.
+
+|Field name|Data type|Options|
+|--|--|--|
+| active_epoch_no | INTEGER | REQUIRED
+| pool_hash | STRING | REQUIRED
+| cert_index | INTEGER | REQUIRED
+| vrf_key_hash | STRING | REQUIRED
+| pledge | INTEGER | REQUIRED
+| reward_addr | STRING | REQUIRED
+| margin | NUMERIC | REQUIRED
+| fixed_cost | INTEGER | REQUIRED
+| registered_tx_hash | STRING | REQUIRED
+| epoch_no | INTEGER | REQUIRED
+| metadata_url | STRING | NULLABLE
+| metadata_hash | STRING | NULLABLE
+| metadata_registered_tx_hash | STRING | NULLABLE
+
+### 14. Table: redeemer
+
+Per transaction, multiple redeemers are present with different purpose (spend, mint) and increasing indexes in those. The table is clustered by the fields `epoch_no` and `slot_no` for fast access.
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED
+| slot_no | INTEGER | REQUIRED
+| txidx | INTEGER | REQUIRED
+| count | INTEGER | REQUIRED
+| redeemers | JSON | REQUIRED
+
+Example (tx = [7dd290b7b4c628ecc97f4420f616cad01089d906e9b6eb7dc3cf7eee17ecbdf5](https://explorer.cardano.org/en/transaction?id=7dd290b7b4c628ecc97f4420f616cad01089d906e9b6eb7dc3cf7eee17ecbdf5)):
+epoch_no:315  slot_no:51124409  txidx:7  count:4
+
+redeemers:
+```
+[
+  {
+    "purpose": "spend",
+    "index": 0,
+    "unit_mem": 406484,
+    "unit_steps": 161323341,
+    "fee": 35086,
+    "script_hash": "ba158766c1bae60e2117ee8987621441fac66a5e0fb9c7aca58cf20a",
+    "datum_hash": "923918e403bf43c34b4ef6b48eb2ee04babed17320d8d1b9ff9ad086e86f44ec",
+    "datum_value": {
+      "fields": [],
+      "constructor": 0
+    }
+  },
+  {
+    "purpose": "spend",
+    "index": 2,
+    "unit_mem": 5921693,
+    "unit_steps": 2128218978,
+    "fee": 495127,
+    "script_hash": "4020e7fc2de75a0729c3cc3af715b34d98381e0cdbcfa99c950bc3ac",
+    "datum_hash": "e7dd0cd6f9f5b38884fad20820d47a9d5c8c8535a6f85dc799405c456846c4c3",
+    "datum_value": {
+      "fields": [
+        {
+          "bytes": "a530443d873077d730d57ffb4b223bec89d3dc9586d329eed357e4b3"
+        },
+        {
+          "bytes": "9c0a"
+        }
+      ],
+      "constructor": 0
+    }
+  },
+  {
+    "purpose": "spend",
+    "index": 3,
+    "unit_mem": 406484,
+    "unit_steps": 161323341,
+    "fee": 35086,
+    "script_hash": "ba158766c1bae60e2117ee8987621441fac66a5e0fb9c7aca58cf20a",
+    "datum_hash": "923918e403bf43c34b4ef6b48eb2ee04babed17320d8d1b9ff9ad086e86f44ec",
+    "datum_value": {
+      "fields": [],
+      "constructor": 0
+    }
+  },
+  {
+    "purpose": "mint",
+    "index": 0,
+    "unit_mem": 1019352,
+    "unit_steps": 376201711,
+    "fee": 85941,
+    "script_hash": "0029cb7c88c7567b63d1a512c0ed626aa169688ec980730c0473b913",
+    "datum_hash": "8aa7de35e4077406a27b546d5b49d998189708b95be495b348c4eade8d4f12d5",
+    "datum_value": {
+      "bytes": "04"
+    }
+  }
+]
+```
+
+### 15. Table: rel_addr_txout
+
+The `rel_addr_txout` table is clustered by `epoch_no` and relates `address` to `outputs` in an epoch. The list of outputs are triples of (slot_no, txidx, index), thus the identification of the transaction by the pair of (slot_no, txidx) and then the output at index in the transaction.
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED
+| address | STRING | REQUIRED
+| outputs | STRING | REQUIRED
+
+### 16. Table: rel_stake_txout
+
+This table is clustered by `epoch_no` and relates `staking address` to `outputs` in an epoch.
+
+The list of outputs are triples of `slot_no`, `txidx`, and `index`, which identify the transaction by the pair of `slot_no` and `txidx` and then the output at index in the transaction.
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED
+| address | STRING | REQUIRED
+| outputs | STRING | REQUIRED
+
+### 17. Table: reward
+
+This table provides information about the rewards a stake address receives on a specific epoch. The table is sliced by `epoch_no` which is the reward’s spendable epoch.
+
+|Field name|Data type|Options|
+|--|--|--|
+| stake_addr_hash | STRING | REQUIRED
+| epoch_no | INTEGER | REQUIRED
+| type | STRING | REQUIRED
+| amount | INTEGER | REQUIRED
+| earned_epoch | INTEGER | REQUIRED
+| pool_hash | STRING | NULLABLE
+
+### 18. Table: schema_version
+
+This table provides information about db-sync database schema version. It should only ever have a single row.
+
+|Field name|Data type|Options|
+|--|--|--|
+| stage_one | INTEGER | REQUIRED
+| stage_two | INTEGER | REQUIRED
+| stage_three | INTEGER | REQUIRED
+
+### 19. Table: script
+
+A table containing scripts available, found in witnesses, inlined in outputs (reference outputs) or auxdata of transactions. It is sliced by `epoch_no`.
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED
+| slot_no | INTEGER | REQUIRED
+| txidx | INTEGER | REQUIRED
+| script_hash | STRING | REQUIRED
+| type | STRING | REQUIRED
+| json | JSON | NULLABLE
+| bytes | BYTES | NULLABLE
+| serialised_size | INTEGER | NULLABLE
+
+### 20. Table: stake_registration
+
+Table `stake_registration` provides information on when a stake address was registered. This table is sliced by `epoch_no`.
+
+|Field name|Data type|Options|
+|--|--|--|
+| epoch_no | INTEGER | REQUIRED
+| stake_addr_hash | STRING | REQUIRED
+| cert_index | INTEGER | REQUIRED
+| slot_no | INTEGER | REQUIRED
+| txidx | INTEGER | REQUIRED
+
+### 21. Table: tx
 
 The `tx` table is clustered by field `epoch_no` and `slot_no`, and can efficiently be accessed using `epoch_no` or `slot_no`.
 
-A transaction is identified by the pair (`slot_no`, `txidx`), identifying the block of the transaction and transaction’s index  in the block. 
+A transaction is identified by the pair (`slot_no`, `txidx`), identifying the block of the transaction and transaction’s index  in the block.
 
 |Field name|Data type|Options|
 |--|--|--|
 | epoch_no| INTEGER| REQUIRED
 | tx_hash| STRING | REQUIRED
-|block_time| DATETIME | REQUIRED
+| block_time| DATETIME | REQUIRED
 | slot_no | INTEGER | REQUIRED
 | txidx | INTEGER | REQUIRED
 | out_sum | NUMERIC | REQUIRED
@@ -181,7 +522,19 @@ A transaction is identified by the pair (`slot_no`, `txidx`), identifying the bl
 | count_inputs | INTEGER | REQUIRED
 | count_outputs | INTEGER |REQUIRED
 
-### 5. Table: tx_hash
+### 22. Table: tx_consumed_output
+
+This table is clustered by `slot_no` and contains information about which transaction outputs got consumed in other transactions: The transaction output that is identified by the triplet (`slot_no`, `txidx`, `index`), was consumed in transaction identified by the pair (`consumed_in_slot_no`, `consumed_in_txidx`).
+
+|Field name|Data type|Options|
+|--|--|--|
+| slot_no | INTEGER | NULLABLE
+| txidx | STRING | REQUIRED
+| index | INTEGER | REQUIRED
+| consumed_in_slot_no | INTEGER | REQUIRED
+| consumed_in_txidx | INTEGER | REQUIRED
+
+### 23. Table: tx_hash
 
 The `tx_hash` table allows to quickly find the slot number and the transaction index in the block given that the hash has been incorporated. The table is clustered by `epoch_no`.
 
@@ -192,7 +545,7 @@ The `tx_hash` table allows to quickly find the slot number and the transaction i
 | txidx | INTEGER | REQUIRED
 | tx_hash | STRING | REQUIRED
 
-### 6. Table: tx_in_out
+### 24. Table: tx_in_out
 
 The `tx_in_out` table is clustered by field `epoch_no` and `slot_no`, and can efficiently be accessed using `epoch_no` or `slot_no`.
 
@@ -202,7 +555,7 @@ This table contains a list of inputs and outputs to a transaction, which is iden
 |--|--|--|
 | epoch_no | INTEGER| REQUIRED
 | slot_no | INTEGER | REQUIRED
-|txidx| INTEGER | REQUIRED
+| txidx| INTEGER | REQUIRED
 | inputs | STRING | NULLABLE
 | outputs | STRING | NULLABLE
 
@@ -232,7 +585,7 @@ This transaction consumes two inputs:
 ]
 ```
 
-and creates four outputs of which only one remains unspent (as of the time this example has been documented):
+and creates four outputs:
 
 ```
 [
@@ -240,32 +593,19 @@ and creates four outputs of which only one remains unspent (as of the time this 
     "out_idx": 0,
     "out_address": "addr1q9cwvremt6n320s2e3agq0jyq82yhrk3htsu0w426xnz5us70z4w0jgvcdkkynmm8wmds66jd9kusnjfpu6raw5fqp0sr07p5w",
     "out_value": 1000000,
-    "out_ma": null,
-    "consumed_in_tx": [
-      {
-        "in_slot_no": 56865611,
-        "in_txidx": 6
-      }
-    ]
+    "out_ma": null
   },
   {
     "out_idx": 1,
     "out_address": "addr1q894g0fpzjh8aj7mulfpca2wgwz0xznyzvc89y2yly8em75cxj5k9gax0h6lymuvnmf7qhqwu0y0hyxqk2xcfmnva3gqx9fpj7",
     "out_value": 2500000,
-    "out_ma": null,
-    "consumed_in_tx": null
+    "out_ma": null
   },
   {
     "out_idx": 2,
     "out_address": "addr1qy66guz87dm2dfy8efdx7gm43e3f5f369avgq9thrm5hsjcphuva29yz3chdrakhlds6r24rvyu2qtqjf4s0v2hx5essdgyk9j",
     "out_value": 46500000,
-    "out_ma": null,
-    "consumed_in_tx": [
-      {
-        "in_slot_no": 56860931,
-        "in_txidx": 11
-      }
-    ]
+    "out_ma": null
   },
   {
     "out_idx": 3,
@@ -276,12 +616,6 @@ and creates four outputs of which only one remains unspent (as of the time this 
         "fingerprint": "asset18ry832pk9yye9d5fszehrd5yh3glkeclu40w23",
         "quantity": 1
       }
-    ],
-    "consumed_in_tx": [
-      {
-        "in_slot_no": 56871829,
-        "in_txidx": 35
-      }
     ]
   }
 ]
@@ -289,32 +623,37 @@ and creates four outputs of which only one remains unspent (as of the time this 
 
 See the output of the [transaction on Cardano Explorer](https://explorer.cardano.org/en/transaction?id=3c943c2ce4de883a9dcf1c5b29d0794c2b043ac45a7e987eb9fe2ae0038c41bf).
 
-### 7. Table: rel_addr_txout
+### 25. Table: tx_metadata
 
-This table is clustered by `epoch_no` and relates `address` to `outputs` in an epoch. 
-
-The list of outputs are triples of `slot_no`, `txidx`, `index`, which identify the transaction by the pair of `slot_no` and `txidx` and then the output at index in the transaction. 
+This table is clustered by `epoch_no` and relates a transaction with its metadata.
 
 |Field name|Data type|Options|
 |--|--|--|
 | epoch_no | INTEGER | REQUIRED
-| address | STRING | REQUIRED
-| outputs | STRING | REQUIRED
+| tx_hash | STRING | REQUIRED
+| slot_no | INTEGER | REQUIRED
+| txidx | INTEGER | REQUIRED
+| metadata | JSON | REQUIRED
 
-### 8. Table: rel_stake_txout
+The metadata is indexed with an integer which we include in the JSON list of (“index”, “meta”) pairs:
+```
+[{"index":2112121520,"meta":{"Choices": [{"VoteWeight": 1, "CandidateId": "ea19c7ed-8151-4619-ba61-5415abdac0d2"}], "VoterId": "16e98564-0f2c-4519-b3ae-14c2403450d1", "NetworkId": "SPOCRA", "ObjectType": "VoteBallot", "ProposalId": "f5b3a098-5615-4dfc-95d6-53a4a3238d99", "ObjectVersion": "1.0.0"}}]
+```
 
-This table is clustered by `epoch_no` and relates `staking address` to `outputs` in an epoch. 
+### 26. Table: withdrawal
 
-The list of outputs are triples of `slot_no`, `txidx`, and `index`, which identify the transaction by the pair of `slot_no` and `txidx` and then the output at index in the transaction. 
+This table provides information about reward withdrawals. It is clustered by `epoch_no`.
 
 |Field name|Data type|Options|
 |--|--|--|
 | epoch_no | INTEGER | REQUIRED
-| address | STRING | REQUIRED
-| outputs | STRING | REQUIRED
+| stake_addr_hash | STRING | REQUIRED
+| amount | INTEGER | REQUIRED
+| slot_no | INTEGER | REQUIRED
+| txidx | INTEGER | REQUIRED
 
 ## Further development
 
-The current release does not include all the blockchain data, particularly the staking and staking rewards details. In its future iterations, this dataset on BigQuery will cover all the Cardano data, and we will be updating this section with more details.
+The current release includes almost all of the blockchain data. In its future iterations, this dataset on BigQuery will cover even more Cardano data, and we will be updating this section with more details.
 
-To raise an issue or share your feedback, please reach out to data-analytics@iohk.io. 
+To raise an issue or share your feedback, please reach out to data-analytics@iohk.io.
