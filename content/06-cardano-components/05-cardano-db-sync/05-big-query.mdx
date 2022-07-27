@@ -76,32 +76,32 @@ Usually, the cost is $5 per terabyte (TB) of the data queried. Find more informa
 
 The following tables are available in the dataset:
 
-1.  Table: [block](#block)
-2.  Table: [block_hash](#block_hash)
-3.  Table: [collateral](#collateral)
-4.  Table: [cost_model](#cost_model)
-5.  Table: [delegation](#delegation)
-6.  Table: [epoch_param](#epoch_param)
-7.  Table: [ma_minting](#ma_minting)
-8.  Table: [meta](#meta)
-9.  Table: [param_proposal](#param_proposal)
-10. Table: [pool_offline_data](#pool_offline_data)
-11. Table: [pool_owner](#pool_owner)
-12. Table: [pool_retire](#pool_retire)
-13. Table: [pool_update](#pool_update)
-14. Table: [redeemer](#redeemer)
-15. Table: [rel_addr_txout](#rel_addr_txout)
-16. Table: [rel_stake_txout](#rel_stake_txout)
-17. Table: [reward](#reward)
-18. Table: [schema_version](#schema_version)
-19. Table: [script](#script)
-20. Table: [stake_registration](#stake_registration)
-21. Table: [tx](#tx)
-22. Table: [tx_consumed_output](#tx_consumed_output)
-23. Table: [tx_hash](#tx_hash)
-24. Table: [tx_in_out](#tx_in_out)
-25. Table: [tx_metadata](#tx_metadata)
-26. Table: [withdrawal](#withdrawal)
+1.  Table: [block](#1.%20Table%3A%20block)
+2.  Table: [block_hash](#2.%20Table%3A%20block_hash)
+3.  Table: [collateral](#3.%20Table%3A%20collateral)
+4.  Table: [cost_model](#4.%20Table%3A%20cost_model)
+5.  Table: [delegation](#5.%20Table%3A%20delegation)
+6.  Table: [epoch_param](#6.%20Table%3A%20epoch_param)
+7.  Table: [ma_minting](#7.%20Table%3A%20ma_minting)
+8.  Table: [meta](#8.%20Table%3A%20meta)
+9.  Table: [param_proposal](#9.%20Table%3A%20param_proposal)
+10. Table: [pool_offline_data](#10.%20Table%3A%20pool_offline_data)
+11. Table: [pool_owner](#11.%20Table%3A%20pool_owner)
+12. Table: [pool_retire](#12.%20Table%3A%20pool_retire)
+13. Table: [pool_update](#13.%20Table%3A%20pool_update)
+14. Table: [redeemer](#14.%20Table%3A%20redeemer)
+15. Table: [rel_addr_txout](#15.%20Table%3A%20rel_addr_txout)
+16. Table: [rel_stake_txout](#16.%20Table%3A%20rel_stake_txout)
+17. Table: [reward](#17.%20Table%3A%20reward)
+18. Table: [schema_version](#18.%20Table%3A%20schema_version)
+19. Table: [script](#19.%20Table%3A%20script)
+20. Table: [stake_registration](#20.%20Table%3A%20stake_registration)
+21. Table: [tx](#21.%20Table%3A%20tx)
+22. Table: [tx_consumed_output](#22.%20Table%3A%20tx_consumed_output)
+23. Table: [tx_hash](#23.%20Table%3A%20tx_hash)
+24. Table: [tx_in_out](#24.%20Table%3A%20tx_in_out)
+25. Table: [tx_metadata](#25.%20Table%3A%20tx_metadata)
+26. Table: [withdrawal](#26.%20Table%3A%20withdrawal)
 
 ![](https://ucarecdn.com/d8ba0e26-a9f8-4c0b-be95-94a4d93a5dc4/)
 
@@ -176,7 +176,8 @@ The `delegations` JSON field is a list of fields of: (cert_index, pool_hash, tx_
 | delegations | JSON | REQUIRED
 
 example data:
-|epoch_no|stake_addr_hash|delegations
+
+|epoch_no|stake_addr_hash|delegations|
 |--|--|--|
 |210  |e1000988fdc947892b93da25328e16d9911b479454cee287affb59810b  |[{""pool_hash"" : ""65ea43eab7c0143d6bb68f9d56c276bce09377bdc41e1a42ac9535ed"", ""cert_index"" : 1, ""tx_hash"" : ""e689ab28a66086a7cba37b4ae2881b4cae99263a7e3ec24335ab15a61fd59af9"", ““active_epoch_no””:212, ""slot_no"" : 4714600, ""txidx"" : 0}]"  |
 210 |e100133b1980c19219944b78c3d63eb914a29861afebc723367bd6a390 |[{""pool_hash"" : ""1d46e6eaa039ad1d6f4e53200a9c49c6d2693da6207006876455e6e4"", ""cert_index"" : 0, ""tx_hash"" : ""2d667308c2f41cdfe936bdcf8448f62674de6799a8fa9843cfc7228a89f15232"", ““active_epoch_no””:212, ""slot_no"" : 4543820, ""txidx"" : 1}, {""pool_hash"" : ""60397646d7d1ad6fe2ddccfe7efc9cba61f6d3d94d29e8f41de73240"", ""cert_index"" : 1, ""tx_hash"" : ""c5ae6ff25716d3cc08ff94a5178ac857ecf0cc5a31e8b35abd0b17fa7a20c386"", ““active_epoch_no””:212, ""slot_no"" : 4524540, ""txidx"" : 3}]"
@@ -234,6 +235,7 @@ The `minting` JSON field is a list of triples of transaction identifier and quan
 | minting | JSON | REQUIRED
 
 example data:
+
 |fingerprint | policyid | name (base64 encoded) | epoch_no | minting transactions |
 |--|--|--|--|--|
 | asset1j84xh47st88tz7d55exfu2daurvrvycnc0xy2p |53cc838e833f2e3f1deaaa5efd7ccbe3fc0d285c2bec879ad4ef3677 | Vk9PRE9PVEVERFlCRUFS | 337 |[{"slot_no":60265049,"txidx":3,"quantity":1},{"slot_no":60455411,"txidx":25,"quantity":1}]|
