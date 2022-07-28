@@ -55,7 +55,10 @@ const config = {
       '/community',
       '/tools',
     ],
-    links: [{ text: 'Cardano.org', link: 'https://cardano.org' }],
+    links: [
+      { text: 'Cardano.org', link: 'https://cardano.org' },
+      { text: 'Developer Portal', link: '(https://developers.cardano.org/' },
+    ],
     frontLine: true, // This toggles collapse arrows
     ignoreIndex: true,
     title:
