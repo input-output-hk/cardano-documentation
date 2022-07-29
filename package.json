@@ -54,6 +54,7 @@
     "react-dom": "^16.12.0",
     "react-feather": "^2.0.3",
     "react-github-btn": "^1.1.1",
+    "react-google-recaptcha": "^2.1.0",
     "react-helmet": "^5.2.1",
     "react-id-generator": "^3.0.0",
     "react-instantsearch-dom": "^6.0.0",
