@@ -59,6 +59,7 @@
     "react-instantsearch-dom": "^6.0.0",
     "react-live": "^2.2.2",
     "react-loadable": "^5.5.0",
+    "react-tooltip": "^4.2.21",
     "styled-components": "^4.4.1",
     "styled-icons": "^9.0.1",
     "victory": "^36.5.3"
