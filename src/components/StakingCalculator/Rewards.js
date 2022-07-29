@@ -243,7 +243,6 @@ const RewardsTableContent = styled.ul`
 
 const RewardsTableRow = styled.li`
   display: flex;
-  min-width: 80rem;
   border-bottom: 0.1rem solid
     ${new TinyColor(testnetsTheme.palette.text.primary)
       .setAlpha(0.3)
