@@ -30,59 +30,90 @@ const Delegator = ({
   currencies,
   getDistributableRewards,
   getTotalADAInCirculation,
-  containerRef
+  containerRef,
 }) => {
-  const [ rewards, setRewards ] = useState({
+  const [rewards, setRewards] = useState({
     graphData: [],
     breakdown: [
       {
-        daily: { ada: normalizeLargeNumber(0, 6), currency: normalizeLargeNumber(0, 6), yield: normalizeLargeNumber(0, 2) },
-        epoch: { ada: normalizeLargeNumber(0, 6), currency: normalizeLargeNumber(0, 6), yield: normalizeLargeNumber(0, 2) },
-        yearly: { ada: normalizeLargeNumber(0, 6), currency: normalizeLargeNumber(0, 6), yield: normalizeLargeNumber(0, 2) }
-      }
-    ]
+        daily: {
+          ada: normalizeLargeNumber(0, 6),
+          currency: normalizeLargeNumber(0, 6),
+          yield: normalizeLargeNumber(0, 2),
+        },
+        epoch: {
+          ada: normalizeLargeNumber(0, 6),
+          currency: normalizeLargeNumber(0, 6),
+          yield: normalizeLargeNumber(0, 2),
+        },
+        yearly: {
+          ada: normalizeLargeNumber(0, 6),
+          currency: normalizeLargeNumber(0, 6),
+          yield: normalizeLargeNumber(0, 2),
+        },
+      },
+    ],
   })
 
-  function getEpochReward (epoch, ada, operatorsStake) {
+  function getEpochReward(epoch, ada, operatorsStake) {
     const totalADAInCirculation = getTotalADAInCirculation(epoch)
     let stakePoolFixedFee = toADA(parseFloat(values.stakePoolFixedFee))
     if (isNaN(stakePoolFixedFee)) stakePoolFixedFee = 0
     const epochDistribution = getDistributableRewards(epoch)
     const poolSaturation = totalADAInCirculation / values.totalStakePools
     const control = values.stakePoolControl * totalADAInCirculation
-    const cappedADA = Math.min(ada, Math.max(0, Math.min(poolSaturation, control) - operatorsStake))
+    const cappedADA = Math.min(
+      ada,
+      Math.max(0, Math.min(poolSaturation, control) - operatorsStake),
+    )
     const operatorsPledge = Math.min(poolSaturation, operatorsStake)
     const operatorsPledgePercentage = operatorsPledge / totalADAInCirculation
 
     const z0 = 1 / values.totalStakePools
     const sigmaPrime = Math.min(z0, values.stakePoolControl)
 
-    let grossPoolReward = epochDistribution / (1 + values.influenceFactor) * (sigmaPrime + values.influenceFactor * operatorsPledgePercentage * (((sigmaPrime - operatorsPledgePercentage) * ((z0 - sigmaPrime) / z0)) / z0))
+    let grossPoolReward =
+      (epochDistribution / (1 + values.influenceFactor)) *
+      (sigmaPrime +
+        values.influenceFactor *
+          operatorsPledgePercentage *
+          (((sigmaPrime - operatorsPledgePercentage) *
+            ((z0 - sigmaPrime) / z0)) /
+            z0))
     const penalty = (1 - values.stakePoolPerformance) * grossPoolReward
     grossPoolReward = Math.max(0, grossPoolReward - penalty)
-    grossPoolReward = Math.max(0, grossPoolReward - values.epochDurationInDays * stakePoolFixedFee)
+    grossPoolReward = Math.max(
+      0,
+      grossPoolReward - values.epochDurationInDays * stakePoolFixedFee,
+    )
     const margin = grossPoolReward * values.stakePoolMargin
     const netReward = grossPoolReward - margin
-    const adaInPool = Math.min(values.stakePoolControl * values.totalADAInCirculation, poolSaturation)
+    const adaInPool = Math.min(
+      values.stakePoolControl * values.totalADAInCirculation,
+      poolSaturation,
+    )
     const operatorsReward = netReward * (operatorsPledge / adaInPool)
     const stakePoolControlADA = values.stakePoolControl * totalADAInCirculation
-    const reward = (netReward * cappedADA / stakePoolControlADA)
+    const reward = (netReward * cappedADA) / stakePoolControlADA
     return {
       ada: ada + reward,
       reward: reward,
-      operatorsStake: operatorsStake + operatorsReward + margin
+      operatorsStake: operatorsStake + operatorsReward + margin,
     }
   }
 
-  function getRewards (initialADA, initialOperatorsStake) {
+  function getRewards(initialADA, initialOperatorsStake) {
     const rewards = []
     const n = Math.floor(365 / values.epochDurationInDays)
     while (rewards.length < n) {
-      rewards.push(getEpochReward(
-        values.currentEpoch + rewards.length,
-        (rewards[rewards.length - 1] || {}).ada || initialADA,
-        (rewards[rewards.length - 1] || {}).operatorsStake || initialOperatorsStake
-      ))
+      rewards.push(
+        getEpochReward(
+          values.currentEpoch + rewards.length,
+          (rewards[rewards.length - 1] || {}).ada || initialADA,
+          (rewards[rewards.length - 1] || {}).operatorsStake ||
+            initialOperatorsStake,
+        ),
+      )
     }
 
     return rewards
@@ -99,7 +130,7 @@ const Delegator = ({
     const dailyReward = epochReward / values.epochDurationInDays
     const yearlyReward = rewards[rewards.length - 1].ada - ada
 
-    const getPercentage = (n) => {
+    const getPercentage = n => {
       if (n === Infinity) return 'N/A'
       return `${normalizeLargeNumber(n, 4, true)}%`
     }
@@ -110,30 +141,30 @@ const Delegator = ({
         ...rewards.map((reward, index) => ({
           x: index + 1,
           y: fromADA(reward.ada),
-          reward: fromADA(reward.reward)
-        }))
+          reward: fromADA(reward.reward),
+        })),
       ],
       breakdown: [
         {
           daily: {
             ada: normalizeLargeNumber(dailyReward, 6, true),
             currency: normalizeLargeNumber(fromADA(dailyReward), 6, true),
-            yield: getPercentage(dailyReward / ada * 100)
+            yield: getPercentage((dailyReward / ada) * 100),
           },
           epoch: {
             ada: normalizeLargeNumber(epochReward, 6, true),
             currency: normalizeLargeNumber(fromADA(epochReward), 6, true),
-            yield: getPercentage(epochReward / ada * 100)
+            yield: getPercentage((epochReward / ada) * 100),
           },
           yearly: {
             ada: normalizeLargeNumber(yearlyReward, 6, true),
             currency: normalizeLargeNumber(fromADA(yearlyReward), 6, true),
-            yield: getPercentage(yearlyReward / ada * 100)
-          }
-        }
-      ]
+            yield: getPercentage((yearlyReward / ada) * 100),
+          },
+        },
+      ],
     })
-  }, [ values ])
+  }, [values])
 
   return (
     <Fragment>
@@ -157,20 +188,32 @@ const Delegator = ({
           />
         </div>
       </HalfWidthGroup>
-      {showAdvancedOptions &&
+      {showAdvancedOptions && (
         <Fragment>
           <HalfWidthGroup>
-            {values.currency.key !== 'ADA' &&
+            {values.currency.key !== 'ADA' && (
               <div>
                 <ExchangeRate
                   value={values.currency.exchangeRate}
-                  onChange={value => setValue('currency', { ...values.currency, exchangeRate: value })}
+                  onChange={value =>
+                    setValue('currency', {
+                      ...values.currency,
+                      exchangeRate: value,
+                    })
+                  }
                   label={content.staking_calculator.exchange_rate_label}
-                  helperText={<Markdown source={content.staking_calculator.exchange_rate_descriptor.replace(/{{\s?currency\s?}}/g, values.currency.key)} />}
+                  helperText={
+                    <Markdown
+                      source={content.staking_calculator.exchange_rate_descriptor.replace(
+                        /{{\s?currency\s?}}/g,
+                        values.currency.key,
+                      )}
+                    />
+                  }
                   symbol={getCurrencySymbol(values.currency.key)}
                 />
               </div>
-            }
+            )}
             <div>
               <StakePoolFixedFee
                 toADA={toADA}
@@ -183,7 +226,13 @@ const Delegator = ({
                     source={
                       values.currency.key === 'ADA'
                         ? content.staking_calculator.fixed_fee_descriptor_ada
-                        : content.staking_calculator.fixed_fee_descriptor.replace(/{{\s?amount\s?}}/g, normalizeLargeNumber(parseFloat(toADA(values.stakePoolFixedFee)), 6))
+                        : content.staking_calculator.fixed_fee_descriptor.replace(
+                            /{{\s?amount\s?}}/g,
+                            normalizeLargeNumber(
+                              parseFloat(toADA(values.stakePoolFixedFee)),
+                              6,
+                            ),
+                          )
                     }
                   />
                 }
@@ -196,9 +245,14 @@ const Delegator = ({
               <TransactionFeesPerEpoch
                 value={values.transactionFeesPerEpoch}
                 onChange={value => setValue('transactionFeesPerEpoch', value)}
-                label={content.staking_calculator.transaction_fees_per_epoch_label}
+                label={
+                  content.staking_calculator.transaction_fees_per_epoch_label
+                }
                 adaSymbol={getCurrencySymbol('ADA')}
-                helperText={content.staking_calculator.transaction_fees_per_epoch_descriptor}
+                helperText={
+                  content.staking_calculator
+                    .transaction_fees_per_epoch_descriptor
+                }
               />
             </div>
             <div>
@@ -206,7 +260,9 @@ const Delegator = ({
                 value={values.operatorsStake}
                 onChange={value => setValue('operatorsStake', value)}
                 label={content.staking_calculator.operators_stake_label}
-                helperText={content.staking_calculator.operators_stake_descriptor}
+                helperText={
+                  content.staking_calculator.operators_stake_descriptor
+                }
                 adaSymbol={getCurrencySymbol('ADA')}
               />
             </div>
@@ -216,15 +272,22 @@ const Delegator = ({
               value={values.stakePoolControl}
               onChange={value => setValue('stakePoolControl', value)}
               label={content.staking_calculator.stake_pool_control_label}
-              helperText={content.staking_calculator.stake_pool_control_descriptor}
+              helperText={
+                content.staking_calculator.stake_pool_control_descriptor
+              }
               saturated={values.stakePoolControl > 1 / values.totalStakePools}
               totalADAInCirculation={values.totalADAInCirculation}
               totalStakePools={values.totalStakePools}
-              saturationLabel={(
+              saturationLabel={
                 <Fragment>
-                  {content.staking_calculator.saturation} {getCurrencySymbol('ADA')} {normalizeLargeNumber(1 / values.totalStakePools * values.totalADAInCirculation, 6)}
+                  {content.staking_calculator.saturation}{' '}
+                  {getCurrencySymbol('ADA')}{' '}
+                  {normalizeLargeNumber(
+                    (1 / values.totalStakePools) * values.totalADAInCirculation,
+                    6,
+                  )}
                 </Fragment>
-              )}
+              }
               adaSymbol={getCurrencySymbol('ADA')}
               normalizeLargeNumber={normalizeLargeNumber}
               minValue={0}
@@ -242,7 +305,9 @@ const Delegator = ({
               value={values.stakePoolMargin}
               onChange={value => setValue('stakePoolMargin', value)}
               label={content.staking_calculator.stake_pool_margin_label}
-              helperText={content.staking_calculator.stake_pool_margin_descriptor}
+              helperText={
+                content.staking_calculator.stake_pool_margin_descriptor
+              }
             />
           </FullWidthGroup>
           <FullWidthGroup>
@@ -250,7 +315,9 @@ const Delegator = ({
               value={values.stakePoolPerformance}
               onChange={value => setValue('stakePoolPerformance', value)}
               label={content.staking_calculator.stake_pool_performance_label}
-              helperText={content.staking_calculator.stake_pool_performance_descriptor}
+              helperText={
+                content.staking_calculator.stake_pool_performance_descriptor
+              }
             />
           </FullWidthGroup>
           <FullWidthGroup>
@@ -258,7 +325,9 @@ const Delegator = ({
               value={values.influenceFactor}
               onChange={value => setValue('influenceFactor', value)}
               label={content.staking_calculator.influence_factor_label}
-              helperText={content.staking_calculator.influence_factor_descriptor}
+              helperText={
+                content.staking_calculator.influence_factor_descriptor
+              }
             />
           </FullWidthGroup>
           <FullWidthGroup>
@@ -278,25 +347,29 @@ const Delegator = ({
             />
           </FullWidthGroup>
         </Fragment>
-      }
+      )}
       <Rewards
         fixedRewardsIndex={0}
         containerRef={containerRef}
         normalizeLargeNumber={normalizeLargeNumber}
         graphData={[
           {
-            yLabel: typeof getCurrencySymbol(values.currency.key) === 'string'
-              ? `${values.currency.key} (${getCurrencySymbol(values.currency.key)})`
-              : values.currency.key,
-            currencySymbol: typeof getCurrencySymbol(values.currency.key) === 'string'
-              ? getCurrencySymbol(values.currency.key)
-              : values.currency.key,
+            yLabel:
+              typeof getCurrencySymbol(values.currency.key) === 'string'
+                ? `${values.currency.key} (${getCurrencySymbol(
+                    values.currency.key,
+                  )})`
+                : values.currency.key,
+            currencySymbol:
+              typeof getCurrencySymbol(values.currency.key) === 'string'
+                ? getCurrencySymbol(values.currency.key)
+                : values.currency.key,
             key: 'total_ada',
             title: 'Rewards breakdown',
-            data: rewards.graphData
-          }
+            data: rewards.graphData,
+          },
         ]}
-        rewards={rewards.breakdown.map((reward) => ({
+        rewards={rewards.breakdown.map(reward => ({
           title: content.staking_calculator.delegation_rewards,
           labels: {
             ada: 'ADA',
@@ -304,9 +377,9 @@ const Delegator = ({
             currencySymbol: getCurrencySymbol(values.currency.key),
             adaSymbol: getCurrencySymbol('ADA'),
             yield: content.staking_calculator.delegation_rewards,
-            yearly: content.staking_calculator.yearly
+            yearly: content.staking_calculator.yearly,
           },
-          breakdown: reward
+          breakdown: reward,
         }))}
       />
     </Fragment>
@@ -327,7 +400,7 @@ Delegator.propTypes = {
   currencies: PropTypes.array.isRequired,
   getDistributableRewards: PropTypes.func.isRequired,
   getTotalADAInCirculation: PropTypes.func.isRequired,
-  containerRef: PropTypes.object.isRequired
+  containerRef: PropTypes.object.isRequired,
 }
 
 export default Delegator
