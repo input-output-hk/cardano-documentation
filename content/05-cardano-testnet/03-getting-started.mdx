@@ -1,0 +1,40 @@
+---
+title: Getting started
+metaTitle: Getting started with the Cardano testnet
+---
+
+To get started and join the Cardano testnet, you should install and configure the Cardano node and the command line interface (CLI), and generate payment keys and addresses. Note, that you will also need **to get some test ada** (tADA) to test your transactions, which will be possible to monitor using [Cardano Testnet Explorer](https://explorer.cardano-testnet.iohkdev.io/en) or [Testnet Cardanoscan](https://testnet.cardanoscan.io/) for example.
+
+## System requirements
+
+The Cardano node can run on the following platforms:
+
+-   Linux Ubuntu 19.10 (Eoan Ermine) or later
+-   Linux Mint 19.3 (Tricia) or later
+-   Linux Debian 10.3 (Buster) or later
+-   MacOSX 10.14.0 (Mojave) or later
+-   Windows 10
+
+## Installing the node
+
+Download the latest version of the node:
+
+-   [Cardano node releases](https://github.com/input-output-hk/cardano-node/releases)
+
+Check your executables. The latest versions of the Cardano node and CLI can be found here:
+
+-   [Linux](https://hydra.iohk.io/build/16934881)
+-   [Win64](https://hydra.iohk.io/job/Cardano/cardano-node/linux.windows.cardano-node-win64/latest-finished)
+-   [macOS](https://hydra.iohk.io/job/Cardano/cardano-node/macos.cardano-node-macos/latest-finished)
+    
+There are a number of ways to install and run a Cardano node on testnet. The choice of the best-matching method depends on the operating system, level of technical expertise, and personal preferences.
+
+Building the node using Nix is the recommended method, as this is what IOG’s internal development teams use and is considered the most reliable.
+
+For more information on the various options, see:
+
+-   [Building the node using Nix](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/building-the-node-using-nix.md)
+-   [Building the node from source](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/install.md/)
+-   [Building the node using Docker](https://hub.docker.com/r/inputoutput/cardano-node)
+    
+When installing the node, it is also essential to build the [cardano-client](https://github.com/input-output-hk/cardano-node/tree/master/cardano-client-demo). This tool is built similarly to the node. Since it is so fundamental, all tutorials that build the node also build the client.
