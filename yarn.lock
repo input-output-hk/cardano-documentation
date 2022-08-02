@@ -1678,6 +1678,14 @@
     react-helmet-async "^1.0.4"
     react-markdown "^4.2.2"
 
+"@input-output-hk/front-end-core-libraries@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@input-output-hk/front-end-core-libraries/-/front-end-core-libraries-1.2.2.tgz#ea4c6b5194dfe05b1d9e0d49c8fa8c4e979a11e4"
+  integrity sha512-OYMNS7UBD5tL88NRy5nHsJYaQ++IbvQP3lKwoimaJnhTTybfcJL4iEhFukQer50Ot75ZSRfCJEmdXG+kGe1+FQ==
+  dependencies:
+    prop-types "^15.6.2"
+    react-ga "^2.7.0"
+
 "@input-output-hk/front-end-site-components@^1.2.10":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@input-output-hk/front-end-site-components/-/front-end-site-components-1.4.0.tgz#01d33c51f113795df457db8f079d012cb1df0d3d"
@@ -14606,6 +14614,11 @@ react-feather@^2.0.3:
   integrity sha512-BLhukwJ+Z92Nmdcs+EMw6dy1Z/VLiJTzEQACDUEnWMClhYnFykJCGWQx+NmwP/qQHGX/5CzQ+TGi8ofg2+HzVQ==
   dependencies:
     prop-types "^15.7.2"
+
+react-ga@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.7.0.tgz#24328f157f31e8cffbf4de74a3396536679d8d7c"
+  integrity sha512-AjC7UOZMvygrWTc2hKxTDvlMXEtbmA0IgJjmkhgmQQ3RkXrWR11xEagLGFGaNyaPnmg24oaIiaNPnEoftUhfXA==
 
 react-github-btn@^1.1.1:
   version "1.3.0"

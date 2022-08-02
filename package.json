@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.9.3",
     "@emotion/styled-base": "^10.0.24",
     "@input-output-hk/front-end-core-components": "^1.0.9",
+    "@input-output-hk/front-end-core-libraries": "^1.2.2",
     "@input-output-hk/front-end-site-components": "^1.2.10",
     "@input-output-hk/front-end-themes": "^1.2.6",
     "@material-ui/core": "^4.12.4",
