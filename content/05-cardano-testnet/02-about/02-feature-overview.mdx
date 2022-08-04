@@ -35,20 +35,16 @@ Due to performance improvements in the Plutus evaluator, both Plutus v1 and Plut
 
 The updated cost model parameters include the following changes:
 
-1.  Extend the set of built-in functions by adding these new built-ins:
+1.  Extend the set of built-in functions by adding the new built-in “serialiseData.”
 
--   `serialiseData`
--   `verifyEcdsaSecp256k1Signature`
--   `verifySchnorrSecp256k1Signature`
+2.  The built-in function “verifySignature” was renamed “verifyEd25519Signature” to make it more clear what its function is.
     
-2.  Given the two new signature verification built-in functions referenced immediately above, the built-in function `verifySignature` was renamed `verifyEd25519Signature` to make it more clear what its function is.
-
-3.  Recalibrate the cost model for the version of the evaluator in the node to align with the CPU parameter changes.
-
-### New Plutus Core built-ins
-
-The built-in types and type operators remain unchanged from the Alonzo release. All the new built-in functions are backward compatible. Adding them does not break any older script validators. The Vasil release continues to support the Alonzo built-in functions and adds the following new functions: 
+3.  Recalibrate the cost model for the version of the evaluator in the node to align with the CPU parameters changes.
     
+### New Plutus Core built-in
+
+The built-in types and type operators remain unchanged from the Alonzo release. All the new built-in functions are backward compatible. Adding them does not break any older script validators. The Vasil release continues to support the Alonzo built-in functions and adds the following new function:
+
 **serialiseData**
 
 A new Plutus built-in is added for serializing `BuiltinData` to `BuiltinByteString`. The serialiseData function takes a data object and converts it into a [CBOR](https://cbor.io/) object.
@@ -56,18 +52,6 @@ A new Plutus built-in is added for serializing `BuiltinData` to `BuiltinByteStri
 Plutus already provides a built-in for hashing data structure, for example, `sha2_256 :: BuiltinByteString -> BuiltinByteString`, it does not provide generic ways of serializing some data types to `BuiltinByteString`.
 
 The overall memory and CPU costs are reduced by having a new built-in to serialize any Plutus ‘BuiltinData’ to ‘BuiltinByteString’ such that validators can leverage more optimized implementations and bytestring builders via built-ins than what is available on-chain.
-
-**verifyEcdsaSecp256k1Signature**
-
-The `verifyEcdsaSecp256k1Signature` function performs elliptic curve digital signature verification over the `secp256k1` curve and conforms to a uniform interface for digital signature verification algorithms.
-
-The ECDSA scheme admits two distinct valid signatures for a given message and private key. We follow the restriction imposed by Bitcoin and only accept the smaller signature: `verifyEcdsaSecp256k1Signature` will return false if the larger one is supplied.
-
-The keys for `verifyEcdsaSecp256k1Signature` exceed the maximum size that can be encoded in a constant bytestring and therefore must be split into 2 bytestrings and concatenated in the validator script.
-
-**verifySchnorrSecp256k1Signature**
-
-The `verifySchnorrSecp256k1Signature` function performs verification of Schnorr signatures over the `secp256k1` curve and conforms to a uniform interface for digital signature verification algorithms. 
 
 For more explanations, how-to guides, and tutorials, see [Plutus Docs.](https://plutus.readthedocs.io/en/latest/index.html)
 
