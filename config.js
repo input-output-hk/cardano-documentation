@@ -57,7 +57,7 @@ const config = {
     ],
     links: [
       { text: 'Cardano.org', link: 'https://cardano.org' },
-      { text: 'Developer Portal', link: '(https://developers.cardano.org/' },
+      { text: 'Developer Portal', link: 'https://developers.cardano.org/' },
     ],
     frontLine: true, // This toggles collapse arrows
     ignoreIndex: true,

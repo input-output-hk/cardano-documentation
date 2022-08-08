@@ -511,11 +511,13 @@ export const baseStyles = injectGlobal`
     width: 100%;
     padding-right: 35px;
     padding-left: 15px;
+    justify-content: space-between;
   }
 
   .sideBarUL .sectionHeading + ul a {
     font-weight: normal;
   }
+  
 
   .showFrontLine .item a {
     color: #1d1e21;
