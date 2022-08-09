@@ -56,7 +56,7 @@ Another possible option to [configure the node is using YAML](https://github.com
 
 Note that mainnet and testnet commands are very similar except for the flag usage. For example, when interacting with cardano-cli on mainnet, you should add the `--mainnet` flag. However, to use the same commands on testnet, you should use the `--testnet-magic INTEGER` flag instead. `INTEGER` indicates the number of the testnet.
 
-The Cardano public testnet integer is `1097911063`.
+The Cardano public testnet integer is `1097911063`. If you're using a pre-production environment, its integer is `1`.
 
 It is also useful to store this number in an environment variable: `export TESTNET=1097911063`. You can then use the flag as follows: `--testnet-magic $TESTNET`.
 
@@ -104,7 +104,7 @@ To fund your testnet address, go to the testnet faucet and request some test ada
 
 -   The testnet faucet
 
-If you're working in a *preproduction environment* and have an API key, you can run the following command to fund your address:
+If you're working in a *pre-production environment* and have an API key, you can run the following command to fund your address:
 
 `curl -X POST -s 'https://faucet.preprod.world.dev.cardano.org/send-money/YOURADDRESS?api_key=YOURAPIKEY'`
 
