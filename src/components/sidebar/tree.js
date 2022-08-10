@@ -251,11 +251,12 @@ const Tree = ({ edges }) => {
       items.forEach(item => {
         const strippedUrl = stripNumbers(item.url)
 
-        if (currentUrl.includes(strippedUrl) && currentUrl !== strippedUrl)
+        if (currentUrl.startsWith(strippedUrl) && currentUrl !== strippedUrl) {
           setCollapsed({
             ...collapsed,
             [strippedUrl]: false,
           })
+        }
 
         // Call function recursively if it has children
         if (item.items?.length) processItems(item.items)
