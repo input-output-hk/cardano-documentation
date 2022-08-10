@@ -1,5 +1,4 @@
 // This is the theme object from the old testnets site. Using it here for the purpose of the staking calculator etc.
-// TODO: Tidy this up and keep only nececarry values
 
 export default {
   breakpoints: {
