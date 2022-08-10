@@ -13,6 +13,7 @@ const TreeNode = ({
   collapsed,
   url,
   title,
+  externalUrl,
   items,
   ...rest
 }) => {
@@ -37,17 +38,6 @@ const TreeNode = ({
 
   const calculatedClassName = `${className} item ${active ? 'active' : ''}`
 
-  // TODO: Some child entries are intented to simply link out to an external source.
-  // This is a quick and dirty way of making this happen which needs to be tidied up.
-
-  if (title === 'Testnet Explorer')
-    url = 'https://explorer.cardano-testnet.iohkdev.io/en'
-  if (title === 'Grafana Dashboard')
-    url =
-      'https://monitoring.cardano-testnet.iohkdev.io/grafana/d/Oe0reiHef/cardano-application-metrics-v2?orgId=1&refresh=1m&from=now-2d&to=now'
-
-  const isExternal = url && url.includes('http')
-
   return (
     <li className={calculatedClassName}>
       {hasChildren
@@ -66,9 +56,9 @@ const TreeNode = ({
             </a>
           )
         : title && (
-            <Link to={url}>
+            <Link to={externalUrl || url}>
               {title}
-              {isExternal && <ExternalLink size={14} />}
+              {externalUrl && <ExternalLink size={14} />}
 
               {!config.sidebar.frontLine && title && hasChildren ? (
                 <button

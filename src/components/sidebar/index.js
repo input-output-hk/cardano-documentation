@@ -98,6 +98,9 @@ const SidebarLayout = ({ location }) => (
         allMdx {
           edges {
             node {
+              frontmatter {
+                externalUrl
+              }
               fields {
                 slug
                 title

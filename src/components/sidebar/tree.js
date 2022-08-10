@@ -19,6 +19,7 @@ const calculateTreeData = edges => {
       accu,
       {
         node: {
+          frontmatter: { externalUrl },
           fields: { slug, title },
         },
       },
@@ -64,6 +65,7 @@ const calculateTreeData = edges => {
           url: slug,
           items: [],
           title,
+          externalUrl,
         })
       }
 
