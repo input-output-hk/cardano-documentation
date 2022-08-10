@@ -246,16 +246,20 @@ const Tree = ({ edges }) => {
   // The curent items parent should never be collapsed - this works when navigating prev/next and when accessing
   // a url directly.
   useEffect(() => {
+    /**
+     * expand sections depending the current URL
+     * accumulate this in an object so that we update state only once
+     * @type {Partial<typeof collapsed>}
+     */
+    let patchCollapsed = {};
+
     // Recursive function to loop through all levels of tree because we don't know how deep the tree might get
     const processItems = items =>
       items.forEach(item => {
         const strippedUrl = stripNumbers(item.url)
 
         if (currentUrl.startsWith(strippedUrl) && currentUrl !== strippedUrl) {
-          setCollapsed({
-            ...collapsed,
-            [strippedUrl]: false,
-          })
+          patchCollapsed[strippedUrl] = false
         }
 
         // Call function recursively if it has children
@@ -263,6 +267,12 @@ const Tree = ({ edges }) => {
       })
 
     processItems(treeData.items)
+
+    /* use function form to patch current state (not the initial state) */
+    setCollapsed(collapsed => ({
+      ...collapsed,
+      ...patchCollapsed,
+    }));
   }, [currentUrl])
 
   const toggle = url => {
