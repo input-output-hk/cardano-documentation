@@ -1,0 +1,24 @@
+---
+title: Staking calculator
+metaTitle: Staking calculator
+---
+
+import StakingCalculator from '../../../src/components/StakingCalculator/StakingCalculator'
+
+Staking calculator is a tool used to predict approximate rewards a user may
+receive by delegating ada to a stake pool. Note that the rewards predicted by
+this calculator are only an **estimate**.
+
+The actual amount of ada received in rewards may vary, and will depend on a
+number of factors, including actual stake pool performance, which is the number
+of blocks a stake pool is observed to produce in a given epoch versus the number
+it was expected to produce. Changes to network parameters may also affect
+rewards.
+
+The annualized equivalent returns given by this calculator assume that stake is
+delegated to the same stake pool for a 365-day period, and that stake pool
+performance and other settings are consistent over that timeframe. IOG accepts
+no responsibility for any discrepancy between estimated and actual rewards,
+**this calculator is provided for guidance only.**
+
+<StakingCalculator />

@@ -450,8 +450,8 @@ export const baseStyles = injectGlobal`
   }
 
   .sideBarUL li a, .sectionHeading {
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: bold;
     line-height: 1.5;
     padding: 7px 24px 7px 16px;
     padding-left: 10px;
@@ -511,7 +511,13 @@ export const baseStyles = injectGlobal`
     width: 100%;
     padding-right: 35px;
     padding-left: 15px;
+    justify-content: space-between;
   }
+
+  .sideBarUL .sectionHeading + ul a {
+    font-weight: normal;
+  }
+  
 
   .showFrontLine .item a {
     color: #1d1e21;

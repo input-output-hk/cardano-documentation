@@ -1,4 +1,6 @@
 import React from 'react'
+import { ExternalLink } from 'react-feather'
+
 import OpenedSvg from '../images/opened'
 import ClosedSvg from '../images/closed'
 import config from '../../../config'
@@ -11,6 +13,7 @@ const TreeNode = ({
   collapsed,
   url,
   title,
+  externalUrl,
   items,
   ...rest
 }) => {
@@ -53,8 +56,10 @@ const TreeNode = ({
             </a>
           )
         : title && (
-            <Link to={url}>
+            <Link to={externalUrl || url}>
               {title}
+              {externalUrl && <ExternalLink size={14} />}
+
               {!config.sidebar.frontLine && title && hasChildren ? (
                 <button
                   onClick={collapse}

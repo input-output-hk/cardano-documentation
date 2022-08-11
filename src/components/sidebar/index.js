@@ -21,7 +21,7 @@ const ListItem = styled(({ className, active, level, ...props }) => {
     color: #5c6975;
     text-decoration: none;
     font-weight: ${({ level }) => (level === 0 ? 700 : 400)};
-    padding: 0.45rem 0 0.45rem ${(props) => 2 + (props.level || 0) * 1}rem;
+    padding: 0.45rem 0 0.45rem ${props => 2 + (props.level || 0) * 1}rem;
     display: block;
     position: relative;
 
@@ -29,7 +29,7 @@ const ListItem = styled(({ className, active, level, ...props }) => {
       color: rgba(82, 129, 247, 1) !important;
     }
 
-    ${(props) =>
+    ${props =>
       props.active &&
       `
       // color: #663399;
@@ -75,7 +75,7 @@ const Sidebar = styled('aside')`
   }
 `
 
-const Divider = styled((props) => (
+const Divider = styled(props => (
   <li {...props}>
     <hr />
   </li>
@@ -98,6 +98,9 @@ const SidebarLayout = ({ location }) => (
         allMdx {
           edges {
             node {
+              frontmatter {
+                externalUrl
+              }
               fields {
                 slug
                 title

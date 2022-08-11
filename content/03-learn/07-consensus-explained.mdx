@@ -1,0 +1,37 @@
+---
+title: Consensus explained
+metaTitle: Consensus explained
+---
+
+Consensus is the process of reaching a majority opinion by everyone
+involved in running the blockchain. Agreement must be made on which blocks to
+produce, which chain to adopt, and to determine the single state of the network.
+The consensus protocol determines how individual nodes assess the current state
+of the ledger system and reach a consensus. 
+
+The protocol has three main responsibilities:
+
+- Perform a leader check and decide if a block should be produced
+- Handle chain selection
+- Verify produced blocks
+
+Blockchains create consensus by allowing participants to bundle transactions
+that others have submitted to the system in _blocks_, and add them to their
+_chain_ (sequence of blocks). Determining who is allowed to produce a block
+when, and what to do in case of conflicts, (such as two participants adding
+different blocks at the same point of the chain), is the purpose of the
+different consensus protocols. 
+
+
+[Ouroboros](https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization/), 
+our ground-breaking proof-of-stake consensus protocol, is proven to have the same
+security guarantees as proof-of-work. Ouroboros establishes security guarantees, and the protocol
+was delivered with several peer-reviewed papers presented in top-tier conferences and
+publications in the area of cybersecurity and cryptography. Different
+[implementations of Ouroboros](https://iohk.io/en/blog/posts/2022/06/03/from-classic-to-chronos-the-implementations-of-ouroboros-explained/)
+have been developed. For further details on each flavour of Ouroboros, you can
+read the technical specifications for
+[Classic](https://iohk.io/en/research/library/papers/ouroborosa-provably-secure-proof-of-stake-blockchain-protocol/),
+[Byzantine Fault Tolerance (BFT)](https://iohk.io/en/research/library/papers/ouroboros-bfta-simple-byzantine-fault-tolerant-consensus-protocol/),
+[Genesis](https://iohk.io/en/research/library/papers/ouroboros-genesiscomposable-proof-of-stake-blockchains-with-dynamic-availability/), and 
+[Praos](https://iohk.io/en/research/library/papers/ouroboros-praosan-adaptively-securesemi-synchronous-proof-of-stake-protocol/).

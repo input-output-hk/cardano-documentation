@@ -337,3 +337,104 @@
   to = "/glossary/"
   status = 301
   
+
+[[redirects]]
+from = "/core-concepts/stake-pools"
+to = "/learn/stake-pools"
+status = 301
+
+
+[[redirects]]
+from = "/core-concepts/delegation"
+to = "/learn/delegation"
+status = 301
+
+[[redirects]]
+from = "/core-concepts/cardano-node"
+to = "/learn/cardano-node"
+status = 301
+
+[[redirects]]
+from = "/core-concepts/pledging-rewards"
+to = "/learn/pledging-rewards"
+status = 301
+
+[[redirects]]
+from = "/getting-started/guidelines-for-large-spos"
+to = "/development-guidelines/guidelines-for-large-spos"
+status = 301
+
+[[redirects]]
+from = "/getting-started/installing-the-cardano-node"
+to = "/development-guidelines/installing-the-cardano-node"
+status = 301
+
+[[redirects]]
+from = "/getting-started/node-monitoring"
+to = "/development-guidelines/node-monitoring"
+status = 301
+
+[[redirects]]
+from = "/getting-started/use-cli"
+to = "/development-guidelines/use-cli"
+status = 301
+
+[[redirects]]
+from = "/getting-started/references"
+to = "/development-guidelines/references"
+status = 301
+
+[[redirects]]
+from = "/getting-started/operating-a-stake-pool/about-stake-pools"
+to = "/development-guidelines/operating-a-stake-pool/about-stake-pools"
+status = 301
+
+[[redirects]]
+from = "/getting-started/operating-a-stake-pool/creating-a-stake-pool"
+to = "/development-guidelines/operating-a-stake-pool/creating-a-stake-pool"
+status = 301
+
+[[redirects]]
+from = "/getting-started/operating-a-stake-pool/node-connectivity"
+to = "/development-guidelines/operating-a-stake-pool/node-connectivity"
+status = 301
+
+[[redirects]]
+from = "/getting-started/operating-a-stake-pool/creating-keys-and-certificates"
+to = "/development-guidelines/operating-a-stake-pool/creating-keys-and-certificates"
+status = 301
+
+[[redirects]]
+from = "/getting-started/operating-a-stake-pool/public-stake-pools"
+to = "/development-guidelines/operating-a-stake-pool/public-stake-pools"
+status = 301
+
+[[redirects]]
+from = "/getting-started/operating-a-stake-pool/SMASH"
+to = "/development-guidelines/operating-a-stake-pool/SMASH"
+status = 301
+
+[[redirects]]
+from = "/getting-started/operating-a-stake-pool/performance"
+to = "/development-guidelines/operating-a-stake-pool/performance"
+status = 301
+
+[[redirects]]
+from = "/getting-started/operating-a-stake-pool/ranking"
+to = "/development-guidelines/operating-a-stake-pool/ranking"
+status = 301
+
+[[redirects]]
+from = "/getting-started/guidelines-for-large-spos"
+to = "/development-guidelines/guidelines-for-large-spos"
+status = 301
+
+[[redirects]]
+from = "/getting-started/integrating-with-third-parties"
+to = "/development-guidelines/integrating-with-third-parties"
+status = 301
+
+[[redirects]]
+from = "/getting-started/running-stake-pools-and-delegation-for-exchanges"
+to = "/development-guidelines/running-stake-pools-and-delegation-for-exchanges"
+status = 301

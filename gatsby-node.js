@@ -31,7 +31,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         `,
-      ).then((result) => {
+      ).then(result => {
         if (result.errors) {
           console.log(result.errors) // eslint-disable-line no-console
           reject(result.errors)
