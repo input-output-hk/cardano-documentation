@@ -371,7 +371,7 @@ const Faucet = () => (
     }
     reCaptcha={{
       version: 2,
-      sitekey: '6LeUZ64ZAAAAAMHWlSUqsT2bt8HS5fZXngoyeMRB',
+      sitekey: '6Lcdb2khAAAAAEg5ieRzUt6JT-lhWkN3bKsDX-Ae',
     }}
     getNativeAssetEndpoint={({ address, apiKey, reCaptchaResponse }) =>
       `https://faucet.cardano-testnet.iohkdev.io/send-money/${address}?${
