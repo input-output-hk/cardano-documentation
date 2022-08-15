@@ -365,7 +365,7 @@ const FaucetWrapper = ({
 const Faucet = () => (
   <FaucetWrapper
     getEndpoint={({ address, apiKey, reCaptchaResponse }) =>
-      `https://faucet.cardano-testnet.iohkdev.io/send-money/${address}?apiKey=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
+      `https://faucet.vasil-dev.world.dev.cardano.org//send-money?address=${address}&apiKey=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
     }
     hasApiKey
     getTransactionURL={({ txid }) =>
