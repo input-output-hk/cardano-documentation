@@ -365,7 +365,7 @@ const FaucetWrapper = ({
 const Faucet = () => (
   <FaucetWrapper
     getEndpoint={({ address, apiKey, reCaptchaResponse }) =>
-      `https://faucet.vasil-dev.world.dev.cardano.org//send-money?address=${address}&apiKey=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
+      `https://ext.earthtools.ca/send-money?address=${address}&apiKey=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
     }
     hasApiKey
     getTransactionURL={({ txid }) =>
@@ -373,10 +373,10 @@ const Faucet = () => (
     }
     reCaptcha={{
       version: 2,
-      sitekey: '6Lcdb2khAAAAAEg5ieRzUt6JT-lhWkN3bKsDX-Ae',
+      sitekey: '6LeAanQhAAAAALGaxGKy4aZUAydKOeK6KH1owhg6',
     }}
     getNativeAssetEndpoint={({ address, apiKey, reCaptchaResponse }) =>
-      `https://faucet.cardano-testnet.iohkdev.io/send-money/${address}?${
+      `https://ext.earthtools.ca/send-money/${address}?${
         apiKey
           ? `apiKey=${apiKey}`
           : `asset=${`6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7`}`
