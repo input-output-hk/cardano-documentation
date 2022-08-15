@@ -365,7 +365,7 @@ const FaucetWrapper = ({
 const Faucet = () => (
   <FaucetWrapper
     getEndpoint={({ address, apiKey, reCaptchaResponse }) =>
-      `https://ext.earthtools.ca/send-money?address=${address}&apiKey=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
+      `https://ext.earthtools.ca/send-money?address=${address}&api_key=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
     }
     hasApiKey
     getTransactionURL={({ txid }) =>
@@ -378,7 +378,7 @@ const Faucet = () => (
     getNativeAssetEndpoint={({ address, apiKey, reCaptchaResponse }) =>
       `https://ext.earthtools.ca/send-money/${address}?${
         apiKey
-          ? `apiKey=${apiKey}`
+          ? `api_key=${apiKey}`
           : `asset=${`6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7`}`
       }&g-recaptcha-response=${reCaptchaResponse}`
     }
