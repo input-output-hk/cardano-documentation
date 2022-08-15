@@ -109,8 +109,8 @@ const FaucetInner = ({
   const onSubmit = async e => {
     e.preventDefault()
     const newErrors = {}
-    if (!values.reCaptcha)
-      newErrors.reCaptcha = content.faucet_content.please_complete_recaptcha
+    // if (!values.reCaptcha)
+    //   newErrors.reCaptcha = content.faucet_content.please_complete_recaptcha
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
       return
@@ -371,10 +371,10 @@ const Faucet = () => (
     getTransactionURL={({ txid }) =>
       `https://explorer.cardano-testnet.iohkdev.io/tx/${txid}`
     }
-    reCaptcha={{
-      version: 2,
-      sitekey: '6Lcdb2khAAAAAEg5ieRzUt6JT-lhWkN3bKsDX-Ae',
-    }}
+    // reCaptcha={{
+    //   version: 2,
+    //   sitekey: '6Lcdb2khAAAAAEg5ieRzUt6JT-lhWkN3bKsDX-Ae',
+    // }}
     getNativeAssetEndpoint={({ address, apiKey, reCaptchaResponse }) =>
       `https://faucet.cardano-testnet.iohkdev.io/send-money/${address}?${
         apiKey
