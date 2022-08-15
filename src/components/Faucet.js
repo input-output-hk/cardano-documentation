@@ -125,7 +125,7 @@ const FaucetInner = ({
         nativeToken === 'Ada'
           ? getEndpoint(endpointParams)
           : getNativeAssetEndpoint(endpointParams)
-      const result = await fetch(url, { method: 'POST' })
+      const result = await fetch(url, { method: 'GET' })
       const jsonResult = await result.json()
       if (result.status === 200 && jsonResult.success === false) {
         if (jsonResult.txid === 'ERROR')
