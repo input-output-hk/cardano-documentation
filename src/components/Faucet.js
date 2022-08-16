@@ -58,12 +58,14 @@ const FaucetInner = ({
   getTransactionURL,
   reCaptcha,
   getNativeAssetEndpoint,
+  environments,
 }) => {
   const [values, setValues] = useState(DEFAULT_VALUES)
   const [errors, setErrors] = useState(DEFAULT_ERRORS)
   const [serverError, setServerError] = useState('')
   const [result, setResult] = useState(null)
   const [nativeToken, setNativeToken] = useState('Ada')
+  const [environment, setEnvironment] = useState('vasil')
   const [status, setStatus] = useState(statuses.ready)
   const reCaptchaRef = useRef(null)
   let url
@@ -119,7 +121,11 @@ const FaucetInner = ({
     setServerError('')
     setStatus(statuses.loading)
     try {
-      const endpointParams = { address: values.address, apiKey: values.apiKey }
+      const endpointParams = {
+        environment: environment,
+        address: values.address,
+        apiKey: values.apiKey,
+      }
       if (reCaptcha) endpointParams.reCaptchaResponse = values.reCaptcha
       url =
         nativeToken === 'Ada'
@@ -127,14 +133,9 @@ const FaucetInner = ({
           : getNativeAssetEndpoint(endpointParams)
       const result = await fetch(url, { method: 'GET' })
       const jsonResult = await result.json()
-      if (result.status === 200 && jsonResult.success === false) {
-        if (jsonResult.txid === 'ERROR')
-          setErrors({
-            ...errors,
-            address: content.faucet_content.invalid_address,
-          })
+      if (result.status === 200 && jsonResult.error) {
         setServerError(
-          jsonResult.message || content.faucet_content.server_error,
+          jsonResult.error.tag || content.faucet_content.server_error,
         )
         setStatus(statuses.ready)
       } else if (result.status === 200) {
@@ -216,23 +217,50 @@ const FaucetInner = ({
               </Box>
             )}
 
+            {/* Temporarily disable ability to choose token recieved as per request of devops
+              <FormControl
+                variant="outlined"
+                fullWidth
+                style={{
+                  marginBottom: '2rem',
+                }}
+              >
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Choose
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={nativeToken}
+                  onChange={handleTokenSelectChange}
+                  label="Token Type"
+                >
+                  <MenuItem value="Ada">tAda</MenuItem>
+                  <MenuItem value="Testcoin">Testcoin</MenuItem>
+                </Select>
+              </FormControl>
+             */}
+
             <FormControl
               variant="outlined"
               fullWidth
-              style={{ marginBottom: '2rem' }}
+              style={{
+                marginBottom: '2rem',
+              }}
             >
               <InputLabel id="demo-simple-select-outlined-label">
-                Choose
+                Environment
               </InputLabel>
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
-                value={nativeToken}
-                onChange={handleTokenSelectChange}
-                label="Token Type"
+                value={environment}
+                onChange={e => setEnvironment(e.target.value)}
+                label="Environment"
               >
-                <MenuItem value="Ada">tAda</MenuItem>
-                <MenuItem value="Testcoin">Testcoin</MenuItem>
+                <MenuItem value="vasil">Vasil Dev</MenuItem>
+                <MenuItem value="preview">Preview</MenuItem>
+                <MenuItem value="preprod">Preprod</MenuItem>
               </Select>
             </FormControl>
 
@@ -265,20 +293,25 @@ const FaucetInner = ({
                 />
               </Box>
             )}
-            {reCaptcha && (
-              <Box marginBottom={2}>
-                {errors.reCaptcha && (
-                  <Typography color="error">
-                    <strong>{errors.reCaptcha}</strong>
-                  </Typography>
-                )}
-                <ReCaptcha
-                  sitekey={reCaptcha.sitekey}
-                  onChange={valueOnChange('reCaptcha')}
-                  ref={reCaptchaRef}
-                />
-              </Box>
-            )}
+
+            {reCaptcha &&
+              Object.entries(environments).map(([env, { sitekey }]) =>
+                env === environment ? (
+                  <Box marginBottom={2} key={env}>
+                    {errors.reCaptcha && (
+                      <Typography color="error">
+                        <strong>{errors.reCaptcha}</strong>
+                      </Typography>
+                    )}
+                    <ReCaptcha
+                      sitekey={sitekey}
+                      onChange={valueOnChange('reCaptcha')}
+                      ref={reCaptchaRef}
+                    />
+                  </Box>
+                ) : null,
+              )}
+
             <Box display="flex" justifyContent="flex-end">
               <Button
                 disabled={status === statuses.loading}
@@ -339,7 +372,6 @@ FaucetInner.propTypes = {
   getTransactionURL: PropTypes.func,
   reCaptcha: PropTypes.shape({
     version: PropTypes.number.isRequired,
-    sitekey: PropTypes.string.isRequired,
   }),
 }
 
@@ -349,6 +381,7 @@ const FaucetWrapper = ({
   hasApiKey,
   getTransactionURL,
   reCaptcha,
+  environments,
 }) => (
   <FaucetInner
     content={content}
@@ -357,33 +390,50 @@ const FaucetWrapper = ({
     getTransactionURL={getTransactionURL}
     reCaptcha={reCaptcha}
     getNativeAssetEndpoint={getNativeAssetEndpoint}
+    environments={environments}
   />
 )
 
-// Trivial change to trigger deploy preview for test
+const Faucet = () => {
+  const environments = {
+    vasil: {
+      baseUrl: 'https://faucet.vasil-dev.world.dev.cardano.org',
+      sitekey: '6LdZdHshAAAAAIxTr6hYueaq2X3Jljegh4sqW9oU',
+    },
+    preview: {
+      baseUrl: 'https://faucet.preview.world.dev.cardano.org',
+      // sitekey: '6Lctyy4hAAAAAGqGEH-e0dmow4gEpKQPvijas6Lf',
+      sitekey: '6Le8dnshAAAAAGGl12gnWxuSJEGYbgJi3',
+    },
+    preprod: {
+      baseUrl: 'https://faucet.preprod.world.dev.cardano.org',
+      sitekey: '6Le7eHshAAAAAGnu2_6MS70cCvnGsvWRFpzVphN-',
+    },
+  }
 
-const Faucet = () => (
-  <FaucetWrapper
-    getEndpoint={({ address, apiKey, reCaptchaResponse }) =>
-      `https://ext.earthtools.ca/send-money?address=${address}&api_key=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
-    }
-    hasApiKey
-    getTransactionURL={({ txid }) =>
-      `https://explorer.cardano-testnet.iohkdev.io/tx/${txid}`
-    }
-    reCaptcha={{
-      version: 2,
-      sitekey: '6LeAanQhAAAAALGaxGKy4aZUAydKOeK6KH1owhg6',
-    }}
-    getNativeAssetEndpoint={({ address, apiKey, reCaptchaResponse }) =>
-      `https://ext.earthtools.ca/send-money/${address}?${
-        apiKey
-          ? `api_key=${apiKey}`
-          : `asset=${`6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7`}`
-      }&g-recaptcha-response=${reCaptchaResponse}`
-    }
-  />
-)
+  return (
+    <FaucetWrapper
+      getEndpoint={({ environment, address, apiKey, reCaptchaResponse }) =>
+        `${environments[environment].baseUrl}/send-money?address=${address}&api_key=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
+      }
+      hasApiKey
+      getTransactionURL={({ txid }) =>
+        `https://explorer.cardano-testnet.iohkdev.io/tx/${txid}`
+      }
+      reCaptcha={{
+        version: 2,
+      }}
+      environments={environments}
+      getNativeAssetEndpoint={({ address, apiKey, reCaptchaResponse }) =>
+        `https://ext.earthtools.ca/send-money/${address}?${
+          apiKey
+            ? `api_key=${apiKey}`
+            : `asset=${`6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7`}`
+        }&g-recaptcha-response=${reCaptchaResponse}`
+      }
+    />
+  )
+}
 
 FaucetWrapper.propTypes = {
   getEndpoint: PropTypes.func.isRequired,
@@ -392,7 +442,6 @@ FaucetWrapper.propTypes = {
   getTransactionURL: PropTypes.func,
   reCaptcha: PropTypes.shape({
     version: PropTypes.number.isRequired,
-    sitekey: PropTypes.string.isRequired,
   }),
 }
 
