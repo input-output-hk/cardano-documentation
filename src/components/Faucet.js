@@ -402,8 +402,7 @@ const Faucet = () => {
     },
     preview: {
       baseUrl: 'https://faucet.preview.world.dev.cardano.org',
-      // sitekey: '6Lctyy4hAAAAAGqGEH-e0dmow4gEpKQPvijas6Lf',
-      sitekey: '6Le8dnshAAAAAGGl12gnWxuSJEGYbgJi3',
+      sitekey: '6Le8dnshAAAAAGGl12gnWxuSJEGYbgJi3-9ptHsr',
     },
     preprod: {
       baseUrl: 'https://faucet.preprod.world.dev.cardano.org',
