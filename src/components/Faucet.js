@@ -65,7 +65,7 @@ const FaucetInner = ({
   const [serverError, setServerError] = useState('')
   const [result, setResult] = useState(null)
   const [nativeToken, setNativeToken] = useState('Ada')
-  const [environment, setEnvironment] = useState('vasil')
+  const [environment, setEnvironment] = useState('preview')
   const [status, setStatus] = useState(statuses.ready)
   const reCaptchaRef = useRef(null)
   let url
@@ -258,7 +258,7 @@ const FaucetInner = ({
                 onChange={e => setEnvironment(e.target.value)}
                 label="Environment"
               >
-                <MenuItem value="vasil">Vasil Dev</MenuItem>
+                {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
                 <MenuItem value="preview">Preview</MenuItem>
                 <MenuItem value="preprod">Preprod</MenuItem>
               </Select>

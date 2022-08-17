@@ -82,8 +82,9 @@ export default {
     request_more_funds: 'Request more funds',
     success_heading: 'Success',
     verify_transaction_hash: 'Please verify the following transaction hash:',
+    // transaction_successful: 'Your transaction has been successful and __{{ amount }}__ have been sent to __{{ address }}__.',
     transaction_successful:
-      'Your transaction has been successful and __{{ amount }}__ have been sent to __{{ address }}__.',
+      'Your transaction has been successful and test funds have been sent to __{{ address }}__.',
     please_complete_recaptcha: 'Please complete the ReCAPTCHA',
   },
   downloaders_content: {
