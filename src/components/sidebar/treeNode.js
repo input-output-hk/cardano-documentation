@@ -56,8 +56,7 @@ const TreeNode = ({
               ) : null}
             </a>
           )
-        : title &&
-          title !== 'Testnet faucet' && (
+        : title && (
             <Link to={externalUrl || url}>
               {title}
               {externalUrl && <ExternalLink size={14} />}
