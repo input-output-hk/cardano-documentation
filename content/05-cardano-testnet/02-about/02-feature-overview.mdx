@@ -29,7 +29,7 @@ Part of the specification of a language in the ledger explains how language scri
 
 ### Plutus evaluator speed improvements
 
-Due to performance improvements in the Plutus evaluator, both Plutus v1 and Plutus v2 scripts have lower cost model parameters than before, resulting in 20-30% improvements in script resource usage. 
+Due to performance improvements in the Plutus evaluator, both Plutus V1 and Plutus V2 scripts have lower cost model parameters than before, resulting in 20-30% improvements in script resource usage. 
 
 ### Updated cost model parameters
 
@@ -57,17 +57,17 @@ For more explanations, how-to guides, and tutorials, see [Plutus Docs.](https://
 
 ### Plutus script addresses
 
-*A Plutus v2 script will not have the same hash value as a Plutus v1 script.*
+*A Plutus V2 script will not have the same hash value as a Plutus V1 script.*
 
 Since scripts must match their on-chain hashes exactly, it is important that the scripts which an application uses do not accidentally change. For example, changing the source code or updating dependencies or tooling may lead to small changes in the script. As a result, the hash will change. In cases where the hashes must match exactly, even changes which do not alter the functionality of the script can be problematic.
 
-In light of this consideration, some DApp developers might expect that when doing a migration from Plutus v1 scripts to Plutus v2 scripts, the same source code, when recompiled, will generate the same hash value of that script address. However, it is impossible for a compiled v2 script to have the same script hash and address as a compiled v1 script. 
+In light of this consideration, some DApp developers might expect that when doing a migration from Plutus V1 scripts to Plutus V2 scripts, the same source code, when recompiled, will generate the same hash value of that script address. However, it is impossible for a compiled V2 script to have the same script hash and address as a compiled V1 script. 
 
-Using the exact same script with different language versions will result in different hashes. The exact same script (as in UPLC.Program) can be used as a Plutus v1 script or a Plutus v2 script, and since the language version is part of the hash, the two hashes will be different. 
+Using the exact same script with different language versions will result in different hashes. The exact same script (as in UPLC.Program) can be used as a Plutus V1 script or a Plutus V2 script, and since the language version is part of the hash, the two hashes will be different. 
 
-**A Plutus v1 script will not necessarily have the same hash value when recompiled with a later version of the Plutus Compiler**
+**A Plutus V1 script will not necessarily have the same hash value when recompiled with a later version of the Plutus Compiler**
 
-Suppose you write your Haskell source code (Plutus Tx), compile it into Plutus Core code (PLC), generate its hash value, then use it in a transaction. If you don’t save your compiled code, and then decide to use the same script in the future, you would have to recompile it. This could result in a different hash value of the script address even without upgrading from Plutus v1 to Plutus v2 scripts. This is because the hash is computed based on the output of the compiled code. 
+Suppose you write your Haskell source code (Plutus Tx), compile it into Plutus Core code (PLC), generate its hash value, then use it in a transaction. If you don’t save your compiled code, and then decide to use the same script in the future, you would have to recompile it. This could result in a different hash value of the script address even without upgrading from Plutus V1 to Plutus V2 scripts. This is because the hash is computed based on the output of the compiled code. 
 
 Given Plutus compiler version changes, changes in the dependencies, and multiple other improvements, it is expected that the hash value of the script address will change after the source code is recompiled. 
 
