@@ -103,11 +103,13 @@ Production is the live network, also referred to as mainnet. It features officia
 
 ## Working with the Cardano testnet
 
-Note that mainnet and testnet commands are very similar except for the flag usage. For example, when interacting with cardano-cli on mainnet, you should add the `--mainnet` flag. However, to use the same commands on testnet, you should use the `--testnet-magic INTEGER` flag instead. `INTEGER` indicates the number of the testnet.
+Note that mainnet and testnet commands are very similar except for the flag usage. For example, when interacting with cardano-cli on mainnet, you should add the `--mainnet` flag. However, to use the same commands on testnet, you should use the `--testnet-magic INTEGER` flag instead. 
 
-The Cardano *public testnet* integer is `1097911063`. If you're using a *pre-production environment*, its integer is `1`.
-
-It is also useful to store this number in an environment variable: `export TESTNET=1097911063`. You can then use the flag as follows: `--testnet-magic $TESTNET`.
+`INTEGER` indicates the number of the testnet:
+* Vasil devnet integer is `9`
+* Preview integer is `2`
+* Pre-production integer is `1`
+* Public testnet integer is `1097911063`. (*Note that the testnet will be deprecated soon and is not recommended for Vasil functionality testing*)
 
 ### Creating keys and addresses
 
