@@ -46,9 +46,60 @@ These configurations tell the node how to handle the updates that come with each
 For more details, see:
 
 -   [Understanding configuration files](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/understanding-config-files.md)
--   [Cardano configuration files](https://book.world.dev.cardano.org/environments.html)
-    
-Another possible option to [configure the node is using YAML](https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/configuring-a-node-using-yaml.md).
+-   [Configuring the node using YAML](https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/configuring-a-node-using-yaml.md)
+
+## Environments
+
+### Early-stage testing networks
+
+**Vasil devnet**
+
+Vasil devnet is the network for early involvement and functionality testing before a release candidate is mature. It is meant for projects such as DApps that wish to explore new features as soon as they are available.
+
+- **Current era** : Babbage
+- **Epoch length** : 2h
+- **Plutus versions** : Plutus V1 and Plutus V2
+- **Cost model** : Plutus V2 updated
+
+[**Devnet configurations**](https://book.world.dev.cardano.org/environments.html#vasil-dev)
+
+**Preview**
+
+Preview is the longer-term network environment for testing release candidates and expanded test scenarios. Preview is meant for DApps, stake pool operators (SPOs), and exchanges who wish to test mature release candidates.
+
+- **Current era** : Babbage
+- **Epoch length** : 1 day
+- **Plutus versions** : Plutus V1 and Plutus V2
+- **Cost model** : Plutus V2 updated
+
+[**Preview configurations**](https://book.world.dev.cardano.org/environments.html#preview-testnet)
+
+### Late-stage testing networks
+
+**Pre-production**
+
+Pre-production is the most mature network for testing purposes, which resembles a production (mainnet) environment. It is meant for exchanges, SPOs, pre-deployment DApps, and wallets that wish to test release functionality before deploying on mainnet.
+
+- **Current era** : Alonzo.
+- **Epoch length** : 5 days
+- **Plutus versions** : Plutus V1
+- **Cost model** : Plutus V2 _not_ updated
+
+[**Pre-production configurations**](https://book.world.dev.cardano.org/environments.html#pre-production-testnet)
+
+
+\> Note that the **Cardano testnet** is no longer recommended for testing purposes. It will be deprecated in several months, and the community is encouraged to use the environments listed above for functionality testing. Currently, the testnet supports node v.1.35.0, v.1.35.1, and v.1.35.2. It _does not_ support node v.1.35.3, which is a Vasil release candidate.
+
+**Production network (mainnet)**
+
+Production is the live network, also referred to as mainnet. It features official functionality releases. Exchanges, SPOs, DApps, wallets, and end users can use the mainnet for development, transaction processing, and other needs.
+
+- **Current era** : Alonzo
+- **Epoch length** : 5 days
+- **Plutus versions** : Plutus V1
+- **Cost model** : Plutus V2 _not_ updated
+
+[**Production configurations**](https://book.world.dev.cardano.org/environments.html#production-mainnet)
 
 ## Working with the Cardano testnet
 
