@@ -3,7 +3,9 @@ title: Getting started
 metaTitle: Getting started with the Cardano testnet
 ---
 
-To get started and join the Cardano testnet, you should install and configure the Cardano node and the command line interface (CLI), and generate payment keys and addresses. Note, that you will also need [to get some test ada](/cardano-testnet/tools/faucet) to test your transactions, which will be possible to monitor using [Cardano Testnet Explorer](https://explorer.cardano-testnet.iohkdev.io/en) or [Testnet Cardanoscan](https://testnet.cardanoscan.io/), for example.
+>Note that the **Cardano testnet** is no longer recommended for testing purposes. The community is encouraged to use preview and pre-production testnets explained below. 
+
+To get started and join Cardano testnets, you should install and configure the Cardano node and the command line interface (CLI), configure your testing environment, and generate payment keys and addresses. Note, that you will also need [to get some test ada](/cardano-testnet/tools/faucet) to test your transactions. 
 
 ## System requirements
 
@@ -41,7 +43,7 @@ When installing the node, it is also essential to build the [cardano-client](htt
 
 To start working with the node, it is essential to ensure that the node configuration, genesis and topology files are correctly set up. In addition, the node will need the configuration files specific to each era that the Cardano network has experienced thus far.
 
-These configurations tell the node how to handle the updates that come with each era (ie. Mary, Alonzo, Babbage, etc). Each new era (implemented using the [hard fork combinator technology](https://docs.cardano.org/core-concepts/about-hard-forks)) introduces protocol changes and new ledger rules. While old configurations are still valid, the new configurations and features offer new rules and improvements. In the Babbage era, for example, Plutus v2 scripts work better than Plutus v1 scripts. Plutus v1 scripts, however, are still supported. 
+These configurations tell the node how to handle the updates that come with each era (ie. Mary, Alonzo, Babbage, etc). Each new era (implemented using the [hard fork combinator technology](https://docs.cardano.org/core-concepts/about-hard-forks)) introduces protocol changes and new ledger rules. While old configurations are still valid, the new configurations and features offer new rules and improvements. In the Babbage era, for example, Plutus V2 scripts work better than Plutus V1 scripts. Plutus V1 scripts, however, are still supported. 
 
 For more details, see:
 
@@ -87,9 +89,6 @@ Pre-production is the most mature network for testing purposes, which resembles 
 
 [**Pre-production configurations**](https://book.world.dev.cardano.org/environments.html#pre-production-testnet)
 
-
->Note that the **Cardano testnet** is no longer recommended for testing purposes. It will be deprecated in several months, and the community is encouraged to use the environments listed above for functionality testing. Currently, the testnet supports node v.1.35.0, v.1.35.1, and v.1.35.2. It _does not_ support node v.1.35.3, which is a Vasil release candidate.
-
 **Production network (mainnet)**
 
 Production is the live network, also referred to as mainnet. It features official functionality releases. Exchanges, SPOs, DApps, wallets, and end users can use the mainnet for development, transaction processing, and other needs.
@@ -101,15 +100,15 @@ Production is the live network, also referred to as mainnet. It features officia
 
 [**Production configurations**](https://book.world.dev.cardano.org/environments.html#production-mainnet)
 
-## Working with the Cardano testnet
+## Working with the Cardano testnets
 
-Note that mainnet and testnet commands are very similar except for the flag usage. For example, when interacting with cardano-cli on mainnet, you should add the `--mainnet` flag. However, to use the same commands on testnet, you should use the `--testnet-magic INTEGER` flag instead. 
+Note that mainnet and testnet commands are very similar except for the flag usage. For example, when interacting with cardano-cli on mainnet, you should add the `--mainnet` flag. However, to use the same commands on testnets, you should use the `--testnet-magic INTEGER` flag instead. 
 
 `INTEGER` indicates the number of the testnet:
+
 * Vasil devnet integer is `9`
 * Preview integer is `2`
 * Pre-production integer is `1`
-* Public testnet integer is `1097911063`. (*Note that the testnet will be deprecated soon and is not recommended for Vasil functionality testing*)
 
 ### Creating keys and addresses
 
@@ -161,7 +160,7 @@ If you're working in a *pre-production environment* and have an API key, you can
 
 ### Creating, signing, and submitting transactions
 
-You’re now ready to create, sign, and submit transactions on testnet. See the tutorial:
+You’re now ready to create, sign, and submit transactions on testnets. See the tutorial:
 
 -   [Building and signing transactions](https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/building-and-signing-tx.md)
     
