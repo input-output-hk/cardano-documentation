@@ -441,6 +441,10 @@ status = 301
 
 
 
+[[redirects]]
+  from = "https://testnets.cardano.org"
+  to = "/cardano-testnet/overview"
+  status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/"
