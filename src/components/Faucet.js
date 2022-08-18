@@ -51,6 +51,25 @@ const statuses = {
   success: 'success',
 }
 
+const parseServerError = error => {
+  switch (error) {
+    case 'FaucetWebErrorInvalidApiKey':
+      return 'Invalid API key'
+    case 'FaucetWebErrorKeyCantDelegate':
+      return "Key can't delegate"
+    case 'FaucetWebErrorRateLimitExeeeded':
+      return 'Rate limit exceeded, please try later'
+    case 'FaucetWebErrorUtxoNotFound':
+      return 'UTXO not found'
+    case 'FaucetWebErrorStakeKeyNotFound':
+      return 'Stake key not found'
+    case 'FaucetWebErrorAlreadyDelegated':
+      return 'Already delegated'
+    default:
+      return error.replace('FaucetWebError', '')
+  }
+}
+
 const FaucetInner = ({
   content,
   getEndpoint,
@@ -135,7 +154,8 @@ const FaucetInner = ({
       const jsonResult = await result.json()
       if (result.status === 200 && jsonResult.error) {
         setServerError(
-          jsonResult.error.tag || content.faucet_content.server_error,
+          parseServerError(jsonResult.error.tag) ||
+            content.faucet_content.server_error,
         )
         setStatus(statuses.ready)
       } else if (result.status === 200) {

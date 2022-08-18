@@ -38,7 +38,6 @@ const TreeNode = ({
 
   const calculatedClassName = `${className} item ${active ? 'active' : ''}`
 
-  // Temporarily hidden testnet faucet from menu for testing
   return (
     <li className={calculatedClassName}>
       {hasChildren
@@ -56,8 +55,7 @@ const TreeNode = ({
               ) : null}
             </a>
           )
-        : title &&
-          title !== 'Testnet faucet' && (
+        : title && (
             <Link to={externalUrl || url}>
               {title}
               {externalUrl && <ExternalLink size={14} />}
