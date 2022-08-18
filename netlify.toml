@@ -443,27 +443,27 @@ status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org"
-  to = "/cardano-testnet/overview"
+  to = "https://docs.cardano.org/cardano-testnet/overview"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/"
-  to = "/cardano-testnet/overview"
+  to = "https://docs.cardano.org/cardano-testnet/overview"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/plutus-pioneer-program/"
-  to = "/cardano-testnet/pioneer-programs/plutus-pioneers/"
+  to = "https://docs.cardano.org/cardano-testnet/pioneer-programs/plutus-pioneers/"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/about/testnet-introduction/"
-  to = "/cardano-testnet/about/testnet-introduction/"
+  to = "https://docs.cardano.org/cardano-testnet/about/testnet-introduction/"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/about/vasil-feature-overview/"
-  to = "/cardano-testnet/about/feature-overview/"
+  to = "https://docs.cardano.org/cardano-testnet/about/feature-overview/"
   status = 301
 
 [[redirects]]
@@ -478,12 +478,12 @@ status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/about/supported-platforms/"
-  to = "/cardano-testnet/getting-started/"
+  to = "https://docs.cardano.org/cardano-testnet/getting-started/"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/about/the-testnet-faucet/"
-  to = "/cardano-testnet/tools/faucet/"
+  to = "https://docs.cardano.org/cardano-testnet/tools/faucet/"
   status = 301
 
 [[redirects]]
@@ -498,12 +498,12 @@ status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/get-started/wallet/"
-  to = "/cardano-testnet/daedalus-testnet"
+  to = "https://docs.cardano.org/cardano-testnet/daedalus-testnet"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/get-started/installing-and-running-the-cardano-node/"
-  to = "/cardano-testnet/getting-started"
+  to = "https://docs.cardano.org/cardano-testnet/getting-started"
   status = 301
 
 [[redirects]]
@@ -513,7 +513,7 @@ status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/get-started/configuring-a-node-using-yaml/"
-  to = "/cardano-testnet/getting-started/#configurations"
+  to = "https://docs.cardano.org/cardano-testnet/getting-started/#configurations"
   status = 301
 
 [[redirects]]
@@ -553,12 +553,12 @@ status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/resources/links/"
-  to = "/cardano-testnet/resources/links"
+  to = "https://docs.cardano.org/cardano-testnet/resources/links"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/resources/support/"
-  to = "/cardano-testnet/support-feedback"
+  to = "https://docs.cardano.org/cardano-testnet/support-feedback"
   status = 301
 
 [[redirects]]
@@ -568,32 +568,32 @@ status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/resources/providing-feedback/"
-  to = "/cardano-testnet/support-feedback"
+  to = "https://docs.cardano.org/cardano-testnet/support-feedback"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/resources/community/"
-  to = "/cardano-testnet/resources/community-content"
+  to = "https://docs.cardano.org/cardano-testnet/resources/community-content"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/resources/contribute/"
-  to = "/cardano-testnet/resources/community-content"
+  to = "https://docs.cardano.org/cardano-testnet/resources/community-content"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/tools/faucet/"
-  to = "/cardano-testnet/tools/faucet"
+  to = "https://docs.cardano.org/cardano-testnet/tools/faucet"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/tools/staking-calculator/"
-  to = "/cardano-testnet/tools/staking-calculator"
+  to = "https://docs.cardano.org/cardano-testnet/tools/staking-calculator"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/testnets/cardano/tools/plutus-fee-estimator/"
-  to = "/cardano-testnet/tools/plutus-fee-estimator"
+  to = "https://docs.cardano.org/cardano-testnet/tools/plutus-fee-estimator"
   status = 301
 
 [[redirects]]
