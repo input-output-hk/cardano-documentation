@@ -441,9 +441,10 @@ status = 301
 
 
 
+
 [[redirects]]
-  from = "https://testnets.cardano.org/development-environments/native-tokens/native-tokens/"
-  to = "/en/latest/native-tokens/getting-started-with-native-tokens.html"
+  from = "https://testnets.cardano.org/"
+  to = "/cardano-testnet/overview"
   status = 301
 
 [[redirects]]
