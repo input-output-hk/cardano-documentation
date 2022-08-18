@@ -22,9 +22,7 @@ export default function() {
     })
   }, [])
 
-  return (
-    <SearchContainer>
-      <div id="algoliasearch" />
-    </SearchContainer>
-  )
+  // <div id="algoliasearch" />
+
+  return <SearchContainer></SearchContainer>
 }
