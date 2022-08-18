@@ -28,7 +28,7 @@ const config = {
 		  </li>`,
     links: [{ text: '', link: '' }],
     search: {
-      enabled: true,
+      enabled: false,
       indexName: 'cardano',
       algoliaApiKey: process.env.GATSBY_ALGOLIA_API_KEY,
     },
