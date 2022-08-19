@@ -124,7 +124,7 @@ The syntax for TxOut values has been extended to include multi-asset tokens. The
 
 To receive tokens, you just need to specify any address. It is not necessary to use special addresses to hold multi-asset tokens.
 
-To inspect the values in an address, you need to view a UTxO value using:
+To inspect the values in an address, you need to view a UTXO value using:
 
 ```
 cardano-cli query utxo --testnet-magic 1
@@ -493,13 +493,13 @@ To submit a transaction to the network, use the following command:
 cardano-cli transaction submit --tx-file  "$TX_FILE" --testnet-magic 1
 ```
 
-The newly minted tokens will appear in the UTxO, and can be checked by:
+The newly minted tokens will appear in the UTXO, and can be checked by:
 
 ```
 cardano-cli query utxo --testnet-magic 1
 ```
 
-The corresponding output shows the different types of asset that are embedded in the UTxO:
+The corresponding output shows the different types of asset that are embedded in the UTXO:
 
 ```
  TxHash         TxIx    	Amount
@@ -556,7 +556,7 @@ cardano-cli transaction submit ... --tx-file tx
 
 ### Destroying (burning) tokens
 
-Tokens can be destroyed by a token issuer according to the token policy by supplying a negative value in the `--mint` field. That allows acquiring tokens in the UTxO entry in the input of a transaction, without adding them to one of the outputs, effectively destroying them. For example, tokens created in the previous section can be destroyed as follows:
+Tokens can be destroyed by a token issuer according to the token policy by supplying a negative value in the `--mint` field. That allows acquiring tokens in the UTXO entry in the input of a transaction, without adding them to one of the outputs, effectively destroying them. For example, tokens created in the previous section can be destroyed as follows:
 
 ```
 TXID1=$(cardano-cli transaction txid --tx-body-file "$TX_BODY_FILE_1")
@@ -581,5 +581,5 @@ cardano-cli transaction sign \
 cardano-cli transaction submit --tx-file  "$TX_FILE_2" --testnet-magic 1097911063
 ```
 
-> Note: Destroying tokens requires both the payment credential for using the UTxO entry with the tokens, *and* a credential for the minting policy script.
+> Note: Destroying tokens requires both the payment credential for using the UTXO entry with the tokens, *and* a credential for the minting policy script.
 
