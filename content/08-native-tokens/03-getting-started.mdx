@@ -40,7 +40,7 @@ cardano-node run --topology config/topology.json
 --socket-path "$CARDANO_NODE_SOCKET_PATH"
 ```
 
-The latest configuration files can be found [here](https://hydra.iohk.io/job/Cardano/cardano-node/cardano-deployment/latest-finished/download/1/index.html). You will need to download all the files that are associated with the `testnet` cluster and copy them to your `config` subdirectory.
+The latest configuration files can be found [here](https://github.com/input-output-hk/cardano-world/tree/master/docs/environments). We recommend you download all the files that are associated with the `pre-prod` cluster and copy them to your `config` subdirectory.
 
 Once you have started the node, leave it running in its own terminal window (or run it in the background if you prefer).
 
@@ -127,13 +127,13 @@ To receive tokens, you just need to specify any address. It is not necessary to 
 To inspect the values in an address, you need to view a UTxO value using:
 
 ```
-cardano-cli query utxo --testnet-magic 1097911063
+cardano-cli query utxo --testnet-magic 1
 ```
 
 This will show the content of any token bundles that you possess. You can choose to see a specific address using the `--address` `$ADDRESS` option:
 
 ```
-cardano-cli query utxo --address "$ADDRESS" --testnet-magic 1097911063
+cardano-cli query utxo --address "$ADDRESS" --testnet-magic 1
 ```
 
 ### Token minting policies
@@ -200,7 +200,7 @@ $ cat pay.vkey
 ./cardano-cli address build \
 --payment-verification-key-file pay.vkey \
 --out-file pay.addr \
---testnet-magic 1097911063
+--testnet-magic 1
 ```
 
 This code produces the following payment address:
@@ -213,7 +213,7 @@ addr_test1vqvlku0ytscqg32rpv660uu4sgxlje25s5xrpz7zjqsva3c8pfckz
 5. Check the balance of the payment address:
 
 ```bash
-./cardano-cli query utxo --address addr_test1vqvlku0ytscqg32rpv660uu4sgxlje25s5xrpz7zjqsva3c8pfckz --testnet-magic 1097911063
+./cardano-cli query utxo --address addr_test1vqvlku0ytscqg32rpv660uu4sgxlje25s5xrpz7zjqsva3c8pfckz --testnet-magic 1
 ```
 
 The response should show no funds:
@@ -226,7 +226,7 @@ The response should show no funds:
 6. Fund the address and check again:
 
 ```bash
-./cardano-cli query utxo --address addr_test1vqvlku0ytscqg32rpv660uu4sgxlje25s5xrpz7zjqsva3c8pfckz --testnet-magic 1097911063
+./cardano-cli query utxo --address addr_test1vqvlku0ytscqg32rpv660uu4sgxlje25s5xrpz7zjqsva3c8pfckz --testnet-magic 1
 
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
@@ -237,7 +237,7 @@ b1ddb0347fed2aecc7f00caabaaf2634f8e2d17541f6237bbed78e2092e1c414     0        10
 
 ```bash
 cardano-cli  query protocol-parameters \
---testnet-magic 1097911063 \
+--testnet-magic 1 \
 --out-file protocol.json
 ```
 
@@ -303,7 +303,7 @@ Use this code to calculate the minimum fee required for the transaction:
 --tx-in-count 1 \
 --tx-out-count 1 \
 --witness-count 2 \
---testnet-magic 1097911063 \
+--testnet-magic 1 \
 --protocol-params-file protocol.json
 
 180109 Lovelace
@@ -331,7 +331,7 @@ The transaction will now include the fee:
 --signing-key-file pay.skey \
 --signing-key-file policy/policy.skey \
 --script-file policy/policy.script \
---testnet-magic 1097911063 \
+--testnet-magic 1 \
 --tx-body-file matx.raw \
  --out-file matx.signed
 ```
@@ -339,13 +339,13 @@ The transaction will now include the fee:
 #### Submit the transaction:
 
 ```bash
-./cardano-cli transaction submit --tx-file  matx.signed --testnet-magic 1097911063
+./cardano-cli transaction submit --tx-file  matx.signed --testnet-magic 1
 ```
 No response, which is the expected result. Check the Utxo for 
 
 addr_test1vqvlku0ytscqg32rpv660uu4sgxlje25s5xrpz7zjqsva3c8pfckz
 ```bash
-./cardano-cli query utxo --address addr_test1vqvlku0ytscqg32rpv660uu4sgxlje25s5xrpz7zjqsva3c8pfckz --testnet-magic 1097911063
+./cardano-cli query utxo --address addr_test1vqvlku0ytscqg32rpv660uu4sgxlje25s5xrpz7zjqsva3c8pfckz --testnet-magic 1
 
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
@@ -376,7 +376,7 @@ cardano-cli address key-gen \
 ./cardano-cli address build \
 --payment-verification-key-file recipient/recipientpay.vkey \
 --out-file recipient/recipientpay.addr \
---testnet-magic 1097911063
+--testnet-magic 1
 
 $ cat recipient/recipientpay.addr 
 addr_test1vp8s8zu6mr73nvlsjf935k0a38n8xvp3fptkyz2vl8pserqkcx5yz
@@ -403,7 +403,7 @@ Use this code to calculate the minimum fee for the transaction:
 --tx-in-count 1 \
 --tx-out-count 2 \
 --witness-count 1 \
---testnet-magic 1097911063 \
+--testnet-magic 1 \
 --protocol-params-file protocol.json
 
 178393 Lovelace
@@ -422,7 +422,7 @@ Sign the transaction using the keys generated earlier:
 ```
 ./cardano-cli transaction sign \
 --signing-key-file pay.skey \
---testnet-magic 1097911063 \
+--testnet-magic 1 \
 --tx-body-file rec_matx.raw \
 --out-file rec_matx.signed
 ```
@@ -432,7 +432,7 @@ Sign the transaction using the keys generated earlier:
 Submit the transaction to the chain:
 
 ```
-./cardano-cli transaction submit --tx-file  rec_matx.signed --testnet-magic 1097911063
+./cardano-cli transaction submit --tx-file  rec_matx.signed --testnet-magic 1
 
 ```
 
@@ -446,7 +446,7 @@ $ cat lpconfig/launchpad-shelley-genesis.json | grep minUTxOValue
 #### Check the UTXO for address addr_test1vp8s8zu6mr73nvlsjf935k0a38n8xvp3fptkyz2vl8pserqkcx5yz:
 
 ```bash
-./cardano-cli query utxo --address addr_test1vp8s8zu6mr73nvlsjf935k0a38n8xvp3fptkyz2vl8pserqkcx5yz --testnet-magic 1097911063
+./cardano-cli query utxo --address addr_test1vp8s8zu6mr73nvlsjf935k0a38n8xvp3fptkyz2vl8pserqkcx5yz --testnet-magic 1
 
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
@@ -459,7 +459,7 @@ The recipient address we created now has 10000000 Lovelace and 1 melcoin.
 
 ```bash
 
-./cardano-cli query utxo --address addr_test1vqvlku0ytscqg32rpv660uu4sgxlje25s5xrpz7zjqsva3c8pfckz --testnet-magic 3 --mary-era
+./cardano-cli query utxo --address addr_test1vqvlku0ytscqg32rpv660uu4sgxlje25s5xrpz7zjqsva3c8pfckz --testnet-magic 1
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
 f90b8457a2cf6a1aba9c0001ae2c7084f653083c6108826115a0a64e862333a3     1        989643522 lovelace + 999999999 328a60495759e0d8e244eca5b85b2467d142c8a755d6cd0592dff47b.6d656c636f696e
@@ -480,7 +480,7 @@ cardano-cli transaction sign \
 --signing-key-file "$SPENDING_KEY" \
 --signing-key-file "$MINTING_KEY" \
 --script-file "$SCRIPT" \
---testnet-magic 3 \
+--testnet-magic 1 \
 --tx-body-file  "$TX_BODY_FILE" \
 --out-file  	"$TX_FILE"
 ```
@@ -490,13 +490,13 @@ Here, `$SPENDING_KEY` is the key that allows spending from `$UTXO`, and `$MINTIN
 To submit a transaction to the network, use the following command:
 
 ```
-cardano-cli transaction submit --tx-file  "$TX_FILE" --testnet-magic 1097911063
+cardano-cli transaction submit --tx-file  "$TX_FILE" --testnet-magic 1
 ```
 
 The newly minted tokens will appear in the UTxO, and can be checked by:
 
 ```
-cardano-cli query utxo --testnet-magic 1097911063
+cardano-cli query utxo --testnet-magic 1
 ```
 
 The corresponding output shows the different types of asset that are embedded in the UTxO:
@@ -537,7 +537,7 @@ cardano-cli transaction sign \
 --tx-body-file  "$TX_BODY_FILE_1" \
 --out-file  	"$TX_FILE_1"
  
-cardano-cli transaction submit --tx-file "$TX_FILE_1" --testnet-magic 1097911063
+cardano-cli transaction submit --tx-file "$TX_FILE_1" --testnet-magic 1
 ```
 
 ### Buying and spending tokens
@@ -574,7 +574,7 @@ cardano-cli transaction sign \
 --signing-key-file "$SPENDING_KEY" \
 --signing-key-file "$MINTING_KEY" \
 --script-file "$SCRIPT" \
---testnet-magic 1097911063 \
+--testnet-magic 1 \
 --tx-body-file  "$TX_BODY_FILE_2" \
 --out-file  	"TX_FILE_2"
  
