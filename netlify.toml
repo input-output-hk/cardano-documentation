@@ -442,16 +442,6 @@ status = 301
 
 
 [[redirects]]
-  from = "https://testnets.cardano.org"
-  to = "https://docs.cardano.org/cardano-testnet/overview"
-  status = 301
-
-[[redirects]]
-  from = "https://testnets.cardano.org/"
-  to = "https://docs.cardano.org/cardano-testnet/overview"
-  status = 301
-
-[[redirects]]
   from = "https://testnets.cardano.org/plutus-pioneer-program/"
   to = "https://docs.cardano.org/cardano-testnet/pioneer-programs/plutus-pioneers/"
   status = 301
