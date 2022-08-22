@@ -455,6 +455,7 @@ status = 301
   from = "https://testnets.cardano.org/"
   to = "https://docs.cardano.org/cardano-testnet/overview"
   status = 301
+  force = true
 
 [[redirects]]
   from = "https://testnets.cardano.org/en/"
