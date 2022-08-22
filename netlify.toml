@@ -336,7 +336,7 @@
   from = "/explore-cardano/glossary.html"
   to = "/glossary/"
   status = 301
-  
+
 
 [[redirects]]
 from = "/core-concepts/stake-pools"
@@ -444,6 +444,16 @@ status = 301
 [[redirects]]
   from = "https://testnets.cardano.org/plutus-pioneer-program/"
   to = "https://docs.cardano.org/cardano-testnet/pioneer-programs/plutus-pioneers/"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/plutus-pioneer-program/"
+  to = "https://docs.cardano.org/cardano-testnet/pioneer-programs/plutus-pioneers/"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/overview/"
+  to = "https://docs.cardano.org/cardano-testnet/overview"
   status = 301
 
 [[redirects]]
@@ -630,3 +640,191 @@ status = 301
   from = "https://testnets.cardano.org/programming-languages/marlowe/resources/links/"
   to = "/marlowe/marlowe-resources"
   status = 301
+
+# Added /en/ prefixed URLs
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/about/testnet-introduction/"
+  to = "https://docs.cardano.org/cardano-testnet/about/testnet-introduction"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/about/vasil-feature-overview/"
+  to = "https://docs.cardano.org/cardano-testnet/about/feature-overview"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/about/understanding-the-delegation-mechanism/"
+  to = "https://docs.cardano.org/learn/delegation"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/about/what-is-a-stake-pool/"
+  to = "https://docs.cardano.org/development-guidelines/operating-a-stake-pool/about-stake-pools"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/about/supported-platforms/"
+  to = "https://docs.cardano.org/cardano-testnet/getting-started"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/about/the-testnet-faucet/"
+  to = "https://docs.cardano.org/cardano-testnet/tools/faucet"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/get-started/what-is-a-cardano-node/"
+  to = "https://docs.cardano.org/learn/cardano-node"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/get-started/creating-a-stake-pool/"
+  to = "https://docs.cardano.org/development-guidelines/operating-a-stake-pool/creating-a-stake-pool"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/get-started/wallet/"
+  to = "https://docs.cardano.org/cardano-testnet/daedalus-testnet"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/get-started/installing-and-running-the-cardano-node/"
+  to = "https://docs.cardano.org/cardano-testnet/getting-started"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/get-started/installing-and-running-the-cardano-node/running-a-node-as-a-relay/"
+  to = "https://docs.cardano.org/development-guidelines/operating-a-stake-pool/node-connectivity/#connectingcoreandrelaynodes"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/get-started/configuring-a-node-using-yaml/"
+  to = "https://docs.cardano.org/cardano-testnet/getting-started/#configurations"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/get-started/pledging-and-rewards/"
+  to = "https://docs.cardano.org/learn/pledging-rewards"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/get-started/SP_metadata_register/"
+  to = "https://docs.cardano.org/development-guidelines/operating-a-stake-pool/public-stake-pools"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/get-started/registering-a-stake-pool-on-the-blockchain/"
+  to = "https://docs.cardano.org/development-guidelines/operating-a-stake-pool/creating-keys-and-certificates/#creatinganoperationalcertificate"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/monitor/monitoring-the-cardano-node/"
+  to = "https://docs.cardano.org/development-guidelines/node-monitoring"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/transactions/creating-transactions/"
+  to = "https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/building-and-signing-tx.md"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/transactions/diagnosing-transactions/"
+  to = "https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/diagnosing-transactions.md"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/resources/cli-references/"
+  to = "https://docs.cardano.org/development-guidelines/use-cli"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/resources/links/"
+  to = "https://docs.cardano.org/cardano-testnet/resources/links"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/resources/support/"
+  to = "https://docs.cardano.org/cardano-testnet/support-feedback"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/resources/release-notes/"
+  to = "https://docs.cardano.org/tools/release-notes"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/resources/providing-feedback/"
+  to = "https://docs.cardano.org/cardano-testnet/support-feedback"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/resources/community/"
+  to = "https://docs.cardano.org/cardano-testnet/resources/community-content"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/resources/contribute/"
+  to = "https://docs.cardano.org/cardano-testnet/resources/community-content"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/tools/faucet/"
+  to = "https://docs.cardano.org/cardano-testnet/tools/faucet"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/tools/staking-calculator/"
+  to = "https://docs.cardano.org/cardano-testnet/tools/staking-calculator"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/tools/plutus-fee-estimator/"
+  to = "https://docs.cardano.org/cardano-testnet/tools/plutus-fee-estimator"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/programming-languages/plutus/overview/"
+  to = "https://docs.cardano.org/plutus/learn-about-plutus"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/programming-languages/plutus/getting-started/"
+  to = "https://docs.cardano.org/plutus/Plutus-PG-setup"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/programming-languages/plutus/resources/"
+  to = "https://docs.cardano.org/plutus/plutus-resources"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/programming-languages/marlowe/overview/"
+  to = "https://docs.cardano.org/marlowe/learn-about-marlowe"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/programming-languages/marlowe/about/skills-and-requirements/"
+  to = "https://docs.cardano.org/marlowe/marlowe-get-started"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/programming-languages/marlowe/getting-started/modelling-financial-products-in-marlowe/"
+  to = "https://docs.cardano.org/marlowe/learn-about-marlowe"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/programming-languages/marlowe/getting-started/sample-marlowe-smart-contracts/"
+  to = "https://docs.cardano.org/marlowe/marlowe-language-guide"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/programming-languages/marlowe/getting-started/using-the-marlowe-playground/"
+  to = "https://docs.cardano.org/marlowe/marlowe-get-started"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/programming-languages/marlowe/resources/links/"
+  to = "https://docs.cardano.org/marlowe/marlowe-resources"
+  status = 301
+
+# -- End /en/ prefixed URLs
