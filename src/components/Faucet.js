@@ -86,6 +86,8 @@ const FaucetInner = ({
   const [nativeToken, setNativeToken] = useState('Ada')
   const [environment, setEnvironment] = useState('preview')
   const [status, setStatus] = useState(statuses.ready)
+  const [isPoolDelegation, setIsPoolDelegation] = useState(false)
+
   const reCaptchaRef = useRef(null)
   let url
 
@@ -144,7 +146,10 @@ const FaucetInner = ({
         environment: environment,
         address: values.address,
         apiKey: values.apiKey,
+        poolId: values.poolId,
+        isPoolDelegation,
       }
+      console.log(endpointParams)
       if (reCaptcha) endpointParams.reCaptchaResponse = values.reCaptcha
       url =
         nativeToken === 'Ada'
@@ -284,20 +289,63 @@ const FaucetInner = ({
               </Select>
             </FormControl>
 
-            <Box marginBottom={2}>
-              <TextField
-                value={values.address}
-                required
-                label="Address"
-                error={Boolean(errors.address)}
-                helperText={
-                  errors.address || content.faucet_content.address_helper_text
+            <FormControl
+              variant="outlined"
+              fullWidth
+              style={{
+                marginBottom: '2rem',
+              }}
+            >
+              <InputLabel id="demo-simple-select-outlined-label">
+                Action
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                value={isPoolDelegation ? 'delegation' : 'testada'}
+                onChange={e =>
+                  setIsPoolDelegation(e.target.value === 'delegation')
                 }
-                fullWidth
-                onChange={valueOnChange('address')}
-                disabled={status === statuses.loading}
-              />
-            </Box>
+                label="Environment"
+              >
+                {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
+                <MenuItem value="testada">Receive test ADA</MenuItem>
+                <MenuItem value="delegation">Receive pool delegation</MenuItem>
+              </Select>
+            </FormControl>
+
+            {isPoolDelegation && (
+              <Box marginBottom={2}>
+                <TextField
+                  value={values.poolId}
+                  required
+                  label="Pool ID"
+                  error={Boolean(errors.address)}
+                  helperText="The Pool ID to delegate to"
+                  fullWidth
+                  onChange={valueOnChange('poolId')}
+                  disabled={status === statuses.loading}
+                />
+              </Box>
+            )}
+
+            {!isPoolDelegation && (
+              <Box marginBottom={2}>
+                <TextField
+                  value={values.address}
+                  required
+                  label="Address"
+                  error={Boolean(errors.address)}
+                  helperText={
+                    errors.address || content.faucet_content.address_helper_text
+                  }
+                  fullWidth
+                  onChange={valueOnChange('address')}
+                  disabled={status === statuses.loading}
+                />
+              </Box>
+            )}
+
             {hasApiKey && (
               <Box marginBottom={2}>
                 <TextField
@@ -358,9 +406,12 @@ const FaucetInner = ({
               <p>{content.faucet_content.verify_transaction_hash}</p>
               <p>
                 <strong>
+                  {result.txid}
+                  {/* Remove link since no explorer post casil
                   <Link href={getTransactionURL({ txid: result.txid })}>
-                    {result.txid}
+                    
                   </Link>
+                  */}
                 </strong>
               </p>
             </Fragment>
@@ -432,8 +483,17 @@ const Faucet = () => {
 
   return (
     <FaucetWrapper
-      getEndpoint={({ environment, address, apiKey, reCaptchaResponse }) =>
-        `${environments[environment].baseUrl}/send-money?address=${address}&api_key=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
+      getEndpoint={({
+        environment,
+        address,
+        apiKey,
+        reCaptchaResponse,
+        isPoolDelegation,
+        poolId,
+      }) =>
+        isPoolDelegation
+          ? `${environments[environment].baseUrl}/delegate?poolid=${poolId}&api_key=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
+          : `${environments[environment].baseUrl}/send-money?address=${address}&api_key=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
       }
       hasApiKey
       getTransactionURL={({ txid }) =>
