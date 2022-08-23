@@ -314,7 +314,7 @@ const FaucetInner = ({
               </Select>
             </FormControl>
 
-            {isPoolDelegation ? (
+            {isPoolDelegation && (
               <Box marginBottom={2}>
                 <TextField
                   value={values.poolId}
@@ -327,7 +327,9 @@ const FaucetInner = ({
                   disabled={status === statuses.loading}
                 />
               </Box>
-            ) : (
+            )}
+
+            {!isPoolDelegation && (
               <Box marginBottom={2}>
                 <TextField
                   value={values.address}
