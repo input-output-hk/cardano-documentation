@@ -783,6 +783,17 @@ status = 301
   to = "https://docs.cardano.org/cardano-testnet/tools/faucet"
   status = 301
 
+
+[[redirects]]
+  from = "https://testnets.cardano.org/en/testnets/cardano/tools/faucet/"
+  to = "https://docs.cardano.org/cardano-testnet/tools/faucet"
+  status = 301
+
+[[redirects]]
+  from = "https://testnets.cardano.org/cardano-testnet/tools/faucet"
+  to = "https://docs.cardano.org/cardano-testnet/tools/faucet"
+  status = 301
+  
 [[redirects]]
   from = "https://testnets.cardano.org/en/testnets/cardano/tools/staking-calculator/"
   to = "https://docs.cardano.org/cardano-testnet/tools/staking-calculator"
