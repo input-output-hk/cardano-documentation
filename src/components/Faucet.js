@@ -404,9 +404,12 @@ const FaucetInner = ({
               <p>{content.faucet_content.verify_transaction_hash}</p>
               <p>
                 <strong>
+                  {result.txid}
+                  {/* Remove link since no explorer post casil
                   <Link href={getTransactionURL({ txid: result.txid })}>
-                    {result.txid}
+                    
                   </Link>
+                  */}
                 </strong>
               </p>
             </Fragment>
