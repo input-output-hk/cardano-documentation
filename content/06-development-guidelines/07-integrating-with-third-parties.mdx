@@ -34,14 +34,6 @@ and after the Shelley hard-fork and support both Byron and Shelley eras.
   from hierarchical deterministic wallets on the Cardano blockchain via HTTP
   REST or a command-line interface.
 
-- [`cardano-rest`](https://github.com/input-output-hk/cardano-rest) - is made of
-  two HTTP APIs that are used to retrieve transactions, addresses, and time
-  periods (epochs and slots) from the cardano-db-sync component and submit an
-  already serialized transaction to the network using cardano-explorer-api &
-  cardano-submit-api respectively. The cardano-submit-api uses the same API as
-  the cardano-sl:explorer to ease migration from already integrated clients. New
-  integration should, however, look into cardano-graphql.
-
 - [`cardano-graphql`](https://github.com/input-output-hk/cardano-graphql) - HTTP
   GraphQL API for Cardano. A more flexible alternative for blockchain
   exploration than cardano-rest.
