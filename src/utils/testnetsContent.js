@@ -101,8 +101,13 @@ export default {
       },
       {
         platform_name: 'windows',
-      },
+      }
     ],
+    environment: {
+      testnet: 'Testnet',
+      preprod: 'Pre-produdction',
+      preview: 'Preview'
+    },
     sha_checksum: 'SHA256 checksum',
     verify_signature: 'Verify signature',
     pgp_signature: 'PGP signature',
@@ -131,6 +136,6 @@ export default {
         '## Linux checksum verification instructions\n\n### Installer integrity\n\nVerify the sha256 hash:\n\n```shell\nsha256sum ~/Downloads/{{ filename }}\n```\n\nExpected:\n\n```shell\n{{ sha256 }}\n```\n',
       signature_instructions:
         '## Linux PGP signature verification instructions\n\n- Obtain both the Daedalus installer .bin file, and its corresponding .bin.asc signature file -- put them in the same directory.\n- Ensure that the gpg2 command is available (assuming Ubuntu Linux) in your shell, and if not -- execute the following shell command (shell commands further indicated by this bold monospace font):\n  - `apt-get install gnupg2`\n- Unless you already have a personal GPG key, create one (this is required for step 5):\n  - `gpg2 --generate-key`\n  - Supply an user ID (real name and email) that suit you personally\n  - Choose a passphrase to protect your personal key (NOTE: the passphrase can be empty, but it is not recommended if you intend to use this key and GNUPG in future)\n- Import the IOHK key:\n  - `gpg2 --keyserver hkp://keys.openpgp.org --search-keys signing.authority@iohk.io`\n  - In the selection dialogue, choose the key with fingerprint 966E5CB9CBFAA9BA\n- Sign the IOHK key (this designates trust and is required for the next step):\n  - `gpg2 --lsign D32587D4090FE461CAEE0FF4966E5CB9CBFAA9BA`\n- Verify the installer binary using the .asc signature (the .asc signature file must reside in the same directory as the installer binary):\n  - `gpg2 --verify {{ filename }}.asc`\n  - Successful verification should produce a message like follows:\n\n```shell\ngpg: assuming signed data in {{ filename }}.pkggpg: Signature made ...DATE...gpg: using RSA key 9F9840B50AE539A2732CF646C131557F1471941Agpg: checking the trustdbgpg: marginals needed: 3 completes needed: 1 trust model: pgpgpg: depth: 0 valid: 1 signed: 1 trust: 0-, 0q, 0n, 0m, 0f, 1ugpg: depth: 1 valid: 1 signed: 0 trust: 1-, 0q, 0n, 0m, 0f, 0ugpg: next trustdb check due at ...DATE...gpg: Good signature from IOHK Signing Authority <signing.authority@iohk.io>\n```\n',
-    },
+    }
   },
 }

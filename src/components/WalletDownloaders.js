@@ -129,30 +129,49 @@ const CloseModal = styled(Link)`
 
 const WalletDownloaders = () => {
   const gaCategory = 'byron_daedalus_downloaders'
+
   const settingsEndpoint =
     'https://updates-cardano-testnet.s3.amazonaws.com/daedalus-latest-version.json'
 
+  const settingsEndpointPreprod =
+    'https://updates-cardano-preprod.s3.amazonaws.com/daedalus-latest-version.json'
+
+    const settingsEndpointPreview =
+    'https://updates-cardano-preview.s3.amazonaws.com/daedalus-latest-version.json'
+
   const [platformsData, setPlatformsData] = useState(null)
+
+  const [platformsDataPreprod, setPlatformsDataPreprod] = useState(null)
+
+  const [platformsDataPreview, setPlatformsDataPreview] = useState(null)
+
   const [loading, setLoading] = useState(true)
+
   const [hasError, setHasError] = useState(false)
+
   const [activeModal, setActiveModal] = useState('')
+
   const checksumRefs = {
     windows: useRef(null),
     darwin: useRef(null),
     linux: useRef(null),
   }
 
+
   const validateData = data => {
     if (!data.platforms) return false
     const validPlatforms = ['windows', 'darwin', 'linux']
+    
     if (Object.keys(data.platforms).length !== validPlatforms.length)
       return false
     let valid = true
+
     validPlatforms.forEach(platform => {
       if (!data.platforms[platform]) {
         valid = false
       } else {
         const validKeys = ['signature', 'hash', 'URL', 'version', 'SHA256']
+
         if (Object.keys(data.platforms[platform]).length !== validKeys.length) {
           valid = false
         } else {
@@ -174,11 +193,35 @@ const WalletDownloaders = () => {
     try {
       setLoading(true)
       const result = await fetch(settingsEndpoint)
+
+      const resultPreprod = await fetch(settingsEndpointPreprod)
+
+      const resultPreview = await fetch(settingsEndpointPreview)
+
       const jsonResult = await result.json()
+      
+      const jsonResultPreprod = await resultPreprod.json()
+
+      const jsonResultPreview = await resultPreview.json()
+
       if (!validateData(jsonResult)) throw new Error('Invalid data')
       setPlatformsData(
         Object.keys(jsonResult.platforms).map(platform => ({
           ...jsonResult.platforms[platform],
+          key: platform,
+        })),
+      )
+      if (!validateData(jsonResultPreprod)) throw new Error('Invalid data')
+      setPlatformsDataPreprod(
+        Object.keys(jsonResultPreprod.platforms).map(platform => ({
+          ...jsonResultPreprod.platforms[platform],
+          key: platform,
+        })),
+      )
+      if (!validateData(jsonResultPreview)) throw new Error('Invalid data')
+      setPlatformsDataPreview(
+        Object.keys(jsonResultPreview.platforms).map(platform => ({
+          ...jsonResultPreview.platforms[platform],
           key: platform,
         })),
       )
@@ -202,6 +245,7 @@ const WalletDownloaders = () => {
 
   const getOrderedPlatforms = order => {
     const platforms = []
+
     order.forEach(platform => {
       platforms.push(
         platformsData.filter(({ key }) => platform === key).shift(),
@@ -209,6 +253,30 @@ const WalletDownloaders = () => {
     })
 
     return platforms.filter(platform => Boolean(platform))
+  }
+
+  const getOrderedPlatformsPreprod = order => {
+    const platformsPreprod = []
+
+    order.forEach(platform => {
+      platformsPreprod.push(
+        platformsDataPreprod.filter(({ key }) => platform === key).shift(),
+      )
+    })
+
+    return platformsPreprod.filter(platform => Boolean(platform))
+  }
+
+  const getOrderedPlatformsPreview = order => {
+    const platformsPreview = []
+
+    order.forEach(platform => {
+      platformsPreview.push(
+        platformsDataPreview.filter(({ key }) => platform === key).shift(),
+      )
+    })
+
+    return platformsPreview.filter(platform => Boolean(platform))
   }
 
   const checksumOnClick = (SHA256, platform, version) => e => {
@@ -219,6 +287,7 @@ const WalletDownloaders = () => {
       event: e,
     })
     const el = checksumRefs[platform].current
+
     if (!el) return
     el.select()
     el.setSelectionRange(0, SHA256.length)
@@ -250,10 +319,13 @@ const WalletDownloaders = () => {
   }
 
   const getPGPFilename = URL => `${getFilename(URL)}.asc`
+
   const getPGPBlob = signature =>
     window.Blob && new window.Blob([signature], { type: 'text/txt' })
+
   const getPGPSignatureHref = signature => {
     const blob = getPGPBlob(signature)
+
     return blob ? URL.createObjectURL(blob) : '#'
   }
 
@@ -269,113 +341,67 @@ const WalletDownloaders = () => {
 
   return (
     <Box marginTop={4} marginBottom={4}>
-      {platformsData && !hasError && !loading && (
-        <Container>
-          {getOrderedPlatforms(
-            content.downloaders_content.platforms_order.map(
-              platform => platform.platform_name,
-            ),
-          ).map(({ key, signature, hash, URL, version, SHA256 }) => (
-            <Box
-              flex={1}
-              key={key}
-              display="flex"
-              flexDirection="column"
-              justifyContent="flex-end"
-              textAlign="center"
-            >
-              <span>
-                <strong>{content.downloaders_content[key].full_label}</strong>
-              </span>
-              <span>
-                {content.downloaders_content.version}: {version}
-              </span>
-              <Box marginTop={1} marginBottom={1}>
-                <Button
-                  component={Link}
-                  href={unCacheURL(URL)}
-                  variant="contained"
-                  tracking={{
-                    category: gaCategory,
-                    label: `download_${key}_${version}`,
-                  }}
-                >
-                  {content.downloaders_content[key].short_label}
-                  <Box component="span" marginLeft={1}>
-                    <FaDownload />
-                  </Box>
-                </Button>
-              </Box>
-              <Box>
-                <span>{content.downloaders_content.sha_checksum}</span>
-                <ChecksumArea
-                  ref={checksumRefs[key]}
-                  title={content.downloaders_content.copy_to_clipboard}
-                  onClick={checksumOnClick(SHA256, key, version)}
-                  aria-label={content.downloaders_content.copy_to_clipboard}
-                  value={SHA256}
-                  readOnly
-                  rows={3}
-                />
-                <Link
-                  href="#"
-                  onClick={openModal(`${key}_checksum`)}
-                  tracking={{
-                    category: gaCategory,
-                    label: `view_checksum_instructions_${key}_${version}`,
-                  }}
-                >
-                  {content.downloaders_content.verify_checksum}
-                </Link>
-                <Modal
-                  open={activeModal === `${key}_checksum`}
-                  onClose={openModal('')}
-                  disableScrollLock
-                >
-                  <ModalContent>
-                    <CloseModal href="#" onClick={openModal('')}>
-                      <MdClose />
-                    </CloseModal>
-                    <ModalContentInner>
-                      <Markdown
-                        source={renderTemplateString(
-                          content.downloaders_content[key]
-                            .checksum_instructions,
-                          { SHA256, signature, hash, URL, version },
-                        )}
-                      />
-                    </ModalContentInner>
-                  </ModalContent>
-                </Modal>
-              </Box>
-              <Box marginTop={1}>
-                <Link
-                  onClick={onDownloadPGPSignature(signature, URL)}
-                  tracking={{
-                    category: gaCategory,
-                    label: `download_pgp_signature_${key}_${version}`,
-                  }}
-                  href={getPGPSignatureHref(signature)}
-                  download={getPGPFilename(URL)}
-                >
-                  {content.downloaders_content.pgp_signature}
-                  <Box marginLeft={1} component="span">
-                    <FaDownload />
-                  </Box>
-                </Link>
-                <Box>
-                  <Link
-                    href="#"
-                    onClick={openModal(`${key}_pgp`)}
+      {!hasError && !loading && platformsData && platformsDataPreprod && platformsDataPreview && ( 
+        <>
+          <h3>{content.downloaders_content.environment.testnet}</h3>
+          <Container>
+            {getOrderedPlatforms(
+              content.downloaders_content.platforms_order.map(
+                platform => platform.platform_name
+              )
+            ).map(({ key, signature, hash, URL, version, SHA256 }) => (
+              <Box
+                flex={1}
+                key={key}
+                display="flex"
+                flexDirection="column"
+                justifyContent="flex-end"
+                textAlign="center"
+              >
+                <span>
+                  <strong>{content.downloaders_content[key].full_label}</strong>
+                </span>
+                <span>
+                  {content.downloaders_content.version}: {version}
+                </span>
+                <Box marginTop={1} marginBottom={1}>
+                  <Button
+                    component={Link}
+                    href={unCacheURL(URL)}
+                    variant="contained"
                     tracking={{
                       category: gaCategory,
-                      label: `view_pgp_instructions_${key}_${version}`,
+                      label: `download_${key}_${version}`,
                     }}
                   >
-                    {content.downloaders_content.verify_signature}
+                    {content.downloaders_content[key].short_label}
+                    <Box component="span" marginLeft={1}>
+                      <FaDownload />
+                    </Box>
+                  </Button>
+                </Box>
+                <Box>
+                  <span>{content.downloaders_content.sha_checksum}</span>
+                  <ChecksumArea
+                    ref={checksumRefs[key]}
+                    title={content.downloaders_content.copy_to_clipboard}
+                    onClick={checksumOnClick(SHA256, key, version)}
+                    aria-label={content.downloaders_content.copy_to_clipboard}
+                    value={SHA256}
+                    readOnly
+                    rows={3} />
+                  <Link
+                    href="#"
+                    onClick={openModal(`${key}_checksum`)}
+                    tracking={{
+                      category: gaCategory,
+                      label: `view_checksum_instructions_${key}_${version}`,
+                    }}
+                  >
+                    {content.downloaders_content.verify_checksum}
                   </Link>
                   <Modal
-                    open={activeModal === `${key}_pgp`}
+                    open={activeModal === `${key}_checksum`}
                     onClose={openModal('')}
                     disableScrollLock
                   >
@@ -387,18 +413,320 @@ const WalletDownloaders = () => {
                         <Markdown
                           source={renderTemplateString(
                             content.downloaders_content[key]
-                              .signature_instructions,
-                            { SHA256, signature, hash, URL, version },
-                          )}
-                        />
+                              .checksum_instructions,
+                            { SHA256, signature, hash, URL, version }
+                          )} />
                       </ModalContentInner>
                     </ModalContent>
                   </Modal>
                 </Box>
+                <Box marginTop={1}>
+                  <Link
+                    onClick={onDownloadPGPSignature(signature, URL)}
+                    tracking={{
+                      category: gaCategory,
+                      label: `download_pgp_signature_${key}_${version}`,
+                    }}
+                    href={getPGPSignatureHref(signature)}
+                    download={getPGPFilename(URL)}
+                  >
+                    {content.downloaders_content.pgp_signature}
+                    <Box marginLeft={1} component="span">
+                      <FaDownload />
+                    </Box>
+                  </Link>
+                  <Box>
+                    <Link
+                      href="#"
+                      onClick={openModal(`${key}_pgp`)}
+                      tracking={{
+                        category: gaCategory,
+                        label: `view_pgp_instructions_${key}_${version}`,
+                      }}
+                    >
+                      {content.downloaders_content.verify_signature}
+                    </Link>
+                    <Modal
+                      open={activeModal === `${key}_pgp`}
+                      onClose={openModal('')}
+                      disableScrollLock
+                    >
+                      <ModalContent>
+                        <CloseModal href="#" onClick={openModal('')}>
+                          <MdClose />
+                        </CloseModal>
+                        <ModalContentInner>
+                          <Markdown
+                            source={renderTemplateString(
+                              content.downloaders_content[key]
+                                .signature_instructions,
+                              { SHA256, signature, hash, URL, version }
+                            )} />
+                        </ModalContentInner>
+                      </ModalContent>
+                    </Modal>
+                  </Box>
+                </Box>
               </Box>
-            </Box>
-          ))}
-        </Container>
+            ))}
+          </Container>
+
+          <h3>{content.downloaders_content.environment.preprod}</h3>
+          <Container>
+              {getOrderedPlatformsPreprod(
+                content.downloaders_content.platforms_order.map(
+                  platform => platform.platform_name
+                )
+              ).map(({ key, signature, hash, URL, version, SHA256 }) => (
+                <Box
+                  flex={1}
+                  key={key}
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="flex-end"
+                  textAlign="center"
+                >
+                  <span>
+                    <strong>{content.downloaders_content[key].full_label}</strong>
+                  </span>
+                  <span>
+                    {content.downloaders_content.version}: {version}
+                  </span>
+                  <Box marginTop={1} marginBottom={1}>
+                    <Button
+                      component={Link}
+                      href={unCacheURL(URL)}
+                      variant="contained"
+                      tracking={{
+                        category: gaCategory,
+                        label: `download_${key}_${version}`,
+                      }}
+                    >
+                      {content.downloaders_content[key].short_label}
+                      <Box component="span" marginLeft={1}>
+                        <FaDownload />
+                      </Box>
+                    </Button>
+                  </Box>
+                  <Box>
+                    <span>{content.downloaders_content.sha_checksum}</span>
+                    <ChecksumArea
+                      ref={checksumRefs[key]}
+                      title={content.downloaders_content.copy_to_clipboard}
+                      onClick={checksumOnClick(SHA256, key, version)}
+                      aria-label={content.downloaders_content.copy_to_clipboard}
+                      value={SHA256}
+                      readOnly
+                      rows={3} />
+                    <Link
+                      href="#"
+                      onClick={openModal(`${key}_checksum`)}
+                      tracking={{
+                        category: gaCategory,
+                        label: `view_checksum_instructions_${key}_${version}`,
+                      }}
+                    >
+                      {content.downloaders_content.verify_checksum}
+                    </Link>
+                    <Modal
+                      open={activeModal === `${key}_checksum`}
+                      onClose={openModal('')}
+                      disableScrollLock
+                    >
+                      <ModalContent>
+                        <CloseModal href="#" onClick={openModal('')}>
+                          <MdClose />
+                        </CloseModal>
+                        <ModalContentInner>
+                          <Markdown
+                            source={renderTemplateString(
+                              content.downloaders_content[key]
+                                .checksum_instructions,
+                              { SHA256, signature, hash, URL, version }
+                            )} />
+                        </ModalContentInner>
+                      </ModalContent>
+                    </Modal>
+                  </Box>
+                  <Box marginTop={1}>
+                    <Link
+                      onClick={onDownloadPGPSignature(signature, URL)}
+                      tracking={{
+                        category: gaCategory,
+                        label: `download_pgp_signature_${key}_${version}`,
+                      }}
+                      href={getPGPSignatureHref(signature)}
+                      download={getPGPFilename(URL)}
+                    >
+                      {content.downloaders_content.pgp_signature}
+                      <Box marginLeft={1} component="span">
+                        <FaDownload />
+                      </Box>
+                    </Link>
+                    <Box>
+                      <Link
+                        href="#"
+                        onClick={openModal(`${key}_pgp`)}
+                        tracking={{
+                          category: gaCategory,
+                          label: `view_pgp_instructions_${key}_${version}`,
+                        }}
+                      >
+                        {content.downloaders_content.verify_signature}
+                      </Link>
+                      <Modal
+                        open={activeModal === `${key}_pgp`}
+                        onClose={openModal('')}
+                        disableScrollLock
+                      >
+                        <ModalContent>
+                          <CloseModal href="#" onClick={openModal('')}>
+                            <MdClose />
+                          </CloseModal>
+                          <ModalContentInner>
+                            <Markdown
+                              source={renderTemplateString(
+                                content.downloaders_content[key]
+                                  .signature_instructions,
+                                { SHA256, signature, hash, URL, version }
+                              )} />
+                          </ModalContentInner>
+                        </ModalContent>
+                      </Modal>
+                    </Box>
+                  </Box>
+                </Box>
+              ))}
+            </Container>
+
+            <h3>{content.downloaders_content.environment.preview}</h3>
+            <Container>
+              {getOrderedPlatformsPreview(
+                content.downloaders_content.platforms_order.map(
+                  platform => platform.platform_name
+                )
+              ).map(({ key, signature, hash, URL, version, SHA256 }) => (
+                <Box
+                  flex={1}
+                  key={key}
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="flex-end"
+                  textAlign="center"
+                >
+                  <span>
+                    <strong>{content.downloaders_content[key].full_label}</strong>
+                  </span>
+                  <span>
+                    {content.downloaders_content.version}: {version}
+                  </span>
+                  <Box marginTop={1} marginBottom={1}>
+                    <Button
+                      component={Link}
+                      href={unCacheURL(URL)}
+                      variant="contained"
+                      tracking={{
+                        category: gaCategory,
+                        label: `download_${key}_${version}`,
+                      }}
+                    >
+                      {content.downloaders_content[key].short_label}
+                      <Box component="span" marginLeft={1}>
+                        <FaDownload />
+                      </Box>
+                    </Button>
+                  </Box>
+                  <Box>
+                    <span>{content.downloaders_content.sha_checksum}</span>
+                    <ChecksumArea
+                      ref={checksumRefs[key]}
+                      title={content.downloaders_content.copy_to_clipboard}
+                      onClick={checksumOnClick(SHA256, key, version)}
+                      aria-label={content.downloaders_content.copy_to_clipboard}
+                      value={SHA256}
+                      readOnly
+                      rows={3} />
+                    <Link
+                      href="#"
+                      onClick={openModal(`${key}_checksum`)}
+                      tracking={{
+                        category: gaCategory,
+                        label: `view_checksum_instructions_${key}_${version}`,
+                      }}
+                    >
+                      {content.downloaders_content.verify_checksum}
+                    </Link>
+                    <Modal
+                      open={activeModal === `${key}_checksum`}
+                      onClose={openModal('')}
+                      disableScrollLock
+                    >
+                      <ModalContent>
+                        <CloseModal href="#" onClick={openModal('')}>
+                          <MdClose />
+                        </CloseModal>
+                        <ModalContentInner>
+                          <Markdown
+                            source={renderTemplateString(
+                              content.downloaders_content[key]
+                                .checksum_instructions,
+                              { SHA256, signature, hash, URL, version }
+                            )} />
+                        </ModalContentInner>
+                      </ModalContent>
+                    </Modal>
+                  </Box>
+                  <Box marginTop={1}>
+                    <Link
+                      onClick={onDownloadPGPSignature(signature, URL)}
+                      tracking={{
+                        category: gaCategory,
+                        label: `download_pgp_signature_${key}_${version}`,
+                      }}
+                      href={getPGPSignatureHref(signature)}
+                      download={getPGPFilename(URL)}
+                    >
+                      {content.downloaders_content.pgp_signature}
+                      <Box marginLeft={1} component="span">
+                        <FaDownload />
+                      </Box>
+                    </Link>
+                    <Box>
+                      <Link
+                        href="#"
+                        onClick={openModal(`${key}_pgp`)}
+                        tracking={{
+                          category: gaCategory,
+                          label: `view_pgp_instructions_${key}_${version}`,
+                        }}
+                      >
+                        {content.downloaders_content.verify_signature}
+                      </Link>
+                      <Modal
+                        open={activeModal === `${key}_pgp`}
+                        onClose={openModal('')}
+                        disableScrollLock
+                      >
+                        <ModalContent>
+                          <CloseModal href="#" onClick={openModal('')}>
+                            <MdClose />
+                          </CloseModal>
+                          <ModalContentInner>
+                            <Markdown
+                              source={renderTemplateString(
+                                content.downloaders_content[key]
+                                  .signature_instructions,
+                                { SHA256, signature, hash, URL, version }
+                              )} />
+                          </ModalContentInner>
+                        </ModalContent>
+                      </Modal>
+                    </Box>
+                  </Box>
+                </Box>
+              ))}
+            </Container>
+          </>
       )}
       {loading && (
         <LoadingContainer>
