@@ -343,9 +343,9 @@ const WalletDownloaders = () => {
     <Box marginTop={4} marginBottom={4}>
       {!hasError && !loading && platformsData && platformsDataPreprod && platformsDataPreview && ( 
         <>
-          <h3>{content.downloaders_content.environment.testnet}</h3>
+          <h3>{content.downloaders_content.environment.preview}</h3>
           <Container>
-            {getOrderedPlatforms(
+            {getOrderedPlatformsPreview(
               content.downloaders_content.platforms_order.map(
                 platform => platform.platform_name
               )
@@ -599,9 +599,9 @@ const WalletDownloaders = () => {
               ))}
             </Container>
 
-            <h3>{content.downloaders_content.environment.preview}</h3>
+            <h3>{content.downloaders_content.environment.testnet}</h3>
             <Container>
-              {getOrderedPlatformsPreview(
+              {getOrderedPlatforms(
                 content.downloaders_content.platforms_order.map(
                   platform => platform.platform_name
                 )
