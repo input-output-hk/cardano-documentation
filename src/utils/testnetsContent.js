@@ -105,7 +105,7 @@ export default {
     ],
     environment: {
       testnet: 'Testnet',
-      preprod: 'Pre-produdction',
+      preprod: 'Pre-production',
       preview: 'Preview'
     },
     sha_checksum: 'SHA256 checksum',
