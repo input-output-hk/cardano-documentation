@@ -157,6 +157,18 @@ const WalletDownloaders = () => {
     linux: useRef(null),
   }
 
+  const checksumRefsPreview = {
+    windows: useRef(null),
+    darwin: useRef(null),
+    linux: useRef(null),
+  }
+
+  const checksumRefsPreprod = {
+    windows: useRef(null),
+    darwin: useRef(null),
+    linux: useRef(null),
+  }
+
 
   const validateData = data => {
     if (!data.platforms) return false
@@ -294,6 +306,36 @@ const WalletDownloaders = () => {
     document.execCommand('copy')
   }
 
+  const checksumOnClickPreview = (SHA256, platform, version) => e => {
+    e.preventDefault()
+    analytics.click({
+      category: gaCategory,
+      label: `checksum_copy_${platform}_${version}`,
+      event: e,
+    })
+    const el = checksumRefsPreview[platform].current
+    
+    if (!el) return
+    el.select()
+    el.setSelectionRange(0, SHA256.length)
+    document.execCommand('copy')
+  }
+
+  const checksumOnClickPreprod = (SHA256, platform, version) => e => {
+    e.preventDefault()
+    analytics.click({
+      category: gaCategory,
+      label: `checksum_copy_${platform}_${version}`,
+      event: e,
+    })
+    const el = checksumRefsPreprod[platform].current
+
+    if (!el) return
+    el.select()
+    el.setSelectionRange(0, SHA256.length)
+    document.execCommand('copy')
+  }
+
   const openModal = name => e => {
     e.preventDefault()
     setActiveModal(name)
@@ -383,9 +425,9 @@ const WalletDownloaders = () => {
                 <Box>
                   <span>{content.downloaders_content.sha_checksum}</span>
                   <ChecksumArea
-                    ref={checksumRefs[key]}
+                    ref={checksumRefsPreview[key]}
                     title={content.downloaders_content.copy_to_clipboard}
-                    onClick={checksumOnClick(SHA256, key, version)}
+                    onClick={checksumOnClickPreview(SHA256, key, version)}
                     aria-label={content.downloaders_content.copy_to_clipboard}
                     value={SHA256}
                     readOnly
@@ -511,9 +553,9 @@ const WalletDownloaders = () => {
                   <Box>
                     <span>{content.downloaders_content.sha_checksum}</span>
                     <ChecksumArea
-                      ref={checksumRefs[key]}
+                      ref={checksumRefsPreprod[key]}
                       title={content.downloaders_content.copy_to_clipboard}
-                      onClick={checksumOnClick(SHA256, key, version)}
+                      onClick={checksumOnClickPreprod(SHA256, key, version)}
                       aria-label={content.downloaders_content.copy_to_clipboard}
                       value={SHA256}
                       readOnly
