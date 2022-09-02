@@ -793,7 +793,8 @@ status = 301
   from = "https://testnets.cardano.org/cardano-testnet/tools/faucet/"
   to = "https://docs.cardano.org/cardano-testnet/tools/faucet"
   status = 301
-  
+  force = true
+    
 [[redirects]]
   from = "https://testnets.cardano.org/en/testnets/cardano/tools/staking-calculator/"
   to = "https://docs.cardano.org/cardano-testnet/tools/staking-calculator"
