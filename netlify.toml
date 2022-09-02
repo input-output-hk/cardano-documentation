@@ -790,7 +790,7 @@ status = 301
   status = 301
 
 [[redirects]]
-  from = "https://testnets.cardano.org/cardano-testnet/tools/faucet"
+  from = "https://testnets.cardano.org/cardano-testnet/tools/faucet/"
   to = "https://docs.cardano.org/cardano-testnet/tools/faucet"
   status = 301
   
