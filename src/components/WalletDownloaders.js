@@ -134,17 +134,17 @@ const WalletDownloaders = ({ env }) => {
     preprod: {
       endpoint:
         'https://updates-cardano-preprod.s3.amazonaws.com/daedalus-latest-version.json',
-      title: 'Pre-production',
+      title: 'Pre-production Testnet',
     },
     preview: {
       endpoint:
         'https://updates-cardano-preview.s3.amazonaws.com/daedalus-latest-version.json',
-      title: 'Preview',
+      title: 'Preview Testnet',
     },
     testnet: {
       endpoint:
         'https://updates-cardano-testnet.s3.amazonaws.com/daedalus-latest-version.json',
-      title: 'Testnet',
+      title: 'Legacy Testnet',
     },
   }
 

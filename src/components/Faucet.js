@@ -284,8 +284,8 @@ const FaucetInner = ({
                 label="Environment"
               >
                 {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
-                <MenuItem value="preview">Preview</MenuItem>
-                <MenuItem value="preprod">Preprod</MenuItem>
+                <MenuItem value="preview">Preview Testnet</MenuItem>
+                <MenuItem value="preprod">Preprod Testnet</MenuItem>
               </Select>
             </FormControl>
 
