@@ -98,19 +98,16 @@ information by visiting the
 
 ## Data update and validation process
 
-The data in the BigQuery project "cardano_mainnet" is currently updated every two hours
-to the data of the newest blocks in "db-sync".
+The data in the BigQuery ‘cardano-mainnet’ project is currently updated every two hours including the newest ‘db-sync’ blocks. 
 The [overview](https://stats.da.iogservices.io/postgres_bigquery_metrics/) of block heights
-in BigQuery vs. PostgreSQL is updated every two hours. It is expected that the data in BigQuery
-is not at the same block height as in PostgreSQL from "db-sync", but should not deviate too much.
+in BigQuery vs. PostgreSQL is also updated every two hours. It is expected that the data in BigQuery is not at the same block height as in PostgreSQL from ‘db-sync’, however, the data should not deviate too much.
 
 ### Data validation
 
-Every epoch boundary we validate the data of the past full epoch between "db-sync" and BigQuery.
-For this, we compute hashes over the data in a canonical ordering in both databases and compare them.
+The data of the past full epoch between ‘db-sync’ and BigQuery is validated on every epoch boundary. For this, we compute the data hashes in canonical order in both databases and compare them.
 
 This [report](https://datastudio.google.com/reporting/cddef62a-c257-48c7-b772-1b9fc4970498)
-shows the results of the data validation for all tables.
+shows the results of data validation for all tables.
 
 ## Query table schemas
 
