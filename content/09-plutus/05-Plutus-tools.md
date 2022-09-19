@@ -7,18 +7,6 @@ The Alonzo hard fork brings core smart contract capabilities to the Cardano ledg
 
 There are different tools that developers can use to evaluate and deploy smart contracts on Cardano. Below we take a look at these tools, their main features and point to the exact sources to use them. 
 
-## Plutus Playground
-
-The [Plutus Playground](https://playground.plutus.iohkdev.io/) provides an environment for writing and testing smart contracts before they are released on the Cardano blockchain. It is a lightweight, web-based environment for exploratory Plutus development. As well as providing a web-based simulator for writing and executing smart contracts, the Plutus Playground also allows developers to access popular smart contracts that have already been written. [Tutorials](https://plutus-apps.readthedocs.io/en/latest/marlowe/tutorials/index.html) are available within the Plutus Playground to help you get started.
-
-The Plutus Playground can be accessed through a web browser and there is no need to install software. The interface is split into three sections:
-
-- editor
-- simulation
-- transactions
-
-The simulator shows how a contract will behave on the Cardano blockchain. An important aspect of this is that it can act as a training tool for people who do not have advanced developer skills because it demonstrates the working principles. Users can define and modify the wallets that interact with a contract, as well as the actions that affect the outcome. The results can then be evaluated to see what happens on the blockchain and how transactions occur. For more information, watch the [Plutus application compiling and testing tutorial](https://www.youtube.com/watch?v=DhRS-JvoCw8) or visit the [Plutus GitHub repository](https://github.com/input-output-hk/plutus).
-
 ## Plutus Application Backend 
 
 The Plutus Application Backend (PAB) provides the components and environment to help developers interact with smart contracts so that they can create and test DApps, before deploying them to a live production environment. Much like the [Plutus Playground](https://playground.plutus.iohkdev.io/), it is a sandbox environment where developers can try out DApp functionality in advance of any full deployment on Cardano. 
@@ -57,8 +45,6 @@ In addition to the PAB itself, the following components are required:
 - **Alonzo node** — the PAB subscribes to ledger state updates from the node, using a socket protocol.
 
 The PAB is another powerful tool on Cardano that makes DApps simpler, more secure, and more cost-effective to develop. By providing information from canonical sources in a usable form, it relieves developers of many routine tasks.
-
-We will share links in due course when these are available.
 
 ## Plutus fee estimator
 
