@@ -11,7 +11,7 @@ access.
 
 [Cardano DB Sync](https://docs.cardano.org/cardano-components/cardano-db-sync)
 fetches such blockchain records and allows users to
-[query transaction and block details using CLI commands](https://docs.cardano.org/explore-cardano/cardano-architecture/working-with-db-sync).
+query transaction and block details using CLI commands.
 For more convenient and user-friendly data exploration, you can use the
 [Cardano Explorer](https://explorer.cardano.org/en.html) – a graphical user
 interface that presents details in a simple way.
