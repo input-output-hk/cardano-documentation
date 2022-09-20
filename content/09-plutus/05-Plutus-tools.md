@@ -48,7 +48,7 @@ The PAB is another powerful tool on Cardano that makes DApps simpler, more secur
 
 ## Plutus fee estimator
 
-The Plutus fee estimator has been developed by IOG performance experts as an in-house tool for price benchmarking and comparison. It uses information from real-world Plutus transactions to predict the fees that will be charged for a transaction. The estimator can be used to calculate fees for actual transactions (e.g., to determine the fees that will be charged if the network parameters change), and also to estimate fees for individual script transactions or complete DApps before or during development. It may be useful to determine the effect of script changes or optimizations on fees.
+[The Plutus fee estimator](https://docs.cardano.org/cardano-testnet/tools/plutus-fee-estimator) has been developed by IOG performance experts as an in-house tool for price benchmarking and comparison. It uses information from real-world Plutus transactions to predict the fees that will be charged for a transaction. The estimator can be used to calculate fees for actual transactions (e.g., to determine the fees that will be charged if the network parameters change), and also to estimate fees for individual script transactions or complete DApps before or during development. It may be useful to determine the effect of script changes or optimizations on fees.
 
 Fee calculation requires three pieces of information:
 
