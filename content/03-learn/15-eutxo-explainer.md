@@ -15,11 +15,11 @@ Each of these outputs specifies quantities of assets stored therein, together wi
 
 In summary, transactions consume unspent outputs from previous transactions, and produce new outputs that can be used as inputs for future transactions.
 
-![eutxo](eutxo_diagram.png)
+![eutxo](https://ucarecdn.com/2a252deb-412f-4019-ae1e-e6dba7dea50b/)
 
 The users' wallets manage these UTXOs and initiate transactions involving the UTXOs owned by the user. Every blockchain node maintains a record of the subset of all UTXOs at all times. This is called the UTXO set. In technical terms, this is the chainstate, which is stored in the data directory of every node. When a new block is added to the chain, the chainstate is updated accordingly. This new block contains the list of latest transactions (including, of course, a record of spent UTXOs, and new ones created since the chainstate was last updated). Every node maintains an exact copy of the chainstate.
 
-## Cardano’s extended UTXO model ##
+## Cardano’s extended UTXO model 
 The EUTXO model extends the UTXO model in two ways:
 1. It generalizes the concept of ‘address’ by using the lock-and-key analogy. Instead of restricting locks to public keys and keys to signatures, addresses in the EUTXO model can contain arbitrary logic in the form of scripts. For example, when a node validates a transaction, the node determines whether or not the transaction is allowed to use a certain output as an input. The transaction will look up the script provided by the output's address and will execute the script if the transaction can use the output as an input.
 2. The second difference between UTXO and EUTXO is that outputs can carry (almost) arbitrary data in addition to an address and value. This makes scripts much more powerful by allowing them to carry state information.
@@ -32,7 +32,7 @@ The UTXO model with its graph structure is fundamentally different from the acco
 
 EUTXO	 inherits the per-branches design of the UTXO (Bitcoin) model, where one branch is by definition a sequence of transactions that requires a sequence of validations. To split the logic across different branches and enforce more parallelism, it is essential to build DApps and other solutions using multiple UTXOs. This provides benefits in terms of scaling, just like developing Bitcoin services prerequisites splitting one wallet into sub wallets. 
 
-## Advantages of EUTXO ##
+## Advantages of EUTXO 
 Cardano’s EUTXO model provides a secure and versatile environment to process multiple operations without system failures. This model offers better scalability and privacy, as well as more simplified transaction logic, as each UTXO can only be consumed once and as a whole, which makes transaction verification much simpler.
 
 The EUTXO model offers unique advantages over other accounting models. The success or failure of transaction validation depends only on the transaction itself and its inputs, and not on anything else on the blockchain. As a consequence, the validity of a transaction can be checked off-chain, before the transaction is sent to the blockchain. A transaction can still fail if some other transaction concurrently consumes an input that the transaction is expecting, but if all inputs are still present, the transaction is guaranteed to succeed.
