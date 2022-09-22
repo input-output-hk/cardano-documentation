@@ -3,9 +3,9 @@ title: Plutus tools
 metaTitle: Plutus tools
 ---
 
-The Alonzo hard fork brings core smart contract capabilities to the Cardano ledger by establishing the infrastructure and adding tools for functional smart contract development using Plutus. This means that users, developers, and organizations can now securely build decentralized applications (DApps) based on smart contract solutions. 
+With Plutus Tools users, developers, and organizations can securely build decentralized applications (DApps) based on smart contract solutions. There are different tools to evaluate and deploy smart contracts on Cardano. Below we take a look at some of these tools, their main features and point to the exact sources to use them. 
 
-There are different tools that developers can use to evaluate and deploy smart contracts on Cardano. Below we take a look at these tools, their main features and point to the exact sources to use them. 
+> Please note that this section in currently being worked on, and more tools will be covered in due course.
 
 ## Plutus Application Backend 
 
