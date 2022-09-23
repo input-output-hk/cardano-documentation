@@ -3,6 +3,8 @@ title: Understanding the Extended UTXO model
 metaTitle: Understanding the Extended UTXO model
 ---
 
+>The EUTXO handbook is now out! You can find a deep dive about [Cardano's EUTXO accounting model here](https://ucarecdn.com/3da33f2f-73ac-4c9b-844b-f215dcce0628/EUTXOhandbook_for_EC.pdf). 
+
 Cardano (like Bitcoin) is an Unspent Transaction Output (UTXO)-based blockchain, which utilizes a different accounting model for its ledger from other account-based blockchains like Ethereum. Cardano implements an innovative [Extended Unspent Transaction Output (EUTXO) model](https://iohk.io/en/blog/posts/2021/03/11/cardanos-extended-utxo-accounting-model/), which is introduced by the Alonzo upgrade to support multi-assets and smart contracts.
 
 ## Overview of the UTXO model
