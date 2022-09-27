@@ -7,7 +7,7 @@ Ada held on the [Cardano network](https://cardano.org/) represents a user’s st
 protocol, the size of which is proportional to the amount of ada held. Users who
 hold a stake in Cardano can earn passive rewards for validating blocks. The
 amount of rewards they can earn is proportional to the amount of ada they pledge
-or delegate to a [stake pool](https://docs.cardano.org/core-concepts/stake-pools).
+or delegate to a stake pool.
 
 There are three options ada holders can consider for delegating their stake:
 
@@ -16,15 +16,15 @@ There are three options ada holders can consider for delegating their stake:
 3. Delegate to other stake pools
 
 To create and register a stake pool, see the
-[create transaction instructions](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/simple_transaction.md)
+[create transaction instructions](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/4_simple_transaction.md)
 explaining how to pledge and delegate to earn rewards.
 
 Stake pools must maintain **high-availability**, which means that they should
 *always* be online and available to validate and create new blocks. The rewards a
 stake pool can earn are directly proportional to the amount of ada that is
 pledged or delegated, and the number of blocks the stake pool can create in a
-given epoch. [Ouroboros](https://docs.cardano.org/core-concepts/ouroboros-overview)
-elects [the slot leader](https://docs.cardano.org/glossary#slotleader) that grants the permissions to validate transactions and create new
+given epoch. Ouroboros
+elects the slot leader that grants the permissions to validate transactions and create new
 blocks, based on the above criteria.
 
 > Note: It is **strongly recommended** to test all stake pool functionality on the
@@ -55,7 +55,7 @@ to start delegating to any registered stake pool.
 > decrease accordingly.
 
 > **Related topics:**
-> -   [Registering a stake pool](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/register_stakepool.md)
+> -   [Registering a stake pool](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/8_register_stakepool.md)
 
 > **Further reading:**
 >
@@ -70,19 +70,19 @@ designed to be decentralized, which means that there is no single controlling
 party.
 
 > **Related documentation:**
-> -   [Withdrawing rewards](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/withdraw-rewards.md) 
+> -   [Withdrawing rewards](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/11_withdraw-rewards.md) 
 
 ### FAQs
 
 1. **Q: How do I create and register a stake pool?**
 
    **A**: Please review the steps in the documentation
-   [here.](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/getConfigFiles_AND_Connect.md)
+   [here.](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/1_getConfigFiles_AND_Connect.md)
 
 1. **Q: How do I generate staking addresses?**
 
    **A**: Please review the steps in the documentation
-   [here.](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/register_key.md)
+   [here.](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/5_register_key.md)
 
 1. **Q: How do I determine an optimal amount of ada to pledge to each pool?**
 
