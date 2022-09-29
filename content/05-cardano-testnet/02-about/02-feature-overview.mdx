@@ -87,6 +87,8 @@ The key use case of CIP-31 is to support reference scripts (CIP-33). Other use c
 
 1.  Inspecting the state (datum, or locked value) of an on-chain application without having to consume the output. For example, checking the current state of a stablecoin state machine.
 2.  The ability to reference on-chain data providers that store data in outputs by other scripts.
+
+See the [how to use reference inputs](https://github.com/perturbing/vasil-tests/blob/main/reference-inputs-cip-31.md) tutorial for more details. 
     
 ## Inline datums (CIP-32)
 
@@ -98,6 +100,8 @@ CIP-32 suggests a solution that allows datums themselves to be attached to outpu
 
 -   Creating a single UTXO with data to be used in multiple subsequent transactions, but only paying the cost for submitting it once.
 -   Storing little information on-chain. For example, Oracles can benefit from this by simply adding some off-chain data to the main chain.
+
+See the [how to use inline datums](https://github.com/perturbing/vasil-tests/blob/main/inline-datums-cip-32.md) tutorial for more details.
     
 ## Reference scripts (CIP-33)
 
@@ -110,25 +114,25 @@ Large script sizes pose problems for users because:
     
 CIP-33 introduces the ability to reference a script without including it in each transaction. This hugely reduces the contribution of scripts to the transaction size.
 
-You can find some [Plutus script examples here](https://github.com/input-output-hk/cardano-node/tree/master/doc/reference/plutus).
+See the [how to reference scripts](https://github.com/perturbing/vasil-tests/blob/main/referencing-scripts-cip-33.md) tutorial for more details.
 
 ## Transaction redeemers
 
 Two important elements in Plutus are *datums* and *redeemers*. The datum is a piece of information that can be associated with a UTXO and is used to carry script state information. It is frequently used in combination with a redeemer, which is like an instruction or command to the contract.
 
-With the Vasil hard fork, developers will be able to see redeemers for all inputs rather than just the one being passed to the currently executing script. For more details, read [how to work with datums and redeemers here](https://docs.cardano.org/plutus/datums-redeemers).
+With the Vasil hard fork, developers will be able to see redeemers for all inputs rather than just the one being passed to the currently executing script. 
 
 ## Collateral change address
 
-[Script collateral](https://docs.cardano.org/plutus/collateral-mechanism) is the monetary guarantee a user gives to assure that the transaction that uses a contract has been carefully constructed and thoroughly tested before submission to the validators. It is used to guarantee that nodes are compensated for their work in case phase-2 validation fails. The collateral amount is specified at the time of constructing the transaction and is reserved to allow for the on-chain script execution. 
+Script collateral is the monetary guarantee a user gives to assure that the transaction that uses a contract has been carefully constructed and thoroughly tested before submission to the validators. It is used to guarantee that nodes are compensated for their work in case phase-2 validation fails. The collateral amount is specified at the time of constructing the transaction and is reserved to allow for the on-chain script execution. 
 
 Currently, on Cardano mainnet, the collateral amount is set to 150% of the transaction fee, and no change is provided to the collateral UTXO. This means that if a script fails phase-2 validation, the DApp user will lose all the funds that are stored in the UTXO chosen for the collateral.
 
 With the Vasil hard fork, DApp developers will have the possibility to specify a change address for the script collateral. This means that in case the script fails phase-2 validation, only the right amount will be taken, and the remaining funds will be sent to the provided change address.
 
+See the [how to use collateral outputs](https://github.com/perturbing/vasil-tests/blob/main/collateral-output-cip-40.md) tutorial for more details.
+
 ## Single VRF implementation
 
-On Cardano, the Verifiable Random Function (VRF) determines which SPO creates the next block. Before Vasil, there were two VFR functions executed on every network hop to validate a block.
-
-With the Vasil hard fork, one of these functions will be dropped, resulting in faster block validation and overall network syncing times. Please note that when syncing the chain, the performance improvement will be available only after the Vasil hard fork epoch. Until this point, the performance will remain the same.
+On Cardano, the Verifiable Random Function (VRF) determines which SPO creates the next block. Before Vasil, there were two VFR functions executed on every network hop to validate a block. With the Vasil hard fork, one of these functions is dropped, resulting in faster block validation and overall network syncing times. 
 
