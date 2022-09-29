@@ -9,7 +9,7 @@ metaTitle: Vasil introduction
 
 Vasil enforces the next major upgrade to the Cardano protocol using [Cardano’s hard fork combinator (HFC) approach](https://docs.cardano.org/core-concepts/about-hard-forks). This upgrade is named after a much loved and respected Cardano community member, Vasil St Dabov.
 
-Vasil brings changes that will improve [the handling of on-chain (Plutus) scripts](https://iohk.io/en/blog/posts/2022/04/13/boosting-cardano-s-throughput-with-script-referencing/), reducing user costs and allowing [greater script throughput](https://iohk.io/en/blog/posts/2022/03/21/increasing-the-transaction-throughput-of-cardano/). Vasil changes form the first stages of a series of planned improvements that will be rolled out over time.
+Vasil brings changes that improve [the handling of on-chain (Plutus) scripts](https://iohk.io/en/blog/posts/2022/04/13/boosting-cardano-s-throughput-with-script-referencing/), reducing user costs and allowing [greater script throughput](https://iohk.io/en/blog/posts/2022/03/21/increasing-the-transaction-throughput-of-cardano/). Vasil changes form the first stages of a series of planned improvements that will be rolled out over time.
 
 More specifically, this upgrade introduces:
 
@@ -32,9 +32,9 @@ To get started, make sure to:
 
 Also, note that:
 
--  With the Vasil hard fork on mainnet, the *d* parameter will be removed since block production is now fully decentralized, and this will prevent re-federation.
--   If you are an SPO, you now need to create your operational certificate using cold.counter +1. The `OpCert` must be exactly one more than the previously used one.
--   The `minUTxO` formula is now calculated using original bytes instead of `lovelacePerUTxOWord`.
+-  With the Vasil hard fork on mainnet, the *d* parameter is removed and block production is now fully decentralized. This prevents re-federation.
+-   If you are an SPO, you now need to create your operational certificate using cold.counter +1. The `OpCert` must be exactly one more than the previously used one. [See details here](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/7_KES_period.md#warning-vasil-hard-fork-breaking-changes)
+-   The `minUTxO` formula is now calculated using original bytes instead of `lovelacePerUTxOWord`. For more details, see [CIP-55](https://cips.cardano.org/cips/cip55/).
 
 **Feedback**
 
