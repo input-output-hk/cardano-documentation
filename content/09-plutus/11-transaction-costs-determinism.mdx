@@ -3,17 +3,16 @@ title: Transaction costs and determinism
 metaTitle: Transaction costs and determinism
 ---
 
-[Cardano](https://cardano.org/)’s approach to price setting mainly relies on market demand over actual supply. With the recent launch of smart contracts, there will be more than one type of demand competing for the common supply. Thus, it is crucial to consider both *relative* and *absolute* pricing. One way to do this is to inspect the effects of smart contract pricing, non-fungible token (NFT) operations, and so on, with respect to some common value – in our case, the consumption of Cardano’s processing power. 
+Cardano’s approach to price setting mainly relies on market demand over actual supply. With the launch of smart contracts, there is more than one type of demand competing for the common supply. Thus, it is crucial to consider both *relative* and *absolute* pricing. One way to do this is to inspect the effects of smart contract pricing, non-fungible token (NFT) operations, and so on, with respect to some common value – in our case, the consumption of Cardano’s processing power. 
 
 The Cardano ledger's design is focused on high assurance, security, and proven formal verification. In alignment with this strategy, it is also important to ensure that transaction processing is *deterministic*, meaning that a user can predict the impact and outcome of a transaction before its actual execution.
 
-The ability to guarantee the cost of transaction execution and how the transaction behaves on the ledger *before* it is submitted, becomes even more prominent with the introduction of smart contract support. This feature is different from other blockchains, including Ethereum, where other network activity can influence the gas cost. This ability is also guaranteed by the deterministic nature of Cardano and [Plutus scripts](https://docs.cardano.org/plutus/Plutus-validator-scripts). 
-
-The calculation of the minimum ada value to process a transaction in Alonzo is different from previous Mary calculations. There is no longer a ``minUTxOValue`` protocol parameter in Alonzo as it was deprecated at the end of the Mary era. However, the requirement that each UTXO must contain an amount of ada that depends on the size of the entry is still enforced in Alonzo. The size-dependent minimum ada amount in a UTXO is referred to as the min-ada-value, and is now calculated using the Alonzo parameter ``coinsPerUTxOWord``. To learn more, read the specifics of the [Alonzo min-ada-value calculation](https://github.com/input-output-hk/cardano-ledger-specs/blob/master/doc/explanations/min-utxo-alonzo.rst).
+The ability to guarantee the cost of transaction execution and how the transaction behaves on the ledger *before* it is submitted, becomes even more prominent with the introduction of smart contract support. This feature is different from other blockchains, including Ethereum, where other network activity can influence the gas cost. This ability is also guaranteed by the deterministic nature of Cardano and Plutus scripts. 
 
 ## Determinism
 
 *Determinism*, in the context of transaction and script processing, is a synonym for predictability. This means that a user can predict locally (off-chain) how their transaction will impact the on-chain state of the ledger, without encountering the following:
+
 - unexpected script validation outcomes or failures
 - unexpected fees
 - unexpected ledger or script state updates
@@ -35,7 +34,7 @@ Besides letting the node know which script to run, all transaction actions indic
 
 ## Ledger updates
 
-Alonzo changes the data on the ledger as follows: 
+Alonzo changed the data on the ledger as follows: 
 1. Plutus scripts can lock UTXOs.
 2. A new component, added to the contents of the output parts of UTXOs, enables script state-like functionality. In addition to assets and an address, a UTXO locked by Plutus scripts also contains a datum. A datum is a piece of data that can be thought of as an interpretation of the script state. 
 3. There are a number of new protocol parameters used to impose additional validation requirements on transactions. These include upper limits on computational resources that scripts can consume. 
@@ -46,9 +45,11 @@ To support Plutus scripts, transactions have been upgraded as follows:
 3. To ensure that a transaction can pay its execution fee, Alonzo introduces collateral. 
 4. Transactions contain an integrity hash, needed to ensure that it has not been compromised, outdated, etc. 
 
-The node performs new, Alonzo-specific checks that ensure the transaction is constructed correctly. For example, it must not exceed the maximum execution resource budget. It also invokes the Plutus script interpreter to run the scripts. 
+With the Vasil upgrade, Plutus scripts were upgraded to V2 functionality with an improved cost model and new built-ins. The use of reference inputs, inline datums, and reference scripts allows for efficient throughput and significantly increased performance. [See the complete Vasil feature overview here](https://docs.cardano.org/cardano-testnet/about/feature-overview).
 
-The non-deterministic gas model can charge users unpredictably large fees. In Cardano scripts, this source of indeterminism is addressed by requiring that the resource budget itself, as well as the fee required to cover this budget, are included in the transaction. In Alonzo, a user can predict both locally when constructing the transaction. Script execution necessarily returns either *True* or *False*, and will not loop indefinitely. The reason for this is that every operation a script performs takes a non-zero amount of resources, which are tracked by the interpreter. If the budget specified by the transaction is exceeded, script execution terminates and returns *False*. 
+The node performs new checks that ensure the transaction is constructed correctly. For example, it must not exceed the maximum execution resource budget. It also invokes the Plutus script interpreter to run the scripts. 
+
+The non-deterministic gas model can charge users unpredictably large fees. In Cardano scripts, this source of indeterminism is addressed by requiring that the resource budget itself, as well as the fee required to cover this budget, are included in the transaction. Script execution necessarily returns either *True* or *False*, and will not loop indefinitely. The reason for this is that every operation a script performs takes a non-zero amount of resources, which are tracked by the interpreter. If the budget specified by the transaction is exceeded, script execution terminates and returns *False*. 
 
 The following key points make the outcomes of script and transaction validation **predictable**:
 - the script interpreter will always terminate and return the same validation result when applied to the same arguments.
@@ -58,6 +59,8 @@ The following key points make the outcomes of script and transaction validation 
 - applying a transaction in the EUTXO ledger model is deterministic.
 
 Script validation failure or success does affect how a transaction is processed. However, the *True* or *False* outcome, as well as ledger changes associated with either outcome, are predictable for a given transaction.
+
+You can also use the [Plutus fee estimator](https://docs.cardano.org/cardano-testnet/tools/plutus-fee-estimator) to predict script and transactions fees.
 
 ### Further reading:
 
