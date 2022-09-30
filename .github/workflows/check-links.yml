@@ -2,9 +2,6 @@ name: Check broken links
 on:
   schedule:
     - cron: '0 12 * * *'
-  push:
-    branches:
-      - master
 
 jobs:
   cron:
