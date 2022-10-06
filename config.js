@@ -56,6 +56,7 @@ const config = {
       '/tools',
     ],
     links: [
+      { text: 'Glossary', link: 'https://www.essentialcardano.io/glossary?sort=alphabetical' },
       { text: 'Cardano.org', link: 'https://cardano.org' },
       { text: 'Developer Portal', link: 'https://developers.cardano.org/' },
     ],
