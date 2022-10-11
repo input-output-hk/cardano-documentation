@@ -43,7 +43,7 @@ When installing the node, it is also essential to build the [cardano-client](htt
 
 To start working with the node, it is essential to ensure that the node configuration, genesis and topology files are correctly set up. In addition, the node will need the configuration files specific to each era that the Cardano network has experienced thus far.
 
-These configurations tell the node how to handle the updates that come with each era (ie. Mary, Alonzo, Babbage, etc). Each new era (implemented using the [hard fork combinator technology](https://docs.cardano.org/core-concepts/about-hard-forks)) introduces protocol changes and new ledger rules. While old configurations are still valid, the new configurations and features offer new rules and improvements. In the Babbage era, for example, Plutus V2 scripts work better than Plutus V1 scripts. Plutus V1 scripts, however, are still supported. 
+These configurations tell the node how to handle the updates that come with each era (ie. Mary, Alonzo, Babbage, etc). Each new era (implemented using the [hard fork combinator technology](https://docs.cardano.org/learn/about-hard-forks)) introduces protocol changes and new ledger rules. While old configurations are still valid, the new configurations and features offer new rules and improvements. In the Babbage era, for example, Plutus V2 scripts work better than Plutus V1 scripts. Plutus V1 scripts, however, are still supported. 
 
 For more details, see:
 
@@ -82,10 +82,10 @@ Preview is the longer-term network environment for testing release candidates an
 
 Pre-production is the most mature network for testing purposes, which resembles a production (mainnet) environment. It is meant for exchanges, SPOs, pre-deployment DApps, and wallets that wish to test release functionality before deploying on mainnet.
 
-- **Current era** : Alonzo.
+- **Current era** : Babbage
 - **Epoch length** : 5 days
-- **Plutus versions** : Plutus V1
-- **Cost model** : Plutus V2 _not_ updated
+- **Plutus versions** : Plutus V1 and Plutus V2
+- **Cost model** : Plutus V2
 
 [**Pre-production configurations**](https://book.world.dev.cardano.org/environments.html#pre-production-testnet)
 
@@ -93,10 +93,10 @@ Pre-production is the most mature network for testing purposes, which resembles 
 
 Production is the live network, also referred to as mainnet. It features official functionality releases. Exchanges, SPOs, DApps, wallets, and end users can use the mainnet for development, transaction processing, and other needs.
 
-- **Current era** : Alonzo
+- **Current era** : Babbage
 - **Epoch length** : 5 days
-- **Plutus versions** : Plutus V1
-- **Cost model** : Plutus V2 _not_ updated
+- **Plutus versions** : Plutus V1 and Plutus V2
+- **Cost model** : Plutus V2
 
 [**Production configurations**](https://book.world.dev.cardano.org/environments.html#production-mainnet)
 
@@ -144,7 +144,7 @@ cardano-cli query utxo \
 
 For more commands, see:
 
--   [Creating keys and addresses](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/keys_and_addresses.md)
+-   [Creating keys and addresses](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/3_keys_and_addresses.md)
     
 Note to use the `--testnet-magic INTEGER` flag instead of `--mainnet`.
 

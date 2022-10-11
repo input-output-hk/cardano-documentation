@@ -1,0 +1,56 @@
+---
+title: Plutus scripts
+metaTitle: Plutus scripts
+---
+
+Cardano uses scripts to validate actions. These scripts, which are pieces of code, implement pure functions with True or False outputs. Script validation is the process of invoking the script interpreter to run a given script on appropriate arguments.
+
+## What are scripts?
+
+A *script* is a program that decides whether the transaction that spends the output is authorized to do so. Such a script is called a validator script – it validates whether the spending is allowed.
+
+As an example, a simple validator script could check whether a particular key signed the spending transaction – this would exactly replicate the behavior of the simpler pay-from-pubkey outputs. However, with a bit of careful extension, we can use scripts to express more useful logic on the chain than that.
+
+The way the [EUTXO model](https://docs.cardano.org/learn/eutxo-explainer) works is that validator scripts are passed as three arguments:
+
+1. **Datum**: this is a piece of data attached to the output that the script is locking. This is typically used to carry state.
+2. **Redeemer**: this is a piece of data attached to the spending input. This is typically used to provide an input to the script from the spender.
+3. **Context**: this is a piece of data that represents information about the spending transaction. This is used to make assertions about the way the output is being sent (such as “Bob signed it”).
+
+The data contained in the context is:
+
+-   inputs – outputs to be spent 
+-   reference inputs – inputs used for reference only, they are not spent
+-   outputs – new outputs created by the transaction
+-   fees – transaction fees
+-   minted value – minted or burned value
+-   certificates – digest of certificates contained in the transaction
+-   withdrawals – used to withdraw rewards from the stake pool
+-   valid range – a range of time in which the transaction is valid
+-   signatories – a list of transaction signatures
+-   redeemers – data used to provide an input to the script from the spender
+-   info data – a map of datum hashes to their datum value
+-   id – transaction identification
+  
+## Script tutorials and examples
+
+- [Plutus scripts](https://plutus-apps.readthedocs.io/en/latest/plutus/howtos/plutus-spending-script-example.html)
+- [Writing basic validator scripts](https://plutus.readthedocs.io/en/latest/tutorials/basic-validators.html) 
+- [Writing basic minting policies](https://plutus.readthedocs.io/en/latest/tutorials/basic-minting-policies.html)
+- [How to export scripts, datums, and redeemers](https://plutus.readthedocs.io/en/latest/howtos/exporting-a-script.html)
+- [How to profile the budget usage of Plutus scripts](https://plutus.readthedocs.io/en/latest/howtos/profiling-scripts.html)
+- [Plutus script examples in the Babbage era](https://github.com/input-output-hk/cardano-node/tree/master/doc/reference/plutus)
+- [Plutus Pioneer code examples](https://github.com/input-output-hk/plutus-pioneer-program#code-examples)
+- [Optimization techniques for Plutus scripts](https://plutus.readthedocs.io/en/latest/reference/writing-scripts/optimization.html)
+- [Plutus language changes (V1 and V2)](https://plutus.readthedocs.io/en/latest/reference/cardano/language-changes.html)
+- [Upgrading to Vasil and Plutus script addresses](https://plutus.readthedocs.io/en/latest/reference/cardano/upgr-vasil-plutus-script-addresses.html)
+
+## Cost model parameters
+
+The cost model for Plutus Core scripts has several parameters, which are part of the Cardano protocol parameters.
+
+See the following for more details:
+
+- [A list of cost model parameters and their brief description](https://plutus.readthedocs.io/en/latest/reference/cardano/cost-model-parameters.html)
+- [Sources to find out more about the meaning of parameters](https://plutus.readthedocs.io/en/latest/reference/bibliography.html#id13)
+- [Common weaknesses](https://plutus.readthedocs.io/en/latest/reference/writing-scripts/common-weaknesses/index.html)
