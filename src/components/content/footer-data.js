@@ -40,7 +40,7 @@ _Past performance is not indicative of future results. Any investment in blockch
         },
         {
           label: 'Cardano Foundation Twitter',
-          href: 'https://twitter.com/cardanostiftung',
+          href: 'https://twitter.com/Cardano_CF',
         },
       ],
     },
