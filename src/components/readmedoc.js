@@ -46,7 +46,7 @@ const ReadmeDoc = ({ repo }) => {
   const [readmeContent, setReadmeContent] = useState(null);
 
 
-  const octokit = new Octokit({ auth: `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` });
+  const octokit = new Octokit();
 
   const getResponse = async () => {
     const response = await octokit.request("GET /repos/{owner}/{repo}/readme", {
