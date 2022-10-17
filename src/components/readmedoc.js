@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { baseStyles } from './styles/GlobalStyles';
 
 const StyledBreakout = styled('div')`
   display: flex;
@@ -41,6 +42,18 @@ const CodeBlock = {
   },
 };
 
+const StyledMarkdown = styled(ReactMarkdown)`
+  ${baseStyles}
+
+  h1, h2, h3, h4, h5, h6 {
+    padding: 0.5rem 0;
+  }
+
+  img {
+    margin: 1.5rem 0;
+  }
+`
+
 
 const ReadmeDoc = ({ repo }) => { 
   const [readmeContent, setReadmeContent] = useState(null);
@@ -48,7 +61,7 @@ const ReadmeDoc = ({ repo }) => {
 
   const octokit = new Octokit();
 
-  const getResponse = async () => {
+  const getReadmeRetrievalResponse = async () => {
     const response = await octokit.request("GET /repos/{owner}/{repo}/readme", {
       owner: 'input-output-hk',
       repo: repo
@@ -58,14 +71,14 @@ const ReadmeDoc = ({ repo }) => {
   }
 
   useEffect(() => {
-    getResponse();
+    getReadmeRetrievalResponse();
   }, [])
 
   return (
   <StyledBreakout>
-    <ReactMarkdown rehypePlugins={[rehypeRaw]} components={CodeBlock} skipHtml={true}>
+    <StyledMarkdown rehypePlugins={[rehypeRaw]} components={CodeBlock} skipHtml={true}>
       {readmeContent}
-    </ReactMarkdown>
+    </StyledMarkdown>
   </StyledBreakout>
 )}
 
