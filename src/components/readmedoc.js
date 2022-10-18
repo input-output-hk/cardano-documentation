@@ -49,10 +49,23 @@ const StyledMarkdown = styled(ReactMarkdown)`
     padding: 0.5rem 0;
   }
 
+  li {
+    margin: 0.5rem 0;
+  }
+
   img {
     margin: 1.5rem 0;
   }
-`
+
+  hr {
+    margin: 0.5rem 0;
+  }
+
+  a > img {
+    margin:  0;
+  }
+  
+`;
 
 
 const ReadmeDoc = ({ repo }) => { 
