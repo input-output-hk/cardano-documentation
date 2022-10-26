@@ -12,6 +12,7 @@ import {
   StyledHeading,
   StyledMainWrapper,
 } from '../components/styles/Docs'
+import ReadmeDoc from '../components/Readmedoc'
 
 import styled from '@emotion/styled'
 
@@ -103,6 +104,10 @@ export default class MDXRuntimeTest extends Component {
 
     const hasPageHeading = mdx.frontmatter.hasPageHeading
 
+    const repo = mdx.frontmatter.repo
+
+    const repoReadeMe = mdx.frontmatter.repoReadeMe
+
     let canonicalUrl = config.gatsby.siteUrl
 
     canonicalUrl =
@@ -132,6 +137,9 @@ export default class MDXRuntimeTest extends Component {
             {metaDescription ? (
               <meta property="twitter:description" content={metaDescription} />
             ) : null}
+            {metaDescription ? (
+              <meta property="twitter:description" content={metaDescription} />
+            ) : null}
             <link rel="canonical" href={canonicalUrl} />
           </Helmet>
 
@@ -156,6 +164,9 @@ export default class MDXRuntimeTest extends Component {
 
             <StyledMainWrapper>
               <MDXRenderer>{mdx.body}</MDXRenderer>
+              {(repoReadeMe && repo) ? (
+                  <ReadmeDoc repo={repo} readmeContent={repoReadeMe} />
+              ) : null}
             </StyledMainWrapper>
           </div>
 
@@ -196,6 +207,8 @@ export const pageQuery = graphql`
         metaDescription
         fullWidthTemplate
         hasPageHeading
+        repo
+        repoReadeMe
       }
     }
     allMdx {

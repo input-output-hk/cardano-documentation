@@ -66,6 +66,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-tooltip": "^4.2.21",
     "rehype-raw": "^6.1.1",
+    "remark-gfm": "^3.0.1",
     "styled-components": "^4.4.1",
     "styled-icons": "^9.0.1",
     "victory": "^36.5.3"
