@@ -7,7 +7,7 @@ import Link from '../components/link'
 import Layout from '../components/layout'
 import NextPrevious from '../components/NextPrevious'
 import config from '../../config'
-import ReadmeDoc from '../components/Readmedoc'
+import ReadmeDoc from '../components/readmedoc'
 import {
   Edit,
   StyledHeading,
