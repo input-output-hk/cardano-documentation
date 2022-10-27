@@ -152,7 +152,7 @@ export default class MDXRuntimeTest extends Component {
                     {docsLocation && (
                       <Link
                         className={'gitBtn'}
-                        to={`${docsLocation}/${mdx.parent.relativePath}`}
+                        to={repo ? `https://github.com/input-output-hk/${repo}/blob/master/README.md` : `${docsLocation}/${mdx.parent.relativePath}`}
                       >
                         <img src={gitHub} alt={'Github logo'} /> Edit on GitHub
                       </Link>

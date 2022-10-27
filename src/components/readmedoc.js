@@ -51,6 +51,13 @@ const ReadmeDoc = ({ repo, readmeContent }) => {
               <a href={props.href}>{props.children}</a>
           )
           },
+        img: props => {
+          return props.src.startsWith('.github') ? (
+            <img alt={props.alt} src={`https://github.com/input-output-hk/${repo}/raw/master/${props.src}`}>{props.children}</img>
+          ) : (
+            <img alt={props.alt} src={props.src}>{props.children}</img>
+          )
+        },
         code: props => {
           const match = /language-(\w+)/.exec(props.className || '');
 
