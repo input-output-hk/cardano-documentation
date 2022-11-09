@@ -1,0 +1,98 @@
+---
+title: API Methods
+metaTitle: API Methods
+---
+
+The list below shows which Ethereum API methods are currently implemented in the Cardano EVM sidechain. For details of each method, you can refer to the [Ethereum JSON-RPC Specification](https://playground.open-rpc.org/?schemaUrl=https://raw.githubusercontent.com/ethereum/eth1.0-apis/assembled-spec/openrpc.json&uiSchema%5BappBar%5D%5Bui:splitView%5D=false&uiSchema%5BappBar%5D%5Bui:input%5D=false&uiSchema%5BappBar%5D%5Bui:examplesDropdown%5D=false).
+
+If your product requires a method that is not currently implemented, please contact Input Output Global support.
+
+# Available methods
+
+- `eth_getBlockByHash`
+- `eth_getBlockByNumber`  
+- `eth_sendTransaction`  
+- `eth_estimateGas`  
+- `eth_getCode`  
+- `eth_sendRawTransaction`  
+- `eth_getTransactionReceipt`  
+- `eth_call`  
+- `eth_getBalance`  
+- `eth_getStorageAt`  
+- `eth_getBlockTransactionCountByHash`  
+- `eth_getBlockTransactionCountByNumber`
+- `eth_accounts`  
+- `eth_blockNumber` 
+- `eth_getTransactionByHash`  
+- `eth_getTransactionCount`  
+- `eth_chainId`  
+- `net_version`  
+- `web3_clientVersion`  
+
+### Test methods
+
+These methods are in the Cardano EVM sidechain with their input/output types, but are not fully implemented yet. They just return an error and do nothing.  
+
+- `test_mineBlocks`  
+- `test_modifyTimestamp`  
+- `test_rewindToBlock`  
+- `test_setChainParams`  
+- `test_importRawBlock`
+
+### Debug methods  
+
+These methods are there but they are specifically implemented to be just good enough for ETS.  
+
+They are only available for the test node.  
+
+They do not really capture every possible storage address. As ETS uses trivial addresses such as 1-10 we only check those.  
+
+For accounts, we only check accounts that are known to exist (ie. they are in the genesis) but if an account is created inside a transaction we won’t return it.  
+
+- `debug_storageRangeAt`: optional  
+- `debug_accountRange`: optional  
+
+### Support for test tooling (Web3.js, Metamask…)
+
+- `personal_newAccount`  
+- `personal_listAccounts`  
+- `personal_unlockAccount`  
+- `personal_lockAccount`  
+- `personal_sendTransaction`  
+- `personal_sign`  
+- `personal_ecRecover`  
+
+# Not implemented yet  
+
+- `eth_protocolVersion`  
+- `eth_syncing`  
+- `eth_coinbase`  
+- `eth_feeHistory (This is specific to the London hard fork.)`  
+- `eth_newFilter`  
+- `eth_newBlockFilter`  
+- `eth_newPendingTransactionFilter`  
+- `eth_uninstallFilter`  
+- `eth_getFilterChanges`  
+- `eth_getFilterLogs`  
+- `eth_getLogs`  
+- `eth_mining` (There is no “mining” in the Cardano EVM sidechain but it can return if the node is a validator.)  
+- `eth_sign`
+- `eth_signTransaction`  
+- `eth_getTransactionByBlockHashAndIndex`  
+- `eth_getTransactionByBlockNumberAndIndex`
+- `personal_importRawKey`  
+
+The whole trace/debug module  
+
+### Irrelevant methods
+
+The following methods are irrelevant for the Cardano EVM sidechain because they are specific to proof of work. They can be implemented to return a fixed value if needed.  
+
+- `eth_getUncleCountByBlockHash`  
+- `eth_getUncleCountByBlockNumber`
+- `eth_getWork`  
+- `eth_submitWork` 
+- `eth_hashrate`   
+- `eth_submitHashrate`  
+- `eth_getUncleByBlockHashAndIndex`  
+- `eth_gasPrice`
