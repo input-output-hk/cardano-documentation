@@ -1,6 +1,6 @@
 ---
-title: Setup development environment
-metaTitle: Setup development environment
+title: Set up development environment
+metaTitle: Set up development environment
 ---
 The Cardano sidechains toolkit supports three development environments
 - [Remix](#remix)
@@ -9,77 +9,83 @@ The Cardano sidechains toolkit supports three development environments
 
 # Remix
 
-[Remix](https://remix.ethereum.org/) is an online IDE to develop and deploy Solidity smart contracts.
+This tutorial will show you how to deploy a solidity smart contract to the EVM sidechain testnet using Remix. [Remix](https://remix.ethereum.org/) is an online IDE to develop and deploy Solidity smart contracts.
 
-- Active` Solidity Compiler` and `Deploy and Run Transactions` modules.
+## Prerequisites
 
-![ice_screenshot_20220301-021718](https://user-images.githubusercontent.com/10556209/156122744-7e5ef05e-6154-47f5-9e4b-5fa978854d94.png)
+In this tutorial, you will use MetaMask as your wallet and Web3 provider. If you have not done so already, add the testnet to MetaMask and fund your wallet with testnet tokens using the [faucet](http://faucet.mamba.atago/).
 
-## The smart contract
+- [Create or import an account with MetaMask.](basics/metamask)
 
-- Create a new Solidity file in the contracts folder. For this example, we'll use `hello_world.sol`.
+## Step 1 - Configure Remix
 
-![ice_screenshot_20220302-020712](https://user-images.githubusercontent.com/10556209/156312331-9e3be3ea-a518-4e9a-91cf-1f33a373cbdd.png)
+- Visit the [Remix IDE](https://remix.ethereum.org/). The left-hand side has a menu [1] and a typical file explorer [2]. The ` Solidity Compiler` [3] and `Deploy and Run Transactions` [4] plugins should be active by default.
 
-- Simply copy the contents of this example contract below into `hello_world.sol`.
+![remix-menu](https://user-images.githubusercontent.com/10556209/200480707-ec8b8e69-6cdc-498b-b315-c029fbc2a564.png)
+
+If the solidity compiler and deploy plugins are not activated, then you can search and activate them using the plugin manager [5] located in the bottom-left of the screen.
+
+![remix-plugin]Open MetaMask and double-check the sidechain testnet is the selected network. This will ensure Remix connects to the correct network when you configure your environment in the next step.
+
+![meta-mask-atago](https://user-images.githubusercontent.com/10556209/200482306-af1c0f4d-9ecf-4078-b0a3-a411306d13d1.png)
+
+- In Remix, select the `Deploy & run transactions` plugin [1]. Since you are using MetaMask as your Web3 provider, select "Injected Provider" in the environment settings 2].
+
+![environment-remix]To double-check that Remix is using the correct network, open MetaMask and confirm the network ID (78) and account match.
+
+![double-check-remix](https://user-images.githubusercontent.com/10556209/200485405-0794ae10-95fd-4325-87e0-173ba4c2da1e.png)
+
+## Step 2 - The Smart Contract
+
+With Remix configured to the sidechain testnet, you can move onto your smart contract development and deployment.
+
+- In the Remix file explorer, create an `erc20.sol` file in the `contracts/` directory and input the following Solidity statements:
 
 ```
-// Specifies the version of Solidity, using semantic versioning.
-// Learn more: https://solidity.readthedocs.io/en/v0.5.10/layout-of-source-files.html#pragma
-pragma solidity ^0.7.0;
+// SPDX-License-Identifier: UNLICENSED
 
-// Defines a contract named `HelloWorld`.
-// A contract is a collection of functions and data (its state). Once deployed, a contract resides at a specific address on the Ethereum blockchain. Learn more: https://solidity.readthedocs.io/en/v0.5.10/structure-of-a-contract.html
-contract HelloWorld {
+pragma solidity ^0.8.4;
 
-   // Declares a state variable `message` of type `string`.
-   // State variables are variables whose values are permanently stored in contract storage. The keyword `public` makes variables accessible from outside a contract and creates a function that other contracts or clients can call to access the value.
-   string public message;
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 
-   // Similar to many class-based object-oriented languages, a constructor is a special function that is only executed upon contract creation.
-   // Constructors are used to initialize the contract's data. Learn more: https://solidity.readthedocs.io/en/v0.5.10/contracts.html#constructors
-   constructor(string memory initMessage) {
 
-      // Accepts a string argument `initMessage` and sets the value into the contract's `message` storage variable).
-      message = initMessage;
-   }
-
-   // A public function that accepts a string argument and updates the `message` storage variable.
-   function update(string memory newMessage) public {
-      message = newMessage;
-   }
+/**
+* @title {Mintable ERC20 Token}
+*/
+contract MintableERC20 is ERC20("Mintable Token", "MT"), Ownable {
+    /** 
+    * @dev See (ERC20 - _mint) function for details.
+    *
+    */
+    function mint(address to, uint256 amount) external payable onlyOwner() {
+        _mint(to, amount);
+    }
 }
 ```
 
-### Compile contract
+This smart contract describes a mintable ERC20 token using the OpenZeppelin ERC20 contract libraries.
 
-After writing the Solidity contract, it's time to compile.
+## Step 3 - Compile & Deploy
 
-- Using the Solidity compiler module, select to compile the smart contract.
+- Using the `Solidity compiler` plugin [1], select to "compile" the smart contract [2].
 
-![ice_screenshot_20220302-021438](https://user-images.githubusercontent.com/10556209/156313057-d0c9719c-59fd-43be-b4f3-8260e6533123.png)
+When the contract is compiled, you can view contract ABI, Bytecode, and more information located in "Compilation Details" [3].
 
-When the Solidity contract is compiled, Remix will generate the contract ABI, Bytecode, and other information which can be displayed by selecting Compilation Details.
+![compile-remix](https://user-images.githubusercontent.com/10556209/200576656-dad4c35d-02f7-40ce-8bd1-3e9f8497e302.png)
 
-### Deploy contract
+- Now, select the `Deploy & run transactions` plugin > select "Deploy" [1] and confirm any MetaMask prompts to sign the transaction. If the deployment is successful, then the Remix console should return a green checkmark with expendable details [2]. The "Deployed Contracts" panel will contain the contract address and generates a contract interface to test functions [3].
 
-- Deploying the smart contract through Remix requires a Web3 wallet configured to the appropriate target network. In our case, we want to deploy on Atago testnet. See how to setup a MetaMask wallet for Atago testnet [here](https://distracted-edison-a14746.netlify.app/basics/metamask).
-- Fund your testnet account by requesting 1 Atago testnet tokens from the [Atago faucet](http://faucet-web.mamba.atago).
-- In the Remix IDE, select the "Deploy & run transactions" module > configure to "Injected Web3" enviorment > Follow MetaMask wallet prompts > and finally "Deploy":
+![deploy-remix](https://user-images.githubusercontent.com/10556209/201174327-6be015b2-9003-4f3c-8d70-f376dd1a3a9a.png)
 
-![ice_screenshot_20220302-024108](https://user-images.githubusercontent.com/10556209/156316719-1c21bec9-58e6-4ef6-8199-ed50214c2d50.png)
+To verify the smart contract was deployed on the sidechain testnet you can:
 
-### Verify contract
-
-There are a few ways to verify the smart contract deployment.
-
-- Check the Remix logs panel and expand transaction details.
-- Check MetaMask and see the transaction details.
-- Search the transaction hash on the Atago testnet [block explorer](http://explorer.mamba.atago/).
-
-![ice_screenshot_20220302-025246](https://user-images.githubusercontent.com/10556209/156318346-7a64560c-c086-44ca-b5c6-867e6f550eb7.png)  
+- Search the transaction hash or contract address on the EVM sidechain testnet explorer [here](http://explorer.mamba.atago/).
+- Open MetaMask and see if the contract deployment transaction was successfully signed.
+- Check Remix logs for deployment details.
+  
 # HardHat
-Install the following dependencies to setup a Hardhat development environment:
+Install the following dependencies to set up a Hardhat development environment:
 
 - [Node.js v10](https://nodejs.org/en/) or later
 - [HardHat](https://hardhat.org/)
@@ -241,9 +247,11 @@ $ npx hardhat run scripts/sample-script.js --network atago
 Greeter deployed to: 0x95E1C8F6C00d8cB518faBA33c8Ae814fc12E3090
 ```
 
-🎉 Hurray! You're deployed to Atago, the Cardano EVM sidechain testnet, and can search your deployment on the [testnet explorer]( http://explorer.mamba.atago/)  
+🎉 Hurray! You're deployed to Atago, the Cardano EVM sidechain testnet, and can search your deployment on the [testnet explorer]( http://explorer.mamba.atago/) 
+   
 # Truffle
-Install the following dependencies to setup a Truffle development environment:
+
+Install the following dependencies to set up a Truffle development environment:
 
 - [Node.js v8](https://nodejs.org/en/) or later
 - [Truffle](https://trufflesuite.com/truffle/)
@@ -301,4 +309,4 @@ Finally, deploy your contract by executing `truffle migrate --network atago`.
 $ truffle migrate --network atago
 ```
 
-🎉 At this point you're deployed and can view your deployment on the [testnet explorer]( http://explorer.mamba.atago/)  
+🎉 At this point you're deployed and can view your deployment on the [testnet explorer]( http://explorer.mamba.atago/)
