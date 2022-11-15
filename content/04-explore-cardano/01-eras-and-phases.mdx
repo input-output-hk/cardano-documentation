@@ -1,0 +1,72 @@
+---
+title: Development phases and eras on Cardano
+metaTitle: Development phases and eras on Cardano
+---
+
+> This overview is based on [CIP 59](https://cips.cardano.org/cips/cip59/).
+
+Cardano’s development follows a well-defined and clearly communicated roadmap. Firmly based on academic research and rigorous testing, this process has resulted in a chain with zero outages.
+
+Cardano has gone through multiple development *phases and eras enabled by [hard fork combinator](https://docs.cardano.org/learn/about-hard-forks) events*. The following concepts are explained below:
+
+- **Development phase** – a high-level collection of features described on the [Cardano roadmap](https://roadmap.cardano.org/en/). 
+- **Ledger era** – a collection of ledger features introduced with a hard fork. Starting with Alonzo, eras are planned to be named after mathematicians and computer scientists in *a, b,c* order. 
+- **Intra-era hard fork** – a small and focused semantic change to the ledger requiring a hard fork.
+- **Consensus mechanism** – a collection of consensus features introduced with a hard fork. Historically, these have featured the name ‘Ouroboros’.
+- **Ledger protocol** – a collection of ledger features between the consensus layer and the ledger layer, roughly characterized by block header validation.
+
+## Development phases
+
+Cardano’s development phases include Byron, Shelley, Goguen, Basho, and Voltaire – all named after poets except for Goguen, a computer scientist.
+
+Byron focused on the foundation establishment, Shelley on decentralization. Goguen introduced smart contracts and native asset support, Basho – scalability enhancements, and, finally, Voltaire is about decentralized governance and decision-making. 
+
+See [Cardano’s development phases overview here](https://docs.cardano.org/new-to-cardano/why-use-cardano/#cardanodevelopmentthemes).
+
+## Ledger eras
+
+There are several eras within the evolution of Cardano. Each era refers to the rules of the ledger. For example, what transaction types and what data is stored in the ledger, or the validity and meaning of the transactions.
+
+**Byron and Shelley eras**
+
+The evolution of the Cardano mainnet began with the Byron ledger rules. The mainnet underwent a hard fork in late July 2020 to switch from the Byron rules to the Shelley ledger rules. It was a full reimplementation of Cardano, which enabled two fundamental changes: the support for multiple sets of ledger rules, and the management of the hard fork process of switching from one set of rules to the next. In other words, the new implementation could support both the Byron rules and the Shelley rules, which meant that, when deployed to the mainnet in early 2020, the implementation was fully compatible with the Byron rules. This allowed for a smooth transition from the old to the new implementation. Once all Cardano users had upgraded their nodes to the new implementation, it became possible to invoke the hard fork combinator event and switch to the Shelley rules.
+
+**Allegra, Mary, and Alonzo eras**
+
+Allegra, Mary, and Alonzo eras are all part of the *Goguen development phase.*
+
+Starting with Goguen, the ledger team introduced the notion of *era* into the ledger code. Shelley ledger rules then became ‘the Shelley era’.
+
+Because Goguen features were implemented in steps, each set of functionality was introduced with a different hard fork, hence there were several ledger eras:
+
+- Allegra: introduced token locking support
+- Mary: brought native tokens and multi-asset functionality to Cardano
+- Alonzo: introduced smart contract support
+
+The names Allegra and Mary were chosen for their connection to the poet Percy Shelley and were only intended to be used as [variable names](https://github.com/input-output-hk/cardano-ledger/blob/1cbf1fc2bb005a8206e5b5a7cdf44d35baaca455/eras/shelley-ma/impl/src/Cardano/Ledger/Allegra.hs#L40) for a very specific abstraction used in the ledger code.
+
+Goguen, the smart contract development phase, was the only phase named not after a poet. So the name of the ledger era that introduced smart contracts was named after Alonzo Church – the person who invented the lambda calculus (Plutus Core uses a variant of [system F](https://en.wikipedia.org/wiki/System_F)). 
+
+Going forward, the teams decided to use names in *a,b,c* order, after individuals who contributed to mathematics and computer science. One lack of consistency to notice is that eras can use both first and last names. This is driven by conciseness.
+
+**Babbage era**
+
+The Babbage ledger era introduced such features as inline datums, reference scripts, and reference inputs. However, the release is also known as *Vasil,* named to honor the late Bulgarian mathematician and Cardano ambassador Vasil Dabov.  
+
+## Intra-era hard forks
+
+A new era *must* be introduced with a hard fork, but the ledger can also change semantics during a controlled hard fork with another mechanism – an intra-era hard fork. This is an implementation detail that involves bumping the major protocol version but not creating a new ledger era. The Alonzo era, for example, experienced an intra-era hard fork when going from major protocol version 5 to 6.
+
+You can see a table with Cardano’s phases, eras, and intra-era hard forks visualized below:
+
+![phases-eras-table](https://ucarecdn.com/17dfdeb2-0f39-4b21-989d-18c64d5494ee/)
+
+Image source: [CIP-59 Cardano features annex](https://cips.cardano.org/cips/cip59/feature-table.md.html)
+
+## Conclusion
+
+It is important to understand that not all of the semantic changes to the Cardano network involve the ledger. Changes to the consensus protocol or the networking layer may also require a hard fork. There is also an abstraction between the consensus and ledger layers, named the *protocol*. The distinction between the ledger protocols and the ledger eras corresponds roughly to how block headers are validated (protocol) versus how block bodies are validated (era). The Shelley era used the ‘transitional Praos’ protocol (TPraos), which consisted of Praos combined with a transition system to move away from Ouroboros BFT. The Babbage era replaced TPraos with Praos.
+
+Note that the protocol version is unrelated to the node-to-node and node-to-client protocol versions. The consensus layer maintains a versioning scheme for the node queries that does not necessarily align with the protocol version described in this overview.
+
+The protocol version is also included in each block header indicating the maximum protocol version that the block producer is capable of supporting (see section 13, Software Updates, of the [Shelley ledger specification](https://hydra.iohk.io/job/Cardano/cardano-ledger/shelleyLedgerSpec/latest/download-by-type/doc-pdf/ledger-spec)).
