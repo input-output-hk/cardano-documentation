@@ -2,3 +2,223 @@
 title: Transacting crosschain
 metaTitle: Transacting crosschain
 ---
+
+# Claim Fuel Tokens
+
+## Prerequisites
+
+- A `cardano-node` connected to the Takao network.
+- `cardano-cli` configured to local `cardano-node`
+
+## Step 00 - Some checks and preperation
+
+- Double check `cardano-node` is fully synchronized with Takao:
+
+```
+$ cardano-cli query tip $testnet
+```
+
+Example output:
+```
+{
+    "block": 178839,
+    "epoch": 611,
+    "era": "Babbage",
+    "hash": "27909943fad99fb4dbf1fa86c30841429c2eee81d2c829537c29d1266129b5ac",
+    "slot": 4394717,
+    "syncProgress": "100.00"
+}
+```
+
+We will use the CLI to request funds and make transactions on Takao. Therefore we will set a few variables to make the process easier:
+
+```
+$ testnet="--testnet-magic=9"
+$ address=$(cat payment.addr)
+$ skey=payment.skey
+$ faucet_address_atago=addr_test1qpd9h06dk8k3wkyal8glct0n3xar82zlmrphtg0sd89g9apx3shn92ckpu82r4jwpq9slgx9ge56gfn7hn0yful8y2wquvvvlk
+$ faucet_address=faucet_address_atago
+```
+
+## Step 01 - Create a Cardano address
+
+- Create a cardano address:
+
+```
+# Set variable name, e.g. network=mainnet
+network=--testnet-magic=9
+
+cardano-cli address key-gen \
+    --verification-key-file payment.vkey \
+    --signing-key-file payment.skey
+
+cardano-cli address build \
+    --payment-verification-key-file payment.vkey \
+    --out-file payment.addr \
+    $network'
+```
+
+## Step 02 - Request tADA from the Takao faucet
+
+The Takao faucet service does not have a UI, but supports request via `curl`.
+
+- Request tADA from the Takao faucet using `curl`.
+
+```
+curl -v -X POST -s 'http://faucet.cardano.takao/send-money/INSERT_TESTNET_ADDRESS'
+```
+
+## Step 02 - Export Protocol Parameters
+
+For our transaction calculations, we need some of the current protocol parameters. The following command will save the parameters in a file called protocol.json:
+
+```
+$ cardano-cli query protocol-parameters $testnet --out-file protocol.json
+```
+
+## Step 03 - Get FUEL tokens
+
+To get sidechain FUEL tokens on Takao, we'll have to send a regular transaction with an amount of ADA to the faucet. The amount of FUEL tokens you get is proportional to the amount of ADA you send calculated at `0.5 ADA / fuel` minus transaction fee and minus amount of ADA carried by every transaction. Therefore, it is recommeneded to make UTXOs a minimum of 3 ADA.
+
+- Obtain available UTXOs:
+
+```
+$ cardano-cli query utxo --address $address $testnet
+```
+
+Example output: 
+```
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+b35a4ba9ef3ce21adcd6879d08553642224304704d206c74d3ffb3e6eed3ca28     0        1000000000 lovelace
+```
+
+If we send 5 ada, the faucet will convert only part of that to fuel:
+
+```
+5 - 1.444(minAdaValue) - 0.17(txFee) = 3.39 // ada that will be converted to fuel
+```
+
+and will return
+
+```
+3.39 / 0.5 = 6 fuel and
+1.444(minAdaValue) + 0.39(the remainder from 3.39) ada
+```
+
+Since we need each of those values we will store them individually in a variable:
+
+```
+$ txhash="insert your txhash here"
+$ txix="insert your TxIx here"
+```
+
+Example:
+
+```
+$ txhash="b35a4ba9ef3ce21adcd6879d08553642224304704d206c74d3ffb3e6eed3ca28"
+$ txix="0"
+```
+
+Now we can build the transaction and save it in a file called `tx.raw`. We saved almost all of the needed values in variables to improve the readability. 
+
+- Build the transaction:
+
+```
+$ cardano-cli transaction build $testnet \
+  --babbage-era \
+  --tx-in $txhash#$txix \
+  --tx-out "$faucet_address+5000000" \
+  --change-address $address \
+  --protocol-params-file protocol.json \
+  --out-file tx.raw
+```
+
+### Syntax breakdown
+
+`--babbage-era`: Indicates that our transaction will be compatible with babbage-era.
+
+`--tx-in $txhash#$txix \`: The hash of our address we use as the input for the transaction needs sufficient funds. The syntax is: the hash, followed by a hash sign(#), followed by the value of TxIx of the corresponding UTXO.
+
+`--tx-out "$faucet_address+5000000" \`
+
+Here is where part one of the magic happens. For the --tx-out, we need to specify which address will receive our transaction. In our case, we will be sending 5 ada to the faucet address.
+
+`--out-file tx.raw`: We save our transaction to a file that you can name however you want. Just be sure to reference the correct filename in subsequent commands.
+
+---
+## Sign and Submit
+
+Tansactions need to be signed to prove the authenticity and ownership of the policy key. The signed transaction will be save in a new file caled `tx.raw`
+
+- Sign the transaction:
+
+```
+$ cardano-cli transaction sign $testnet \
+  --tx-body-file tx.raw \
+  --signing-key-file $skey \
+  --out-file tx.sig
+```
+
+- Finally, submit the transaction
+
+```
+$ cardano-cli transaction submit $testnet \
+  --tx-file tx.sig
+```
+
+🎉 At this point you have successfully claimed sidechain fuel tokens. This transaction may take a couple seconds to process.
+
+- Check the output adress:
+
+```
+$ cardano-cli query utxo --address $address $testnet
+```
+
+Example output:
+```
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+d82e82776b3588c1a2c75245a20a9703f971145d1ca9fba4ad11f50803a43190     0        999824071 lovelace + 1 fbaaad49025bde0e84159cdae09b91b89d68e5349b67066ef305e239.4655454C
+```
+
+ℹ️ *`4655454c` in hex is the ASCII encoding of the string `FUEL`*
+
+# Move FUEL from mainchain to sidechain
+
+Move the amount of FUEL tokens in one UTXO. You need to know the policy ID, which can be obtained by querying your address.
+
+```
+cardano-cli query utxo --address addr_test1wqpr… $network
+```
+
+Example output:
+
+```
+                               TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+2daf5cd09137c63f8adbaad297636cbe1a6142ab298485e0cac47b591e5db74b     0        613648238 lovelace + TxOutDatumNone
+6139f661d7d30bb51b070d5338ab4d39c1651921ef0472cd6af8ab2e9c3380f1     1        5000000 lovelace + TxOutDatumNone
+68c2b54e91e52643b3b4e1f3cce1d6651129bb0840fcb84a87086ad5358626e3     1        3500000 lovelace + 99999998622 6f1e7de82f60f7bb4edde75b8b1cefb12a12d88e20e318947c1c130b.4655454c + TxOutDatumNone
+```
+
+In this case the policy ID is `6f1e7de82f60f7bb4edde75b8b1cefb12a12d88e20e318947c1c130b` and the amount of `99999998622`.
+
+- Send tokens using python script:
+
+```
+./send_to_sidechain.py --signing-key-file payment.skey \
+  --recipient 0xae3dffee97f92db0201d11cb8877c89738353bce \
+  --utxo-in 68c2b54e91e52643b3b4e1f3cce1d6651129bb0840fcb84a87086ad5358626e3#1 \
+  --amount 10
+```
+
+In a few minutes the tokens should appear on the sidechain:
+
+```
+curl -L -X POST http://faucet.mamba.atago/ -H 'Content-type:application/json' -d '{
+    "jsonrpc": "2.0",
+    "method": "eth_getBalance",
+    "params": ["0xae3dffee97f92db0201d11cb8877c89738353bce", "latest"],
+    "id": 1}'
+```
