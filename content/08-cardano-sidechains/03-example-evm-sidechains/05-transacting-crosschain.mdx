@@ -1,9 +1,9 @@
 ---
-title: Transacting crosschain
-metaTitle: Transacting crosschain
+title: Transacting cross-chain
+metaTitle: Transacting cross-chain
 ---
 
-# Claim Fuel Tokens
+# Claiming Fuel tokens
 
 ## Prerequisites
 
@@ -68,7 +68,7 @@ The Takao faucet service does not have a UI, but supports request via `curl`.
 curl -v -X POST -s 'http://faucet.cardano.takao/send-money/INSERT_TESTNET_ADDRESS'
 ```
 
-## Step 02 - Export Protocol Parameters
+## Step 02 - Export protocol parameters
 
 For our transaction calculations, we need some of the current protocol parameters. The following command will save the parameters in a file called protocol.json:
 
@@ -147,7 +147,7 @@ Here is where part one of the magic happens. For the --tx-out, we need to specif
 `--out-file tx.raw`: We save our transaction to a file that you can name however you want. Just be sure to reference the correct filename in subsequent commands.
 
 ---
-## Sign and Submit
+## Sign and submit
 
 Tansactions need to be signed to prove the authenticity and ownership of the policy key. The signed transaction will be save in a new file caled `tx.raw`
 
