@@ -1,4 +1,131 @@
 ---
-title: Chain Follower
-metaTitle: Chain Follower
+title: Chain follower
+metaTitle: Chain follower
 ---
+# Chain follower
+A chain follower such as DB Sync is a component that observes the transactions on a main chain such as Cardano. The chain follower provides the information for a sidechain such as Mamba to stay consistent with the main chain.
+
+[The DB Sync page](https://docs.cardano.org/cardano-components/cardano-db-sync/about-db-sync) gives a high-level description.
+
+## Mamba Bridge
+The Mamba node uses DB Sync for getting information regarding the main chain.
+
+This is a non-exhaustive list of data retrieved from the main chain:
+
+- The nonce for a given epoch
+- The stake distribution for a given epoch
+- The list of UTXO for a given address, after a given block
+- The latest block for a slot
+- The latest block for the chain
+- The block information for a given block number
+- The slot number corresponding to a UTXO
+- The cross-chain transactions for a given policy, asset name, and a range of blocks within a slot
+- The cross-chain transactions for a given policy, asset name, and a UTXO id.  
+  
+The sidechain client uses DB Sync to listen to the mainchain's activity, and perform various tasks:  
+
+- Update the sidechain pool committee: a specific transaction is done on the main chain, observed with DB Sync, and taken into account to determine the next slot's pool committee on the sidechain
+- Transfer funds from the main chain to the sidechain: when a token is burned on the main chain, the corresponding transaction is observed with DB Sync, and used to provide corresponding funds on the sidechain.
+
+Transferring funds back from the sidechain to the main chain doesn't use DB Sync, but a different mechanism.
+
+## Configuring Mamba node to use your DB Sync instance
+After installing and setting up a DB Sync instance, you need to configure a Mamba node to point to it. In the node’s configuration file set the datasource type to `db-sync` and configure connection details to match your setup. The finished configuration should look similar to the example below:
+
+```
+{
+...
+
+  "mamba": {
+        "sidechain": {
+            "datasource": {
+                "db-sync": {
+                    "connect-thread-pool-size": 4,
+                    "driver": "org.postgresql.Driver",
+                    "host": "your.dbsync.host",
+                    "name": "your db sync instance name",
+                    "port": 5432,                    
+                    "username": "your db sync username"
+                    "password": "your db sync password",
+                },
+                "type": "db-sync"
+            }
+        },
+    
+    
+...
+}
+```
+
+When the main-chain block with the burn transaction becomes stable, then the cross-chain transaction enters queued state. Queued transactions are eligible for Mamba node to be included in a sidechain block.
+
+When the transaction is added to the sidechain, it is executed.
+
+## Observing transactions
+The tool `sidechain-cli.py` can be used to query main-chain transactions.  
+
+### Pending and queued transactions
+The command:  
+
+`./sidechain-cli.py pending-txs --mamba-url=http://localhost:8546`  
+outputs
+
+```  
+{
+  "pending": [
+    {
+      "recipient": "0x6aad2a7b6f14e179ce162d35addc5ad705b2d945",
+      "value": "0x32",
+      "txId": "bbbb7dcc11c47658590d8722e3659b857d80d488fc757760dfc18a49b9e42222#0"
+    }
+  ],
+  "queued": [
+    {
+      "recipient": "0x6aad2a7b6f14e179ce162d35addc5ad705b2d946",
+      "value": "0x64",
+      "txId": "aaaa7dcc11c47658590d8722e3659b857d80d488fc757760dfc18a49b9e42233#0"
+    }
+  ]
+}
+```  
+The parameter --recipient  can be used to restrict results:
+
+```  
+./sidechain-cli.py pending-txs --mamba-url=http://localhost:8546 \
+  --recipient=0x6aad2a7b6f14e179ce162d35addc5ad705b2d946
+```  
+### Search an incoming transaction in the chain
+
+`./sidechain-cli.py search-incoming-txs --help`  
+
+Example:
+
+```
+./sidechain-cli.py search-incoming-txs --mamba-url http://localhost:8546 \
+  --to 5000 \
+  --utxo-id 472305c8c7f2f388ba7ebfc3ee5459c52105a16546176ef5db544416597bd0a7#0
+```  
+outputs
+
+```
+- Transaction in block 1 (0xcbc9b92a09edc4fb6fb46dc0982e851f4c9acf61c5c9fce1227943b4e8bee09a):
+    * utxo:      472305c8c7f2f388ba7ebfc3ee5459c52105a16546176ef5db544416597bd0a7#0
+    * recipient: Address(value='0000000000000000000000000000000000000000')
+    * value:     1 FUEL
+```  
+
+### Sending tokens to sidechain
+
+`./sidechain-cli.py burn-fuel --help`  
+
+Example:  
+```
+./sidechain-cli.py burn-fuel --signing-key-file payment1.skey \
+  --recipient ae3dffee97f92db0201d11cb8877c89738353bce \
+  --amount 10
+```
+### Funding sidechain address with faucet
+```
+./sidechain-cli.py request-funds --mamba-url http://faucet.mamba.staging \
+  --recipient 0x0011223344556677889900112233445566778899 
+```  
