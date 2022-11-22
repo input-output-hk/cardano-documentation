@@ -26,7 +26,7 @@ The design of the example EVM sidechain is based on the principles laid out in t
 Here are some design features of the Cardano EVM sidechain relevant to Solidity developers.
 ### Two-way peg
 The EVM sidechain allows the transfer of assets back and forth between the Cardano blockchain and sidechains. The two-way peg that achieves this preserves the nature of the asset in both chains whenever the asset moves.
-### Proof of Stake
+### Proof of stake
 Although the Solidity contract may be intended for a Proof of Work blockchain, the example EVM sidechain uses the same secure PoS algorithm as Cardano, giving the well-known benefits of reduced energy usage, speed, and decentralization.
 ### Firewall 
 The firewall property ensures that a catastrophic failure in one of the chains, such as a violation of its security assumptions, does not make the other chains vulnerable. This feature provides a measure of limited liability analogous to limited liability in the corporate world - when a limited company fails, its stockholders are only liable for the amount of their investment.
