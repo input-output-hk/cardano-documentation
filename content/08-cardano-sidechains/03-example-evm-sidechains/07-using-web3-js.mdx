@@ -13,7 +13,7 @@ The Ethereum web3.js interface provides many documented API calls.
 The interface gives you full access to a copy of the Cardano EVM Sidechain. You can create a website or client that uses a remote EVM sidechain node to interact with the decentralized blockchain ledger.   
 The web3.js interface is also used to develop smart contracts in the Solidity language.  
   
-In this example, we'll set up a simple Javascript program to demonstrate the concept.  
+This example will set up a simple Javascript program to demonstrate the concept.  
 See the end of this page for more information. 
 # Obtain permission to connect to a remote node
 Follow the instructions on the [node authentication page](../network/node-authentication). 
@@ -29,7 +29,7 @@ sudo tailscale up --login-server https://headscale.pilz.iohkdev.io
 Follow these steps to create and run a web3.js application that checks the synchronization status and displays the contents of the latest block.
 ## Set up the file structure
 1. Make sure [node.js](https://nodejs.org/en/download/) and [Yarn](https://classic.yarnpkg.com/lang/en/) are installed. There are plenty of instructional posts on the internet, so there is no need to repeat all that here.  
-2. Create a new directory (its name does not matter) and initialize it. You can use npm or Yarn. Both npm and Yarn create the file `package.json`. At the same time, Yarn also creates `yarn.lock`, and npm creates `package-lock.json`. From here on, we will demonstrate using Yarn.  
+2. Create a new directory (its name does not matter) and initialize it. You can use npm or Yarn. Both npm and Yarn create the file `package.json`. At the same time, Yarn also creates `yarn.lock`, and npm creates `package-lock.json`. From here on, the demonstration will use Yarn.  
 On some systems, you are prompted for information that will be added to `package.json`. This information will be updated later when the web3 libraries are installed. You can just take the default values.    
 On Windows:  
  ```
@@ -128,8 +128,8 @@ On all systems, create a file called `index.js` in the same directory as `packag
 ```
 `Index.js` is the Javascript program.  
 Line 1 references the web3.js libraries.    
-In line 3, we establish a connection between this program and the Cardano EVM sidechain node.  
-In the block beginning at line 4, we retrieve the latest block that the client has downloaded so far.
+Line 2 establishes a connection between this program and the Cardano EVM sidechain node.  
+The block beginning at line 4 retrieves the latest block that the client has downloaded so far.
 ## Test the program
 Check that your connection to the EVM sidechain node on the Atago testnet is still active by accessing the URL in your browser.    
 
@@ -175,7 +175,7 @@ The result should be similar to this:
 
     C:\Atago-web3-example>
 ```
-We obtained the above results on Windows 10, 64-bit, version 21h2.
+The above results were obtained on Windows 10, 64-bit, version 21h2.
 ## Observe the results
 The fields displayed are from the last block synchronized with the local node.
 # More information

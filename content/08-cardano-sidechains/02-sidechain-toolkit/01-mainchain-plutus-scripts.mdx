@@ -30,7 +30,7 @@ data SidechainParams = SidechainParams
 
 ### 1. Initialize a contract
 
-For initialization, we use an NFT (consuming some arbitrary UTXO) to uniquely identify the current committee members by storing the hash of the concatenated public keys on the chain (see [6.1](#61-update-committee-hash)). This committee is used to verify signatures for sidechain to mainchain transfers (see [3.1](#31-merkle-root-insertion)).
+For initialization, use an NFT (consuming some arbitrary UTXO) to uniquely identify the current committee members by storing the hash of the concatenated public keys on the chain (see [6.1](#61-update-committee-hash)). This committee is used to verify signatures for sidechain to main-chain transfers (see [3.1](#31-merkle-root-insertion)).
 
 **Workflow:**
 
@@ -79,9 +79,9 @@ data BurnParams = BurnParams
 
 ![plutus-1](https://user-images.githubusercontent.com/10556209/203348515-29b5635d-33fc-4b72-9c0c-d9db0b7ae2b7.png)
 
-<figcaption align = "center"><i>Mainchain to Sidechain transaction (burning FUEL tokens)</i></figcaption><br />
+<figcaption align = "center"><i>Main chain to Sidechain transaction (burning FUEL tokens)</i></figcaption><br />
 
-### 3. Transfer FUEL tokens from sidechain to mainchain
+### 3. Transfer FUEL tokens from sidechain to main chain
 
 **Workflow:**
 
@@ -193,7 +193,7 @@ where the `claimTransactionHash` is a `blake2(cbor(MerkleTreeEntry))`, uniquely 
 
 ![plutus3](https://user-images.githubusercontent.com/10556209/203349828-bf3db3aa-7032-4578-a7c2-fe06a882dc95.png)
 
-<figcaption align = "center"><i>Sidechain to Mainchain transaction (claiming tokens)</i></figcaption><br />
+<figcaption align = "center"><i>Sidechain to main chain transaction (claiming tokens)</i></figcaption><br />
 
 **Minting policy redeemer:**
 
@@ -216,7 +216,7 @@ data FUELRedeemer
 ```haskell
 data BlockProducerRegistration = BlockProducerRegistration
   { bprSpoPubKey :: PubKey -- own public key
-  , bprInputUtxo :: TxOutRef -- a utxo that must be spent with the transaction
+  , bprInputUtxo :: TxOutRef -- a UTXO that must be spent with the transaction
   , bprSidechainPubKey :: ByteString -- public key in the sidechain's desired format
   , bprSpoSignature :: Signature -- Signature of the SPO private key
   , bprSidechainSignature :: ByteString -- Signature of the sidechain private key
@@ -232,9 +232,9 @@ data BlockProducerRegistration = BlockProducerRegistration
 
 ### 6. Committee handover
 
-In the current implementation of the sidechain, a [Merkle root insertion (3.1)](#31-merkle-root-insertion) can only occur once per sidechain epoch at the time of the committee handover. We expose an endpoint which can handle this action, however the underlying implementation is detached, so in theory, we could do Merkle root insertion and Committee Hash Update actions independently.
+In the current implementation of the sidechain, a [Merkle root insertion (3.1)](#31-merkle-root-insertion) can only occur once per sidechain epoch at the time of the committee handover. The sidechain exposes an endpoint which can handle this action, however the underlying implementation is detached, so in theory, the Merkle root insertion and Committee Hash Update actions could be done independently.
 
-We have to be careful about the order of these actions. If the transaction inserting the Merkle root for sidechain epoch 1 gets submitted _after_ the committee handover from `committee of epoch 1` to `committee of epoch 2` transaction, the signature would become invalid, since it is signed by the `committee of epoch 1`. To mitigate this issue, we introduce `Merkle root chain`, for details see: [6.2](#62-merkle-root-chaining)
+The order of these actions is important. If the transaction inserting the Merkle root for sidechain epoch 1 gets submitted _after_ the committee handover from `committee of epoch 1` to `committee of epoch 2` transaction, the signature would become invalid, since it is signed by the `committee of epoch 1`. To mitigate this issue, the `Merkle root chain` is introduced; for details see: [6.2](#62-merkle-root-chaining)
 
 #### 6.1 Update committee hash
 
@@ -324,13 +324,13 @@ signature = ecdsa.sign(data: blake2b(cbor(UpdateCommitteeMessage)), key: committ
 
 #### 6.2. Merkle root chaining
 
-As described in [6. Committee handover](#6-committee-handover), we have to maintain the correct order of Merkle root insertions and committee hash updates. We introduce a new Merkle root chain, where each Merkle root has a reference to its predecessor (if one exists), furthermore all committee hash updates reference the last Merkle root inserted (if one exists).
+As described in [6. Committee handover](#6-committee-handover),  the correct order of Merkle root insertions and committee hash updates mut be maintained. A new Merkle root chain does this. Each Merkle root has a reference to its predecessor (if one exists), furthermore all committee hash updates reference the last Merkle root inserted (if one exists).
 
 ![01](https://user-images.githubusercontent.com/10556209/203350794-9c75b2cd-f471-4f51-9e54-0d2d90ac8f07.png)
 
 <figcaption align = "center"><i>Merkle root chaining (SC ep = sidechain epoch)</i></figcaption><br />
 
-As seen in the graph above, the first Merkle root has no reference, which is completely valid. We do not enforce the existence of the last Merkle root.
+As seen in the graph above, the first Merkle root has no reference, which is completely valid. The existence of the last Merkle root is not enforced.
 
 In case a sidechain epoch passed without any cross-chain transactions, no Merkle root is inserted, resulting in two committee hash updates referencing the same Merkle root.
 
@@ -338,7 +338,7 @@ In case a sidechain epoch passed without any cross-chain transactions, no Merkle
 
 <figcaption align = "center"><i>Merkle root chaining - epoch without Merkle root (SC ep = sidechain epoch)</i></figcaption><br />
 
-In the future, we want to support multiple Merkle roots per sidechain epoch, so the result could look like the following:
+In the future, there may be multiple Merkle roots per sidechain epoch, so the result could look like the following:
 
 ![03](https://user-images.githubusercontent.com/10556209/203350806-72c261f7-f0af-41a0-90dd-883c160e96c3.png)
 
