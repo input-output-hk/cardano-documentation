@@ -2,15 +2,20 @@
 title: Example EVM sidechain FAQ
 metaTitle:  Example EVM sidechain FAQ
 ---
+
 ### What is the difference between the EVM Sidechain design and Milkomeda?
+
 Enhanced security. Milkomeda wants to go mainnet with 32 validators. The EVM Sidechain wants to go with 101.
 Milkomeda is wrapping ada to bridge it over the sidechain and using it to pay for execution fees (fuel). The EVM Sidechain plans to mint a new token on Cardano to be used as sidechain fuel and users can natively move it to the sidechain.
 
 The EVM Sidechain will be a decentralized permissionless sidechain that allows everyone the freedom to join and validate the network. Milkomeda is a permissioned federation that requires approval by a central group before you can join and validate the network.
+
 ### What is the difference between the EVM Sidechain and Hydra?
+
 They are two separate solutions. [Hydra](https://iohk.io/en/blog/posts/2022/02/03/implementing-hydra-heads-the-first-step-towards-the-full-hydra-vision/) is a layer 2 scalability solution for applications developed in Plutus for Cardano blockchain to speed up transactionss, similar to the Lightning network for Bitcoin.
+
 The EVM Sidechain brings Ethereum virtual machine (Solidity-based DApps) execution into Cardano via a sidechain.
 
+### Can you execute a Solidity smart contract on the example EVM sidechain? If this is possible, how do you go between the Ethereum (account model) to the Cardano (EUTXO) accounting model? 
 
-### Can you execute a solidity smart contract on the example EVM sidechain? If this is possible, how do you go between the Ethereum (account model) to the Cardano (EUTXO) accounting model? 
 The EVM sidechain uses the account model so it is fully compatible with Ethereum-based apps. It doesn't use EUTXO.
