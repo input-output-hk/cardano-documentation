@@ -2,28 +2,32 @@
 title: Sidechains FAQ
 metaTitle:  Sidechains FAQ
 ---
-## Is the Sidechain Toolkit an open-source project?
+# Sidechains FAQ
+This page answers some frequent questions for the Cardano Sidechains Toolkit and the example EVM sidechain application.
+## The Cardano Sidechains Tookit
+### Is the Sidechain Toolkit an open-source project?
 Yes, it will be open-sourced under the Input Output Global Github repository.
 
-## Will there be an alternative chain follower to DB sync that consumes less resources?
-Probably. IOG is currently considering other possibilities such as  [Oura](https://github.com/txpipe/oura) and [Carp](https://github.com/dcSpark/carp).
+### Will there be an alternative chain follower to DB sync that consumes less resources?
+Yes, IOG is working in a less resource-intensive tool. There are other chain indexer tools such as [Oura](https://github.com/txpipe/oura) and [Carp](https://github.com/dcSpark/carp)[Carp](https://github.com/dcSpark/carp) that could serve the purpose of building a Cardano sidechain.
 
-### Why is the transfer token time between main chain to sidechain in a mainnet scenario 12 hours? 
+### Why is the transfer token time between main chain and sidechain in a mainnet scenario 12 hours? 
 Bridge squad will have answers 
 ### Questions for Plutus Bridge scripts
 
-### What is the difference between the EVM Sidechain design and Milkomeda?
+## The example EVM sidechain application
+### What is the difference between the EVM sidechain design and Milkomeda?
 
-Enhanced security. Milkomeda wants to go mainnet with 32 validators. The EVM Sidechain wants to go with 101.
-Milkomeda is wrapping ada to bridge it over the sidechain and using it to pay for execution fees (fuel). The EVM Sidechain plans to mint a new token on Cardano to be used as sidechain fuel and users can natively move it to the sidechain.
+Enhanced security. Milkomeda wants to go mainnet with 32 validators. The EVM sidechain wants to go with 101.
+Milkomeda is wrapping ada to bridge it over the sidechain and using it to pay for execution fees (fuel). The EVM sidechain plans to mint a new token on Cardano to be used as sidechain fuel and users can natively move it to the sidechain.
 
-The EVM Sidechain will be a decentralized permissionless sidechain that allows everyone the freedom to join and validate the network. Milkomeda is a permissioned federation that requires approval by a central group before you can join and validate the network.
+The EVM sidechain will be a decentralized permissionless sidechain that allows everyone the freedom to join and validate the network. Milkomeda is a permissioned federation that requires approval by a central group before you can join and validate the network.
 
-### What is the difference between the EVM Sidechain and Hydra?
+### What is the difference between the EVM sidechain and Hydra?
 
 They are two separate solutions. [Hydra](https://iohk.io/en/blog/posts/2022/02/03/implementing-hydra-heads-the-first-step-towards-the-full-hydra-vision/) is a layer 2 scalability solution for applications developed in Plutus for Cardano blockchain to speed up transactionss, similar to the Lightning network for Bitcoin.
 
-The EVM Sidechain brings Ethereum virtual machine (Solidity-based DApps) execution into Cardano via a sidechain.
+The EVM sidechain brings Ethereum virtual machine (Solidity-based DApps) execution into Cardano via a sidechain.
 
 ### Can you execute a Solidity smart contract on the example EVM sidechain? If this is possible, how do you go between the Ethereum (account model) to the Cardano (EUTXO) accounting model? 
 
