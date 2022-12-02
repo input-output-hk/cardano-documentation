@@ -57,7 +57,7 @@ data InitSidechainParams = InitSidechainParams
   }
 ```
 
-### 2. Transfer FUEL tokens from mainchain to sidechain
+### 2. Transfer FUEL tokens from the main chain to the sidechain
 
 FUEL tokens on the Cardano network represent locked native assets on the sidechain network. When a certain amount of tokens are locked on a certain sidechain contract, you can mint the equivalent amount on Cardano ([2.](#2-transfer-fuel-tokens-from-mainchain-to-sidechain), [3.2.](#32-individual-claiming)). Conversely burning these tokens on the Cardano network ([3.](#3-transfer-fuel-tokens-from-sidechain-to-mainchain)) will release these tokens and send them to the owner.
 
@@ -81,7 +81,7 @@ data BurnParams = BurnParams
 
 <figcaption align = "center"><i>Main chain to Sidechain transaction (burning FUEL tokens)</i></figcaption><br />
 
-### 3. Transfer FUEL tokens from sidechain to main chain
+### 3. Transfer FUEL tokens from the sidechain to the main chain
 
 **Workflow:**
 
@@ -204,7 +204,7 @@ data FUELRedeemer
   | SideToMain MerkleTreeEntry MerkleProof
 ```
 
-### 4. Register committee candidate
+### 4. Register a committee candidate
 
 **Workflow:**
 
@@ -223,7 +223,7 @@ data BlockProducerRegistration = BlockProducerRegistration
   }
 ```
 
-### 5. Deregister committee member/candidate
+### 5. Deregister a committee member/candidate
 
 **Workflow:**
 
@@ -236,7 +236,7 @@ In the current implementation of the sidechain, a [Merkle root insertion (3.1)](
 
 The order of these actions is important. If the transaction inserting the Merkle root for sidechain epoch 1 gets submitted _after_ the committee handover from `committee of epoch 1` to `committee of epoch 2` transaction, the signature would become invalid, since it is signed by the `committee of epoch 1`. To mitigate this issue, the `Merkle root chain` is introduced; for details see: [6.2](#62-merkle-root-chaining)
 
-#### 6.1 Update committee hash
+#### 6.1 Update a committee hash
 
 1. Bridge component triggers the Cardano transaction. This transaction does the following:
 
