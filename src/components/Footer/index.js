@@ -307,6 +307,20 @@ const Footer = ({ theme }) => {
               ))}
             </ul>
           </LinksColumn>
+          <LinksColumn>
+            <p>
+              <strong>{content.legalLinks.title}</strong>
+            </p>
+            <ul>
+              {content.legalLinks.links.map(({ href, label }) => (
+                <li key={`${href}_${label}`}>
+                  <Link href={href} rel="noopener" target="_blank">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </LinksColumn>
         </div>
       </BottomRow>
     </FooterSection>
