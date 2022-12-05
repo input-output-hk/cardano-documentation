@@ -17,21 +17,21 @@ Sidechains offer advantages in interoperability, scalability, and compatibility.
 
 ### Interoperability
 
-Sidechains of different types can communicate with each other. The most basic form of communication is the exchange of assets. Because assets retain their nature when transferred to the sidechain, they can be transferred back just as easily. A mechanism called a two-way peg achieves this communication. As long as both chains are secure in themselves, this security is carried on to the two-way transfers.
+The most basic form of communication is the exchange of assets. Because assets retain their nature when transferred to the sidechain, they can be transferred back just as easily. A mechanism called a two-way peg achieves this communication. As long as both chains are secure in themselves, this security is carried on to the two-way transfers.
 
-Communication between the main chain and the sidechain allows them to keep their disparate consensus methods and block formats and still work together, opening up a much wider range of applications.
+Communication between the main chain and the sidechain allows them to keep their own (be it amended) consensus methods and block formats and still work together, opening up a much wider range of applications.
 
 ### Scalability
 
 Just as a project manager has the trilemma of good, fast, or cheap (pick any two), a blockchain has the choice of three competing objectives – decentralization, security, and scalability.
 
-Because sidechains tend to be short and specific to an application domain, transactions can be completed more quickly, relieving the main chain of this load.
+Because sidechains can be short and specific to an application domain, transactions can be completed quicker, relieving the main chain of this load.
 
 The scalability improvement of sidechains comes without compromising security and need not affect decentralization, offering improvements in the blockchain trilemma. 
 
 ### Compatibility
 
-The example EVM sidechain provides a proof of stake (PoS) blockchain running smart contracts written in Solidity. Ethereum smart contracts can run unchanged. The difference is that they will run faster and use a fraction of the resources that they use on a PoW chain. Because they run faster, the expectation is that the end user will pay much less in gas fees.
+Sidechains can expose the same application program interface (API) as an existing chain and use the security and efficiency of Cardano’s consensus protocols. For example, the Cardano EVM sidechain provides a Solidity execution environment that does not require miners, but still serves Ethereum JSON RPC methods. Ethereum smart contracts can run unchanged, at a considerably lower gas fee.
 
 ## Sidechain design elements
 
@@ -43,9 +43,9 @@ Here are some design features of the Cardano EVM sidechain relevant to Solidity 
 
 The EVM sidechain allows the transfer of assets back and forth between the Cardano blockchain and sidechains. The two-way peg that achieves this preserves the nature of the asset in both chains whenever the asset moves.
 
-### Proof of stake
+### Consensus protocol
 
-Although the Solidity contract may be intended for a Proof of Work blockchain, the example EVM sidechain uses the same secure PoS algorithm as Cardano, giving the well-known benefits of reduced energy usage, speed, and decentralization.
+Although the Solidity contract may be intended for a Proof of Work blockchain, the example EVM sidechain  provides a Solidity execution environment that does not require miners, but still serves Ethereum JSON RPC methods, giving the well-known benefits of reduced energy usage, speed, and decentralization.
 
 ### Firewall 
 
