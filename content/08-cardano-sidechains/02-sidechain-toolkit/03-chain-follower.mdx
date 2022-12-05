@@ -3,7 +3,7 @@ title: Chain follower
 metaTitle: Chain follower
 ---
 
-A chain follower such as DB Sync is a component that observes the transactions on a main chain such as Cardano. The chain follower provides the information for a sidechain such as Mamba to stay consistent with the main chain.
+A chain follower such as DB Sync is a component that observes the transactions on the main chain such as Cardano. The chain follower provides the information for a sidechain such as Mamba to stay consistent with the main chain.
 
 [The DB Sync page](https://docs.cardano.org/cardano-components/cardano-db-sync/about-db-sync) gives detailed information about the functionality and how to set it up.
 
@@ -32,7 +32,7 @@ Transferring funds back from the sidechain to the main chain doesn't use DB Sync
 
 ## Configuring the sidechain node to use your DB Sync instance
 
-After installing and setting up a DB Sync instance, you need to configure a sidechain node to point to it. In the node’s configuration file, set the datasource type to `db-sync` and configure connection details to match your setup. The finished configuration should look similar to the example below:
+After installing and setting up a DB Sync instance, you need to configure a sidechain node to point to it. In the node’s configuration file, set the data source type to `db-sync` and configure connection details to match your setup. The finished configuration should look similar to the example below:
 
 ```
 {
