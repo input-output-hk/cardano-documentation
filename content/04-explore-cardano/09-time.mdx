@@ -1,0 +1,109 @@
+---
+title: Time handling on Cardano
+metaTitle: Time handling on Cardano
+---
+
+Time is necessarily relative to every participant in the blockchain system and is critically important to support and maintain the safety properties of the Ouroboros consensus protocol. Minted blocks are expected to be propagated to all nodes in the system in a timely manner, so time requires the construction of a globally acceptable representation for consensus to be reached.
+
+## Time-handling with Ouroboros
+
+Locally, a node computes the passing of time using a 'wall-clock' system. The code for this clock is complicated because the slot length can vary at a hard fork boundary, so the time must be computed carefully taking this into account.
+
+The code performs four steps to get the currentSlot:
+
+1. Waits for some delay corresponding to either the time left till the next slot, or an arbitrary 60s delay if the current slot is unknown, which happens when syncing
+2. Gets current system time and translates it to a slot number according to slot length for the current era
+3. If the new slot is greater than the previous one, it 'ticks' a new current slot
+4. If the above is not true, it either waits a bit longer or reports an error if current time jumped too far back.
+
+The local currentSlot is compared to the slot reported by the tip of the node's ledger. If the latter is older, it is ignored because this means that the node is synchronizing its state with the chain.
+
+Since the slot length can change at a hard fork, consensus can only convert slots to time up to a fixed point in the future – the 'stability window' – in which no hard forks can happen. In practice, the stability window is essential as it provides a measure of time needed to guarantee transaction finality and chain state immutability. During the stability window, the network must produce at least *k* blocks, where *k* is the number of blocks after which the chain becomes immutable. The stability window can take up to 3*k*/f, which is 36 hours with current parameters, or roughly a day.
+
+## Current challenges
+
+There is a fundamental physical limitation to the speed at which information can travel: the speed of light. This implies that synchronizing time over a network of nodes **takes time.**
+
+Network Time Protocol ([NTP](https://www.newyorker.com/tech/annals-of-technology/the-thorny-problem-of-keeping-the-internets-time)) exists to provide a synchronization mechanism, which addresses time limitations and measurement differences. On the other hand, NTP does not guarantee a monotonic increase: time can sometimes jump back and forth a few seconds or even hours. Existing systems providing accurate, precise, and reliable clocks at a global scale are *centralized*, like the global clock provided by [Spanner](https://research.google/pubs/pub39966/), for example.
+
+Currently, on Cardano:
+
+1. Network parameters are set in such a way that the granularity of observable time intervals (eg, block time) on the chain is 20s, which is equal to the slot length (1s) divided by the block coefficient f (the expected block frequency, 0.05). These parameters are unlikely to change in the short-term future.
+2. These 20 seconds have been determined as the optimum budget to guarantee the protocol's safety, given the constraints to replicate new transactions and blocks across the network (300ms TCP delay across the globe, with thousands of nodes). While block throughput might be increased in the future, it's unlikely that it will reduce the granularity of observable on-chain time.
+3. Transaction finality can be achieved in approximately one day, and *cannot* happen in *less* than a day, according to Ouroboros consensus design. Note that although a high level of confidence is already reached in a matter of minutes or hours, the probability of a block being ultimately discarded decreases exponentially with its depth and the number of nodes that have to adopt this block.
+
+Finally, in the longer term, the current Ouroboros protocol is planned to be replaced with **[Ouroboros Chronos](https://iohk.io/en/blog/posts/2021/10/27/ouroboros-chronos-provides-the-first-high-resilience-cryptographic-time-source-based-on-blockchain/)**. Ouroboros Chronos addresses the timekeeping challenges by providing the first high-resilience cryptographic time source based on blockchain technology.
+
+## The importance of determinism in a blockchain environment
+
+In the current context, determinism means that a given transaction has a 'fixed effect' on the ledger state. But it is important to distinguish between the concepts of *historical* and *prospective* determinism.
+
+Blockchains are based on the principle of replicating a fixed sequence of transactions (grouped in blocks) to reach a consensus about the state of the world. All blockchains have *historical* determinism, meaning that transactions in the chain have a fixed effect, else the results of validating the chain would be non-deterministic, which would break consensus.
+
+But few blockchains have *prospective* determinism, meaning that a transaction that has not yet been added to the chain does have a fixed effect (or won't apply). Cardano does feature prospective determinism (with the current exception of pointer addresses, which are proposed to be removed in this [CIP](https://github.com/cardano-foundation/CIPs/pull/374)). You can also find out more about [Cardano's transaction cost determinism here](https://docs.cardano.org/plutus/transaction-costs-determinism). 
+
+On blockchains that do not have prospective determinism users cannot know how much gas fees they need to pay for transactions which then results in such users overpaying for transactions. The lack of prospective determinism is also why a risk exists that a transaction on such blockchains can fail while also consuming lots of gas.
+
+### The power of prospective determinism
+
+Prospective determinism is a very powerful feature of Cardano, for multiple reasons:
+
+* Users know, ahead of time, what a transaction will do, so there are no surprises. This is particularly relevant for scripts because users know exactly:
+
+  * how the scripts will behave, and
+  * how much execution budget is needed.
+* Proposed transactions can safely be processed in parallel. This parallelism is one of the reasons for Hydra's speed.
+* Because users know in advance whether a transaction will fail or not, script failures can be punished harshly (because they will never happen to non-malicious users)
+* Broadly, it makes interacting with, and evolving the blockchain easier and more predictable.
+
+Prospective determinism of transactions requires that every part of transaction validation, including script execution, is completely deterministic. This is ultimately why Cardano cannot have non-deterministic operations in scripts.
+
+One of the ways to get prospective determinism is by having the effect of a transaction be entirely determined by the transaction itself and the outputs it references. In the context of Cardano, this is called *locality*. Locality is also of great benefit for users since it means that anyone can know what a transaction does just by looking at the transaction.
+
+## How do Plutus scripts handle time?
+
+Plutus scripts get access to the transaction validity range, defined by its creator. When defining the validity range, a creator can decide that a transaction is valid from slot X to slot Y, or leave one or both of the bounds undefined. This imposes constraints into which slot a transaction can be included, which is very useful on-chain to define various 'contracts'.
+
+The script can assume that the actual time of validation is in this range. Otherwise, the transaction will fail in [phase 1](https://iohk.io/en/blog/posts/2021/09/07/no-surprises-transaction-validation-part-2/) before script execution. This ensures determinism since the script will _always_ see the same piece of information (the validity range) regardless of when the script is validated, so the behavior will be the same.
+
+The limits of the validity interval are expressed in real time (POSIXTime), rather than slots, and the conversion from slots to real time is done by consensus, as discussed in the previous post. Using real time rather than slots is important because slot lengths can change at a hard fork, so assumptions based on counting slots are generally unreliable. The fact that scripts see the validity range allows the scripts to make assertions like 'the current time is before/after some given time', but it does not enable a script to make any other kind of assertion ('the second in which this transaction is validated is even', for example.)
+
+In Alonzo's original design, the validity range covered all known uses of time, while also fitting neatly with the existing time-to-live (TTL) field. In theory, it is possible to apply the same principles to other kinds of assertions, for example – let the script rely on assertions checked in phase 1. However, this would not be easy as it implies deep structural changes to various parts of the Cardano network. And because phase 1 checks need to be valid for every node across the network, this precludes any kind of assertion that depends on some local condition, like 'Current Time'.
+
+## Use cases for time
+
+Time has different applications in the Cardano ecosystem.
+
+### Hydra
+
+The Hydra protocol is dependent on time to compute and enforce the contestation deadline, which is a critical part of the protocol's safety mechanism. The Hydra Head state machine tracks the passage of time using UTCTime but the tick comes from the chain, based on the slot number observed from blocks produced by the chain. The reason for using UTCTime addresses the limitations inherent in the slot-to-time conversion the validity window imposes. One cannot convert a slot too far in the future, which means that it is simpler to use UTCTime off-chain and only do conversions when submitting/receiving transactions to or from the chain.
+
+This implies that the tick's granularity is roughly 20s, as this is the expected frequency at which blocks are produced. Using this measure of time, Hydra is available to react to the protocol-relevant crossing of the contestation deadline.
+
+What's important is that local time in the Hydra Head (and nodes) is tied to the on-chain time handled by Ouroboros. As Hydra is an isomorphic protocol, it is desirable to process 'timed transactions' also on layer 2 (see [issue #196](https://github.com/input-output-hk/hydra-poc/issues/196)). However, Hydra does not produce blocks, so the consensus itself does not need a notion of time (yet).
+
+This requires an understanding of the precision and process of discretizing time on a layer 2 ledger. Although the complexities of handling time on-chain also apply to layer 2, layer 2 can provide better solutions since such networks are much smaller, have a shorter lifespan, and do not need to scale globally.
+
+If you're interested in getting involved in discussions and sharing the types of applications you have and the resolution time they'd require, join this [Hydra Discord channel](https://discord.com/channels/826816523368005654/890903732462710836/890951034099335178).
+
+### Marlowe
+
+Marlowe is a domain-specific language (DSL) for writing financial and transactional contracts, nearly all of which involve time. A wide variety of standard financial contracts have been written in Marlowe, including most of the [ACTUS](https://www.actusfrf.org/) standard contracts (eg, loans, swaps, options, and derivatives). Furthermore, Marlowe supports a variety of non-financial contract types such as auctions, token swaps, and even games. Cardano's existing mechanisms for working with time dovetail nicely with Marlowe's semantics and provide Marlowe transactions with locality and determinism inherited from Plutus.
+
+In Marlowe, contract's time typically appears in the deadlines and timeouts that constrain how the execution of the contract evolves, and this works perfectly with Cardano's validity intervals. The timeout logic is needed in a loan contract, for example, to handle the situation where a loan payment is missed: then different logic needs to be executed in order to impose a penalty, adjust the schedule of future payments, etc. Contracts may also directly use the time endpoints of the validity interval in numerical computations, perhaps to adjust future payment amounts based on when an early payment was received. The fact that time appears as an interval has little practical impact on Marlowe because the interval can be as short as the time taken from submitting a transaction to its appearing in a block on the Cardano network – just a few minutes.
+
+## Solutions
+
+Cardano could potentially provide more accurate time-related data during transaction validation, such as the timestamp from the block producer at which the block was minted, converted from its slot, or even the actual timestamp in UTC with milliseconds precision. However, this would _break prospective determinism_ as it does on protocols which do not include this feature: a user could no longer tell if a transaction can definitely apply to the ledger or not, because that would depend on the exact timestamp that the block producer used when creating the block.
+
+Another option is adding various assertion kinds to transaction bodies beyond the validity interval. This is possible, but difficult as already outlined before, hence there needs to be a use case for these assertion kinds to be useful.
+
+Finally, layer 2 networks such as Hydra, can provide increased accuracy through shorter 'slot length' and shorter validity range, alongside decreased latency in transactions finality. Note that the current Hydra Head implementation does not _yet_ provide that level of flexibility.
+
+## Conclusion
+
+Time _is_ a complex topic, especially in a decentralized blockchain setting. These blog posts show that there is a clear notion of on-chain time on Cardano with specific constraints and available improvement options in the longer term.
+
+On-chain time behaves in a somewhat different way from the time in traditional software. This divergence is defined in a consistent way to address system constraints while ensuring security and usability for end-users and stake pool operators. Moreover, Cardano's measure of time appears to be good enough to cover multiple use cases, even when compared to traditional finance uses.
+
+Join [Discord community channels](https://discord.com/channels/826816523368005654/826816523964383263) for further discussions of time handling on Cardano and potential use cases that are not mentioned here.
