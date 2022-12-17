@@ -7,23 +7,23 @@ This section provides a high-level overview of what a decentralized application 
 
 ## What is a DApp?
 
-A DApp is a decentralized application that interacts with the blockchain. Just like a mobile application can run on your desktop or mobile device, a Cardano DApp operates on the Cardano blockchain. The difference between a DApp and a common application is that a DApp’s backend code runs on a decentralized peer-to-peer network whereas the application’s backend code is commonly run on a centralized server. 
+A DApp is a decentralized application that interacts with the blockchain. Just like a mobile application can run on your desktop or mobile device, so does a Cardano DApp. The difference between a DApp and a common application is that a DApp’s backend code runs on a decentralized peer-to-peer network whereas the application’s backend code is commonly run on a centralized server. 
 
-DApp categories can include DeFi products (ie, wallets, exchanges, etc), NFT marketplaces, gaming applications, healthcare products, and many more.
+DApp categories can include DeFi products (e.g. lending protocols, exchanges, etc), NFT marketplaces, gaming applications, healthcare products, the wallets often used to connect with all of these, and many more besides.
 
 ## Plutus DApp development
 
-DApps are built on open-source tooling. For a DApp to function, it needs to have an underlying [smart contract](https://docs.cardano.org/new-to-cardano/what-is-a-smart-contract) that automatically executes the deal for users. All the operational records are then tracked on the blockchain ledger. All in all, a DApp consists of a user-friendly front end, a (commonly cloud-based) backend with an operating smart contract, and is also connected to a blockchain ledger to track records on-chain. DApp benefits include trustless communication, resistance to censorship, privacy, and minimal downtime.
+DApps are built on open-source tooling. For a DApp to function, it needs to have an underlying [smart contract](https://docs.cardano.org/new-to-cardano/what-is-a-smart-contract) that automatically executes the deal for users. All the operational records are then tracked on the blockchain ledger. In general, a DApp usually consists of a user-friendly front end, a (commonly cloud-based) backend with an operating smart contract, and is also connected to a blockchain ledger to track records on-chain. DApp benefits include trustless communication, resistance to censorship, privacy, and minimal downtime.
 
-A smart contract (which consists of different scripts) is the driving force behind DApp functionality. Plutus scripts are written in Haskell (using the Plutus library and tools) and are then compiled to Plutus Core to be executed on the Cardano blockchain. The diagram below outlines the process of DApp development from code to on-chain deployment:
+A smart contract (which may consist of different scripts) is the driving force behind a DApp's functionality. Plutus scripts are written in Haskell (using the Plutus library and tools) and are then compiled to Plutus Core to be executed on the Cardano blockchain. The diagram below outlines the process of DApp development from code to on-chain deployment:
 
 ![plutus-architecture](https://ucarecdn.com/09beeb4d-ca98-4460-8d2f-b639a69cf156/)
 
 You can also learn about [Plutus contracts off-chain and on-chain components here](https://docs.cardano.org/plutus/learn-about-plutus/#plutussmartcontracts).
 
 1.  First, developers write the **source code** for the DApp.
-2.  Written in Haskell, this code goes through the **compiler pipeline** process. The code is first turned into *Plutus IR* (intermediate representation) to make it more efficient and optimized in terms of performance. *Typed Plutus Core* is the next stage in the compiler pipeline, which helps to make additional checks and code debugging. Finally, the code is turned into *Untyped Plutus Core* – a lambda calculus variable. Untyped Plutus Core, or the compiled application, gets executed on-chain.    
-3.  After the optimization process is complete, scripts get onto the chain. Developers can use the Plutus tools library or other open-source tooling developed for these purposes. It is also essential to have the off-chain component (an application), which will correctly form transactions to interact with the on-chain code.   
+2.  Written in Haskell, this code goes through the **compiler pipeline** process. The code is first turned into *Plutus IR* (intermediate representation) to make it more efficient and then optimized in terms of performance. *Typed Plutus Core* is the next stage in the compiler pipeline, which helps to make additional checks and code debugging. Finally, the code is turned into *Untyped Plutus Core* – a lambda calculus variable. Untyped Plutus Core, or the compiled application, is executed on-chain.    
+3.  After the optimization process is complete, scripts are placed onto the chain. Developers can use the Plutus tools library or other open-source tooling developed for these purposes. It is also essential to have the off-chain component (an application), which will correctly form transactions to interact with the on-chain code.   
 4.  Finally, on-chain scripts are processed by the Plutus ledger API and are then executed and run by the Plutus Core evaluator.
 
 ## Developer resources
