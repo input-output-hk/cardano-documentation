@@ -1,0 +1,44 @@
+---
+title: Transfer tokens
+metaTitle: Transfer tokens
+---
+
+This tutorial will show you how to transfer tokens from mainchain (**Takao** testnet) to sidechain (**Atago** testnet) and vice versa using the `sidechain-cli`.
+
+## Prerequisites
+
+- You need a funded account on both Takao and Atago.
+- Download `sidechain-cli` binary [here](https://github.com/input-output-hk/sidechains-tooling/releases).
+
+# Transfering tokens from mainchain to sidechain
+
+The following `sidechain-cli` command will burn Takao test `ADA` for Atago test `FUEL`.
+
+```shell
+./sidechain-cli burn-fuel
+  --signing-key-file payment.skey \
+  --mamba-url http://faucet.mamba.atago \
+  --recipient ae3dffee97f92db0201d11cb8877c89738353bce \
+  --amount 10
+```
+
+- `--signing-key-file payment.skey`: Generating a mainchain account creates a `.skey` file to sign transactions. Here we are providing the path to this file.
+-  `--mamba-url http://faucet.mamba.atago`: Here we are providing the JSON-RPC API url, or endpoint, to the sidechain network node.
+-   `--recipient ae3dffee97f92db0201d11cb8877c89738353bce`: Here we define the destination address on the sidechain where the FUEL tokens will appear.
+
+-  `--amount 10`: Here we define the amount of ADA to be burned for FUEL at the conversion rate of `amount`x10^9.
+
+The transaction will be stable on the mainchain in approximately 12 minutes or 36 blocks. The sidechain will then add it to a produced block and the tokens should appear in the account balance:
+
+- Check account balance on Atago using the [JSON-RPC API](/cardano-sidechains/example-evm-sidechains/api): 
+
+```shell
+curl -L -X POST http://faucet.mamba.atago -H 'Content-type:application/json' -d '{
+    "jsonrpc": "2.0",
+    "method": "eth_getBalance",
+    "params": ["0xae3dffee97f92db0201d11cb8877c89738353bce", "latest"],
+    "id": 1}'
+```
+
+# Transfering tokens from sidechain to mainchain
+
