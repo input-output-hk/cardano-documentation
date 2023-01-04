@@ -1,18 +1,21 @@
 ---
-title: Transfer tokens
-metaTitle: Transfer tokens
+title: Transferring tokens
+metaTitle: Transferring tokens
 ---
 
-This tutorial will show you how to transfer tokens from mainchain (**Takao** testnet) to sidechain (**Atago** testnet) and vice versa using the `sidechain-cli`.
+This tutorial will show you how to transfer tokens from mainchain (**Takao** testnet) to sidechain (**Atago** testnet) and vice versa.
 
 ## Prerequisites
 
-- You need a funded account on both Takao and Atago.
-- Download `sidechain-cli` binary [here](https://github.com/input-output-hk/sidechains-tooling/releases).
+1. We will use the **sidechain-cli** and **mamba-cli** within this tutorial. Download the binaries and add them to your shell’s path: https://github.com/input-output-hk/sidechains-tooling.
+2. Download the **bech32** conversion tool binary and add to your shell's path: https://github.com/input-output-hk/bech32
+3. If you have not done so already, create and fund your mainchain and sidechain accounts: [Create and funds your accounts](/cardano-sidechains/example-evm-sidechains/create-and-fund-accounts).
 
 # Transfering tokens from mainchain to sidechain
 
-The following `sidechain-cli` command will burn Takao test `ADA` for Atago test `FUEL`.
+### Step 01 - Burn FUEL
+
+To transfer tokens from mainchain to sidechain, we will use the **sidechain-cli** to burn `tADA` for `tFUEL`.
 
 ```shell
 ./sidechain-cli burn-fuel
@@ -22,6 +25,8 @@ The following `sidechain-cli` command will burn Takao test `ADA` for Atago test 
   --amount 10
 ```
 
+Understanding this command:
+
 - `--signing-key-file payment.skey`: Generating a mainchain account creates a `.skey` file to sign transactions. Here we are providing the path to this file.
 -  `--mamba-url http://faucet.mamba.atago`: Here we are providing the JSON-RPC API url, or endpoint, to the sidechain network node.
 -   `--recipient ae3dffee97f92db0201d11cb8877c89738353bce`: Here we define the destination address on the sidechain where the FUEL tokens will appear.
@@ -30,7 +35,7 @@ The following `sidechain-cli` command will burn Takao test `ADA` for Atago test 
 
 The transaction will be stable on the mainchain in approximately 12 minutes or 36 blocks. The sidechain will then add it to a produced block and the tokens should appear in the account balance:
 
-- Check FUEL token balance on Atago using the [JSON-RPC API](/cardano-sidechains/example-evm-sidechains/api): 
+- Check `tFUEL` token balance on Atago using the [JSON-RPC API](/cardano-sidechains/example-evm-sidechains/api): 
 
 ```shell
 curl -L -X POST http://faucet.mamba.atago -H 'Content-type:application/json' -d '{
@@ -40,5 +45,166 @@ curl -L -X POST http://faucet.mamba.atago -H 'Content-type:application/json' -d 
     "id": 1}'
 ```
 
+Tip: Balance may be checked on a compatible Web3 wallet configured to the Atago network.
+
+🎉 Congradulations! At this point, you have successfully burned mainchain `tADA` for sidechain `tFUEL`.
+
 # Transfering tokens from sidechain to mainchain
 
+Transfering tokens from sidechain to mainchain will require interfacing with the bridge contract to lock the desired amount of `tFUEL` to be claimed on the mainchain.
+
+### Step 01 - Lock FUEL
+
+The `lock` function of the bridge contract takes the mainchain recipient's address, but the recipient address must be converted to **bech32** format.
+
+- Determine how much `tFUEL` you want to lock. The amount in `tFUEL` has to be a multiple of 10^9. For example, 10^9 wei on the sidechain will be 1 FUEL token on the mainchain.
+Input the amount of FUEL, in Wei, you want to lock: e.g: `1000000000` Wei == 1 FUEL token.
+
+Let's set a few enviorment variables to make things easier;
+
+```shell
+SC_ADDR= # sidechain address
+PRIV_SC_KEY= # private key for sidechain address
+MC_ADDR= # mainchain recipient address
+FUEL_AMOUNT= # the amount of FUEL to be converted
+```
+
+You can double-check enviorment variables by printing them to your shell: E.g.: `print $MC_ADDR`.
+
+- Create the `lock` transaction:
+
+```shell
+# Get NONCE for SC_ADDR:
+NONCE=`curl -L -X POST -H 'Content-type:application/json' -d '{
+  "jsonrpc": "2.0",
+  "method": "eth_getTransactionCount",
+  "params": ["$SC_ADDR", "latest"],
+  "id": 1
+  }' http://faucet.mamba.atago | jq -r '.result'`
+
+# Convert to decimal:
+NONCE=`echo "ibase=16; $NONCE"|bc`
+
+TX_LOCK_HASH = mamba-cli create-lock-tx --nonce $NONCE --private-key $PRIV_SC_KEY $(bech32 <<< $MC_ADDR) $FUEL_AMOUNT
+```
+
+**Mamba-cli** will return the raw tx of the transaction which is stored in `TX_LOCK_HASH`.
+
+- Submit the transaction by invoking the JSON-RPC API endpoint to `eth_sendRawTransaction`:
+
+```shell
+# Add 0x in front of the lock transaction hash:
+TX_LOCK_HASH=0x$TX_LOCK_HASH
+
+# Get Raw Tx Hash:
+RAW_TX=`curl -L -X POST -H 'Content-type:application/json' -d '{
+  "jsonrpc": "2.0",
+  "method": "eth_sendRawTransaction",
+  "params": [$TX_LOCK_HASH],
+  "id": 1
+  }' http://faucet.mamba.atago | jq -r '.result'
+```
+
+- To verify the transaction was successful, simply `eth_getTransactionReceipt` of the raw transaction stored in `$RAW_TX`. You can request this until the receipt is returned or transaction times out:
+
+```shell
+curl -L -X POST -H 'Content-type:application/json' -d '{
+  "jsonrpc": "2.0",
+  "method": "eth_getTransactionReceipt",
+  "params": [$RAW_TX],
+  "id": 1
+  }' http://faucet.mamba.atago | jq
+  ```
+
+- Get the current sidechain status by invoking `sidechain_getStatus`:
+
+```shell
+curl -L -X POST -H 'Content-type:application/json' -d '{
+   "jsonrpc": "2.0",
+   "method": "sidechain_getStatus",
+   "params": [],
+   "id": 1
+   }' http://faucet.mamba.atago | jq -r
+```
+
+From this we know on which epoch and what phase our `lock()` transaction happened. If it happened during epoch `N` on epochPhase `regular` we will be able to obtain the merkle proof on epoch `N` since epochPhase changes to `handover`. If it happened during epoch `N` on epochPhase `closedTransactionBatch` or `handover` we will be able to obtain the merkle proof on epoch `N+1` since epochPhase changes to `handover`.
+
+- Get transaction index for the epoch the lock transaction will be processed:
+
+```
+curl -L -X POST -H 'Content-type:application/json' -d '{
+  "jsonrpc": "2.0",
+  "method": "sidechain_getOutgoingTransactions",
+  "params": [<N or N+1>],
+  "id": 1
+  }' http://faucet.mamba.atago | jq
+```
+
+Example output:
+
+```json
+{
+  "proof": {
+    "bytes": "0xd8799fd8799f0002581d606e9d4f6a3f900f7b510b27f29d8e79c550686ce093946b23b3d1828ed87a80ff80ff",
+    "info": {
+      "transaction": {
+        "value": "0x2",
+        "recipient": "0x606e9d4f6a3f900f7b510b27f29d8e79c550686ce093946b23b3d1828e",
+        "txIndex": 0
+      },
+      "merkleRootHash": "0x96e0bffb3786607057ddffa5bc3a92c5b6669109c12b5222da374cd99a815b4e"
+    }
+  }
+}
+```
+
+We need to obtain the `txIndex` matching the recipient and amount we used to lock tokens.
+
+- Wait until the epochPhase changes to `handover` of epoch `N` or `N+1` and obtain the Merkle proof for your lock action:
+
+```shell
+curl -L -X POST -H 'Content-type:application/json' -d '{
+  "jsonrpc": "2.0",
+  "method": "sidechain_getOutgoingTxMerkleProof",
+  "params": [<N or N+1>, <txIndex>],
+  "id": 1
+  }' http://faucet.mamba.atago | jq
+```
+
+From the return you need to obtain the `proof/bytes` and remove the `0x` that is prepended. We shall call that string `merkleProof`.
+
+- Wait until the epoch changes and the committee handover has happened. The committee handover happens automatically on the testnets by a service (relay) that tries every minute to find epoch signatures, and succeeds after a new epoch has started and the signatures are obtained. On mainnet the committee handover will be done by anyone that wants, where there will be an incentive to do so. A good way to verify is by waiting until you observe your transaction in the list of signatures to upload:
+
+```
+curl -L -X POST -H 'Content-type:application/json' -d '{
+    "jsonrpc": "2.0",
+    "method": "sidechain_getSignaturesToUpload",
+    "params": [<limit>],
+    "id": 1
+    }' http://faucet.mamba.atago | jq
+```
+
+Where `limit` = min(limit, number of epochs that are not yet relayed). The default value is `100`, but you can set it to any other number. In a normal case, when the handover happens at every epoch, it should only show 0 or 1 epochs (the last one). Once you identify that there are no roothashes pending in the list under the epoch that your lock was processed (`N` or `N+1`) you can claim your tokens. By now the epoch will be `N+1 `or `N+2`, depending on the phase you performed the lock operation.
+
+- Finally, claim the tokens by submitting a transaction on the mainchain with the `merkleProof` you obtained using the **sidechain-cli**: 
+
+```shell
+./sidechain-cli claim-fuel --mamba-url http://faucet.mamba.atago --signing-key-file /PATH/TO/payment.skey --combined-proof <merkleProof without 0x>
+```
+
+Example output: 
+
+```
+{
+  "endpoint": "ClaimAct",
+  "transactionId": "1334b3dab421911af68b9393e5cc4756c46c9ab1ac567a57450597e174351a48"
+}
+```
+
+Verify amount you locked in your account:
+
+```
+cardano-cli query utxo --testnet-magic 7 --address $MC_ADDR
+```
+
+🎉 Congradulations! At this point, you have successfully claimed your `tFUEL` on the mainchain.

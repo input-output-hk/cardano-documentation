@@ -1,0 +1,55 @@
+---
+title: Create and fund accounts
+metaTitle: Create and fund accounts
+---
+
+### Prerequisites:
+
+1. Ability to make an HTTP request.
+2. Optional: Download `mamba-cli` binary and add to your path: https://github.com/input-output-hk/sidechains-tooling
+
+# How to fund your mainchain account with test ADA tokens
+
+In this tutorial, you will learn how to claim test Ada tokens on the takao network (mainchain).
+
+## Generating keys
+
+To generate keys for the cardano testnet you need the `cardano-cli` [binary](https://github.com/input-output-hk/cardano-node/releases/)
+Open a shell and run the following commands:
+
+```shell
+# Set network name
+network=--testnet-magic=7
+
+cardano-cli address key-gen \
+    --verification-key-file payment.vkey \
+    --signing-key-file payment.skey
+
+cardano-cli address build \
+    --payment-verification-key-file payment.vkey \
+    --out-file payment.addr \
+    $network
+
+ export MC_ADDR=$(cat payment.addr)
+```
+
+These steps are based on the [cardano developers page](https://developers.cardano.org/docs/stake-pool-course/handbook/keys-addresses/).
+
+To get test-Ada, submit the following request:
+
+```shell
+curl -X POST -s 'https://faucet.twokao.pilz.iohkdev.io/send-money/$MC_ADDR
+```
+
+# How to fund your sidechain account with test Fuel tokens
+
+1.  Create a sidechain account using a compatible Web3 connected to the Atago network (MetaMask), 
+1a. or using `mamba-cli`: https://github.com/input-output-hk/sidechains-tooling
+
+```shell
+mamba-cli generate-keys --type ecdsa
+```
+
+(Add 0x to your public address)
+
+2.  Request test Fuel using the web-app: http://faucet.mamba.atago/
