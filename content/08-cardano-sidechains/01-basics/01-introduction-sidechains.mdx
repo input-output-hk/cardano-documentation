@@ -1,0 +1,62 @@
+---
+title: Introduction to sidechains
+metaTitle: Introduction to sidechains
+---
+
+A sidechain is simply a blockchain that depends on its main chain and is connected to it. This configuration allows the sidechain to have its own consensus algorithm and features. The sidechain is connected to the main chain through a two-way peg that allows the moving of assets between the chains. The finality of blocks is determined through a consensus mechanism that relies on the security of the main chain.
+  
+Input Output Global (IOG) provides a sidechain toolkit that is designed to help developers create custom sidechains for a wide range of use cases. To prove the capability of the toolkit, the example application is the Cardano EVM sidechain. EVM stands for Ethereum virtual machine. The Cardano EVM sidechain is EVM-compatible, which means deploying your Ethereum applications is just a matter of deploying your Solidity code on the sidechain and interacting with it through the Web3 API.
+
+## What is the example EVM sidechain?
+
+The example EVM sidechain project is an open-source Cardano sidechain protocol providing a client written in Scala. The EVM sidechain is a *child sidechain*, meaning that its starting, or genesis block, is seeded from the main chain and the child blockchain depends on the main chain. The example EVM sidechain enables anyone to run a sidechain network passive node.
+
+## Sidechain advantages
+
+Sidechains offer advantages in interoperability, scalability, and compatibility.
+
+### Interoperability
+
+The most basic form of communication is the exchange of assets. Because assets retain their nature when transferred to the sidechain, they can be transferred back just as easily. A mechanism called a two-way peg achieves this communication. As long as both chains are secure in themselves, this security is carried on to the two-way transfers.
+
+Communication between the main chain and the sidechain allows them to keep their own (be it amended) consensus methods and block formats and still work together, opening up a much wider range of applications.
+
+### Scalability
+
+Just as a project manager has the trilemma of good, fast, or cheap (pick any two), a blockchain has the choice of three competing objectives – decentralization, security, and scalability.
+
+Because sidechains can be short and specific to an application domain, transactions can be completed quicker, relieving the main chain of this load.
+
+The scalability improvement of sidechains comes without compromising security and need not affect decentralization, offering improvements in the blockchain trilemma. 
+
+### Compatibility
+
+Sidechains can expose the same application program interface (API) as an existing chain and use the security and efficiency of Cardano’s consensus protocols. For example, the Cardano EVM sidechain provides a Solidity execution environment that does not require miners, but still serves Ethereum JSON RPC methods. Ethereum smart contracts can run unchanged, at a considerably lower gas fee.
+
+## Sidechain design elements
+
+The design of the example EVM sidechain is based on the principles laid out in the [2018 white paper](https://iohk.io/en/research/library/papers/proof-of-stake-sidechains/) 'Proof-of-Stake Sidechains' by Peter Gazi1, Aggelos Kiayias, and Dionysis Zindros.  
+
+Here are some design features of the Cardano EVM sidechain relevant to Solidity developers.
+
+### Two-way peg
+
+The EVM sidechain allows the transfer of assets back and forth between the Cardano blockchain and sidechains. The two-way peg that achieves this preserves the nature of the asset in both chains whenever the asset moves.
+
+### Consensus protocol
+
+Although the Solidity contract may be intended for a Proof of Work blockchain, the example EVM sidechain  provides a Solidity execution environment that does not require miners, but still serves Ethereum JSON RPC methods, giving the well-known benefits of reduced energy usage, speed, and decentralization.
+
+### Firewall 
+
+The firewall property ensures that a catastrophic failure in one of the chains, such as a violation of its security assumptions, does not make the other chains vulnerable. This feature provides a measure of limited liability analogous to limited liability in the corporate world - when a limited company fails, its stockholders are only liable for the amount of their investment.
+
+### Merged-staking
+
+A critical consideration in sidechain construction is safeguarding a new sidechain against attack.
+
+The example EVM Sidechain construction features 'merged-staking', which allows main-chain validators who have signaled sidechain awareness to create sidechain blocks without moving any stake to the sidechain. Thus sidechain security can be maintained, given an honest stake majority among the entities that have signaled sidechain awareness. Especially in the bootstrapping stage, these main-chain validators are expected to be a large superset of the set of stakeholders that maintain assets in the sidechain.  
+
+## More information
+
+For a full description of the theoretical underpinning of the design, refer to the [original white paper](https://eprint.iacr.org/2018/1239.pdf).

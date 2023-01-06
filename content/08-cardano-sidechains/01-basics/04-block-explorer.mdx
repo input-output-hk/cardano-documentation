@@ -1,0 +1,192 @@
+---
+title: 'About block explorer'
+metaTitle: 'About block explorer'
+---
+
+A block explorer allows you to inspect a blockchain to see its blocks and
+transactions.  
+
+This document is based primarily on the
+[Blockscout explorer](https://blockscout.com/), but blockchain explorers
+necessarily use similar terminology and follow a similar pattern in their
+presentation of information.  
+
+When you use a block explorer, it will list fields and their contents. This document will help you understand the meaning of the field names and the
+significance of their contents.
+
+## Glossary
+These are the field names commonly used in block explorers on the example EVM sidechain.
+## General terms
+<dl>
+  <p></p><dt>
+    <strong>Actor</strong>
+  </dt>
+  <dd>
+    Any entity that can make something happen on a blockchain. Actors can
+    include users, wallets, addresses, and network nodes.
+  </dd>
+  <p></p><dt>
+    <strong>Address</strong>
+  </dt>
+  <dd>
+    An address is a location to or from which transactions occur on the
+    blockchain. It is associated with a public key.
+  </dd>
+  <p></p><dt>
+    <strong>Hash function</strong>
+  </dt>
+  <dd>
+    A cryptographic hash function takes a string of variable length and produces
+    a fixed-length string called a <b>hash value</b>. A hash value is easy to
+    calculate, but it is not feasible to derive the input given only the output,
+    and it is not feasible to calculate two inputs that will produce the same
+    hash value. For a canonical definition, see&nbsp; 
+    <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf">
+      this NIST publication.
+    </a>
+    <p>
+      Any change to the input, no matter how small, will result in a very
+      different output. Each block contains the hash of the preceding block so
+      that anyone can check the chain's integrity.
+     </p>
+     </dd>
+</dl>
+
+## Home page
+<dl>
+  <p></p><dt>
+    <strong>Average block time</strong>
+  </dt>
+  <dd>
+    The length of time between adding one block to the blockchain and adding the
+    next block; the time it takes to add a block to the chain. It depends on
+    the slot time of the chain.
+  </dd>
+  <p></p><dt>
+    <strong>Total transactions</strong>
+  </dt>
+  <dd>
+    A transaction is an event on the blockchain, such as a transfer of currency
+    from one address to another. A variable number of transactions can fit in
+    each block.
+    <p>
+     By comparing total transactions with total blocks, you can deduce the
+     average number of transactions per block.
+    </p>
+  </dd>
+  <p></p><dt>
+    <strong>Total blocks</strong>
+  </dt>
+  <dd>
+    One more than the current block height of the chain, which is the latest block
+    number.
+  </dd>
+  <p></p><dt>
+    <strong>Wallet addresses</strong>
+  </dt>
+  <dd>
+    The number of wallet addresses used in the blockchain so far.
+    <p>
+    A wallet address is the source or destination of a transfer. 
+     In the Ethereum account model, a wallet has exactly one address.
+    </p>
+  </dd>
+</dl>
+
+## Blocks
+<dl>
+  <p></p><dt>
+    <strong>Block height</strong>
+  </dt>
+  <dd>
+    The number of this block. It is one less than the number of valid blocks
+    added to the blockchain to this point. (The first block is block 0). Invalid or ignored
+    blocks are not counted.
+  </dd>
+  <p></p><dt>
+    <strong>Timestamp </strong>
+  </dt>
+  <dd>The time the block was added to the chain.</dd>
+  <p></p><dt>
+    <strong>Transactions</strong>
+  </dt>
+  <dd>The number of transactions included in the block.</dd>
+  <p></p><dt>
+    <strong>Validator</strong>
+  </dt>
+  <dd>The address of the actor that added this block to the chain.</dd>
+  <p></p><dt>
+    <strong>Size</strong>
+  </dt>
+  <dd>The length of the block in bytes.</dd>
+  <p></p><dt>
+    <strong>Hash</strong>
+  </dt>
+  <dd>
+    The hash value of this block. See the definition of 'hash function' above.
+  </dd>
+  <p></p><dt>
+    <strong>Parent hash</strong>
+  </dt>
+  <dd>The hash value of the preceding block.</dd>
+  <p></p><dt>
+    <strong>Gas used</strong>
+  </dt>
+  <dd>
+    Gas is paid to validators to compensate them for the resources used to process a
+    transaction. The price of gas varies with supply and demand.
+  </dd>
+  <p></p><dt>
+    <strong>Gas limit</strong>
+  </dt>
+  <dd>
+    The maximum amount of gas the actor that initiated the transaction is
+    willing to pay.
+  </dd>
+  <p></p><dt>
+    <strong>Validator Reward</strong>
+  </dt>
+  <dd>
+    The number of coins awarded to the validator of this block. The coins are newly
+    minted; they do not come from transaction fees.
+  </dd>
+</dl>
+
+## Transactions
+<dl>
+  <p></p><dt>
+    <strong>Transaction</strong>
+  </dt>
+  <dd>
+    The block explorer will show a transfer of currency as a transaction.
+    <p>
+    The formal definition is 
+        <i> 'A piece of data, signed by an *external actor*. It represents either a
+        *message* or a new *autonomous object*. Transactions are recorded into each
+        block of the blockchain.' </i>
+      (From the Yellow Paper.)
+      </p>
+      </dd>
+  <p></p><dt>
+    <strong>Contract call</strong>
+  </dt>
+  <dd>
+    A contract call is a special case of a transaction; the destination is a
+    smart contract rather than an end user. A smart contract has been sent to
+    the network and recorded on the blockchain.
+  </dd>
+  <p></p><dt>
+    <strong>Call</strong>
+  </dt>
+  <dd>
+    Note that if a node uses the web3.js call method web3.eth.call, it will not
+    show in a block explorer because it is a local action; the network is not
+    informed about it and it will not affect the blockchain. The underlying
+    JSON-RPC is eth_call.
+    <p>
+    This technique is used in a 'dry run' of a smart contract. When it works
+    successfully, the smart contract can be sent to the blockchain using
+    web3.eth.sendSignedTransaction.
+    </p>
+  </dd>
+</dl>
