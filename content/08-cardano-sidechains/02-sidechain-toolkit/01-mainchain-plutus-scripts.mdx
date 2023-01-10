@@ -30,7 +30,7 @@ data SidechainParams = SidechainParams
 
 ### 1. Initialize a contract
 
-For initialization, use an NFT (consuming some arbitrary UTXO) to uniquely identify the current committee members by storing the hash of the concatenated public keys on the chain (see [6.1](#61-update-committee-hash)). This committee is used to verify signatures for sidechain to main-chain transfers (see [3.1](#31-merkle-root-insertion)).
+For initialization, use an NFT (consuming some arbitrary UTXO) to uniquely identify the current committee members by storing the hash of the concatenated public keys on the chain (see 6.1). This committee is used to verify signatures for sidechain to main-chain transfers (see 3.1).
 
 **Workflow:**
 
@@ -59,7 +59,7 @@ data InitSidechainParams = InitSidechainParams
 
 ### 2. Transfer FUEL tokens from the main chain to the sidechain
 
-FUEL tokens on the Cardano network represent locked native assets on the sidechain network. When some tokens are locked on a certain sidechain contract, you can mint the equivalent amount on Cardano ([2.](#2-transfer-fuel-tokens-from-mainchain-to-sidechain), [3.2.](#32-individual-claiming)). Conversely burning these tokens on the Cardano network ([3.](#3-transfer-fuel-tokens-from-sidechain-to-mainchain)) will release these tokens and send them to the owner.
+FUEL tokens on the Cardano network represent locked native assets on the sidechain network. When some tokens are locked on a certain sidechain contract, you can mint the equivalent amount on Cardano. Conversely burning these tokens on the Cardano network (see 3) will release these tokens and send them to the owner.
 
 **Workflow:**
 
@@ -88,7 +88,7 @@ data BurnParams = BurnParams
 1. Sidechain collects unhandled transactions and bundles them at the end of each sidechain epoch.
 2. Sidechain block producers compute `txs = outgoing_txs.map(tx => blake2b(cbor(MerkleTreeEntry(tx)))` for each transaction (see `MerkleTreeEntry`), and create a Merkle-tree from these. The root of this tree is signed by at least `t` (multisig threshold) of the committee members with an appended signature scheme.
 3. Bridge broadcasts Merkle root to the chain.
-4. Transactions can be claimed [individually](#32-individual-claiming).
+4. Transactions can be claimed individually (see 3.2).
 
 #### 3.1. Merkle root insertion
 
@@ -232,9 +232,9 @@ data BlockProducerRegistration = BlockProducerRegistration
 
 ### 6. Committee handover
 
-In the current implementation of the sidechain, a [Merkle root insertion (3.1)](#31-merkle-root-insertion) can only occur once per sidechain epoch at the time of the committee handover. The sidechain exposes an endpoint which can handle this action, however the underlying implementation is detached, so in theory, the Merkle root insertion and Committee Hash Update actions could be done independently.
+In the current implementation of the sidechain, a Merkle root insertion (see 3.1) can only occur once per sidechain epoch at the time of the committee handover. The sidechain exposes an endpoint which can handle this action, however the underlying implementation is detached, so in theory, the Merkle root insertion and Committee Hash Update actions could be done independently.
 
-The order of these actions is important. If the transaction inserting the Merkle root for sidechain epoch 1 gets submitted _after_ the committee handover from `committee of epoch 1` to `committee of epoch 2` transaction, the signature would become invalid, since it is signed by the `committee of epoch 1`. To mitigate this issue, the `Merkle root chain` is introduced; for details see: [6.2](#62-merkle-root-chaining)
+The order of these actions is important. If the transaction inserting the Merkle root for sidechain epoch 1 gets submitted _after_ the committee handover from `committee of epoch 1` to `committee of epoch 2` transaction, the signature would become invalid, since it is signed by the `committee of epoch 1`. To mitigate this issue, the `Merkle root chain` is introduced; for details see 6.2.
 
 #### 6.1 Update a committee hash
 
@@ -324,7 +324,7 @@ signature = ecdsa.sign(data: blake2b(cbor(UpdateCommitteeMessage)), key: committ
 
 #### 6.2. Merkle root chaining
 
-As described in [6. Committee handover](#6-committee-handover),  the correct order of Merkle root insertions and committee hash updates mut be maintained. A new Merkle root chain does this. Each Merkle root has a reference to its predecessor (if one exists), furthermore all committee hash updates reference the last Merkle root inserted (if one exists).
+As described in section 6 'Committee handover',  the correct order of Merkle root insertions and committee hash updates mut be maintained. A new Merkle root chain does this. Each Merkle root has a reference to its predecessor (if one exists), furthermore all committee hash updates reference the last Merkle root inserted (if one exists).
 
 ![01](https://user-images.githubusercontent.com/10556209/203350794-9c75b2cd-f471-4f51-9e54-0d2d90ac8f07.png)
 
