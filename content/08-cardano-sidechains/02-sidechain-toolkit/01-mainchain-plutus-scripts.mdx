@@ -5,11 +5,11 @@ metaTitle: Main chain Plutus scripts
 
 The main chain utilizes the following components to handle interactions with a sidechain:
 
-- `FUELMintingPolicy`: a minting policy that validates the minting or burning of FUEL tokens on the main chain ([2.](#2-transfer-fuel-tokens-from-mainchain-to-sidechain), [3.2.](#32-individual-claiming))
-- `MPTRootTokenMintingPolicy`: a minting policy for storing cross-chain transaction bundles' MPT roots ([3.1.](#31-merkle-root-insertion))
-- `CommitteeCandidateValidator`: a script address for committee candidates ([4.](#4-register-committee-candidate), [5.](#5-deregister-committee-membercandidate))
-- `MPTRootTokenValidator`: a script address for storing `MPTRootToken`s ([3.1.](#31-merkle-root-insertion))
-- `CommitteeHashValidator`: a script address for the committee members' hash ([1.](#1-initialise-contract), [6.](#6-committee-handover))
+- `FUELMintingPolicy`: a minting policy that validates the minting or burning of FUEL tokens on the main chain.
+- `MPTRootTokenMintingPolicy`: a minting policy for storing cross-chain transaction bundles' MPT roots.
+- `CommitteeCandidateValidator`: a script address for committee candidates.
+- `MPTRootTokenValidator`: a script address for storing `MPTRootToken`s.
+- `CommitteeHashValidator`: a script address for the committee members' hash.
 
 All of these policies and validators are parameterized by the sidechain parameters, which allows getting unique minting policy and validator script hashes.
 
