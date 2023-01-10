@@ -5,7 +5,7 @@ metaTitle: Main chain Plutus scripts
 
 The main chain utilizes the following components to handle interactions with a sidechain:
 
-- `FUELMintingPolicy`: a minting policy that validates the minting or burning of FUEL tokens on the main chain.
+- `SidechainTokenMintingPolicy`: a minting policy that validates the minting or burning of Sidechain tokens (SC_Token) on the main chain.
 - `MPTRootTokenMintingPolicy`: a minting policy for storing cross-chain transaction bundles' MPT roots.
 - `CommitteeCandidateValidator`: a script address for committee candidates.
 - `MPTRootTokenValidator`: a script address for storing `MPTRootToken`s.
@@ -20,7 +20,7 @@ data SidechainParams = SidechainParams
     -- ^ 'GenesisHash' is a type alias for ByteString
   , genesisMint :: Maybe TxOutRef
     -- ^ 'genesisMint' is an arbitrary 'TxOutRef' used in the Passive Bridge setup, where
-    -- FUEL minting can only happen once. This parameter will be removed in the final product.
+    -- SC_Token minting can only happen once. This parameter will be removed in the final product.
   , genesisUtxo :: TxOutRef
     -- ^ 'genesisUtxo' is an arbitrary 'TxOutRef' used to identify internal
     -- 'AssetClass's (e.g. see [6.](#6-update-committee-hash)) of the
@@ -57,14 +57,14 @@ data InitSidechainParams = InitSidechainParams
   }
 ```
 
-### 2. Transfer FUEL tokens from the main chain to the sidechain
+### 2. Transfer SC_Token tokens from the main chain to the sidechain
 
-FUEL tokens on the Cardano network represent locked native assets on the sidechain network. When some tokens are locked on a certain sidechain contract, you can mint the equivalent amount on Cardano. Conversely burning these tokens on the Cardano network (see 3) will release these tokens and send them to the owner.
+SC_Token tokens on the Cardano network represent locked native assets on the sidechain network. When some tokens are locked on a certain sidechain contract, you can mint the equivalent amount on Cardano. Conversely burning these tokens on the Cardano network (see 3) will release these tokens and send them to the owner.
 
 **Workflow:**
 
 1. Call the burn endpoint of the contract with BurnParams.
-2. A transaction will be submitted to the main chain burning the specified amount of FUEL tokens and the corresponding sidechain address in the redeemer.
+2. A transaction will be submitted to the main chain burning the specified amount of SC_Token tokens and the corresponding sidechain address in the redeemer.
 3. The Bridge component (observing the main chain where the given minting policy is handled) will verify the transaction and create an appropriate sidechain transaction.
 
 **Endpoint parameters:**
@@ -79,9 +79,9 @@ data BurnParams = BurnParams
 
 ![plutus-1](https://user-images.githubusercontent.com/10556209/203348515-29b5635d-33fc-4b72-9c0c-d9db0b7ae2b7.png)
 
-<figcaption align = "center"><i>Main chain to Sidechain transaction (burning FUEL tokens)</i></figcaption><br />
+<figcaption align = "center"><i>Main chain to Sidechain transaction (burning SC_Token tokens)</i></figcaption><br />
 
-### 3. Transfer FUEL tokens from the sidechain to the main chain
+### 3. Transfer SC_Token tokens from the sidechain to the main chain
 
 **Workflow:**
 
@@ -198,7 +198,7 @@ where the `claimTransactionHash` is a `blake2(cbor(MerkleTreeEntry))`, uniquely 
 **Minting policy redeemer:**
 
 ```haskell
-data FUELRedeemer
+data SidechainRedeemer
   = MainToSide ByteString ByteString
   -- ^ Recipient address on the sidechain and the signature of its owner (see 2.)
   | SideToMain MerkleTreeEntry MerkleProof
