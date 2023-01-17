@@ -7,7 +7,8 @@ This tutorial will show you how to transfer `SC_Tokens` between mainchain and si
 
 ## Prerequisites
 
-1. We will use the **sidechain-cli** and **sc-evm-cli** within this tutorial. Download the binaries and add them to your shell’s path: https://github.com/input-output-hk/sidechains-tooling.
+1. We will use the **sidechain-cli** and **sc-evm-cli** within this tutorial.
+This tutorial will use the **sidechain-cli** and **sc-evm-cli** components. Download the binaries and add them to your shell’s path: https://github.com/input-output-hk/sidechains-tooling.
 2. Download the **bech32** conversion tool binary and add to your shell's path: https://github.com/input-output-hk/bech32
 3. If you have not done so already, create and fund your mainchain and sidechain accounts: [Create and funds your accounts](/cardano-sidechains/example-evm-sidechains/create-and-fund-accounts).
 
@@ -22,7 +23,7 @@ The `lock` function of the bridge contract takes the mainchain recipient's addre
 - Determine how much `SC_Token` you want to lock. The amount in `SC_Token` has to be a multiple of 10^9. For example, 10^9 `wei` on the sidechain will be 1 `SC_Token` on the mainchain.
 Input the amount of `SC_Token`, in `wei`, you want to lock: e.g: `1000000000` Wei == 1 `SC_Token`.
 
-Let's set a few enviorment variables to make things easier;
+Set a few environment variables to make things easier:
 
 ```shell
 SC_ADDR= # sidechain address
@@ -31,7 +32,7 @@ MC_ADDR= # mainchain recipient address
 SC_Token_AMOUNT= # the amount of SC_Token to be converted
 ```
 
-You can double-check enviorment variables by printing them to your shell: E.g.: `print $MC_ADDR`.
+You can double-check environment variables by printing them to your shell: eg: `print $MC_ADDR`.
 
 - Create the `lock` transaction:
 
@@ -89,7 +90,7 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
    }' <PENDING_URL> | jq -r
 ```
 
-From this we know on which epoch and what phase our `lock()` transaction happened. If it happened during epoch `N` on epochPhase `regular` we will be able to obtain the merkle proof on epoch `N` since epochPhase changes to `handover`. If it happened during epoch `N` on epochPhase `closedTransactionBatch` or `handover` we will be able to obtain the merkle proof on epoch `N+1` since epochPhase changes to `handover`.
+This shows on which epoch and phase the `lock()` transaction happened. If it happened during epoch `N` on epochPhase `regular` you can obtain the Merkle proof on epoch `N` since epochPhase changes to `handover`. If it happened during epoch `N` on epochPhase `closedTransactionBatch` or `handover` you can obtain the Merkle proof on epoch `N+1` since epochPhase changes to `handover`.
 
 - Get transaction index for the epoch the lock transaction will be processed:
 
@@ -120,7 +121,7 @@ Example output:
 }
 ```
 
-We need to obtain the `txIndex` matching the recipient and amount we used to lock tokens.
+To obtain the `txIndex` matching the recipient and amount used to lock tokens, proceed as follows.
 
 - Wait until the epochPhase changes to `handover` of epoch `N` or `N+1` and obtain the Merkle proof for your lock action:
 
@@ -133,7 +134,7 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
   }' <PENDING_URL> | jq
 ```
 
-From the return you need to obtain the `proof/bytes` and remove the `0x` that is prepended. We shall call that string `merkleProof`.
+From the return you need to obtain the `proof/bytes` and remove the `0x` that is prepended. Call that string `merkleProof`.
 
 - Wait until the epoch changes and the committee handover has happened. The committee handover happens automatically on the testnets by a service (relay) that tries every minute to find epoch signatures, and succeeds after a new epoch has started and the signatures are obtained. On mainnet the committee handover will be done by anyone that wants, where there will be an incentive to do so. A good way to verify is by waiting until you observe your transaction in the list of signatures to upload:
 
@@ -175,7 +176,7 @@ cardano-cli query utxo --testnet-magic 7 --address $MC_ADDR
 
 ### Step 01 - Burn SC_Token
 
-To transfer `SC_Token` from mainchain to sidechain, we will use the **sidechain-cli** to burn mainchain `SC_Token`.
+To transfer `SC_Token` from mainchain to sidechain, use the **sidechain-cli** to burn mainchain `SC_Token`.
 
 ```shell
 ./sidechain-cli burn-SC_Token
@@ -187,11 +188,11 @@ To transfer `SC_Token` from mainchain to sidechain, we will use the **sidechain-
 
 Understanding this command:
 
-- `--signing-key-file payment.skey`: Generating a mainchain account creates a `.skey` file to sign transactions. Here we are providing the path to this file.
--  `--sc-url <PENDING_URL>`: Here we are providing the JSON-RPC API url, or endpoint, to the sidechain network node.
--   `--recipient ae3dffee97f92db0201d11cb8877c89738353bce`: Here we define the destination address on the sidechain where the SC_Token tokens will appear.
+- `--signing-key-file payment.skey`: GGenerating a mainchain account creates a `.skey` file to sign transactions. The command gives the path to this file.
+-  `--sc-url <PENDING_URL>`: Providing the JSON-RPC API url, or endpoint, to the sidechain network node.
+-   `--recipient ae3dffee97f92db0201d11cb8877c89738353bce`: Defines the destination address on the sidechain where the SC_Token tokens will appear.
 
--  `--amount 10`: Here we define the amount of `SC_Token` (on the mainchain) to be burned for `SC_Token` (on the sidechain) at the conversion rate of `amount`x`10^9`.
+-  `--amount 10`: Defines the amount of `SC_Token` (on the mainchain) to be burned for `SC_Token` (on the sidechain) at the conversion rate of `amount`x`10^9`.
 
 The transaction will be stable on the mainchain in approximately 12 minutes or 36 blocks. The sidechain will then add it to a produced block and the tokens should appear in the sidechain-account balance:
 

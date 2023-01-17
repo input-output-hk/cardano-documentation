@@ -63,9 +63,9 @@ These methods are there but they are specifically implemented to be just good en
 
 They are only available for the test node.  
 
-They do not capture every possible storage address. As ETS uses trivial addresses such as 1-10 we only check those.  
+They do not capture every possible storage address. As ETS uses trivial addresses such as 1-10 those are the only ones the methods check.  
 
-For accounts, we only check accounts that are known to exist (ie. they are in the genesis) but if an account is created inside a transaction we won’t return it.  
+For accounts, The only accounts checked are those that are known to exist (ie, they are in the genesis), but if an account is created inside a transaction it won't be returned.
 
 - `debug_storageRangeAt`: optional  
 - `debug_accountRange`: optional  
