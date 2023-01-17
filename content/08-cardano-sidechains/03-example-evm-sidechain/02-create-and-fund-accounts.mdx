@@ -1,0 +1,51 @@
+---
+title: Create and fund accounts
+metaTitle: Create and fund accounts
+---
+
+### Prerequisites:
+
+1. Ability to make an HTTP request.
+2. Optional: Download `evm-sc-cli` binary and add to your path: https://github.com/input-output-hk/sidechains-tooling
+
+# How to fund your mainchain account with test ADA tokens
+
+In this tutorial, you will learn how to claim test Ada tokens on the mainchain testnet.
+
+## Generating keys
+
+To generate keys for the cardano testnet you need the `cardano-cli` [binary](https://github.com/input-output-hk/cardano-node/releases/)
+Open a shell and run the following commands:
+
+```shell
+# Set network name
+network=--testnet-magic=7
+
+cardano-cli address key-gen \
+    --verification-key-file payment.vkey \
+    --signing-key-file payment.skey
+
+cardano-cli address build \
+    --payment-verification-key-file payment.vkey \
+    --out-file payment.addr \
+    $network
+
+ export MC_ADDR=$(cat payment.addr)
+```
+
+These steps are based on the [cardano developers page](https://developers.cardano.org/docs/stake-pool-course/handbook/keys-addresses/).
+
+Request test ADA using the web-app: https://faucet.cardano.evmtestnet.iohkdev.io/basic-faucet
+
+# How to fund your sidechain account with test SC_token
+
+Create a sidechain account using a compatible Web3 connected to the Atago network (MetaMask), 
+1a. or using `evm-sc-cli`: https://github.com/input-output-hk/sidechains-tooling
+
+```shell
+evm-sc-cli generate-keys --type ecdsa
+```
+
+(Add 0x to your public address)
+
+Request test SC_Token using the web-app: <PENDING_URL>
