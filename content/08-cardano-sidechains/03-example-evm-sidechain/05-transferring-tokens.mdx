@@ -3,25 +3,24 @@ title: Transferring tokens
 metaTitle: Transferring tokens
 ---
 
-This tutorial will show you how to transfer `SC_Tokens` between mainchain and sidechain.
+This tutorial will show you how to transfer `SC_Tokens` between the mainchain and a sidechain.
 
 ## Prerequisites
 
-1. We will use the **sidechain-cli** and **sc-evm-cli** within this tutorial.
-This tutorial will use the **sidechain-cli** and **sc-evm-cli** components. Download the binaries and add them to your shell’s path: https://github.com/input-output-hk/sidechains-tooling.
-2. Download the **bech32** conversion tool binary and add to your shell's path: https://github.com/input-output-hk/bech32
-3. If you have not done so already, create and fund your mainchain and sidechain accounts: [Create and funds your accounts](/cardano-sidechains/example-evm-sidechains/create-and-fund-accounts).
+1. We will use the **sidechain-cli** and the **sc-evm-cli** components within this tutorial. Download the binaries and add them to your shell’s path: https://github.com/input-output-hk/sidechains-tooling.
+2. Download the **bech32** conversion tool binary and add to your shell's path: https://github.com/input-output-hk/bech32.
+3. If you have not done so already, create and fund your main chain and sidechain accounts: [Create and funds your accounts](/cardano-sidechains/example-evm-sidechains/create-and-fund-accounts).
 
-# Transfering tokens from sidechain to mainchain
+# Transfering tokens from a sidechain to the main chain
 
-Transfering tokens from sidechain to mainchain will require interfacing with the bridge contract to lock the desired amount of `SC_Token` to be claimed on the mainchain.
+Transfering tokens from a sidechain to the main chain will require interfacing with the bridge contract to lock the desired amount of `SC_Token` to be claimed on the main chain.
 
 ### Step 01 - Lock SC_Token
 
-The `lock` function of the bridge contract takes the mainchain recipient's address, but the recipient address must be converted to **bech32** format.
+The `lock` function of the bridge contract takes the main chain recipient's address, but the recipient address must be converted to **bech32** format.
 
-- Determine how much `SC_Token` you want to lock. The amount in `SC_Token` has to be a multiple of 10^9. For example, 10^9 `wei` on the sidechain will be 1 `SC_Token` on the mainchain.
-Input the amount of `SC_Token`, in `wei`, you want to lock: e.g: `1000000000` Wei == 1 `SC_Token`.
+- Determine how many `SC_Token` you want to lock. The amount in `SC_Token` has to be a multiple of 10^9. For example, 10^9 `wei` on the sidechain will be 1 `SC_Token` on the main chain.
+Input the amount of `SC_Token`, in `wei`, you want to lock: eg, `1000000000` Wei == 1 `SC_Token`.
 
 Set a few environment variables to make things easier:
 
@@ -32,7 +31,7 @@ MC_ADDR= # mainchain recipient address
 SC_Token_AMOUNT= # the amount of SC_Token to be converted
 ```
 
-You can double-check environment variables by printing them to your shell: eg: `print $MC_ADDR`.
+You can double-check environment variables by printing them to your shell: eg, `print $MC_ADDR`.
 
 - Create the `lock` transaction:
 
@@ -90,7 +89,7 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
    }' <PENDING_URL> | jq -r
 ```
 
-This shows on which epoch and phase the `lock()` transaction happened. If it happened during epoch `N` on epochPhase `regular` you can obtain the Merkle proof on epoch `N` since epochPhase changes to `handover`. If it happened during epoch `N` on epochPhase `closedTransactionBatch` or `handover` you can obtain the Merkle proof on epoch `N+1` since epochPhase changes to `handover`.
+This shows on which epoch and phase the `lock()` transaction happened. If it happened during epoch `N` on epochPhase `regular` you can obtain the Merkle proof on epoch `N` since epochPhase changes to `handover`. If it happened during epoch `N` on epochPhase `closedTransactionBatch` or `handover`, you can obtain the Merkle proof on epoch `N+1` since epochPhase changes to `handover`.
 
 - Get transaction index for the epoch the lock transaction will be processed:
 
@@ -136,7 +135,7 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
 
 From the return you need to obtain the `proof/bytes` and remove the `0x` that is prepended. Call that string `merkleProof`.
 
-- Wait until the epoch changes and the committee handover has happened. The committee handover happens automatically on the testnets by a service (relay) that tries every minute to find epoch signatures, and succeeds after a new epoch has started and the signatures are obtained. On mainnet the committee handover will be done by anyone that wants, where there will be an incentive to do so. A good way to verify is by waiting until you observe your transaction in the list of signatures to upload:
+- Wait until the epoch changes and the committee handover has happened. The committee handover happens automatically on the testnets by a service (relay) that tries every minute to find epoch signatures, and succeeds after a new epoch has started and the signatures are obtained. On mainnet, the committee handover will be done by anyone that wants, where there will be an incentive to do so. A good way to verify is by waiting until you observe your transaction in the list of signatures to upload:
 
 ```
 curl -L -X POST -H 'Content-type:application/json' -d '{
@@ -147,9 +146,9 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
     }' <PENDING_URL> | jq
 ```
 
-Where `limit` = min(limit, number of epochs that are not yet relayed). The default value is `100`, but you can set it to any other number. In a normal case, when the handover happens at every epoch, it should only show 0 or 1 epochs (the last one). Once you identify that there are no roothashes pending in the list under the epoch that your lock was processed (`N` or `N+1`) you can claim your tokens. By now the epoch will be `N+1 `or `N+2`, depending on the phase you performed the lock operation.
+Where `limit` = min(limit, number of epochs that are not yet relayed). The default value is `100`, but you can set it to any other number. In a normal case, when the handover happens at every epoch, it should only show 0 or 1 epochs (the last one). Once you identify that there are no roothashes pending in the list under the epoch that your lock was processed (`N` or `N+1`), you can claim your tokens. By now the epoch will be `N+1 `or `N+2`, depending on the phase you performed the lock operation.
 
-- Finally, claim the tokens by submitting a transaction on the mainchain with the `merkleProof` you obtained using the **sidechain-cli**: 
+- Finally, claim the tokens by submitting a transaction on the main chain with the `merkleProof` you obtained using the **sidechain-cli**: 
 
 ```shell
 ./sidechain-cli claim-SC_Token --sc-url <PENDING_URL> --signing-key-file /PATH/TO/payment.skey --combined-proof <merkleProof without 0x>
@@ -170,13 +169,13 @@ Verify amount you locked in your account:
 cardano-cli query utxo --testnet-magic 7 --address $MC_ADDR
 ```
 
-🎉 Congradulations! At this point, you have successfully claimed your `SC_Token` on the mainchain.
+🎉 Congradulations! At this point, you have successfully claimed your `SC_Token` on the main chain.
 
-# Transfering tokens from mainchain to sidechain
+# Transfering tokens from the main chain to a sidechain
 
 ### Step 01 - Burn SC_Token
 
-To transfer `SC_Token` from mainchain to sidechain, use the **sidechain-cli** to burn mainchain `SC_Token`.
+To transfer `SC_Token` from the main chain to a sidechain, use the **sidechain-cli** to burn main chain `SC_Token`.
 
 ```shell
 ./sidechain-cli burn-SC_Token
@@ -188,13 +187,13 @@ To transfer `SC_Token` from mainchain to sidechain, use the **sidechain-cli** to
 
 Understanding this command:
 
-- `--signing-key-file payment.skey`: GGenerating a mainchain account creates a `.skey` file to sign transactions. The command gives the path to this file.
+- `--signing-key-file payment.skey`: Generating a main chain account creates a `.skey` file to sign transactions. The command gives the path to this file.
 -  `--sc-url <PENDING_URL>`: Providing the JSON-RPC API url, or endpoint, to the sidechain network node.
 -   `--recipient ae3dffee97f92db0201d11cb8877c89738353bce`: Defines the destination address on the sidechain where the SC_Token tokens will appear.
 
 -  `--amount 10`: Defines the amount of `SC_Token` (on the mainchain) to be burned for `SC_Token` (on the sidechain) at the conversion rate of `amount`x`10^9`.
 
-The transaction will be stable on the mainchain in approximately 12 minutes or 36 blocks. The sidechain will then add it to a produced block and the tokens should appear in the sidechain-account balance:
+The transaction will be stable on the main chain in approximately 12 minutes or 36 blocks. The sidechain will then add it to a produced block and the tokens should appear in the sidechain-account balance:
 
 - Check `SC_Token` token balance using the [JSON-RPC API](/cardano-sidechains/example-evm-sidechains/api): 
 
@@ -206,7 +205,7 @@ curl -L -X POST <PENDING_URL> -H 'Content-type:application/json' -d '{
     "id": 1}'
 ```
 
-Tip: Balance may be checked on a compatible Web3 wallet configured to the Atago network.
+Tip: Balance may be checked on a compatible Web3 wallet configured to the EVM sidechain testnet network.
 
-🎉 Congradulations! At this point, you have successfully burned mainchain `SC_Token` for native sidechain `SC_Token`.
+🎉 Congradulations! At this point, you have successfully burned your main chain `SC_Token` for a native sidechain `SC_Token`.
 
