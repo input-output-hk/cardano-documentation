@@ -81,7 +81,7 @@ On all systems, create a file called `index.js` in the same directory as `packag
 ```
     1 const Web3 = require('web3')
     2 
-    3 let web3 = new Web3(new Web3.providers.HttpProvider("<PENDING_URL>"))
+    3 let web3 = new Web3(new Web3.providers.HttpProvider("https://faucet.sidechain.evmtestnet.iohkdev.io/"))
     4 web3.eth.getBlock('latest')
     5   .then((response) => {
     6     console.log('LATEST BLOCK:')
