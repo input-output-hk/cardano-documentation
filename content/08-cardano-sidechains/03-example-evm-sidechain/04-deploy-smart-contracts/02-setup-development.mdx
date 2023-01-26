@@ -15,7 +15,7 @@ This tutorial will show you how to deploy a Solidity smart contract to the EVM s
 
 ## Prerequisites
 
-In this tutorial, you will use MetaMask as your wallet and Web3 provider. If you have not done so already, [create or import an account with MetaMask](../01-metamask.mdx) and fund your wallet with testnet tokens using the [faucet](<PENDING_URL>).
+In this tutorial, you will use MetaMask as your wallet and Web3 provider. If you have not done so already, [create or import an account with MetaMask](../01-metamask.mdx) and fund your wallet with testnet tokens using the [faucet](https://faucet.sidechain.evmtestnet.iohkdev.io/).
 
 ## Step 1 - Configure Remix
 
@@ -78,7 +78,7 @@ When the contract is compiled, you can view contract ABI, Bytecode, and more inf
 
 To verify that the smart contract was deployed on the sidechain testnet you can:
 
-- Search the transaction hash or contract address on the EVM sidechain [testnet explorer](<PENDING_URL>).
+- Search the transaction hash or contract address on the EVM sidechain [testnet explorer](http://explorer.sidechain.evmtestnet.iohkdev.io/).
 - Open MetaMask and see if the contract deployment transaction was successfully signed.
 - Check Remix logs for deployment details.
   
@@ -214,7 +214,7 @@ const Private_Key = "INSERT_PRIV_KEY"
 module.exports = {
   networks: {
     evm-sidechain: {
-        url: `<PENDING_URL>`,
+        url: `https://faucet.sidechain.evmtestnet.iohkdev.io/`,
         accounts: [`0x${Private_Key}`]
     },
   },
@@ -239,7 +239,7 @@ $ npx hardhat run scripts/deploy.js --network evm-sidechain
 Greeter deployed to: 0x95E1C8F6C00d8cB518faBA33c8Ae814fc12E3090
 ```
 
-🎉 Hurray! You deployed your smart contract to EVM sidechain testnet and can search your deployment on the [testnet explorer]( <PENDING_URL>).
+🎉 Hurray! You deployed your smart contract to EVM sidechain testnet and can search your deployment on the [testnet explorer](http://explorer.sidechain.evmtestnet.iohkdev.io/).
 
 # Truffle
 
@@ -291,4 +291,4 @@ At this point, you've defined the EVM sidechain testnet and your testnet account
 $ truffle migrate --network evm-sidechain
 ```
 
-Upon executing `truffle migrate`, Truffle will return the transaction hash and contract address which can be searched on the EVM sidechain [testnet explorer](<PENDING_URL>).
+Upon executing `truffle migrate`, Truffle will return the transaction hash and contract address which can be searched on the EVM sidechain [testnet explorer](http://explorer.sidechain.evmtestnet.iohkdev.io/).
