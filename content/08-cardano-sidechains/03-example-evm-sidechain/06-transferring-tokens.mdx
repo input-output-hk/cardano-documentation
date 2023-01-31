@@ -22,7 +22,7 @@ Transferring `SC_Token` from a sidechain to the main chain will require interfac
 
 - Create `/contracts/bridge.abi` with the following contents: [bridge.abi](https://github.com/input-output-hk/sidechains-tooling/blob/master/bridge.abi)
 
-*Note: Make sure your Remix-compatible Web3 provider is configured to the EVM sidechain Testnet. Eg: MetaMask.*
+*Note: Make sure your Remix-compatible Web3 provider is configured to the EVM sidechain testnet. Eg: MetaMask.*
 
 - In Remix, go to **Deploy and Run transactions** > select **Injected Provider (MetaMask)** for the environment > Load contract from address (`0x696f686b2e6d616d626100000000000000000000`)
 
@@ -39,13 +39,13 @@ The `lock` function of the bridge contract takes the main-chain recipient's addr
 6045736b33c53d9f526a223086afd812b07ed9741da80e989e96998893 #Returns the conversion
 ````
 
-To ensure the address is recognized as a HEX string simply add `0x` to the beginning of the converted address like so: `0x6045736b33c53d9f526a223086afd812b07ed9741da80e989e96998893`
+To ensure the address is recognized as a HEX string simply add `0x` to the beginning of the converted address, eg: `0x6045736b33c53d9f526a223086afd812b07ed9741da80e989e96998893`
 
 - Determine how many `SC_Token` you want to lock. The amount in `SC_Token` has to be a multiple of 10^9. For example, 10^9 `wei` on the sidechain will be 1 `SC_Token` on the main chain.
 Input the amount of `SC_Token`, in `wei`, you want to lock: eg, `1000000000` Wei == 1 `SC_Token`. Your Remix should look similar to this: ![Remix lock token](../../images/remix-lock-token.png).
 - Select the `lock` button to initiate the transaction and follow the MetaMask prompts to confirm and sign the transaction.
 
-*Note: If the transaction appears to be stuck, “pending” status, or MetaMask shows an invalid balance, then try [resetting MetaMask](https://metamask.zendesk.com/hc/en-us/articles/360015488891-How-to-reset-an-account) and submit the transaction again.*
+*Note: If the transaction appears to be stuck, 'pending' status, or MetaMask shows an invalid balance, try [resetting MetaMask](https://metamask.zendesk.com/hc/en-us/articles/360015488891-How-to-reset-an-account) and submit the transaction again.*
 
 - To get the transaction hash or verify that the transaction was successful, you can check MetaMask activity or the Remix console: ![Remix console](../../images/remix-console.png).
   - Alternatively, you can invoke the `eth_gettransactionReceipt` API method. You can request this until the receipt is returned or transaction times out:
@@ -144,7 +144,7 @@ From the return you need to obtain the `proof/bytes` and remove the `0x` that is
 
 *In the above example `d8799fd8799...` is the Merkle proof.*
 
-- Wait until the epoch changes and the committee handover has happened. The committee handover happens automatically on the testnets by a service (relay) that tries every minute to find epoch signatures, and succeeds after a new epoch has started and the signatures are obtained. On mainnet, the committee handover will be done by anyone that wants, where there will be an incentive to do so. A good way to verify is to wait until you observe your transaction in the list of signatures to upload:
+- Wait until the epoch changes and the committee handover has happened. The committee handover happens automatically on the testnets by a service (relay) that tries every minute to find epoch signatures, and succeeds after a new epoch has started and the signatures are obtained. On mainnet, the committee handover will be done by anyone who wants, where there will be an incentive to do so. A good way to verify this is to wait until you observe your transaction in the list of signatures to upload:
 
 ```
 curl -L -X POST -H 'Content-type:application/json' -d '{
@@ -155,7 +155,7 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
     }' https://faucet.sidechain.evmtestnet.iohkdev.io/ | jq
 ```
 
-Where `limit` = min(limit, number of epochs that are not yet relayed). The default value is `100`, but you can set it to any other number. In a normal case, when the handover happens at every epoch, it should only show 0 or 1 epochs (the last one). Once you identify that there are no roothashes pending in the list under the epoch that your lock was processed (`N` or `N+1`), you can claim your tokens. By now the epoch will be `N+1 `or `N+2`, depending on the phase you performed the lock operation.
+Where `limit` = min(limit, number of epochs that are not yet relayed). The default value is `100`, but you can set it to any other number. Normally, when the handover happens at every epoch, it should only show 0 or 1 epochs (the last one). Once you identify that there are no roothashes pending in the list under the epoch that your lock was processed (`N` or `N+1`), you can claim your tokens. By now the epoch will be `N+1 `or `N+2`, depending on the phase you performed the lock operation in.
 
 #### Step 05 Claim SC_Token
 
