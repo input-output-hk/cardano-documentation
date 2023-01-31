@@ -6,11 +6,10 @@ metaTitle: Create and fund accounts
 ### Prerequisites:
 
 1. Ability to make an HTTP request.
-2. Optional: download `evm-sc-cli` binary and add to your path: https://github.com/input-output-hk/sidechains-tooling.
 
 # How to fund your main chain account with test ada tokens
 
-In this tutorial, you will learn how to claim test ada tokens on the main chain testnet.
+In this tutorial, you will learn how to claim test ada tokens on the main chain testnet (to pay for main chain transaction fees).
 
 *Note: This is a dedicated Cardano testnet seperate from Preview or Preprod testnets.*
 
@@ -37,17 +36,10 @@ cardano-cli address build \
 
 These steps are based on this [keys and adresses creation tutorial](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/3_keys_and_addresses.md).
 
-Request test ada using [the web-app](https://faucet.cardano.evmtestnet.iohkdev.io/basic-faucet).
+Request test ada using the web-app: https://faucet.cardano.evmtestnet.iohkdev.io/basic-faucet
 
 # How to fund your sidechain account with test SC_token
 
-Create a sidechain account using a compatible Web3 connected to the EVM sidechain test network (ex: MetaMask), 
-1a. or using `evm-sc-cli`: https://github.com/input-output-hk/sidechains-tooling
+Create a sidechain account using a compatible Web3 wallet connected to the EVM sidechain test network (ex: MetaMask).
 
-```shell
-evm-sc-cli generate-keys --type ecdsa
-```
-
-(Add 0x to your public address)
-
-Request test SC_Token using the web-app: https://faucet.sidechain.evmtestnet.iohkdev.io/
+Request test `SC_Token` using the web-app: https://faucet.sidechain.evmtestnet.iohkdev.io/

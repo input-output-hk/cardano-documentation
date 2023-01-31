@@ -7,7 +7,7 @@ This tutorial will show you how to transfer `SC_Tokens` between the main chain a
 
 ## Prerequisites
 
-1. We will use the **sidechain-cli** and the **sc-evm-cli** components within this tutorial. Download the binaries and add them to your shell’s path: https://github.com/input-output-hk/sidechains-tooling.
+1. We will use the **sidechain-cli** and the **sc-evm-cli** components within this tutorial. Download the binaries and add them to your shell’s path: https://github.com/input-output-hk/sidechains-tooling/releases.
 2. Download the **bech32** conversion tool binary and add to your shell's path: https://github.com/input-output-hk/bech32.
 3. If you have not done so already, create and fund your main chain and sidechain accounts: [Create and fund your accounts](/cardano-sidechains/example-evm-sidechain/create-and-fund-accounts).
 
@@ -48,7 +48,7 @@ Input the amount of `SC_Token`, in `wei`, you want to lock: eg, `1000000000` Wei
 *Note: If the transaction appears to be stuck, 'pending' status, or MetaMask shows an invalid balance, try [resetting MetaMask](https://metamask.zendesk.com/hc/en-us/articles/360015488891-How-to-reset-an-account) and submit the transaction again.*
 
 - To get the transaction hash or verify that the transaction was successful, you can check MetaMask activity or the Remix console: ![Remix console](../../images/remix-console.png)
-  - Alternatively, you can invoke the `eth_gettransactionReceipt` API method. You can request this until the receipt is returned or transaction times out:
+  - Alternatively, you can invoke the `eth_getTransactionReceipt` API method. You can request this until the receipt is returned or transaction times out:
   ```shell
   curl -L -X POST -H 'Content-type:application/json' -d '{
   "jsonrpc": "2.0",
@@ -144,7 +144,11 @@ From the return you need to obtain the `proof/bytes` and remove the `0x` that is
 
 *In the above example `d8799fd8799...` is the Merkle proof.*
 
-- Wait until the epoch changes and the committee handover has happened. The committee handover happens automatically on the testnets by a service (relay) that tries every minute to find epoch signatures, and succeeds after a new epoch has started and the signatures are obtained. On mainnet, the committee handover will be done by anyone who wants, where there will be an incentive to do so. A good way to verify this is to wait until you observe your transaction in the list of signatures to upload:
+Wait until the epoch changes and the committee handover has happened. 
+
+`Note: A sidechain epoch is 1 hour; 30 minutes in the `regular` phase, 15 minutes in `closedTxBatch` phase, and 15 minutes in `handover` phase.`
+
+The committee handover happens automatically on the testnets by a service (relay) that tries every minute to find epoch signatures, and succeeds after a new epoch has started and the signatures are obtained. On mainnet, the committee handover will be done by anyone who wants, where there will be an incentive to do so. A good way to verify this is to wait until you observe your transaction in the list of signatures to upload:
 
 ```
 curl -L -X POST -H 'Content-type:application/json' -d '{
