@@ -3,17 +3,17 @@ title: Transferring tokens
 metaTitle: Transferring tokens
 ---
 
-This tutorial will show you how to transfer `SC_Tokens` between the mainchain and a sidechain.
+This tutorial will show you how to transfer `SC_Tokens` between the main chain and a sidechain.
 
 ## Prerequisites
 
 1. We will use the **sidechain-cli** and the **sc-evm-cli** components within this tutorial. Download the binaries and add them to your shell’s path: https://github.com/input-output-hk/sidechains-tooling.
 2. Download the **bech32** conversion tool binary and add to your shell's path: https://github.com/input-output-hk/bech32.
-3. If you have not done so already, create and fund your main chain and sidechain accounts: [Create and funds your accounts](/cardano-sidechains/example-evm-sidechains/create-and-fund-accounts).
+3. If you have not done so already, create and fund your main-chain and sidechain accounts: [Create and fund your accounts](/cardano-sidechains/example-evm-sidechains/create-and-fund-accounts).
 
 # Transfering tokens from a sidechain to the main chain
 
-Transferring `SC_Token` from side chain to main chain will require interfacing with the bridge smart contract to lock your desired amount fo `SC_Token` to be claimed on the mainchain. In this guide, you will use RemixIDE to interface with the bridge contract.
+Transferring `SC_Token` from a sidechain to the main chain will require interfacing with the bridge smart contract to lock your desired amount of `SC_Token` to be claimed on the main chain. In this guide, you will use RemixIDE to interface with the bridge contract.
 
 
 ### Step 01 - Setup contract interface in RemixIDE
@@ -30,9 +30,9 @@ Your RemixIDE will look similar to this with a contract interface: ![Remix IDE](
 
 ### Step 03 - Lock SC_Token
 
-The `lock` function of the bridge contract takes the main chain recipient's address, but **the recipient address must be converted to bech32 format**.
+The `lock` function of the bridge contract takes the main-chain recipient's address, but **the recipient address must be converted to bech32 format**.
 
-- Convert main chain address to bech32 format: 
+- Convert main-chain address to bech32 format: 
 
 ```shell
 ./bech32 <<< addr_test1vpzhx6enc57e75n2ygcgdt7cz2c8akt5rk5qaxy7j6vc3ycgly0wh
@@ -142,9 +142,9 @@ curl -L -X POST faucet.mamba.atago -H 'Content-type:application/json' -d '{"json
 
 From the return you need to obtain the `proof/bytes` and remove the `0x` that is prepended. Call that string `merkleProof`. 
 
-*In the above example `d8799fd8799...` is the merkle proof.*
+*In the above example `d8799fd8799...` is the Merkle proof.*
 
-- Wait until the epoch changes and the committee handover has happened. The committee handover happens automatically on the testnets by a service (relay) that tries every minute to find epoch signatures, and succeeds after a new epoch has started and the signatures are obtained. On mainnet, the committee handover will be done by anyone that wants, where there will be an incentive to do so. A good way to verify is by waiting until you observe your transaction in the list of signatures to upload:
+- Wait until the epoch changes and the committee handover has happened. The committee handover happens automatically on the testnets by a service (relay) that tries every minute to find epoch signatures, and succeeds after a new epoch has started and the signatures are obtained. On mainnet, the committee handover will be done by anyone that wants, where there will be an incentive to do so. A good way to verify is to wait until you observe your transaction in the list of signatures to upload:
 
 ```
 curl -L -X POST -H 'Content-type:application/json' -d '{
@@ -174,7 +174,7 @@ Example output:
 }
 ```
 
-Verify amount you locked in your account:
+Verify the amount you locked in your account:
 
 ```
 cardano-cli query utxo --testnet-magic 7 --address <MAINCHAIN_ADDRESS>
@@ -186,7 +186,7 @@ cardano-cli query utxo --testnet-magic 7 --address <MAINCHAIN_ADDRESS>
 
 ### Step 01 - Burn SC_Token
 
-To transfer `SC_Token` from the main chain to a sidechain, use the **sidechain-cli** to burn main chain `SC_Token`.
+To transfer `SC_Token` from the main chain to a sidechain, use the **sidechain-cli** to burn main-chain `SC_Token`.
 
 ```shell
 ./sidechain-cli burn-SC_Token
@@ -198,11 +198,11 @@ To transfer `SC_Token` from the main chain to a sidechain, use the **sidechain-c
 
 Understanding this command:
 
-- `--signing-key-file payment.skey`: Generating a main chain account creates a `.skey` file to sign transactions. The command gives the path to this file.
+- `--signing-key-file payment.skey`: Generating a main-chain account creates a `.skey` file to sign transactions. The command gives the path to this file.
 -  `--sc-url https://faucet.sidechain.evmtestnet.iohkdev.io/`: Providing the JSON-RPC API url, or endpoint, to the sidechain network node.
 -   `--recipient ae3dffee97f92db0201d11cb8877c89738353bce`: Defines the destination address on the sidechain where the SC_Token tokens will appear.
 
--  `--amount 10`: Defines the amount of `SC_Token` (on the mainchain) to be burned for `SC_Token` (on the sidechain) at the conversion rate of `amount`x`10^9`.
+-  `--amount 10`: Defines the amount of `SC_Token` (on the main chain) to be burned for `SC_Token` (on the sidechain) at the conversion rate of `amount`x`10^9`.
 
 The transaction will be stable on the main chain in approximately 12 minutes or 36 blocks. The sidechain will then add it to a produced block and the tokens should appear in the sidechain-account balance:
 
