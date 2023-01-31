@@ -162,7 +162,7 @@ Where `limit` = min(limit, number of epochs that are not yet relayed). The defau
 - Claim the tokens by submitting a transaction on the main chain with the `merkleProof` you obtained using the **sidechain-cli**: 
 
 ```shell
-./sidechain-cli claim-sc-token --rpc-url https://faucet.sidechain.evmtestnet.iohkdev.io/ --signing-key-file /PATH/TO/payment.skey --combined-proof <merkleProof without 0x>
+./sidechain-cli claim-fuel --mamba-url https://faucet.sidechain.evmtestnet.iohkdev.io/ --signing-key-file /PATH/TO/payment.skey --combined-proof <merkleProof without 0x>
 ```
 
 Example output: 
@@ -189,9 +189,9 @@ cardano-cli query utxo --testnet-magic 7 --address <MAINCHAIN_ADDRESS>
 To transfer `SC_Token` from the main chain to a sidechain, use the **sidechain-cli** to burn main-chain `SC_Token`.
 
 ```shell
-./sidechain-cli burn-SC_Token
+./sidechain-cli burn-fuel
   --signing-key-file payment.skey \
-  --sc-url https://faucet.sidechain.evmtestnet.iohkdev.io/ \
+  --mamba-url https://faucet.sidechain.evmtestnet.iohkdev.io/ \
   --recipient ae3dffee97f92db0201d11cb8877c89738353bce \
   --amount 10
 ```
@@ -199,7 +199,7 @@ To transfer `SC_Token` from the main chain to a sidechain, use the **sidechain-c
 Understanding this command:
 
 - `--signing-key-file payment.skey`: Generating a main-chain account creates a `.skey` file to sign transactions. The command gives the path to this file.
--  `--sc-url https://faucet.sidechain.evmtestnet.iohkdev.io/`: Providing the JSON-RPC API url, or endpoint, to the sidechain network node.
+-  `--mamba-url https://faucet.sidechain.evmtestnet.iohkdev.io/`: Providing the JSON-RPC API url, or endpoint, to the sidechain network node.
 -   `--recipient ae3dffee97f92db0201d11cb8877c89738353bce`: Defines the destination address on the sidechain where the SC_Token tokens will appear.
 
 -  `--amount 10`: Defines the amount of `SC_Token` (on the main chain) to be burned for `SC_Token` (on the sidechain) at the conversion rate of `amount`x`10^9`.
