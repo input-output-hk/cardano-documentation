@@ -26,7 +26,7 @@ Transferring `SC_Token` from side chain to main chain will require interfacing w
 
 - In Remix, go to **Deploy and Run transactions** > select **Injected Provider (MetaMask)** for the environment > Load contract from address (`0x696f686b2e6d616d626100000000000000000000`)
 
-Your RemixIDE will look similar to this with a contract interface: https://i.imgur.com/628CsVH.png.
+Your RemixIDE will look similar to this with a contract interface: ![Remix IDE](../../images/remix-ide.png).
 
 ### Step 03 - Lock SC_Token
 
@@ -42,12 +42,12 @@ The `lock` function of the bridge contract takes the main chain recipient's addr
 To ensure the address is recognized as a HEX string simply add `0x` to the beginning of the converted address like so: `0x6045736b33c53d9f526a223086afd812b07ed9741da80e989e96998893`
 
 - Determine how many `SC_Token` you want to lock. The amount in `SC_Token` has to be a multiple of 10^9. For example, 10^9 `wei` on the sidechain will be 1 `SC_Token` on the main chain.
-Input the amount of `SC_Token`, in `wei`, you want to lock: eg, `1000000000` Wei == 1 `SC_Token`. Your Remix should look similar to this: https://i.imgur.com/g6kc6Ma.png.
+Input the amount of `SC_Token`, in `wei`, you want to lock: eg, `1000000000` Wei == 1 `SC_Token`. Your Remix should look similar to this: ![Remix lock token](../../images/remix-lock-token.png).
 - Select the `lock` button to initiate the transaction and follow the MetaMask prompts to confirm and sign the transaction.
 
 *Note: If the transaction appears to be stuck, “pending” status, or MetaMask shows an invalid balance, then try [resetting MetaMask](https://metamask.zendesk.com/hc/en-us/articles/360015488891-How-to-reset-an-account) and submit the transaction again.*
 
-- To get the transaction hash or verify that the transaction was successful, you can check MetaMask activity or the Remix console: https://i.imgur.com/cbzHMV7.png.
+- To get the transaction hash or verify that the transaction was successful, you can check MetaMask activity or the Remix console: ![Remix console](../../images/remix-console.png).
   - Alternatively, you can invoke the `eth_gettransactionReceipt` API method. You can request this until the receipt is returned or transaction times out:
   ```shell
   curl -L -X POST -H 'Content-type:application/json' -d '{
