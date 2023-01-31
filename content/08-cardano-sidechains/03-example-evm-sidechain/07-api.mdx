@@ -3,83 +3,13 @@ title: JSON-RPC API
 metaTitle: JSON-RPC API
 ---
 
-Interacting with the sidechain requires sending requests to specific JSON-RPC API methods. The EVM sidechain testnet supports most standard Ethereum JSON-RPC API endpoints with a few exceptions described below.
+Interacting with the sidechain requires sending requests to specific JSON-RPC API methods. The EVM sidechain testnet supports most standard Ethereum JSON-RPC API endpoints with a few exceptions described in the API specification.
 
 ## Specification
 
 The EVM sidechain testnet supports [OpenRPC](https://open-rpc.org/)'s `rpc.discover` service discovery method that will return the OpenRPC scheme for the JSON-RPC API. You can easily validate and preview the schema on the [OpenRPC Playground](https://playground.open-rpc.org/?schemaUrl=https://faucet.sidechain.evmtestnet.iohkdev.io/).
 
-## Supported methods
-
-The list below shows which Ethereum API methods are currently implemented in the Cardano EVM sidechain. For details of each method, you can refer to the [JSON-RPC specification](https://playground.open-rpc.org/?schemaUrl=https://faucet.sidechain.evmtestnet.iohkdev.io/).
-
 *If your product requires a method that is not currently implemented, please contact Input Output Global support.*
-
-# Available methods
-
-- `eth_getBlockByHash`
-- `eth_getBlockByNumber`  
-- `eth_sendTransaction`  
-- `eth_estimateGas`  
-- `eth_getCode`  
-- `eth_sendRawTransaction`  
-- `eth_getTransactionReceipt`  
-- `eth_call`  
-- `eth_getBalance`  
-- `eth_getStorageAt`  
-- `eth_getBlockTransactionCountByHash`  
-- `eth_getBlockTransactionCountByNumber`
-- `eth_accounts`  
-- `eth_blockNumber` 
-- `eth_sign`
-- `eth_getTransactionByHash`  
-- `eth_getTransactionCount`  
-- `eth_chainId`  
-- `net_version`  
-- `web3_clientVersion`
-- `txpool_content`
-
-## Bridge methods
-
-These methods are specifically implemented to support bridge operations.
-
-- `sidechain_getCandidates`
-- `sidechain_getCommittee`
-- `sidechain_getMainchainStatus`
-
-## Test methods
-
-These methods are in the Cardano EVM sidechain with their input/output types, but are not fully implemented yet. They just return an error and do nothing.  
-
-- `test_mineBlocks`  
-- `test_modifyTimestamp`  
-- `test_rewindToBlock`  
-- `test_setChainParams`  
-- `test_importRawBlock`
-
-## Debug methods  
-
-These methods are there but they are specifically implemented to be just good enough for ETS.  
-
-They are only available for the test node.  
-
-They do not capture every possible storage address. As ETS uses trivial addresses such as 1-10 those are the only ones the methods check.  
-
-For accounts, The only accounts checked are those that are known to exist (ie, they are in the genesis), but if an account is created inside a transaction it won't be returned.
-
-- `debug_storageRangeAt`: optional  
-- `debug_accountRange`: optional  
-- `debug_traceTransaction endpoint`: optional
-
-## Support for test tooling (Web3.js, Metamask…)
-
-- `personal_newAccount`  
-- `personal_listAccounts`  
-- `personal_unlockAccount`  
-- `personal_lockAccount`  
-- `personal_sendTransaction`  
-- `personal_sign`  
-- `personal_ecRecover`  
 
 # Not implemented yet  
 
