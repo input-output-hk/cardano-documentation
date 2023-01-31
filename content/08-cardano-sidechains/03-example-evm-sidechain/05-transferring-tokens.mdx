@@ -13,70 +13,52 @@ This tutorial will show you how to transfer `SC_Tokens` between the mainchain an
 
 # Transfering tokens from a sidechain to the main chain
 
-Transfering tokens from a sidechain to the main chain will require interfacing with the bridge contract to lock the desired amount of `SC_Token` to be claimed on the main chain.
+Transferring `SC_Token` from side chain to main chain will require interfacing with the bridge smart contract to lock your desired amount fo `SC_Token` to be claimed on the mainchain. In this guide, you will use RemixIDE to interface with the bridge contract.
 
-### Step 01 - Lock SC_Token
 
-The `lock` function of the bridge contract takes the main chain recipient's address, but the recipient address must be converted to **bech32** format.
+### Step 01 - Setup contract interface in RemixIDE
+
+- Go to https://remix.ethereum.org/
+
+- Create `/contracts/bridge.abi` with the following contents: [bridge.abi](https://github.com/input-output-hk/sidechains-tooling/blob/master/bridge.abi)
+
+*Note: Make sure your Remix-compatible Web3 provider is configured to the EVM sidechain Testnet. Eg: MetaMask.*
+
+- In Remix, go to **Deploy and Run transactions** > select **Injected Provider (MetaMask)** for the environment > Load contract from address (`0x696f686b2e6d616d626100000000000000000000`)
+
+Your RemixIDE will look similar to this with a contract interface: https://i.imgur.com/628CsVH.png.
+
+### Step 03 - Lock SC_Token
+
+The `lock` function of the bridge contract takes the main chain recipient's address, but **the recipient address must be converted to bech32 format**.
+
+- Convert main chain address to bech32 format: 
+
+```shell
+./bech32 <<< addr_test1vpzhx6enc57e75n2ygcgdt7cz2c8akt5rk5qaxy7j6vc3ycgly0wh
+6045736b33c53d9f526a223086afd812b07ed9741da80e989e96998893 #Returns the conversion
+````
+
+To ensure the address is recognized as a HEX string simply add `0x` to the beginning of the converted address like so: `0x6045736b33c53d9f526a223086afd812b07ed9741da80e989e96998893`
 
 - Determine how many `SC_Token` you want to lock. The amount in `SC_Token` has to be a multiple of 10^9. For example, 10^9 `wei` on the sidechain will be 1 `SC_Token` on the main chain.
-Input the amount of `SC_Token`, in `wei`, you want to lock: eg, `1000000000` Wei == 1 `SC_Token`.
+Input the amount of `SC_Token`, in `wei`, you want to lock: eg, `1000000000` Wei == 1 `SC_Token`. Your Remix should look similar to this: https://i.imgur.com/g6kc6Ma.png.
+- Select the `lock` button to initiate the transaction and follow the MetaMask prompts to confirm and sign the transaction.
 
-Set a few environment variables to make things easier:
+*Note: If the transaction appears to be stuck, “pending” status, or MetaMask shows an invalid balance, then try [resetting MetaMask](https://metamask.zendesk.com/hc/en-us/articles/360015488891-How-to-reset-an-account) and submit the transaction again.*
 
-```shell
-SC_ADDR= # sidechain address
-PRIV_SC_KEY= # private key for sidechain address
-MC_ADDR= # mainchain recipient address
-SC_Token_AMOUNT= # the amount of SC_Token to be converted
-```
-
-You can double-check environment variables by printing them to your shell: eg, `print $MC_ADDR`.
-
-- Create the `lock` transaction:
-
-```shell
-# Get NONCE for SC_ADDR:
-NONCE=`curl -L -X POST -H 'Content-type:application/json' -d '{
-  "jsonrpc": "2.0",
-  "method": "eth_getTransactionCount",
-  "params": ["$SC_ADDR", "latest"],
-  "id": 1
-  }' https://faucet.sidechain.evmtestnet.iohkdev.io/ | jq -r '.result'`
-
-# Convert to decimal:
-NONCE=`echo "ibase=16; $NONCE"|bc`
-
-TX_LOCK_HASH = sc-evm-cli create-lock-tx --nonce $NONCE --private-key $PRIV_SC_KEY $(bech32 <<< $MC_ADDR) $SC_Token_AMOUNT
-```
-
-**sc-evm-cli** will return the raw tx of the transaction which is stored in `TX_LOCK_HASH`.
-
-- Submit the transaction by invoking the JSON-RPC API endpoint to `eth_sendRawTransaction`:
-
-```shell
-# Add 0x in front of the lock transaction hash:
-TX_LOCK_HASH=0x$TX_LOCK_HASH
-
-# Get Raw Tx Hash:
-RAW_TX=`curl -L -X POST -H 'Content-type:application/json' -d '{
-  "jsonrpc": "2.0",
-  "method": "eth_sendRawTransaction",
-  "params": [$TX_LOCK_HASH],
-  "id": 1
-  }' https://faucet.sidechain.evmtestnet.iohkdev.io/ | jq -r '.result'
-```
-
-- To verify the transaction was successful, simply `eth_getTransactionReceipt` of the raw transaction stored in `$RAW_TX`. You can request this until the receipt is returned or transaction times out:
-
-```shell
-curl -L -X POST -H 'Content-type:application/json' -d '{
+- To get the transaction hash or verify that the transaction was successful, you can check MetaMask activity or the Remix console: https://i.imgur.com/cbzHMV7.png.
+  - Alternatively, you can invoke the `eth_gettransactionReceipt` API method. You can request this until the receipt is returned or transaction times out:
+  ```shell
+  curl -L -X POST -H 'Content-type:application/json' -d '{
   "jsonrpc": "2.0",
   "method": "eth_getTransactionReceipt",
-  "params": [$RAW_TX],
+  "params": [INSERT_RAW_TX],
   "id": 1
   }' https://faucet.sidechain.evmtestnet.iohkdev.io/ | jq
   ```
+
+#### Step 04 - Wait for transaction to be processed and obtain MerkleProof
 
 - Get the current sidechain status by invoking `sidechain_getStatus`:
 
@@ -91,7 +73,7 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
 
 This shows on which epoch and phase the `lock()` transaction happened. If it happened during epoch `N` on epochPhase `regular` you can obtain the Merkle proof on epoch `N` since epochPhase changes to `handover`. If it happened during epoch `N` on epochPhase `closedTransactionBatch` or `handover`, you can obtain the Merkle proof on epoch `N+1` since epochPhase changes to `handover`.
 
-- Get transaction index for the epoch the lock transaction will be processed:
+- Get transaction index for the epoch the lock transaction will be processed by invoking the `sidechain_getOutgoingTransactions` API method:
 
 ```
 curl -L -X POST -H 'Content-type:application/json' -d '{
@@ -122,7 +104,7 @@ Example output:
 
 To obtain the `txIndex` matching the recipient and amount used to lock tokens, proceed as follows.
 
-- Wait until the epochPhase changes to `handover` of epoch `N` or `N+1` and obtain the Merkle proof for your lock action:
+- Wait until the epochPhase changes to `handover` of epoch `N` or `N+1` and obtain the Merkle proof for your lock action by invoking the `sidechain_getOutgoingTxMerkleProof` API method:
 
 ```shell
 curl -L -X POST -H 'Content-type:application/json' -d '{
@@ -133,7 +115,34 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
   }' https://faucet.sidechain.evmtestnet.iohkdev.io/ | jq
 ```
 
-From the return you need to obtain the `proof/bytes` and remove the `0x` that is prepended. Call that string `merkleProof`.
+Example: 
+
+```
+curl -L -X POST faucet.mamba.atago -H 'Content-type:application/json' -d '{"jsonrpc": "2.0", "method": "sidechain_getOutgoingTxMerkleProof", "params": [1295, 1], "id": 1}' | jq
+
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "proof": {
+      "bytes": "0xd8799fd8799f0101581d6045736b33c53d9f526a223086afd812b07ed9741da80e989e96998893d8799f5820772485d60f6744cf252f26560413aae8d28c82a88b1c77eede792f28965f4e79ffff9fd8799f005820ed69142610619b748ec5cd657e418c1c891c3a176900376d12db0b3c406a0a38ffffff",
+      "info": {
+        "transaction": {
+          "value": "0x1",
+          "recipient": "0x6045736b33c53d9f526a223086afd812b07ed9741da80e989e96998893",
+          "txIndex": 1
+        },
+        "merkleRootHash": "0xaacd27079b9c8b8bd17693beccb8997b4b7b1ef97596018d43047a40dab6b021"
+      }
+    },
+    "sidechainEpoch": 1295
+  },
+  "id": 1
+}
+```
+
+From the return you need to obtain the `proof/bytes` and remove the `0x` that is prepended. Call that string `merkleProof`. 
+
+*In the above example `d8799fd8799...` is the merkle proof.*
 
 - Wait until the epoch changes and the committee handover has happened. The committee handover happens automatically on the testnets by a service (relay) that tries every minute to find epoch signatures, and succeeds after a new epoch has started and the signatures are obtained. On mainnet, the committee handover will be done by anyone that wants, where there will be an incentive to do so. A good way to verify is by waiting until you observe your transaction in the list of signatures to upload:
 
@@ -148,10 +157,12 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
 
 Where `limit` = min(limit, number of epochs that are not yet relayed). The default value is `100`, but you can set it to any other number. In a normal case, when the handover happens at every epoch, it should only show 0 or 1 epochs (the last one). Once you identify that there are no roothashes pending in the list under the epoch that your lock was processed (`N` or `N+1`), you can claim your tokens. By now the epoch will be `N+1 `or `N+2`, depending on the phase you performed the lock operation.
 
-- Finally, claim the tokens by submitting a transaction on the main chain with the `merkleProof` you obtained using the **sidechain-cli**: 
+#### Step 05 Claim SC_Token
+
+- Claim the tokens by submitting a transaction on the main chain with the `merkleProof` you obtained using the **sidechain-cli**: 
 
 ```shell
-./sidechain-cli claim-SC_Token --sc-url https://faucet.sidechain.evmtestnet.iohkdev.io/ --signing-key-file /PATH/TO/payment.skey --combined-proof <merkleProof without 0x>
+./sidechain-cli claim-sc-token --rpc-url https://faucet.sidechain.evmtestnet.iohkdev.io/ --signing-key-file /PATH/TO/payment.skey --combined-proof <merkleProof without 0x>
 ```
 
 Example output: 
@@ -166,7 +177,7 @@ Example output:
 Verify amount you locked in your account:
 
 ```
-cardano-cli query utxo --testnet-magic 7 --address $MC_ADDR
+cardano-cli query utxo --testnet-magic 7 --address <MAINCHAIN_ADDRESS>
 ```
 
 🎉 Congratulations! At this point, you have successfully claimed your `SC_Token` on the main chain.
