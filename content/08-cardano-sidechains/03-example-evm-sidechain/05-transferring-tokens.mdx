@@ -118,7 +118,7 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
 Example: 
 
 ```
-curl -L -X POST faucet.mamba.atago -H 'Content-type:application/json' -d '{"jsonrpc": "2.0", "method": "sidechain_getOutgoingTxMerkleProof", "params": [1295, 1], "id": 1}' | jq
+curl -L -X POST https://faucet.sidechain.evmtestnet.iohkdev.io/ -H 'Content-type:application/json' -d '{"jsonrpc": "2.0", "method": "sidechain_getOutgoingTxMerkleProof", "params": [1295, 1], "id": 1}' | jq
 
 {
   "jsonrpc": "2.0",
