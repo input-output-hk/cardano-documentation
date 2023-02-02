@@ -7,7 +7,7 @@ This tutorial will show you how to transfer `SC_Tokens` between the main chain a
 
 ## Prerequisites
 
-1. We will use the **sidechain-cli** and the **sc-evm-cli** components within this tutorial. Download the binaries and add them to your shell’s path: https://github.com/input-output-hk/sidechains-tooling/releases.
+1. We will use the **sidechain-cli** within this tutorial. Download the binary and add it to your shell’s path: https://github.com/input-output-hk/sidechains-tooling/releases.
 2. Download the **bech32** conversion tool binary and add to your shell's path: https://github.com/input-output-hk/bech32.
 3. If you have not done so already, create and fund your main chain and sidechain accounts: [Create and fund your accounts](/cardano-sidechains/example-evm-sidechain/create-and-fund-accounts).
 
@@ -163,10 +163,13 @@ Where `limit` = min(limit, number of epochs that are not yet relayed). The defau
 
 #### Step 04 - Claim SC_Token
 
-- Claim the tokens by submitting a transaction on the main chain with the `merkleProof` you obtained using the **sidechain-cli**: 
+- Claim the tokens by submitting a transaction on the main chain with the `merkleProof` you obtained using the **sidechain-cli**. You will need to sign the transaction with your main chain signing key (ex: `payment.skey`):
 
 ```shell
-./sidechain-cli claim-fuel --mamba-url https://faucet.sidechain.evmtestnet.iohkdev.io/ --signing-key-file /PATH/TO/payment.skey --combined-proof <merkleProof without 0x>
+./sidechain-cli claim-sc-token 
+--sc-evm-url https://faucet.sidechain.evmtestnet.iohkdev.io \
+--signing-key-file /PATH/TO/payment.skey \
+--combined-proof <merkleProof without 0x>
 ```
 
 Example output: 
@@ -178,12 +181,6 @@ Example output:
 }
 ```
 
-Verify the amount you locked in your account:
-
-```
-cardano-cli query utxo --testnet-magic 7 --address <MAINCHAIN_ADDRESS>
-```
-
 🎉 Congratulations! At this point, you have successfully claimed your `SC_Token` on the main chain.
 
 # Transfering tokens from the main chain to a sidechain
@@ -193,17 +190,17 @@ cardano-cli query utxo --testnet-magic 7 --address <MAINCHAIN_ADDRESS>
 To transfer `SC_Token` from the main chain to a sidechain, use the **sidechain-cli** to burn main-chain `SC_Token`.
 
 ```shell
-./sidechain-cli burn-fuel
-  --signing-key-file payment.skey \
-  --mamba-url https://faucet.sidechain.evmtestnet.iohkdev.io/ \
-  --recipient ae3dffee97f92db0201d11cb8877c89738353bce \
-  --amount 10
+./sidechain-cli burn-sc-token 
+--signing-key-file payment.skey \
+--sc-evm-url https://faucet.sidechain.evmtestnet.iohkdev.io/ \
+--recipient ae3dffee97f92db0201d11cb8877c89738353bce \
+--amount 10
 ```
 
 Understanding this command:
 
 - `--signing-key-file payment.skey`: Generating a main-chain account creates a `.skey` file to sign transactions. The command gives the path to this file.
--  `--mamba-url https://faucet.sidechain.evmtestnet.iohkdev.io/`: Providing the JSON-RPC API url, or endpoint, to the sidechain network node.
+-  `--sc-evm-url https://faucet.sidechain.evmtestnet.iohkdev.io/`: Providing the JSON-RPC API url, or endpoint, to the sidechain network node.
 -   `--recipient ae3dffee97f92db0201d11cb8877c89738353bce`: Defines the destination address on the sidechain where the SC_Token tokens will appear.
 
 -  `--amount 10`: Defines the amount of `SC_Token` (on the main chain) to be burned for `SC_Token` (on the sidechain) at the conversion rate of `amount`x`10^9`.
