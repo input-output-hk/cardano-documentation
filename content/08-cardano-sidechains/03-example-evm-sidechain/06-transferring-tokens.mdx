@@ -88,17 +88,17 @@ Example output:
 
 ```json
 {
-  "proof": {
-    "bytes": "0xd8799fd8799f0002581d606e9d4f6a3f900f7b510b27f29d8e79c550686ce093946b23b3d1828ed87a80ff80ff",
-    "info": {
-      "transaction": {
-        "value": "0x2",
-        "recipient": "0x606e9d4f6a3f900f7b510b27f29d8e79c550686ce093946b23b3d1828e",
+  "jsonrpc": "2.0",
+  "result": {
+    "transactions": [
+      {
+        "value": "0x1",
+        "recipient": "0x6041e633c6b54572165a1563291c147dadb803667c99fc8c55ff3762fb",
         "txIndex": 0
-      },
-      "merkleRootHash": "0x96e0bffb3786607057ddffa5bc3a92c5b6669109c12b5222da374cd99a815b4e"
-    }
-  }
+      }
+    ]
+  },
+  "id": 1
 }
 ```
 
@@ -146,7 +146,7 @@ From the return you need to obtain the `proof/bytes` and remove the `0x` that is
 
 Wait until the epoch changes and the committee handover has happened. 
 
-`Note: A sidechain epoch is 1 hour; 30 minutes in the `regular` phase, 15 minutes in `closedTxBatch` phase, and 15 minutes in `handover` phase.`
+*Note: A sidechain epoch is 1 hour; 30 minutes in the `regular` phase, 15 minutes in `closedTxBatch` phase, and 15 minutes in `handover` phase.*
 
 The committee handover happens automatically on the testnets by a service (relay) that tries every minute to find epoch signatures, and succeeds after a new epoch has started and the signatures are obtained. On mainnet, the committee handover will be done by anyone who wants, where there will be an incentive to do so. A good way to verify this is to wait until you observe your transaction in the list of signatures to upload:
 
@@ -166,7 +166,7 @@ Where `limit` = min(limit, number of epochs that are not yet relayed). The defau
 - Claim the tokens by submitting a transaction on the main chain with the `merkleProof` you obtained using the **sidechain-cli**. You will need to sign the transaction with your main chain signing key (ex: `payment.skey`):
 
 ```shell
-./sidechain-cli claim-sc-token 
+./sidechain-cli claim-sc-token \
 --sc-evm-url https://faucet.sidechain.evmtestnet.iohkdev.io \
 --signing-key-file /PATH/TO/payment.skey \
 --combined-proof <merkleProof without 0x>
