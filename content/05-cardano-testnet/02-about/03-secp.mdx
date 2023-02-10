@@ -1,0 +1,54 @@
+---
+title: Valentine (SECP) upgrade
+metaTitle: Valentine (SECP) upgrade
+---
+
+The Valentine (or SECP) upgrade is Cardano’s intra-era hard fork that follows the [Vasil upgrade](https://docs.cardano.org/cardano-testnet/about/testnet-introduction). Valentine is a small and focused semantic change to the ledger, which brings new built-in functions to Plutus to support SECP elliptic curves (ECDSA and Schorr). Although an intra-era hard fork requires a hard fork combinator event, it does not change the ledger era, which means that this is an upgrade to the Babbage era (Vasil functionality).
+
+## Live on Cardano testnets
+
+Support for SECP256k1 is currently live on Cardano’s [preview](https://book.world.dev.cardano.org/environments.html#preview-testnet) testing environment. The upgrade is planned to go live on the [pre-production](https://book.world.dev.cardano.org/environments.html#pre-production-testnet) testing environment on February 11, 2023 at 00:00 UTC.
+
+The community is encouraged to try out Valentine functionality before the mainnet release, which is proposed tentatively for February 14, 2023 at 21:44:51 UTC.
+
+The current mainnet node, v.1.35.5, supports the SECP upgrade. To track the latest versions of the node and all downstream components, see [these release notes](https://docs.cardano.org/tools/release-notes) and the [compatibility matrix](https://docs.cardano.org/tools/comp-matrix).
+
+To get started:
+
+-   check the ['Getting started' tutorial](https://docs.cardano.org/cardano-testnet/getting-started)
+-   track the [ecosystem readiness page for the SECP upgrade](https://iohk.zendesk.com/hc/en-us/articles/14669691361433-Ecosystem-readiness-for-the-SECP-upgrade)
+-   see example scripts below
+
+## About ECC
+
+ECC is a popular primitive for developing cryptographic protocols and secure applications using custom encryption and decryption algorithms validated by digital signatures. ECC provides the same level of security as other mechanisms while using shorter keys and signatures.
+
+There are different elliptic curves one can use, with secp256k1 as one of the options. Each of these curves differs in its parameters. The secp256k1 curve provides two common signature schemes – ECDSA and Schorr.
+
+Cardano uses the Edwards-curve Digital Signature Algorithm (EdDSA) with elliptic curve Curve25519 as its base curve (Ed25519). Ed25519 is designed to be resistant to certain types of cryptographic attacks, making it a secure choice.
+
+Ed25519 is part of the family of [safeCurves](https://safecurves.cr.yp.to/), which secp256k1 is not part of. The variance in algorithms means that Plutus DApp developers who want to work with other blockchains and need to validate ECDSA and Schnorr signatures would have to spend time, effort, and funds to implement such algorithms over the Standards for Efficient Cryptography (SECP) elliptic curves in Plutus. This extra implementation considerably increases potential security risks.
+
+Since only Cardano’s primary signature algorithm Ed25519 is provided as a Plutus built-in function, ECDSA and Schnorr operations would be more expensive and time-consuming unless also provided as built-in functions.
+
+**What does the SECP upgrade bring?**
+
+Cardano’s Valentine upgrade adds new built-in functions to Plutus to support ECDSA and Schnorr signatures along with Cardano’s native signature.
+
+These built-in functions will become native to Cardano, and since they will be implemented and audited by experts, they will provide the highest level of security. This standardization will allow any Plutus DApp developer to widen the choice of multi-signature or threshold signature design to use.
+
+[CIP-49](https://github.com/mlabs-haskell/CIPs/blob/c5bdd66fe49c19c341499f86cebaa2eef9e90b74/CIP-0049/README.md) provides a more in-depth oversight of the motivation and specification for the new implementation of built-in functions.
+
+After the new cryptographic primitives implementation, Plutus will be able to easily verify transactions from other blockchains using ECDSA and Schnorr standards. For example, Plutus will be able to natively verify signatures generated in EVM sidechains, which will improve the developer experience in terms of process simplicity, cost, and advanced security.
+
+![cardano-secp](https://ucarecdn.com/7c41014d-2a03-493e-83f1-054c6e3ac78f/)
+
+## Example scripts
+
+Below are links to examples of scripts and script data files containing the inputs to be used for working with SECP256k1 elliptic curves.
+
+The use of these scripts is similar to a [token minting process](https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/plutus/plutus-minting-script-example.md), where you build a transaction to mint a token using `--mint-script-file` with a provided Plutus script and `--mint-redeemer-file` for provided input script data.
+
+-   See the tutorial on [how to use the new SECP256K1 primitives](https://github.com/input-output-hk/Vasil-testnet/blob/main/secp-primitives-cip.md)
+-   Alternatively, find [Plutus SECP256k1 examples here](https://gist.github.com/james-iohk/4b54ceefbc3ad3d6fdbc49350bd5b6a8)
+-   And see the [PlutusTx API](https://github.com/input-output-hk/plutus/blob/node/1.35.4/plutus-tx/src/PlutusTx/Builtins.hs#L169-L202).
