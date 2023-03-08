@@ -42,6 +42,10 @@ _Past performance is not indicative of future results. Any investment in blockch
           label: 'Cardano Foundation Twitter',
           href: 'https://twitter.com/Cardano_CF',
         },
+        {
+          label: 'IOG Academy',
+          href: 'https://www.youtube.com/channel/UCX9j__vYOJu00iqBrCzecVw',
+        },
       ],
     },
     legalLinks: {
