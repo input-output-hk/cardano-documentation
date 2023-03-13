@@ -5,75 +5,91 @@ metaTitle: Peer-to-peer (P2P) networking
 
 Cardano nodes and the interactions between them are combined together within a networking layer, which distributes information about transactions and block creation among all active nodes. In this way, the system validates and adds blocks to the chain and also verifies transactions. A distributed network of nodes must keep communication delays to a minimum, and be resilient enough to cope with failures or capacity constraints.
 
-In the Byron federated system, nodes were connected by a static configuration that was defined in a topology file. Since the introduction of Shelley, the system has been functioning in a hybrid mode. Moving from the federated state of network connectivity to the hybrid one, we added a manually constructed peer-to-peer (P2P) network of stake pool operator (SPO) relay nodes. This means that SPO core nodes can connect to both federated relay nodes and to other SPO-run relay nodes. This connectivity is not automated, however, it enables the exchange of block and transaction information without relying on federated nodes. During this stage, federated relay nodes are being gradually turned off so that SPOs can connect to each other’s relays. 
+In the Byron federated system, nodes were connected by a static configuration that was defined in a topology file.  Since the introduction of Shelley, the system has been functioning in a hybrid mode. Moving from the federated state of network connectivity to the hybrid one, the teams delivered a manually constructed P2P network of SPO relay nodes. This means that SPO core nodes can connect to both federated relay nodes and other SPO-run relay nodes. This connectivity is not automated, however, it enables the exchange of block and transaction information without relying on federated nodes.
 
-![federated network](federated-p2p.jpg)
+1. Federated: introduced in the Byron development phase in 2017, IOHK core and relay nodes maintained the network and connected users, wallets, and exchanges.
 
-![hybrid network](hybrid-p2p.jpg)
+![federated](https://ucarecdn.com/f7b2d2ab-0300-4a02-a9ab-bfada18c0030/)
 
-![decentralized network](decentralized-p2p.jpg)
+2. Hybrid: since the Shelley development phase in 2020, block-producing nodes send and receive communications through trusted relays and/or a manual community-developed and managed tool called the [topology updater](https://github.com/cardano-community/guild-operators/blob/alpha/docs/Scripts/topologyupdater.md). 
 
-To ensure efficient communication between nodes, it is essential to enable automated connections of SPO relays to each other, so that less static configuration is needed. This is currently being accomplished through upgrades to the network stack, which will ultimately enable a full P2P topology for all Cardano nodes. P2P communication will enhance the flow of information between nodes, thus reducing (and ultimately removing) the network’s reliance on the federated nodes, and enabling complete decentralization of the Cardano network.
+![hybrid](https://ucarecdn.com/a04dc09e-1624-4daa-b0ea-8d0e603b7125/)
 
-### P2P capabilities
+3. Dynamic P2P: provides automation and resilience to optimize network performance. SPO relays can automatically connect to each other through self-discovery and optimization. 
+
+![dynamic-p2p](https://ucarecdn.com/4008f588-50c4-448e-a7c1-02326e2c462b/)
+
+To ensure efficient communication between nodes, it is desirable to enable automated connections of SPO relays to each other, so that less static configuration is needed. Dynamic P2P is gradually enabled with the node v.1.35.6. release. For more details, see **this blog post**.
+
+After Dynamic P2P is deployed, networking will keep evolving with future additions such as Ouroboros Genesis and peer sharing:
+
+4. Ouroboros Genesis: in development. Anyone running their own node or Daedalus wallet will connect to a fully decentralized and self-organized network. Genesis enables secure node bootstrapping and the removal of trusted IO relays.
+
+![genesis](https://ucarecdn.com/9ce084f4-28d6-4557-919e-d60a18ded168/)
+
+5. Peer sharing: in development. Peer sharing will facilitate the discovery of potential peers that are not registered on the chain within the overall Cardano node network. This phase will also allow anyone to contribute to running the network, rather than just using resources from SPOs.
+
+![peer-sharing](https://ucarecdn.com/9359a2da-a6ed-4edd-89b4-508ae96145e7/)
+
+## Dynamic P2P capabilities
 
 The network stack undergoes a number of improvements to achieve the desired network resilience. These improvements do not require a protocol change, but rather enable automated peer selection and communication between peers and nodes.
 
 The P2P networking is enabled due to the use of the following components:
 
-+ **P2P governor** ‒ manages the automatic initiation of connections between peers. 
-+ **Connection manager** ‒  integrates with the P2P governor to monitor new connections and protocols, which ensures efficient communication and improved issue tracking.
-+ **Server** ‒ accepts connections and limits dynamic rates synchronizing these with the connection manager. 
-+ **Inbound protocol governor** ‒ receives data from the connection manager to start or restart responder mini-protocols on inbound and outbound duplex connections.
+-   **Outbound governor** (formerly known as P2P governor) ‒ manages the automatic initiation of outbound connections between peers and classifies them as cold, warm, or hot (known, ready, or in use). The governor establishes a connectivity map of the local network. One part of the governor is the churn governor, which optimizes the network graph by dropping the 20% lowest performing peers.
+-   **Server** ‒ accepts connections. There is a soft and a hard limit on the number of connections that influence the speed of connection acceptance.
+-   **Inbound protocol governor** ‒ runs and governs inbound network ‘mini-protocols’ on an accepted connection.
+-   **Connection manager** ‒ tracks the state of each network connection: each one might be used as a warm or hot outbound connection or used by the inbound side. Warm connections only keep connectivity while hot ones take an active part in the consensus protocol.
 
-Next, we take a closer look at how the P2P governor works to ensure automated connectivity between peer nodes on the network. 
+Next, we take a closer look at how the outbound governor works to ensure automated connectivity between peer nodes on the network. 
 
-### P2P governor functionality
+### Outbound governor functionality
 
 The Cardano network consists of multiple peer nodes. Some peer nodes are more active than others, some have established connections, and some should be promoted to ensure the best system performance. Each block-producing node maintains a set of peers mapped into three categories:
 
-+ **cold peers** ‒ existing peers without an established network connection
-+ **warm peers** ‒ peers with an established bearer connection, which is only used for network measurements without implementing any of the node-to-node mini-protocols. 
-+ **hot peers** ‒ peers that have a connection, which is being used by all three node-to-node mini-protocols
+-   cold peers ‒ existing peers without an established network connection
+-   warm peers ‒ peers with an established bearer connection, which is only used for network measurements without implementing any of the node-to-node mini-protocols
+-   hot peers ‒ peers that have a connection, which is being used by all three node-to-node mini-protocols
 
-Newly discovered peers are initially added to the cold peer set. The P2P governor is then responsible for peer connection management: it defines which peers are beneficial for connection purposes, and which should be promoted or demoted between cold, warm, or hot sets. 
+Newly discovered peers are initially added to the cold peer set. The outbound governor is then responsible for peer connection management: it defines which peers are beneficial for connection purposes, and which should be promoted or demoted between cold, warm, or hot sets.
 
-The primary goal of the P2P governor is to maintain the target number of cold, warm, and hot peers. This builds and maintains a connectivity map of the entire network, and simplifies the process of connection definitions by handling them automatically. 
+The primary goal of the outbound governor is to maintain the target number of cold, warm, and hot peers. This builds and maintains a connectivity map of the local part of the network, and simplifies the process of connection definitions by handling them automatically.
 
-To establish connectivity between nodes, the P2P governor engages in the following activities:
+To establish connectivity between nodes, the outbound governor engages in the following activities:
 
-+ the random gossip used to discover a higher number of cold peers
-+ promotion of cold peers to warm peers
-+ demotion of warm peers to cold peers
-+ promotion of warm peers to hot peers
-+ demotion of hot peers to warm peers
+-   promotion of cold peers to warm peers
+-   demotion of warm peers to cold peers
+-   promotion of warm peers to hot peers
+-   demotion of hot peers to warm peers
 
-The P2P governor needs to establish and maintain:
+The outbound governor needs to establish and maintain:
 
-+ a target number of cold peers (for example, 100)
-+ a target number of hot peers (for example, between 2–20)
-+ a target number of warm peers (for example, between 10–50)
-+ a set of warm peers that are sufficiently diverse in terms of hop distance and geographic locations
-+ a target churn frequency for hot or warm changes
-+ a target churn frequency for warm or cold changes
-+ a target churn frequency for cold or unknown changes
+-   a target number of cold peers (for example, 100)
+-   a target number of hot peers (for example, between 2–20)
+-   a target number of warm peers (for example, between 10–50)
+-   a set of warm peers that are sufficiently diverse in terms of hop distance and geographic locations
+-   a target churn frequency for hot or warm changes
+-   a target churn frequency for warm or cold changes
+-   a target churn frequency for cold or unknown changes
 
-![peer discovery](peer-discovery.jpg)
+![peer-discovery](https://ucarecdn.com/b6bae79e-5960-4d4e-9f6c-993a100b01c3/)
 
-Using 2–20 hot peers is cost-efficient, as peers exchange only their block headers. The block body, in turn, is typically requested only once, and it tends to follow the shortest path through the connectivity graph. 
 
-The purpose of warm peers is to provide access to those peers that can be quickly promoted to hot ones (in case any of the hot peers fail), and also provide candidates for the churn of hot peers. 
+Using 2–20 hot peers is cost-efficient, as peers exchange only their block headers. The block body, in turn, is typically requested only once, and it tends to follow the shortest path through the connectivity graph.
 
-The policy for selecting which warm peers to promote to hot relies on the upstream measurements. The purpose of a degree of churn between cold and warm peers is, in part, to discover the network distance between more peers and to allow potentially better warm peers to take over from existing hot peers. This enables further optimization and adjustments. Maintaining diversity in hop distances contributes to better block distribution times across the globally distributed network. 
+The purpose of warm peers is to provide access to those peers that can be quickly promoted to hot ones (in case any of the hot peers fail), and also provide candidates for the churn of hot peers.
+
+The policy for selecting which warm peers to promote to hot relies on the upstream measurements. The purpose of a degree of churn between cold and warm peers is, in part, to discover the network distance between more peers and to allow potentially better warm peers to take over from existing hot peers. This enables further optimization and adjustments. Maintaining diversity in hop distances contributes to better block distribution times across the globally distributed network.
 
 Overall, this approach follows a common pattern for probabilistic search or optimization that uses a balance of local optimization with some elements of higher-order disruption to avoid becoming trapped in a poor local optimum.
 
-Peers maintain a limited set of information, which is based on their previous direct interactions. Cold peers, for instance, may not maintain any data, as they have not established interactions yet. Such data can be compared to ‘reputation’ property, however, these details are purely local and are not shared among other nodes.  Local peer reputation information is also updated when peer connections fail. The network does not maintain negative peer information for extended periods of time: to bound resources and because of the simplicity of [Sybil attacks](https://iohk.io/en/blog/posts/2018/10/29/preventing-sybil-attacks/).
+Peers maintain a limited set of information, which is based on their previous direct interactions. Cold peers, for instance, may not maintain any data, as they have not established interactions yet. Such data can be compared to a ‘reputation’ property, however, these details are purely local and are not shared among other nodes. Local peer reputation information is also updated when peer connections fail. The network does not maintain negative peer information for extended periods of time: to bound resources and because of the simplicity of [Sybil attacks](https://iohk.io/en/blog/posts/2018/10/29/preventing-sybil-attacks/).
 
 The implementation classifies exceptions that cause connection failures into three classes:
 
-+ internal node exceptions (for example, local disk corruption)
-+ network failures (for example, dropped TCP connections) 
-+ adversarial behavior (for example, a protocol violation detected by the typed-protocols layer or by the consensus layer).
+-   internal node exceptions (for example, local disk corruption)
+-   network failures (for example, dropped TCP connections)
+-   adversarial behavior (for example, a protocol violation detected by the typed-protocols layer or by the consensus layer).
 
-In the case of adversarial behavior, the peer can be immediately demoted from the hot, warm, or cold sets. 
+In the case of adversarial behavior, the peer can be immediately demoted from the hot, warm, or cold sets.
