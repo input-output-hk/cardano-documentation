@@ -4,7 +4,7 @@ metaTitle: About Ouroboros BFT
 ---
 
 # Ouroboros BFT: A simple Byzantine fault tolerant consensus protocol
-Ouroboros, named after the symbol of infinity, is the backbone of the Cardano ecosystem. Ouroboros BFT is the version that is implemented in Cardano's example EVM sidechain. It is a simple, deterministic protocol for ledger consensus that tolerates Byzantine faults.
+Ouroboros, named after the symbol of infinity, is the backbone of the Cardano ecosystem. Ouroboros BFT is the version that is implemented in Cardano's proof of concept EVM sidechain. It is a simple, deterministic protocol for ledger consensus that tolerates Byzantine faults.
 
 ## Background 
 So what is a Byzantine fault? To understand that, we have to go back to 1982, to the [Byzantine generals problem](https://www.microsoft.com/en-us/research/uploads/prod/2016/12/The-Byzantine-Generals-Problem.pdf) paper by Leslie Lamport, Robert Shostak, and Marshall Pease. Imagine a number of generals surrounding a city, unable to communicate with each other except by message. The generals must reach consensus on whether to attack or retreat, even if one or more generals is a traitor. This story is easy to grasp, and it is used as an allegory for the situation in a distributed ledger system where the nodes must reach consensus on the contents of the ledger even if one or more of the participating nodes is offline, faulty, or malicious. Such a node can create a **Byzantine fault**. The problem is easy to grasp but hard to solve. That's where Ouroboros comes in.  
