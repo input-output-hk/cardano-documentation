@@ -5,25 +5,28 @@ metaTitle: Peer-to-peer (P2P) networking
 
 Cardano nodes and the interactions between them are combined together within a networking layer, which distributes information about transactions and block creation among all active nodes. In this way, the system validates and adds blocks to the chain and also verifies transactions. A distributed network of nodes must keep communication delays to a minimum, and be resilient enough to cope with failures or capacity constraints.
 
-In the Byron federated system, nodes were connected by a static configuration that was defined in a topology file.  Since the introduction of Shelley, the system has been functioning in a hybrid mode. Moving from the federated state of network connectivity to the hybrid one, the teams delivered a manually constructed P2P network of SPO relay nodes. This means that SPO core nodes can connect to both federated relay nodes and other SPO-run relay nodes. This connectivity is not automated, however, it enables the exchange of block and transaction information without relying on federated nodes.
+In the Byron federated system, nodes were connected by a static configuration that was defined in a topology file. Since the introduction of Shelley, the system has been functioning in a hybrid mode. Moving from the federated state of network connectivity to the hybrid one, the teams delivered a manually constructed P2P network of SPO relay nodes. This means that SPO block-producing nodes can connect to both trusted* relay nodes and other SPO-run relay nodes. Hybrid connectivity is not automated, however, it enables the exchange of block and transaction information without relying on trusted relays *only*.
 
-1. Federated: introduced in the Byron development phase in 2017, IOHK core and relay nodes maintained the network and connected users, wallets, and exchanges.
+*A trusted relay is the one that the SPO, wallet, or exchange accessing the network ‘trusts’. Though this role has mostly been performed by IOG, other entities, such as the Cardano Foundation, a wallet, or exchanges can also run trusted relays. Block-producing nodes can connect to any relays they deem trustable.
 
-![federated](https://ucarecdn.com/f7b2d2ab-0300-4a02-a9ab-bfada18c0030/)
+
+1. Federated: introduced in the Byron development phase in 2017, trusted core and relay nodes maintained the network and connected users, wallets, and exchanges.
+
+![federated](https://ucarecdn.com/dcd6bf70-5c73-4fbc-8683-1f199e8f554b/)
 
 2. Hybrid: since the Shelley development phase in 2020, block-producing nodes send and receive communications through trusted relays and/or a manual community-developed and managed tool called the [topology updater](https://github.com/cardano-community/guild-operators/blob/alpha/docs/Scripts/topologyupdater.md). 
 
-![hybrid](https://ucarecdn.com/a04dc09e-1624-4daa-b0ea-8d0e603b7125/)
+![hybrid](https://ucarecdn.com/3e7d4b86-040c-416a-9eda-076e8ffe41c9/)
 
 3. Dynamic P2P: provides automation and resilience to optimize network performance. SPO relays can automatically connect to each other through self-discovery and optimization. 
 
-![dynamic-p2p](https://ucarecdn.com/4008f588-50c4-448e-a7c1-02326e2c462b/)
+![dynamic-p2p](https://ucarecdn.com/48167b72-9192-42e0-a367-5f3e40612388/)
 
-To ensure efficient communication between nodes, it is desirable to enable automated connections of SPO relays to each other, so that less static configuration is needed. Dynamic P2P is gradually enabled with the node v.1.35.6. release. For more details, see **this blog post**.
+To ensure efficient communication between nodes, it is desirable to enable automated connections of SPO relays to each other, so that less static configuration is needed. Dynamic P2P is gradually enabled with the node [v.1.35.6](https://github.com/input-output-hk/cardano-node/releases/tag/1.35.6) release. For more details, see [this blog post](https://iohk.io/en/blog/posts/2023/03/16/dynamic-p2p-is-coming-to-cardano/).
 
 After Dynamic P2P is deployed, networking will keep evolving with future additions such as Ouroboros Genesis and peer sharing:
 
-4. Ouroboros Genesis: in development. Anyone running their own node or Daedalus wallet will connect to a fully decentralized and self-organized network. Genesis enables secure node bootstrapping and the removal of trusted IO relays.
+4. Ouroboros Genesis: in development. Anyone running their own node or Daedalus wallet will connect to a fully decentralized and self-organized network. Genesis enables secure node bootstrapping and the removal of trusted relays.
 
 ![genesis](https://ucarecdn.com/9ce084f4-28d6-4557-919e-d60a18ded168/)
 
