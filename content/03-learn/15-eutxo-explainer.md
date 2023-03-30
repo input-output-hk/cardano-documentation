@@ -3,17 +3,18 @@ title: Understanding the Extended UTXO model
 metaTitle: Understanding the Extended UTXO model
 ---
 
->The EUTXO handbook is now out! You can find a deep dive about [Cardano's EUTXO accounting model here](https://ucarecdn.com/3da33f2f-73ac-4c9b-844b-f215dcce0628/EUTXOhandbook_for_EC.pdf). 
+>The EUTXO handbook is now out! Deep dive into [Cardano's EUTXO accounting model here](https://ucarecdn.com/3da33f2f-73ac-4c9b-844b-f215dcce0628/EUTXOhandbook_for_EC.pdf). 
 
 Cardano (like Bitcoin) is an Unspent Transaction Output (UTXO)-based blockchain, which utilizes a different accounting model for its ledger from other account-based blockchains like Ethereum. Cardano implements an innovative [Extended Unspent Transaction Output (EUTXO) model](https://iohk.io/en/blog/posts/2021/03/11/cardanos-extended-utxo-accounting-model/), which is introduced by the Alonzo upgrade to support multi-assets and smart contracts.
 
 ## Overview of the UTXO model
-In the UTXO model, a transaction has *inputs* and *outputs*, where the inputs are unspent outputs from previous transactions. Assets are stored on the ledger in unspent outputs, rather than in accounts. 
+In the UTXO model, a transaction has *inputs* and *outputs*, where the inputs are unspent outputs from previous transactions. Assets are stored on the ledger in unspent outputs, rather than in accounts. In abstract terms, think of a transaction as the action that unlocks previous outputs, and creates new ones.
 
-As soon as an output is used as input in a transaction, it becomes spent and can never be used again. The output is specified by an address (a public key or public key hash) and a value (consisting of an ada amount and any optional additional native token amounts). 
-An output’s address determines which transactions are allowed to ‘unlock’ the output and use it as an input. A transaction must be signed by the owner of the private key corresponding to the address. Think of an address as a ‘lock’ that can only be ‘unlocked’ by the right ‘key’ ‒ the correct signature.
+### Transaction output
+A transaction output includes an *address* (that you can think of as a lock) and a *value*. In keeping with this analogy, the signature that belongs to the address is the key to unlock the output. Once unlocked, an output can be used as input. New transactions spend outputs of previous transactions, and produce new outputs that can be consumed by future transactions. Each UTXO can only be consumed once, and as a whole. Each output can be spent by exactly one input, and one input *only*.
 
-Each of these outputs specifies quantities of assets stored therein, together with its address. Unspent outputs are immutable, so a transaction might consume the entire output, but it cannot alter it.
+### Transaction input
+A transaction input is the output of a previous transaction. Transaction inputs include a pointer and a cryptographic signature that acts as the unlocking key. The pointer points back to a previous transaction output, and the key unlocks this output. When an output is unlocked by an input, the blockchain marks the unlocked output as 'spent'. New outputs created by a given transaction can then be pointed to by new inputs, and so the chain continues. These new outputs (which have not yet been unlocked, ie, spent) are the UTXOs. Unspent outputs are simply that, outputs that have not yet been spent.
 
 In summary, transactions consume unspent outputs from previous transactions, and produce new outputs that can be used as inputs for future transactions.
 
