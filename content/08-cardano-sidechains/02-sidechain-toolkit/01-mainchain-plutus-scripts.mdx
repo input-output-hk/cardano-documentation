@@ -184,10 +184,10 @@ A minting policy verifies the following:
 
 - `MPTRootToken` with the name of the Merkle root of the transaction (calculated from from the proof) can be found in the `MPTRootTokenValidator` script address
 - recipient, amount, index and previousMerkleRoot combined with merkleProof match against merkleRootHash
-- `claimTransactionHash` of the transaction is NOT included in the distributed set[^1]
+- `claimTransactionHash` of the transaction is NOT included in the distributed set
 - a new entry with the `claimTransactionHash` of the transaction is created in the distributed set
 - the transaction is signed by the recipient
-- the amount matches the actual tx body contents
+- the amount matches the actual tx body contents.
 
 where the `claimTransactionHash` is a `blake2(cbor(MerkleTreeEntry))`, uniquely identifying a cross-chain transaction by pointing to a Merkle tree and the index of the transaction in the tree.
 
