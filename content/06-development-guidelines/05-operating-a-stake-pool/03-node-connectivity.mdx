@@ -7,42 +7,17 @@ Nodes connect to each other within the Cardano networking layer, and this
 connection is essential for information exchange about transactions and new
 block creation.
 
-### Cardano networking
+## Cardano networking
 
-With Byron, federated nodes were wholly responsible for managing block
-production and network connections. The Byron network consisted of a set of
-federated core nodes - static nodes that produced blocks and maintained the
-Cardano network. With the launch of Shelley, the network runs in a hybrid mode
-with federated nodes operated by IOG (which configure connections between
-different stake pool operators) and nodes operated by the SPO community. The
-percentage of blocks produced by decentralized nodes is constantly growing while
-federated nodes gradually stop operating, which evenly spreads the network
-maintenance across all the stake pool operators. Over the lifetime of the
-Shelley system, the network will transition into full decentralization using
-continuous automatic discovery and selection of peers.
+Cardano's networking evolved from its initial federated structure to hybrid and the current Dynamic peer-to-peer (P2P) model. Networking will keep evolving with future additions such as Ouroboros Genesis and peer-sharing. See [this explainer](https://docs.cardano.org/explore-cardano/cardano-network/p2p-networking) for more details about network evolution and Dynamic P2P. 
 
-During the initial phase, nodes connect to other nodes by means of a static
-configuration, defined in a topology file. To avoid a situation when relay nodes
-go offline, which causes the block-producing nodes to be inaccessible, it is
-crucial to connect to reliable relay nodes. Currently, IOG offers
-[a list of all registered relays categorized by geographical location](https://explorer.cardano-mainnet.iohk.io/relays/topology.json)
-for SPOs to consider for connection purposes. It is also recommended that SPOs
-generate a configuration that uses 20 other SPOs as peers. In practice, many
-SPOs can use more than 20 peers for connection purposes. The list allows to
-select peers that are both nearby and far away so that there is strong
-inter-region connectivity.
+In a previous hybrid setup, SPOs could configure a node to connect to, for example, 50 other SPO nodes. This is a pretty large number, since many nodes can be offline, change their addresses, etc. While 20 connections are enough for efficient communication, SPOs had to over-provision because of the static configuration.
 
-Before the network is moved from federated to fully decentralized, the node’s
-network layer will be switched to use continuous automatic discovery and peer
-selection. This will be achieved through upgrades to the network stack.
-Initially, this will enable improved automation of connecting SPO relays to each
-other so that less static configuration is needed. Ultimately it will enable a
-full peer-to-peer (P2P) topology for all Cardano nodes, which will make the
-network less reliant on IOG-run relays.
+In a Dynamic P2P setup, SPOs can target to configure 20 connections, which can be picked from thousands of SPO relays, not just 50. And if any are offline, or go offline, the setup will automatically pick new ones, to meet the set target. This means that the configuration is no longer limited to a static pool of 50 peers.
 
-Follow this link to read more about the [Cardano network](/explore-cardano/cardano-network/about-the-cardano-network), communication between the nodes, and mini-protocols that enable this functionality.
+P2P also allows for more sophisticated configurations for direct peering arrangements between SPOs. For example, if two SPOs want to maintain a connection between their relays, and each has two relays, they can configure a group of peers that lists the other SPOs’ two relays but with a target that there should be at least one connection. This means that there is no need for over-provisioning, and SPOs still get automatic failover if one relay goes down. With static configuration, one had to choose between listing only one and thus not getting resilience, or listing both and over-provisioning (using more resources).
 
-### Connecting core and relay nodes
+## Connecting core and relay nodes
 
 As a stake pool operator, you will have two types of nodes: core nodes and relay
 nodes. Each core node must be accompanied by one or more relay nodes.
@@ -60,11 +35,3 @@ needed for block generation. It only connects to its relay nodes.
 - [About node configuration files](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/understanding-config-files.md)
 - [Configuring topology files for block-producing and relay nodes](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/0_core_relay.md)
 - [Creating an operational certificate with key evolving signature (KES)](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/7_KES_period.md)
-
-A relay node doesn’t need any keys and will therefore be unable to produce
-blocks. It is connected to its core node, other relays, and external nodes.
-
-Each node should run on a dedicated server, and the core node server’s firewall
-should be configured to only allow incoming connections from its relays.
-
-![network](https://ucarecdn.com/d236f988-39bb-47cb-9dfe-18a13cc8843f/)
