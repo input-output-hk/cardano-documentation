@@ -1,0 +1,118 @@
+---
+title: Installing the Cardano node
+metaTitle: Installing the Cardano node
+---
+
+## Downloading pre-compiled executables
+
+You can install the Cardano node and cli using
+[pre-compiled executable files](https://github.com/input-output-hk/cardano-node#executables)
+for your platform.
+
+## Building from source
+
+Alternatively, if you want to build from source, there are two options
+available to you. Depending on your build tool preference, you can build from
+the source code using either of the following:
+
+- [cabal: building the node](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/install.md/)
+- [Nix: building the node](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/building-the-node-using-nix.md/)
+
+Please refer to the [cardano-node releases page](https://github.com/input-output-hk/cardano-node/releases/latest) to ensure you are working with the latest version of the node.
+
+Once you have installed the node, you need to
+[specify the configuration parameters](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/understanding-config-files.md/).
+
+## Using Docker
+There is also a Docker image available that you can use. 
+
+### Setting up Docker
+
+1. Download and install Docker/Docker Desktop from the [Docker site](https://docs.docker.com/get-docker/).
+2. If using Windows or Mac, ensure you have allocated enough RAM to Docker (we recommend setting the RAM to 8GB in the Docker Desktop requirements) and start the Docker daemon, as described in the Docker instructions. Note that Docker on Linux, there are no RAM limits for containers by default.
+
+### Setting up the Cardano node
+1. Download the correct `cardano-node` image:
+
+``docker image pull inputoutput/cardano-node:<TAG>``
+
+where `<TAG>` is the tag for the version that you require (e.g. `latest` for the most recent stable version, or `1.35.3` for node version 1.35.3).
+
+2. Create local `cardano-node-data` and `cardano-node-ipc` volumes:
+
+```
+docker volume create cardano-node-data
+docker volume create cardano-node-ipc
+```
+
+### Running the Cardano node
+
+1. Run a passive node that is connected to the correct network. For example, for a `mainnet` node:
+
+``docker run -e NETWORK=mainnet -v cardano-node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node``
+
+This creates a persistent docker environment for the node, where `/ipc` in the Docker container is connected to the logical `cardano-node-ipc` volume, and `/data` is connected to the `cardano-node-data` volume.  Note that you should change `NETWORK=mainnet` if you are connecting to a different network (eg a testnet).  
+
+### Passing Explicit Configuration Parameters
+You may also run the node with specific parameters:
+
+``docker run -v cardano-node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node run --help``
+
+If there is no pre-defined network configuration, you will need to download the specified configuration files, copy these to the persistent Docker volume, and pass the parameters on the command line:
+
+``docker run -v cardano-node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node run --config ... --topology ... --...``
+
+### Running Cardano CLI commands
+You can now run normal Cardano CLI commands, for example,
+```
+export CLI='docker run -it --entrypoint cardano-cli -e NETWORK=mainnet -e CARDANO_NODE_SOCKET_PATH=/ipc/node.socket -v cardano-node-ipc:/ipc inputoutput/cardano-node'
+$CLI version
+$CLI query tip --mainnet
+$CLI transaction build-raw ... --mainnet
+```
+You need to specify `CARDANO_NODE_SOCKET_PATH` to point to the correct location in the container (`/ipc/node.socket` is the standard location).
+
+### Running a Shell in the Docker Container
+To run a shell in the container (so that you can inspect or change settings, for example), use the `bash` or `sh` entry point.
+
+``docker run -it --entrypoint bash -v cardano-node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node``
+
+You may now run any commands that you require with full access to the container's file systems.
+
+```
+bash-4.4# cd /data/db
+bash-4.4# ls
+immutable  ledger  lock  protocolMagicId  volatile
+bash-4.4# 
+```
+
+Alternatively, you can start the node container with a name.
+
+``docker run --name cardano-node -e NETWORK=mainnet -v cardano-node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node``
+
+In a separate terminal instance, run shell in an existing container.
+
+``docker exec -it cardano-node bash``
+
+### Copying files to/from the Docker Container
+To copy files to/from the docker container use `docker cp`.
+
+For example, if the process ID of the running container is `760199bf3561`
+
+```
+kh@vulcan:~$ docker ps
+CONTAINER ID   IMAGE                      COMMAND                  CREATED       STATUS       PORTS     NAMES
+760199bf3561   inputoutput/cardano-node   "/nix/store/p435ajna…"   ...
+```
+
+Then to copy the `immutable` directory (if you have a cached version), for example, you can:
+
+``docker cp db/immutable 760199bf3561:/data/db/immutable``
+
+You can also mount local directories for use by the container.  For example to share the `db` and `node-ipc` directories, you could:
+
+``docker run ---mount type=bind,source="$(pwd)/db/",target=/data/db  --mount type=bind,source="$(pwd)/node-ipc",target=/ipc inputoutput/cardano-node ...``
+
+#### Related Topics
+
+- [Using the command line interface](/getting-started/use-cli)
