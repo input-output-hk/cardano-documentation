@@ -56,9 +56,10 @@ const config = {
       '/tools',
     ],
     links: [
+      { text: 'Cardano Ecosystem Tools', link: 'https://developers.cardano.org/tools/' },
       { text: 'Glossary', link: 'https://www.essentialcardano.io/glossary?sort=alphabetical' },
       { text: 'Cardano.org', link: 'https://cardano.org' },
-      { text: 'Developer Portal', link: 'https://developers.cardano.org/' },
+      { text: 'Developer Portal', link: 'https://developers.cardano.org/' }
     ],
     frontLine: true, // This toggles collapse arrows
     ignoreIndex: true,
