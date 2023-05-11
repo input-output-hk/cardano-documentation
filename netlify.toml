@@ -854,4 +854,14 @@ status = 301
   to = "https://docs.cardano.org/marlowe/marlowe-resources"
   status = 301
 
+[[redirects]]
+  from = "https://docs.cardano.org/scalability-solutions/hydra"
+  to = "https://hydra.family/head-protocol/"
+  status = 301
+
+[[redirects]]
+  from = "https://docs.cardano.org/scalability-solutions/mithril"
+  to = "https://mithril.network/doc/"
+  status = 301
+
 # -- End /en/ prefixed URLs
