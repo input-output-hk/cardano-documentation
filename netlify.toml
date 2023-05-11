@@ -855,13 +855,13 @@ status = 301
   status = 301
 
 [[redirects]]
-  from = "/scalability-solutions/hydra"
+  from = "/development-guidelines/scalability-solutions/hydra"
   to = "https://hydra.family/head-protocol/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/scalability-solutions/mithril"
+  from = "/development-guidelines/scalability-solutions/mithril"
   to = "https://mithril.network/doc/"
   status = 301
   force = true
