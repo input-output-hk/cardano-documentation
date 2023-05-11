@@ -855,12 +855,12 @@ status = 301
   status = 301
 
 [[redirects]]
-  from = "https://docs.cardano.org/scalability-solutions/hydra"
+  from = "/scalability-solutions/hydra"
   to = "https://hydra.family/head-protocol/"
   status = 301
 
 [[redirects]]
-  from = "https://docs.cardano.org/scalability-solutions/mithril"
+  from = "/scalability-solutions/mithril"
   to = "https://mithril.network/doc/"
   status = 301
 
