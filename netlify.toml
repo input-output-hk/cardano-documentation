@@ -858,10 +858,12 @@ status = 301
   from = "/scalability-solutions/hydra"
   to = "https://hydra.family/head-protocol/"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/scalability-solutions/mithril"
   to = "https://mithril.network/doc/"
   status = 301
+  force = true
 
 # -- End /en/ prefixed URLs
