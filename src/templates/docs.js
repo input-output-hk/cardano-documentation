@@ -14,6 +14,7 @@ import {
 } from '../components/styles/Docs'
 
 import styled from '@emotion/styled'
+import stripNumbers from '../utils/stripNumbersFromPath'
 
 const forcedNavOrder = config.sidebar.forcedNavOrder
 
@@ -109,7 +110,8 @@ export default class MDXRuntimeTest extends Component {
       config.gatsby.pathPrefix !== '/'
         ? canonicalUrl + config.gatsby.pathPrefix
         : canonicalUrl
-    canonicalUrl = canonicalUrl + mdx.fields.slug
+
+    canonicalUrl = canonicalUrl + stripNumbers(mdx.fields.slug)
 
     return (
       <StyledTemplate useFwTemplate={isFullWidth}>
