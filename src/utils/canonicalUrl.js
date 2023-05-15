@@ -21,7 +21,7 @@ const canonicalPath = path => {
  * @returns {string}
  */
 const canonicalUrl = path => {
-  return (config.gatsby.siteUrl + canonicalPath(path)).replace(/\/+/g, '/')
+  return config.gatsby.siteUrl + canonicalPath(path)
 }
 
 module.exports = {
