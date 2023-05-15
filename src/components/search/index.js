@@ -10,21 +10,28 @@ const SearchContainer = styled.div`
   justify-content: flex-end;
 `
 
-export default function() {
+const Search = () => {
+  const { indexName, algoliaApiKey, algoliaAppId } = config.header.search
+
   useEffect(() => {
-    docsearch({
-      container: '#algoliasearch',
-      indexName: config.header.search.indexName,
-      apiKey: config.header.search.algoliaApiKey,
-      searchParameters: {
-        facetFilters: ['tags:docs'],
-      },
-    })
+    if (indexName && algoliaApiKey && algoliaAppId) {
+      docsearch({
+        container: '#algoliasearch',
+        indexName,
+        apiKey: algoliaApiKey,
+        appId: algoliaAppId,
+        searchParameters: {
+          facetFilters: ['tags:docs'],
+        },
+      })
+    }
   }, [])
 
-  return (
+  return indexName && algoliaApiKey && algoliaAppId ? (
     <SearchContainer>
       <div id="algoliasearch" />
     </SearchContainer>
-  )
+  ) : null
 }
+
+export default Search
