@@ -6,7 +6,7 @@ const stripNumbers = (val) => {
 
   pathsDirectories.map((el) => {
     if (el.length > 0) {
-      pathArray.push(el.substring(3))
+      pathArray.push(el.replace(/[0-9]+-/g, ''))
     }
   })
   return `/${pathArray.join('/')}`

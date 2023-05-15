@@ -14,7 +14,7 @@ import {
 } from '../components/styles/Docs'
 
 import styled from '@emotion/styled'
-import stripNumbers from '../utils/stripNumbersFromPath'
+import { canonicalUrl } from '../utils/canonicalUrl'
 
 const forcedNavOrder = config.sidebar.forcedNavOrder
 
@@ -104,15 +104,6 @@ export default class MDXRuntimeTest extends Component {
 
     const hasPageHeading = mdx.frontmatter.hasPageHeading
 
-    let canonicalUrl = config.gatsby.siteUrl
-
-    canonicalUrl =
-      config.gatsby.pathPrefix !== '/'
-        ? canonicalUrl + config.gatsby.pathPrefix
-        : canonicalUrl
-
-    canonicalUrl = canonicalUrl + stripNumbers(mdx.fields.slug)
-
     return (
       <StyledTemplate useFwTemplate={isFullWidth}>
         <Layout {...this.props} useFwTemplate={isFullWidth}>
@@ -134,7 +125,7 @@ export default class MDXRuntimeTest extends Component {
             {metaDescription ? (
               <meta property="twitter:description" content={metaDescription} />
             ) : null}
-            <link rel="canonical" href={canonicalUrl} />
+            <link rel="canonical" href={canonicalUrl(mdx.fields.slug)} />
           </Helmet>
 
           <div className={`pageWrap ${isFullWidth ? `fullWidthPage` : ``}`}>

@@ -4,6 +4,7 @@ import Link from './link'
 import { StyledNextPrevious } from './styles/PageNavigationButtons'
 
 import stripNumbers from '../utils/stripNumbersFromPath'
+import { canonicalPath } from '../utils/canonicalUrl'
 
 const NextPrevious = ({ mdx, nav }) => {
   let currentIndex
@@ -15,7 +16,7 @@ const NextPrevious = ({ mdx, nav }) => {
   })
 
   // Strip numbers for .url 's below this point
-  nav.map((el) => {
+  nav.map(el => {
     el.url = stripNumbers(el.url)
   })
 
@@ -61,7 +62,10 @@ const NextPrevious = ({ mdx, nav }) => {
 
   const isPrevLinkParent =
     previousInfo?.url ===
-    nav[currentIndex]?.url?.split('/').slice(0, -1).join('/')
+    nav[currentIndex]?.url
+      ?.split('/')
+      .slice(0, -1)
+      .join('/')
 
   const previousIndexModifier = isPrevLinkParent ? 2 : 1
   const nextIndexModifier = isNextLinkParent ? 2 : 1
@@ -70,7 +74,7 @@ const NextPrevious = ({ mdx, nav }) => {
     <StyledNextPrevious>
       {previousInfo.url && currentIndex >= 0 ? (
         <Link
-          to={nav[currentIndex - previousIndexModifier].url}
+          to={canonicalPath(nav[currentIndex - previousIndexModifier].url)}
           className={'previousBtn'}
         >
           <div className={'leftArrow'}>
@@ -105,7 +109,7 @@ const NextPrevious = ({ mdx, nav }) => {
       ) : null}
       {nextInfo.url && currentIndex >= 0 ? (
         <Link
-          to={nav[currentIndex + nextIndexModifier].url}
+          to={canonicalPath(nav[currentIndex + nextIndexModifier].url)}
           className={'nextBtn'}
         >
           <div className={'nextRightWrapper'}>
