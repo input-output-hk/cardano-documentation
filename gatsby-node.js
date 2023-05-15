@@ -8,6 +8,8 @@ const config = require('./config')
 
 const stripNumbers = require('./src/utils/stripNumbersFromPath')
 
+const { Octokit } = require("@octokit/core")
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -108,4 +110,45 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       value: node.frontmatter.title || startCase(parent.name),
     })
   }
+}
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+
+  const typeDefs = `
+    type MdxFrontmatter {
+      repoReadeMe: String!
+    }
+  `
+
+  createTypes(typeDefs)
+}
+
+exports.createResolvers = ({ createResolvers }) => {
+  const octokit = new Octokit();
+
+  const getReadmeRetrievalResponse = async ( providedRepo ) => {
+    const response = await octokit.request("GET /repos/{owner}/{repo}/readme", {
+      owner: 'input-output-hk',
+      repo: providedRepo
+    });
+
+    return Buffer.from(response.data.content, 'base64').toString('utf8');
+  }
+
+  const resolvers = {
+    MdxFrontmatter: {
+      repoReadeMe: {
+        resolve(source) {
+          if(source.repo) {
+            return getReadmeRetrievalResponse(source.repo);
+          } else {
+            return ''
+          }
+        },
+      },
+    },
+  }
+
+  createResolvers(resolvers)
 }

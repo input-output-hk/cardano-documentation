@@ -7,6 +7,7 @@ import Link from '../components/link'
 import Layout from '../components/layout'
 import NextPrevious from '../components/NextPrevious'
 import config from '../../config'
+import ReadmeDoc from '../components/readmedoc'
 import {
   Edit,
   StyledHeading,
@@ -103,6 +104,10 @@ export default class MDXRuntimeTest extends Component {
 
     const hasPageHeading = mdx.frontmatter.hasPageHeading
 
+    const repo = mdx.frontmatter.repo
+
+    const repoReadeMe = mdx.frontmatter.repoReadeMe
+
     let canonicalUrl = config.gatsby.siteUrl
 
     canonicalUrl =
@@ -132,6 +137,9 @@ export default class MDXRuntimeTest extends Component {
             {metaDescription ? (
               <meta property="twitter:description" content={metaDescription} />
             ) : null}
+            {metaDescription ? (
+              <meta property="twitter:description" content={metaDescription} />
+            ) : null}
             <link rel="canonical" href={canonicalUrl} />
           </Helmet>
 
@@ -144,7 +152,7 @@ export default class MDXRuntimeTest extends Component {
                     {docsLocation && (
                       <Link
                         className={'gitBtn'}
-                        to={`${docsLocation}/${mdx.parent.relativePath}`}
+                        to={repo ? `https://github.com/input-output-hk/${repo}/blob/master/README.md` : `${docsLocation}/${mdx.parent.relativePath}`}
                       >
                         <img src={gitHub} alt={'Github logo'} /> Edit on GitHub
                       </Link>
@@ -156,6 +164,9 @@ export default class MDXRuntimeTest extends Component {
 
             <StyledMainWrapper>
               <MDXRenderer>{mdx.body}</MDXRenderer>
+              {(repoReadeMe && repo) ? (
+                  <ReadmeDoc repo={repo} readmeContent={repoReadeMe} />
+              ) : null}
             </StyledMainWrapper>
           </div>
 
@@ -196,6 +207,8 @@ export const pageQuery = graphql`
         metaDescription
         fullWidthTemplate
         hasPageHeading
+        repo
+        repoReadeMe
       }
     }
     allMdx {
