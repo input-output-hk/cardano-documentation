@@ -6,7 +6,7 @@ import ClosedSvg from '../images/closed'
 import config from '../../../config'
 import Link from '../link'
 import stripNumbers from '../../utils/stripNumbersFromPath'
-import { canonicalUrl, canonicalPath } from '../../utils/canonicalUrl'
+import { canonicalPath } from '../../utils/canonicalUrl'
 
 const TreeNode = ({
   className = '',
@@ -32,7 +32,10 @@ const TreeNode = ({
   if (typeof document != 'undefined') {
     location = document.location
   }
-  const active = location && location.pathname === canonicalPath(url)
+
+  const active = location
+    ? canonicalPath(location.pathname) === canonicalPath(url)
+    : false
 
   const calculatedClassName = `${className} item ${active ? 'active' : ''}`
 
