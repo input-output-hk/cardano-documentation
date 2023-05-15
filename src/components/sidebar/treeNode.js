@@ -6,6 +6,7 @@ import ClosedSvg from '../images/closed'
 import config from '../../../config'
 import Link from '../link'
 import stripNumbers from '../../utils/stripNumbersFromPath'
+import { canonicalUrl, canonicalPath } from '../../utils/canonicalUrl'
 
 const TreeNode = ({
   className = '',
@@ -31,10 +32,7 @@ const TreeNode = ({
   if (typeof document != 'undefined') {
     location = document.location
   }
-  const active =
-    location &&
-    (location.pathname === url ||
-      location.pathname === config.gatsby.pathPrefix + url)
+  const active = location && location.pathname === canonicalPath(url)
 
   const calculatedClassName = `${className} item ${active ? 'active' : ''}`
 
@@ -56,7 +54,7 @@ const TreeNode = ({
             </a>
           )
         : title && (
-            <Link to={externalUrl || url}>
+            <Link to={externalUrl || canonicalPath(url)}>
               {title}
               {externalUrl && <ExternalLink size={14} />}
 
