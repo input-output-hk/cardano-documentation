@@ -13,7 +13,9 @@ const canonicalPath = path => {
     canonical = canonical + '/'
   }
 
-  return (config.gatsby.pathPrefix + canonical).replace(/\/+/g, '/')
+  return (config.gatsby.pathPrefix + canonical)
+    .replace(/\/+/g, '/')
+    .toLowerCase()
 }
 
 /**
