@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = "npm run build"
+  command = "yarn run build"
 
 [[redirects]]
   from = "/en/latest/"
@@ -798,7 +798,7 @@ status = 301
   to = "https://docs.cardano.org/cardano-testnet/tools/faucet"
   status = 301
   force = true
-    
+
 [[redirects]]
   from = "https://testnets.cardano.org/en/testnets/cardano/tools/staking-calculator/"
   to = "https://docs.cardano.org/cardano-testnet/tools/staking-calculator"
