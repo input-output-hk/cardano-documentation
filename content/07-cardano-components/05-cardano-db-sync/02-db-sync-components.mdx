@@ -12,15 +12,8 @@ Cardano-db-sync consists of a set of components:
   run, validate and analyze migrations).
 - `cardano-db-sync` – acts as a Cardano node, following the chain and inserting
   data from the chain into a PostgreSQL database.
-- `cardano-db-sync-extended` – a relatively simple extension to cardano-db-sync,
-  which maintains an extra table containing epoch data.
 - `db-sync-node` – designed to work with a locally running Cardano Node to store
   data in the PostgreSQL database.
-
-The two versions `cardano-db-sync` and `cardano-db-sync-extended` are fully
-compatible and use identical database schemas. The only difference is that the
-extended version maintains an `Epoch` table, which the non-extended version will
-also create but _not_ maintain.
 
 The `db-sync-node` is written in a highly modular fashion to allow it to be as
 flexible as possible. It connects to a locally running cardano-node (i.e., the
