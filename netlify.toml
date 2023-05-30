@@ -246,6 +246,7 @@
   from = "/marlowe/learn-about-marlowe/"
   to = "https://docs.marlowe.iohk.io/docs/introduction"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/marlowe/marlowe-get-started.html"
