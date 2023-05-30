@@ -304,7 +304,7 @@
   status = 301
 
 [[redirects]]
-  from = "/marlowe-faqs/"
+  from = "/marlowe/marlowe-faqs/"
   to = "https://marlowe.iohk.io/"
   status = 301
 
