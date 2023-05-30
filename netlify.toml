@@ -257,7 +257,6 @@
   from = "/marlowe/marlowe-get-started/"
   to = "https://docs.marlowe.iohk.io/tutorials/"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/marlowe/marlowe-lang-guide.html"
@@ -268,7 +267,6 @@
   from = "/marlowe/marlowe-language-guide/"
   to = "https://docs.marlowe.iohk.io/docs/platform-and-architecture/marlowe-language-guide"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/marlowe/get-started-blockly.html"
@@ -279,7 +277,6 @@
   from = "/marlowe/writing-marlowe-with-blockly/"
   to = "https://docs.marlowe.iohk.io/docs/developer-tools/playground"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/marlowe/get-started-haskell.html"
@@ -290,7 +287,6 @@
   from = "/marlowe/using-the-haskell-editor/"
   to = "https://docs.marlowe.iohk.io/docs/developer-tools/playground"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/marlowe/get-started-js.html"
@@ -301,13 +297,11 @@
   from = "/marlowe/using-javascript-editor/"
   to = "https://docs.marlowe.iohk.io/docs/developer-tools/playground"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/marlowe/marlowe-run/"
   to = "https://docs.marlowe.iohk.io/docs/developer-tools/runtime/marlowe-runtime"
   status = 301
-  force = true
 
 [[redirects]]
   from = "/marlowe-faqs/"
