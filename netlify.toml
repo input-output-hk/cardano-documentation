@@ -309,6 +309,11 @@
   status = 301
 
 [[redirects]]
+  from = "/marlowe/marlowe-resources/"
+  to = "https://docs.marlowe.iohk.io/tutorials"
+  status = 301
+
+[[redirects]]
   from = "/rosetta/learn-Rosetta.html"
   to = "/rosetta/learn-rosetta/"
   status = 301
@@ -694,7 +699,7 @@ status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/programming-languages/marlowe/resources/links/"
-  to = "/marlowe/marlowe-resources"
+  to = "https://docs.marlowe.iohk.io/tutorials"
   status = 301
 
 # Added /en/ prefixed URLs
@@ -892,7 +897,7 @@ status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/en/programming-languages/marlowe/resources/links/"
-  to = "https://docs.cardano.org/marlowe/marlowe-resources"
+  to = "https://docs.marlowe.iohk.io/tutorials"
   status = 301
 
 [[redirects]]
