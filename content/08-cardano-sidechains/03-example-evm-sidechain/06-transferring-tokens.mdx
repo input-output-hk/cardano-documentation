@@ -9,7 +9,7 @@ This tutorial will show you how to transfer `SC_Tokens` between the main chain a
 
 1. We will use the **sidechain-cli** within this tutorial. Download the binary and add it to your shell’s path: https://github.com/input-output-hk/sidechains-tooling/releases.
 2. Download the **bech32** conversion tool binary and add to your shell's path: https://github.com/input-output-hk/bech32.
-3. If you have not done so already, create and fund your main chain and sidechain accounts: [Create and fund your accounts](/cardano-sidechains/example-evm-sidechain/create-and-fund-accounts).
+3. If you have not done so already, create and fund your main chain and sidechain accounts.
 
 # Transfering tokens from a sidechain to the main chain
 
@@ -20,7 +20,7 @@ Transferring `SC_Token` from a sidechain to the main chain will require interfac
 
 - Go to https://remix.ethereum.org/
 
-- Create `/contracts/bridge.abi` with the following contents: [bridge.abi](https://github.com/input-output-hk/sidechains-tooling/blob/master/bridge.abi)
+- Create `/contracts/bridge.abi` with the following contents: [bridge.abi](PENDING_URL)
 
 *Note: Make sure your Remix-compatible Web3 provider is configured to the EVM sidechain testnet. Eg: MetaMask.*
 
@@ -55,7 +55,7 @@ Input the amount of `SC_Token`, in `wei`, you want to lock: eg, `1000000000` Wei
   "method": "eth_getTransactionReceipt",
   "params": [INSERT_RAW_TX],
   "id": 1
-  }' https://faucet.sidechain.evmtestnet.iohkdev.io/ | jq
+  }' https://localhost:8546 | jq
   ```
 
 #### Step 03 - Wait for transaction to be processed and obtain MerkleProof
@@ -68,7 +68,7 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
    "method": "sidechain_getStatus",
    "params": [],
    "id": 1
-   }' https://faucet.sidechain.evmtestnet.iohkdev.io/ | jq -r
+   }' https://localhost:8546 | jq -r
 ```
 
 This shows on which epoch and phase the `lock()` transaction happened. If it happened during epoch `N` on epochPhase `regular` you can obtain the Merkle proof on epoch `N` since epochPhase changes to `handover`. If it happened during epoch `N` on epochPhase `closedTransactionBatch` or `handover`, you can obtain the Merkle proof on epoch `N+1` since epochPhase changes to `handover`.
@@ -81,7 +81,7 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
   "method": "sidechain_getOutgoingTransactions",
   "params": [<N or N+1>],
   "id": 1
-  }' https://faucet.sidechain.evmtestnet.iohkdev.io/ | jq
+  }' https://localhost:8546 | jq
 ```
 
 Example output:
@@ -112,13 +112,13 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
   "method": "sidechain_getOutgoingTxMerkleProof",
   "params": [<N or N+1>, <txIndex>],
   "id": 1
-  }' https://faucet.sidechain.evmtestnet.iohkdev.io/ | jq
+  }' https://localhost:8546 | jq
 ```
 
 Example: 
 
 ```
-curl -L -X POST https://faucet.sidechain.evmtestnet.iohkdev.io/ -H 'Content-type:application/json' -d '{"jsonrpc": "2.0", "method": "sidechain_getOutgoingTxMerkleProof", "params": [1295, 1], "id": 1}' | jq
+curl -L -X POST https://localhost:8546 -H 'Content-type:application/json' -d '{"jsonrpc": "2.0", "method": "sidechain_getOutgoingTxMerkleProof", "params": [1295, 1], "id": 1}' | jq
 
 {
   "jsonrpc": "2.0",
@@ -156,7 +156,7 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
     "method": "sidechain_getSignaturesToUpload",
     "params": [<limit>],
     "id": 1
-    }' https://faucet.sidechain.evmtestnet.iohkdev.io/ | jq
+    }' https://localhost:8546 | jq
 ```
 
 Where `limit` = min(limit, number of epochs that are not yet relayed). The default value is `100`, but you can set it to any other number. Normally, when the handover happens at every epoch, it should only show 0 or 1 epochs (the last one). Once you identify that there are no roothashes pending in the list under the epoch that your lock was processed (`N` or `N+1`), you can claim your tokens. By now the epoch will be `N+1 `or `N+2`, depending on the phase you performed the lock operation in.
@@ -167,7 +167,7 @@ Where `limit` = min(limit, number of epochs that are not yet relayed). The defau
 
 ```shell
 ./sidechain-cli claim-sc-token \
---sc-evm-url https://faucet.sidechain.evmtestnet.iohkdev.io \
+--sc-evm-url https://localhost:8546 \
 --signing-key-file /PATH/TO/payment.skey \
 --combined-proof <merkleProof without 0x>
 ```
@@ -194,7 +194,7 @@ To transfer `SC_Token` from the main chain to a sidechain, use the **sidechain-c
 ```shell
 ./sidechain-cli burn-sc-token \
 --signing-key-file payment.skey \
---sc-evm-url https://faucet.sidechain.evmtestnet.iohkdev.io/ \
+--sc-evm-url https://localhost:8546 \
 --recipient ae3dffee97f92db0201d11cb8877c89738353bce \
 --amount 10
 ```
@@ -204,7 +204,7 @@ To transfer `SC_Token` from the main chain to a sidechain, use the **sidechain-c
 Understanding this command:
 
 - `--signing-key-file payment.skey`: Generating a main-chain account creates a `.skey` file to sign transactions. The command gives the path to this file.
--  `--sc-evm-url https://faucet.sidechain.evmtestnet.iohkdev.io/`: Providing the JSON-RPC API url, or endpoint, to the sidechain network node.
+-  `--sc-evm-url https://localhost:8546`: Providing the JSON-RPC API url, or endpoint, to the sidechain network node.
 -   `--recipient ae3dffee97f92db0201d11cb8877c89738353bce`: Defines the destination address on the sidechain where the SC_Token tokens will appear.
 
 -  `--amount 10`: Defines the amount of `SC_Token` (on the main chain) to be burned for `SC_Token` (on the sidechain) at the conversion rate of `amount`x`10^9`.
@@ -214,7 +214,7 @@ The transaction will be stable on the main chain in approximately 12 minutes or 
 - Check `SC_Token` token balance using the [JSON-RPC API](/cardano-sidechains/example-evm-sidechains/api): 
 
 ```shell
-curl -L -X POST https://faucet.sidechain.evmtestnet.iohkdev.io/ -H 'Content-type:application/json' -d '{
+curl -L -X POST https://localhost:8546 -H 'Content-type:application/json' -d '{
     "jsonrpc": "2.0",
     "method": "eth_getBalance",
     "params": ["0xae3dffee97f92db0201d11cb8877c89738353bce", "latest"],
