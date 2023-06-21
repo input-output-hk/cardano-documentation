@@ -7,9 +7,10 @@ This tutorial will show you how to transfer `SC_Tokens` between the main chain a
 
 ## Prerequisites
 
-1. We will use the **sidechain-cli** within this tutorial. Download the binary and add it to your shell’s path: https://github.com/input-output-hk/sidechains-tooling/releases.
+1. **sidechain-evm-cli** is used within this tutorial and is in the SC_EVM repository [here](https://github.com/input-output-hk/mamba-world/tree/open-source/tooling).
 2. Download the **bech32** conversion tool binary and add to your shell's path: https://github.com/input-output-hk/bech32.
 3. If you have not done so already, create and fund your main chain and sidechain accounts.
+4. The bridge contract source which can be used to compile Solidity or obtain the ABI is in the SC_EVM repository [here](https://github.com/input-output-hk/mamba-world/blob/open-source/src/solidity-bridge/contracts/Bridge.sol).
 
 # Transfering tokens from a sidechain to the main chain
 
@@ -191,13 +192,14 @@ Example output:
 
 To transfer `SC_Token` from the main chain to a sidechain, use the **sidechain-cli** to burn main-chain `SC_Token`.
 
-```shell
-./sidechain-cli burn-sc-token \
+```
+sbt "scEvmCli/run burn-sc-token \
 --signing-key-file payment.skey \
 --sc-evm-url https://localhost:8546 \
 --recipient ae3dffee97f92db0201d11cb8877c89738353bce \
---amount 10
+--amount 10"
 ```
+
 **Warning:** Please note that this command can take some minutes to complete.  
 
 
