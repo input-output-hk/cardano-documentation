@@ -3,8 +3,8 @@ title: Cardano monetary policy
 metaTitle: Cardano monetary policy
 ---
 
-Cardano aims to achieve true decentralization with the introduction of the
-Voltaire era later in 2020. Voltaire will include decentralized voting and
+Cardano aims to achieve true decentralization with the introduction of
+Voltaire. Voltaire includes decentralized voting and
 treasury systems to empower the community to influence Cardano's evolution, and
 provide a funding mechanism to transform Cardano into a self-funded,
 self-sustainable environment.
@@ -94,6 +94,8 @@ Calculating the 'reserve half life' (that is, the time that it takes for half of
 
 Determining the right value for τ (the percentage of unclaimed rewards
 automatically going to the reserves every epoch) was equally challenging.
-Following discussions, deliberations, and projections, the value chosen was 20%,
-which means that, initially, 20% of the monetary expansion and the transaction
-fees are sent to the treasury after each epoch.
+Following discussions, deliberations, and projections, the τ value was set at a fixed rate of 20%. 
+
+This rate applies to both the per-epoch monetary expansion and the fees that the blockchain charges for each transaction. The treasury amount is deducted before any other rewards are allocated. The remaining per-epoch monetary expansion and fees may be allocated to stake pools based on the provided formula. 
+
+It is important to note that the rewards given to stake pools may be reduced under certain conditions, such as when pools are not saturated, not fully pledged, or fail to produce their allocated blocks. Any unclaimed rewards remain in the reserves for future allocation. This explains the slightly varying difference in the percentage of treasury allocations.
