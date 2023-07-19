@@ -1,0 +1,56 @@
+### Minting transaction
+
+The ability to create and manage custom tokens is one of the distinguishing features of the Cardano blockchain. Minting refers to the process of ´producing new tokens, either as part of an initial coin offering (ICO) or ongoing token issuance. Minting transactions allow users to generate or burn tokens according to predefined rules and parameters. In the following paragraphs, we will delve into the intricacies of minting transactions on the Cardano network.
+
+Now, let’s say that Bob wants to give Alice a token. But only bob is able to mint that token. To do that, bob has to create a script where he defines the minting and burning rules. There are two ways to achieve that, Plutus policy script and simple multisignature script. In this case we will use a simple multisignature script since we only have one rule for it: Only bob can mint the token.
+
+Before starting we have to be sure that we have all we need. Bob’s keys and script’s keys. We already have bob’s keys that we used in previous examples. But we have to generate new keys for the script itself. We use the same process that we followed to get Bob’s and Alice’s keys:
+
+
+```
+$ cardano-cli address key-gen \
+    --verification-key-file transactions-tutorial-policy/policy.vkey \
+    --signing-key-file transactions-tutorial-policy/policy.skey
+```
+Before creating the script we need to get the key-hash of the new brand keys.
+
+```
+$ cardano-cli address key-hash \
+    --payment-verification-key-file transactions-tutorial-policy/policy.vkey
+8ebd5f9c84fc25ae4506c7d0b687b2f7e82fe3f891036833e7f25c9b
+```
+
+Now it’s time to create the script:
+Writing the following code into `transactions-tutorial-policy/policy.script`
+```
+{
+    “keyHash”: “8ebd5f9c84fc25ae4506c7d0b687b2f7e82fe3f891036833e7f25c9b”,
+    “type”: “sig”
+}
+```
+We get the PolicyId with the following command:
+```
+$ cardano-cli transaction policyid \
+    --script-file transactions-tutorial-policy/policy.script 
+C38b0924e32e677f7787f0a0247b177588ec135db927688d8a63310a
+```
+It is also helpful to store it in an environment variable:
+```
+export POLICY_ID=C38b0924e32e677f7787f0a0247b177588ec135db927688d8a63310a
+```
+We also need a token name for it, it has to be in hexadecimal so we decided to call it “TestToken” (54657374546F6B656E in hexadecimal):
+```
+export TOKEN_NAME=54657374546F6B656E
+```
+
+Now I’ts time to form our transaction:
+```
+cardano-cli transaction build \
+    --tx-in f947f84f1156995afd695247a8dc8a508fd40d371ce0afb801029769a0104874#0 \
+    --mint "1 $(echo $POLICY_ID).$(echo $TOKEN_NAME)" \
+    --testnet-magic 1 \
+    --change-address $(cat bob.addr) \
+    --mint-script-file ../cardano/transactions-tutorial-policy/policy.script \
+    --out-file minting.tx \
+    --tx-out "$(cat alice.addr)+1047330+1 $(echo $POLICY_ID).$(echo $TOKEN_NAME)"
+```
