@@ -20,15 +20,15 @@ The KES key, or hot key as mentioned above, is a node operational key that
 authenticates who you are. You specify the validity of the KES key using the
 start time and key period parameters and this KES key needs to be updated every
 90 days. The VRF key is a signing verification key and is stored within the
-operational certificate. You can read more information on these crypto scheme
-keys in the
-[Shelley ledger specification](https://hydra.iohk.io/build/5096921/download/1/ledger-spec.pdf).
-
+operational certificate. 
+https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/stake-pool-operations/7_KES_period.md
 **Instructions to create and manage stake pool operation keys:**
 
-- [Creating keys and addresses](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/3_keys_and_addresses.md)
-- [Creating KES key pair](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/7_KES_period.md)
-- [Generating stake pool keys](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/6_node_keys.md)
+- [Creating keys and addresses](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/stake-pool-operations/3_keys_and_addresses.md)
+- [Registering stake address](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/stake-pool-operations/5_register_key.md)
+- [Generating stake pool keys](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/stake-pool-operations/6_node_keys.md)
+- [Creating KES key pair](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/stake-pool-operations/7_KES_period.md)
+
 
 ### Creating an operational certificate
 
@@ -49,8 +49,8 @@ within which the certificate is valid before you need to create another one.
 
 **Instructions to work with operational certificates:**
 
-- [Creating an operational certificate with KES](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/7_KES_period.md)
-- [Registering stake address and creating a registration certificate](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/8_register_stakepool.md#generate-stake-pool-registration-certificate)
+- [Creating an operational certificate with KES](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/stake-pool-operations/7_KES_period.md)
+- [Registering stake address and creating a registration certificate](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/stake-pool-operations/8_register_stakepool.md#generate-stake-pool-registration-certificate)
 
 The counter becomes significant when an attacker has compromised the KES key, in
 which case the owner of the cold keys can create a new KES key and a new
@@ -61,3 +61,7 @@ counter trumps the lower one.
 Certificates are generated on the offline machine using the offline/cold keys,
 before being copied over to the node to validate the KES keys used to sign the
 blocks.
+
+You can then check the leadership schedule:
+
+- [Leadership schedule](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/stake-pool-operations/9_leadership_schedule.md)
