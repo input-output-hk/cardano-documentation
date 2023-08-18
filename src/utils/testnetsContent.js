@@ -104,7 +104,6 @@ export default {
       }
     ],
     environment: {
-      testnet: 'Testnet',
       preprod: 'Pre-production',
       preview: 'Preview'
     },
