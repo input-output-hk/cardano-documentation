@@ -133,7 +133,7 @@ const WalletDownloaders = ({ env }) => {
   const envs = {
     preprod: {
       endpoint:
-        'https://lace-daedalus-preprod.s3.amazonaws.com//daedalus-latest-version.json',
+        'https://lace-daedalus-preprod.s3.amazonaws.com/daedalus-latest-version.json',
       title: 'Pre-production Testnet',
     },
     preview: {
