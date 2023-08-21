@@ -3,7 +3,7 @@ const config = require('../../config')
 const stripNumbersFromPath = require('./stripNumbersFromPath')
 
 const canonicalPath = path => {
-  let canonical = stripNumbersFromPath(path) ?? '/'
+  let canonical = stripNumbersFromPath(path) || '/'
 
   if (!canonical.startsWith('/')) {
     canonical = '/' + canonical
@@ -13,7 +13,9 @@ const canonicalPath = path => {
     canonical = canonical + '/'
   }
 
-  return (config.gatsby.pathPrefix + canonical).replace(/\/+/g, '/')
+  return (config.gatsby.pathPrefix + canonical)
+    .replace(/\/+/g, '/')
+    .toLowerCase()
 }
 
 /**

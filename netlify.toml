@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = "npm run build"
+  command = "yarn run build"
 
 [[redirects]]
   from = "/en/latest/"
@@ -239,32 +239,78 @@
 
 [[redirects]]
   from = "/marlowe/marlowe-explainer.html"
-  to = "/marlowe/learn-about-marlowe/"
+  to = "https://docs.marlowe.iohk.io/docs/introduction"
   status = 301
 
 [[redirects]]
+  from = "/marlowe/learn-about-marlowe/"
+  to = "https://docs.marlowe.iohk.io/docs/introduction"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/marlowe/marlowe-get-started.html"
-  to = "/marlowe/marlowe-get-started/"
+  to = "https://docs.marlowe.iohk.io/tutorials/"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/marlowe-get-started/"
+  to = "https://docs.marlowe.iohk.io/tutorials/"
   status = 301
 
 [[redirects]]
   from = "/marlowe/marlowe-lang-guide.html"
-  to = "/marlowe/marlowe-language-guide/"
+  to = "https://docs.marlowe.iohk.io/docs/platform-and-architecture/marlowe-language-guide"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/marlowe-language-guide/"
+  to = "https://docs.marlowe.iohk.io/docs/platform-and-architecture/marlowe-language-guide"
   status = 301
 
 [[redirects]]
   from = "/marlowe/get-started-blockly.html"
-  to = "/marlowe/writing-marlowe-with-blockly/"
+  to = "https://docs.marlowe.iohk.io/docs/developer-tools/playground"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/writing-marlowe-with-blockly/"
+  to = "https://docs.marlowe.iohk.io/docs/developer-tools/playground"
   status = 301
 
 [[redirects]]
   from = "/marlowe/get-started-haskell.html"
-  to = "/marlowe/using-the-haskell-editor/"
+  to = "https://docs.marlowe.iohk.io/docs/developer-tools/playground"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/using-the-haskell-editor/"
+  to = "https://docs.marlowe.iohk.io/docs/developer-tools/playground"
   status = 301
 
 [[redirects]]
   from = "/marlowe/get-started-js.html"
-  to = "/marlowe/using-javascript-editor/"
+  to = "https://docs.marlowe.iohk.io/docs/developer-tools/playground"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/using-javascript-editor/"
+  to = "https://docs.marlowe.iohk.io/docs/developer-tools/playground"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/marlowe-run/"
+  to = "https://docs.marlowe.iohk.io/docs/developer-tools/runtime/marlowe-runtime"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/marlowe-faqs/"
+  to = "https://marlowe.iohk.io/"
+  status = 301
+
+[[redirects]]
+  from = "/marlowe/marlowe-resources/"
+  to = "https://docs.marlowe.iohk.io/tutorials"
   status = 301
 
 [[redirects]]
@@ -628,32 +674,32 @@ status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/programming-languages/marlowe/overview/"
-  to = "/marlowe/learn-about-marlowe"
+  to = "https://docs.marlowe.iohk.io/docs/introduction"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/programming-languages/marlowe/about/skills-and-requirements/"
-  to = "/marlowe/marlowe-get-started"
+  to = "https://docs.marlowe.iohk.io/tutorials/"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/programming-languages/marlowe/getting-started/modelling-financial-products-in-marlowe/"
-  to = "/marlowe/learn-about-marlowe"
+  to = "https://docs.marlowe.iohk.io/docs/introduction"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/programming-languages/marlowe/getting-started/sample-marlowe-smart-contracts/"
-  to = "/marlowe/marlowe-language-guide"
+  to = "https://docs.marlowe.iohk.io/docs/platform-and-architecture/marlowe-language-guide"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/programming-languages/marlowe/getting-started/using-the-marlowe-playground/"
-  to = "/marlowe/marlowe-get-started"
+  to = "https://docs.marlowe.iohk.io/tutorials/"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/programming-languages/marlowe/resources/links/"
-  to = "/marlowe/marlowe-resources"
+  to = "https://docs.marlowe.iohk.io/tutorials"
   status = 301
 
 # Added /en/ prefixed URLs
@@ -798,7 +844,7 @@ status = 301
   to = "https://docs.cardano.org/cardano-testnet/tools/faucet"
   status = 301
   force = true
-    
+
 [[redirects]]
   from = "https://testnets.cardano.org/en/testnets/cardano/tools/staking-calculator/"
   to = "https://docs.cardano.org/cardano-testnet/tools/staking-calculator"
@@ -826,32 +872,32 @@ status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/en/programming-languages/marlowe/overview/"
-  to = "https://docs.cardano.org/marlowe/learn-about-marlowe"
+  to = "https://docs.marlowe.iohk.io/docs/introduction"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/en/programming-languages/marlowe/about/skills-and-requirements/"
-  to = "https://docs.cardano.org/marlowe/marlowe-get-started"
+  to = "https://docs.marlowe.iohk.io/tutorials/"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/en/programming-languages/marlowe/getting-started/modelling-financial-products-in-marlowe/"
-  to = "https://docs.cardano.org/marlowe/learn-about-marlowe"
+  to = "https://docs.marlowe.iohk.io/docs/introduction"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/en/programming-languages/marlowe/getting-started/sample-marlowe-smart-contracts/"
-  to = "https://docs.cardano.org/marlowe/marlowe-language-guide"
+  to = "https://docs.marlowe.iohk.io/docs/platform-and-architecture/marlowe-language-guide"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/en/programming-languages/marlowe/getting-started/using-the-marlowe-playground/"
-  to = "https://docs.cardano.org/marlowe/marlowe-get-started"
+  to = "https://docs.marlowe.iohk.io/tutorials/"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/en/programming-languages/marlowe/resources/links/"
-  to = "https://docs.cardano.org/marlowe/marlowe-resources"
+  to = "https://docs.marlowe.iohk.io/tutorials"
   status = 301
 
 [[redirects]]
