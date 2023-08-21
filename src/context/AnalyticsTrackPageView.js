@@ -11,7 +11,7 @@ export default function AnalyticsTrackPageView({ location, children }) {
   // Track page view
   useEffect(() => {
     trackPageView()
-  }, [location.href])
+  }, [location?.href])
 
   return <>{children}</>
 }
