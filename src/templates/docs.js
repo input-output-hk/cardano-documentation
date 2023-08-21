@@ -39,6 +39,11 @@ const TitleElement = styled.div`
   } */
 `
 
+const instance = createInstance({
+  urlBase: 'https://matomo.cw.iog.io/',
+  siteId: 55,
+})
+
 export default class MDXRuntimeTest extends Component {
   render() {
     const { data } = this.props
@@ -105,11 +110,6 @@ export default class MDXRuntimeTest extends Component {
     const isFullWidth = mdx.frontmatter.fullWidthTemplate
 
     const hasPageHeading = mdx.frontmatter.hasPageHeading
-
-    const instance = createInstance({
-      urlBase: 'https://matomo.cw.iog.io/',
-      siteId: 55,
-    })
 
     return (
       <MatomoProvider value={instance}>
