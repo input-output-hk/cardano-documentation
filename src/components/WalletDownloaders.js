@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react'
-import PropTypes from 'prop-types'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -9,7 +8,6 @@ import styled from 'styled-components'
 import TinyColor from '@ctrl/tinycolor'
 import Link from '@input-output-hk/front-end-core-components/components/Link'
 import Markdown from '@input-output-hk/front-end-core-components/components/Markdown'
-import { analytics } from '@input-output-hk/front-end-core-libraries'
 import { FaDownload, FaCogs } from 'react-icons/fa'
 import { MdClose } from 'react-icons/md'
 
@@ -205,12 +203,6 @@ const WalletDownloaders = ({ env }) => {
       setLoading(false)
     } catch (error) {
       console.error(error.message, error)
-      analytics.exception({
-        description: error.message,
-        fatal: false,
-        args: [envs[env].endpoint],
-        error,
-      })
       setHasError(true)
       setLoading(false)
     }
@@ -232,13 +224,8 @@ const WalletDownloaders = ({ env }) => {
     return platforms.filter(platform => Boolean(platform))
   }
 
-  const checksumOnClick = (SHA256, platform, version) => e => {
+  const checksumOnClick = (SHA256, platform) => e => {
     e.preventDefault()
-    analytics.click({
-      category: gaCategory,
-      label: `checksum_copy_${platform}_${version}`,
-      event: e,
-    })
     const el = checksumRefs[platform].current
 
     if (!el) return
