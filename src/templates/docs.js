@@ -15,6 +15,7 @@ import {
 
 import styled from '@emotion/styled'
 import { canonicalUrl } from '../utils/canonicalUrl'
+import { MatomoProvider, createInstance } from '@datapunt/matomo-tracker-react'
 
 const forcedNavOrder = config.sidebar.forcedNavOrder
 
@@ -49,6 +50,7 @@ export default class MDXRuntimeTest extends Component {
       allMdx,
       mdx,
       site: {
+        // eslint-disable-next-line no-unused-vars
         siteMetadata: { docsLocation, title },
       },
     } = data
@@ -104,61 +106,72 @@ export default class MDXRuntimeTest extends Component {
 
     const hasPageHeading = mdx.frontmatter.hasPageHeading
 
+    const instance = createInstance({
+      urlBase: 'https://matomo.cw.iog.io/',
+      siteId: 55,
+    })
+
     return (
-      <StyledTemplate useFwTemplate={isFullWidth}>
-        <Layout {...this.props} useFwTemplate={isFullWidth}>
-          <Helmet>
-            {metaTitle ? <title>{metaTitle}</title> : null}
-            {metaTitle ? <meta name="title" content={metaTitle} /> : null}
-            {metaDescription ? (
-              <meta name="description" content={metaDescription} />
-            ) : null}
-            {metaTitle ? (
-              <meta property="og:title" content={metaTitle} />
-            ) : null}
-            {metaDescription ? (
-              <meta property="og:description" content={metaDescription} />
-            ) : null}
-            {metaTitle ? (
-              <meta property="twitter:title" content={metaTitle} />
-            ) : null}
-            {metaDescription ? (
-              <meta property="twitter:description" content={metaDescription} />
-            ) : null}
-            <link rel="canonical" href={canonicalUrl(mdx.fields.slug)} />
-          </Helmet>
+      <MatomoProvider value={instance}>
+        <StyledTemplate useFwTemplate={isFullWidth}>
+          <Layout {...this.props} useFwTemplate={isFullWidth}>
+            <Helmet>
+              {metaTitle ? <title>{metaTitle}</title> : null}
+              {metaTitle ? <meta name="title" content={metaTitle} /> : null}
+              {metaDescription ? (
+                <meta name="description" content={metaDescription} />
+              ) : null}
+              {metaTitle ? (
+                <meta property="og:title" content={metaTitle} />
+              ) : null}
+              {metaDescription ? (
+                <meta property="og:description" content={metaDescription} />
+              ) : null}
+              {metaTitle ? (
+                <meta property="twitter:title" content={metaTitle} />
+              ) : null}
+              {metaDescription ? (
+                <meta
+                  property="twitter:description"
+                  content={metaDescription}
+                />
+              ) : null}
+              <link rel="canonical" href={canonicalUrl(mdx.fields.slug)} />
+            </Helmet>
 
-          <div className={`pageWrap ${isFullWidth ? `fullWidthPage` : ``}`}>
-            {(hasPageHeading || hasPageHeading === null) && (
-              <TitleElement className={`titleWrapper`}>
-                <StyledHeading>{mdx.fields.title}</StyledHeading>
-                {!isFullWidth && (
-                  <Edit className={'mobileView'}>
-                    {docsLocation && (
-                      <Link
-                        className={'gitBtn'}
-                        to={`${docsLocation}/${mdx.parent.relativePath}`}
-                      >
-                        <img src={gitHub} alt={'Github logo'} /> Edit on GitHub
-                      </Link>
-                    )}
-                  </Edit>
-                )}
-              </TitleElement>
-            )}
+            <div className={`pageWrap ${isFullWidth ? `fullWidthPage` : ``}`}>
+              {(hasPageHeading || hasPageHeading === null) && (
+                <TitleElement className={`titleWrapper`}>
+                  <StyledHeading>{mdx.fields.title}</StyledHeading>
+                  {!isFullWidth && (
+                    <Edit className={'mobileView'}>
+                      {docsLocation && (
+                        <Link
+                          className={'gitBtn'}
+                          to={`${docsLocation}/${mdx.parent.relativePath}`}
+                        >
+                          <img src={gitHub} alt={'Github logo'} /> Edit on
+                          GitHub
+                        </Link>
+                      )}
+                    </Edit>
+                  )}
+                </TitleElement>
+              )}
 
-            <StyledMainWrapper>
-              <MDXRenderer>{mdx.body}</MDXRenderer>
-            </StyledMainWrapper>
-          </div>
-
-          {!isFullWidth && (
-            <div className={'addPaddTopBottom'}>
-              <NextPrevious mdx={mdx} nav={nav} />
+              <StyledMainWrapper>
+                <MDXRenderer>{mdx.body}</MDXRenderer>
+              </StyledMainWrapper>
             </div>
-          )}
-        </Layout>
-      </StyledTemplate>
+
+            {!isFullWidth && (
+              <div className={'addPaddTopBottom'}>
+                <NextPrevious mdx={mdx} nav={nav} />
+              </div>
+            )}
+          </Layout>
+        </StyledTemplate>
+      </MatomoProvider>
     )
   }
 }

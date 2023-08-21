@@ -85,7 +85,8 @@
     "eslint-plugin-react": "^7.19.0",
     "gatsby-plugin-remove-trailing-slashes": "^2.1.17",
     "prettier": "^1.19.1",
-    "prism-react-renderer": "^1.0.2"
+    "prism-react-renderer": "^1.0.2",
+    "@datapunt/matomo-tracker-react": "^0.5.1"
   },
   "packageManager": "yarn@1.22.19"
 }

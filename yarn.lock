@@ -1239,6 +1239,18 @@
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.4.1.tgz#75b4c27948c81e88ccd3a8902047bcd797f38d32"
   integrity sha512-ej5oVy6lykXsvieQtqZxCOaLT+xD4+QNarq78cIYISHmZXshCvROLudpQN3lfL8G0NL7plMSSK+zlyvCaIJ4Iw==
 
+"@datapunt/matomo-tracker-js@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@datapunt/matomo-tracker-js/-/matomo-tracker-js-0.5.1.tgz#92a746ffa421f91b3a59fefce707d45ca22be96b"
+  integrity sha512-9/MW9vt/BA5Db7tO6LqCeQKtuvBNjyq51faF3AzUmPMlYsJCnASIxcut3VqJKiribhUoey7aYbPIYuj9x4DLPA==
+
+"@datapunt/matomo-tracker-react@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@datapunt/matomo-tracker-react/-/matomo-tracker-react-0.5.1.tgz#d7a4e62b23610eab2b7513d4df41d500291aaa53"
+  integrity sha512-lrNYM9hFL6XK0VAdtMb7MwZrLWhaAconx4c7gOGAMvoWuoVm+ZZIYFuKtfYdYMeBf0avxWtmKRwjZEg7T8jV2A==
+  dependencies:
+    "@datapunt/matomo-tracker-js" "^0.5.1"
+
 "@docsearch/css@3.1.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@docsearch/css/-/css-3.1.1.tgz#e0976bf995e383f8ee8657306311b9cb95016330"
@@ -1684,6 +1696,7 @@
   integrity sha512-OYMNS7UBD5tL88NRy5nHsJYaQ++IbvQP3lKwoimaJnhTTybfcJL4iEhFukQer50Ot75ZSRfCJEmdXG+kGe1+FQ==
   dependencies:
     prop-types "^15.6.2"
+    react-ga "^2.7.0"
 
 "@input-output-hk/front-end-site-components@^1.2.10":
   version "1.4.0"
