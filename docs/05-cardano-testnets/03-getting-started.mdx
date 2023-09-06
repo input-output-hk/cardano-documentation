@@ -1,0 +1,187 @@
+---
+title: Getting started with Cardano testnets
+metaTitle: Getting started with the Cardano testnets
+sidebar_position: 3
+---
+
+> Note that the **Cardano testnet** is no longer recommended for testing
+> purposes. The community is encouraged to use preview and pre-production
+> testnet environments explained below.
+
+To get started and join Cardano testnets, you should install and configure the
+Cardano node and the command line interface (CLI), configure your testing
+environment, and generate payment keys and addresses. Note, that you will also
+need [to get some test ada](/cardano-testnet/tools/faucet) to test your
+transactions.
+
+## System requirements
+
+The Cardano node can run on the following platforms:
+
+- Linux Ubuntu 19.10 (Eoan Ermine) or later
+- Linux Mint 19.3 (Tricia) or later
+- Linux Debian 10.3 (Buster) or later
+- MacOSX 10.14.0 (Mojave) or later
+- Windows 10
+
+## Installing the node
+
+Download the latest version of the node:
+
+- [Cardano node releases](https://github.com/input-output-hk/cardano-node/releases)
+
+Check your executables. The latest versions of the Cardano node and CLI can be
+found here:
+
+- [Cardano node executables](https://github.com/input-output-hk/cardano-node#executables)
+
+There are a number of ways to install and run a Cardano node on testnet. The
+choice of the best-matching method depends on the operating system, level of
+technical expertise, and personal preferences.
+
+Building the node using Nix is the recommended method, as this is what IOG’s
+internal development teams use and is considered the most reliable.
+
+For more information on the various options, see:
+
+- [Building the node using Nix](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/building-the-node-using-nix.md)
+- [Building the node from source](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/install.md/)
+- [Building the node using Docker](https://hub.docker.com/r/inputoutput/cardano-node)
+
+When installing the node, it is also essential to build the
+[cardano-client](https://github.com/input-output-hk/cardano-node/tree/master/cardano-client-demo).
+This tool is built similarly to the node. Since it is so fundamental, all
+tutorials that build the node also build the client.
+
+## Configurations
+
+To start working with the node, it is essential to ensure that the node
+configuration, genesis and topology files are correctly set up. In addition, the
+node will need the configuration files specific to each era that the Cardano
+network has experienced thus far.
+
+These configurations tell the node how to handle the updates that come with each
+era (ie. Mary, Alonzo, Babbage, etc). Each new era (implemented using the
+[hard fork combinator technology](https://docs.cardano.org/learn/about-hard-forks))
+introduces protocol changes and new ledger rules. While old configurations are
+still valid, the new configurations and features offer new rules and
+improvements. In the Babbage era, for example, Plutus V2 scripts work better
+than Plutus V1 scripts. Plutus V1 scripts, however, are still supported.
+
+For more details, see:
+
+- [Understanding configuration files](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/understanding-config-files.md)
+- [Configuring the node using YAML](https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/configuring-a-node-using-yaml.md)
+
+## Environments
+
+### Early-stage testing networks
+
+**Devnet**
+
+Devnet is the network for early involvement and functionality testing before a
+release candidate is mature. It is meant for projects such as DApps that wish to
+explore new features as soon as they are available.
+
+[**Devnet configurations**](https://book.world.dev.cardano.org/environments.html#vasil-dev)
+
+**Preview**
+
+Preview is the longer-term network environment for testing release candidates
+and expanded test scenarios. Preview is meant for DApps, stake pool operators
+(SPOs), and exchanges who wish to test mature release candidates.
+
+[**Preview configurations**](https://book.world.dev.cardano.org/environments.html#preview-testnet)
+
+### Late-stage testing networks
+
+**Pre-production**
+
+Pre-production is the most mature network for testing purposes, which resembles
+a production (mainnet) environment. It is meant for exchanges, SPOs,
+pre-deployment DApps, and wallets that wish to test release functionality before
+deploying on mainnet.
+
+[**Pre-production configurations**](https://book.world.dev.cardano.org/environments.html#pre-production-testnet)
+
+**Production network (mainnet)**
+
+Production is the live network, also referred to as mainnet. It features
+official functionality releases. Exchanges, SPOs, DApps, wallets, and end users
+can use the mainnet for development, transaction processing, and other needs.
+
+[**Production configurations**](https://book.world.dev.cardano.org/environments.html#production-mainnet)
+
+## Working with the Cardano testnets
+
+Note that mainnet and testnet commands are very similar except for the flag
+usage. For example, when interacting with cardano-cli on mainnet, you should add
+the `--mainnet` flag. However, to use the same commands on testnets, you should
+use the `--testnet-magic INTEGER` flag instead.
+
+`INTEGER` indicates the number of the testnet:
+
+- Vasil devnet integer is `9`
+- Preview integer is `2`
+- Pre-production integer is `1`
+
+### Creating keys and addresses
+
+To send and receive transactions, you should first create the payment key pair:
+
+```
+cardano-cli address key-gen \
+--verification-key-file payment.vkey \
+--signing-key-file payment.skey
+```
+
+This creates two files: `payment.vkey` (the public verification key) and
+`payment.skey` (the private signing key).
+
+Both verification keys (payment.vkey and stake.vkey) are used to build the
+address and the resulting payment address is associated with these keys.
+
+To build the address, run:
+
+```
+cardano-cli address build \
+--payment-verification-key-file payment.vkey \
+--stake-verification-key-file stake.vkey \
+--out-file payment.addr \
+--testnet-magic INTEGER
+```
+
+To query the balance of the address, run:
+
+```
+cardano-cli query utxo \
+--address $(cat payment.addr) \
+--testnet-magic INTEGER
+```
+
+For more commands, see:
+
+- [Creating keys and addresses](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/3_keys_and_addresses.md)
+
+Note to use the `--testnet-magic INTEGER` flag instead of `--mainnet`.
+
+### Funding the address using a faucet
+
+To fund your testnet address, go to the testnet faucet and request some test
+ada:
+
+- [The testnet faucet](/cardano-testnet/tools/faucet)
+
+If you're working in a _pre-production environment_ and have an API key, you can
+run the following command to fund your address:
+
+`curl -X POST -s 'https://faucet.preprod.world.dev.cardano.org/send-money/YOURADDRESS?api_key=YOURAPIKEY'`
+
+### Creating, signing, and submitting transactions
+
+You’re now ready to create, sign, and submit transactions on testnets. See the
+tutorial:
+
+- [Building and signing transactions](https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/building-and-signing-tx.md)
+
+Note to use the `--testnet-magic INTEGER` flag instead of `--mainnet`.

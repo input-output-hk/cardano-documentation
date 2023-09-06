@@ -1,0 +1,66 @@
+---
+title: Minimum ada value requirement
+metaTitle: Minimum ada value requirement
+sidebar_position: 2
+---
+
+UTXOs on the ledger may contain a heterogeneous collection of tokens, including
+ada, which is a limited resource in the Cardano system. Requiring some amount of
+ada to be included in every UTXO (where that amount is based on the size of the
+UTXO, in bytes), limits the maximum total size taken up by UTXO entries on the
+ledger at any given time.
+
+The maximum possible UTXO size (the sum of the sizes of all UTXO entries) is
+implicitly adjusted by raising and lowering the `min-ada-value` variable, which
+is calculated using the Alonzo parameter `coinsPerUTxOWord`. In this way, the
+constraint protects the Cardano ledger from growing beyond a certain size. A
+ledger without a size bound is vulnerable to being populated by so much data
+that users will unable to process it (or run a node) with machines meeting the
+recommended specifications for running a node.
+
+In the multi-asset Cardano ledger, UTXO entries have different sizes. In
+particular, any entries containing a non-ada asset contain records of the Policy
+IDs, asset names, and quantities of each of the non-ada assets. To maintain the
+max UTXO size bound on the UTXO stored on the ledger with variable entry sizes,
+we must adjust the minimum ada value for each UTXO entry, based on its size.
+
+The minimum number of ada required is
+[calculated using this method](https://github.com/input-output-hk/cardano-ledger/blob/master/doc/explanations/min-utxo-alonzo.rst)
+that is new in the Alonzo era.
+
+> Note that with an upcoming upgrade to Babbage era, the protocol parameter
+> `coinsPerUTxOWord` changes to `coinsPerUTxOByte`, which means that the price
+> will be calculated per one byte instead of per eight bytes. The calculation
+> will therefore look as follows:
+> `minUTxoVal = (160 + sizeInBytes (TxOut)) * coinsPerUTxOByte`. For more
+> details, see [CIP-55](https://cips.cardano.org/cips/cip55/).
+
+As a consequence of this design,
+
+- It is impossible to make outputs containing only custom tokens
+- The number of each token kind in an output can slightly affect the
+  min-ada-value of this output. This is because the minimum UTXO value takes
+  memory overhead into account when storing it on a running computer. The
+  increase in ada value affects the memory overhead _insignificantly_, however,
+  adding more multi-assets affects this value much more. The reason for this is
+  that the names and policy IDs of each of the types of tokens take up
+  additional space in the output. For efficient encoding, see
+  [the CBOR specification](https://www.rfc-editor.org/rfc/rfc8949#name-specification-of-the-cbor-e).
+- Sending custom tokens to an address always involves sending the min-ada-value
+  of ada to that address alongside the custom tokens (by including the ada in
+  the same output). If - the address is not spendable by the user sending the
+  tokens, the ada sent alongside the tokens no longer belongs to the sender.
+- Before transferring custom tokens, users may choose to use off-chain
+  communication to negotiate who supplies the ada to cover the min-ada-value in
+  the output made by the transferring transaction
+- To recover the ada stored alongside custom tokens in an output O, the user
+  must either: a) Spend the output O, and burn the custom tokens stored therein
+  b) Spend an output O and an output O’, and consolidate the tokens therein with
+  the same collection of types of custom tokens stored in another output (spent
+  within the same transaction) Eg., `(CryptoDoggiesPolicy, poodle, 1)` contained
+  in O can be consolidated with `(CryptoDoggiesPolicy, poodle, 3)` in O’, for a
+  total of `(CryptoDoggiesPolicy, poodle, 4)` in a new output made by the
+  consolidating transaction.
+- Splitting custom tokens into more outputs than they were contained in before
+  the transaction getting processed requires using, in total, more ada to cover
+  the min-ada-value, as ada is needed in the additional outputs.

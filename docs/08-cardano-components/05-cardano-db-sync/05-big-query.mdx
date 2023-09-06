@@ -1,0 +1,139 @@
+---
+title: Cardano blockchain data on BigQuery
+metaTitle: Cardano blockchain data on BigQuery
+sidebar_position: 5
+---
+
+## Cardano on-chain data on BigQuery
+
+> A dedicated site with
+> [BigQuery documentation and example queries can be found here](https://github.com/input-output-hk/data-analytics-bigquery/wiki).
+
+## About BigQuery
+
+According to its
+[official description](https://cloud.google.com/bigquery/docs/introduction),
+BigQuery is a fully managed enterprise data warehouse that helps to manage and
+analyze data with built-in features like machine learning, geospatial analysis,
+and business intelligence. BigQuery's serverless architecture allows using SQL
+queries to get the data you are looking for with zero infrastructure management.
+
+**Motivation**
+
+Cardano’s on-chain data has considerably grown over the last few months. This
+means that the time to sync the whole history of the blockchain increases
+accordingly. Running a node and a DB Sync process (mapping the on-chain data to
+a relational database) now requires more time and a more robust software
+instance.
+
+Google BigQuery makes it easier to look up data without the need to run
+specialized software. Using Google Data Studio, you can also seamlessly create
+advanced visualizations and dashboards based on the BigQuery data.
+
+Cardano data on BigQuery is organized by epoch numbers. This allows limiting
+queries to one or several epochs worth of data, which results in a lower cost
+per query.
+
+There are several things you should note when working with BigQuery:
+
+1. The data is fetched (updated) from DB Sync every two hours.
+2. The data is only updated to approximately the last 20 blocks before the
+   current block height in DB Sync. This is essential to prevent rollbacks of
+   blocks in the case of chain forks.
+
+## Getting started with BigQuery
+
+**To get started, go to the
+[Cardano mainnet dataset](https://console.cloud.google.com/bigquery?referrer=search&hl=el&orgonly=true&project=blockchain-analytics-392322&ws=!1m4!1m3!3m2!1sblockchain-analytics-392322!2scardano_mainnet).**
+
+Note that to start querying data, you need to have a Google project. In case you
+don’t have a Google project:
+
+1.  Login to the [Google Developer Console](https://console.cloud.google.com/)
+2.  Create a new project and activate the BigQuery API.
+
+**NB.** If you don't query the dataset from your own project you'll be getting
+the error: "Access Denied: Project iog-data-analytics: User does not have
+bigquery.jobs.create permission in project iog-data-analytics."
+
+## Querying the data
+
+You are now all set to work with the dataset:
+
+1.  Open the
+    [dataset](https://console.cloud.google.com/bigquery?referrer=search&hl=el&orgonly=true&project=blockchain-analytics-392322&ws=!1m4!1m3!3m2!1sblockchain-analytics-392322!2scardano_mainnet)
+2.  Select the table you would like to retrieve data from
+3.  Click the ‘query’ option:
+
+![](https://ucarecdn.com/2c5533aa-872d-4e29-bbaa-4668045eebca/)
+
+You can find the example queries in the **query table schemas** section below.
+
+## Analyzing the data
+
+BigQuery provides seamless integration with
+[Google Data Studio](https://datastudio.google.com/).
+
+To import the data into the Data Studio:
+
+1.  Create a new report
+2.  Select the BigQuery option:
+
+![](https://ucarecdn.com/eaf8f323-2e05-4c0f-ae28-ed292537e56b/)
+
+You can now create various charts using the Cardano mainnet dataset:
+
+![](https://ucarecdn.com/5aec3c21-acc7-4163-9307-fea581667fb4/)
+
+![](https://ucarecdn.com/041b66fb-07fb-4808-8375-93ca45e7da86/)
+
+See more examples in
+[this Data Studio report](https://datastudio.google.com/reporting/2b25c7e4-c035-4890-86bc-2d59b8f43054/page/UzeuC).
+
+## Costs
+
+The cost for querying data from BigQuery is paid by an individual querying it.
+BigQuery charges an amount analogous to the amount of the data being queried.
+
+Usually, the cost is $7.5 per terabyte (TB) of the data queried. Find more
+information by visiting the
+[BigQuery pricing page](https://cloud.google.com/bigquery/pricing).
+
+> **Note** that Cardano data tables are divided by epoch numbers so that queries
+> can be made according to the epoch of choice, incurring less costs.
+
+## Data update and validation process
+
+The data in the BigQuery ‘cardano-mainnet’ project is currently updated every
+two hours including the newest ‘db-sync’ blocks. The
+[overview](https://lookerstudio.google.com/reporting/97178b23-25f9-41d6-a292-262297e49269/page/6QCYD)
+of block heights in BigQuery vs. PostgreSQL is also updated every two hours. It
+is expected that the data in BigQuery is not at the same block height as in
+PostgreSQL from ‘db-sync’, however, the data should not deviate too much.
+
+### Data validation
+
+The data of the past full epoch between ‘db-sync’ and BigQuery is validated on
+every epoch boundary. For this, we compute the data hashes in canonical order in
+both databases and compare them.
+
+This
+[report](https://lookerstudio.google.com/reporting/70d14c4f-b602-4238-9cf5-9658008cefa9/page/tEnnC)
+shows the results of data validation for all tables.
+
+## Query table schemas
+
+Access
+[Cardano on BigQuery - data schema browser](https://datastudio.google.com/reporting/0d60645a-95dd-4531-b85d-7b811fadc351).
+
+The
+[wiki](https://github.com/input-output-hk/data-analytics-bigquery/wiki/Database-schema)
+also contains more information about table schemas.
+
+## Further development
+
+The current release includes almost all of the blockchain data from _db_sync_
+version 13. In its future iterations, this dataset on BigQuery will cover even
+more Cardano data, and we will be updating this section with more details.
+
+To raise an issue or share your feedback, please reach out to bca@sbclab.net.

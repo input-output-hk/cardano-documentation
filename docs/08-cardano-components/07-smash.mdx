@@ -1,0 +1,121 @@
+---
+title: SMASH
+metaTitle: SMASH
+sidebar_position: 7
+---
+
+// import { OpenInNew } from 'styled-icons/material/OpenInNew' // import { User
+} from 'styled-icons/boxicons-regular/User'
+
+SMASH is a metadata aggregation server that manages metadata for stake pools.
+The functionality provided by SMASH supports stake pool operations and the
+delegation ecosystem with its standardized framework for listing valid stake
+pools with verified metadata.
+
+> For more information and tutorials:
+> [Go to GitHub repo <OpenInNew className='content-link' />](https://github.com/input-output-hk/cardano-db-sync/blob/master/doc/smash.md)
+
+Cardano Shelley introduced the concept of stake pools - reliable server nodes
+that keep an aggregated stake of pool operators and delegators in a single
+entity. Stake pools are registered on-chain, and their on-chain data (such as
+information required to calculate rewards) is critical to the operation of the
+ledger. Stake pools also possess metadata that helps users to make a rational
+choice of a stake pool to delegate to. This metadata is stored off-chain, as it
+might reflect sensitive content. Such an approach allows for a certain degree of
+decentralized censorship.
+
+But on the other hand, off-chain metadata storage poses a challenge of open
+access by different users. On-chain stake pool registrations contain an URL
+pointer to the off-chain metadata and a content hash that can be fetched from a
+specific stake pool. This might cause both performance and privacy issues.
+Another crucial aspect to address is the stake pool’s “ticker” name, which is
+the short name a stake pool is recognized by. Ticker names might reflect
+prominent brands or trademarks that should not be duplicated, as this might lead
+to confusion. SPOs running multiple pools might want to use the same metadata
+for all their pools, for example, which might lead to these pools appearing with
+the same ticker name. This would not be an ideal situation.
+
+To support stake pool operations and provide visibility over the delegation
+ecosystem, we have created a Stake Pool Metadata Aggregation Server – SMASH.
+
+---
+
+## Learn about SMASH
+
+The purpose of SMASH is to aggregate off-chain metadata that stake pools provide
+when they register on the Cardano blockchain.
+
+This metadata might include:
+
+- owner
+- pool name
+- pool ticker
+- homepage
+- pledge address
+- short description
+
+The integrity and reputation of Cardano depends on ensuring that registered
+stake pools are valid, that they do not duplicate ticker names or trademarks,
+and do not feature content that users are likely to find offensive. SMASH was
+designed to improve visibility on verified stake pool information for Cardano
+users and enable convenient navigation options.
+
+The first generation of SMASH was initially deployed by IOHK and is currently
+used in the Daedalus delegation center, where it enables users to view available
+stake pools with verified names, ticker symbols, websites, and short
+descriptions. The functionality provided by SMASH supports stake pool operations
+and the delegation ecosystem with its standardized framework for listing valid
+stake pools with verified metadata.
+
+### SMASH rationale
+
+The rationale for introducing a metadata aggregation server in the Cardano
+architecture is two-fold:
+
+- to keep the stake pool metadata stored off-chain; and
+- to retain the ability to moderate stake pool metadata, without any centralized
+  censor.
+
+The metadata is hosted off-chain and referred to from the on-chain pool
+registration. SMASH collects the off-chain data to make it more convenient,
+performant, and reliable for wallets and other applications to access it.
+
+The SMASH server also addresses a second consideration: the desire to moderate
+the content of stake pool metadata without a centralized censoring entity. For
+example, most wallet users and stake pool operators would like to have the
+ability to treat stake pool ticker names as if they were unique trademarks. It
+would be too complex to have a fair, on-chain system to resolve ticker name
+disputes. So instead of enforcing uniqueness on chain, this can optionally be
+enforced by filtering the metadata as part of metadata aggregation. Multiple
+aggregation services can be run by different organizations following different
+policies on filtering stake pool metadata, which enables wallet users and other
+consumers of stake pool metadata to choose which policy to follow, if any.
+
+SMASH can be configured with policies to filter out metadata based on block
+lists or reserved ticker names. Daedalus can be configured to use any SMASH
+server. You can also find more information about the pool metadata
+[here](https://github.com/input-output-hk/cardano-ledger-specs/blob/4458fdba7e2211f63e7f28ecd3f9b55b02eee071/shelley/chain-and-ledger/executable-spec/src/Shelley/Spec/Ledger/TxData.hs#L62).
+
+### SMASH use cases
+
+As SMASH is introduced to address metadata performance and privacy issues,
+delegators, stake pool operators, exchanges, or wallets can deploy and use SMASH
+to ensure a higher level of metadata accountability and maintenance. Exchanges,
+wallets, or other SPOs then act as operators and can validate and manage this
+metadata, or curate it for censorship via the delisting feature.
+
+Exchanges, for example, can use SMASH to fetch stake pool metadata and verify
+its content against the on-chain registered hash. The exchange can then check
+existing metadata for correctness (size limits, content, etc.), create new stake
+pools manually, and reserve their ticker names. If there is a stake pool with a
+duplicated ticker name, counterfeit, or offensive content, it will be possible
+to delist this pool.
+
+There are many other use cases for running SMASH servers besides censorship: an
+operator might choose to list only charity pools or pools from a certain region
+for ada holders who would prefer to support locally-operated stake pool
+businesses, for example.
+
+It is expected that more operators will use SMASH servers for metadata curation.
+As more servers come online, they can be added to a list of preferred SMASH
+servers within the Daedalus wallet.
