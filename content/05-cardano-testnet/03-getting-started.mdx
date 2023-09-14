@@ -33,22 +33,20 @@ Building the node using Nix is the recommended method, as this is what IOG’s i
 
 For more information on the various options, see:
 
--   [Building the node using Nix](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/building-the-node-using-nix.md)
--   [Building the node from source](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/install.md/)
+-   [Building the node using Nix](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/getting-started/building-the-node-using-nix.md)
+-   [Building the node from source](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/getting-started/install.md)
 -   [Building the node using Docker](https://hub.docker.com/r/inputoutput/cardano-node)
-    
-When installing the node, it is also essential to build the [cardano-client](https://github.com/input-output-hk/cardano-node/tree/master/cardano-client-demo). This tool is built similarly to the node. Since it is so fundamental, all tutorials that build the node also build the client.
 
 ## Configurations
 
-To start working with the node, it is essential to ensure that the node configuration, genesis and topology files are correctly set up. In addition, the node will need the configuration files specific to each era that the Cardano network has experienced thus far.
+To start working with the node, it is essential to ensure that the node configuration, genesis, and topology files are correctly set up. In addition, the node will need the configuration files specific to each era that the Cardano network has experienced thus far.
 
-These configurations tell the node how to handle the updates that come with each era (ie. Mary, Alonzo, Babbage, etc). Each new era (implemented using the [hard fork combinator technology](https://docs.cardano.org/learn/about-hard-forks)) introduces protocol changes and new ledger rules. While old configurations are still valid, the new configurations and features offer new rules and improvements. In the Babbage era, for example, Plutus V2 scripts work better than Plutus V1 scripts. Plutus V1 scripts, however, are still supported. 
+These configurations tell the node how to handle the updates that come with each era (ie, Mary, Alonzo, Babbage, etc). Each new era (implemented using the [hard fork combinator technology](https://docs.cardano.org/learn/about-hard-forks)) introduces protocol changes and new ledger rules. While old configurations are still valid, the new configurations and features offer new rules and improvements. In the Babbage era, for example, Plutus v2 scripts work better than Plutus v1 scripts. Plutus v1 scripts, however, are still supported. 
 
 For more details, see:
 
--   [Understanding configuration files](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/understanding-config-files.md)
--   [Configuring the node using YAML](https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/configuring-a-node-using-yaml.md)
+-   [Understanding configuration files](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/getting-started/understanding-config-files.md)
+-   [Configuring the node using YAML](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/reference/configuring-a-node-using-yaml.md)
 
 ## Environments
 
@@ -124,7 +122,7 @@ cardano-cli query utxo \
 
 For more commands, see:
 
--   [Creating keys and addresses](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/3_keys_and_addresses.md)
+-   [Creating keys and addresses](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/stake-pool-operations/3_keys_and_addresses.md)
     
 Note to use the `--testnet-magic INTEGER` flag instead of `--mainnet`.
 
@@ -142,6 +140,6 @@ If you're working in a *pre-production environment* and have an API key, you can
 
 You’re now ready to create, sign, and submit transactions on testnets. See the tutorial:
 
--   [Building and signing transactions](https://github.com/input-output-hk/cardano-node/blob/master/doc/reference/building-and-signing-tx.md)
+-   [Building and signing transactions](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/reference/building-and-signing-tx.md)
     
 Note to use the `--testnet-magic INTEGER` flag instead of `--mainnet`.
