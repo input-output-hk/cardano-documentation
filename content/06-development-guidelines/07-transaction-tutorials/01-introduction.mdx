@@ -3,15 +3,12 @@ title: What is a transaction?
 metaTitle: What is a transaction?
 ---
 
-A transaction is an event that is created, signed, and sent by a user that modifies the ledger's state. It is commonly used to send ada or other tokens from one user to another. It can also be used for other things such as token creation, delegation registration to a stake pool, or interaction with smart contracts, among other things. The process to modify the ledger through a transaction is as follows:
+A transaction is an event created, signed, and sent by a user to modify the ledger's state. It is commonly used to transfer ada or other tokens from one user to another. Additionally, it can serve various purposes, such as token creation, delegation registration to a stake pool, or interaction with smart contracts, among others. The process to modify the ledger through a transaction is as follows:
 
-- Creating the transaction:
-  A transaction contains a set of data that indicates how you want to modify the ledger. The most basic data in a transaction are UTxOs from which the funds are obtained and destination addresses to which you want to send funds with the desired amount of tokens. (Several tools help us create transactions, for example, wallets and cardano-cli).
+- **Creating a transaction**. A transaction includes a set of data that specifies how you intend to modify the ledger. The fundamental components of a transaction include UTXOs, from which the funds are sourced, and destination addresses to which you want to send funds along with the desired amount of tokens. There are various tools available to assist in creating transactions, such as wallets and `cardano-cli`.
 
-- Signing the transaction:
-  The user who owns the funds to be spent must authorize the transaction through a signature. If the funds to be spent are in the smart contract address, the authorization is done by executing the smart contract itself. (Several tools help us sign transactions, for example, wallets and cardano-cli).
+- **Signing the transaction**. A user who owns the funds to be spent must provide authorization for the transaction through a signature. If the funds are held in a smart contract address, the authorization is carried out by executing the smart contract itself. Various tools are available to assist in signing transactions, including wallets and `cardano-cli`.
 
-- Submitting the transaction:
-  For a transaction to take effect in the ledger, the user must submit it. The stake pools receive these transactions which are then validated and added to the ledger within a block.
+- **Submitting the transaction**. For a transaction to be reflected in the ledger, the user must submit it. These transactions are received by stake pools, validated, and then added to the ledger within a block.
 
-Each transaction contains an identifier called TxId, and at the end of these three steps, you can see its content in a Cardano explorer such as https://explorer.cardano.org.
+Each transaction includes an identifier known as `TxId`, and after completing these three steps, you can view transaction's content in the Cardano Explorer, accessible at https://explorer.cardano.org, for example.
