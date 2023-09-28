@@ -3,7 +3,7 @@ title: Multiple purposes
 metaTitle: Multiple purposes
 ---
 
-Cardano allows more complex transactions. So far you've seen various types of transactions: Metadata, simple script, minting, staking, etc. But Cardano provides the flexibility to create more complex transactions and mix all the types of transactions needed. For example, adding metadata to minting transactions, or adding a staking component to a simple script transaction. This tutorial shows sending a transaction with multiple purposes.
+Cardano allows more complex transactions. So far you've seen various types of transactions: simple script, minting, staking, delegating etc. But Cardano provides the flexibility to create more complex transactions and mix all the types of transactions needed. For example, adding metadata to minting transactions, or adding a staking component to a simple script transaction. This tutorial shows how to send a transaction with multiple purposes.
 
 ```
 cardano-cli address key-gen \
@@ -13,12 +13,12 @@ cardano-cli address key-gen \
 cardano-cli address key-hash --payment-verification-key-file script.vkey
 d673cc4fd57f1244fae0879c0c1b31c19a8e2ed97a040519ef938c93
 ```
+
 ```
 cardano-cli stake-address key-gen \
     --verification-key-file stake.vkey
 	--signing-key-file stake.vkey
 ```
-
 
 ```
 cat script.script
@@ -38,7 +38,7 @@ cardano-cli transaction policyid --script-file script.script
 fb5d53ce6a4ae3cd6e9fa7fe0cc2efffff5d73f48abfbcdb130f423f
 ```
 
-First transaction
+First transaction:
 ```
 cardano-cli query utxo --address $(cat payment.addr)
                            TxHash                                 TxIx        Amount
@@ -50,7 +50,8 @@ cardano-cli query utxo --address $(cat payment.addr)
 cardano-cli transaction build --tx-in 12bc01bca615bb4cbe5f36b06d86092ad3c8a10e6a37e09f94a5f006f3aaf230#0 --tx-out $(cat payment.script.addr)+10000000 --change-address $(cat payment.addr) --tx-out-inline-datum-file datum.json --out-file 1st.tx
 ```
 
-Second transaction
+Second transaction:
+
 ```
 cardano-cli query utxo --address $(cat  payment.script.addr)
                            TxHash                                 TxIx        Amount
