@@ -15,7 +15,7 @@ $ cardano-cli query stake-address-info --address $(cat stake.addr)
     }
 ]
 ```
-In this case we have ~29 ADA. Then we need some of our own ADA to pay the fees, so we need to query our payment address:
+In this case you have ~29 ADA. Then you need some of your own ADA to pay the fees, so you need to query your payment address:
 ```
 $ cardano-cli query utxo --address $(cat payment.addr)
                            TxHash                                 TxIx        Amount
@@ -23,7 +23,7 @@ $ cardano-cli query utxo --address $(cat payment.addr)
 afb33e353a9880b7cbd9e5eb2cbffa024d1b3b938ee2c739e53dd187094e8f0d     0        10000000 lovelace + TxOutDatumInline ReferenceTxInsScriptsInlineDatumsInBabbageEra (HashableScriptData "\216y\159\CAN*\255" (ScriptDataConstructor 0 [ScriptDataNumber 42]))
 afb33e353a9880b7cbd9e5eb2cbffa024d1b3b938ee2c739e53dd187094e8f0d     1        9987657206 lovelace + TxOutDatumNone
 ```
-We'll use the second utxo it TxIx=1. We're ready to create our withdrawal transaction:
+Use the second UTXO with TxIx=1. You're ready to create your withdrawal transaction:
 ```
 cardano-cli transaction build \
     --tx-in afb33e353a9880b7cbd9e5eb2cbffa024d1b3b938ee2c739e53dd187094e8f0d#1 \
@@ -31,7 +31,7 @@ cardano-cli transaction build \
     --change-address $(cat payment.addr) \
     --out-file withdrawal-tx.raw
 ```
-Notice that this transaction will take funds from stake address, so it will need to be signed with `stake.skey` file too.
+Notice that this transaction will take funds from the stake address, so it will need to be signed with the `stake.skey` file too.
 ```
 cardano-cli transaction sign \
     --tx-file withdrawal-tx.raw \
@@ -42,7 +42,7 @@ cardano-cli transaction sign \
 cardano-cli transaction submit --tx-file withdrawal-tx.signed
 ```
 
-Finally we can verify that we have indeed received our rewards in our payment address:
+Finally, verify that you have indeed received your rewards in your payment address:
 ```
 $ cardano-cli query utxo --address $(cat payment.addr)
                            TxHash                                 TxIx        Amount
