@@ -3,7 +3,7 @@ title: Multiple purposes
 metaTitle: Multiple purposes
 ---
 
-Cardano allows us to create more complex transactions. So far we've seen different types of transactions: Metadata, simple script, minting, staking etc... but cardano gives us the flexibility to create more complex transactions and mix all the types of transactions that we want. for example add metadata to minting transactions or add staking component to a simple script transaction. In this tutorial we send a transaction with multiple purposes.
+Cardano allows more complex transactions. So far you've seen various types of transactions: Metadata, simple script, minting, staking, etc. But Cardano provides the flexibility to create more complex transactions and mix all the types of transactions needed. For example, adding metadata to minting transactions, or adding a staking component to a simple script transaction. This tutorial shows sending a transaction with multiple purposes.
 
 ```
 cardano-cli address key-gen \
@@ -38,7 +38,7 @@ cardano-cli transaction policyid --script-file script.script
 fb5d53ce6a4ae3cd6e9fa7fe0cc2efffff5d73f48abfbcdb130f423f
 ```
 
-1st tx
+First transaction
 ```
 cardano-cli query utxo --address $(cat payment.addr)
                            TxHash                                 TxIx        Amount
@@ -50,7 +50,7 @@ cardano-cli query utxo --address $(cat payment.addr)
 cardano-cli transaction build --tx-in 12bc01bca615bb4cbe5f36b06d86092ad3c8a10e6a37e09f94a5f006f3aaf230#0 --tx-out $(cat payment.script.addr)+10000000 --change-address $(cat payment.addr) --tx-out-inline-datum-file datum.json --out-file 1st.tx
 ```
 
-2nd tx
+Second transaction
 ```
 cardano-cli query utxo --address $(cat  payment.script.addr)
                            TxHash                                 TxIx        Amount
