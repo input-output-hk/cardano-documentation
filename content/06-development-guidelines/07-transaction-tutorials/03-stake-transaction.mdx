@@ -1,0 +1,103 @@
+### Staking transaction
+
+Staking is one of the main features of Cardano, this allows us to get rewards of holding our ADA, for this mechanism there are so called "Stake pools" in which anyone can hold their ADA.
+In this tutorial we will show how to delegate ADAs to a Stake Pool, withdraw rewards, and finally how to stop delegating your ADAs in case you want to delegate to another stake pool.
+
+To delegate ADAs first you have to generate a stake key pair. it means you will have your normal payment key pair (payment.vkey and payment.skey) and additinally have stake.vkey and stake.skey. Also you'll have a new address stake.addr just like payment.addr.
+
+Let's say that we already have payment.vkey and payment.skey that you can generate easily using `cardano-cli address key-gen` command. now we have to create stake.vkey and stake.skey as follow:
+```
+cardano-cli stake-address key-gen \
+    --verification-key-file stake.vkey \
+    --signing-key-file stake.skey
+```
+Until now we have payment key pair and stake key pair. The next step is to build the payment.addr and stake.addr files.
+
+```
+# payment.addr
+cardano-cli address build \
+    --payment-verification-key-file payment.vkey \
+    --stake-verification-key-file stake.vkey \
+    --out-file payment.addr
+```
+Notice that we add `--stake-verification-key-file`. it means that the command will construct an address with its staking part. In some examples we don't add this argument but addresses without staking part are used only to send and receive ADA and interact with dApps.
+
+```
+# stake.addr
+cardano-cli stake-address build \
+    --stake-verification-key-file stake.vkey \
+    --out-file stake.addr
+```
+We only use the stake verification file for this command.
+
+Before we proceed with delegation, we need to create two new certificates: registration certificate and delegation certificate. We need those files to register our stake key into the blockchain and say that we want to delegate our ADAs.
+
+```
+# registration.cert
+cardano-cli stake-address registration-certificate \
+    --stake-verification-key-file stake.vkey \
+    --out-file reg.cert
+```
+With this command we generate a certificate that says that we want to register our stake key.
+
+```
+# delegate.cert
+cardano-cli stake-address delegation-certificate \
+    --stake-verification-key-file stake.vkey \
+    --stake-pool-id pool18pn6p9ef58u4ga3wagp44qhzm8f6zncl57g6qgh0pk3yytwz54h \
+    --out-file delegation.cert
+```
+At this stage of the tutorial, you'll need to have a Stake Pool selected already. In our case, we selected ADACT (PoolId: pool18pn6p9ef58u4ga3wagp44qhzm8f6zncl57g6qgh0pk3yytwz54h). You can list all pools using the command `cardano-cli query stake-pools` or go to https://preview.cardanoscan.io/pools and select the pool that best suits your needs. Notice that we are using `preview` testnet, if you're using another testnet or mainnet make sure that the pool id is in the right network.
+
+Now that we have `reg.cert` file and `delegation.cert` files, let's move on to the next step. We need to send a transaction that contains the certificates, and we have two options: sending them one by one or sending them together. In our case we'll send them both at the same time.
+
+We start by quering the funds of `payment.addr`
+
+```
+cardano-cli query utxo --address $(cat payment.addr)
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+142c46bb93b9c80140a6302e4a8a360e6f46f55aaf001c825ca790bb23572754     0        10000000000 lovelace + TxOutDatumNone
+```
+If there are no funds in the address, you can request them from the faucet at https://docs.cardano.org/cardano-testnet/tools/faucet/ make sure that you select the right testnet.
+
+It's time to construct, sign and submit our transaction.
+
+```
+cardano-cli transaction build \
+    --witness-override 2 \
+    --tx-in 142c46bb93b9c80140a6302e4a8a360e6f46f55aaf001c825ca790bb23572754#0 \
+    --certificate-file reg.cert \
+    --certificate-file delegation.cert \
+    --change-address $(cat payment.addr) \
+    --out-file delegateTx.raw
+```
+This command introduces two new arguments of transaction creation: `--witness-override` and `certificate-file`. The first one specify that the transaction will require two signatures. Therefore, transaction fees will be higher. `certificate-file` adds our new certificates to the transaction.
+
+In the signing phase we have to add two signatures `payment.skey` and `stake.skey`
+
+```
+cardano-cli transaction sign \
+    --tx-body-file delegateTx.raw \
+    --signing-key-file payment.skey \
+    --signing-key-file stake.skey \
+    --out-file delegateTx.signed
+	
+cardano-cli transaction submit \
+    --tx-file delegateTx.signed
+Transaction successfully submitted.
+```
+
+Once the transaction is submitted and processed we have already delegated our ADAs, it's time to see our delegation and rewards.
+
+```
+cardano-cli query stake-address-info --address $(cat stake.addr)
+[
+    {
+        "address": "stake_test1uq954t492tmusk2dy9z505g3cz3sfpnh0swsqjmzk47rasqyn8uqp",
+        "delegation": "pool18pn6p9ef58u4ga3wagp44qhzm8f6zncl57g6qgh0pk3yytwz54h",
+        "rewardAccountBalance": 0
+    }
+]
+```
+After some days we will get rewards, and in the next part of the tutorial we'll show how to withdraw them.

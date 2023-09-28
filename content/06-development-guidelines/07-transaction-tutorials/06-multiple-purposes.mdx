@@ -1,0 +1,113 @@
+## Multiple purposes
+
+Cardano allows us to create more complex transactions. So far we've seen different types of transactions: Metadata, simple script, minting, staking etc... but cardano gives us the flexibility to create more complex transactions and mix all the types of transactions that we want. for example add metadata to minting transactions or add staking component to a simple script transaction. In this tutorial we send a transaction with multiple purposes.
+
+```
+cardano-cli address key-gen \
+    --verification-key-file script.vkey \
+    --signing-key-file script.skey
+
+cardano-cli address key-hash --payment-verification-key-file script.vkey
+d673cc4fd57f1244fae0879c0c1b31c19a8e2ed97a040519ef938c93
+```
+```
+cardano-cli stake-address key-gen \
+    --verification-key-file stake.vkey
+	--signing-key-file stake.vkey
+```
+
+
+```
+cat script.script
+{
+    "keyHash": "d673cc4fd57f1244fae0879c0c1b31c19a8e2ed97a040519ef938c93",
+    "type": "sig"
+}
+```
+
+```
+cardano-cli address build --payment-script-file script.script
+addr_test1wra4657wdf9w8ntwn7nlurxzalll7htn7j9tl0xmzv85y0cr0e8qm
+```
+
+```
+cardano-cli transaction policyid --script-file script.script
+fb5d53ce6a4ae3cd6e9fa7fe0cc2efffff5d73f48abfbcdb130f423f
+```
+
+1st tx
+```
+cardano-cli query utxo --address $(cat payment.addr)
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+12bc01bca615bb4cbe5f36b06d86092ad3c8a10e6a37e09f94a5f006f3aaf230     0        10040283782 lovelace + TxOutDatumNone
+```
+
+```
+cardano-cli transaction build --tx-in 12bc01bca615bb4cbe5f36b06d86092ad3c8a10e6a37e09f94a5f006f3aaf230#0 --tx-out $(cat payment.script.addr)+10000000 --change-address $(cat payment.addr) --tx-out-inline-datum-file datum.json --out-file 1st.tx
+```
+
+2nd tx
+```
+cardano-cli query utxo --address $(cat  payment.script.addr)
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+04dfd8feaf87f82c8ec771954179879b22b5f693ed86d78a749111eed2de7879     0        10000000 lovelace + TxOutDatumInline ReferenceTxInsScriptsInlineDatumsInBabbageEra (HashableScriptData "\216y\159\CAN*\255" (ScriptDataConstructor 0 [ScriptDataNumber 42]))
+```
+
+```
+cardano-cli query utxo --address $(cat  payment.addr)
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+04dfd8feaf87f82c8ec771954179879b22b5f693ed86d78a749111eed2de7879     1        10030116301 lovelace + TxOutDatumNone
+```
+```
+cardano-cli query stake-address-info --address $(cat stake.addr)
+[
+    {
+        "address": "stake_test1uq954t492tmusk2dy9z505g3cz3sfpnh0swsqjmzk47rasqyn8uqp",
+        "delegation": "pool1vzqtn3mtfvvuy8ghksy34gs9g97tszj5f8mr3sn7asy5vk577ec",
+        "rewardAccountBalance": 15192167
+    }
+]
+```
+
+```
+cardano-cli transaction policyid --script-file payment.script
+90d2fad83eaaed2b9fcffb4259c7deaa254f9574b32ee0890eb9e038
+```
+
+```
+cardano-cli transaction build \
+    --tx-in 04dfd8feaf87f82c8ec771954179879b22b5f693ed86d78a749111eed2de7879#1 \
+    --tx-in 04dfd8feaf87f82c8ec771954179879b22b5f693ed86d78a749111eed2de7879#0 \
+    --tx-in-script-file payment.script \
+    --change-address $(cat payment.addr) \
+    --mint "1 $(cat payment.script.policyid).746F6B656E" \
+    --mint-script-file payment.script \
+    --withdrawal $(cat stake.addr)+15192167 \
+    --metadata-json-file metadata.json \
+    --out-file 2nd.tx
+```
+
+```
+cardano-cli query utxo --address $(cat payment.addr)
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+c260ebce5868a56ce559f5277e6ca2d47b0eecb5b851b957fcb40a2194f67b29     0        10055118943 lovelace + 1 90d2fad83eaaed2b9fcffb4259c7deaa254f9574b32ee0890eb9e038.746f6b656e + TxOutDatumNone
+```
+```
+cardano-cli query utxo --address $(cat payment.script.addr)
+                           TxHash                                 TxIx        Amount
+--------------------------------------------------------------------------------------
+```
+```
+cardano-cli query stake-address-info --address $(cat stake.addr)
+[
+    {
+        "address": "stake_test1uq954t492tmusk2dy9z505g3cz3sfpnh0swsqjmzk47rasqyn8uqp",
+        "delegation": "pool1vzqtn3mtfvvuy8ghksy34gs9g97tszj5f8mr3sn7asy5vk577ec",
+        "rewardAccountBalance": 0
+    }
+]
+```
