@@ -3,20 +3,20 @@ title: Redelegation
 metaTitle: Redelegation
 ---
 
-In this part we will show how to redelegate our ADAs to another Stake Pool. There can be multiple reasons to redelegate our ADAs, but the most common ones are:
+This part will show how to redelegate your stake to another stake pool. There can be multiple reasons to redelegate your stake, but the most common ones are:
 
-- Original Stake Pool is no longer available.
-- You've discovered a more convinient option.
-- You have your own Stake Pool and you want to delegate your ADAs to it.
+- Original stake pool is no longer available
+- You've discovered a more convenient option
+- You have your own stake pool and you want to delegate your stake to it.
 
-To do that we need to create a new certificate that we are sending in a transaction just like we did in the first part of the tutorial.
+To do that you need to create a new certificate that you are sending in a transaction, as in the first part of the tutorial.
 ```
 cardano-cli stake-address delegation-certificate \
     --stake-verification-key-file stake.vkey \
     --stake-pool-id pool1vzqtn3mtfvvuy8ghksy34gs9g97tszj5f8mr3sn7asy5vk577ec \
     --out-file new-delegation.cert
 ```
-Now it contains the `--stake-pool-id` of the new Stake pool. It means that we're ready to construct our transaction, selecting first the UTxO from which we will pay for the fee.
+Now the delegation certificate contains the `--stake-pool-id` of the new stake pool. It means that you're ready to construct your transaction, selecting first the UTXO from which you will pay the fee.
 ```
 $ cardano-cli query utxo --address $(cat payment.addr)
                            TxHash                                 TxIx        Amount
@@ -41,7 +41,7 @@ cardano-cli transaction sign \
 
 cardano-cli transaction submit --tx-file new-delegation.signed 
 ```
-If we check our stake address info we'll see that we have delegated our ADAs to a new Stake Pool and we have zero rewards:
+If you check your stake address info you'll see that you have delegated your stake to a new stake pool and you have zero rewards:
 
 ```
 $ cardano-cli query stake-address-info --address $(cat stake.addr)
