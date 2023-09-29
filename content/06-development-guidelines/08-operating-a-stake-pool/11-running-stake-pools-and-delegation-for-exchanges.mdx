@@ -1,0 +1,459 @@
+---
+title: Running stake pools and delegation for exchanges
+metaTitle: Running stake pools and delegation for exchanges
+---
+
+Many exchanges are eager to participate in either running a stake pool or
+delegating their stake to existing pools.
+
+This information is intended for exchanges and exchange developers who have
+already successfully migrated from the Byron pre-hard fork era to the Shelley
+post-hard fork era and answers some of the most frequently asked questions
+regarding this process, including how to get started, and current limitations.
+
+Exchanges will need to use the Shelley mainnet as a production environment to
+get the latest features of the Cardano blockchain. This integration is made
+possible by using
+[cardano-wallet](https://github.com/input-output-hk/cardano-wallet),
+[cardano-node](https://github.com/input-output-hk/cardano-node/releases/tag/1.9.3),
+and [cardano-cli](https://github.com/input-output-hk/cardano-cli/releases),
+which provide the communication point for exchanges. As an exchange, you will
+need to
+[start your Cardano node](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/2_start_your_nodes.md),
+have a Shelley wallet with funds, and select a stake pool before you start the
+process of stake delegation.
+
+**Note:** [cardano-sl](https://github.com/input-output-hk/cardano-sl/tree/3.0.3)
+is deprecated and will not function after the Shelley hard fork. Exchanges or
+third-party wallets using cardano-sl should move to a Shelley-supported version
+of Cardano, such as the recently released cardano-node.
+
+## Cardano wallet and node binaries
+
+Download the binaries for the
+[cardano-wallet](https://hydra.iohk.io/jobset/Cardano/cardano-wallet#tabs-jobs):
+
+- The latest release from
+  [cardano-wallet](https://github.com/input-output-hk/cardano-wallet/releases)
+- Hydra
+  [Linux](https://hydra.iohk.io/job/Cardano/cardano-wallet/cardano-wallet-shelley-linux64/all)
+- Hydra
+  [macOS](https://hydra.iohk.io/job/Cardano/cardano-wallet/cardano-wallet-shelley-macos64/all)
+- Hydra
+  [Windows](https://hydra.iohk.io/job/Cardano/cardano-wallet/cardano-wallet-shelley-win64/all)
+
+Download the binaries for the
+[cardano-node](https://hydra.iohk.io/jobset/Cardano/cardano-node#tabs-jobs):
+
+- The latest release from
+  [cardano-node](https://github.com/input-output-hk/cardano-node/releases)
+- Hydra
+  [Linux](https://hydra.iohk.io/job/Cardano/cardano-node/cardano-node-linux)
+- Hydra
+  [macOS](https://hydra.iohk.io/job/Cardano/cardano-node/cardano-node-macos)
+- Hydra
+  [Windows](https://hydra.iohk.io/job/Cardano/cardano-node/cardano-node-win64)
+
+## Building a node
+
+As an exchange, you have several options to build a node:
+
+- [Build a node from the source using Cabal](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/install.md)
+- [Build a node from the source using Nix](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/building-the-node-using-nix.md)
+- [Build a node using Docker](https://hub.docker.com/r/inputoutput/cardano-node)
+- Pre-compiled release binary as explained above
+
+In addition, you need to
+[understand the configuration files](https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/understanding-config-files.md).
+You can find the latest supported networks
+[here](https://hydra.iohk.io/job/Cardano/cardano-node/cardano-deployment/latest-finished/download/1/index.html).
+After successfully running a Cardano node, you will need to create a Shelley
+wallet and add funds to it.
+
+**Note:** Please check the [latest node release](https://github.com/input-output-hk/cardano-node/releases).
+
+## Delegating Stake
+
+Before delegating, you will need to use a Shelley era wallet and set up your own
+iteration of the Cardano wallet by either using
+[docker](https://hub.docker.com/r/inputoutput/cardano-wallet),
+[docker-compose](https://github.com/input-output-hk/cardano-wallet/wiki/Docker#docker-compose),
+building from source, or downloading release binaries.
+
+To participate in delegation of stake, every exchange must have the following
+types of address keys:
+
+- **Payment key** - a single address key pair for generating UtxO addresses.
+- **Staking key** - a stake/reward address key pair for generating
+  account/reward addresses to participate in the process of stake delegation.
+
+The main steps for delegating stake are:
+
+- Create the stake keys
+- Create the payment keys
+- Register the stake address on the blockchain
+- Create and submit the stake delegation certificate
+
+These steps are outlined in detail in the following sections.
+
+### 1. Creating stake keys
+
+The exchange needs to create stake keys to generate the delegate's reward
+addresses for collecting stake rewards.
+
+First, you need to create the relevant payment and stake keys, and the related
+addresses for the delegate. The payment address is then used to pay for the
+transaction that sends the registration certificate to the chain.
+
+```
+cardano-cli stake-address key-gen \
+    --verification-key-file stake.vkey \
+    --signing-key-file stake.skey
+```
+
+Build the stake address:
+
+```
+cardano-cli stake-address build \
+    --staking-verification-key-file stake.vkey
+    --out-file stake.addr
+    --mainnet
+```
+
+### 2. Creating payment keys
+
+To generate a delegate's payment addresses you need to create payment keys. This
+is required for payments that are used to participate in stake delegation, and
+also for depositing funds:
+
+```
+cardano-cli address key-gen \
+    --verification-key-file pay.vkey \
+    --signing-key-file pay.skey
+```
+
+Build the payment address:
+
+```
+cardano-cli address build \
+    --payment-verification-key-file pay.vkey \
+    --staking-verification-key-file stake.vkey
+    --out-file pay.addr
+    --mainnet
+```
+
+### 3. Registering the stake address on the blockchain
+
+Next, register the stake address on the blockchain with a key deposit, which is
+required for participation in stake delegation. First, you will need to generate
+the stake address registration certificate using the stake verification key:
+
+```
+cardano-cli stake-address registration-certificate \
+--staking-verification-key-file stake.vkey \
+--out-file stake.cert
+```
+
+Any stake key registration certificate needs a deposit for the costs of tracking
+the key and the corresponding reward account. Also, it does not require any
+witness to register the certificate, but only the witness for the fees from the
+input of the transaction.
+
+Register the delegate's staking key on the blockchain with a simple transaction
+using any payment address:
+
+```
+# Get param files
+export CARDANO_NODE_SOCKET_PATH=/opt/cardano/fnf/sockets/node0.socket
+cardano-cli query protocol-parameters \
+--mainnet \
+--out-file params.json
+
+# Build
+cardano-cli transaction build-raw \
+	--tx-in "$INPUT" \
+	--tx-out "${FROM}+${CHANGE}" \
+	--tx-out "${TO}+${AMOUNT}" \
+	--ttl $(expr $(CARDANO_NODE_SOCKET_PATH=/opt/cardano/fnf/sockets/node0.socket ./cardano-cli query tip --mainnet | jq ".slotNo" --raw-output) + 20000) \ --fee "$FEE" \
+	--tx-body-file stake-cert-tx
+# Sign
+cardano-cli transaction sign \
+    --tx-body-file stake-cert-tx \
+    --signing-key-file /opt/cardano/fnf/addresses/genesis.skey \
+    --signing-key-file stake.skey \
+    --tx-file stake-cert-tx \
+    --mainnet
+
+# Submit
+STAKE_ADDR=$( cut -c 9-  stake.addr )
+
+# Before
+export CARDANO_NODE_SOCKET_PATH=/opt/cardano/fnf/sockets/node0.socket
+cardano-cli query ledger-state  --mainnet | grep "$STAKE_ADDR"
+
+cardano-cli transaction submit \
+    --tx-file signed-stake-key-registration.tx \
+    --mainnet
+
+cardano-cli query ledger-state  --mainnet 42 | grep "$STAKE_ADDR"
+
+# Ready to delegate now.
+```
+
+### 4. Creating and submitting the stake delegation certificate
+
+Create and submit the stake delegation certificate per address for the selected
+pool. Note that 100% of the address’s ada will be delegated to the pool that you
+select):
+
+```
+cardano-cli stake-address delegation-certificate \
+    --staking-verification-key-file stake.vkey \
+    --stake-pool-verification-key-file ~/cold-keys/pool.vkey \
+    --out-file pool-delegation.cert
+
+
+# Build
+cardano-cli transaction build-raw \
+     --tx-in "$INPUT" \
+     --tx-out "$OUTPUT" \
+     --ttl 500000 \
+     --fee "$FEE" \
+     --tx-body-file pool-delegation.tx \
+     --certificate pool-delegation.cert
+
+
+# Sign
+cardano-cli transaction sign \
+    --tx-body-file pool-delegation.tx \
+    --signing-key-file stake.skey \
+    --signing-key-file pay.skey \
+    --mainnet \
+    --tx-file signed-pool-delegation.tx
+
+# Submit
+cardano-cli transaction submit \
+    --tx-file signed-pool-delegation.tx \
+    --mainnet
+```
+
+## Current limitations
+
+You can not perform delegation from multiple addresses in the Cardano wallet.
+Once you decide to perform delegation, you agree to delegate 100% of your
+current stake in that wallet.
+
+To split your stake delegation, you will need to split ada holdings through
+submitting different transactions to different wallet addresses, and then
+delegating these addresses individually. The other option is to apply the
+concept of staking as a service where you move all the funds to one or multiple
+hot wallets and then perform the stake delegation.
+
+In other words, it is not currently possible to delegate ada from a single
+address or wallet to multiple pools. For example, ada held in cold storage using
+a single address could only be delegated to a single staking pool. As an
+exchange would typically have large amounts of ada at any given time, staking
+the entirety of its ada to a single stake pool would likely cause pool
+saturation.
+
+**Note:** If you delegate a huge amount of ada (around 100 million ada or
+greater), you will not get the maximum rewards due to pool oversaturation—as the
+stake pool will have more stake delegated to it than is ideal for the network.
+To solve this issue, you can run multiple hot or cold wallets for delegation as
+discussed above, or you can use multiple addresses to delegate to multiple
+pools.
+
+## Setting up a stake pool
+
+You may also want to establish your own stake pool, or multiple stake pools, and
+delegate stake to your own pools. For this, you would set the stake pool fees to
+100%—essentially creating a private pool. To start a stake pool you need to go
+through the following steps:
+
+1. Get binaries on your server.
+2. Setup both the block-producing and relay nodes.
+3. Configure the firewall.
+4. Create keys.
+5. Generate the operational certificate.
+6. Start the nodes.
+
+### Setting up block-producing and relay nodes
+
+As stake pool operator, you will have to run two types of nodes, with each node
+on a separate server:
+
+- Block producing nodes.
+- Relay nodes.
+
+The stake pool must have at least one block-producing node connected to at least
+one relay node that is controlled by the stake pool operator. In addition, your
+stake pool should respect the minimum requirements.
+
+#### Setting up the configuration files
+
+- Use the same
+  [mainnet-shelley-genesis.json](https://hydra.iohk.io/build/3670619/download/1/mainnet-shelley-genesis.json)
+  files for both nodes.
+- Use even the same
+  [mainnet-config.json](https://hydra.iohk.io/build/3670619/download/1/mainnet-config.json)
+  files for both nodes or change it as you need.
+- Use different
+  [mainnet-topology.json](https://hydra.iohk.io/build/3670619/download/1/mainnet-topology.json)
+  files for each node.
+
+#### Creating folders
+
+Create two separate folders—“block-producing” and “relay”—for each node and copy
+the configuration files to their directories as explained above.
+
+#### Modifying the topology configuration file
+
+Modify the block-producer's mainnet-topology.json file to talk only to the relay
+node:
+
+```
+{
+  "Producers": [
+    {
+      "addr": "relays-new.cardano-mainnet.iohk.io or put your public IP",
+      "port": 3001,
+      "valency": 2
+    }
+  ]
+}
+```
+
+Modify the relay's mainnet-topology.json file to talk to the block-producer and
+an external node:
+
+```
+{
+   "Producers": [
+     {
+       "addr": "put your public IP"
+       "port": 3000,
+       "valency": 1
+     },
+     {
+       "addr": "relays-new.cardano-mainnet.iohk.io",
+       "port": 3001,
+       "valency": 1
+     }
+   ]
+ }
+```
+
+### Configuring the firewall
+
+Configure the firewall for your nodes:
+
+- Login only with SSH keys
+- Setup SSH connections on a different port than the default port “22”
+- Allow connections only from your relay nodes by adding their IP addresses.
+- Open only the necessary ports for the relay nodes.
+
+### Creating keys
+
+On the cardano-node directory:
+
+- Generate a payment key pair (usually for generating UtxO addresses):
+
+```
+cardano-cli address key-gen \
+  --verification-key-file payment.vkey \
+  --signing-key-file payment.skey
+```
+
+- Generate the KES Key pair:
+
+```
+cardano-cli node key-gen-KES \
+--verification-key-file kes.vkey \
+--signing-key-file kes.skey
+```
+
+- Generate VRF Key pair
+
+```
+cardano-cli node key-gen-VRF \
+--verification-key-file vrf.vkey \
+--signing-key-file vrf.skey
+```
+
+- Generate Cold Keys and a Cold_counter file:
+
+```
+cardano-cli node key-gen \
+--cold-verification-key-file cold.vkey \
+--cold-signing-key-file cold.skey \
+--operational-certificate-issue-counter
+coldcounter
+```
+
+### Generating the operational certificate
+
+This certificate is needed for operating a node as a stake pool. First, you need
+to get the slots per KES period from the genesis file:
+
+```
+cat mainnet-shelley-genesis.json | grep KESPeriod
+```
+
+Now, you can generate the operational certificate:
+
+```
+cardano-cli node issue-op-cert \
+--kes-verification-key-file kes.vkey \
+--cold-signing-key-file cold.skey \
+--operational-certificate-issue-counter coldcounter \
+--kes-period 120 \
+--out-file opcert
+```
+
+### Delegation for stake pool owners
+
+As a pool owner, you must create a stake delegation certificate for delegating
+at least a pledge amount of stake from the owner's staking key specified in the
+pool certificate. Also, you will need to understand how a transaction is
+created, signed and submitted to the blockchain by checking the
+[transaction](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/4_simple_transaction.md)
+docs.
+
+In short, the owner is delegating the funds to the pool he/she owns, The
+following certificate delegates funds from all stake addresses associated with
+key stake.vkey to the pool.vkey.
+
+```
+cardano-cli stake-address delegation-certificate \
+    --staking-verification-key-file staking.vkey \
+    --stake-pool-verification-key-file ~/cold-keys/pool.vkey \
+    --out-file owner-delegation.cert
+```
+
+### Starting both nodes
+
+Start block-producing node and relay node on any port but be aware that both
+nodes must run on different ports, the port 3000 and 3001 are used in the
+following example:
+
+```
+cardano-node run \
+--topology block-producing/mainet-topology.json \
+--database-path block-producing/db \
+--socket-path block-producing/db/node.socket \
+--host-addr "your public IP" \
+--port 3000 \
+--config block-producing/mainnet-config.json
+```
+
+Start relay node:
+
+```
+cardano-node run \
+ --topology relay/mainet-topology.json \
+ --database-path relay/db \
+ --socket-path relay/db/node.socket \
+ --host-addr "your public IP" \
+ --port 3001 \
+ --config relay/mainnet-config.json
+```

@@ -1,0 +1,28 @@
+---
+title: Stake pool performance
+metaTitle: Stake pool performance
+---
+
+A stake pool elected as a slot leader is responsible for producing new blocks
+for the Cardano network. If the stake pool does not produce a block, the slot
+will remain empty and the blockchain will _not_ be extended. The Cardano
+blockchain can tolerate a number of missing blocks, but the majority of blocks
+expected to be produced (at least 50% + 1) must be generated during an epoch.
+
+Although occasionally missed blocks don’t affect the extension of the blockchain
+as a whole, an unresponsive elected stake pool decreases the overall performance
+of the network, which is undesirable.
+
+Stake pool performance is calculated according to its expected activity as the
+ratio of a number of blocks a stake pool produces in a given epoch versus the
+number it was capable to produce. For instance, if the stake pool could produce
+100 blocks (based on its stake and the chance to be elected) in an epoch, but it
+actually produced just 50 blocks, its performance would be 50%.
+
+Poor stake pool performance decreases the number of rewards that a pool and its
+members receive, thereby decreasing its attractiveness to delegators. To improve
+its performance, a stake pool should have good network connectivity, be run on a
+reliable system, and actively participate in block production and verification.
+
+The higher the pool’s performance, the more attractive it will be to delegators
+since it will offer higher rewards and incentives.

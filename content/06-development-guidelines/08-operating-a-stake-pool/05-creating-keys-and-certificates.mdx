@@ -1,0 +1,63 @@
+---
+title: Creating keys and operational certificates
+metaTitle: Creating keys and operational certificates
+---
+
+### About the stake pool operator keys
+
+It is the responsibility of the operator to manage both the hot (online), and
+cold (offline) keys for the pool. Cold keys must be secure and should not reside
+on a device that has internet connectivity. It is recommended that you have
+multiple backups of your cold keys.
+
+The keys that you need as a stake pool operator are:
+
+- stake pool cold key
+- stake pool hot key (KES key)
+- stake pool VRF key
+
+The KES key, or hot key as mentioned above, is a node operational key that
+authenticates who you are. You specify the validity of the KES key using the
+start time and key period parameters and this KES key needs to be updated every
+90 days. The VRF key is a signing verification key and is stored within the
+operational certificate. You can read more information on these crypto scheme
+keys in the
+[Shelley ledger specification](https://hydra.iohk.io/build/5096921/download/1/ledger-spec.pdf).
+
+**Instructions to create and manage stake pool operation keys:**
+
+- [Creating keys and addresses](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/3_keys_and_addresses.md)
+- [Creating KES key pair](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/7_KES_period.md)
+- [Generating stake pool keys](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/6_node_keys.md)
+
+### Creating an operational certificate
+
+Stake pool operators must provide an operational certificate to verify that the
+pool has the authority to run. The certificate includes the operator’s signature
+and important information about the pool (addresses, keys, etc.)
+
+Operational certificates represent the link between the operator’s offline key
+and their operational key. A certificate’s job is to check whether or not an
+operational key is valid, to prevent malicious interference. The certificate
+identifies the current operational key, and is signed by the offline key.
+
+Certificates are generated with an issue counter number and included in the
+header of each block the node generates. Note that with the Vasil hard fork, an operator would need to create an operational certificate using cold.counter +1. This means that the `OpCert` must be exactly one more than the previously used one. 
+
+Certificates include a kes-period (start date), which indicates the time span
+within which the certificate is valid before you need to create another one.
+
+**Instructions to work with operational certificates:**
+
+- [Creating an operational certificate with KES](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/7_KES_period.md)
+- [Registering stake address and creating a registration certificate](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/8_register_stakepool.md#generate-stake-pool-registration-certificate)
+
+The counter becomes significant when an attacker has compromised the KES key, in
+which case the owner of the cold keys can create a new KES key and a new
+certificate with a higher issue number. If a node sees two blocks claiming to
+originate from the same cold key, but using different KES keys, the higher issue
+counter trumps the lower one.
+
+Certificates are generated on the offline machine using the offline/cold keys,
+before being copied over to the node to validate the KES keys used to sign the
+blocks.

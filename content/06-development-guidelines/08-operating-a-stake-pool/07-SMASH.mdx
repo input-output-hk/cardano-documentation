@@ -1,0 +1,107 @@
+---
+title: SMASH metadata management
+metaTitle: SMASH metadata management
+---
+
+SMASH is a metadata aggregation server that manages metadata for stake pools.
+The functionality provided by SMASH supports stake pool operations and the
+delegation ecosystem with its standardized framework for listing valid stake
+pools with verified metadata.
+
+Each stake pool that participates in the network includes metadata that helps
+users to make a rational delegation choice. This metadata contains owner
+details, pool name, pool ticker, homepage, and a short description. It is
+crucial to ensure that registered stake pools are valid, that they do not
+duplicate ticker names or trademarks, and do not feature content that users are
+likely to find offensive. SMASH was designed to improve visibility on verified
+stake pool information for Cardano users, as well as to enable convenient
+navigation options.
+
+A SMASH server can aggregate stake pool metadata, fetch it, and store it in a
+semi-centralized environment. The server is typically owned by a specific
+operator, who is then responsible for its maintenance, and can curate and review
+stake pool metadata. Importantly, it makes it possible to resolve disputes over
+offending or duplicated stake pool ticker names and delist operators if they are
+proven to be bad actors.
+
+The SMASH server code is open source and anyone can deploy it and become an
+operator. In the due course, Daedalus will allow users to configure any server
+of their choice and browse custom stake pool lists.
+
+> If you want to install and run the SMASH server, you can use [these instructions](https://github.com/input-output-hk/smash/blob/master/doc/getting-started/how-to-install-smash.md).
+
+### How does the IOHK SMASH server work?
+
+The first generation of SMASH is initially deployed by IOHK and is used in the
+Daedalus delegation center, where it provides the ability to view available
+stake pools with verified names, ticker symbols, and websites.
+
+Below is a step-by-step description of actions that can be taken when you
+identify a pool with a duplicated ticker name or offensive content. Please note
+that this applies to the SMASH server that is run and maintained by IOHK.
+
+**Stake pool delisting reasons**
+
+First, please ensure that there is a reason for a stake pool to be delisted.
+There are certain reasons that influence the decision for a stake pool to be
+delisted. These include:
+
+- **illegal or malicious content**: a stake pool that features any illegal,
+  abusive, or malicious content as part of the stake pool metadata (for example
+  via the link to the SPO’s homepage).
+- **impersonation**: stake pools that attempt to impersonate other individuals,
+  groups, or organizations in a manner that misleads, confuses, or deceives
+  others. For example, a successful stake pool called POOL being obviously
+  impersonated by another called P00L (by linking to the same website).
+- **previous ‘claim’**: ticker names can be registered by SPOs on a ‘first
+  come - first served’ basis, however, a ticker name which was registered on the
+  Incentivized Testnet (ITN), may only be registered on the Cardano mainnet by
+  the same SPO that registered such a ticker on the ITN. Ticker names that were
+  registered on the ITN but were not re-registered on the Cardano mainnet by
+  19th June 2020 will be released and available for registration on the Cardano
+  mainnet.
+- **an inappropriate ticker name**: a ticker name that is obscene, sexually
+  explicit, offensive, hurtful, profane, or otherwise inappropriate. This is a
+  subjective judgment in some cases, so best efforts will always be made.
+- **intellectual property rights (IPR) violations**: SPOs that violate the
+  intellectual property rights of others including copyright and trademarks,
+  where proof can be supplied.
+- **inactive or retired pools**: stake pools that are retired or have not
+  produced blocks in a long time, or whose SPO cannot be contacted. Retired
+  pools on the mainnet have a limit of six months within which to make a request
+  for their ticker name to be reregistered.
+
+**How to request a delisting**
+
+1. When you identify a stake pool that you believe should be delisted, you can
+   send an official request for delisting to smash@iohk.io. Please include your
+   rationale and any proof of why this stake pool should be delisted. In
+   particular, state one of the above reasons and provide a detailed
+   explanation. Stake pools impersonating trademarks should be reported by the
+   trademark holder or their authorized representative.
+2. After your request, you will receive an email that acknowledges that your
+   request is taken into consideration.
+3. A SMASH operator will review the request to ensure that the reasoning and
+   proofs are accurate and will make a decision whether or not to delist the
+   stake pool. It may also be determined that further arbitration or community
+   consultation may be required. However, the ultimate decision will always be
+   reserved by the entity operating the SMASH server in question.
+4. When a decision is made, you will receive an email outlining whether the
+   stake pool will be delisted or whether the ticker listing will be allowed to
+   remain. In either case, we shall always provide an explanation or
+   justification for the choice. Please note that in some cases, a stake pool
+   can be delisted proactively - whether temporarily or permanently. With
+   delisting applied, the stake pool will not be visible on SMASH and its
+   operator will need to make a case if they want the decision reversed.
+5. If a stake pool operator believes that delisting of their stake pool has
+   happened by mistake, they can submit an appeal by emailing to smash@iohk.io.
+
+IOHK’s SMASH operator is constantly reviewing all requests from the Cardano
+community and SPOs to ensure that all the stake pool information is tracked and
+managed accurately. A request is usually processed in 7 working days.
+
+It is important to note that delisting refers _only_ to the display of metadata
+and listing with SMASH. As a decentralized network, at no point, will stake pool
+operations themselves be affected. For more information or any clarifications,
+you can email smash@iohk.io, contact @benohanlon in Telegram, or reach out to
+@benohanlon directly on Twitter.
