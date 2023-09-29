@@ -3,16 +3,18 @@ title: Multiple purposes
 metaTitle: Multiple purposes
 ---
 
-Cardano allows more complex transactions. So far you've seen various types of transactions: simple script, minting, staking, delegating etc. But Cardano provides the flexibility to create more complex transactions and mix all the types of transactions needed. For example, adding metadata to minting transactions, or adding a staking component to a simple script transaction. This tutorial shows how to send a transaction with multiple purposes.
+Cardano allows more complex transactions. So far you've seen various types of transactions: simple script, minting, staking, delegating, etc. But Cardano provides the flexibility to create more complex transactions and mix all the types of transactions needed. For example, adding metadata to minting transactions, or adding a staking component to a simple script transaction. This tutorial shows how to send a transaction with multiple purposes.
 
 
-In this tutorial we will:
+In this tutorial, you will learn how to:
+
 - Withdraw funds from a script
 - Mint a token
-- Withdraw funds from delegation
+- Withdraw delegated funds 
 - Set metadata for the transaction
 
-As we saw in tutorial about minting, one way to mint a token is by creating a script derived from a keyHash, to do that we first have to generate new keys and key hash using following commands:
+As mentioned in the minting tutorial, one way to mint a token is by creating a script derived from a `keyHash`. For that, you first need to generate new keys and a key hash using the following commands:
+
 ```
 cardano-cli address key-gen \
     --verification-key-file script.vkey \
@@ -21,7 +23,8 @@ cardano-cli address key-gen \
 cardano-cli address key-hash --payment-verification-key-file script.vkey
 54a318b79a805f4f4cf0562a27302e93ed5b2e657cccdf4f6a8330ef
 ```
-Having the key hash we can create our script as follows:
+Having the key hash, you can create the script as follows:
+
 ```
 cat payment.script
 {
@@ -30,7 +33,8 @@ cat payment.script
 }
 ```
 
-We also need to create the address and the policy id of the script.
+You also need to create the address and the policy ID of the script:
+
 ```
 cardano-cli address build --payment-script-file payment.script 
 addr_test1wzgd97kc864w62ulela5ykw8m64z2nu4wjejacyfp6u7qwqyz9v9m
@@ -41,9 +45,10 @@ cardano-cli transaction policyid --script-file payment.script
 90d2fad83eaaed2b9fcffb4259c7deaa254f9574b32ee0890eb9e038
 ```
 
-## First transaction:
+## First transaction
 
-First of all we need to fund the address of the script using funds of payment.addr
+First of all, you need to fund the script address using `payment.addr` funds:
+
 ```
 cardano-cli query utxo --address $(cat payment.addr)
                            TxHash                                 TxIx        Amount
@@ -51,7 +56,8 @@ cardano-cli query utxo --address $(cat payment.addr)
 12bc01bca615bb4cbe5f36b06d86092ad3c8a10e6a37e09f94a5f006f3aaf230     0        10040283782 lovelace + TxOutDatumNone
 ```
 
-In this transaction we set an tx-out-inline-datum file that only contains the number 42, this is because we wouldn't be able to get the funds from the script if it does not have a datum.
+In this transaction, the example sets a `tx-out-inline-datum` file that only contains the number 42. This is essential since you wouldn't be able to get the funds from the script if it does not have a datum:
+
 ```
 cardano-cli transaction build --tx-in 12bc01bca615bb4cbe5f36b06d86092ad3c8a10e6a37e09f94a5f006f3aaf230#0 --tx-out $(cat payment.script.addr)+10000000 --change-address $(cat payment.addr) --tx-out-inline-datum-file datum.json --out-file 1st.tx
 
@@ -62,10 +68,9 @@ cat datum.json
 }
 ```
 
+## Second transaction
 
-## Second transaction:
-
-Now in this transaction
+In this transaction, you can query the UTXO details:
 
 ```
 cardano-cli query utxo --address $(cat  payment.script.addr)
@@ -80,7 +85,9 @@ cardano-cli query utxo --address $(cat  payment.addr)
 --------------------------------------------------------------------------------------
 04dfd8feaf87f82c8ec771954179879b22b5f693ed86d78a749111eed2de7879     1        10030116301 lovelace + TxOutDatumNone
 ```
-We also have to verify that we have rewards available for us.
+
+You can also verify that you have available rewards:
+
 ```
 cardano-cli query stake-address-info --address $(cat stake.addr)
 [
@@ -91,7 +98,9 @@ cardano-cli query stake-address-info --address $(cat stake.addr)
     }
 ]
 ```
-It's time to build our transaction with multiple purposes.
+
+Now you can build the transaction with multiple purposes:
+
 ```
 cardano-cli transaction build \
     --tx-in 04dfd8feaf87f82c8ec771954179879b22b5f693ed86d78a749111eed2de7879#1 \
@@ -104,14 +113,15 @@ cardano-cli transaction build \
     --metadata-json-file metadata.json \
     --out-file 2nd.tx
 ```
-We can see multiple things happening in this transaction:
- - There are two UTxOs to be spent
-   - One is from a script and the other is from payment
- - We are minting a token and this only can be done by defining the mint-script-file that are the rules to mint that token.
- - We are withdrawing funds from delegation
- - Finally we are setting a metadata file
+You can see multiple things happening in this transaction:
 
-Finally we can verify the result of signing and submitting the transaction:
+ - There are two UTXOs to be spent
+   - One is from a script, and the other is from a payment
+ - You are minting a token and this only can be done by defining the `mint-script-file` - the rules to mint that token
+ - You are withdrawing funds from the delegation
+ - Finally, you are setting a metadata file
+
+Finally, you can verify the result of signing and submitting the transaction:
 
 The payment address now has:
 - The new token minted
@@ -124,13 +134,16 @@ cardano-cli query utxo --address $(cat payment.addr)
 --------------------------------------------------------------------------------------
 c260ebce5868a56ce559f5277e6ca2d47b0eecb5b851b957fcb40a2194f67b29     0        10055118943 lovelace + 1 90d2fad83eaaed2b9fcffb4259c7deaa254f9574b32ee0890eb9e038.746f6b656e + TxOutDatumNone
 ```
+
 The script address does not have any funds.
+
 ```
 cardano-cli query utxo --address $(cat payment.script.addr)
                            TxHash                                 TxIx        Amount
 --------------------------------------------------------------------------------------
 ```
-We no longer have rewards from delegationg
+We no longer have rewards from delegating:
+
 ```
 cardano-cli query stake-address-info --address $(cat stake.addr)
 [
@@ -141,4 +154,5 @@ cardano-cli query stake-address-info --address $(cat stake.addr)
     }
 ]
 ```
+
 And the best part, it was only done in one transaction.
