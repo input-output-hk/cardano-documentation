@@ -1,0 +1,25 @@
+---
+title: Learn about Aiken
+metaTitle: Learn about Aiken
+---
+
+> ⚠️ Please note that Aiken is still in development and is not yet recommended for use in production environments.
+
+Aiken is a new programming language and toolchain for developing smart contracts on the Cardano blockchain. It takes inspiration from many modern languages such as Gleam, Rust, and Elm which are known for friendly error messages and an overall excellent developer experience. 
+
+The language is exclusively used for creating the on-chain validator-scripts. You will need to write your off-chain code for generating transactions in another language such as Rust, Haskell, Javascript, Python etc.
+
+As a language, Aiken is purely functional with static typing and type inference. This means most of the time the compiler is smart enough to know what the type of something is without you annotating it. It also let's you make custom types that are similar to records and enums. It does not have higher-kinded types or typeclasses because Aiken aims for simplicity. Writing smart contracts can be tedious, and we therefore believe that a language should remain simple to avoid silly mistakes.
+
+On-chain scripts are typically small in size and scope (relatively, compared to other kind of applications being written nowadays) and, therefore, do not require as much features as general-purpose languages that have to solve much harder problems.
+
+Aiken is often easier than Plutus to get started with for those not as familiar with functional languages like Haskell.
+Like Plutus, Aiken scripts are compiled down to untyped plutus core (UPLC).
+
+## Resources
+
+- [aiken-lang.org](https://aiken-lang.org) Official website
+- [github/aiken-lang](https://github.com/aiken-lang/aiken) Official github repository
+
+
+
