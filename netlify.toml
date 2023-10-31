@@ -659,17 +659,17 @@ status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/programming-languages/plutus/overview/"
-  to = "/plutus/learn-about-plutus"
+  to = "/smart-contracts/plutus/learn-about-plutus"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/programming-languages/plutus/getting-started/"
-  to = "/plutus/Plutus-PG-setup"
+  to = "/smart-contracts/plutus/Plutus-PG-setup"
   status = 301
 
 [[redirects]]
   from = "https://testnets.cardano.org/programming-languages/plutus/resources/"
-  to = "/plutus/plutus-resources"
+  to = "/smart-contracts/plutus/plutus-resources"
   status = 301
 
 [[redirects]]
