@@ -7,10 +7,10 @@ This tutorial will show you how to transfer `SC_Tokens` between the main chain a
 
 ## Prerequisites
 
-1. **sidechain-evm-cli** is used within this tutorial and is in the SC_EVM repository [here](https://github.com/input-output-hk/mamba-world/tree/open-source/tooling).
+1. **sidechain-evm-cli** is used within this tutorial and is in the SC_EVM repository [here](https://github.com/input-output-hk/sc-evm/tree/main/tooling).
 2. Download the **bech32** conversion tool binary and add to your shell's path: https://github.com/input-output-hk/bech32.
 3. If you have not done so already, create and fund your main chain and sidechain accounts.
-4. The bridge contract source which can be used to compile Solidity or obtain the ABI is in the SC_EVM repository [here](https://github.com/input-output-hk/mamba-world/blob/open-source/src/solidity-bridge/contracts/Bridge.sol).
+4. The bridge contract source which can be used to compile Solidity or obtain the ABI is in the SC_EVM repository [here](https://github.com/input-output-hk/sc-evm/blob/main/src/solidity-bridge/contracts/Bridge.sol).
 
 # Transfering tokens from a sidechain to the main chain
 
@@ -21,7 +21,7 @@ Transferring `SC_Token` from a sidechain to the main chain will require interfac
 
 - Go to https://remix.ethereum.org/
 
-- Get the contents of the bridge contract solidity or ABI from the sc-evm repository [here](https://github.com/input-output-hk/sc-evm/blob/main/src/solidity-bridge/contracts/Bridge.sol).
+- Create `/contracts/bridge.abi` with the following contents: [bridge.abi](https://github.com/input-output-hk/sc-evm/blob/main/src/solidity-bridge/contracts/Bridge.sol)
 
 *Note: Make sure your Remix-compatible Web3 provider is configured to the EVM sidechain testnet. Eg: MetaMask.*
 

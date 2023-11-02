@@ -1,7 +1,6 @@
----
-title: Run a POC EVM Sidechain Network
-metaTitle: Run a POC EVM Sidechain Network
----
+# Run a POC EVM Sidechain Network
+
+![img](https://i.imgur.com/z5RME4c.png)
 
 ## Step 01 - Run Cardano testnet
 
@@ -12,22 +11,23 @@ Before setting up and running a sidechain (EVM sidechain), it is essential to es
 - [Getting started with stake pool operation](https://developers.cardano.org/docs/operate-a-stake-pool/)
 - [Getting started with Ogmios](https://developers.cardano.org/docs/get-started/ogmios/)
 - [Getting started with Kupo](https://cardanosolutions.github.io/kupo/)
+- [Getting started with CTL](https://github.com/Plutonomicon/cardano-transaction-lib)
 
 ## Step 02 - Deploy mainchain scripts to mainnet
 
 For a sidechain to function efficiently, a set of scripts needs to be deployed on the mainchain. These scripts play a crucial role in managing the policies and validators of the sidechain, ensuring its secure and smooth operation.
 
-- [Getting started with trustless-sidechain-ctl](https://github.com/input-output-hk/trustless-sidechain/tree/open-source/ctl)
-- [Read the specification of the plutus scripts](https://github.com/input-output-hk/trustless-sidechain/blob/master/docs/Specification.md)
+- [Getting started with trustless-sidechain-ctl](https://github.com/input-output-hk/sc-trustless-ctl/blob/main/README.md)
+- [Read the specification of the plutus scripts](https://github.com/input-output-hk/sc-trustless-ctl/blob/main/docs/Specification.md)
 
 ## Step 03 - Run DB Sync
 
 DB Sync is a crucial component when it comes to enabling an EVM sidechain to listen to events on the Cardano mainnet. By integrating DB Sync into your sidechain infrastructure, you can establish a reliable connection that allows your sidechain to stay synchronized with the Cardano mainnet.
 
-- [How to run a Cardano DB Sync node](https://github.com/input-output-hk/cardano-DB-Sync/blob/master/doc/building-running.md)
+- [How to run a Cardano DB Sync node](https://github.com/input-output-hk/cardano-DB Sync/blob/master/doc/building-running.md)
 
 ## Step 04 - Run EVM Sidechain validator node
 
 Sidechain validator nodes are responsible for validating transactions, proposing and validating blocks, and maintaining the consensus mechanism within a sidechain network. These nodes ensure the integrity and security of the sidechain by participating in the block production process. However, before they can contribute, they must register with the sidechain committee.
 
-- [Getting started with evm-sidechain client](https://github.com/input-output-hk/sc-evm)
+- [Getting started with evm-sidechain client](https://github.com/input-output-hk/sc_evm)
