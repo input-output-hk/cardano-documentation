@@ -53,10 +53,10 @@ const plugins = [
     resolve: `gatsby-plugin-posthog`,
     options: {
       // Specify the API key for your PostHog Project (required)
-      apiKey: 'phc_GB82t5tMT4EVKUpOCPTOuhezu3trmJUCGtSnFHB3fK3',
+      apiKey: process.env.POSTHOG_API_KEY,
       // Specify the app host if self-hosting (optional, default: https://app.posthog.com)
-      apiHost: 'https://eu.posthog.com',
-      projectId: 11673,
+      apiHost: process.env.POSTHOG_API_HOST,
+      projectId: process.env.POSTHOG_PROJECT_ID,
       // Puts tracking script in the head instead of the body (optional, default: true)
       head: true,
       // Enable posthog analytics tracking during development (optional, default: false)
