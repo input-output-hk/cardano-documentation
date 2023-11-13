@@ -195,7 +195,7 @@ const Footer = ({ theme }) => {
   const content = data.content
   let logoURL = 'https://ucarecdn.com/75b74f03-ff04-47ba-821c-5e477d3d46d4/'
 
-  console.log(process.env.POSTHOG_API_KEY)
+  console.log('env var + ' + process.env.POSTHOG_API_KEY)
   return (
     <FooterSection theme={theme}>
       <TopRow>
