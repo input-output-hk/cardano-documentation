@@ -49,17 +49,6 @@ const plugins = [
       extensions: ['.mdx', '.md'],
     },
   },
-  {
-    resolve: `gatsby-plugin-gtag`,
-    options: {
-      // your google analytics tracking id
-      trackingId: config.gatsby.gaTrackingId,
-      // Puts tracking script in the head instead of the body
-      head: true,
-      // enable ip anonymization
-      anonymize: false,
-    },
-  },
   // {
   //   resolve: 'gatsby-transformer-remark',
   //   options: {

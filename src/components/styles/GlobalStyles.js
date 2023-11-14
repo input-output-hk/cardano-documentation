@@ -1,6 +1,15 @@
-import { injectGlobal } from 'emotion'
+import { injectGlobal, css } from 'emotion'
+import {osanoStyling, osanoVariables} from "./osano";
+
+const cssVariables = css`
+  :root {
+    ${osanoVariables}
+  }
+`;
 
 export const baseStyles = injectGlobal`
+  ${cssVariables}
+  ${osanoStyling}
   @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@300;700&display=swap');
   * {
     margin: 0;
@@ -30,7 +39,7 @@ export const baseStyles = injectGlobal`
     line-height: 1.75;
     color: #1d1e21;
 
-    /* Prevent horizontal scroll */ 
+    /* Prevent horizontal scroll */
     max-width: 100vw;
     overflow-x: hidden;
   }
@@ -77,7 +86,7 @@ export const baseStyles = injectGlobal`
   .displayInline {
     display: inline-block;
   }
-  
+
   .mermaid svg {
     max-width:100%;
   }
@@ -345,7 +354,7 @@ export const baseStyles = injectGlobal`
     border: 0 !important;
     background-color: rgb(245, 247, 249); /* !important; */
   }
-  
+
   blockquote {
     color: rgb(116, 129, 141);
     margin: 0px 0px 24px;
@@ -517,7 +526,7 @@ export const baseStyles = injectGlobal`
   .sideBarUL .sectionHeading + ul a {
     font-weight: normal;
   }
-  
+
 
   .showFrontLine .item a {
     color: #1d1e21;

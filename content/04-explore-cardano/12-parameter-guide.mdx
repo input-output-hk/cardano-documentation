@@ -1,0 +1,61 @@
+---
+title: Cardano protocol parameters reference guide
+metaTitle: Cardano protocol parameters reference guide
+---
+
+Protocol parameters on Cardano are the various settings that define the blockchain's behavior. Some protocol parameters are stable and non-updatable while others can be adjusted to adapt to changing conditions over time.
+
+Examples of important Cardano protocol parameters include the maximum block size, the transaction fee structure, the block production schedule, and the minimum ada balance required for staking (read more in the following sections). Parameter choices can have a significant impact on the network's performance, security, and usability, and their alteration must be carefully considered.
+
+The Voltaire governance system for Cardano aims to provide a flexible and adaptable framework that can evolve over time. This includes monitoring and changing the various protocol parameters. The collaboration of founding entities (Input Output Global, the Cardano Foundation, and EMURGO) with the community allows for a decentralized approach to governance and decision making. Cardano can then respond to changing conditions and optimize its performance and functionality to meet the needs of its users.
+
+Additionally, the use of protocol parameters allows for agility and innovation within the network, as new ideas and proposals can be tested and implemented without requiring a [hard fork](https://www.essentialcardano.io/glossary/hard-fork) or other disruptive changes to the network's architecture. This enables Cardano to remain at the forefront of blockchain technology and provide a robust and sustainable infrastructure for decentralized applications (DApps) and services.
+
+## Types of protocol parameters on Cardano
+
+Cardano protocol parameters are classified as follows:
+
+-   **Network parameters** – affect Cardano’s connectivity properties and performance. Examples include the maximum number of connections allowed per node, peer discovery algorithm, the network propagation speed, block body and header size, transaction size, etc.
+-   **Economic parameters** – affect the economic aspects of blockchain operations. Examples include parameters such as the transaction fee structure, the minimum ada balance required for staking or transacting, stake pool fees, treasury settings, etc.
+-   **Technical parameters** – affect technical protocol properties like the consensus algorithm or cost models, for example. These include the stake pool pledge influence, a target number of stake pools, collateral percentage, and others.
+-   **Governance parameters** – as Voltaire is rolled out, a new class of parameters will be introduced to define the governance process.
+    
+Protocol parameters are either updatable or non-updatable:
+
+-   **Updatable** parameters can be adjusted through governance processes. These parameters can be used to change the operation of the block-producing protocol, vary transaction fees, define the influence of pledge, etc.
+-   **Non-updatable** parameters affect the fundamentals of the Cardano protocol and are stable, which means that they cannot be changed except via a hard fork. Non-updatable parameters include those defining the genesis block or basic security properties, for example. Some non-updatable parameters may be embedded in the source code or implemented as software. Each major protocol version defines its own set of updatable and non-updatable parameters.
+ 
+Updatable parameters are designed to be flexible and adaptable, allowing the network to evolve over time in response to changing conditions and community needs. Non-updatable parameters, on the other hand, are typically set at the launch of the network or when introducing major changes to the protocol and are intended to provide a stable and secure foundation for the network's operations.
+
+## A list of updatable protocol parameters
+
+
+| Parameter                                  | Category                         | Description                                                                                                                                                                                                      |
+| ------------------------------------------ | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| maxBlockBodySize                           | Network                          | Maximum size of a block body. Limits blockchain storage size and communication costs.                                                                                                                          |
+| maxTxSize                                  | Network                          | Maximum size of a transaction. While several transactions may be included in a block, the maximum transaction size must be strictly less than the maximum block size.                            
+| txFeePerByte aka minFeeA                  | Economic                         | Additional transaction fee per byte of data (in lovelace).                                                                                                                                                       
+| lovelacePerUTxOWord aka utxoCostPerWord   | Economic                         | The deposit charged per word of UTXO storage. This parameter sets the cost for storing UTXOs and protects against low-cost denial of service attacks.                                                            
+| stakePoolDeposit aka poolDeposit          | Economic                         | Pool deposit (in lovelace).                                                                                                                                                                                      
+| treasuryCut aka tau                       | Economic                         | Treasury rate (0.2 = 20%). The proportion of total rewards allocated to treasury each epoch before the remaining rewards are distributed to pools.                                                               
+| minPoolCost                                | Economic                         | Minimum pool cost per epoch (in lovelace), which enables the pledge effect.                                                                                                                                     
+| txFeeFixed aka minFeeB                    | Economic                         | Base transaction fee (in lovelace).                                                                                                                                                                              
+| stakeAddressDeposit aka keyDeposit        | Economic                         | Deposit charged for stake keys (in Lovelace), which ensures that unused keys are returned thus freeing resources.                                                                                                
+| monetaryExpansion aka rho                 | Economic                         | Monetary expansion rate per epoch, which governs the rewards that are returned from reserves to the ecosystem (treasury, stake pools, and delegators).                                                           
+| executionUnitPrices aka executionPrices   | Economic                         | Execution prices are specified in fractions of lovelace per Plutus CPU execution step or memory unit. These have been set to be consistent with the cost for a full transaction that contains no Plutus scripts. |
+| poolRetireMaxEpoch aka eMax               | Technical                        | Maximum number of epochs within which a pool can be announced to retire starting from the next epoch.                                                                                                            
+| collateralPercentage                       | Technical                        | Percentage of fee that is used as collateral for a failed transaction.                                                                                                                                           
+| stakePoolTargetNum (k parameter) aka nOpt | Technical                        | The target number of stake pools, also known as k, impacts the saturation threshold and encourages the growth of stake pools.                                                                                   
+| maxCollateralInputs                        | Technical                        | Maximum number of collateral inputs in a transaction.                                                                                                                                                            |
+| maxValueSize                               | Technical                        | The limit on the serialized size of the value in each output.                                                                                                                                                    |
+| costModels                                 | Technical                        | Plutus cost models.                                                                                                                                                                                              |
+| maxBlockExecutionUnits/exUnitsMem          | Network/Technical              | Maximum number of Plutus execution steps that can be used in a single block.                                                                                                                                     |
+| maxBlockHeaderSize                         | Network/ Technical              | Maximum size of the block header, which should be significantly less than the maximum block size.                                                                                                                
+| maxTxExecutionUnits/ exUnitsMem           | Network/ Technical              | Maximum number of Plutus memory units that can be used in a single transaction.                                                                                                                                  |
+| maxTxExecutionUnits/ exUnitsSteps         | Network/Technical              | Maximum number of Plutus execution steps that can be used in a single transaction.                                                                                                                               
+| protocolVersion                            | Technical/ Requires a hard fork | Protocol version. Major versions are “hard forks” such as Byron (1), Shelley (2), Allegra (3), etc.                                                                                                              |
+| poolPledgeInfluence aka a0                | Economic/ Technical             | The ‘influence factor’ that governs how much impact the pledge has on rewards.                                                                                                                                   |
+
+You can find a [list of non-updatable protocol parameters here](https://github.com/cardano-foundation/CIPs/blob/master/CIP-0009/README.md#non-updatable-parameters).
+
+[CIP-09](https://cips.cardano.org/cips/cip9/), [CIP-28,](https://cips.cardano.org/cips/cip28/) and [CIP-55](https://cips.cardano.org/cips/cip55/) provide an overview of protocol parameters in the Shelley, Alonzo, and Babbage eras.

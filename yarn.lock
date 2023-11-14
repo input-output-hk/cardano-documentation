@@ -1754,7 +1754,6 @@
   integrity sha512-OYMNS7UBD5tL88NRy5nHsJYaQ++IbvQP3lKwoimaJnhTTybfcJL4iEhFukQer50Ot75ZSRfCJEmdXG+kGe1+FQ==
   dependencies:
     prop-types "^15.6.2"
-    react-ga "^2.7.0"
 
 "@input-output-hk/front-end-site-components@^1.2.10":
   version "1.15.0"
