@@ -15,7 +15,7 @@ This tutorial will show you how to deploy a Solidity smart contract to the EVM s
 
 ## Prerequisites
 
-In this tutorial, you will use MetaMask as your wallet and Web3 provider. If you have not done so already, [create or import an account with MetaMask](../metamask) and fund your wallet with testnet tokens using the [faucet](https://faucet.sidechain.evmtestnet.iohkdev.io/).
+In this tutorial, you will use MetaMask as your wallet and Web3 provider. If you have not done so already, [create or import an account with MetaMask](../metamask) and fund your wallet with testnet tokens using the [SC_EVM Faucet](https://github.com/input-output-hk/sc-evm-faucet-web).
 
 ## Step 1 - Configure Remix
 
@@ -78,7 +78,7 @@ When the contract is compiled, you can view contract ABI, Bytecode, and more inf
 
 To verify that the smart contract was deployed on the sidechain testnet you can:
 
-- Search the transaction hash or contract address on the EVM sidechain [testnet explorer](https://explorer.sidechain.evmtestnet.iohkdev.io/).
+- Search the transaction hash or contract address on a blockexplorer. To setup: https://github.com/input-output-hk/blockscout.
 - Open MetaMask and see if the contract deployment transaction was successfully signed.
 - Check Remix logs for deployment details.
   
@@ -148,12 +148,6 @@ $ npx hardhat
   Quit
 ```
 
-<!-- Hardhat will ask you to install `hardhat-waffle` and `hardhat-ethers` which is required for tests built with Waffle. In case you've missed it, install them by executing the following:
-
-```
-npm install --save-dev @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers ethers
-``` -->
-
 ## Running tasks
 
 To view all options and commands with your Hardhat project, simply run `npx hardhat`:
@@ -209,13 +203,14 @@ require("@nomicfoundation/hardhat-toolbox");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 
-const Private_Key = "INSERT_PRIV_KEY"
+const PRIVATE_KEY = "INSERT_PRIV_KEY"
+const SC_RPC_URL = "INSERT_SIDECHAIN_RPC_URL"
 
 module.exports = {
   networks: {
     evm-sidechain: {
-        url: `https://faucet.sidechain.evmtestnet.iohkdev.io/`,
-        accounts: [`0x${Private_Key}`]
+        url: `${SC_RPC_URL}`,
+        accounts: [`0x${PRIVATE_KEY}`]
     },
   },
   solidity: "0.8.17",
@@ -239,7 +234,12 @@ $ npx hardhat run scripts/deploy.js --network evm-sidechain
 Greeter deployed to: 0x95E1C8F6C00d8cB518faBA33c8Ae814fc12E3090
 ```
 
-🎉 Hurray! You deployed your smart contract to EVM sidechain testnet and can search your deployment on the [testnet explorer](https://explorer.sidechain.evmtestnet.iohkdev.io/).
+🎉 Hurray! You deployed your smart contract to EVM sidechain testnet and can verify deployment by querying the transaction:
+
+```
+curl -H "Content-Type: application/json" -X POST --data \
+'{"jsonrpc":"2.0","method":"eth_getRawTransactionByHash","params":["<TX_HASH>"],"id":1}' http://localhost:8546
+```
 
 # Truffle
 
@@ -291,4 +291,4 @@ At this point, you've defined the EVM sidechain testnet and your testnet account
 $ truffle migrate --network evm-sidechain
 ```
 
-Upon executing `truffle migrate`, Truffle will return the transaction hash and contract address which can be searched on the EVM sidechain [testnet explorer](https://explorer.sidechain.evmtestnet.iohkdev.io/).
+Upon executing `truffle migrate`, Truffle will return the transaction hash and contract address which can be queryed on the EVM sidechain.
