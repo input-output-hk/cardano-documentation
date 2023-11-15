@@ -96,6 +96,8 @@ export function AnalyticsProvider({ children }) {
 
   console.log('api host' + config.posthog.apiHost)
 
+  console.log('what about this ' + process.env.GATSBY_OSANO)
+
   const baseEventProps = useCallback(
     () => ({
       sent_at_local: dayjs().format(),
