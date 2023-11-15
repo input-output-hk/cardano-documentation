@@ -49,20 +49,6 @@ const plugins = [
       extensions: ['.mdx', '.md'],
     },
   },
-  {
-    resolve: `gatsby-plugin-posthog`,
-    options: {
-      // Specify the API key for your PostHog Project (required)
-      apiKey: process.env.POSTHOG_API_KEY,
-      // Specify the app host if self-hosting (optional, default: https://app.posthog.com)
-      apiHost: process.env.POSTHOG_API_HOST,
-      projectId: process.env.POSTHOG_PROJECT_ID,
-      // Puts tracking script in the head instead of the body (optional, default: true)
-      head: true,
-      // Enable posthog analytics tracking during development (optional, default: false)
-      isEnabledDevMode: true,
-    },
-  },
   // {
   //   resolve: 'gatsby-transformer-remark',
   //   options: {
