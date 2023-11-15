@@ -22,7 +22,7 @@ to generate blocks if they are selected as slot leaders.
 ### Stake delegation requirements
 
 Delegating stake requires posting two certificates to the chain: a staking
-address registration, and a [delegation certificate](https://docs.cardano.org/getting-started/operating-a-stake-pool/creating-keys-and-certificates#creatinganoperationalcertificate). Posting certificates
+address registration, and a [delegation certificate](https://docs.cardano.org/operating-a-stake-pool/creating-keys-and-certificates/#creatinganoperationalcertificateandregisteringastakepool). Posting certificates
 requires funds, so a user setting up their first wallet will need a
 bootstrapping mechanism. This mechanism relies on the possibility of base
 addresses using a [staking key](https://github.com/input-output-hk/cardano-rosetta/tree/master/examples#staking-key-registration-and-delegation) before posting the registration certificate for that key. Note that the stake address can be based either on a single key or on
@@ -34,7 +34,7 @@ With the concept of delegation, any stakeholder can allow a stake pool to
 generate blocks for the Cardano network. Then the rewards will be paid by the
 protocol for all participants, including the fees for the SPO. A
 stake holder delegates to a particular pool ID, which is the hash of the
-operator's [verification key](https://docs.cardano.org/learn/cardano-keys#vrfkeys).
+operator's [verification key](https://docs.cardano.org/learn/cardano-keys/#vrfkeys).
 
 To limit the delegate’s block generation power to a certain range of
 epochs and slots, the stakeholder can limit the proxy signing key’s valid
