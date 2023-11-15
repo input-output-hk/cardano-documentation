@@ -83,25 +83,23 @@ import useHasConsent, { ConsentType } from './useHasConsent'
 export const AnalyticsContext = createContext(() => {})
 
 export function AnalyticsProvider({ children }) {
-  const config = require('../../config')
-
   const [client, setClient] = useState()
 
   const analyticsAccepted = useHasConsent(ConsentType.ANALYTICS)
 
   console.log('are they accepted? ' + analyticsAccepted)
-  console.log('project id ' + config.posthog.projectId)
+  console.log('project id ' + process.env.GATSBY_POSTHOG_PROJECT_ID)
 
-  console.log('project api key ' + config.posthog.apiKey)
+  console.log('project api key ' + process.env.GATSBY_POSTHOG_API_KEY)
 
-  console.log('api host' + config.posthog.apiHost)
+  console.log('api host' + process.env.GATSBY_POSTHOG_API_HOST)
 
   console.log('what about this ' + process.env.GATSBY_OSANO)
 
   const baseEventProps = useCallback(
     () => ({
       sent_at_local: dayjs().format(),
-      posthog_project_id: config.posthog.projectId,
+      posthog_project_id: process.env.GATSBY_POSTHOG_PROJECT_ID,
     }),
     [],
   )
@@ -119,9 +117,9 @@ export function AnalyticsProvider({ children }) {
   )
 
   useEffect(() => {
-    const posthogApiKey = config.posthog.apiKey
+    const posthogApiKey = process.env.GATSBY_POSTHOG_API_KEY
 
-    const posthogApiHost = config.posthog.apiHost
+    const posthogApiHost = process.env.GATSBY_POSTHOG_API_HOST
 
     const turnOn =
       analyticsAccepted === true &&
