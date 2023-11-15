@@ -87,6 +87,9 @@ export function AnalyticsProvider({ children }) {
 
   const analyticsAccepted = useHasConsent(ConsentType.ANALYTICS)
 
+  console.log('are they accepted? ' + analyticsAccepted)
+  console.log('project id ' + process.env.POSTHOG_PROJECT_ID)
+
   const baseEventProps = useCallback(
     () => ({
       sent_at_local: dayjs().format(),
