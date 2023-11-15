@@ -87,15 +87,6 @@ export function AnalyticsProvider({ children }) {
 
   const analyticsAccepted = useHasConsent(ConsentType.ANALYTICS)
 
-  console.log('are they accepted? ' + analyticsAccepted)
-  console.log('project id ' + process.env.GATSBY_POSTHOG_PROJECT_ID)
-
-  console.log('project api key ' + process.env.GATSBY_POSTHOG_API_KEY)
-
-  console.log('api host' + process.env.GATSBY_POSTHOG_API_HOST)
-
-  console.log('what about this ' + process.env.GATSBY_OSANO)
-
   const baseEventProps = useCallback(
     () => ({
       sent_at_local: dayjs().format(),
