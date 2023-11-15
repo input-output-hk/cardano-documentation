@@ -77,9 +77,9 @@ const RightSideBarWidth = styled('div')`
 `
 
 const Layout = ({ children, location, useFwTemplate }, theme) => (
-  <AnalyticsProvider>
-    <ThemeProvider location={location}>
-      <MDXProvider components={mdxComponents}>
+  <ThemeProvider location={location}>
+    <MDXProvider components={mdxComponents}>
+      <AnalyticsProvider>
         <SiteWrap>
           <Wrapper>
             {useFwTemplate ? (
@@ -108,9 +108,9 @@ const Layout = ({ children, location, useFwTemplate }, theme) => (
           </Wrapper>
           <Footer />
         </SiteWrap>
-      </MDXProvider>
-    </ThemeProvider>
-  </AnalyticsProvider>
+      </AnalyticsProvider>
+    </MDXProvider>
+  </ThemeProvider>
 )
 
 export default Layout
