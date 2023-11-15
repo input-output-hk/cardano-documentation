@@ -100,5 +100,10 @@ const config = {
       ],
     },
   },
+  posthog: {
+    apiKey: process.env.POSTHOG_API_KEY,
+    apiHost: process.env.POSTHOG_API_HOST,
+    projectId: process.env.POSTHOG_PROJECT_ID,
+  },
 }
 module.exports = config
