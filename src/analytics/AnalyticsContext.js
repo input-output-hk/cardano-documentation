@@ -5,6 +5,12 @@ import { PostHogProvider } from 'posthog-js/react'
 import TrackRoute from './TrackRoute'
 import useHasConsent, { ConsentType } from './useHasConsent'
 
+const POSTHOG_PROJECT_ID = process.env.POSTHOG_PROJECT_ID
+
+const POSTHOG_API_KEY = process.env.POSTHOG_API_KEY
+
+const POSTHOG_API_HOST = process.env.POSTHOG_API_HOST
+
 /**
  * @file This file exports an AnalyticsContext and an AnalyticsProvider component.
  * The AnalyticsContext is a context object that provides a function to capture analytics events.
@@ -88,12 +94,16 @@ export function AnalyticsProvider({ children }) {
   const analyticsAccepted = useHasConsent(ConsentType.ANALYTICS)
 
   console.log('are they accepted? ' + analyticsAccepted)
-  console.log('project id ' + process.env.POSTHOG_PROJECT_ID)
+  console.log('project id ' + POSTHOG_PROJECT_ID)
+
+  console.log('project api key ' + POSTHOG_API_KEY)
+
+  console.log('api host' + process.env.POSTHOG_API_HOST)
 
   const baseEventProps = useCallback(
     () => ({
       sent_at_local: dayjs().format(),
-      posthog_project_id: process.env.POSTHOG_PROJECT_ID,
+      posthog_project_id: POSTHOG_PROJECT_ID,
     }),
     [],
   )
@@ -111,9 +121,9 @@ export function AnalyticsProvider({ children }) {
   )
 
   useEffect(() => {
-    const posthogApiKey = process.env.POSTHOG_API_KEY
+    const posthogApiKey = POSTHOG_API_KEY
 
-    const posthogApiHost = process.env.POSTHOG_API_HOST
+    const posthogApiHost = POSTHOG_API_HOST
 
     const turnOn =
       analyticsAccepted === true &&
