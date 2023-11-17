@@ -28,12 +28,12 @@ To get started, make sure to:
 * upgrade your [node configuration, topology, and genesis files](https://book.world.dev.cardano.org/environments.html)
 * check the ['Getting started' tutorial](/cardano-testnet/getting-started)
 * see [Vasil testnet tutorials](https://github.com/input-output-hk/Vasil-testnet)
-* see [Babbage script examples](https://github.com/input-output-hk/cardano-node/tree/master/doc/reference/plutus)
+* see [Babbage script examples](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/reference/plutus/babbage-script-example.md)
 
 Also, note that:
 
 -  With the Vasil hard fork on mainnet, the *d* parameter is removed and block production is now fully decentralized. This prevents re-federation.
--   If you are an SPO, you now need to create your operational certificate using cold.counter +1. The `OpCert` must be exactly one more than the previously used one. [See details here](https://github.com/input-output-hk/cardano-node/blob/master/doc/stake-pool-operations/7_KES_period.md#warning-vasil-hard-fork-breaking-changes)
+-   If you are an SPO, you now need to create your operational certificate using cold.counter +1. The `OpCert` must be exactly one more than the previously used one. [See details here](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/stake-pool-operations/7_KES_period.md#warning-vasil-hard-fork-breaking-changes)
 -   The `minUTxO` formula is now calculated using original bytes instead of `lovelacePerUTxOWord`. For more details, see [CIP-55](https://cips.cardano.org/cips/cip55/).
 
 **Feedback**
