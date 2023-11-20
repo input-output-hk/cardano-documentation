@@ -7,6 +7,7 @@ import mdxComponents from './mdxComponents'
 import Sidebar from './sidebar'
 import RightSidebar from './rightSidebar'
 import config from '../../config.js'
+import { AnalyticsProvider } from '../analytics/AnalyticsContext.js'
 
 const SiteWrap = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
@@ -21,7 +22,7 @@ const Wrapper = styled('div')`
 
   .sideBarUL li a,
   .sectionHeading {
-    cursor:pointer;
+    cursor: pointer;
     color: ${({ theme }) => theme.colors.text};
   }
 
@@ -78,34 +79,36 @@ const RightSideBarWidth = styled('div')`
 const Layout = ({ children, location, useFwTemplate }, theme) => (
   <ThemeProvider location={location}>
     <MDXProvider components={mdxComponents}>
-      <SiteWrap>
-        <Wrapper>
-          {useFwTemplate ? (
-            <Content fwTemplate={useFwTemplate}>
-              <MaxWidth>{children}</MaxWidth>
-            </Content>
-          ) : (
-            <>
-              <LeftSideBarWidth className={'hiddenMobile'}>
-                <Sidebar location={location} />
-              </LeftSideBarWidth>
-              {config.sidebar.title ? (
-                <div
-                  className={'sidebarTitle sideBarShow'}
-                  dangerouslySetInnerHTML={{ __html: config.sidebar.title }}
-                />
-              ) : null}
-              <Content>
+      <AnalyticsProvider>
+        <SiteWrap>
+          <Wrapper>
+            {useFwTemplate ? (
+              <Content fwTemplate={useFwTemplate}>
                 <MaxWidth>{children}</MaxWidth>
               </Content>
-              <RightSideBarWidth className={'hiddenMobile'}>
-                {location && <RightSidebar location={location} />}
-              </RightSideBarWidth>
-            </>
-          )}
-        </Wrapper>
-        <Footer />
-      </SiteWrap>
+            ) : (
+              <>
+                <LeftSideBarWidth className={'hiddenMobile'}>
+                  <Sidebar location={location} />
+                </LeftSideBarWidth>
+                {config.sidebar.title ? (
+                  <div
+                    className={'sidebarTitle sideBarShow'}
+                    dangerouslySetInnerHTML={{ __html: config.sidebar.title }}
+                  />
+                ) : null}
+                <Content>
+                  <MaxWidth>{children}</MaxWidth>
+                </Content>
+                <RightSideBarWidth className={'hiddenMobile'}>
+                  {location && <RightSidebar location={location} />}
+                </RightSideBarWidth>
+              </>
+            )}
+          </Wrapper>
+          <Footer />
+        </SiteWrap>
+      </AnalyticsProvider>
     </MDXProvider>
   </ThemeProvider>
 )

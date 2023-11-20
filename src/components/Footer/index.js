@@ -194,7 +194,6 @@ const LinksColumn = styled.div`
 const Footer = ({ theme }) => {
   const content = data.content
   let logoURL = 'https://ucarecdn.com/75b74f03-ff04-47ba-821c-5e477d3d46d4/'
-
   return (
     <FooterSection theme={theme}>
       <TopRow>
