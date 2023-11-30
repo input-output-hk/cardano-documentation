@@ -14,7 +14,7 @@ Shelley introduces four different types of addresses:
 
 Besides those new addresses, Shelley continues to support Byron-era *bootstrap addresses* and *script addresses*, but only the new base and
 pointer addresses carry stake rights. Therefore, addresses consist of some serialized data specified in the ledger specification stored in the
-blockchain’s blocks, e.g., an Unspent Transaction Output (UTXO) address. 
+blockchain’s blocks, eg, an Unspent Transaction Output (UTXO) address. 
 
 The serialized data (address) contains two parts:
 
@@ -30,7 +30,7 @@ The stake rights can only be exercised by registering the stake key and delegati
 
 ### Pointer addresses
 
-A pointer address indirectly specifies the staking key that should control the stake for the address. It references a stake key by a stake key pointer, which is a location on the blockchain of the stake key [registration certificate](https://docs.cardano.org/getting-started/operating-a-stake-pool/creating-keys-and-certificates#creatinganoperationalcertificate) for that key. Pointer addresses can be used in transactions, even if their target is not an active stake key registration. This covers the scenario where the key was unregistered after (or indeed, before) the transaction, and also covers pointers to targets that are plainly invalid. The reason for allowing such invalid targets is so that nodes only need to track the *currently active* stake keys.
+A pointer address indirectly specifies the staking key that should control the stake for the address. It references a stake key by a stake key pointer, which is a location on the blockchain of the stake key registration certificate for that key. Pointer addresses can be used in transactions, even if their target is not an active stake key registration. This covers the scenario where the key was unregistered after (or indeed, before) the transaction, and also covers pointers to targets that are plainly invalid. The reason for allowing such invalid targets is so that nodes only need to track the *currently active* stake keys.
 
 The pointer can be considerably shorter than the hash used in base addresses.
 
