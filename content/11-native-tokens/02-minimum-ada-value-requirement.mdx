@@ -11,7 +11,7 @@ In the multi-asset Cardano ledger, UTXO entries have different sizes. In particu
 
 The minimum number of ada required is [calculated using this method](https://github.com/input-output-hk/cardano-ledger/blob/master/doc/explanations/min-utxo-alonzo.rst) that is new in the Alonzo era.
 
-> Note that with an upcoming upgrade to Babbage era, the protocol parameter `coinsPerUTxOWord` changes to `coinsPerUTxOByte`, which means that the price will be calculated per one byte instead of per eight bytes. The calculation will therefore look as follows: `minUTxoVal = (160 + sizeInBytes (TxOut)) * coinsPerUTxOByte`. For more details, see [CIP-55](https://cips.cardano.org/cips/cip55/).
+> Note that with an upcoming upgrade to Babbage era, the protocol parameter `coinsPerUTxOWord` changes to `coinsPerUTxOByte`, which means that the price will be calculated per one byte instead of per eight bytes. The calculation will therefore look as follows: `minUTxoVal = (160 + sizeInBytes (TxOut)) * coinsPerUTxOByte`. For more details, see [CIP-55](https://cips.cardano.org/cip/CIP-0055).
 
 As a consequence of this design,
 
