@@ -380,13 +380,13 @@
 
 [[redirects]]
   from = "/explore-cardano/glossary.html"
-  to = "https://www.essentialcardano.io/glossary?sort=alphabetica"
-  status = 301
+  to = "https://www.essentialcardano.io/glossary"
+  status = 308
 
 [[redirects]]
   from = "/glossary/"
-  to = "https://www.essentialcardano.io/glossary?sort=alphabetical"
-  status = 301
+  to = "https://www.essentialcardano.io/glossary"
+  status = 308
 
 [[redirects]]
 from = "/core-concepts/stake-pools"
