@@ -3,7 +3,7 @@ title: Cardano fee structure
 metaTitle: Cardano fee structure
 ---
 
-[Cardano](https://cardano.org/) uses a transaction fee system that covers the processing and long term
+[Cardano](https://cardano.org/) uses a transaction fee system that covers the processing and long-term
 storage cost of transactions.
 
 The Cardano environment is unique in the way it handles fees, as fees do not go
@@ -11,9 +11,9 @@ directly to the block producer. Instead, they are pooled and then distributed to
 all pools that created blocks during an epoch.
 
 There currently are no fees for the memory cost of tracking the accumulated
-chain state, in particular UTXO.
+chain state, in particular, UTXO.
 
-# Preventing economic attacks
+## Preventing economic attacks
 
 The Shelley hard fork event meant that the Cardano blockchain moved from
 federated to a fully decentralized environment, which might increase the
@@ -36,7 +36,7 @@ minimal fees for a transaction (tx) is a \* size(tx) + b, where:
 - a/b are protocol parameters
 - size(tx) is the transaction size in bytes
 
-# Protocol parameters (a and b)
+## Protocol parameters (a and b)
 
 Protocol parameters are values that can be altered by Cardano's update system to
 react and adapt to changes in transaction volume, hardware prices, and ada
