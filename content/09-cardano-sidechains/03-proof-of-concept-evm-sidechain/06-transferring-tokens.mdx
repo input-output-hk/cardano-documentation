@@ -12,12 +12,12 @@ This tutorial will show you how to transfer `SC_Tokens` between the main chain a
 3. If you have not done so already, create and fund your main chain and sidechain accounts.
 4. The bridge contract source which can be used to compile Solidity or obtain the ABI is in the SC_EVM repository [here](https://github.com/input-output-hk/sc-evm/blob/main/src/solidity-bridge/contracts/Bridge.sol).
 
-# Transfering tokens from a sidechain to the main chain
+## Transfering tokens from a sidechain to the main chain
 
 Transferring `SC_Token` from a sidechain to the main chain will require interfacing with the bridge smart contract to lock your desired amount of `SC_Token` to be claimed on the main chain. In this guide, you will use RemixIDE to interface with the bridge contract.
 
 
-### Step 01 - Setup contract interface in RemixIDE
+### Step 01 - Set up contract interface in RemixIDE
 
 - Go to https://remix.ethereum.org/
 
@@ -59,7 +59,7 @@ Input the amount of `SC_Token`, in `wei`, you want to lock: eg, `1000000000` Wei
   }' https://localhost:8546 | jq
   ```
 
-#### Step 03 - Wait for transaction to be processed and obtain Merkle Proof
+### Step 03 - Wait for the transaction to be processed and obtain the Merkle proof
 
 - Get the current sidechain status by invoking `sidechain_getStatus`:
 
@@ -141,7 +141,7 @@ curl -L -X POST https://localhost:8546 -H 'Content-type:application/json' -d '{"
 }
 ```
 
-From the return you need to obtain the `proof/bytes` and remove the `0x` that is prepended. Call that string `merkleProof`. 
+From the return, you need to obtain the `proof/bytes` and remove the `0x` that is prepended. Call that string `merkleProof`. 
 
 *In the above example `d8799fd8799...` is the Merkle proof.*
 
@@ -162,7 +162,7 @@ curl -L -X POST -H 'Content-type:application/json' -d '{
 
 Where `limit` = min(limit, number of epochs that are not yet relayed). The default value is `100`, but you can set it to any other number. Normally, when the handover happens at every epoch, it should only show 0 or 1 epochs (the last one). Once you identify that there are no roothashes pending in the list under the epoch that your lock was processed (`N` or `N+1`), you can claim your tokens. By now the epoch will be `N+1 `or `N+2`, depending on the phase you performed the lock operation in.
 
-#### Step 04 - Claim SC_Token
+### Step 04 - Claim SC_Token
 
 - Claim the tokens by submitting a transaction on the main chain with the `merkleProof` you obtained using the **sidechain-cli**. You will need to sign the transaction with your main chain signing key (ex: `payment.skey`):
 
@@ -186,7 +186,7 @@ Example output:
 
 🎉 Congratulations! At this point, you have successfully claimed your `SC_Token` on the main chain.
 
-# Transfering tokens from the main chain to a sidechain
+## Transfering tokens from the main chain to a sidechain
 
 ### Step 01 - Burn SC_Token
 

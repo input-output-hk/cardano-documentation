@@ -9,15 +9,15 @@ The EVM sidechain testnet is EVM-compatible with most Ethereum software to devel
 - [Hardhat](#hardhat)
 - [Truffle](#truffle)
 
-# Remix
+## Remix
 
 This tutorial will show you how to deploy a Solidity smart contract to the EVM sidechain testnet using Remix. [Remix](https://remix.ethereum.org/) is an online IDE to develop and deploy Solidity smart contracts.
 
-## Prerequisites
+### Prerequisites
 
 In this tutorial, you will use MetaMask as your wallet and Web3 provider. If you have not done so already, [create or import an account with MetaMask](../../metamask) and fund your wallet with testnet tokens using the [SC_EVM Faucet](https://github.com/input-output-hk/sc-evm-faucet-web).
 
-## Step 1 - Configure Remix
+### Step 1 - Configure Remix
 
 - Visit the [Remix IDE](https://remix.ethereum.org/). The left-hand side has a menu [1] and a typical file explorer [2]. The ` Solidity Compiler` [3] and `Deploy and run transactions` [4] plugins should be active by default.
 
@@ -33,7 +33,7 @@ Open MetaMask and double-check the sidechain testnet is the selected network. Th
 
 - In Remix, select the `Deploy and run transactions` plugin. Since you are using MetaMask as your Web3 provider, select 'Injected Provider' in the environment settings.
 
-## Step 2 - The smart contract
+### Step 2 - The smart contract
 
 With Remix configured to the sidechain testnet, you can move on to your smart contract development and deployment.
 
@@ -64,7 +64,7 @@ contract MintableERC20 is ERC20("Mintable Token", "MT"), Ownable {
 
 This smart contract describes a mintable ERC20 token using the OpenZeppelin ERC20 contract libraries.
 
-## Step 3 - Compile and deploy
+### Step 3 - Compile and deploy
 
 - Using the `Solidity compiler` plugin [1], select 'compile' the smart contract [2].
 
@@ -82,13 +82,13 @@ To verify that the smart contract was deployed on the sidechain testnet you can:
 - Open MetaMask and see if the contract deployment transaction was successfully signed.
 - Check Remix logs for deployment details.
   
-# HardHat
+## HardHat
 This tutorial will show you how to deploy a Solidity smart contract to the EVM sidechain testnet using Hardhat. [Hardhat](https://hardhat.org/) is a popular development environment for Ethereum software.
 
 - [Node.js](https://nodejs.org/en/) version 14 or later.
 - [HardHat](https://hardhat.org/)
 
-## Prerequisites
+### Prerequisites
 
 Hardhat is used in local NPM projects, so you will need NPM 7 or later.
 
@@ -108,7 +108,7 @@ $ npm -v
 7.7.6
 ```
 
-## Step 01 - Create a Hardhat project
+### Step 1 - Create a Hardhat project
 
 This tutorial will create a new NPM project and initialize `npx hardhat` to bootstrap a sample JavaScript project and configure it to deploy to the sidechain testnet.
 
@@ -148,7 +148,7 @@ $ npx hardhat
   Quit
 ```
 
-## Running tasks
+### Running tasks
 
 To view all options and commands with your Hardhat project, simply run `npx hardhat`:
 
@@ -194,7 +194,7 @@ To get help for a specific task run: npx hardhat help [task]
 
 If you need additional information on using Hardhat, see official [Hardhat documentation](https://hardhat.org/getting-started/).
 
-## Step 02 - Configure Hardhat
+### Step 2 - Configure Hardhat
 
 Our sample JavaScript project contains a `hardhat.config.js` file. The `networks` config field is an optional object where network names map to their configuration and we can set `accounts` we want to sign transactions. For example:
 
@@ -217,7 +217,7 @@ module.exports = {
 };
 ```
 
-## Step 03 - Compile and deploy
+### Step 3 - Compile and deploy
 
 - To compile Solidity files in the `contracts/` directory of your Hardhat project execute `npx hardhat compile`:
 
@@ -241,11 +241,11 @@ curl -H "Content-Type: application/json" -X POST --data \
 '{"jsonrpc":"2.0","method":"eth_getRawTransactionByHash","params":["<TX_HASH>"],"id":1}' http://localhost:8546
 ```
 
-# Truffle
+## Truffle
 
 This tutorial will show you how to deploy a Solidity smart contract to the EVM sidechain testnet using Truffle. [Truffle](https://trufflesuite.com/truffle/) is a popular development framework for EVM-based applications.
 
-## Prerequisites
+### Prerequisites
 
 Install the following dependencies:
 
@@ -266,7 +266,7 @@ $ npm install -g truffle
 $ truffle version
 ```
 
-## Step 1 - Configure Truffle
+### Step 1 - Configure Truffle
 
 You need to create a Truffle project before configuring Truffle to deploy on the EVM sidechain testnet. This demonstration will use the [React Truffle Box](https://trufflesuite.com/boxes/react/).
 
@@ -281,7 +281,7 @@ $ truffle unbox react
 - Configure Truffle to use the EVM sidechain testnet by adding the following in `React-Truffle/truffle/truffle-config.js` > Line 45. Remove the comment on Line 25.
 - Replace `YOUR_SEED_PHRASE` with your mnemonic phrase.
 
-## Step - Truffle Migrate
+### Step 2 - Truffle Migrate
 
 At this point, you've defined the EVM sidechain testnet and your testnet account to sign smart contract deployments. You are now ready to deploy!
 
