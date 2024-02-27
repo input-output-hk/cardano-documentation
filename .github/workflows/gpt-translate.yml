@@ -1,21 +1,22 @@
-# .github/workflows/gpt-translate.yml
-name: GPT Translate
+name: Docs Translation
 
 on:
-  issue_comment:
-    types: [ created ]
+  push:
+    branches:
+      - main
 
 jobs:
-  gpt_translate:
+  translate_docs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-      - name: Run GPT Translate
-        if: |
-          contains(github.event.comment.body, '/gpt-translate') || 
-          contains(github.event.comment.body, '/gt')
+      - name: Run Translation
         uses: 3ru/gpt-translate@master
         with:
           apikey: ${{ secrets.OPENAI_API_KEY }}
+          input: 'content/**/*.md'
+          output: 'translated_content/'
+          language: 'pt-BR'
