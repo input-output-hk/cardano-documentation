@@ -1169,6 +1169,26 @@
             "unlisted": false
           }
         ]
+      },
+      {
+        "type": "link",
+        "label": "Cardano Ecosystem Tools",
+        "href": "https://developers.cardano.org/tools/"
+      },
+      {
+        "type": "link",
+        "label": "Glossary",
+        "href": "https://www.essentialcardano.io/glossary?sort=alphabetical"
+      },
+      {
+        "type": "link",
+        "label": "Cardano.org",
+        "href": "https://cardano.org/"
+      },
+      {
+        "type": "link",
+        "label": "Developer Portal",
+        "href": "https://developers.cardano.org/"
       }
     ]
   },
@@ -1206,7 +1226,7 @@
     "cardano-components/cardano-explorer": {
       "id": "cardano-components/cardano-explorer",
       "title": "Cardano Explorer",
-      "description": "<iframe",
+      "description": "{/  /}",
       "sidebar": "tutorialSidebar"
     },
     "cardano-components/cardano-graphql": {
@@ -1320,7 +1340,7 @@
     "cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts/setup-development": {
       "id": "cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts/setup-development",
       "title": "Set up development environment",
-      "description": "The EVM sidechain testnet is EVM-compatible with most Ethereum software to develop and deploy smart contracts including:",
+      "description": "The EVM sidechain testnet is EVM-compatible with most Ethereum software to",
       "sidebar": "tutorialSidebar"
     },
     "cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts/solidity-resources": {
@@ -1572,7 +1592,7 @@
     "explore-cardano/cardano-design-rationale": {
       "id": "explore-cardano/cardano-design-rationale",
       "title": "Design rationale",
-      "description": "Cardano has been built as a resilient and sustainable blockchain using the core",
+      "description": "Cardano has been built as a resilient and sustainable",
       "sidebar": "tutorialSidebar"
     },
     "explore-cardano/cardano-entropy": {
@@ -1668,7 +1688,7 @@
     "learn/cardano-addresses": {
       "id": "learn/cardano-addresses",
       "title": "Cardano addresses",
-      "description": "The addresses are a blake2b-256 hash of the relevant verifying/public keys concatenated with some metadata that can be stored on the Cardano blockchain.",
+      "description": "The addresses are a blake2b-256 hash of the relevant verifying/public keys",
       "sidebar": "tutorialSidebar"
     },
     "learn/cardano-keys": {
@@ -1680,7 +1700,7 @@
     "learn/cardano-node": {
       "id": "learn/cardano-node",
       "title": "Cardano nodes",
-      "description": "The Cardano node is the top-level component within the network. Network nodes connect to each other within the networking layer, which is the driving force",
+      "description": "The",
       "sidebar": "tutorialSidebar"
     },
     "learn/chain-confirmation-versus-transaction-confirmation": {
@@ -1716,7 +1736,7 @@
     "learn/pledging-and-delegation-options": {
       "id": "learn/pledging-and-delegation-options",
       "title": "Pledging and delegation options",
-      "description": "Ada held on the Cardano network represents a user’s stake in the",
+      "description": "Ada held on the Cardano network represents a user’s",
       "sidebar": "tutorialSidebar"
     },
     "learn/pledging-rewards": {

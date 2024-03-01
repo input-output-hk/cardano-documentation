@@ -6,7 +6,7 @@
 export default {
   "title": "My Site",
   "tagline": "Dinosaurs are cool",
-  "favicon": "img/favicon.ico",
+  "favicon": "img/cardano-favicon.png",
   "url": "https://your-docusaurus-site.example.com",
   "baseUrl": "/",
   "organizationName": "facebook",
@@ -28,7 +28,7 @@ export default {
         "docs": {
           "sidebarPath": "./sidebars.ts",
           "routeBasePath": "/",
-          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/"
+          "editUrl": "https://github.com/input-output-hk/cardano-documentation"
         },
         "theme": {
           "customCss": "./src/css/custom.css"
@@ -38,6 +38,11 @@ export default {
   ],
   "themeConfig": {
     "image": "img/cardano-logo.svg",
+    "colorMode": {
+      "defaultMode": "light",
+      "disableSwitch": true,
+      "respectPrefersColorScheme": true
+    },
     "navbar": {
       "logo": {
         "alt": "My Site Logo",
@@ -45,7 +50,7 @@ export default {
       },
       "items": [
         {
-          "href": "https://github.com/facebook/docusaurus",
+          "href": "https://github.com/input-output-hk/cardano-documentation",
           "label": "GitHub",
           "position": "right"
         }
@@ -54,48 +59,96 @@ export default {
     },
     "footer": {
       "style": "dark",
+      "logo": {
+        "alt": "Cardano Logo",
+        "src": "img/cardano-logo.svg"
+      },
       "links": [
         {
-          "title": "Docs",
+          "title": "More About Cardano",
           "items": [
             {
-              "label": "Introduction",
-              "to": "/docs/introduction"
+              "label": "Cardano Explorer",
+              "href": "https://cardanoexplorer.com/"
+            },
+            {
+              "label": "Cardano Foundation",
+              "href": "https://cardanofoundation.org/"
+            },
+            {
+              "label": "Cardano.org",
+              "href": "https://www.cardano.org/"
+            },
+            {
+              "label": "Why Cardano",
+              "href": "https://why.cardano.org/"
+            },
+            {
+              "label": "Daedalus",
+              "href": "https://daedaluswallet.io/"
             }
           ]
         },
         {
-          "title": "Community",
+          "title": "Join the community",
           "items": [
             {
-              "label": "Stack Overflow",
-              "href": "https://stackoverflow.com/questions/tagged/docusaurus"
+              "label": "Cardano Community",
+              "href": "https://cardano.org/"
             },
             {
-              "label": "Discord",
-              "href": "https://discordapp.com/invite/docusaurus"
+              "label": "Cardano Telegram",
+              "href": "https://t.me/CardanoAnnouncements/"
             },
             {
-              "label": "Twitter",
-              "href": "https://twitter.com/docusaurus"
+              "label": "Cardano Forum",
+              "href": "https://forum.cardano.org/"
+            },
+            {
+              "label": "Cardano Reddit",
+              "href": "https://www.reddit.com/r/cardano/"
+            },
+            {
+              "label": "IOHK",
+              "href": "https://www.iohk.io/"
+            },
+            {
+              "label": "IOHK blog",
+              "href": "https://www.iohk.io/blog/"
+            },
+            {
+              "label": "IOHK YouTube",
+              "href": "https://www.youtube.com/channel/UCBJ0p9aCW-W82TwNM-z3V2w"
+            },
+            {
+              "label": "Cardano Foundation YouTube",
+              "href": "https://www.youtube.com/channel/UCbQ9vGfezru1YRI1zDCtTGg"
+            },
+            {
+              "label": "Cardano Foundation Twitter",
+              "href": "https://twitter.com/Cardano_CF"
+            },
+            {
+              "label": "IOG Academy",
+              "href": "https://www.youtube.com/channel/UCX9j__vYOJu00iqBrCzecVw"
             }
           ]
         },
         {
-          "title": "More",
+          "title": "Legal",
           "items": [
             {
-              "label": "Blog",
-              "to": "/blog"
+              "label": "IOHK Privacy Policy",
+              "href": "https://static.iohk.io/terms/iog-privacy-policy.pdf"
             },
             {
-              "label": "GitHub",
-              "href": "https://github.com/facebook/docusaurus"
+              "label": "IOHK Terms & Conditions",
+              "href": "https://static.iohk.io/terms/iohktermsandconditions.pdf"
             }
           ]
         }
       ],
-      "copyright": "Copyright © 2024 My Project, Inc. Built with Docusaurus."
+      "copyright": "Cardano is an open-source project. \n      \n      Cardano is a software platform ONLY and does not conduct any independent diligence on, or substantive review of, any blockchain asset, digital currency, cryptocurrency or associated funds. You are fully and solely responsible for evaluating your investments, for determining whether you will exchange blockchain assets based on your own judgement, and for all your decisions as to whether to exchange blockchain assets with Cardano. In many cases, blockchain assets you exchange on the basis of your research may not increase in value, and may decrease in value. Similarly, blockchain assets you exchange on the basis of your research may fall or rise in value after your exchange.\n      \n      Past performance is not indicative of future results. Any investment in blockchain assets involves the risk of loss of part or all of your investment. The value of the blockchain assets you exchange is subject to market and other investment risks.\n      \n      © IOHK 2015-2024 - IOHK Supported Project"
     },
     "prism": {
       "theme": {
@@ -200,95 +253,6 @@ export default {
           }
         ]
       },
-      "darkTheme": {
-        "plain": {
-          "color": "#F8F8F2",
-          "backgroundColor": "#282A36"
-        },
-        "styles": [
-          {
-            "types": [
-              "prolog",
-              "constant",
-              "builtin"
-            ],
-            "style": {
-              "color": "rgb(189, 147, 249)"
-            }
-          },
-          {
-            "types": [
-              "inserted",
-              "function"
-            ],
-            "style": {
-              "color": "rgb(80, 250, 123)"
-            }
-          },
-          {
-            "types": [
-              "deleted"
-            ],
-            "style": {
-              "color": "rgb(255, 85, 85)"
-            }
-          },
-          {
-            "types": [
-              "changed"
-            ],
-            "style": {
-              "color": "rgb(255, 184, 108)"
-            }
-          },
-          {
-            "types": [
-              "punctuation",
-              "symbol"
-            ],
-            "style": {
-              "color": "rgb(248, 248, 242)"
-            }
-          },
-          {
-            "types": [
-              "string",
-              "char",
-              "tag",
-              "selector"
-            ],
-            "style": {
-              "color": "rgb(255, 121, 198)"
-            }
-          },
-          {
-            "types": [
-              "keyword",
-              "variable"
-            ],
-            "style": {
-              "color": "rgb(189, 147, 249)",
-              "fontStyle": "italic"
-            }
-          },
-          {
-            "types": [
-              "comment"
-            ],
-            "style": {
-              "color": "rgb(98, 114, 164)"
-            }
-          },
-          {
-            "types": [
-              "attr-name"
-            ],
-            "style": {
-              "color": "rgb(241, 250, 140)"
-            }
-          }
-        ]
-      },
       "additionalLanguages": [],
       "magicComments": [
         {
@@ -300,11 +264,6 @@ export default {
           }
         }
       ]
-    },
-    "colorMode": {
-      "defaultMode": "light",
-      "disableSwitch": false,
-      "respectPrefersColorScheme": false
     },
     "docs": {
       "versionPersistence": "localStorage",

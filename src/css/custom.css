@@ -6,7 +6,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
+  --ifm-color-primary: rgba(0, 51, 173, 1);
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
   --ifm-color-primary-darkest: #205d3b;
@@ -20,6 +20,11 @@
   --ifm-navbar-padding-vertical: 1rem;
   --ifm-navbar-padding-horizontal: 1rem;
   --ifm-navbar-height: 5rem;
+
+  --ifm-footer-padding-vertical: 3rem;
+  --ifm-footer-padding-horizontal: 16px;
+  --ifm-container-width: 100%;
+  --ifm-container-width-xl: 100%;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@300;700&display=swap');
@@ -85,4 +90,42 @@ body {
 .navbar__items--right,
 .navbar__items--right > a {
   color: #fff !important;
+}
+
+.menu__link {
+  font-weight: bold;
+  color: #000000;
+}
+
+.container-fluid {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding: 0 !important;
+  padding-right: 100px !important;
+  margin: 0 !important;
+}
+
+.footer__bottom {
+  text-align: left;
+  font-size: 0.9rem;
+  width: 100%;
+  max-width: 750px;
+  order: -1;
+}
+
+.footer__links {
+  flex-wrap: nowrap;
+}
+
+.footer__col {
+  font-size: 0.8rem;
+  padding-left: 10px;
+  min-width: 225px;
+}
+
+.footer__item > a > svg {
+  display: none;
 }

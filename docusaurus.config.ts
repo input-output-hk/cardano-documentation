@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic'
 const config: Config = {
   title: 'My Site',
   tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/cardano-favicon.png',
 
   // Set the production url of your site here
   url: 'https://your-docusaurus-site.example.com',
@@ -38,8 +38,7 @@ const config: Config = {
           routeBasePath: '/',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/input-output-hk/cardano-documentation',
         },
         // blog: {
         //   showReadingTime: true,
@@ -58,6 +57,11 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/cardano-logo.svg',
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: true,
+      respectPrefersColorScheme: true,
+    },
     navbar: {
       logo: {
         alt: 'My Site Logo',
@@ -72,7 +76,7 @@ const config: Config = {
         // },
         // { to: '/blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/input-output-hk/cardano-documentation',
           label: 'GitHub',
           position: 'right',
         },
@@ -80,52 +84,81 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
+      logo: {
+        alt: 'Cardano Logo',
+        src: 'img/cardano-logo.svg',
+      },
       links: [
         {
-          title: 'Docs',
+          title: 'More About Cardano',
           items: [
+            { label: 'Cardano Explorer', href: 'https://cardanoexplorer.com/' },
             {
-              label: 'Introduction',
-              to: '/docs/introduction',
+              label: 'Cardano Foundation',
+              href: 'https://cardanofoundation.org/',
+            },
+            { label: 'Cardano.org', href: 'https://www.cardano.org/' },
+            { label: 'Why Cardano', href: 'https://why.cardano.org/' },
+            { label: 'Daedalus', href: 'https://daedaluswallet.io/' },
+          ],
+        },
+        {
+          title: 'Join the community',
+          items: [
+            { label: 'Cardano Community', href: 'https://cardano.org/' },
+            {
+              label: 'Cardano Telegram',
+              href: 'https://t.me/CardanoAnnouncements/',
+            },
+            { label: 'Cardano Forum', href: 'https://forum.cardano.org/' },
+            {
+              label: 'Cardano Reddit',
+              href: 'https://www.reddit.com/r/cardano/',
+            },
+            { label: 'IOHK', href: 'https://www.iohk.io/' },
+            { label: 'IOHK blog', href: 'https://www.iohk.io/blog/' },
+            {
+              label: 'IOHK YouTube',
+              href: 'https://www.youtube.com/channel/UCBJ0p9aCW-W82TwNM-z3V2w',
+            },
+            {
+              label: 'Cardano Foundation YouTube',
+              href: 'https://www.youtube.com/channel/UCbQ9vGfezru1YRI1zDCtTGg',
+            },
+            {
+              label: 'Cardano Foundation Twitter',
+              href: 'https://twitter.com/Cardano_CF',
+            },
+            {
+              label: 'IOG Academy',
+              href: 'https://www.youtube.com/channel/UCX9j__vYOJu00iqBrCzecVw',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Legal',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'IOHK Privacy Policy',
+              href: 'https://static.iohk.io/terms/iog-privacy-policy.pdf',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'IOHK Terms & Conditions',
+              href: 'https://static.iohk.io/terms/iohktermsandconditions.pdf',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Cardano is an open-source project. 
+      
+      Cardano is a software platform ONLY and does not conduct any independent diligence on, or substantive review of, any blockchain asset, digital currency, cryptocurrency or associated funds. You are fully and solely responsible for evaluating your investments, for determining whether you will exchange blockchain assets based on your own judgement, and for all your decisions as to whether to exchange blockchain assets with Cardano. In many cases, blockchain assets you exchange on the basis of your research may not increase in value, and may decrease in value. Similarly, blockchain assets you exchange on the basis of your research may fall or rise in value after your exchange.
+      
+      Past performance is not indicative of future results. Any investment in blockchain assets involves the risk of loss of part or all of your investment. The value of the blockchain assets you exchange is subject to market and other investment risks.
+      
+      © IOHK 2015-${new Date().getFullYear()} - IOHK Supported Project`,
     },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
 }

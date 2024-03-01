@@ -101,7 +101,7 @@ export default function Home(): JSX.Element {
               heading="Stake pools"
               text="A stake pool is a reliable server node that focuses on maintenance and holds the combined stake of various stakeholders in a single entity."
               label="Stake pools explained"
-              ctalink="/core-concepts/stake-pools"
+              ctalink="/learn/stake-pools"
               btn="primary"
             />
           </GridItem>
@@ -111,7 +111,7 @@ export default function Home(): JSX.Element {
               heading="Delegation"
               text="Delegation of stake is a mechanism inherent in the Cardano proof of stake (PoS) protocol that allows the protocol to scale even in a setting where the set of stakeholders are highly distributed."
               label="Delegation explained"
-              ctalink="/core-concepts/delegation"
+              ctalink="/learn/delegation"
               btn="primary"
             />
           </GridItem>
