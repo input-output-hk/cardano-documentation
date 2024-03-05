@@ -21,6 +21,16 @@ export default {
     "path": "i18n",
     "localeConfigs": {}
   },
+  "plugins": [
+    [
+      "docusaurus-node-polyfills",
+      {
+        "excludeAliases": [
+          "console"
+        ]
+      }
+    ]
+  ],
   "presets": [
     [
       "classic",
@@ -285,7 +295,6 @@ export default {
     "static"
   ],
   "customFields": {},
-  "plugins": [],
   "themes": [],
   "scripts": [],
   "headTags": [],

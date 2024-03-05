@@ -129,3 +129,7 @@ body {
 .footer__item > a > svg {
   display: none;
 }
+
+.container {
+  padding-left: 3rem;
+}

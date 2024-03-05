@@ -4643,6 +4643,7 @@
   },
   "docusaurus-plugin-debug": {},
   "docusaurus-theme-classic": {},
+  "docusaurus-node-polyfills": {},
   "docusaurus-bootstrap-plugin": {},
   "docusaurus-mdx-fallback-plugin": {}
 }

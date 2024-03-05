@@ -26,6 +26,11 @@
       "type": "package",
       "name": "@docusaurus/theme-classic",
       "version": "3.1.1"
+    },
+    "docusaurus-node-polyfills": {
+      "type": "package",
+      "name": "docusaurus-node-polyfills",
+      "version": "1.0.0"
     }
   }
 }

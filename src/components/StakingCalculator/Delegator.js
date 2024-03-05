@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
-import { TinyColor } from '@ctrl/tinycolor'
 import { Location } from '@reach/router'
+import { TinyColor } from '@ctrl/tinycolor'
 import Link from '@input-output-hk/front-end-core-components/components/Link'
 import {
   MdClose,
@@ -834,7 +834,7 @@ export default () => {
       return initialCalculator
     return 'delegator'
   }
-
+  console.log(currencies)
   return (
     <Location>
       {({ location }) => (
