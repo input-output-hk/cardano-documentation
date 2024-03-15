@@ -1091,7 +1091,7 @@
             {
               "id": "cardano-testnets/about/testnet-introduction",
               "title": "Vasil introduction",
-              "description": "Note: New dedicated preview and pre-production environments have been recently spun up for the final stages of testing Vasil functionality. These environments offer improved chain density and a better developer experience.",
+              "description": "Note: New dedicated preview and pre-production environments have been",
               "source": "@site/docs/05-cardano-testnets/02-about/01-testnet-introduction.mdx",
               "sourceDirName": "05-cardano-testnets/02-about",
               "slug": "/cardano-testnets/about/testnet-introduction",
@@ -1147,7 +1147,7 @@
             {
               "id": "cardano-testnets/getting-started",
               "title": "Getting started with Cardano testnets",
-              "description": "Note that the Cardano testnet is no longer recommended for testing purposes. The community is encouraged to use preview and pre-production testnet environments explained below.",
+              "description": "Note that the Cardano testnet is no longer recommended for testing",
               "source": "@site/docs/05-cardano-testnets/03-getting-started.mdx",
               "sourceDirName": "05-cardano-testnets",
               "slug": "/cardano-testnets/getting-started",
@@ -1204,6 +1204,34 @@
               }
             },
             {
+              "id": "cardano-testnets/links",
+              "title": "Resources",
+              "description": "Useful materials",
+              "source": "@site/docs/05-cardano-testnets/07-links.mdx",
+              "sourceDirName": "05-cardano-testnets",
+              "slug": "/cardano-testnets/links",
+              "permalink": "/cardano-testnets/links",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/07-links.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 7,
+              "frontMatter": {
+                "title": "Resources",
+                "metaTitle": "Links"
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Plutus fee estimator",
+                "permalink": "/cardano-testnets/tools/plutus-fee-estimator"
+              },
+              "next": {
+                "title": "Resources",
+                "permalink": "/cardano-testnets/resources"
+              }
+            },
+            {
               "id": "cardano-testnets/local-testnet",
               "title": "Creating a local testnet",
               "description": "A local testnet enables developers and projects building on Cardano to test new features or functionality prior to deployment on global testnet environments. While preview and pre-production environments benefit the wider developer community, a local testnet allows the execution of a hard fork in your own setup and subsequent testing of DApp behavior.",
@@ -1251,8 +1279,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Plutus fee estimator",
-                "permalink": "/cardano-testnets/tools/plutus-fee-estimator"
+                "title": "Resources",
+                "permalink": "/cardano-testnets/links"
               },
               "next": {
                 "title": "Support and feedback",
@@ -1340,7 +1368,7 @@
               },
               "next": {
                 "title": "Resources",
-                "permalink": "/cardano-testnets/resources"
+                "permalink": "/cardano-testnets/links"
               }
             },
             {
@@ -4080,6 +4108,10 @@
                         "id": "cardano-testnets/tools/plutus-fee-estimator"
                       }
                     ]
+                  },
+                  {
+                    "type": "doc",
+                    "id": "cardano-testnets/links"
                   },
                   {
                     "type": "doc",

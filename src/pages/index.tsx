@@ -79,7 +79,7 @@ export default function Home(): JSX.Element {
               heading="New to Cardano?"
               text="If you are new to Cardano and would like to learn more about the basics we have a range of explainers on the components of blockchain and how Cardano stands out from other solutions. From explanations on cryptocurrency and consensus and diving deeper into the types of wallets and delegation instructions, we aim to make your introduction to Cardano seamless and comprehensive."
               label="Get Started"
-              ctalink="/new-to-cardano/introduction"
+              ctalink="/new-to-cardano"
               btn="secondary"
             />
           </GridItem>

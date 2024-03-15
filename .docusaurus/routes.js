@@ -44,15 +44,15 @@ export default [
   },
   {
     path: '/',
-    component: ComponentCreator('/', 'a92'),
+    component: ComponentCreator('/', 'ab9'),
     routes: [
       {
         path: '/',
-        component: ComponentCreator('/', '785'),
+        component: ComponentCreator('/', '6f2'),
         routes: [
           {
             path: '/',
-            component: ComponentCreator('/', 'd34'),
+            component: ComponentCreator('/', '447'),
             routes: [
               {
                 path: '/cardano-components/cardano-db-sync/about-db-sync',
@@ -303,6 +303,12 @@ export default [
               {
                 path: '/cardano-testnets/getting-started',
                 component: ComponentCreator('/cardano-testnets/getting-started', 'f65'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/cardano-testnets/links',
+                component: ComponentCreator('/cardano-testnets/links', '742'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },

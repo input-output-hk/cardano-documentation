@@ -376,6 +376,13 @@
           {
             "type": "link",
             "label": "Resources",
+            "href": "/cardano-testnets/links",
+            "docId": "cardano-testnets/links",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Resources",
             "href": "/cardano-testnets/resources",
             "docId": "cardano-testnets/resources",
             "unlisted": false
@@ -1390,7 +1397,7 @@
     "cardano-testnets/about/testnet-introduction": {
       "id": "cardano-testnets/about/testnet-introduction",
       "title": "Vasil introduction",
-      "description": "Note: New dedicated preview and pre-production environments have been recently spun up for the final stages of testing Vasil functionality. These environments offer improved chain density and a better developer experience.",
+      "description": "Note: New dedicated preview and pre-production environments have been",
       "sidebar": "tutorialSidebar"
     },
     "cardano-testnets/daedalus-testnet": {
@@ -1402,13 +1409,19 @@
     "cardano-testnets/getting-started": {
       "id": "cardano-testnets/getting-started",
       "title": "Getting started with Cardano testnets",
-      "description": "Note that the Cardano testnet is no longer recommended for testing purposes. The community is encouraged to use preview and pre-production testnet environments explained below.",
+      "description": "Note that the Cardano testnet is no longer recommended for testing",
       "sidebar": "tutorialSidebar"
     },
     "cardano-testnets/index": {
       "id": "cardano-testnets/index",
       "title": "Cardano Testnets",
       "description": "Cardano testnets sit at the vanguard of network development, providing sandboxed",
+      "sidebar": "tutorialSidebar"
+    },
+    "cardano-testnets/links": {
+      "id": "cardano-testnets/links",
+      "title": "Resources",
+      "description": "Useful materials",
       "sidebar": "tutorialSidebar"
     },
     "cardano-testnets/local-testnet": {

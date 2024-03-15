@@ -49,17 +49,17 @@
     },
     "config": "config---5-e-9-4f3"
   },
-  "/-a92": {
+  "/-ab9": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---cf-2-0b9"
     }
   },
-  "/-785": {
+  "/-6f2": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "version": "version---935-fcf"
   },
-  "/-d34": {
+  "/-447": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/cardano-components/cardano-db-sync/about-db-sync-4c1": {
@@ -229,6 +229,10 @@
   "/cardano-testnets/getting-started-f65": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---cardano-testnets-getting-startedc-90-ffb"
+  },
+  "/cardano-testnets/links-742": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---cardano-testnets-linkscc-6-508"
   },
   "/cardano-testnets/local-testnet-675": {
     "__comp": "__comp---theme-doc-item-178-a40",

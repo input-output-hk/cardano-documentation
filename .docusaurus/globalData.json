@@ -221,6 +221,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "cardano-testnets/links",
+              "path": "/cardano-testnets/links",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "cardano-testnets/local-testnet",
               "path": "/cardano-testnets/local-testnet",
               "sidebar": "tutorialSidebar"
