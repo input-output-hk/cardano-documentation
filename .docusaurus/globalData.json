@@ -171,8 +171,8 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-sidechains/sidechain-toolkit/introduction",
-              "path": "/cardano-sidechains/sidechain-toolkit/introduction",
+              "id": "cardano-sidechains/sidechain-toolkit/index",
+              "path": "/cardano-sidechains/sidechain-toolkit/",
               "sidebar": "tutorialSidebar"
             },
             {
@@ -191,63 +191,63 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-testnet/about/feature-overview",
-              "path": "/cardano-testnet/about/feature-overview",
+              "id": "cardano-testnets/about/feature-overview",
+              "path": "/cardano-testnets/about/feature-overview",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-testnet/about/secp",
-              "path": "/cardano-testnet/about/secp",
+              "id": "cardano-testnets/about/secp",
+              "path": "/cardano-testnets/about/secp",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-testnet/about/testnet-introduction",
-              "path": "/cardano-testnet/about/testnet-introduction",
+              "id": "cardano-testnets/about/testnet-introduction",
+              "path": "/cardano-testnets/about/testnet-introduction",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-testnet/daedalus-testnet",
-              "path": "/cardano-testnet/daedalus-testnet",
+              "id": "cardano-testnets/daedalus-testnet",
+              "path": "/cardano-testnets/daedalus-testnet",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-testnet/getting-started",
-              "path": "/cardano-testnet/getting-started",
+              "id": "cardano-testnets/getting-started",
+              "path": "/cardano-testnets/getting-started",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-testnet/local-testnet",
-              "path": "/cardano-testnet/local-testnet",
+              "id": "cardano-testnets/index",
+              "path": "/cardano-testnets/",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-testnet/overview",
-              "path": "/cardano-testnet/overview",
+              "id": "cardano-testnets/local-testnet",
+              "path": "/cardano-testnets/local-testnet",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-testnet/resources/links",
-              "path": "/cardano-testnet/resources/links",
+              "id": "cardano-testnets/resources",
+              "path": "/cardano-testnets/resources",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-testnet/support-feedback",
-              "path": "/cardano-testnet/support-feedback",
+              "id": "cardano-testnets/support-feedback",
+              "path": "/cardano-testnets/support-feedback",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-testnet/tools/faucet",
-              "path": "/cardano-testnet/tools/faucet",
+              "id": "cardano-testnets/tools/faucet",
+              "path": "/cardano-testnets/tools/faucet",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-testnet/tools/plutus-fee-estimator",
-              "path": "/cardano-testnet/tools/plutus-fee-estimator",
+              "id": "cardano-testnets/tools/plutus-fee-estimator",
+              "path": "/cardano-testnets/tools/plutus-fee-estimator",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-testnet/tools/staking-calculator",
-              "path": "/cardano-testnet/tools/staking-calculator",
+              "id": "cardano-testnets/tools/staking-calculator",
+              "path": "/cardano-testnets/tools/staking-calculator",
               "sidebar": "tutorialSidebar"
             },
             {
@@ -301,8 +301,8 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "development-guidelines/transaction-tutorials/introduction",
-              "path": "/development-guidelines/transaction-tutorials/introduction",
+              "id": "development-guidelines/transaction-tutorials/index",
+              "path": "/development-guidelines/transaction-tutorials/",
               "sidebar": "tutorialSidebar"
             },
             {
@@ -351,13 +351,8 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "explore-cardano/cardano-network",
-              "path": "/explore-cardano/cardano-network",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "explore-cardano/cardano-network/about-the-cardano-network",
-              "path": "/explore-cardano/cardano-network/about-the-cardano-network",
+              "id": "explore-cardano/cardano-network/index",
+              "path": "/explore-cardano/cardano-network/",
               "sidebar": "tutorialSidebar"
             },
             {
@@ -476,11 +471,6 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "marlowe/learn-about-marlowe",
-              "path": "/marlowe/learn-about-marlowe",
-              "sidebar": "tutorialSidebar"
-            },
-            {
               "id": "native-tokens/exchange-multi-asset-management-scenarios",
               "path": "/native-tokens/exchange-multi-asset-management-scenarios",
               "sidebar": "tutorialSidebar"
@@ -531,8 +521,8 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "new-to-cardano/introduction",
-              "path": "/new-to-cardano/introduction",
+              "id": "new-to-cardano/index",
+              "path": "/new-to-cardano/",
               "sidebar": "tutorialSidebar"
             },
             {
@@ -626,43 +616,13 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "plutus/collateral-mechanism",
-              "path": "/plutus/collateral-mechanism",
+              "id": "release-notes/comp-matrix",
+              "path": "/release-notes/comp-matrix",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "plutus/dapp-development",
-              "path": "/plutus/dapp-development",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "plutus/learn-about-plutus",
-              "path": "/plutus/learn-about-plutus",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "plutus/plutus-resources",
-              "path": "/plutus/plutus-resources",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "plutus/plutus-scripts",
-              "path": "/plutus/plutus-scripts",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "plutus/Plutus-use-cases",
-              "path": "/plutus/Plutus-use-cases",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "plutus/sc-best-practices",
-              "path": "/plutus/sc-best-practices",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "plutus/transaction-costs-determinism",
-              "path": "/plutus/transaction-costs-determinism",
+              "id": "release-notes/release-notes",
+              "path": "/release-notes/release-notes",
               "sidebar": "tutorialSidebar"
             },
             {
@@ -676,13 +636,53 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "tools/comp-matrix",
-              "path": "/tools/comp-matrix",
+              "id": "smart-contracts/learn-about-aiken",
+              "path": "/smart-contracts/learn-about-aiken",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "tools/release-notes",
-              "path": "/tools/release-notes",
+              "id": "smart-contracts/learn-about-marlowe",
+              "path": "/smart-contracts/learn-about-marlowe",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "smart-contracts/plutus/collateral-mechanism",
+              "path": "/smart-contracts/plutus/collateral-mechanism",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "smart-contracts/plutus/dapp-development",
+              "path": "/smart-contracts/plutus/dapp-development",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "smart-contracts/plutus/learn-about-plutus",
+              "path": "/smart-contracts/plutus/learn-about-plutus",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "smart-contracts/plutus/plutus-resources",
+              "path": "/smart-contracts/plutus/plutus-resources",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "smart-contracts/plutus/plutus-scripts",
+              "path": "/smart-contracts/plutus/plutus-scripts",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "smart-contracts/plutus/Plutus-use-cases",
+              "path": "/smart-contracts/plutus/Plutus-use-cases",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "smart-contracts/plutus/sc-best-practices",
+              "path": "/smart-contracts/plutus/sc-best-practices",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "smart-contracts/plutus/transaction-costs-determinism",
+              "path": "/smart-contracts/plutus/transaction-costs-determinism",
               "sidebar": "tutorialSidebar"
             }
           ],

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
 import { TinyColor } from '@ctrl/tinycolor'
-import { Location } from '@reach/router'
 import Link from '@input-output-hk/front-end-core-components/components/Link'
 import {
   MdClose,
@@ -373,7 +372,7 @@ const Calculator = ({
     )
       transactionFeesPerEpoch = 0
 
-    const totalADAInCirculation = getTotalADAInCirculation(epoch)
+    const totalADAInCirculation = getTotalADAInCirculation(epoch, undefined)
     const epochDistribution = getEpochDistributableRewards(
       totalADAInCirculation,
       transactionFeesPerEpoch,
@@ -591,8 +590,7 @@ const Calculator = ({
             {shareModalVisible && (
               <Modal
                 open={shareModalVisible}
-                onClose={(e) => {
-                  e.preventDefault()
+                onClose={() => {
                   setShareModalVisible(false)
                 }}
                 disableScrollLock
@@ -716,7 +714,7 @@ export default () => {
       '___react-ada-staking-calculator___coingecko-result',
     )
     try {
-      const cachedResult = window.localStorage.getItem(storageKey)
+      const cachedResult = JSON.parse(window.localStorage.getItem(storageKey))
       if (cachedResult && cachedResult.expires > Date.now()) {
         setCurrencies(parseCurrencies(cachedResult.result))
       } else {
@@ -736,7 +734,7 @@ export default () => {
       }
     } catch (err) {
       console.error('Unable to fetch Cardano data', err)
-      setCurrencies([{ symbol: 'ADA', key: 'ADA', exchangeRate: 1 }])
+      setCurrencies([{ symbol: 'ADA', key: 'ADA', exchangeRate: '1' }])
     }
   }
 
@@ -752,6 +750,7 @@ export default () => {
       const value = params.get(key)
       if (key === 'ada') {
         if (!isNaN(parseFloat(value)) && parseFloat(value) >= 0)
+          // @ts-ignore
           initialValues.ada = value
       } else if (key === 'stakePoolControl') {
         if (
@@ -759,9 +758,11 @@ export default () => {
           parseFloat(value) >= 0 &&
           parseFloat(value) <= 0.02
         )
+          // @ts-ignore
           initialValues.stakePoolControl = parseFloat(value)
       } else if (key === 'operatorsStake') {
         if (!isNaN(parseFloat(value)) && parseFloat(value) >= 0)
+          // @ts-ignore
           initialValues.operatorsStake = parseFloat(value)
       } else if (key === 'stakePoolMargin') {
         if (
@@ -769,6 +770,7 @@ export default () => {
           parseFloat(value) >= 0 &&
           parseFloat(value) <= 1
         )
+          // @ts-ignore
           initialValues.stakePoolMargin = parseFloat(value)
       } else if (key === 'stakePoolPerformance') {
         if (
@@ -776,6 +778,7 @@ export default () => {
           parseFloat(value) >= 0 &&
           parseFloat(value) <= 1
         )
+          // @ts-ignore
           initialValues.stakePoolPerformance = parseFloat(value)
       } else if (key === 'totalStakePools') {
         if (
@@ -783,6 +786,7 @@ export default () => {
           parseInt(value) >= 100 &&
           parseInt(value) <= 1000
         )
+          // @ts-ignore
           initialValues.totalStakePools = parseInt(value)
       } else if (key === 'influenceFactor') {
         if (
@@ -790,12 +794,15 @@ export default () => {
           parseFloat(value) >= 0 &&
           parseFloat(value) <= 10
         )
+          // @ts-ignore
           initialValues.influenceFactor = parseFloat(value)
       } else if (key === 'transactionFeesPerEpoch') {
         if (!isNaN(parseFloat(value)) && parseFloat(value) >= 0)
+          // @ts-ignore
           initialValues.transactionFeesPerEpoch = value
       } else if (key === 'stakePoolFixedFee') {
         if (!isNaN(parseFloat(value)) && parseFloat(value) >= 0)
+          // @ts-ignore
           initialValues.stakePoolFixedFee = parseFloat(value)
       } else if (key === 'treasuryRate') {
         if (
@@ -803,6 +810,7 @@ export default () => {
           parseFloat(value) >= 0 &&
           parseFloat(value) <= 1
         )
+          // @ts-ignore
           initialValues.treasuryRate = parseFloat(value)
       } else if (key === 'expansionRate') {
         if (
@@ -810,6 +818,7 @@ export default () => {
           parseFloat(value) >= 0 &&
           parseFloat(value) <= 0.02
         )
+          // @ts-ignore
           initialValues.expansionRate = parseFloat(value)
       } else if (key === 'epochDurationInDays') {
         if (
@@ -817,9 +826,11 @@ export default () => {
           parseFloat(value) >= 1 &&
           parseFloat(value) <= 30
         )
+          // @ts-ignore
           initialValues.epochDurationInDays = parseFloat(value)
       } else if (key === 'currentEpoch') {
         if (!isNaN(parseFloat(value)) && parseFloat(value) >= 1)
+          // @ts-ignore
           initialValues.currentEpoch = parseFloat(value)
       }
     }
@@ -836,26 +847,22 @@ export default () => {
   }
 
   return (
-    <Location>
-      {({ location }) => (
-        <Box position="relative">
-          {currencies === null && (
-            <Box textAlign="center" paddingTop={4} paddingBottom={4}>
-              <CircularProgress />
-            </Box>
-          )}
-          {currencies !== null && (
-            <Calculator
-              initialValues={getInitialValues(location.search)}
-              initialCalculator={getInitialCalculator(location.search)}
-              currencies={currencies}
-              content={content}
-              origin={location.origin}
-              pathname={location.pathname}
-            />
-          )}
+    <Box position="relative">
+      {currencies === null && (
+        <Box textAlign="center" paddingTop={4} paddingBottom={4}>
+          <CircularProgress />
         </Box>
       )}
-    </Location>
+      {currencies !== null && (
+        <Calculator
+          initialValues={getInitialValues(location.search)}
+          initialCalculator={getInitialCalculator(location.search)}
+          currencies={currencies}
+          content={content}
+          origin={location.origin}
+          pathname={location.pathname}
+        />
+      )}
+    </Box>
   )
 }

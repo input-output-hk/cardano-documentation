@@ -38,26 +38,21 @@ export default [
     exact: true
   },
   {
-    path: '/markdown-page',
-    component: ComponentCreator('/markdown-page', '669'),
-    exact: true
-  },
-  {
     path: '/',
     component: ComponentCreator('/', '13a'),
     exact: true
   },
   {
     path: '/',
-    component: ComponentCreator('/', '3c3'),
+    component: ComponentCreator('/', 'a92'),
     routes: [
       {
         path: '/',
-        component: ComponentCreator('/', '1bb'),
+        component: ComponentCreator('/', '785'),
         routes: [
           {
             path: '/',
-            component: ComponentCreator('/', 'b53'),
+            component: ComponentCreator('/', 'd34'),
             routes: [
               {
                 path: '/cardano-components/cardano-db-sync/about-db-sync',
@@ -240,6 +235,12 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
+                path: '/cardano-sidechains/sidechain-toolkit/',
+                component: ComponentCreator('/cardano-sidechains/sidechain-toolkit/', '445'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
                 path: '/cardano-sidechains/sidechain-toolkit/chain-follower',
                 component: ComponentCreator('/cardano-sidechains/sidechain-toolkit/chain-follower', 'cfe'),
                 exact: true,
@@ -248,12 +249,6 @@ export default [
               {
                 path: '/cardano-sidechains/sidechain-toolkit/committee-rotation',
                 component: ComponentCreator('/cardano-sidechains/sidechain-toolkit/committee-rotation', '27f'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/cardano-sidechains/sidechain-toolkit/introduction',
-                component: ComponentCreator('/cardano-sidechains/sidechain-toolkit/introduction', 'd46'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
@@ -276,110 +271,110 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/cardano-testnet/about/feature-overview',
-                component: ComponentCreator('/cardano-testnet/about/feature-overview', '5ed'),
+                path: '/cardano-testnets/',
+                component: ComponentCreator('/cardano-testnets/', '06b'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/cardano-testnet/about/secp',
-                component: ComponentCreator('/cardano-testnet/about/secp', '306'),
+                path: '/cardano-testnets/about/feature-overview',
+                component: ComponentCreator('/cardano-testnets/about/feature-overview', 'f5f'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/cardano-testnet/about/testnet-introduction',
-                component: ComponentCreator('/cardano-testnet/about/testnet-introduction', '525'),
+                path: '/cardano-testnets/about/secp',
+                component: ComponentCreator('/cardano-testnets/about/secp', '1f8'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/cardano-testnet/daedalus-testnet',
-                component: ComponentCreator('/cardano-testnet/daedalus-testnet', 'cea'),
+                path: '/cardano-testnets/about/testnet-introduction',
+                component: ComponentCreator('/cardano-testnets/about/testnet-introduction', '73f'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/cardano-testnet/getting-started',
-                component: ComponentCreator('/cardano-testnet/getting-started', '2a4'),
+                path: '/cardano-testnets/daedalus-testnet',
+                component: ComponentCreator('/cardano-testnets/daedalus-testnet', '6b1'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/cardano-testnet/local-testnet',
-                component: ComponentCreator('/cardano-testnet/local-testnet', '5a5'),
+                path: '/cardano-testnets/getting-started',
+                component: ComponentCreator('/cardano-testnets/getting-started', 'f65'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/cardano-testnet/overview',
-                component: ComponentCreator('/cardano-testnet/overview', 'cc7'),
+                path: '/cardano-testnets/local-testnet',
+                component: ComponentCreator('/cardano-testnets/local-testnet', '675'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/cardano-testnet/resources/links',
-                component: ComponentCreator('/cardano-testnet/resources/links', '452'),
+                path: '/cardano-testnets/resources',
+                component: ComponentCreator('/cardano-testnets/resources', '510'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/cardano-testnet/support-feedback',
-                component: ComponentCreator('/cardano-testnet/support-feedback', '202'),
+                path: '/cardano-testnets/support-feedback',
+                component: ComponentCreator('/cardano-testnets/support-feedback', 'c9a'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/cardano-testnet/tools/faucet',
-                component: ComponentCreator('/cardano-testnet/tools/faucet', 'd13'),
+                path: '/cardano-testnets/tools/faucet',
+                component: ComponentCreator('/cardano-testnets/tools/faucet', 'f6a'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/cardano-testnet/tools/plutus-fee-estimator',
-                component: ComponentCreator('/cardano-testnet/tools/plutus-fee-estimator', '844'),
+                path: '/cardano-testnets/tools/plutus-fee-estimator',
+                component: ComponentCreator('/cardano-testnets/tools/plutus-fee-estimator', '5df'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/cardano-testnet/tools/staking-calculator',
-                component: ComponentCreator('/cardano-testnet/tools/staking-calculator', '4dd'),
+                path: '/cardano-testnets/tools/staking-calculator',
+                component: ComponentCreator('/cardano-testnets/tools/staking-calculator', '802'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
                 path: '/community/ambassador-program',
-                component: ComponentCreator('/community/ambassador-program', '403'),
+                component: ComponentCreator('/community/ambassador-program', '0f7'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
                 path: '/community/Cardano-stack-exchange',
-                component: ComponentCreator('/community/Cardano-stack-exchange', 'e9b'),
+                component: ComponentCreator('/community/Cardano-stack-exchange', 'bd5'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
                 path: '/community/cips',
-                component: ComponentCreator('/community/cips', 'e71'),
+                component: ComponentCreator('/community/cips', '092'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
                 path: '/community/community-content',
-                component: ComponentCreator('/community/community-content', '998'),
+                component: ComponentCreator('/community/community-content', 'fe3'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
                 path: '/community/essential-cardano',
-                component: ComponentCreator('/community/essential-cardano', 'ad4'),
+                component: ComponentCreator('/community/essential-cardano', '930'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
                 path: '/community/getting-support',
-                component: ComponentCreator('/community/getting-support', 'e9b'),
+                component: ComponentCreator('/community/getting-support', '915'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
@@ -408,8 +403,8 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/development-guidelines/transaction-tutorials/introduction',
-                component: ComponentCreator('/development-guidelines/transaction-tutorials/introduction', '3d0'),
+                path: '/development-guidelines/transaction-tutorials/',
+                component: ComponentCreator('/development-guidelines/transaction-tutorials/', 'c89'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
@@ -468,14 +463,8 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/explore-cardano/cardano-network',
-                component: ComponentCreator('/explore-cardano/cardano-network', '5fd'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/explore-cardano/cardano-network/about-the-cardano-network',
-                component: ComponentCreator('/explore-cardano/cardano-network/about-the-cardano-network', '4c4'),
+                path: '/explore-cardano/cardano-network/',
+                component: ComponentCreator('/explore-cardano/cardano-network/', '352'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
@@ -618,12 +607,6 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/marlowe/learn-about-marlowe',
-                component: ComponentCreator('/marlowe/learn-about-marlowe', '4dd'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
                 path: '/native-tokens/exchange-multi-asset-management-scenarios',
                 component: ComponentCreator('/native-tokens/exchange-multi-asset-management-scenarios', 'be6'),
                 exact: true,
@@ -666,6 +649,12 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
+                path: '/new-to-cardano/',
+                component: ComponentCreator('/new-to-cardano/', '5c8'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
                 path: '/new-to-cardano/cardano-tracking-tools',
                 component: ComponentCreator('/new-to-cardano/cardano-tracking-tools', '4cd'),
                 exact: true,
@@ -680,12 +669,6 @@ export default [
               {
                 path: '/new-to-cardano/how-to-purchase-ada',
                 component: ComponentCreator('/new-to-cardano/how-to-purchase-ada', '0ef'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/new-to-cardano/introduction',
-                component: ComponentCreator('/new-to-cardano/introduction', 'ff1'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
@@ -787,61 +770,25 @@ export default [
               },
               {
                 path: '/pioneer-programs/marlowe-pioneers',
-                component: ComponentCreator('/pioneer-programs/marlowe-pioneers', 'a05'),
+                component: ComponentCreator('/pioneer-programs/marlowe-pioneers', 'b25'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
                 path: '/pioneer-programs/plutus-pioneers',
-                component: ComponentCreator('/pioneer-programs/plutus-pioneers', '6f9'),
+                component: ComponentCreator('/pioneer-programs/plutus-pioneers', 'cbf'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/plutus/collateral-mechanism',
-                component: ComponentCreator('/plutus/collateral-mechanism', '841'),
+                path: '/release-notes/comp-matrix',
+                component: ComponentCreator('/release-notes/comp-matrix', '2a3'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/plutus/dapp-development',
-                component: ComponentCreator('/plutus/dapp-development', 'aaa'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/plutus/learn-about-plutus',
-                component: ComponentCreator('/plutus/learn-about-plutus', 'ee6'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/plutus/plutus-resources',
-                component: ComponentCreator('/plutus/plutus-resources', 'fbd'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/plutus/plutus-scripts',
-                component: ComponentCreator('/plutus/plutus-scripts', 'c72'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/plutus/Plutus-use-cases',
-                component: ComponentCreator('/plutus/Plutus-use-cases', 'c09'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/plutus/sc-best-practices',
-                component: ComponentCreator('/plutus/sc-best-practices', '700'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/plutus/transaction-costs-determinism',
-                component: ComponentCreator('/plutus/transaction-costs-determinism', '118'),
+                path: '/release-notes/release-notes',
+                component: ComponentCreator('/release-notes/release-notes', '080'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
@@ -858,14 +805,62 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/tools/comp-matrix',
-                component: ComponentCreator('/tools/comp-matrix', '120'),
+                path: '/smart-contracts/learn-about-aiken',
+                component: ComponentCreator('/smart-contracts/learn-about-aiken', 'ffc'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/tools/release-notes',
-                component: ComponentCreator('/tools/release-notes', 'baf'),
+                path: '/smart-contracts/learn-about-marlowe',
+                component: ComponentCreator('/smart-contracts/learn-about-marlowe', '6dd'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/smart-contracts/plutus/collateral-mechanism',
+                component: ComponentCreator('/smart-contracts/plutus/collateral-mechanism', '427'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/smart-contracts/plutus/dapp-development',
+                component: ComponentCreator('/smart-contracts/plutus/dapp-development', '86b'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/smart-contracts/plutus/learn-about-plutus',
+                component: ComponentCreator('/smart-contracts/plutus/learn-about-plutus', '5a5'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/smart-contracts/plutus/plutus-resources',
+                component: ComponentCreator('/smart-contracts/plutus/plutus-resources', 'e7a'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/smart-contracts/plutus/plutus-scripts',
+                component: ComponentCreator('/smart-contracts/plutus/plutus-scripts', 'ed1'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/smart-contracts/plutus/Plutus-use-cases',
+                component: ComponentCreator('/smart-contracts/plutus/Plutus-use-cases', '042'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/smart-contracts/plutus/sc-best-practices',
+                component: ComponentCreator('/smart-contracts/plutus/sc-best-practices', 'b1a'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/smart-contracts/plutus/transaction-costs-determinism',
+                component: ComponentCreator('/smart-contracts/plutus/transaction-costs-determinism', 'acc'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               }

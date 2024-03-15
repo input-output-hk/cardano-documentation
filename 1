@@ -1,0 +1,67 @@
+*   Trying 2606:4700:10::ac43:c53:443...
+* Connected to api.coingecko.com (2606:4700:10::ac43:c53) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* successfully set certificate verify locations:
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (OUT), TLS handshake, Client hello (1):
+} [322 bytes data]
+* (304) (IN), TLS handshake, Server hello (2):
+{ [122 bytes data]
+* (304) (IN), TLS handshake, Unknown (8):
+{ [19 bytes data]
+* (304) (IN), TLS handshake, Certificate (11):
+{ [2319 bytes data]
+* (304) (IN), TLS handshake, CERT verify (15):
+{ [79 bytes data]
+* (304) (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* (304) (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=San Francisco; O=Cloudflare, Inc.; CN=api.coingecko.com
+*  start date: Jun  3 00:00:00 2023 GMT
+*  expire date: Jun  2 23:59:59 2024 GMT
+*  subjectAltName: host "api.coingecko.com" matched cert's "api.coingecko.com"
+*  issuer: C=US; O=Cloudflare, Inc.; CN=Cloudflare Inc ECC CA-3
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multiplexing
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x14500ce00)
+> HEAD /api/v3/coins/cardano HTTP/2
+> Host: api.coingecko.com
+> user-agent: curl/7.79.1
+> accept: */*
+> 
+< HTTP/2 200 
+< date: Tue, 12 Mar 2024 14:51:58 GMT
+< content-type: application/json; charset=utf-8
+< x-frame-options: SAMEORIGIN
+< x-xss-protection: 0
+< x-content-type-options: nosniff
+< x-download-options: noopen
+< x-permitted-cross-domain-policies: none
+< referrer-policy: strict-origin-when-cross-origin
+< cache-control: max-age=30, public, must-revalidate, s-maxage=30
+< access-control-allow-origin: *
+< access-control-allow-methods: POST, PUT, DELETE, GET, OPTIONS
+< access-control-request-method: *
+< access-control-allow-headers: Origin, X-Requested-With, Content-Type, Accept, Authorization
+< access-control-expose-headers: link, per-page, total
+< vary: Accept-Encoding, Origin
+< etag: W/"b4aaa5c843834f69769ec7c68d5094dc"
+< x-request-id: 05cedb17-db86-40ea-a07c-1706b4370f36
+< x-runtime: 0.087789
+< alternate-protocol: 443:npn-spdy/2
+< strict-transport-security: max-age=15724800; includeSubdomains
+< cf-cache-status: HIT
+< set-cookie: __cf_bm=fB_bzmaZmrYv.FMpaayq8Rnvld2LwCa1wpYPRVPiLbo-1710255118-1.0.1.1-DfWsPirDKrISZaidfqhbEoxzmURglcfXy4BX8zLEM5FrrRTMQcfK4ANm9vdkmPWEZJipV1iV5eiXByp3vyGVDg; path=/; expires=Tue, 12-Mar-24 15:21:58 GMT; domain=.api.coingecko.com; HttpOnly; Secure; SameSite=None
+< server: cloudflare
+< cf-ray: 86349afb0a106517-LHR
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host api.coingecko.com left intact

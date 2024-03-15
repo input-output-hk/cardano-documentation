@@ -150,6 +150,27 @@ const config: Config = {
             },
           ],
         },
+        {
+          title: 'Social',
+          items: [
+            {
+              label: 'X',
+              href: 'https://twitter.com/inputoutputHK',
+            },
+            {
+              label: 'Facebook',
+              href: 'https://www.facebook.com/iohk.io/',
+            },
+            {
+              label: 'Youtube',
+              href: 'https://www.youtube.com/c/IohkIo',
+            },
+            {
+              label: 'Blog',
+              href: 'https://iohk.io/en/blog/posts/page-1/',
+            },
+          ],
+        },
       ],
       copyright: `Cardano is an open-source project. 
       

@@ -575,8 +575,8 @@
                 "permalink": "/cardano-sidechains/getting-started/ouroboros-description"
               },
               "next": {
-                "title": "Introduction",
-                "permalink": "/cardano-sidechains/sidechain-toolkit/introduction"
+                "title": "Sidechain Toolkit",
+                "permalink": "/cardano-sidechains/sidechain-toolkit/"
               }
             },
             {
@@ -916,22 +916,25 @@
               }
             },
             {
-              "id": "cardano-sidechains/sidechain-toolkit/introduction",
-              "title": "Introduction",
+              "id": "cardano-sidechains/sidechain-toolkit/index",
+              "title": "Sidechain Toolkit",
               "description": "sidechain-toolkit-environment-pic",
-              "source": "@site/docs/09-cardano-sidechains/02-sidechain-toolkit/00-introduction.mdx",
+              "source": "@site/docs/09-cardano-sidechains/02-sidechain-toolkit/index.mdx",
               "sourceDirName": "09-cardano-sidechains/02-sidechain-toolkit",
-              "slug": "/cardano-sidechains/sidechain-toolkit/introduction",
-              "permalink": "/cardano-sidechains/sidechain-toolkit/introduction",
+              "slug": "/cardano-sidechains/sidechain-toolkit/",
+              "permalink": "/cardano-sidechains/sidechain-toolkit/",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/09-cardano-sidechains/02-sidechain-toolkit/00-introduction.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/09-cardano-sidechains/02-sidechain-toolkit/index.mdx",
               "tags": [],
               "version": "current",
-              "sidebarPosition": 0,
+              "sidebarPosition": 2,
               "frontMatter": {
-                "title": "Introduction",
-                "metaTitle": "Introduction"
+                "title": "Sidechain Toolkit",
+                "metaTitle": "Sidechain Toolkit",
+                "sidebar_position": 2,
+                "collapsible": true,
+                "collapsed": true
               },
               "sidebar": "tutorialSidebar",
               "previous": {
@@ -963,8 +966,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Introduction",
-                "permalink": "/cardano-sidechains/sidechain-toolkit/introduction"
+                "title": "Sidechain Toolkit",
+                "permalink": "/cardano-sidechains/sidechain-toolkit/"
               },
               "next": {
                 "title": "Chain follower",
@@ -1030,16 +1033,16 @@
               }
             },
             {
-              "id": "cardano-testnet/about/feature-overview",
+              "id": "cardano-testnets/about/feature-overview",
               "title": "Vasil feature overview",
               "description": "Diffusion pipelining",
-              "source": "@site/docs/05-cardano-testnet/02-about/02-feature-overview.mdx",
-              "sourceDirName": "05-cardano-testnet/02-about",
-              "slug": "/cardano-testnet/about/feature-overview",
-              "permalink": "/cardano-testnet/about/feature-overview",
+              "source": "@site/docs/05-cardano-testnets/02-about/02-feature-overview.mdx",
+              "sourceDirName": "05-cardano-testnets/02-about",
+              "slug": "/cardano-testnets/about/feature-overview",
+              "permalink": "/cardano-testnets/about/feature-overview",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnet/02-about/02-feature-overview.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/02-about/02-feature-overview.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
@@ -1050,24 +1053,24 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Vasil introduction",
-                "permalink": "/cardano-testnet/about/testnet-introduction"
+                "permalink": "/cardano-testnets/about/testnet-introduction"
               },
               "next": {
                 "title": "Valentine (SECP) upgrade",
-                "permalink": "/cardano-testnet/about/secp"
+                "permalink": "/cardano-testnets/about/secp"
               }
             },
             {
-              "id": "cardano-testnet/about/secp",
+              "id": "cardano-testnets/about/secp",
               "title": "Valentine (SECP) upgrade",
               "description": "The Valentine (or SECP) upgrade is Cardano’s intra-era hard fork that follows the Vasil upgrade. Valentine is a small and focused semantic change to the ledger, which brings new built-in functions to Plutus to support SECP elliptic curves (ECDSA and Schnorr). Although an intra-era hard fork requires a hard fork combinator event, it does not change the ledger era, which means that this is an upgrade to the Babbage era (Vasil functionality).",
-              "source": "@site/docs/05-cardano-testnet/02-about/03-secp.mdx",
-              "sourceDirName": "05-cardano-testnet/02-about",
-              "slug": "/cardano-testnet/about/secp",
-              "permalink": "/cardano-testnet/about/secp",
+              "source": "@site/docs/05-cardano-testnets/02-about/03-secp.mdx",
+              "sourceDirName": "05-cardano-testnets/02-about",
+              "slug": "/cardano-testnets/about/secp",
+              "permalink": "/cardano-testnets/about/secp",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnet/02-about/03-secp.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/02-about/03-secp.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 3,
@@ -1078,24 +1081,24 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Vasil feature overview",
-                "permalink": "/cardano-testnet/about/feature-overview"
+                "permalink": "/cardano-testnets/about/feature-overview"
               },
               "next": {
                 "title": "Getting started with Cardano testnets",
-                "permalink": "/cardano-testnet/getting-started"
+                "permalink": "/cardano-testnets/getting-started"
               }
             },
             {
-              "id": "cardano-testnet/about/testnet-introduction",
+              "id": "cardano-testnets/about/testnet-introduction",
               "title": "Vasil introduction",
               "description": "Note: New dedicated preview and pre-production environments have been recently spun up for the final stages of testing Vasil functionality. These environments offer improved chain density and a better developer experience.",
-              "source": "@site/docs/05-cardano-testnet/02-about/01-testnet-introduction.mdx",
-              "sourceDirName": "05-cardano-testnet/02-about",
-              "slug": "/cardano-testnet/about/testnet-introduction",
-              "permalink": "/cardano-testnet/about/testnet-introduction",
+              "source": "@site/docs/05-cardano-testnets/02-about/01-testnet-introduction.mdx",
+              "sourceDirName": "05-cardano-testnets/02-about",
+              "slug": "/cardano-testnets/about/testnet-introduction",
+              "permalink": "/cardano-testnets/about/testnet-introduction",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnet/02-about/01-testnet-introduction.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/02-about/01-testnet-introduction.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 1,
@@ -1105,25 +1108,25 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Overview",
-                "permalink": "/cardano-testnet/overview"
+                "title": "Cardano Testnets",
+                "permalink": "/cardano-testnets/"
               },
               "next": {
                 "title": "Vasil feature overview",
-                "permalink": "/cardano-testnet/about/feature-overview"
+                "permalink": "/cardano-testnets/about/feature-overview"
               }
             },
             {
-              "id": "cardano-testnet/daedalus-testnet",
+              "id": "cardano-testnets/daedalus-testnet",
               "title": "Daedalus wallet for the Cardano testnets",
               "description": "Here you can download any of the special testnet-only versions of the Daedalus",
-              "source": "@site/docs/05-cardano-testnet/05-daedalus-testnet.mdx",
-              "sourceDirName": "05-cardano-testnet",
-              "slug": "/cardano-testnet/daedalus-testnet",
-              "permalink": "/cardano-testnet/daedalus-testnet",
+              "source": "@site/docs/05-cardano-testnets/05-daedalus-testnet.mdx",
+              "sourceDirName": "05-cardano-testnets",
+              "slug": "/cardano-testnets/daedalus-testnet",
+              "permalink": "/cardano-testnets/daedalus-testnet",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnet/05-daedalus-testnet.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/05-daedalus-testnet.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 5,
@@ -1134,24 +1137,24 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Creating a local testnet",
-                "permalink": "/cardano-testnet/local-testnet"
+                "permalink": "/cardano-testnets/local-testnet"
               },
               "next": {
                 "title": "Testnets faucet",
-                "permalink": "/cardano-testnet/tools/faucet"
+                "permalink": "/cardano-testnets/tools/faucet"
               }
             },
             {
-              "id": "cardano-testnet/getting-started",
+              "id": "cardano-testnets/getting-started",
               "title": "Getting started with Cardano testnets",
               "description": "Note that the Cardano testnet is no longer recommended for testing purposes. The community is encouraged to use preview and pre-production testnet environments explained below.",
-              "source": "@site/docs/05-cardano-testnet/03-getting-started.mdx",
-              "sourceDirName": "05-cardano-testnet",
-              "slug": "/cardano-testnet/getting-started",
-              "permalink": "/cardano-testnet/getting-started",
+              "source": "@site/docs/05-cardano-testnets/03-getting-started.mdx",
+              "sourceDirName": "05-cardano-testnets",
+              "slug": "/cardano-testnets/getting-started",
+              "permalink": "/cardano-testnets/getting-started",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnet/03-getting-started.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/03-getting-started.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 3,
@@ -1162,24 +1165,55 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Valentine (SECP) upgrade",
-                "permalink": "/cardano-testnet/about/secp"
+                "permalink": "/cardano-testnets/about/secp"
               },
               "next": {
                 "title": "Creating a local testnet",
-                "permalink": "/cardano-testnet/local-testnet"
+                "permalink": "/cardano-testnets/local-testnet"
               }
             },
             {
-              "id": "cardano-testnet/local-testnet",
-              "title": "Creating a local testnet",
-              "description": "A local testnet enables developers and projects building on Cardano to test new features or functionality prior to deployment on global testnet environments. While preview and pre-production environments benefit the wider developer community, a local testnet allows the execution of a hard fork in your own setup and subsequent testing of DApp behavior.",
-              "source": "@site/docs/05-cardano-testnet/04-local-testnet.mdx",
-              "sourceDirName": "05-cardano-testnet",
-              "slug": "/cardano-testnet/local-testnet",
-              "permalink": "/cardano-testnet/local-testnet",
+              "id": "cardano-testnets/index",
+              "title": "Cardano Testnets",
+              "description": "Cardano testnets sit at the vanguard of network development, providing sandboxed",
+              "source": "@site/docs/05-cardano-testnets/index.mdx",
+              "sourceDirName": "05-cardano-testnets",
+              "slug": "/cardano-testnets/",
+              "permalink": "/cardano-testnets/",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnet/04-local-testnet.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/index.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 4,
+              "frontMatter": {
+                "title": "Cardano Testnets",
+                "metaTitle": "Cardano Testnets",
+                "sidebar_position": 4,
+                "collapsible": true,
+                "collapsed": true
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Cardano protocol parameters reference guide",
+                "permalink": "/explore-cardano/parameter-guide"
+              },
+              "next": {
+                "title": "Vasil introduction",
+                "permalink": "/cardano-testnets/about/testnet-introduction"
+              }
+            },
+            {
+              "id": "cardano-testnets/local-testnet",
+              "title": "Creating a local testnet",
+              "description": "A local testnet enables developers and projects building on Cardano to test new features or functionality prior to deployment on global testnet environments. While preview and pre-production environments benefit the wider developer community, a local testnet allows the execution of a hard fork in your own setup and subsequent testing of DApp behavior.",
+              "source": "@site/docs/05-cardano-testnets/04-local-testnet.mdx",
+              "sourceDirName": "05-cardano-testnets",
+              "slug": "/cardano-testnets/local-testnet",
+              "permalink": "/cardano-testnets/local-testnet",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/04-local-testnet.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 4,
@@ -1190,80 +1224,52 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Getting started with Cardano testnets",
-                "permalink": "/cardano-testnet/getting-started"
+                "permalink": "/cardano-testnets/getting-started"
               },
               "next": {
                 "title": "Daedalus wallet for the Cardano testnets",
-                "permalink": "/cardano-testnet/daedalus-testnet"
+                "permalink": "/cardano-testnets/daedalus-testnet"
               }
             },
             {
-              "id": "cardano-testnet/overview",
-              "title": "Overview",
-              "description": "Cardano testnets sit at the vanguard of network development, providing sandboxed environments for continuing innovation, harnessing the power of the Cardano community to iterate and improve.",
-              "source": "@site/docs/05-cardano-testnet/01-overview.mdx",
-              "sourceDirName": "05-cardano-testnet",
-              "slug": "/cardano-testnet/overview",
-              "permalink": "/cardano-testnet/overview",
-              "draft": false,
-              "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnet/01-overview.mdx",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 1,
-              "frontMatter": {
-                "title": "Overview",
-                "metaTitle": "Overview"
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Cardano protocol parameters reference guide",
-                "permalink": "/explore-cardano/parameter-guide"
-              },
-              "next": {
-                "title": "Vasil introduction",
-                "permalink": "/cardano-testnet/about/testnet-introduction"
-              }
-            },
-            {
-              "id": "cardano-testnet/resources/links",
-              "title": "Links",
+              "id": "cardano-testnets/resources",
+              "title": "Resources",
               "description": "Useful materials",
-              "source": "@site/docs/05-cardano-testnet/07-resources/01-links.mdx",
-              "sourceDirName": "05-cardano-testnet/07-resources",
-              "slug": "/cardano-testnet/resources/links",
-              "permalink": "/cardano-testnet/resources/links",
+              "source": "@site/docs/05-cardano-testnets/07-resources.mdx",
+              "sourceDirName": "05-cardano-testnets",
+              "slug": "/cardano-testnets/resources",
+              "permalink": "/cardano-testnets/resources",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnet/07-resources/01-links.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/07-resources.mdx",
               "tags": [],
               "version": "current",
-              "sidebarPosition": 1,
+              "sidebarPosition": 7,
               "frontMatter": {
-                "title": "Links",
-                "metaTitle": "Links"
+                "title": "Resources",
+                "metaTitle": "Resources"
               },
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Plutus fee estimator",
-                "permalink": "/cardano-testnet/tools/plutus-fee-estimator"
+                "permalink": "/cardano-testnets/tools/plutus-fee-estimator"
               },
               "next": {
                 "title": "Support and feedback",
-                "permalink": "/cardano-testnet/support-feedback"
+                "permalink": "/cardano-testnets/support-feedback"
               }
             },
             {
-              "id": "cardano-testnet/support-feedback",
+              "id": "cardano-testnets/support-feedback",
               "title": "Support and feedback",
               "description": "Support",
-              "source": "@site/docs/05-cardano-testnet/08-support-feedback.mdx",
-              "sourceDirName": "05-cardano-testnet",
-              "slug": "/cardano-testnet/support-feedback",
-              "permalink": "/cardano-testnet/support-feedback",
+              "source": "@site/docs/05-cardano-testnets/08-support-feedback.mdx",
+              "sourceDirName": "05-cardano-testnets",
+              "slug": "/cardano-testnets/support-feedback",
+              "permalink": "/cardano-testnets/support-feedback",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnet/08-support-feedback.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/08-support-feedback.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 8,
@@ -1273,8 +1279,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Links",
-                "permalink": "/cardano-testnet/resources/links"
+                "title": "Resources",
+                "permalink": "/cardano-testnets/resources"
               },
               "next": {
                 "title": "Installing the Cardano node",
@@ -1282,16 +1288,16 @@
               }
             },
             {
-              "id": "cardano-testnet/tools/faucet",
+              "id": "cardano-testnets/tools/faucet",
               "title": "Testnets faucet",
               "description": "Since the Cardano testnet is an independent network, separate from the Cardano",
-              "source": "@site/docs/05-cardano-testnet/06-tools/01-faucet.mdx",
-              "sourceDirName": "05-cardano-testnet/06-tools",
-              "slug": "/cardano-testnet/tools/faucet",
-              "permalink": "/cardano-testnet/tools/faucet",
+              "source": "@site/docs/05-cardano-testnets/06-tools/01-faucet.mdx",
+              "sourceDirName": "05-cardano-testnets/06-tools",
+              "slug": "/cardano-testnets/tools/faucet",
+              "permalink": "/cardano-testnets/tools/faucet",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnet/06-tools/01-faucet.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/06-tools/01-faucet.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 1,
@@ -1302,24 +1308,24 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Daedalus wallet for the Cardano testnets",
-                "permalink": "/cardano-testnet/daedalus-testnet"
+                "permalink": "/cardano-testnets/daedalus-testnet"
               },
               "next": {
                 "title": "Staking calculator",
-                "permalink": "/cardano-testnet/tools/staking-calculator"
+                "permalink": "/cardano-testnets/tools/staking-calculator"
               }
             },
             {
-              "id": "cardano-testnet/tools/plutus-fee-estimator",
+              "id": "cardano-testnets/tools/plutus-fee-estimator",
               "title": "Plutus fee estimator",
               "description": "The Plutus fee estimator has been developed by IOG performance experts for price",
-              "source": "@site/docs/05-cardano-testnet/06-tools/03-plutus-fee-estimator.mdx",
-              "sourceDirName": "05-cardano-testnet/06-tools",
-              "slug": "/cardano-testnet/tools/plutus-fee-estimator",
-              "permalink": "/cardano-testnet/tools/plutus-fee-estimator",
+              "source": "@site/docs/05-cardano-testnets/06-tools/03-plutus-fee-estimator.mdx",
+              "sourceDirName": "05-cardano-testnets/06-tools",
+              "slug": "/cardano-testnets/tools/plutus-fee-estimator",
+              "permalink": "/cardano-testnets/tools/plutus-fee-estimator",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnet/06-tools/03-plutus-fee-estimator.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/06-tools/03-plutus-fee-estimator.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 3,
@@ -1330,24 +1336,24 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Staking calculator",
-                "permalink": "/cardano-testnet/tools/staking-calculator"
+                "permalink": "/cardano-testnets/tools/staking-calculator"
               },
               "next": {
-                "title": "Links",
-                "permalink": "/cardano-testnet/resources/links"
+                "title": "Resources",
+                "permalink": "/cardano-testnets/resources"
               }
             },
             {
-              "id": "cardano-testnet/tools/staking-calculator",
+              "id": "cardano-testnets/tools/staking-calculator",
               "title": "Staking calculator",
               "description": "Staking calculator is a tool used to predict approximate rewards a user may",
-              "source": "@site/docs/05-cardano-testnet/06-tools/02-staking-calculator.mdx",
-              "sourceDirName": "05-cardano-testnet/06-tools",
-              "slug": "/cardano-testnet/tools/staking-calculator",
-              "permalink": "/cardano-testnet/tools/staking-calculator",
+              "source": "@site/docs/05-cardano-testnets/06-tools/02-staking-calculator.mdx",
+              "sourceDirName": "05-cardano-testnets/06-tools",
+              "slug": "/cardano-testnets/tools/staking-calculator",
+              "permalink": "/cardano-testnets/tools/staking-calculator",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnet/06-tools/02-staking-calculator.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/06-tools/02-staking-calculator.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
@@ -1358,24 +1364,24 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Testnets faucet",
-                "permalink": "/cardano-testnet/tools/faucet"
+                "permalink": "/cardano-testnets/tools/faucet"
               },
               "next": {
                 "title": "Plutus fee estimator",
-                "permalink": "/cardano-testnet/tools/plutus-fee-estimator"
+                "permalink": "/cardano-testnets/tools/plutus-fee-estimator"
               }
             },
             {
               "id": "community/ambassador-program",
               "title": "Ambassadors program",
               "description": "The Cardano community is privileged to have committed members of our",
-              "source": "@site/docs/14-community/05-ambassador-program.mdx",
-              "sourceDirName": "14-community",
+              "source": "@site/docs/13-community/05-ambassador-program.mdx",
+              "sourceDirName": "13-community",
               "slug": "/community/ambassador-program",
               "permalink": "/community/ambassador-program",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/14-community/05-ambassador-program.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/13-community/05-ambassador-program.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 5,
@@ -1398,13 +1404,13 @@
               "id": "community/Cardano-stack-exchange",
               "title": "Cardano Stack Exchange",
               "description": "Cardano Stack Exchange is a",
-              "source": "@site/docs/14-community/04-Cardano-stack-exchange.mdx",
-              "sourceDirName": "14-community",
+              "source": "@site/docs/13-community/04-Cardano-stack-exchange.mdx",
+              "sourceDirName": "13-community",
               "slug": "/community/Cardano-stack-exchange",
               "permalink": "/community/Cardano-stack-exchange",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/14-community/04-Cardano-stack-exchange.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/13-community/04-Cardano-stack-exchange.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 4,
@@ -1427,13 +1433,13 @@
               "id": "community/cips",
               "title": "Cardano Improvement Proposals (CIPs)",
               "description": "Individuals with improvement proposals for Cardano can",
-              "source": "@site/docs/14-community/01-cips.mdx",
-              "sourceDirName": "14-community",
+              "source": "@site/docs/13-community/01-cips.mdx",
+              "sourceDirName": "13-community",
               "slug": "/community/cips",
               "permalink": "/community/cips",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/14-community/01-cips.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/13-community/01-cips.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 1,
@@ -1444,8 +1450,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Learn about Marlowe",
-                "permalink": "/marlowe/learn-about-marlowe"
+                "title": "Learn about Aiken",
+                "permalink": "/smart-contracts/learn-about-aiken"
               },
               "next": {
                 "title": "Essential Cardano",
@@ -1456,13 +1462,13 @@
               "id": "community/community-content",
               "title": "Community content",
               "description": "Community collaboration is central to",
-              "source": "@site/docs/14-community/03-community-content.mdx",
-              "sourceDirName": "14-community",
+              "source": "@site/docs/13-community/03-community-content.mdx",
+              "sourceDirName": "13-community",
               "slug": "/community/community-content",
               "permalink": "/community/community-content",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/14-community/03-community-content.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/13-community/03-community-content.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 3,
@@ -1485,13 +1491,13 @@
               "id": "community/essential-cardano",
               "title": "Essential Cardano",
               "description": "Essential Cardano is an open-source",
-              "source": "@site/docs/14-community/02-essential-cardano.mdx",
-              "sourceDirName": "14-community",
+              "source": "@site/docs/13-community/02-essential-cardano.mdx",
+              "sourceDirName": "13-community",
               "slug": "/community/essential-cardano",
               "permalink": "/community/essential-cardano",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/14-community/02-essential-cardano.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/13-community/02-essential-cardano.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
@@ -1514,13 +1520,13 @@
               "id": "community/getting-support",
               "title": "Getting Support",
               "description": "Your feedback is important because it helps us improve",
-              "source": "@site/docs/14-community/06-getting-support.mdx",
-              "sourceDirName": "14-community",
+              "source": "@site/docs/13-community/06-getting-support.mdx",
+              "sourceDirName": "13-community",
               "slug": "/community/getting-support",
               "permalink": "/community/getting-support",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/14-community/06-getting-support.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/13-community/06-getting-support.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 6,
@@ -1588,7 +1594,7 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Support and feedback",
-                "permalink": "/cardano-testnet/support-feedback"
+                "permalink": "/cardano-testnets/support-feedback"
               },
               "next": {
                 "title": "The Cardano node video course",
@@ -1652,22 +1658,25 @@
               }
             },
             {
-              "id": "development-guidelines/transaction-tutorials/introduction",
-              "title": "Introduction",
-              "description": "A transaction is an event created, signed, and sent by a user to modify the ledger's state. It is commonly used to transfer ada or other tokens from one user to another. Additionally, it can serve various purposes, such as token creation, delegation registration to a stake pool, or interaction with smart contracts, among others. The process to modify the ledger through a transaction is as follows:",
-              "source": "@site/docs/06-development-guidelines/07-transaction-tutorials/01-introduction.mdx",
+              "id": "development-guidelines/transaction-tutorials/index",
+              "title": "Transaction Tutorials",
+              "description": "A transaction is an event created, signed, and sent by a user to modify the",
+              "source": "@site/docs/06-development-guidelines/07-transaction-tutorials/index.mdx",
               "sourceDirName": "06-development-guidelines/07-transaction-tutorials",
-              "slug": "/development-guidelines/transaction-tutorials/introduction",
-              "permalink": "/development-guidelines/transaction-tutorials/introduction",
+              "slug": "/development-guidelines/transaction-tutorials/",
+              "permalink": "/development-guidelines/transaction-tutorials/",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/06-development-guidelines/07-transaction-tutorials/01-introduction.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/06-development-guidelines/07-transaction-tutorials/index.mdx",
               "tags": [],
               "version": "current",
-              "sidebarPosition": 1,
+              "sidebarPosition": 7,
               "frontMatter": {
-                "title": "Introduction",
-                "metaTitle": "What is a transaction?"
+                "title": "Transaction Tutorials",
+                "metaTitle": "Transaction Tutorials",
+                "sidebar_position": 7,
+                "collapsible": true,
+                "collapsed": true
               },
               "sidebar": "tutorialSidebar",
               "previous": {
@@ -1699,8 +1708,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Introduction",
-                "permalink": "/development-guidelines/transaction-tutorials/introduction"
+                "title": "Transaction Tutorials",
+                "permalink": "/development-guidelines/transaction-tutorials/"
               },
               "next": {
                 "title": "Staking transactions",
@@ -1843,8 +1852,8 @@
                 "permalink": "/development-guidelines/node-monitoring"
               },
               "next": {
-                "title": "Introduction",
-                "permalink": "/development-guidelines/transaction-tutorials/introduction"
+                "title": "Transaction Tutorials",
+                "permalink": "/development-guidelines/transaction-tutorials/"
               }
             },
             {
@@ -1871,8 +1880,8 @@
                 "permalink": "/explore-cardano/eras-and-phases"
               },
               "next": {
-                "title": "About the Cardano network",
-                "permalink": "/explore-cardano/cardano-network/about-the-cardano-network"
+                "title": "Cardano Network",
+                "permalink": "/explore-cardano/cardano-network/"
               }
             },
             {
@@ -1923,8 +1932,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Cardano network",
-                "permalink": "/explore-cardano/cardano-network"
+                "title": "Peer-to-peer (P2P) networking",
+                "permalink": "/explore-cardano/cardano-network/p2p-networking"
               },
               "next": {
                 "title": "Cardano fee structure",
@@ -1932,50 +1941,25 @@
               }
             },
             {
-              "id": "explore-cardano/cardano-network",
-              "title": "Cardano network",
-              "description": "",
-              "source": "@site/docs/04-explore-cardano/04-cardano-network.mdx",
-              "sourceDirName": "04-explore-cardano",
-              "slug": "/explore-cardano/cardano-network",
-              "permalink": "/explore-cardano/cardano-network",
+              "id": "explore-cardano/cardano-network/index",
+              "title": "Cardano Network",
+              "description": "The Cardano network is a technical infrastructure combining Cardano nodes and",
+              "source": "@site/docs/04-explore-cardano/04-cardano-network/index.mdx",
+              "sourceDirName": "04-explore-cardano/04-cardano-network",
+              "slug": "/explore-cardano/cardano-network/",
+              "permalink": "/explore-cardano/cardano-network/",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/04-explore-cardano/04-cardano-network.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/04-explore-cardano/04-cardano-network/index.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 4,
               "frontMatter": {
-                "title": "Cardano network",
-                "metaTitle": "Cardano network"
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Peer-to-peer (P2P) networking",
-                "permalink": "/explore-cardano/cardano-network/p2p-networking"
-              },
-              "next": {
-                "title": "Cardano entropy",
-                "permalink": "/explore-cardano/cardano-entropy"
-              }
-            },
-            {
-              "id": "explore-cardano/cardano-network/about-the-cardano-network",
-              "title": "About the Cardano network",
-              "description": "The Cardano network is a technical infrastructure combining Cardano nodes and",
-              "source": "@site/docs/04-explore-cardano/04-cardano-network/01-about-the-cardano-network.mdx",
-              "sourceDirName": "04-explore-cardano/04-cardano-network",
-              "slug": "/explore-cardano/cardano-network/about-the-cardano-network",
-              "permalink": "/explore-cardano/cardano-network/about-the-cardano-network",
-              "draft": false,
-              "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/04-explore-cardano/04-cardano-network/01-about-the-cardano-network.mdx",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 1,
-              "frontMatter": {
-                "title": "About the Cardano network",
-                "metaTitle": "About the Cardano network"
+                "title": "Cardano Network",
+                "metaTitle": "Cardano Network",
+                "sidebar_position": 4,
+                "collapsible": true,
+                "collapsed": true
               },
               "sidebar": "tutorialSidebar",
               "previous": {
@@ -2007,8 +1991,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "About the Cardano network",
-                "permalink": "/explore-cardano/cardano-network/about-the-cardano-network"
+                "title": "Cardano Network",
+                "permalink": "/explore-cardano/cardano-network/"
               },
               "next": {
                 "title": "Peer-to-peer (P2P) networking",
@@ -2039,8 +2023,8 @@
                 "permalink": "/explore-cardano/cardano-network/networking-protocol"
               },
               "next": {
-                "title": "Cardano network",
-                "permalink": "/explore-cardano/cardano-network"
+                "title": "Cardano entropy",
+                "permalink": "/explore-cardano/cardano-entropy"
               }
             },
             {
@@ -2207,8 +2191,8 @@
                 "permalink": "/explore-cardano/relevant-research-papers"
               },
               "next": {
-                "title": "Overview",
-                "permalink": "/cardano-testnet/overview"
+                "title": "Cardano Testnets",
+                "permalink": "/cardano-testnets/"
               }
             },
             {
@@ -2289,8 +2273,8 @@
               },
               "sidebar": "tutorialSidebar",
               "next": {
-                "title": "Introduction",
-                "permalink": "/new-to-cardano/introduction"
+                "title": "New To Cardano",
+                "permalink": "/new-to-cardano/"
               }
             },
             {
@@ -2630,35 +2614,6 @@
               }
             },
             {
-              "id": "marlowe/learn-about-marlowe",
-              "title": "Learn about Marlowe",
-              "description": "Marlowe is a set of open source tools designed to simplify the creation,",
-              "source": "@site/docs/13-marlowe/01-learn-about-marlowe.mdx",
-              "sourceDirName": "13-marlowe",
-              "slug": "/marlowe/learn-about-marlowe",
-              "permalink": "/marlowe/learn-about-marlowe",
-              "draft": false,
-              "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/13-marlowe/01-learn-about-marlowe.mdx",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 1,
-              "frontMatter": {
-                "title": "Learn about Marlowe",
-                "metaTitle": "Learn about Marlowe",
-                "sidebar_position": 1
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Smart contract best practices",
-                "permalink": "/plutus/sc-best-practices"
-              },
-              "next": {
-                "title": "Cardano Improvement Proposals (CIPs)",
-                "permalink": "/community/cips"
-              }
-            },
-            {
               "id": "native-tokens/exchange-multi-asset-management-scenarios",
               "title": "Exchange multi-asset management scenarios",
               "description": "Native assets follow a set of predefined rules known as minting policies,",
@@ -2829,7 +2784,7 @@
               },
               "next": {
                 "title": "Learn about Plutus",
-                "permalink": "/plutus/learn-about-plutus"
+                "permalink": "/smart-contracts/plutus/learn-about-plutus"
               }
             },
             {
@@ -2946,22 +2901,23 @@
               }
             },
             {
-              "id": "new-to-cardano/introduction",
-              "title": "Introduction",
+              "id": "new-to-cardano/index",
+              "title": "New To Cardano",
               "description": "The understanding of basic concepts plays an integral role in getting acquainted",
-              "source": "@site/docs/02-new-to-cardano/00-introduction.mdx",
+              "source": "@site/docs/02-new-to-cardano/index.mdx",
               "sourceDirName": "02-new-to-cardano",
-              "slug": "/new-to-cardano/introduction",
-              "permalink": "/new-to-cardano/introduction",
+              "slug": "/new-to-cardano/",
+              "permalink": "/new-to-cardano/",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/02-new-to-cardano/00-introduction.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/02-new-to-cardano/index.mdx",
               "tags": [],
               "version": "current",
-              "sidebarPosition": 0,
+              "sidebarPosition": 2,
               "frontMatter": {
-                "title": "Introduction",
-                "metaTitle": "Introduction"
+                "title": "New To Cardano",
+                "metaTitle": "New To Cardano",
+                "sidebar_position": 2
               },
               "sidebar": "tutorialSidebar",
               "previous": {
@@ -3049,8 +3005,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Introduction",
-                "permalink": "/new-to-cardano/introduction"
+                "title": "New To Cardano",
+                "permalink": "/new-to-cardano/"
               },
               "next": {
                 "title": "What is a cryptocurrency?",
@@ -3425,13 +3381,13 @@
               "id": "pioneer-programs/marlowe-pioneers",
               "title": "Marlowe Pioneer program",
               "description": "What is the Marlowe Pioneer program?",
-              "source": "@site/docs/15-pioneer-programs/02-marlowe-pioneers.mdx",
-              "sourceDirName": "15-pioneer-programs",
+              "source": "@site/docs/14-pioneer-programs/02-marlowe-pioneers.mdx",
+              "sourceDirName": "14-pioneer-programs",
               "slug": "/pioneer-programs/marlowe-pioneers",
               "permalink": "/pioneer-programs/marlowe-pioneers",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/15-pioneer-programs/02-marlowe-pioneers.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/14-pioneer-programs/02-marlowe-pioneers.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
@@ -3447,20 +3403,20 @@
               },
               "next": {
                 "title": "Release notes",
-                "permalink": "/tools/release-notes"
+                "permalink": "/release-notes/release-notes"
               }
             },
             {
               "id": "pioneer-programs/plutus-pioneers",
               "title": "Plutus Pioneer program",
               "description": "Before you start, note that Plutus Core, Cardano’s native smart contract",
-              "source": "@site/docs/15-pioneer-programs/01-plutus-pioneers.mdx",
-              "sourceDirName": "15-pioneer-programs",
+              "source": "@site/docs/14-pioneer-programs/01-plutus-pioneers.mdx",
+              "sourceDirName": "14-pioneer-programs",
               "slug": "/pioneer-programs/plutus-pioneers",
               "permalink": "/pioneer-programs/plutus-pioneers",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/15-pioneer-programs/01-plutus-pioneers.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/14-pioneer-programs/01-plutus-pioneers.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 1,
@@ -3480,235 +3436,57 @@
               }
             },
             {
-              "id": "plutus/collateral-mechanism",
-              "title": "About the collateral mechanism",
-              "description": "The collateral mechanism is an important feature that has been designed to",
-              "source": "@site/docs/12-plutus/06-collateral-mechanism.mdx",
-              "sourceDirName": "12-plutus",
-              "slug": "/plutus/collateral-mechanism",
-              "permalink": "/plutus/collateral-mechanism",
+              "id": "release-notes/comp-matrix",
+              "title": "Compatibility matrix",
+              "description": "Component compatibility with the Cardano node",
+              "source": "@site/docs/15-release-notes/03-comp-matrix.mdx",
+              "sourceDirName": "15-release-notes",
+              "slug": "/release-notes/comp-matrix",
+              "permalink": "/release-notes/comp-matrix",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-plutus/06-collateral-mechanism.mdx",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 6,
-              "frontMatter": {
-                "title": "About the collateral mechanism",
-                "metaTitle": "About the collateral mechanism",
-                "sidebar_position": 6
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Plutus use cases",
-                "permalink": "/plutus/Plutus-use-cases"
-              },
-              "next": {
-                "title": "Transaction costs and determinism",
-                "permalink": "/plutus/transaction-costs-determinism"
-              }
-            },
-            {
-              "id": "plutus/dapp-development",
-              "title": "Plutus application development",
-              "description": "This section provides a high-level overview of what a decentralized application",
-              "source": "@site/docs/12-plutus/04-dapp-development.mdx",
-              "sourceDirName": "12-plutus",
-              "slug": "/plutus/dapp-development",
-              "permalink": "/plutus/dapp-development",
-              "draft": false,
-              "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-plutus/04-dapp-development.mdx",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 4,
-              "frontMatter": {
-                "title": "Plutus application development",
-                "metaTitle": "Plutus application development",
-                "sidebar_position": 4
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Plutus scripts",
-                "permalink": "/plutus/plutus-scripts"
-              },
-              "next": {
-                "title": "Plutus use cases",
-                "permalink": "/plutus/Plutus-use-cases"
-              }
-            },
-            {
-              "id": "plutus/learn-about-plutus",
-              "title": "Learn about Plutus",
-              "description": "Please note that Cardano Docs is not the primary go-to source for Plutus",
-              "source": "@site/docs/12-plutus/01-learn-about-plutus.mdx",
-              "sourceDirName": "12-plutus",
-              "slug": "/plutus/learn-about-plutus",
-              "permalink": "/plutus/learn-about-plutus",
-              "draft": false,
-              "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-plutus/01-learn-about-plutus.mdx",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 1,
-              "frontMatter": {
-                "title": "Learn about Plutus",
-                "metaTitle": "Learn about Plutus",
-                "sidebar_position": 1
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Listing Cardano native assets on an exchange",
-                "permalink": "/native-tokens/listing-cardano-native-assets-on-an-exchange"
-              },
-              "next": {
-                "title": "Plutus resources",
-                "permalink": "/plutus/plutus-resources"
-              }
-            },
-            {
-              "id": "plutus/plutus-resources",
-              "title": "Plutus resources",
-              "description": "This section aims to provide a simple way for users to find links to information",
-              "source": "@site/docs/12-plutus/02-plutus-resources.mdx",
-              "sourceDirName": "12-plutus",
-              "slug": "/plutus/plutus-resources",
-              "permalink": "/plutus/plutus-resources",
-              "draft": false,
-              "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-plutus/02-plutus-resources.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/15-release-notes/03-comp-matrix.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
               "frontMatter": {
-                "title": "Plutus resources",
-                "metaTitle": "Plutus resources",
+                "title": "Compatibility matrix",
+                "metaTitle": "Compatibility matrix",
                 "sidebar_position": 2
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Learn about Plutus",
-                "permalink": "/plutus/learn-about-plutus"
-              },
-              "next": {
-                "title": "Plutus scripts",
-                "permalink": "/plutus/plutus-scripts"
+                "title": "Release notes",
+                "permalink": "/release-notes/release-notes"
               }
             },
             {
-              "id": "plutus/plutus-scripts",
-              "title": "Plutus scripts",
-              "description": "Cardano uses scripts to validate actions. These scripts, which are pieces of",
-              "source": "@site/docs/12-plutus/03-plutus-scripts.mdx",
-              "sourceDirName": "12-plutus",
-              "slug": "/plutus/plutus-scripts",
-              "permalink": "/plutus/plutus-scripts",
+              "id": "release-notes/release-notes",
+              "title": "Release notes",
+              "description": "Here is the latest release information for the Cardano components. Component",
+              "source": "@site/docs/15-release-notes/02-release-notes.mdx",
+              "sourceDirName": "15-release-notes",
+              "slug": "/release-notes/release-notes",
+              "permalink": "/release-notes/release-notes",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-plutus/03-plutus-scripts.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/15-release-notes/02-release-notes.mdx",
               "tags": [],
               "version": "current",
-              "sidebarPosition": 3,
+              "sidebarPosition": 1,
               "frontMatter": {
-                "title": "Plutus scripts",
-                "metaTitle": "Plutus scripts",
-                "sidebar_position": 3
+                "title": "Release notes",
+                "metaTitle": "Release notes",
+                "sidebar_position": 1
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Plutus resources",
-                "permalink": "/plutus/plutus-resources"
+                "title": "Marlowe Pioneer program",
+                "permalink": "/pioneer-programs/marlowe-pioneers"
               },
               "next": {
-                "title": "Plutus application development",
-                "permalink": "/plutus/dapp-development"
-              }
-            },
-            {
-              "id": "plutus/Plutus-use-cases",
-              "title": "Plutus use cases",
-              "description": "Typical high-level use cases for Plutus implementations include, but are not",
-              "source": "@site/docs/12-plutus/05-Plutus-use-cases.mdx",
-              "sourceDirName": "12-plutus",
-              "slug": "/plutus/Plutus-use-cases",
-              "permalink": "/plutus/Plutus-use-cases",
-              "draft": false,
-              "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-plutus/05-Plutus-use-cases.mdx",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 5,
-              "frontMatter": {
-                "title": "Plutus use cases",
-                "metaTitle": "Plutus use cases",
-                "sidebar_position": 5
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Plutus application development",
-                "permalink": "/plutus/dapp-development"
-              },
-              "next": {
-                "title": "About the collateral mechanism",
-                "permalink": "/plutus/collateral-mechanism"
-              }
-            },
-            {
-              "id": "plutus/sc-best-practices",
-              "title": "Smart contract best practices",
-              "description": "Here are some general best practices that you should follow when developing",
-              "source": "@site/docs/12-plutus/08-sc-best-practices.mdx",
-              "sourceDirName": "12-plutus",
-              "slug": "/plutus/sc-best-practices",
-              "permalink": "/plutus/sc-best-practices",
-              "draft": false,
-              "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-plutus/08-sc-best-practices.mdx",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 8,
-              "frontMatter": {
-                "title": "Smart contract best practices",
-                "metaTitle": "Smart contract best practices",
-                "sidebar_position": 8
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Transaction costs and determinism",
-                "permalink": "/plutus/transaction-costs-determinism"
-              },
-              "next": {
-                "title": "Learn about Marlowe",
-                "permalink": "/marlowe/learn-about-marlowe"
-              }
-            },
-            {
-              "id": "plutus/transaction-costs-determinism",
-              "title": "Transaction costs and determinism",
-              "description": "Cardano’s approach to price setting mainly relies on market demand over actual",
-              "source": "@site/docs/12-plutus/07-transaction-costs-determinism.mdx",
-              "sourceDirName": "12-plutus",
-              "slug": "/plutus/transaction-costs-determinism",
-              "permalink": "/plutus/transaction-costs-determinism",
-              "draft": false,
-              "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-plutus/07-transaction-costs-determinism.mdx",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 7,
-              "frontMatter": {
-                "title": "Transaction costs and determinism",
-                "metaTitle": "Transaction costs and determinism",
-                "sidebar_position": 7
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "About the collateral mechanism",
-                "permalink": "/plutus/collateral-mechanism"
-              },
-              "next": {
-                "title": "Smart contract best practices",
-                "permalink": "/plutus/sc-best-practices"
+                "title": "Compatibility matrix",
+                "permalink": "/release-notes/comp-matrix"
               }
             },
             {
@@ -3772,57 +3550,293 @@
               }
             },
             {
-              "id": "tools/comp-matrix",
-              "title": "Compatibility matrix",
-              "description": "Component compatibility with the Cardano node",
-              "source": "@site/docs/16-tools/03-comp-matrix.mdx",
-              "sourceDirName": "16-tools",
-              "slug": "/tools/comp-matrix",
-              "permalink": "/tools/comp-matrix",
+              "id": "smart-contracts/learn-about-aiken",
+              "title": "Learn about Aiken",
+              "description": "⚠️ Please note that Aiken is still in development and is not yet recommended",
+              "source": "@site/docs/12-smart-contracts/02-learn-about-aiken.mdx",
+              "sourceDirName": "12-smart-contracts",
+              "slug": "/smart-contracts/learn-about-aiken",
+              "permalink": "/smart-contracts/learn-about-aiken",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/16-tools/03-comp-matrix.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/02-learn-about-aiken.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "title": "Learn about Aiken",
+                "metaTitle": "Learn about Aiken",
+                "sidebar_position": 3
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Learn about Marlowe",
+                "permalink": "/smart-contracts/learn-about-marlowe"
+              },
+              "next": {
+                "title": "Cardano Improvement Proposals (CIPs)",
+                "permalink": "/community/cips"
+              }
+            },
+            {
+              "id": "smart-contracts/learn-about-marlowe",
+              "title": "Learn about Marlowe",
+              "description": "Marlowe is a set of open source tools designed to simplify the creation,",
+              "source": "@site/docs/12-smart-contracts/01-learn-about-marlowe.mdx",
+              "sourceDirName": "12-smart-contracts",
+              "slug": "/smart-contracts/learn-about-marlowe",
+              "permalink": "/smart-contracts/learn-about-marlowe",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/01-learn-about-marlowe.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
               "frontMatter": {
-                "title": "Compatibility matrix",
-                "metaTitle": "Compatibility matrix",
+                "title": "Learn about Marlowe",
+                "metaTitle": "Learn about Marlowe",
                 "sidebar_position": 2
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Release notes",
-                "permalink": "/tools/release-notes"
+                "title": "Smart contract best practices",
+                "permalink": "/smart-contracts/plutus/sc-best-practices"
+              },
+              "next": {
+                "title": "Learn about Aiken",
+                "permalink": "/smart-contracts/learn-about-aiken"
               }
             },
             {
-              "id": "tools/release-notes",
-              "title": "Release notes",
-              "description": "Here is the latest release information for the Cardano components. Component",
-              "source": "@site/docs/16-tools/02-release-notes.mdx",
-              "sourceDirName": "16-tools",
-              "slug": "/tools/release-notes",
-              "permalink": "/tools/release-notes",
+              "id": "smart-contracts/plutus/collateral-mechanism",
+              "title": "About the collateral mechanism",
+              "description": "The collateral mechanism is an important feature that has been designed to",
+              "source": "@site/docs/12-smart-contracts/01-plutus/06-collateral-mechanism.mdx",
+              "sourceDirName": "12-smart-contracts/01-plutus",
+              "slug": "/smart-contracts/plutus/collateral-mechanism",
+              "permalink": "/smart-contracts/plutus/collateral-mechanism",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/16-tools/02-release-notes.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/01-plutus/06-collateral-mechanism.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 6,
+              "frontMatter": {
+                "title": "About the collateral mechanism",
+                "metaTitle": "About the collateral mechanism",
+                "sidebar_position": 6
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Plutus use cases",
+                "permalink": "/smart-contracts/plutus/Plutus-use-cases"
+              },
+              "next": {
+                "title": "Transaction costs and determinism",
+                "permalink": "/smart-contracts/plutus/transaction-costs-determinism"
+              }
+            },
+            {
+              "id": "smart-contracts/plutus/dapp-development",
+              "title": "Plutus application development",
+              "description": "This section provides a high-level overview of what a decentralized application",
+              "source": "@site/docs/12-smart-contracts/01-plutus/04-dapp-development.mdx",
+              "sourceDirName": "12-smart-contracts/01-plutus",
+              "slug": "/smart-contracts/plutus/dapp-development",
+              "permalink": "/smart-contracts/plutus/dapp-development",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/01-plutus/04-dapp-development.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 4,
+              "frontMatter": {
+                "title": "Plutus application development",
+                "metaTitle": "Plutus application development",
+                "sidebar_position": 4
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Plutus scripts",
+                "permalink": "/smart-contracts/plutus/plutus-scripts"
+              },
+              "next": {
+                "title": "Plutus use cases",
+                "permalink": "/smart-contracts/plutus/Plutus-use-cases"
+              }
+            },
+            {
+              "id": "smart-contracts/plutus/learn-about-plutus",
+              "title": "Learn about Plutus",
+              "description": "Please note that Cardano Docs is not the primary go-to source for Plutus",
+              "source": "@site/docs/12-smart-contracts/01-plutus/01-learn-about-plutus.mdx",
+              "sourceDirName": "12-smart-contracts/01-plutus",
+              "slug": "/smart-contracts/plutus/learn-about-plutus",
+              "permalink": "/smart-contracts/plutus/learn-about-plutus",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/01-plutus/01-learn-about-plutus.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 1,
               "frontMatter": {
-                "title": "Release notes",
-                "metaTitle": "Release notes",
+                "title": "Learn about Plutus",
+                "metaTitle": "Learn about Plutus",
                 "sidebar_position": 1
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Marlowe Pioneer program",
-                "permalink": "/pioneer-programs/marlowe-pioneers"
+                "title": "Listing Cardano native assets on an exchange",
+                "permalink": "/native-tokens/listing-cardano-native-assets-on-an-exchange"
               },
               "next": {
-                "title": "Compatibility matrix",
-                "permalink": "/tools/comp-matrix"
+                "title": "Plutus resources",
+                "permalink": "/smart-contracts/plutus/plutus-resources"
+              }
+            },
+            {
+              "id": "smart-contracts/plutus/plutus-resources",
+              "title": "Plutus resources",
+              "description": "This section aims to provide a simple way for users to find links to information",
+              "source": "@site/docs/12-smart-contracts/01-plutus/02-plutus-resources.mdx",
+              "sourceDirName": "12-smart-contracts/01-plutus",
+              "slug": "/smart-contracts/plutus/plutus-resources",
+              "permalink": "/smart-contracts/plutus/plutus-resources",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/01-plutus/02-plutus-resources.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "title": "Plutus resources",
+                "metaTitle": "Plutus resources",
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Learn about Plutus",
+                "permalink": "/smart-contracts/plutus/learn-about-plutus"
+              },
+              "next": {
+                "title": "Plutus scripts",
+                "permalink": "/smart-contracts/plutus/plutus-scripts"
+              }
+            },
+            {
+              "id": "smart-contracts/plutus/plutus-scripts",
+              "title": "Plutus scripts",
+              "description": "Cardano uses scripts to validate actions. These scripts, which are pieces of",
+              "source": "@site/docs/12-smart-contracts/01-plutus/03-plutus-scripts.mdx",
+              "sourceDirName": "12-smart-contracts/01-plutus",
+              "slug": "/smart-contracts/plutus/plutus-scripts",
+              "permalink": "/smart-contracts/plutus/plutus-scripts",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/01-plutus/03-plutus-scripts.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "title": "Plutus scripts",
+                "metaTitle": "Plutus scripts",
+                "sidebar_position": 3
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Plutus resources",
+                "permalink": "/smart-contracts/plutus/plutus-resources"
+              },
+              "next": {
+                "title": "Plutus application development",
+                "permalink": "/smart-contracts/plutus/dapp-development"
+              }
+            },
+            {
+              "id": "smart-contracts/plutus/Plutus-use-cases",
+              "title": "Plutus use cases",
+              "description": "Typical high-level use cases for Plutus implementations include, but are not",
+              "source": "@site/docs/12-smart-contracts/01-plutus/05-Plutus-use-cases.mdx",
+              "sourceDirName": "12-smart-contracts/01-plutus",
+              "slug": "/smart-contracts/plutus/Plutus-use-cases",
+              "permalink": "/smart-contracts/plutus/Plutus-use-cases",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/01-plutus/05-Plutus-use-cases.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 5,
+              "frontMatter": {
+                "title": "Plutus use cases",
+                "metaTitle": "Plutus use cases",
+                "sidebar_position": 5
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Plutus application development",
+                "permalink": "/smart-contracts/plutus/dapp-development"
+              },
+              "next": {
+                "title": "About the collateral mechanism",
+                "permalink": "/smart-contracts/plutus/collateral-mechanism"
+              }
+            },
+            {
+              "id": "smart-contracts/plutus/sc-best-practices",
+              "title": "Smart contract best practices",
+              "description": "Here are some general best practices that you should follow when developing",
+              "source": "@site/docs/12-smart-contracts/01-plutus/08-sc-best-practices.mdx",
+              "sourceDirName": "12-smart-contracts/01-plutus",
+              "slug": "/smart-contracts/plutus/sc-best-practices",
+              "permalink": "/smart-contracts/plutus/sc-best-practices",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/01-plutus/08-sc-best-practices.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 8,
+              "frontMatter": {
+                "title": "Smart contract best practices",
+                "metaTitle": "Smart contract best practices",
+                "sidebar_position": 8
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Transaction costs and determinism",
+                "permalink": "/smart-contracts/plutus/transaction-costs-determinism"
+              },
+              "next": {
+                "title": "Learn about Marlowe",
+                "permalink": "/smart-contracts/learn-about-marlowe"
+              }
+            },
+            {
+              "id": "smart-contracts/plutus/transaction-costs-determinism",
+              "title": "Transaction costs and determinism",
+              "description": "Cardano’s approach to price setting mainly relies on market demand over actual",
+              "source": "@site/docs/12-smart-contracts/01-plutus/07-transaction-costs-determinism.mdx",
+              "sourceDirName": "12-smart-contracts/01-plutus",
+              "slug": "/smart-contracts/plutus/transaction-costs-determinism",
+              "permalink": "/smart-contracts/plutus/transaction-costs-determinism",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/01-plutus/07-transaction-costs-determinism.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 7,
+              "frontMatter": {
+                "title": "Transaction costs and determinism",
+                "metaTitle": "Transaction costs and determinism",
+                "sidebar_position": 7
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "About the collateral mechanism",
+                "permalink": "/smart-contracts/plutus/collateral-mechanism"
+              },
+              "next": {
+                "title": "Smart contract best practices",
+                "permalink": "/smart-contracts/plutus/sc-best-practices"
               }
             }
           ],
@@ -3839,10 +3853,6 @@
                 "collapsible": true,
                 "collapsed": true,
                 "items": [
-                  {
-                    "type": "doc",
-                    "id": "new-to-cardano/introduction"
-                  },
                   {
                     "type": "doc",
                     "id": "new-to-cardano/what-is-a-blockchain"
@@ -3879,7 +3889,11 @@
                     "type": "doc",
                     "id": "new-to-cardano/what-is-a-smart-contract"
                   }
-                ]
+                ],
+                "link": {
+                  "type": "doc",
+                  "id": "new-to-cardano/index"
+                }
               },
               {
                 "type": "category",
@@ -3963,21 +3977,17 @@
                     "items": [
                       {
                         "type": "doc",
-                        "id": "explore-cardano/cardano-network/about-the-cardano-network"
-                      },
-                      {
-                        "type": "doc",
                         "id": "explore-cardano/cardano-network/networking-protocol"
                       },
                       {
                         "type": "doc",
                         "id": "explore-cardano/cardano-network/p2p-networking"
                       }
-                    ]
-                  },
-                  {
-                    "type": "doc",
-                    "id": "explore-cardano/cardano-network"
+                    ],
+                    "link": {
+                      "type": "doc",
+                      "id": "explore-cardano/cardano-network/index"
+                    }
                   },
                   {
                     "type": "doc",
@@ -4015,14 +4025,10 @@
               },
               {
                 "type": "category",
-                "label": "Cardano Testnet",
+                "label": "Cardano Testnets",
                 "collapsible": true,
                 "collapsed": true,
                 "items": [
-                  {
-                    "type": "doc",
-                    "id": "cardano-testnet/overview"
-                  },
                   {
                     "type": "category",
                     "label": "About",
@@ -4031,29 +4037,29 @@
                     "items": [
                       {
                         "type": "doc",
-                        "id": "cardano-testnet/about/testnet-introduction"
+                        "id": "cardano-testnets/about/testnet-introduction"
                       },
                       {
                         "type": "doc",
-                        "id": "cardano-testnet/about/feature-overview"
+                        "id": "cardano-testnets/about/feature-overview"
                       },
                       {
                         "type": "doc",
-                        "id": "cardano-testnet/about/secp"
+                        "id": "cardano-testnets/about/secp"
                       }
                     ]
                   },
                   {
                     "type": "doc",
-                    "id": "cardano-testnet/getting-started"
+                    "id": "cardano-testnets/getting-started"
                   },
                   {
                     "type": "doc",
-                    "id": "cardano-testnet/local-testnet"
+                    "id": "cardano-testnets/local-testnet"
                   },
                   {
                     "type": "doc",
-                    "id": "cardano-testnet/daedalus-testnet"
+                    "id": "cardano-testnets/daedalus-testnet"
                   },
                   {
                     "type": "category",
@@ -4063,35 +4069,31 @@
                     "items": [
                       {
                         "type": "doc",
-                        "id": "cardano-testnet/tools/faucet"
+                        "id": "cardano-testnets/tools/faucet"
                       },
                       {
                         "type": "doc",
-                        "id": "cardano-testnet/tools/staking-calculator"
+                        "id": "cardano-testnets/tools/staking-calculator"
                       },
                       {
                         "type": "doc",
-                        "id": "cardano-testnet/tools/plutus-fee-estimator"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "category",
-                    "label": "Resources",
-                    "collapsible": true,
-                    "collapsed": true,
-                    "items": [
-                      {
-                        "type": "doc",
-                        "id": "cardano-testnet/resources/links"
+                        "id": "cardano-testnets/tools/plutus-fee-estimator"
                       }
                     ]
                   },
                   {
                     "type": "doc",
-                    "id": "cardano-testnet/support-feedback"
+                    "id": "cardano-testnets/resources"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "cardano-testnets/support-feedback"
                   }
-                ]
+                ],
+                "link": {
+                  "type": "doc",
+                  "id": "cardano-testnets/index"
+                }
               },
               {
                 "type": "category",
@@ -4127,10 +4129,6 @@
                     "items": [
                       {
                         "type": "doc",
-                        "id": "development-guidelines/transaction-tutorials/introduction"
-                      },
-                      {
-                        "type": "doc",
                         "id": "development-guidelines/transaction-tutorials/minting-transaction"
                       },
                       {
@@ -4149,7 +4147,11 @@
                         "type": "doc",
                         "id": "development-guidelines/transaction-tutorials/multiple-purposes"
                       }
-                    ]
+                    ],
+                    "link": {
+                      "type": "doc",
+                      "id": "development-guidelines/transaction-tutorials/index"
+                    }
                   }
                 ]
               },
@@ -4335,10 +4337,6 @@
                     "items": [
                       {
                         "type": "doc",
-                        "id": "cardano-sidechains/sidechain-toolkit/introduction"
-                      },
-                      {
-                        "type": "doc",
                         "id": "cardano-sidechains/sidechain-toolkit/mainchain-plutus-scripts"
                       },
                       {
@@ -4349,7 +4347,11 @@
                         "type": "doc",
                         "id": "cardano-sidechains/sidechain-toolkit/committee-rotation"
                       }
-                    ]
+                    ],
+                    "link": {
+                      "type": "doc",
+                      "id": "cardano-sidechains/sidechain-toolkit/index"
+                    }
                   },
                   {
                     "type": "category",
@@ -4471,53 +4473,57 @@
               },
               {
                 "type": "category",
-                "label": "Plutus",
+                "label": "Smart Contracts",
                 "collapsible": true,
                 "collapsed": true,
                 "items": [
                   {
-                    "type": "doc",
-                    "id": "plutus/learn-about-plutus"
+                    "type": "category",
+                    "label": "Plutus",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "smart-contracts/plutus/learn-about-plutus"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "smart-contracts/plutus/plutus-resources"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "smart-contracts/plutus/plutus-scripts"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "smart-contracts/plutus/dapp-development"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "smart-contracts/plutus/Plutus-use-cases"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "smart-contracts/plutus/collateral-mechanism"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "smart-contracts/plutus/transaction-costs-determinism"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "smart-contracts/plutus/sc-best-practices"
+                      }
+                    ]
                   },
                   {
                     "type": "doc",
-                    "id": "plutus/plutus-resources"
+                    "id": "smart-contracts/learn-about-marlowe"
                   },
                   {
                     "type": "doc",
-                    "id": "plutus/plutus-scripts"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "plutus/dapp-development"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "plutus/Plutus-use-cases"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "plutus/collateral-mechanism"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "plutus/transaction-costs-determinism"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "plutus/sc-best-practices"
-                  }
-                ]
-              },
-              {
-                "type": "category",
-                "label": "Marlowe",
-                "collapsible": true,
-                "collapsed": true,
-                "items": [
-                  {
-                    "type": "doc",
-                    "id": "marlowe/learn-about-marlowe"
+                    "id": "smart-contracts/learn-about-aiken"
                   }
                 ]
               },
@@ -4571,39 +4577,43 @@
               },
               {
                 "type": "category",
-                "label": "Tools",
+                "label": "Release Notes",
                 "collapsible": true,
                 "collapsed": true,
                 "items": [
                   {
                     "type": "doc",
-                    "id": "tools/release-notes"
+                    "id": "release-notes/release-notes"
                   },
                   {
                     "type": "doc",
-                    "id": "tools/comp-matrix"
+                    "id": "release-notes/comp-matrix"
                   }
                 ]
               },
               {
                 "type": "link",
                 "label": "Cardano Ecosystem Tools",
-                "href": "https://developers.cardano.org/tools/"
+                "href": "https://developers.cardano.org/tools/",
+                "className": "cardano-ecosystems-external-link"
               },
               {
                 "type": "link",
                 "label": "Glossary",
-                "href": "https://www.essentialcardano.io/glossary?sort=alphabetical"
+                "href": "https://www.essentialcardano.io/glossary?sort=alphabetical",
+                "className": "glossary-external-link"
               },
               {
                 "type": "link",
                 "label": "Cardano.org",
-                "href": "https://cardano.org/"
+                "href": "https://cardano.org/",
+                "className": "cardano-external-link"
               },
               {
                 "type": "link",
                 "label": "Developer Portal",
-                "href": "https://developers.cardano.org/"
+                "href": "https://developers.cardano.org/",
+                "className": "cardano-developers-external-link"
               }
             ]
           }
@@ -4627,17 +4637,6 @@
         "type": "jsx",
         "permalink": "/",
         "source": "@site/src/pages/index.tsx"
-      },
-      {
-        "type": "mdx",
-        "permalink": "/markdown-page",
-        "source": "@site/src/pages/markdown-page.md",
-        "title": "Markdown page example",
-        "description": "You don't need React to write simple standalone pages.",
-        "frontMatter": {
-          "title": "Markdown page example"
-        },
-        "unlisted": false
       }
     ]
   },

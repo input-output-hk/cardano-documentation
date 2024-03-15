@@ -37,6 +37,7 @@ const DEFAULT_VALUES = {
   address: '',
   apiKey: '',
   reCaptcha: false,
+  poolId: '',
 }
 
 const DEFAULT_ERRORS = {
@@ -51,7 +52,7 @@ const statuses = {
   success: 'success',
 }
 
-const parseServerError = (error) => {
+const parseServerError = (error: string) => {
   switch (error) {
     case 'FaucetWebErrorInvalidApiKey':
       return 'Invalid API key'
@@ -89,18 +90,21 @@ const FaucetInner = ({
   const [isPoolDelegation, setIsPoolDelegation] = useState(false)
 
   const reCaptchaRef = useRef(null)
-  let url
+  let url: string | URL | Request
 
   const tokens = {
     '6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7': 'Testcoin',
   }
 
-  const handleTokenSelectChange = (event) => {
+  const handleTokenSelectChange = (event: {
+    target: { value: React.SetStateAction<string> }
+  }) => {
     setNativeToken(event.target.value)
   }
 
-  const valueOnChange = (key) => (e) => {
+  const valueOnChange = (key: string) => (e: { target: { value: any } }) => {
     if (key === 'reCaptcha') {
+      // @ts-ignore
       setValues({ ...values, [key]: e })
     } else {
       setValues({ ...values, [key]: e.target.value })
@@ -129,12 +133,14 @@ const FaucetInner = ({
     }
   }
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     const newErrors = {}
     if (!values.reCaptcha)
+      // @ts-ignore
       newErrors.reCaptcha = content.faucet_content.please_complete_recaptcha
     if (Object.keys(newErrors).length > 0) {
+      // @ts-ignore
       setErrors(newErrors)
       return
     }
@@ -148,6 +154,7 @@ const FaucetInner = ({
         apiKey: values.apiKey,
         poolId: values.poolId,
         isPoolDelegation,
+        reCaptchaResponse: values.reCaptcha,
       }
       console.log(endpointParams)
       if (reCaptcha) endpointParams.reCaptchaResponse = values.reCaptcha
@@ -205,7 +212,7 @@ const FaucetInner = ({
     }
   }
 
-  const reset = (e) => {
+  const reset = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     setStatus(statuses.ready)
     setResult(null)
@@ -280,7 +287,12 @@ const FaucetInner = ({
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
                 value={environment}
-                onChange={(e) => setEnvironment(e.target.value)}
+                onChange={(
+                  e: React.ChangeEvent<{
+                    name?: string
+                    value: string
+                  }>,
+                ) => setEnvironment(e.target.value)}
                 label="Environment"
               >
                 {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
@@ -363,6 +375,7 @@ const FaucetInner = ({
             )}
 
             {reCaptcha &&
+              // @ts-ignore
               Object.entries(environments).map(([env, { sitekey }]) =>
                 env === environment ? (
                   <Box marginBottom={2} key={env}>

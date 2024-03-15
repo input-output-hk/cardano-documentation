@@ -42,31 +42,24 @@
       "plugin": "plugin---docusaurus-debug-14-c-5ff"
     }
   },
-  "/markdown-page-669": {
-    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
-    "__context": {
-      "plugin": "plugin---markdown-page-2-dc-831"
-    },
-    "content": "content---markdown-page-393-028"
-  },
   "/-13a": {
     "__comp": "__comp---site-src-pages-index-tsx-1-df-d3e",
     "__context": {
-      "plugin": "plugin---markdown-page-2-dc-831"
+      "plugin": "plugin---2-dc-cfd"
     },
     "config": "config---5-e-9-4f3"
   },
-  "/-3c3": {
+  "/-a92": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---cf-2-0b9"
     }
   },
-  "/-1bb": {
+  "/-785": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "version": "version---935-fcf"
   },
-  "/-b53": {
+  "/-d34": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/cardano-components/cardano-db-sync/about-db-sync-4c1": {
@@ -189,6 +182,10 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---cardano-sidechains-proof-of-concept-evm-sidechain-transferring-tokens-44-f-530"
   },
+  "/cardano-sidechains/sidechain-toolkit/-445": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---cardano-sidechains-sidechain-toolkit-4-b-5-05a"
+  },
   "/cardano-sidechains/sidechain-toolkit/chain-follower-cfe": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---cardano-sidechains-sidechain-toolkit-chain-follower-647-8cc"
@@ -196,10 +193,6 @@
   "/cardano-sidechains/sidechain-toolkit/committee-rotation-27f": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---cardano-sidechains-sidechain-toolkit-committee-rotationc-3-c-0d6"
-  },
-  "/cardano-sidechains/sidechain-toolkit/introduction-d46": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-sidechains-sidechain-toolkit-introductionb-16-a7d"
   },
   "/cardano-sidechains/sidechain-toolkit/mainchain-plutus-scripts-51b": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -213,77 +206,77 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---cardano-sidechains-support-sidechain-faq-5-b-7-de0"
   },
-  "/cardano-testnet/about/feature-overview-5ed": {
+  "/cardano-testnets/-06b": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnet-about-feature-overviewe-7-a-347"
+    "content": "content---cardano-testnets-a-21-d0c"
   },
-  "/cardano-testnet/about/secp-306": {
+  "/cardano-testnets/about/feature-overview-f5f": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnet-about-secpb-8-b-aef"
+    "content": "content---cardano-testnets-about-feature-overviewfc-6-cc2"
   },
-  "/cardano-testnet/about/testnet-introduction-525": {
+  "/cardano-testnets/about/secp-1f8": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnet-about-testnet-introduction-61-d-18a"
+    "content": "content---cardano-testnets-about-secpa-3-e-fd4"
   },
-  "/cardano-testnet/daedalus-testnet-cea": {
+  "/cardano-testnets/about/testnet-introduction-73f": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnet-daedalus-testnet-88-a-8d6"
+    "content": "content---cardano-testnets-about-testnet-introduction-7-fe-b96"
   },
-  "/cardano-testnet/getting-started-2a4": {
+  "/cardano-testnets/daedalus-testnet-6b1": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnet-getting-startedb-09-4bb"
+    "content": "content---cardano-testnets-daedalus-testnet-5-c-7-980"
   },
-  "/cardano-testnet/local-testnet-5a5": {
+  "/cardano-testnets/getting-started-f65": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnet-local-testneta-8-d-153"
+    "content": "content---cardano-testnets-getting-startedc-90-ffb"
   },
-  "/cardano-testnet/overview-cc7": {
+  "/cardano-testnets/local-testnet-675": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnet-overview-2-c-3-e83"
+    "content": "content---cardano-testnets-local-testnetfb-5-548"
   },
-  "/cardano-testnet/resources/links-452": {
+  "/cardano-testnets/resources-510": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnet-resources-linkse-1-f-b29"
+    "content": "content---cardano-testnets-resourcesc-7-b-38f"
   },
-  "/cardano-testnet/support-feedback-202": {
+  "/cardano-testnets/support-feedback-c9a": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnet-support-feedback-1-c-6-780"
+    "content": "content---cardano-testnets-support-feedbackb-0-b-5f2"
   },
-  "/cardano-testnet/tools/faucet-d13": {
+  "/cardano-testnets/tools/faucet-f6a": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnet-tools-faucet-008-9c2"
+    "content": "content---cardano-testnets-tools-faucet-25-f-b30"
   },
-  "/cardano-testnet/tools/plutus-fee-estimator-844": {
+  "/cardano-testnets/tools/plutus-fee-estimator-5df": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnet-tools-plutus-fee-estimatord-78-507"
+    "content": "content---cardano-testnets-tools-plutus-fee-estimator-8-f-7-1bc"
   },
-  "/cardano-testnet/tools/staking-calculator-4dd": {
+  "/cardano-testnets/tools/staking-calculator-802": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnet-tools-staking-calculator-6-b-7-4ee"
+    "content": "content---cardano-testnets-tools-staking-calculatore-52-b9c"
   },
-  "/community/ambassador-program-403": {
+  "/community/ambassador-program-0f7": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---community-ambassador-program-143-8d1"
+    "content": "content---community-ambassador-program-849-5d5"
   },
-  "/community/Cardano-stack-exchange-e9b": {
+  "/community/Cardano-stack-exchange-bd5": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---community-cardano-stack-exchange-30-a-f18"
+    "content": "content---community-cardano-stack-exchangef-20-a6a"
   },
-  "/community/cips-e71": {
+  "/community/cips-092": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---community-cipsc-81-d09"
+    "content": "content---community-cips-51-a-0c7"
   },
-  "/community/community-content-998": {
+  "/community/community-content-fe3": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---community-community-contentf-15-284"
+    "content": "content---community-community-contentbc-8-041"
   },
-  "/community/essential-cardano-ad4": {
+  "/community/essential-cardano-930": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---community-essential-cardanoe-5-c-a1e"
+    "content": "content---community-essential-cardano-092-c54"
   },
-  "/community/getting-support-e9b": {
+  "/community/getting-support-915": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---community-getting-support-6-c-2-e27"
+    "content": "content---community-getting-support-363-13f"
   },
   "/development-guidelines/cardano-node-course-6b5": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -301,9 +294,9 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---development-guidelines-node-tests-0-e-3-d12"
   },
-  "/development-guidelines/transaction-tutorials/introduction-3d0": {
+  "/development-guidelines/transaction-tutorials/-c89": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---development-guidelines-transaction-tutorials-introduction-2-fa-b7d"
+    "content": "content---development-guidelines-transaction-tutorials-f-9-b-541"
   },
   "/development-guidelines/transaction-tutorials/minting-transaction-c03": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -341,13 +334,9 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---explore-cardano-cardano-entropy-5-ce-b27"
   },
-  "/explore-cardano/cardano-network-5fd": {
+  "/explore-cardano/cardano-network/-352": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---explore-cardano-cardano-networkbc-5-6c3"
-  },
-  "/explore-cardano/cardano-network/about-the-cardano-network-4c4": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---explore-cardano-cardano-network-about-the-cardano-networkad-6-8fd"
+    "content": "content---explore-cardano-cardano-network-fb-9-6af"
   },
   "/explore-cardano/cardano-network/networking-protocol-b3f": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -441,10 +430,6 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---learn-stake-poolsc-95-dcd"
   },
-  "/marlowe/learn-about-marlowe-4dd": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---marlowe-learn-about-marlowebb-0-4a2"
-  },
   "/native-tokens/exchange-multi-asset-management-scenarios-be6": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---native-tokens-exchange-multi-asset-management-scenarios-8-b-9-609"
@@ -473,6 +458,10 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---native-tokens-minimum-ada-value-requirement-91-d-d27"
   },
+  "/new-to-cardano/-5c8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---new-to-cardano-079-662"
+  },
   "/new-to-cardano/cardano-tracking-tools-4cd": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---new-to-cardano-cardano-tracking-tools-2-de-ab1"
@@ -484,10 +473,6 @@
   "/new-to-cardano/how-to-purchase-ada-0ef": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---new-to-cardano-how-to-purchase-ada-67-e-541"
-  },
-  "/new-to-cardano/introduction-ff1": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---new-to-cardano-introduction-18-e-63f"
   },
   "/new-to-cardano/proof-of-stake-7d3": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -553,45 +538,21 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---operating-a-stake-pool-stake-pool-operations-101677-5b6"
   },
-  "/pioneer-programs/marlowe-pioneers-a05": {
+  "/pioneer-programs/marlowe-pioneers-b25": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---pioneer-programs-marlowe-pioneers-7-e-1-99b"
+    "content": "content---pioneer-programs-marlowe-pioneers-66-d-644"
   },
-  "/pioneer-programs/plutus-pioneers-6f9": {
+  "/pioneer-programs/plutus-pioneers-cbf": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---pioneer-programs-plutus-pioneers-525-f71"
+    "content": "content---pioneer-programs-plutus-pioneers-84-e-72d"
   },
-  "/plutus/collateral-mechanism-841": {
+  "/release-notes/comp-matrix-2a3": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---plutus-collateral-mechanism-857-8a5"
+    "content": "content---release-notes-comp-matrix-59-c-2d1"
   },
-  "/plutus/dapp-development-aaa": {
+  "/release-notes/release-notes-080": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---plutus-dapp-development-4-b-4-d8d"
-  },
-  "/plutus/learn-about-plutus-ee6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---plutus-learn-about-plutusc-99-09f"
-  },
-  "/plutus/plutus-resources-fbd": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---plutus-plutus-resources-5-ed-9e1"
-  },
-  "/plutus/plutus-scripts-c72": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---plutus-plutus-scripts-5-fe-517"
-  },
-  "/plutus/Plutus-use-cases-c09": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---plutus-plutus-use-cases-6-f-7-a6d"
-  },
-  "/plutus/sc-best-practices-700": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---plutus-sc-best-practices-9-c-7-80e"
-  },
-  "/plutus/transaction-costs-determinism-118": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---plutus-transaction-costs-determinism-5-fd-5c4"
+    "content": "content---release-notes-release-notes-608-f55"
   },
   "/scalability-solutions/hydra-e8c": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -601,12 +562,44 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---scalability-solutions-mithrild-53-39f"
   },
-  "/tools/comp-matrix-120": {
+  "/smart-contracts/learn-about-aiken-ffc": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---tools-comp-matrixc-7-c-bfb"
+    "content": "content---smart-contracts-learn-about-aikenaf-3-5de"
   },
-  "/tools/release-notes-baf": {
+  "/smart-contracts/learn-about-marlowe-6dd": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---tools-release-notesfa-7-2f9"
+    "content": "content---smart-contracts-learn-about-marlowe-026-64f"
+  },
+  "/smart-contracts/plutus/collateral-mechanism-427": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---smart-contracts-plutus-collateral-mechanism-2-c-0-cb6"
+  },
+  "/smart-contracts/plutus/dapp-development-86b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---smart-contracts-plutus-dapp-development-33-e-3a0"
+  },
+  "/smart-contracts/plutus/learn-about-plutus-5a5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---smart-contracts-plutus-learn-about-plutus-744-a04"
+  },
+  "/smart-contracts/plutus/plutus-resources-e7a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---smart-contracts-plutus-plutus-resourcesfe-5-bda"
+  },
+  "/smart-contracts/plutus/plutus-scripts-ed1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---smart-contracts-plutus-plutus-scriptsba-0-f3e"
+  },
+  "/smart-contracts/plutus/Plutus-use-cases-042": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---smart-contracts-plutus-plutus-use-cases-451-5c8"
+  },
+  "/smart-contracts/plutus/sc-best-practices-b1a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---smart-contracts-plutus-sc-best-practicesdc-7-e99"
+  },
+  "/smart-contracts/plutus/transaction-costs-determinism-acc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---smart-contracts-plutus-transaction-costs-determinism-374-335"
   }
 }

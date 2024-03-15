@@ -24,13 +24,6 @@
         "items": [
           {
             "type": "link",
-            "label": "Introduction",
-            "href": "/new-to-cardano/introduction",
-            "docId": "new-to-cardano/introduction",
-            "unlisted": false
-          },
-          {
-            "type": "link",
             "label": "What is a blockchain?",
             "href": "/new-to-cardano/what-is-a-blockchain",
             "docId": "new-to-cardano/what-is-a-blockchain",
@@ -92,7 +85,8 @@
             "docId": "new-to-cardano/what-is-a-smart-contract",
             "unlisted": false
           }
-        ]
+        ],
+        "href": "/new-to-cardano/"
       },
       {
         "type": "category",
@@ -221,13 +215,6 @@
             "items": [
               {
                 "type": "link",
-                "label": "About the Cardano network",
-                "href": "/explore-cardano/cardano-network/about-the-cardano-network",
-                "docId": "explore-cardano/cardano-network/about-the-cardano-network",
-                "unlisted": false
-              },
-              {
-                "type": "link",
                 "label": "Networking protocol design overview",
                 "href": "/explore-cardano/cardano-network/networking-protocol",
                 "docId": "explore-cardano/cardano-network/networking-protocol",
@@ -240,14 +227,8 @@
                 "docId": "explore-cardano/cardano-network/p2p-networking",
                 "unlisted": false
               }
-            ]
-          },
-          {
-            "type": "link",
-            "label": "Cardano network",
-            "href": "/explore-cardano/cardano-network",
-            "docId": "explore-cardano/cardano-network",
-            "unlisted": false
+            ],
+            "href": "/explore-cardano/cardano-network/"
           },
           {
             "type": "link",
@@ -309,17 +290,10 @@
       },
       {
         "type": "category",
-        "label": "Cardano Testnet",
+        "label": "Cardano Testnets",
         "collapsible": true,
         "collapsed": true,
         "items": [
-          {
-            "type": "link",
-            "label": "Overview",
-            "href": "/cardano-testnet/overview",
-            "docId": "cardano-testnet/overview",
-            "unlisted": false
-          },
           {
             "type": "category",
             "label": "About",
@@ -329,22 +303,22 @@
               {
                 "type": "link",
                 "label": "Vasil introduction",
-                "href": "/cardano-testnet/about/testnet-introduction",
-                "docId": "cardano-testnet/about/testnet-introduction",
+                "href": "/cardano-testnets/about/testnet-introduction",
+                "docId": "cardano-testnets/about/testnet-introduction",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Vasil feature overview",
-                "href": "/cardano-testnet/about/feature-overview",
-                "docId": "cardano-testnet/about/feature-overview",
+                "href": "/cardano-testnets/about/feature-overview",
+                "docId": "cardano-testnets/about/feature-overview",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Valentine (SECP) upgrade",
-                "href": "/cardano-testnet/about/secp",
-                "docId": "cardano-testnet/about/secp",
+                "href": "/cardano-testnets/about/secp",
+                "docId": "cardano-testnets/about/secp",
                 "unlisted": false
               }
             ]
@@ -352,22 +326,22 @@
           {
             "type": "link",
             "label": "Getting started with Cardano testnets",
-            "href": "/cardano-testnet/getting-started",
-            "docId": "cardano-testnet/getting-started",
+            "href": "/cardano-testnets/getting-started",
+            "docId": "cardano-testnets/getting-started",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Creating a local testnet",
-            "href": "/cardano-testnet/local-testnet",
-            "docId": "cardano-testnet/local-testnet",
+            "href": "/cardano-testnets/local-testnet",
+            "docId": "cardano-testnets/local-testnet",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Daedalus wallet for the Cardano testnets",
-            "href": "/cardano-testnet/daedalus-testnet",
-            "docId": "cardano-testnet/daedalus-testnet",
+            "href": "/cardano-testnets/daedalus-testnet",
+            "docId": "cardano-testnets/daedalus-testnet",
             "unlisted": false
           },
           {
@@ -379,49 +353,42 @@
               {
                 "type": "link",
                 "label": "Testnets faucet",
-                "href": "/cardano-testnet/tools/faucet",
-                "docId": "cardano-testnet/tools/faucet",
+                "href": "/cardano-testnets/tools/faucet",
+                "docId": "cardano-testnets/tools/faucet",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Staking calculator",
-                "href": "/cardano-testnet/tools/staking-calculator",
-                "docId": "cardano-testnet/tools/staking-calculator",
+                "href": "/cardano-testnets/tools/staking-calculator",
+                "docId": "cardano-testnets/tools/staking-calculator",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Plutus fee estimator",
-                "href": "/cardano-testnet/tools/plutus-fee-estimator",
-                "docId": "cardano-testnet/tools/plutus-fee-estimator",
-                "unlisted": false
-              }
-            ]
-          },
-          {
-            "type": "category",
-            "label": "Resources",
-            "collapsible": true,
-            "collapsed": true,
-            "items": [
-              {
-                "type": "link",
-                "label": "Links",
-                "href": "/cardano-testnet/resources/links",
-                "docId": "cardano-testnet/resources/links",
+                "href": "/cardano-testnets/tools/plutus-fee-estimator",
+                "docId": "cardano-testnets/tools/plutus-fee-estimator",
                 "unlisted": false
               }
             ]
           },
           {
             "type": "link",
+            "label": "Resources",
+            "href": "/cardano-testnets/resources",
+            "docId": "cardano-testnets/resources",
+            "unlisted": false
+          },
+          {
+            "type": "link",
             "label": "Support and feedback",
-            "href": "/cardano-testnet/support-feedback",
-            "docId": "cardano-testnet/support-feedback",
+            "href": "/cardano-testnets/support-feedback",
+            "docId": "cardano-testnets/support-feedback",
             "unlisted": false
           }
-        ]
+        ],
+        "href": "/cardano-testnets/"
       },
       {
         "type": "category",
@@ -472,13 +439,6 @@
             "items": [
               {
                 "type": "link",
-                "label": "Introduction",
-                "href": "/development-guidelines/transaction-tutorials/introduction",
-                "docId": "development-guidelines/transaction-tutorials/introduction",
-                "unlisted": false
-              },
-              {
-                "type": "link",
                 "label": "Minting transactions",
                 "href": "/development-guidelines/transaction-tutorials/minting-transaction",
                 "docId": "development-guidelines/transaction-tutorials/minting-transaction",
@@ -512,7 +472,8 @@
                 "docId": "development-guidelines/transaction-tutorials/multiple-purposes",
                 "unlisted": false
               }
-            ]
+            ],
+            "href": "/development-guidelines/transaction-tutorials/"
           }
         ]
       },
@@ -794,13 +755,6 @@
             "items": [
               {
                 "type": "link",
-                "label": "Introduction",
-                "href": "/cardano-sidechains/sidechain-toolkit/introduction",
-                "docId": "cardano-sidechains/sidechain-toolkit/introduction",
-                "unlisted": false
-              },
-              {
-                "type": "link",
                 "label": "Main chain Plutus scripts",
                 "href": "/cardano-sidechains/sidechain-toolkit/mainchain-plutus-scripts",
                 "docId": "cardano-sidechains/sidechain-toolkit/mainchain-plutus-scripts",
@@ -820,7 +774,8 @@
                 "docId": "cardano-sidechains/sidechain-toolkit/committee-rotation",
                 "unlisted": false
               }
-            ]
+            ],
+            "href": "/cardano-sidechains/sidechain-toolkit/"
           },
           {
             "type": "category",
@@ -999,79 +954,86 @@
       },
       {
         "type": "category",
-        "label": "Plutus",
+        "label": "Smart Contracts",
         "collapsible": true,
         "collapsed": true,
         "items": [
           {
-            "type": "link",
-            "label": "Learn about Plutus",
-            "href": "/plutus/learn-about-plutus",
-            "docId": "plutus/learn-about-plutus",
-            "unlisted": false
+            "type": "category",
+            "label": "Plutus",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "link",
+                "label": "Learn about Plutus",
+                "href": "/smart-contracts/plutus/learn-about-plutus",
+                "docId": "smart-contracts/plutus/learn-about-plutus",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Plutus resources",
+                "href": "/smart-contracts/plutus/plutus-resources",
+                "docId": "smart-contracts/plutus/plutus-resources",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Plutus scripts",
+                "href": "/smart-contracts/plutus/plutus-scripts",
+                "docId": "smart-contracts/plutus/plutus-scripts",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Plutus application development",
+                "href": "/smart-contracts/plutus/dapp-development",
+                "docId": "smart-contracts/plutus/dapp-development",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Plutus use cases",
+                "href": "/smart-contracts/plutus/Plutus-use-cases",
+                "docId": "smart-contracts/plutus/Plutus-use-cases",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "About the collateral mechanism",
+                "href": "/smart-contracts/plutus/collateral-mechanism",
+                "docId": "smart-contracts/plutus/collateral-mechanism",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Transaction costs and determinism",
+                "href": "/smart-contracts/plutus/transaction-costs-determinism",
+                "docId": "smart-contracts/plutus/transaction-costs-determinism",
+                "unlisted": false
+              },
+              {
+                "type": "link",
+                "label": "Smart contract best practices",
+                "href": "/smart-contracts/plutus/sc-best-practices",
+                "docId": "smart-contracts/plutus/sc-best-practices",
+                "unlisted": false
+              }
+            ]
           },
-          {
-            "type": "link",
-            "label": "Plutus resources",
-            "href": "/plutus/plutus-resources",
-            "docId": "plutus/plutus-resources",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Plutus scripts",
-            "href": "/plutus/plutus-scripts",
-            "docId": "plutus/plutus-scripts",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Plutus application development",
-            "href": "/plutus/dapp-development",
-            "docId": "plutus/dapp-development",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Plutus use cases",
-            "href": "/plutus/Plutus-use-cases",
-            "docId": "plutus/Plutus-use-cases",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "About the collateral mechanism",
-            "href": "/plutus/collateral-mechanism",
-            "docId": "plutus/collateral-mechanism",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Transaction costs and determinism",
-            "href": "/plutus/transaction-costs-determinism",
-            "docId": "plutus/transaction-costs-determinism",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Smart contract best practices",
-            "href": "/plutus/sc-best-practices",
-            "docId": "plutus/sc-best-practices",
-            "unlisted": false
-          }
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Marlowe",
-        "collapsible": true,
-        "collapsed": true,
-        "items": [
           {
             "type": "link",
             "label": "Learn about Marlowe",
-            "href": "/marlowe/learn-about-marlowe",
-            "docId": "marlowe/learn-about-marlowe",
+            "href": "/smart-contracts/learn-about-marlowe",
+            "docId": "smart-contracts/learn-about-marlowe",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Learn about Aiken",
+            "href": "/smart-contracts/learn-about-aiken",
+            "docId": "smart-contracts/learn-about-aiken",
             "unlisted": false
           }
         ]
@@ -1150,22 +1112,22 @@
       },
       {
         "type": "category",
-        "label": "Tools",
+        "label": "Release Notes",
         "collapsible": true,
         "collapsed": true,
         "items": [
           {
             "type": "link",
             "label": "Release notes",
-            "href": "/tools/release-notes",
-            "docId": "tools/release-notes",
+            "href": "/release-notes/release-notes",
+            "docId": "release-notes/release-notes",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Compatibility matrix",
-            "href": "/tools/comp-matrix",
-            "docId": "tools/comp-matrix",
+            "href": "/release-notes/comp-matrix",
+            "docId": "release-notes/comp-matrix",
             "unlisted": false
           }
         ]
@@ -1173,22 +1135,26 @@
       {
         "type": "link",
         "label": "Cardano Ecosystem Tools",
-        "href": "https://developers.cardano.org/tools/"
+        "href": "https://developers.cardano.org/tools/",
+        "className": "cardano-ecosystems-external-link"
       },
       {
         "type": "link",
         "label": "Glossary",
-        "href": "https://www.essentialcardano.io/glossary?sort=alphabetical"
+        "href": "https://www.essentialcardano.io/glossary?sort=alphabetical",
+        "className": "glossary-external-link"
       },
       {
         "type": "link",
         "label": "Cardano.org",
-        "href": "https://cardano.org/"
+        "href": "https://cardano.org/",
+        "className": "cardano-external-link"
       },
       {
         "type": "link",
         "label": "Developer Portal",
-        "href": "https://developers.cardano.org/"
+        "href": "https://developers.cardano.org/",
+        "className": "cardano-developers-external-link"
       }
     ]
   },
@@ -1385,9 +1351,9 @@
       "description": "A sidechain is initialized by an SPO, or 'chain creator' who publishes the sidechain Plutus contract implementations including committee registration scripts. These registration scripts allow other SPOs to register or de-register as a candidate in the committee. The SPO also runs a sidechain validator node which starts the sidechain when a quorum of validators is reached.",
       "sidebar": "tutorialSidebar"
     },
-    "cardano-sidechains/sidechain-toolkit/introduction": {
-      "id": "cardano-sidechains/sidechain-toolkit/introduction",
-      "title": "Introduction",
+    "cardano-sidechains/sidechain-toolkit/index": {
+      "id": "cardano-sidechains/sidechain-toolkit/index",
+      "title": "Sidechain Toolkit",
       "description": "sidechain-toolkit-environment-pic",
       "sidebar": "tutorialSidebar"
     },
@@ -1409,74 +1375,74 @@
       "description": "This page answers some frequent questions for the Cardano Sidechains Toolkit and",
       "sidebar": "tutorialSidebar"
     },
-    "cardano-testnet/about/feature-overview": {
-      "id": "cardano-testnet/about/feature-overview",
+    "cardano-testnets/about/feature-overview": {
+      "id": "cardano-testnets/about/feature-overview",
       "title": "Vasil feature overview",
       "description": "Diffusion pipelining",
       "sidebar": "tutorialSidebar"
     },
-    "cardano-testnet/about/secp": {
-      "id": "cardano-testnet/about/secp",
+    "cardano-testnets/about/secp": {
+      "id": "cardano-testnets/about/secp",
       "title": "Valentine (SECP) upgrade",
       "description": "The Valentine (or SECP) upgrade is Cardano’s intra-era hard fork that follows the Vasil upgrade. Valentine is a small and focused semantic change to the ledger, which brings new built-in functions to Plutus to support SECP elliptic curves (ECDSA and Schnorr). Although an intra-era hard fork requires a hard fork combinator event, it does not change the ledger era, which means that this is an upgrade to the Babbage era (Vasil functionality).",
       "sidebar": "tutorialSidebar"
     },
-    "cardano-testnet/about/testnet-introduction": {
-      "id": "cardano-testnet/about/testnet-introduction",
+    "cardano-testnets/about/testnet-introduction": {
+      "id": "cardano-testnets/about/testnet-introduction",
       "title": "Vasil introduction",
       "description": "Note: New dedicated preview and pre-production environments have been recently spun up for the final stages of testing Vasil functionality. These environments offer improved chain density and a better developer experience.",
       "sidebar": "tutorialSidebar"
     },
-    "cardano-testnet/daedalus-testnet": {
-      "id": "cardano-testnet/daedalus-testnet",
+    "cardano-testnets/daedalus-testnet": {
+      "id": "cardano-testnets/daedalus-testnet",
       "title": "Daedalus wallet for the Cardano testnets",
       "description": "Here you can download any of the special testnet-only versions of the Daedalus",
       "sidebar": "tutorialSidebar"
     },
-    "cardano-testnet/getting-started": {
-      "id": "cardano-testnet/getting-started",
+    "cardano-testnets/getting-started": {
+      "id": "cardano-testnets/getting-started",
       "title": "Getting started with Cardano testnets",
       "description": "Note that the Cardano testnet is no longer recommended for testing purposes. The community is encouraged to use preview and pre-production testnet environments explained below.",
       "sidebar": "tutorialSidebar"
     },
-    "cardano-testnet/local-testnet": {
-      "id": "cardano-testnet/local-testnet",
+    "cardano-testnets/index": {
+      "id": "cardano-testnets/index",
+      "title": "Cardano Testnets",
+      "description": "Cardano testnets sit at the vanguard of network development, providing sandboxed",
+      "sidebar": "tutorialSidebar"
+    },
+    "cardano-testnets/local-testnet": {
+      "id": "cardano-testnets/local-testnet",
       "title": "Creating a local testnet",
       "description": "A local testnet enables developers and projects building on Cardano to test new features or functionality prior to deployment on global testnet environments. While preview and pre-production environments benefit the wider developer community, a local testnet allows the execution of a hard fork in your own setup and subsequent testing of DApp behavior.",
       "sidebar": "tutorialSidebar"
     },
-    "cardano-testnet/overview": {
-      "id": "cardano-testnet/overview",
-      "title": "Overview",
-      "description": "Cardano testnets sit at the vanguard of network development, providing sandboxed environments for continuing innovation, harnessing the power of the Cardano community to iterate and improve.",
-      "sidebar": "tutorialSidebar"
-    },
-    "cardano-testnet/resources/links": {
-      "id": "cardano-testnet/resources/links",
-      "title": "Links",
+    "cardano-testnets/resources": {
+      "id": "cardano-testnets/resources",
+      "title": "Resources",
       "description": "Useful materials",
       "sidebar": "tutorialSidebar"
     },
-    "cardano-testnet/support-feedback": {
-      "id": "cardano-testnet/support-feedback",
+    "cardano-testnets/support-feedback": {
+      "id": "cardano-testnets/support-feedback",
       "title": "Support and feedback",
       "description": "Support",
       "sidebar": "tutorialSidebar"
     },
-    "cardano-testnet/tools/faucet": {
-      "id": "cardano-testnet/tools/faucet",
+    "cardano-testnets/tools/faucet": {
+      "id": "cardano-testnets/tools/faucet",
       "title": "Testnets faucet",
       "description": "Since the Cardano testnet is an independent network, separate from the Cardano",
       "sidebar": "tutorialSidebar"
     },
-    "cardano-testnet/tools/plutus-fee-estimator": {
-      "id": "cardano-testnet/tools/plutus-fee-estimator",
+    "cardano-testnets/tools/plutus-fee-estimator": {
+      "id": "cardano-testnets/tools/plutus-fee-estimator",
       "title": "Plutus fee estimator",
       "description": "The Plutus fee estimator has been developed by IOG performance experts for price",
       "sidebar": "tutorialSidebar"
     },
-    "cardano-testnet/tools/staking-calculator": {
-      "id": "cardano-testnet/tools/staking-calculator",
+    "cardano-testnets/tools/staking-calculator": {
+      "id": "cardano-testnets/tools/staking-calculator",
       "title": "Staking calculator",
       "description": "Staking calculator is a tool used to predict approximate rewards a user may",
       "sidebar": "tutorialSidebar"
@@ -1541,10 +1507,10 @@
       "description": "Cardano node tests are CLI-based system and end-to-end tests for the Cardano node.",
       "sidebar": "tutorialSidebar"
     },
-    "development-guidelines/transaction-tutorials/introduction": {
-      "id": "development-guidelines/transaction-tutorials/introduction",
-      "title": "Introduction",
-      "description": "A transaction is an event created, signed, and sent by a user to modify the ledger's state. It is commonly used to transfer ada or other tokens from one user to another. Additionally, it can serve various purposes, such as token creation, delegation registration to a stake pool, or interaction with smart contracts, among others. The process to modify the ledger through a transaction is as follows:",
+    "development-guidelines/transaction-tutorials/index": {
+      "id": "development-guidelines/transaction-tutorials/index",
+      "title": "Transaction Tutorials",
+      "description": "A transaction is an event created, signed, and sent by a user to modify the",
       "sidebar": "tutorialSidebar"
     },
     "development-guidelines/transaction-tutorials/minting-transaction": {
@@ -1601,15 +1567,9 @@
       "description": "Cardano's evolution towards a fully decentralized entity",
       "sidebar": "tutorialSidebar"
     },
-    "explore-cardano/cardano-network": {
-      "id": "explore-cardano/cardano-network",
-      "title": "Cardano network",
-      "description": "",
-      "sidebar": "tutorialSidebar"
-    },
-    "explore-cardano/cardano-network/about-the-cardano-network": {
-      "id": "explore-cardano/cardano-network/about-the-cardano-network",
-      "title": "About the Cardano network",
+    "explore-cardano/cardano-network/index": {
+      "id": "explore-cardano/cardano-network/index",
+      "title": "Cardano Network",
       "description": "The Cardano network is a technical infrastructure combining Cardano nodes and",
       "sidebar": "tutorialSidebar"
     },
@@ -1751,12 +1711,6 @@
       "description": "A stake pool is a reliable server node that focuses on ledger maintenance and holds the combined resources  -the 'stake'- of various stakeholders in a single entity. Stake pools are responsible for processing transactions that will be placed in the ledger, as well as producing new blocks. Stake pools are at the core of Ouroboros, Cardano's proof-of-stake protocol.",
       "sidebar": "tutorialSidebar"
     },
-    "marlowe/learn-about-marlowe": {
-      "id": "marlowe/learn-about-marlowe",
-      "title": "Learn about Marlowe",
-      "description": "Marlowe is a set of open source tools designed to simplify the creation,",
-      "sidebar": "tutorialSidebar"
-    },
     "native-tokens/exchange-multi-asset-management-scenarios": {
       "id": "native-tokens/exchange-multi-asset-management-scenarios",
       "title": "Exchange multi-asset management scenarios",
@@ -1817,9 +1771,9 @@
       "description": "Note: we are not making any investment advice. Please consider conducting",
       "sidebar": "tutorialSidebar"
     },
-    "new-to-cardano/introduction": {
-      "id": "new-to-cardano/introduction",
-      "title": "Introduction",
+    "new-to-cardano/index": {
+      "id": "new-to-cardano/index",
+      "title": "New To Cardano",
       "description": "The understanding of basic concepts plays an integral role in getting acquainted",
       "sidebar": "tutorialSidebar"
     },
@@ -1931,52 +1885,16 @@
       "description": "Before you start, note that Plutus Core, Cardano’s native smart contract",
       "sidebar": "tutorialSidebar"
     },
-    "plutus/collateral-mechanism": {
-      "id": "plutus/collateral-mechanism",
-      "title": "About the collateral mechanism",
-      "description": "The collateral mechanism is an important feature that has been designed to",
+    "release-notes/comp-matrix": {
+      "id": "release-notes/comp-matrix",
+      "title": "Compatibility matrix",
+      "description": "Component compatibility with the Cardano node",
       "sidebar": "tutorialSidebar"
     },
-    "plutus/dapp-development": {
-      "id": "plutus/dapp-development",
-      "title": "Plutus application development",
-      "description": "This section provides a high-level overview of what a decentralized application",
-      "sidebar": "tutorialSidebar"
-    },
-    "plutus/learn-about-plutus": {
-      "id": "plutus/learn-about-plutus",
-      "title": "Learn about Plutus",
-      "description": "Please note that Cardano Docs is not the primary go-to source for Plutus",
-      "sidebar": "tutorialSidebar"
-    },
-    "plutus/plutus-resources": {
-      "id": "plutus/plutus-resources",
-      "title": "Plutus resources",
-      "description": "This section aims to provide a simple way for users to find links to information",
-      "sidebar": "tutorialSidebar"
-    },
-    "plutus/plutus-scripts": {
-      "id": "plutus/plutus-scripts",
-      "title": "Plutus scripts",
-      "description": "Cardano uses scripts to validate actions. These scripts, which are pieces of",
-      "sidebar": "tutorialSidebar"
-    },
-    "plutus/Plutus-use-cases": {
-      "id": "plutus/Plutus-use-cases",
-      "title": "Plutus use cases",
-      "description": "Typical high-level use cases for Plutus implementations include, but are not",
-      "sidebar": "tutorialSidebar"
-    },
-    "plutus/sc-best-practices": {
-      "id": "plutus/sc-best-practices",
-      "title": "Smart contract best practices",
-      "description": "Here are some general best practices that you should follow when developing",
-      "sidebar": "tutorialSidebar"
-    },
-    "plutus/transaction-costs-determinism": {
-      "id": "plutus/transaction-costs-determinism",
-      "title": "Transaction costs and determinism",
-      "description": "Cardano’s approach to price setting mainly relies on market demand over actual",
+    "release-notes/release-notes": {
+      "id": "release-notes/release-notes",
+      "title": "Release notes",
+      "description": "Here is the latest release information for the Cardano components. Component",
       "sidebar": "tutorialSidebar"
     },
     "scalability-solutions/hydra": {
@@ -1991,16 +1909,64 @@
       "description": "//TODO make external url",
       "sidebar": "tutorialSidebar"
     },
-    "tools/comp-matrix": {
-      "id": "tools/comp-matrix",
-      "title": "Compatibility matrix",
-      "description": "Component compatibility with the Cardano node",
+    "smart-contracts/learn-about-aiken": {
+      "id": "smart-contracts/learn-about-aiken",
+      "title": "Learn about Aiken",
+      "description": "⚠️ Please note that Aiken is still in development and is not yet recommended",
       "sidebar": "tutorialSidebar"
     },
-    "tools/release-notes": {
-      "id": "tools/release-notes",
-      "title": "Release notes",
-      "description": "Here is the latest release information for the Cardano components. Component",
+    "smart-contracts/learn-about-marlowe": {
+      "id": "smart-contracts/learn-about-marlowe",
+      "title": "Learn about Marlowe",
+      "description": "Marlowe is a set of open source tools designed to simplify the creation,",
+      "sidebar": "tutorialSidebar"
+    },
+    "smart-contracts/plutus/collateral-mechanism": {
+      "id": "smart-contracts/plutus/collateral-mechanism",
+      "title": "About the collateral mechanism",
+      "description": "The collateral mechanism is an important feature that has been designed to",
+      "sidebar": "tutorialSidebar"
+    },
+    "smart-contracts/plutus/dapp-development": {
+      "id": "smart-contracts/plutus/dapp-development",
+      "title": "Plutus application development",
+      "description": "This section provides a high-level overview of what a decentralized application",
+      "sidebar": "tutorialSidebar"
+    },
+    "smart-contracts/plutus/learn-about-plutus": {
+      "id": "smart-contracts/plutus/learn-about-plutus",
+      "title": "Learn about Plutus",
+      "description": "Please note that Cardano Docs is not the primary go-to source for Plutus",
+      "sidebar": "tutorialSidebar"
+    },
+    "smart-contracts/plutus/plutus-resources": {
+      "id": "smart-contracts/plutus/plutus-resources",
+      "title": "Plutus resources",
+      "description": "This section aims to provide a simple way for users to find links to information",
+      "sidebar": "tutorialSidebar"
+    },
+    "smart-contracts/plutus/plutus-scripts": {
+      "id": "smart-contracts/plutus/plutus-scripts",
+      "title": "Plutus scripts",
+      "description": "Cardano uses scripts to validate actions. These scripts, which are pieces of",
+      "sidebar": "tutorialSidebar"
+    },
+    "smart-contracts/plutus/Plutus-use-cases": {
+      "id": "smart-contracts/plutus/Plutus-use-cases",
+      "title": "Plutus use cases",
+      "description": "Typical high-level use cases for Plutus implementations include, but are not",
+      "sidebar": "tutorialSidebar"
+    },
+    "smart-contracts/plutus/sc-best-practices": {
+      "id": "smart-contracts/plutus/sc-best-practices",
+      "title": "Smart contract best practices",
+      "description": "Here are some general best practices that you should follow when developing",
+      "sidebar": "tutorialSidebar"
+    },
+    "smart-contracts/plutus/transaction-costs-determinism": {
+      "id": "smart-contracts/plutus/transaction-costs-determinism",
+      "title": "Transaction costs and determinism",
+      "description": "Cardano’s approach to price setting mainly relies on market demand over actual",
       "sidebar": "tutorialSidebar"
     }
   }

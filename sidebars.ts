@@ -18,21 +18,25 @@ const sidebars: SidebarsConfig = {
       type: 'link',
       label: 'Cardano Ecosystem Tools',
       href: 'https://developers.cardano.org/tools/',
+      className: 'cardano-ecosystems-external-link',
     },
     {
       type: 'link',
       label: 'Glossary',
       href: 'https://www.essentialcardano.io/glossary?sort=alphabetical',
+      className: 'glossary-external-link',
     },
     {
       type: 'link',
       label: 'Cardano.org',
       href: 'https://cardano.org/',
+      className: 'cardano-external-link',
     },
     {
       type: 'link',
       label: 'Developer Portal',
       href: 'https://developers.cardano.org/',
+      className: 'cardano-developers-external-link',
     },
   ],
 
