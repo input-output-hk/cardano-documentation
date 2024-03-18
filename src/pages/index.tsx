@@ -28,8 +28,8 @@ export default function Home(): JSX.Element {
         text="Cardano has a strong focus on sustainability, scalability, and transparency and is a fully open source project that aims to deliver an inclusive, fair, and resilient infrastructure for financial and social applications on a global scale. It is powered by Ouroboros, the ground-breaking proof-of-stake consensus protocol."
         label="Get started"
       />
-      <Breakout bgHiLight>
-        <SiteWidthWrap>
+      <Breakout className={'intro-container'} bgHiLight>
+        <SiteWidthWrap className={'intro-sections-wrapper'}>
           <Grid bottomSpace="10">
             <GridItem flexFactor="48%" mobFlexFactor="48%" yspace="2">
               <Tile
@@ -70,7 +70,7 @@ export default function Home(): JSX.Element {
           </Grid>
         </SiteWidthWrap>
       </Breakout>
-      <SiteWidthWrap>
+      <SiteWidthWrap className={'banner-wrapper'}>
         <Grid pullUp="-12">
           <GridItem flexFactor="100%" mobFlexFactor="100%" single yspace="2">
             <Tile

@@ -44,15 +44,15 @@ export default [
   },
   {
     path: '/',
-    component: ComponentCreator('/', 'ab9'),
+    component: ComponentCreator('/', '2ae'),
     routes: [
       {
         path: '/',
-        component: ComponentCreator('/', '6f2'),
+        component: ComponentCreator('/', '6f8'),
         routes: [
           {
             path: '/',
-            component: ComponentCreator('/', '447'),
+            component: ComponentCreator('/', '85c'),
             routes: [
               {
                 path: '/cardano-components/cardano-db-sync/about-db-sync',
@@ -193,12 +193,6 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts',
-                component: ComponentCreator('/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts', '845'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
                 path: '/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts/setup-development',
                 component: ComponentCreator('/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts/setup-development', '209'),
                 exact: true,
@@ -303,12 +297,6 @@ export default [
               {
                 path: '/cardano-testnets/getting-started',
                 component: ComponentCreator('/cardano-testnets/getting-started', 'f65'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
-                path: '/cardano-testnets/links',
-                component: ComponentCreator('/cardano-testnets/links', '742'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
@@ -775,12 +763,6 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/pioneer-programs/marlowe-pioneers',
-                component: ComponentCreator('/pioneer-programs/marlowe-pioneers', 'b25'),
-                exact: true,
-                sidebar: "tutorialSidebar"
-              },
-              {
                 path: '/pioneer-programs/plutus-pioneers',
                 component: ComponentCreator('/pioneer-programs/plutus-pioneers', 'cbf'),
                 exact: true,
@@ -811,14 +793,14 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/smart-contracts/learn-about-aiken',
-                component: ComponentCreator('/smart-contracts/learn-about-aiken', 'ffc'),
+                path: '/smart-contracts/aiken',
+                component: ComponentCreator('/smart-contracts/aiken', '0cc'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/smart-contracts/learn-about-marlowe',
-                component: ComponentCreator('/smart-contracts/learn-about-marlowe', '6dd'),
+                path: '/smart-contracts/marlowe',
+                component: ComponentCreator('/smart-contracts/marlowe', 'aa5'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },

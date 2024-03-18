@@ -189,10 +189,10 @@ const WalletDownloaders = ({ env }) => {
   const loadDaedalusData = async () => {
     try {
       setLoading(true)
-      const result = await fetch(envs[env].endpoint)
+
+      const result = await fetch(envs[env].endpoint, { mode: 'no-cors' })
 
       const jsonResult = await result.json()
-
       if (!validateData(jsonResult)) throw new Error('Invalid data')
       setPlatformsData(
         Object.keys(jsonResult.platforms).map((platform) => ({
@@ -270,8 +270,11 @@ const WalletDownloaders = ({ env }) => {
   }
 
   const onDownloadPGPSignature = (signature, URL) => (e) => {
+    // @ts-ignore
     if (window.navigator.msSaveBlob || e.target.href === '#') e.preventDefault()
+    // @ts-ignore
     if (window.navigator.msSaveBlob)
+      // @ts-ignore
       window.navigator.msSaveBlob(getPGPBlob(signature), getPGPFilename(URL))
   }
 
@@ -325,7 +328,7 @@ const WalletDownloaders = ({ env }) => {
                   <ChecksumArea
                     ref={checksumRefs[key]}
                     title={content.downloaders_content.copy_to_clipboard}
-                    onClick={checksumOnClick(SHA256, key, version)}
+                    onClick={checksumOnClick(SHA256, key)}
                     aria-label={content.downloaders_content.copy_to_clipboard}
                     value={SHA256}
                     readOnly

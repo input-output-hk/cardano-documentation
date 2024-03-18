@@ -126,11 +126,6 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts",
-              "path": "/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts",
-              "sidebar": "tutorialSidebar"
-            },
-            {
               "id": "cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts/setup-development",
               "path": "/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts/setup-development",
               "sidebar": "tutorialSidebar"
@@ -218,11 +213,6 @@
             {
               "id": "cardano-testnets/index",
               "path": "/cardano-testnets/",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "cardano-testnets/links",
-              "path": "/cardano-testnets/links",
               "sidebar": "tutorialSidebar"
             },
             {
@@ -611,11 +601,6 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "pioneer-programs/marlowe-pioneers",
-              "path": "/pioneer-programs/marlowe-pioneers",
-              "sidebar": "tutorialSidebar"
-            },
-            {
               "id": "pioneer-programs/plutus-pioneers",
               "path": "/pioneer-programs/plutus-pioneers",
               "sidebar": "tutorialSidebar"
@@ -641,13 +626,13 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "smart-contracts/learn-about-aiken",
-              "path": "/smart-contracts/learn-about-aiken",
+              "id": "smart-contracts/aiken",
+              "path": "/smart-contracts/aiken",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "smart-contracts/learn-about-marlowe",
-              "path": "/smart-contracts/learn-about-marlowe",
+              "id": "smart-contracts/marlowe",
+              "path": "/smart-contracts/marlowe",
               "sidebar": "tutorialSidebar"
             },
             {

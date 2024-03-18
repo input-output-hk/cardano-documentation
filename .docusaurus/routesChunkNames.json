@@ -49,17 +49,17 @@
     },
     "config": "config---5-e-9-4f3"
   },
-  "/-ab9": {
+  "/-2ae": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---cf-2-0b9"
     }
   },
-  "/-6f2": {
+  "/-6f8": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "version": "version---935-fcf"
   },
-  "/-447": {
+  "/-85c": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/cardano-components/cardano-db-sync/about-db-sync-4c1": {
@@ -154,10 +154,6 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---cardano-sidechains-proof-of-concept-evm-sidechain-create-and-fund-accountsbda-879"
   },
-  "/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts-845": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-sidechains-proof-of-concept-evm-sidechain-deploy-smart-contracts-417-9af"
-  },
   "/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts/setup-development-209": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---cardano-sidechains-proof-of-concept-evm-sidechain-deploy-smart-contracts-setup-development-1-da-cfd"
@@ -229,10 +225,6 @@
   "/cardano-testnets/getting-started-f65": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---cardano-testnets-getting-startedc-90-ffb"
-  },
-  "/cardano-testnets/links-742": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnets-linkscc-6-508"
   },
   "/cardano-testnets/local-testnet-675": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -542,10 +534,6 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---operating-a-stake-pool-stake-pool-operations-101677-5b6"
   },
-  "/pioneer-programs/marlowe-pioneers-b25": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---pioneer-programs-marlowe-pioneers-66-d-644"
-  },
   "/pioneer-programs/plutus-pioneers-cbf": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---pioneer-programs-plutus-pioneers-84-e-72d"
@@ -566,13 +554,13 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---scalability-solutions-mithrild-53-39f"
   },
-  "/smart-contracts/learn-about-aiken-ffc": {
+  "/smart-contracts/aiken-0cc": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---smart-contracts-learn-about-aikenaf-3-5de"
+    "content": "content---smart-contracts-aikene-12-3fd"
   },
-  "/smart-contracts/learn-about-marlowe-6dd": {
+  "/smart-contracts/marlowe-aa5": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---smart-contracts-learn-about-marlowe-026-64f"
+    "content": "content---smart-contracts-marlowe-291-a81"
   },
   "/smart-contracts/plutus/collateral-mechanism-427": {
     "__comp": "__comp---theme-doc-item-178-a40",

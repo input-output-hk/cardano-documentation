@@ -9,10 +9,8 @@ const StyledSiteWidthWrap = styled('div')`
   }
 `
 
-const SiteWidthWrap = ({ children, className, theme }) => (
-  <StyledSiteWidthWrap className={className} theme={theme}>
-    {children}
-  </StyledSiteWidthWrap>
+const SiteWidthWrap = ({ children, className }) => (
+  <StyledSiteWidthWrap className={className}>{children}</StyledSiteWidthWrap>
 )
 
 export default SiteWidthWrap

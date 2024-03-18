@@ -664,34 +664,6 @@
               }
             },
             {
-              "id": "cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts",
-              "title": "Deploying smart contracts",
-              "description": "",
-              "source": "@site/docs/09-cardano-sidechains/03-proof-of-concept-evm-sidechain/04-deploy-smart-contracts.mdx",
-              "sourceDirName": "09-cardano-sidechains/03-proof-of-concept-evm-sidechain",
-              "slug": "/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts",
-              "permalink": "/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts",
-              "draft": false,
-              "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/09-cardano-sidechains/03-proof-of-concept-evm-sidechain/04-deploy-smart-contracts.mdx",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 4,
-              "frontMatter": {
-                "title": "Deploying smart contracts",
-                "metaTitle": "Deploying smart contracts"
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Solidity resources",
-                "permalink": "/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts/solidity-resources"
-              },
-              "next": {
-                "title": "SC_Token and test ada",
-                "permalink": "/cardano-sidechains/proof-of-concept-evm-sidechain/sidechain-token"
-              }
-            },
-            {
               "id": "cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts/setup-development",
               "title": "Set up development environment",
               "description": "The EVM sidechain testnet is EVM-compatible with most Ethereum software to",
@@ -743,8 +715,8 @@
                 "permalink": "/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts/verify-contract"
               },
               "next": {
-                "title": "Deploying smart contracts",
-                "permalink": "/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts"
+                "title": "SC_Token and test ada",
+                "permalink": "/cardano-sidechains/proof-of-concept-evm-sidechain/sidechain-token"
               }
             },
             {
@@ -823,8 +795,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Deploying smart contracts",
-                "permalink": "/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts"
+                "title": "Solidity resources",
+                "permalink": "/cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts/solidity-resources"
               },
               "next": {
                 "title": "Transferring tokens",
@@ -1204,34 +1176,6 @@
               }
             },
             {
-              "id": "cardano-testnets/links",
-              "title": "Resources",
-              "description": "Useful materials",
-              "source": "@site/docs/05-cardano-testnets/07-links.mdx",
-              "sourceDirName": "05-cardano-testnets",
-              "slug": "/cardano-testnets/links",
-              "permalink": "/cardano-testnets/links",
-              "draft": false,
-              "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/05-cardano-testnets/07-links.mdx",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 7,
-              "frontMatter": {
-                "title": "Resources",
-                "metaTitle": "Links"
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Plutus fee estimator",
-                "permalink": "/cardano-testnets/tools/plutus-fee-estimator"
-              },
-              "next": {
-                "title": "Resources",
-                "permalink": "/cardano-testnets/resources"
-              }
-            },
-            {
               "id": "cardano-testnets/local-testnet",
               "title": "Creating a local testnet",
               "description": "A local testnet enables developers and projects building on Cardano to test new features or functionality prior to deployment on global testnet environments. While preview and pre-production environments benefit the wider developer community, a local testnet allows the execution of a hard fork in your own setup and subsequent testing of DApp behavior.",
@@ -1279,8 +1223,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Resources",
-                "permalink": "/cardano-testnets/links"
+                "title": "Plutus fee estimator",
+                "permalink": "/cardano-testnets/tools/plutus-fee-estimator"
               },
               "next": {
                 "title": "Support and feedback",
@@ -1368,7 +1312,7 @@
               },
               "next": {
                 "title": "Resources",
-                "permalink": "/cardano-testnets/links"
+                "permalink": "/cardano-testnets/resources"
               }
             },
             {
@@ -1478,8 +1422,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Learn about Aiken",
-                "permalink": "/smart-contracts/learn-about-aiken"
+                "title": "Aiken",
+                "permalink": "/smart-contracts/aiken"
               },
               "next": {
                 "title": "Essential Cardano",
@@ -3406,35 +3350,6 @@
               }
             },
             {
-              "id": "pioneer-programs/marlowe-pioneers",
-              "title": "Marlowe Pioneer program",
-              "description": "What is the Marlowe Pioneer program?",
-              "source": "@site/docs/14-pioneer-programs/02-marlowe-pioneers.mdx",
-              "sourceDirName": "14-pioneer-programs",
-              "slug": "/pioneer-programs/marlowe-pioneers",
-              "permalink": "/pioneer-programs/marlowe-pioneers",
-              "draft": false,
-              "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/14-pioneer-programs/02-marlowe-pioneers.mdx",
-              "tags": [],
-              "version": "current",
-              "sidebarPosition": 2,
-              "frontMatter": {
-                "title": "Marlowe Pioneer program",
-                "metaTitle": "Marlowe Pioneer program",
-                "sidebar_position": 2
-              },
-              "sidebar": "tutorialSidebar",
-              "previous": {
-                "title": "Plutus Pioneer program",
-                "permalink": "/pioneer-programs/plutus-pioneers"
-              },
-              "next": {
-                "title": "Release notes",
-                "permalink": "/release-notes/release-notes"
-              }
-            },
-            {
               "id": "pioneer-programs/plutus-pioneers",
               "title": "Plutus Pioneer program",
               "description": "Before you start, note that Plutus Core, Cardano’s native smart contract",
@@ -3459,8 +3374,8 @@
                 "permalink": "/community/getting-support"
               },
               "next": {
-                "title": "Marlowe Pioneer program",
-                "permalink": "/pioneer-programs/marlowe-pioneers"
+                "title": "Release notes",
+                "permalink": "/release-notes/release-notes"
               }
             },
             {
@@ -3509,8 +3424,8 @@
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Marlowe Pioneer program",
-                "permalink": "/pioneer-programs/marlowe-pioneers"
+                "title": "Plutus Pioneer program",
+                "permalink": "/pioneer-programs/plutus-pioneers"
               },
               "next": {
                 "title": "Compatibility matrix",
@@ -3520,7 +3435,7 @@
             {
               "id": "scalability-solutions/hydra",
               "title": "Hydra",
-              "description": "//TODO make external url",
+              "description": "Hydra is Cardano’s layer 2 scalability solution, aiming to increase transaction",
               "source": "@site/docs/10-scalability-solutions/01-hydra.mdx",
               "sourceDirName": "10-scalability-solutions",
               "slug": "/scalability-solutions/hydra",
@@ -3534,7 +3449,6 @@
               "frontMatter": {
                 "title": "Hydra",
                 "metaTitle": "Hydra",
-                "externalUrl": "https://hydra.family/head-protocol/",
                 "sidebar_position": 1
               },
               "sidebar": "tutorialSidebar",
@@ -3550,7 +3464,7 @@
             {
               "id": "scalability-solutions/mithril",
               "title": "Mithril",
-              "description": "//TODO make external url",
+              "description": "Mithril is a stake-based multi-signature scheme that leverages the existing",
               "source": "@site/docs/10-scalability-solutions/02-mithril.mdx",
               "sourceDirName": "10-scalability-solutions",
               "slug": "/scalability-solutions/mithril",
@@ -3564,7 +3478,6 @@
               "frontMatter": {
                 "title": "Mithril",
                 "metaTitle": "Mithril",
-                "externalUrl": "https://mithril.network/doc/",
                 "sidebar_position": 2
               },
               "sidebar": "tutorialSidebar",
@@ -3578,28 +3491,28 @@
               }
             },
             {
-              "id": "smart-contracts/learn-about-aiken",
-              "title": "Learn about Aiken",
+              "id": "smart-contracts/aiken",
+              "title": "Aiken",
               "description": "⚠️ Please note that Aiken is still in development and is not yet recommended",
-              "source": "@site/docs/12-smart-contracts/02-learn-about-aiken.mdx",
+              "source": "@site/docs/12-smart-contracts/02-aiken.mdx",
               "sourceDirName": "12-smart-contracts",
-              "slug": "/smart-contracts/learn-about-aiken",
-              "permalink": "/smart-contracts/learn-about-aiken",
+              "slug": "/smart-contracts/aiken",
+              "permalink": "/smart-contracts/aiken",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/02-learn-about-aiken.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/02-aiken.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 3,
               "frontMatter": {
-                "title": "Learn about Aiken",
+                "title": "Aiken",
                 "metaTitle": "Learn about Aiken",
                 "sidebar_position": 3
               },
               "sidebar": "tutorialSidebar",
               "previous": {
-                "title": "Learn about Marlowe",
-                "permalink": "/smart-contracts/learn-about-marlowe"
+                "title": "Marlowe",
+                "permalink": "/smart-contracts/marlowe"
               },
               "next": {
                 "title": "Cardano Improvement Proposals (CIPs)",
@@ -3607,21 +3520,21 @@
               }
             },
             {
-              "id": "smart-contracts/learn-about-marlowe",
-              "title": "Learn about Marlowe",
+              "id": "smart-contracts/marlowe",
+              "title": "Marlowe",
               "description": "Marlowe is a set of open source tools designed to simplify the creation,",
-              "source": "@site/docs/12-smart-contracts/01-learn-about-marlowe.mdx",
+              "source": "@site/docs/12-smart-contracts/01-marlowe.mdx",
               "sourceDirName": "12-smart-contracts",
-              "slug": "/smart-contracts/learn-about-marlowe",
-              "permalink": "/smart-contracts/learn-about-marlowe",
+              "slug": "/smart-contracts/marlowe",
+              "permalink": "/smart-contracts/marlowe",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/01-learn-about-marlowe.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/docs/12-smart-contracts/01-marlowe.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
               "frontMatter": {
-                "title": "Learn about Marlowe",
+                "title": "Marlowe",
                 "metaTitle": "Learn about Marlowe",
                 "sidebar_position": 2
               },
@@ -3631,8 +3544,8 @@
                 "permalink": "/smart-contracts/plutus/sc-best-practices"
               },
               "next": {
-                "title": "Learn about Aiken",
-                "permalink": "/smart-contracts/learn-about-aiken"
+                "title": "Aiken",
+                "permalink": "/smart-contracts/aiken"
               }
             },
             {
@@ -3834,8 +3747,8 @@
                 "permalink": "/smart-contracts/plutus/transaction-costs-determinism"
               },
               "next": {
-                "title": "Learn about Marlowe",
-                "permalink": "/smart-contracts/learn-about-marlowe"
+                "title": "Marlowe",
+                "permalink": "/smart-contracts/marlowe"
               }
             },
             {
@@ -4108,10 +4021,6 @@
                         "id": "cardano-testnets/tools/plutus-fee-estimator"
                       }
                     ]
-                  },
-                  {
-                    "type": "doc",
-                    "id": "cardano-testnets/links"
                   },
                   {
                     "type": "doc",
@@ -4421,10 +4330,6 @@
                       },
                       {
                         "type": "doc",
-                        "id": "cardano-sidechains/proof-of-concept-evm-sidechain/deploy-smart-contracts"
-                      },
-                      {
-                        "type": "doc",
                         "id": "cardano-sidechains/proof-of-concept-evm-sidechain/sidechain-token"
                       },
                       {
@@ -4551,11 +4456,11 @@
                   },
                   {
                     "type": "doc",
-                    "id": "smart-contracts/learn-about-marlowe"
+                    "id": "smart-contracts/marlowe"
                   },
                   {
                     "type": "doc",
-                    "id": "smart-contracts/learn-about-aiken"
+                    "id": "smart-contracts/aiken"
                   }
                 ]
               },
@@ -4600,10 +4505,6 @@
                   {
                     "type": "doc",
                     "id": "pioneer-programs/plutus-pioneers"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "pioneer-programs/marlowe-pioneers"
                   }
                 ]
               },
