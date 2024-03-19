@@ -19,7 +19,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={`Welcome to ${siteConfig.title}`}
-      description="Cardano documentation website. Information hub for all things Cardano"
+      description="Discover Cardano – a decentralized third-generation proof-of-stake blockchain fueled by research-first principles. Dive into Cardano's documentation, featuring core concepts, explainers, and developer resources, to learn more about Cardano's innovative ecosystem."
     >
       <Hero
         heading="Cardano ecosystem"
