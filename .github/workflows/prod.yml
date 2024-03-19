@@ -3,7 +3,7 @@ name: Production deployment
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   NEXT_TELEMETRY_DISABLED: 1
@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: 'main'
+          ref: 'master'
       - uses: amondnet/vercel-action@v25.1.1
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
