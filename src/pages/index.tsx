@@ -18,8 +18,8 @@ export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext()
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
+      title={`Welcome to ${siteConfig.title}`}
+      description="Cardano documentation website. Information hub for all things Cardano"
     >
       <Hero
         heading="Cardano ecosystem"
