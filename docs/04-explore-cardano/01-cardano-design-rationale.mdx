@@ -1,0 +1,93 @@
+---
+title: Design rationale
+metaTitle: Cardano design rationale
+---
+
+[Cardano](https://cardano.org/) has been built as a resilient and sustainable
+blockchain using the core principles of security, scalability, and
+interoperability. Fundamentally, it was designed as a
+[proof-of-stake](https://docs.cardano.org/new-to-cardano/proof-of-stake) system,
+which means it is undoubtedly more efficient, by orders of magnitude, than proof
+of work. Crucially, our ground-breaking proof-of-stake consensus protocol
+[Ouroboros](https://iohk.io/en/blog/posts/2020/06/23/the-ouroboros-path-to-decentralization/)
+is proven to have the same security guarantees that proof of work has.
+
+Formal methods, such as mathematical specifications, property-based tests, and
+proofs, are the best way to deliver high assurance software systems and give
+confidence to users for the management of digital funds. Cardano has been built
+using formal methods to get strong guarantees on the functional correctness of
+core components of the system.
+
+Security is one of the founding principles of our blockchain. Cardano is written
+in Haskell, a secure functional programming language that encourages building a
+system using pure functions. This leads to a design where components are
+conveniently testable in isolation. Furthermore, advanced features of Haskell
+enable us to employ a whole range of powerful methods for ensuring code
+correctness, such as basing the implementation on formal and executable
+specifications, extensive property-based testing, and running tests in
+simulation.
+
+For Cardano to deliver a resilient infrastructure on a global scale, it needs to
+be able to scale on par with legacy financial systems. Even though we have
+designed Cardano with resource efficiency in mind, scaling remains a fundamental
+problem for blockchain systems of all kinds. To get towards a solution of the
+scaling problem, our researchers have invented our scalability solution
+[Hydra](https://eprint.iacr.org/2020/299.pdf), a protocol that can be executed
+on top of Cardano, allowing transaction and smart contract processing off the
+main chain. This will multiply the capacity of the overall system by a
+multitude.
+
+Performance engineering was used to assess whether design decisions helped us
+move closer to the resilience, performance and scalability targets. Distributed
+systems performance engineering was applied to anticipate and mitigate issues
+associated with long-term, continuous and scalable operations in a real-world
+open environment.
+
+Another major aim in the design of Cardano is to reduce centralization while
+actively working against economic incentives that would drive the system towards
+centralization. As soon as you have [stake pools](/learn/stake-pools), you have
+an economic incentive for these pools to grow, so it was important to make it
+less attractive for a stake pool to become too big. It is more cost-efficient to
+have a small number of large pools, than a large number of small pools. Cardano
+was designed to work against the economic incentive where large pools dominate
+the system, by making it less attractive for a pool to become too big. This was
+achieved by changing the reward formula. In a naive system, the total rewards
+for a pool would be proportional to its stake, so the bigger it gets, the
+better. In Cardano, if a pool attracts more stake than a certain threshold (1/k,
+where k is a configurable parameter), its reward will no longer increase. So, if
+everyone acts in their own self-interest to maximize their rewards, you expect
+_k_ pools of roughly equal size.
+
+The ability to interact with other systems, or interoperability, is a
+fundamental design feature of Cardano. One of the current design innovations in
+Cardano is the use of sidechains, which means that you can compartmentalize the
+system and enable interoperability within the blockchain platform. Data can be
+kept off the main chain in what is called a sidechain. Multiple sidechains can
+run concurrently, so if one part fails, the rest of the system does not fail, as
+it is maintained separately. This results in greater assurance and reliability
+within the blockchain. By using sidechains you can transfer assets between
+parallel blockchains that operate in different rules, mechanisms or languages
+and ways of utilizing the network.
+
+Governance is also central to the design of Cardano to ensure system
+sustainability and adaptability. A well-developed governance strategy will
+enable effective, democratic funding for Cardano’s long-term development. The
+Cardano treasury system is currently being designed as a sustainable funding
+mechanism to maintain Cardano. It will be controlled by the community and will
+enable a decentralized, collaborative decision-making process to sustain
+Cardano’s development and maintenance. Various potential funding sources will be
+used to refill the treasury on a constant basis, such as the aggregation of
+newly-minted coins, a percentage of stake pool rewards, transaction fees, and
+donations or charity. With funds being accumulated in an iterative process, it
+will be possible to fund the project development and pay for improvement
+proposals. In addition, Cardano Improvement Proposals (CIPs), will also be
+delivered to foster and formalize discussions around new features and their
+development within the community.
+
+Central to the treasury is a democratized voting mechanism where ada holders
+will themselves decide how funds are allocated by voting on funding proposals.
+This will ensure that decisions are made by a democratic vote rather than by
+just a handful of stakeholders. This voting system will influence decisions such
+as funding initiatives, authorizing updates to the protocol, and rolling out any
+constitutional updates such as changes to the decision-making process, or the
+minting of new tokens.

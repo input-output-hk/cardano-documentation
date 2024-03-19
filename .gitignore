@@ -4,5 +4,14 @@ node_modules
 *DS_Store
 *.env
 .env.local
+/build
 
 .idea/
+
+.docusaurus
+.cache-loader
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vercel

@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v2
         with:
-          node-version: '16.x'
+          node-version: '18.x'
       - name: Install dependencies
         run: yarn global add broken-link-checker
       - name: Check Links
