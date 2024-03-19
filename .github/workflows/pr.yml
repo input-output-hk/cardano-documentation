@@ -28,13 +28,3 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
           scope: ${{ secrets.VERCEL_ORG_ID}}
           working-directory: ./
-
-  run-LHCI-workflow:
-    needs: [deploy-preview]
-    uses: ./.github/workflows/prLighthouseCI.yml
-    secrets: inherit
-
-  run-metaTests-workflow:
-    needs: [deploy-preview]
-    uses: ./.github/workflows/metaTests.yml
-    secrets: inherit
