@@ -4,13 +4,12 @@
  * Modify the docusaurus.config.js file at your site's root instead.
  */
 export default {
-  "title": "My Site",
-  "tagline": "Dinosaurs are cool",
+  "title": "Cardano Docs",
   "favicon": "img/cardano-favicon.png",
-  "url": "https://your-docusaurus-site.example.com",
+  "url": "https://docs.cardano.org",
   "baseUrl": "/",
-  "organizationName": "facebook",
-  "projectName": "docusaurus",
+  "organizationName": "IOHK",
+  "projectName": "Cardano-documentation",
   "onBrokenLinks": "throw",
   "onBrokenMarkdownLinks": "warn",
   "i18n": {
@@ -55,7 +54,7 @@ export default {
     },
     "navbar": {
       "logo": {
-        "alt": "My Site Logo",
+        "alt": "Cardano logo",
         "src": "img/cardano-logo.svg"
       },
       "items": [
@@ -321,6 +320,7 @@ export default {
   "headTags": [],
   "stylesheets": [],
   "clientModules": [],
+  "tagline": "",
   "titleDelimiter": "|",
   "noIndex": false,
   "markdown": {
