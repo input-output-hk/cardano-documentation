@@ -1,13 +1,17 @@
 ---
-title: Development phases and eras on Cardano
+title: Development phases and eras 
 metaTitle: Development phases and eras on Cardano
 ---
 
-> This overview is based on [CIP-59](https://cips.cardano.org/cip/CIP-0059).
+:::info
 
-Cardano’s development follows a well-defined and clearly communicated roadmap. Firmly based on academic research and rigorous testing, this process has resulted in a chain with zero outages.
+This overview is based on [CIP-59](https://cips.cardano.org/cip/CIP-0059).
 
-Cardano has gone through multiple development *phases and eras enabled by [hard fork combinator](https://docs.cardano.org/learn/about-hard-forks) events*. The following concepts are explained below:
+::: 
+
+Cardano’s development follows a well-defined and clearly communicated [roadmap](https://roadmap.cardano.org/en/). Firmly based on academic research and rigorous testing, this process has resulted in a chain with zero outages.
+
+Cardano has gone through multiple development *phases and eras enabled by hard fork combinator events*. The following concepts are explained below:
 
 - **Development phase** – a high-level collection of features described on the [Cardano roadmap](https://roadmap.cardano.org/en/). 
 - **Ledger era** – a collection of ledger features introduced with a hard fork. Starting with Alonzo, eras are planned to be named after mathematicians and computer scientists in *a, b,c* order. 
@@ -19,19 +23,21 @@ Cardano has gone through multiple development *phases and eras enabled by [hard 
 
 Cardano’s development phases include Byron, Shelley, Goguen, Basho, and Voltaire – all named after poets except for Goguen, a computer scientist.
 
-Byron focused on the foundation establishment, Shelley on decentralization. Goguen introduced smart contracts and native asset support, Basho – scalability enhancements, and, finally, Voltaire is about decentralized governance and decision-making. 
-
-See [Cardano’s development phases overview here](https://docs.cardano.org/new-to-cardano/why-use-cardano/#cardanodevelopmentthemes).
+ -   **Byron**. Byron set the foundation for Cardano development allowing users to buy and sell ada on a proof-of-stake blockchain network. Initially, the Cardano ledger was established as a federated network, where block production and transaction validation were maintained by [the founding entities](https://www.essentialcardano.io/article/founding-and-iog-organization). Byron saw the delivery of [Daedalus](https://daedaluswallet.io/) and Yoroi wallets, and also provided users with a Block Explorer ‒ a tool specifically designed for browsing the blockchain.
+ -   **Shelley**. The Shelley development theme introduced a decentralized ledger creating a completely new economic system, which drives the network’s growth and gradual optimization. Shelley evolved from Byron’s federated network maintenance, with more and more blocks being produced by the distributed stake pool operator community. This theme focused on many critical steps that ensure enhanced user experience in terms of stake pool operation, delegation preferences, and incentives.
+ -   **Goguen**. Goguen development focused on the establishment of a global, financial, and multi-functional system for decentralized application (DApp) building, smart contract support, and custom token issuance. Goguen is a key building block to establish a versatile platform to build solutions around such application domains as supply chain, track and trace, finance, medical records, identity voting, property registration, P2P payments, and many others.
+ -   **Basho**. Basho focuses on Cardano’s optimization in terms of improving the scalability and interoperability of the network. Whereas other development stages focus on decentralization and new functionality, Basho is about improving the underlying performance of the Cardano network to better support growth and adoption for applications with high transaction volume.
+ - **Voltaire**. Decentralized governance and decision making lie at the heart of Voltaire granting the Cardano community the ability to vote on network development updates, technical improvements, and project funding. For the Cardano network to become more decentralized, it requires not only the distributed infrastructure introduced during Shelley but also the capacity to be maintained and improved over time in a decentralized way.
 
 ## Ledger eras
 
 There are several eras within the evolution of Cardano. Each era refers to the rules of the ledger. For example, what transaction types and what data is stored in the ledger, or the validity and meaning of the transactions.
 
-**Byron and Shelley eras**
+### Byron and Shelley eras
 
 The evolution of the Cardano mainnet began with the Byron ledger rules. The mainnet underwent a hard fork in late July 2020 to switch from the Byron rules to the Shelley ledger rules. It was a full reimplementation of Cardano, which enabled two fundamental changes: the support for multiple sets of ledger rules, and the management of the hard fork process of switching from one set of rules to the next. In other words, the new implementation could support both the Byron rules and the Shelley rules, which meant that, when deployed to the mainnet in early 2020, the implementation was fully compatible with the Byron rules. This allowed for a smooth transition from the old to the new implementation. Once all Cardano users had upgraded their nodes to the new implementation, it became possible to invoke the hard fork combinator event and switch to the Shelley rules.
 
-**Allegra, Mary, and Alonzo eras**
+### Allegra, Mary, and Alonzo eras
 
 Allegra, Mary, and Alonzo eras are all part of the *Goguen development phase.*
 
@@ -41,7 +47,7 @@ Because Goguen features were implemented in steps, each set of functionality was
 
 - Allegra: introduced token locking support
 - Mary: brought native tokens and multi-asset functionality to Cardano
-- Alonzo: introduced smart contract support
+- Alonzo: introduced smart contract support.
 
 The names Allegra and Mary were chosen for their connection to the poet Percy Shelley and were only intended to be used as [variable names](https://github.com/input-output-hk/cardano-ledger/blob/1cbf1fc2bb005a8206e5b5a7cdf44d35baaca455/eras/shelley-ma/impl/src/Cardano/Ledger/Allegra.hs#L40) for a very specific abstraction used in the ledger code.
 
@@ -49,7 +55,7 @@ Goguen, the smart contract development phase, was the only phase named not after
 
 Going forward, the teams decided to use names in *a,b,c* order, after individuals who contributed to mathematics and computer science. One lack of consistency to notice is that eras can use both first and last names. This is driven by conciseness.
 
-**Babbage era**
+### Babbage era
 
 The Babbage ledger era introduced such features as inline datums, reference scripts, and reference inputs. However, the release is also known as *Vasil,* named to honor the late Bulgarian mathematician and Cardano ambassador Vasil Dabov.  
 
