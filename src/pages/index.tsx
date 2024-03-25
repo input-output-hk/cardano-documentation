@@ -54,7 +54,7 @@ export default function Home(): JSX.Element {
                 heading="Secure, scalable, and interoperable"
                 text="Security is one of the founding principles of Cardano. As it is written in the functional language Haskell, it uses pure functions to build the system, where components can be tested in isolation. More advanced features of Haskell, such as basing the implementation on formal and executable specifications, extensive property-based testing, and running tests in simulation provides a range of powerful methods for ensuring code correctness."
                 label="More on security"
-                ctalink="/explore-cardano/cardano-design-rationale"
+                ctalink="/evolution/cardano-design-rationale"
                 Icon={DiamondsIco}
               />
             </GridItem>
