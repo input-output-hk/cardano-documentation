@@ -3,7 +3,7 @@ title: Why use Cardano?
 metaTitle: Why use Cardano?
 ---
 
-[Cardano](https://cardano.org/) is an open source [proof-of-stake](https://docs.cardano.org/new-to-cardano/proof-of-stake) blockchain project that began in 2015
+[Cardano](https://cardano.org/) is an open source [proof-of-stake](/new-to-cardano/proof-of-stake) blockchain project that began in 2015
 to address existing blockchain challenges in the design and development of
 cryptocurrencies. It aims to provide a more balanced and sustainable ecosystem
 that better accounts for the needs of its users as well as other systems seeking
@@ -35,26 +35,23 @@ To address these needs, Cardano focuses on such core concepts as:
   Scalability also provides higher bandwidth capabilities to allow transactions
   to carry a significant amount of supportive data that can be easily managed
   within the network. For these needs, Cardano is implementing various
-  techniques (like data compression for instance) and is working to introduce
+  techniques (like data compression for instance) and introduces
   [Hydra](https://iohk.io/en/research/library/papers/hydrafast-isomorphic-state-channels/),
-  which will enable multiple side chains functionality.
+  which will enable multiple sidechain functionality.
 - **Interoperability** — ensures the most multi-functional environment for
   financial, business, or commercial operations by enabling users to interact
   not only with one type of currency, but with multiple currencies across
   various blockchains. Moreover, interoperability with centralized banking
   entities is as important to grant legitimacy and convenience of use. Cardano
-  is being developed to support cross-chain transfers, multiple token types, and
-  commonly used smart contracts languages.
+  aims to support cross-chain transfers, multiple token types, and
+  commonly used smart contract languages. Read more about the concept of [partner chains](https://iohk.io/en/blog/posts/2023/11/03/partner-chains-are-coming-to-cardano/).
 - **Sustainability** — designing a proof-of-stake blockchain means it is vital
   to ensure that the system is self-sustainable. To drive growth and maturity in
   a truly decentralized manner, Cardano is built to allow the community to
   maintain its continuous development by participating, proposing, and
-  implementing system improvements. To ensure sustainability, the treasury
-  system is controlled by the community and is refilled constantly from
-  potential sources such as newly-minted coins being held back as funding, a
-  percentage of stake pool rewards, and transaction fees.
+  implementing system improvements. This is now being implemented through [CIP-1694](https://cips.cardano.org/cip/CIP-1694) on-chain governance mechanisms. 
 
-### Cardano advantages
+## Cardano advantages
 
 - **Academic research** — formal methods, such as mathematical specifications,
   property-based tests, and proofs, are the best way to deliver high assurance
@@ -66,8 +63,8 @@ To address these needs, Cardano focuses on such core concepts as:
 - **System design** — Cardano is written in Haskell, a secure functional
   programming language that encourages building a system using pure functions,
   which leads to a design where components are conveniently testable in
-  isolation. Furthermore, advanced features of Haskell enable us to employ a
-  whole range of powerful methods for ensuring correctness of the code, such as
+  isolation. Advanced features of Haskell enable employing a
+  whole range of powerful methods for ensuring code correctness, such as
   basing the implementation on formal and executable specifications, extensive
   property-based testing, and running tests in simulation.
 - **Security** —
@@ -88,10 +85,10 @@ To address these needs, Cardano focuses on such core concepts as:
   rules and changes would be implemented, and the chain would restart – with its
   previous history being erased. Cardano handles hard forks differently. Instead
   of implementing radical changes, the Cardano
-  [hard-fork combinator technology](https://iohk.io/en/blog/posts/2020/05/07/combinator-makes-easy-work-of-shelley-hard-fork/)
+  [hard fork combinator technology](https://iohk.io/en/blog/posts/2020/05/07/combinator-makes-easy-work-of-shelley-hard-fork/)
   ensures a smooth transition to a new protocol while saving the history of the
   previous blocks and not causing any disruptions for end users.
-- **Decentralization** — Cardano is maintained by almost 3,000 distributed stake
+- **Decentralization** — Cardano is maintained by over 3,000 distributed stake
   pools that are operated by the community. All blocks and transactions are validated by
   network participants without any reliance on a centralized authority.
 - **Functional environment for business use cases** — Cardano is establishing a
@@ -99,7 +96,7 @@ To address these needs, Cardano focuses on such core concepts as:
   can run using functional and domain-specific smart contracts, providing
   multi-asset tokens for any needs. 
 
-### Cardano development themes
+## Cardano development phases
 
 [Cardano’s development journey](https://roadmap.cardano.org/en/) has been split
 into five main themes focusing on such core functionalities as:
@@ -123,7 +120,7 @@ ada on a proof-of-stake blockchain network. Initially, the Cardano ledger was
 established as a federated network, where block production and transaction
 validation were maintained by Input Output Global (the company that develops
 Cardano technology) and [Emurgo](https://emurgo.io/) (the company that drives Cardano commercial
-adoption) stake pools. Byron saw the delivery of [Daedalus](https://docs.cardano.org/cardano-components/daedalus-wallet) and Yoroi wallets, and
+adoption) stake pools. Byron saw the delivery of [Daedalus](https://daedaluswallet.io/) and Yoroi wallets, and
 also provided users with a Block Explorer ‒ a tool specifically designed for
 browsing the blockchain.
 
@@ -133,7 +130,7 @@ The Shelley development theme introduced a decentralized ledger creating a
 completely new economic system, which drives the network’s growth and gradual
 optimization. Shelley evolved from Byron’s federated network maintenance, with
 more and more blocks being produced by the distributed stake pool operator
-community. This theme focuses on a number of critical steps that ensure enhanced
+community. This theme focused on a number of critical steps that ensure enhanced
 user experience in terms of stake pool operation, delegation preferences, and
 incentives. As a proof-of-stake network, Cardano Shelley introduced the
 Incentivized Testnet (ITN) which proved that the blockchain can be sustainable
@@ -141,7 +138,7 @@ in the long term by relying exclusively on community-managed pools.
 
 **Goguen**
 
-Goguen development focuses on the establishment of a global, financial and
+Goguen development focused on the establishment of a global, financial and
 multi-functional system for decentralized application (DApp) building, smart
 contract support, and custom token issuance. Goguen is a key building block to
 establish a versatile platform to build solutions around such application
@@ -150,7 +147,7 @@ voting, property registration, P2P payments, and many others.
 
 **Basho**
 
-Basho will focus on Cardano’s optimization in terms of improving the scalability
+Basho focuses on Cardano’s optimization in terms of improving the scalability
 and interoperability of the network. Whereas other development stages focus on
 decentralization and new functionality, Basho is about improving the underlying
 performance of the Cardano network to better support growth and adoption for
@@ -159,13 +156,13 @@ applications with high transaction volume.
 **Voltaire**
 
 Decentralized governance and decision making lie at the heart of Voltaire
-granting the Cardano community an ability to vote on network development
+granting the Cardano community the ability to vote on network development
 updates, technical improvements, and project funding. For the Cardano network to
-become truly decentralized, it requires not only the distributed infrastructure
+become more decentralized, it requires not only the distributed infrastructure
 introduced during Shelley but also the capacity to be maintained and improved
 over time in a decentralized way.
 
-#### Related Topics:
+### Related topics:
 -   [Understanding Cardano](https://www.youtube.com/watch?v=Ja9D0kpksxw) (Cardano whiteboard by Charles Hoskinson)
 -   [Cardano design rationale](/explore-cardano/cardano-design-rationale)
 -   [Detailed Cardano roadmap](https://roadmap.cardano.org/en/)
