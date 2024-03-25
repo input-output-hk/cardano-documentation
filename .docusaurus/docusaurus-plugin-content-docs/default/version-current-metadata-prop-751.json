@@ -189,8 +189,8 @@
           {
             "type": "link",
             "label": "Design rationale",
-            "href": "/explore-cardano/cardano-design-rationale",
-            "docId": "explore-cardano/cardano-design-rationale",
+            "href": "/evolution/cardano-design-rationale",
+            "docId": "evolution/cardano-design-rationale",
             "unlisted": false
           },
           {
