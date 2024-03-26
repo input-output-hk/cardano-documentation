@@ -1,0 +1,26 @@
+---
+title: Allegra
+metaTitle: Allegra - token locking
+---
+
+Allegra was the Shelley protocol upgrade that introduced token locking support to enable various kinds of smart contract use cases.
+
+Allegra represented a relatively small technical change to the consensus protocol, with a slight impact on the actual ledger. However, it was significant since it prepared the platform for smart contracts and the creation of assets (in addition to ada) that run on Cardano. It also provided an important piece of Voltaire (governance) functionality, supporting a voting mechanism. 
+
+Token locking is a way of recording that a specific token is being used for some purpose. Locking, in this case, means ‘reserving’ a certain number of tokens for a specified period of time so they cannot be disposed of to gain a benefit (such as voting, or running a smart contract).
+
+:::info  
+  
+Read more about token locking [in this blog post.](https://iohk.io/en/blog/posts/2020/12/02/goguen-brings-token-locking-to-cardano/)
+  
+:::
+
+## Token locking use cases
+
+Support for token locking is crucial to enable complex deal settlement and funds accounting.
+
+It can be used in the following scenarios:
+
+- **Contractual agreement** – when someone enters into a contractual agreement, to sell a property, for instance, it is important to promise that this property will not be sold to anyone else – only to the person who actually pays the money. In this case, the token can represent the property and the ‘promise’ – the actual token locking. If the property is sold to a different third party, then the contract becomes void.
+- **Vote registry** – within the Voltaire voting mechanism, token locking will enable users to lock a certain amount of their tokens to represent their voting rights. Ada holders who participate in the voting process will be required to ‘lock’ their tokens. This will represent their voting rights, according to the stake that they hold, and eliminate the risks associated with scenarios such as double-counting votes, allocating more votes than possible, contradictory votes, or vote duplication.
+- **Multi-asset tokens** – Cardano provides support for multi-asset tokens, where the ledger supports the creation and use of multiple custom token types, besides ada. Token locking allows ada tokens to be ‘locked’, for example, to create another custom asset of equivalent value.
