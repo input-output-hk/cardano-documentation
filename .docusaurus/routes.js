@@ -445,8 +445,8 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/explore-cardano/cardano-design-rationale',
-                component: ComponentCreator('/explore-cardano/cardano-design-rationale', '9ff'),
+                path: '/evolution/cardano-design-rationale',
+                component: ComponentCreator('/evolution/cardano-design-rationale', '9ff'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
