@@ -7,25 +7,25 @@ The addresses are a blake2b-256 hash of the relevant verifying/public keys
 concatenated with some metadata that can be stored on the
 [Cardano blockchain](https://cardano.org/).
 
-Shelley introduces four different types of addresses:
+Shelley introduced four different types of addresses:
 
 - base addresses
 - pointer addresses
 - enterprise addresses
-- reward account addresses
+- reward account addresses.
 
-Besides those new addresses, Shelley continues to support Byron-era _bootstrap
+Besides those new addresses, Shelley continued to support Byron-era _bootstrap
 addresses_ and _script addresses_, but only the new base and pointer addresses
-carry stake rights. Therefore, addresses consist of some serialized data
+carried stake rights. Therefore, addresses consist of some serialized data
 specified in the ledger specification stored in the blockchain’s blocks, eg, an
 Unspent Transaction Output (UTXO) address.
 
 The serialized data (address) contains two parts:
 
-- Metadata: used for interpreting.
-- Payload: the raw or encoded data.
+- metadata: used for interpreting
+- payload: the raw or encoded data.
 
-### Base addresses
+## Base addresses
 
 A base address directly specifies the staking key that should control the stake
 for that address. The staking rights associated with funds held in this address
@@ -33,11 +33,11 @@ may be exercised by the owner of the staking key. Base addresses can be used in
 transactions without registering the staking key in advance.
 
 The stake rights can only be exercised by registering the stake key and
-delegating to a [stake pool](/learn/stake-pools). Once the stake key is
+delegating to a stake pool. Once the stake key is
 registered, the stake rights can be exercised for base addresses used in
 transactions before or after the key registration.
 
-### Pointer addresses
+## Pointer addresses
 
 A pointer address indirectly specifies the staking key that should control the
 stake for the address. It references a stake key by a stake key pointer, which
@@ -60,7 +60,7 @@ create transactions to pointer addresses before the referenced certificate has
 become immutable, to prevent funds from being excluded from the proof of stake,
 in the case of rollbacks.
 
-### Enterprise addresses
+## Enterprise addresses
 
 Enterprise addresses carry no stake rights, so using these addresses means that
 you are opting out of participation in the proof-of-stake protocol.
@@ -77,7 +77,7 @@ potential adversary.
 Also note that enterprise addresses may still be used to receive, hold, and send  
 tokens with a policyID (non-ada assets). 
 
-### Reward account addresses
+## Reward account addresses
 
 A reward address is a cryptographic hash of the public staking key of the
 address. Reward account addresses are used to distribute rewards for
@@ -86,10 +86,10 @@ delegation).
 
 They have the following properties:
 
-- Account-style accounting is used, not UTXO-style.
-- Funds cannot be received via transactions. Instead, their balance is only
-  increased when rewards are distributed.
-- A one-to-one correspondence exists between registered staking keys and reward
+- account-style accounting is used, not UTXO-style
+- funds cannot be received via transactions; instead, their balance is only
+  increased when rewards are distributed
+- a one-to-one correspondence exists between registered staking keys and reward
   account addresses.
 
 This key is used whenever funds are withdrawn from the address. Furthermore,

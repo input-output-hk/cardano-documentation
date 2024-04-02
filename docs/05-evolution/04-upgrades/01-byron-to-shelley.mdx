@@ -1,0 +1,10 @@
+---
+title: Byron to Shelley
+metaTitle: Moving from Byron Ouroboros Classic to Shelley Ouroboros Praos
+---
+
+Cardano's Byron mainnet ran on the [Ouroboros Classic](https://iohk.io/en/research/library/papers/ouroboros-a-provably-secure-proof-of-stake-blockchain-protocol/) consensus protocol. Cardano's Shelley mainnet transitioned to a decentralized network running on the [Ouroboros Praos](https://iohk.io/en/research/library/papers/ouroboros-praos-an-adaptively-secure-semi-synchronous-proof-of-stake-protocol/) consensus protocol, which enabled more extended capabilities while also supporting the staking process with monetary rewards for ada holders and stake pool operators.
+
+To enable orderly transitions in Cardano without any diversions in the system, it was necessary to update the code to support the new protocol’s conditions. Doing so in a single update might have caused a range of complexities, so Cardano decided to take a two-stage approach, using the Ouroboros _Byzantine Fault Tolerance_ (BFT) protocol as an intermediary.
+
+The shift from Ouroboros Classic to BFT (which happened on February 20, 2020) is the only traditional hard fork within the Cardano blockchain. This forking event restarted the Byron mainnet to run the BFT protocol and enable a smoother transition to Ouroboros Praos without any further chain interruptions. The BFT protocol was carefully designed so that blockchain history would remain unchanged, and the blockchain would appear as a single entity.

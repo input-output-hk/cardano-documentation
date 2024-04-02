@@ -15,26 +15,31 @@ retaining their spending power. Note that you can spend your ada normally at any
 time, regardless of how you delegated it. This mechanism will enable
 stakeholders to participate in the slot leader election process in each epoch.
 
-Stake delegation gives rise to *stake pools* that act in the similar way to
+Stake delegation gives rise to *stake pools* that act similarly to
 mining pools in the Bitcoin protocol. Stake pool operators (SPOs) *must* be online 
 to generate blocks if they are selected as slot leaders.
 
-### Stake delegation requirements
+There are three options ada holders can consider for delegating their stake:
+
+1. Run their own stake pool
+2. Agree with a third party to run a private stake pool for them
+3. Delegate to other stake pools.
+
+## Stake delegation requirements
 
 Delegating stake requires posting two certificates to the chain: a staking
-address registration, and a [delegation certificate](https://docs.cardano.org/operating-a-stake-pool/creating-keys-and-certificates/#creatinganoperationalcertificateandregisteringastakepool). Posting certificates
+address registration, and a delegation certificate. Posting certificates
 requires funds, so a user setting up their first wallet will need a
 bootstrapping mechanism. This mechanism relies on the possibility of base
 addresses using a [staking key](https://github.com/input-output-hk/cardano-rosetta/tree/master/examples#staking-key-registration-and-delegation) before posting the registration certificate for that key. Note that the stake address can be based either on a single key or on
 a script such as [multi-sig](https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/reference/simple-scripts.md#multi-signature-scripts).
 
-### Delegation scheme
+## Delegation scheme
 
 With the concept of delegation, any stakeholder can allow a stake pool to
-generate blocks for the Cardano network. Then the rewards will be paid by the
-protocol for all participants, including the fees for the SPO. A
-stake holder delegates to a particular pool ID, which is the hash of the
-operator's [verification key](https://docs.cardano.org/learn/cardano-keys/#vrfkeys).
+generate blocks for the Cardano network. Then the protocol will distribute the rewards to all participants, including the fees for the SPO. A
+stakeholder delegates to a particular pool ID, which is the hash of the
+operator's [verification key](/learn/cardano-keys/#vrfkeys).
 
 To limit the delegate’s block generation power to a certain range of
 epochs and slots, the stakeholder can limit the proxy signing key’s valid
@@ -45,7 +50,7 @@ can verify that a proxy signing key was actually issued by a specific
 stakeholder to a specific delegate, and that the delegate can only use these keys
 to sign messages inside the key’s valid message space, respectively.
 
-The funds belonging to one staking key of a user’s wallet requires posting a
+The funds belonging to one staking key of a user’s wallet require posting a
 single transaction, containing a delegation certificate. This will only incur
 the usual transaction fees. In particular, a stakeholder needs to pay a deposit
 for registering a stake address and not for the stake delegation itself. Once a
@@ -55,7 +60,7 @@ delegation choice.
 Note that the stakeholder's stake will count for the pool's stake during the
 reward calculation.
 
-### Stake delegation scenario
+## Stake delegation scenario
 
 Imagine a user who is about to receive their first ada, through redemption, from
 a trade on an exchange, or some other source. They will set up a new wallet, and
@@ -67,3 +72,14 @@ After receiving the initial funds, the user can then participate in staking, by
 posting a staking key registration certificate, and a delegation
 certificate for their staking key. Once the key is registered, newly created
 addresses can be pointer addresses to the staking key registration certificate.
+
+:::info
+
+Related topics:
+
+- [Operating a stake pool](https://developers.cardano.org/docs/operate-a-stake-pool/)
+- [Advice for stakeholders - delegators and stake pool operators](https://iohk.io/en/blog/posts/2020/11/13/the-general-perspective-on-staking-in-cardano/)
+- [How to stake your ada](https://www.essentialcardano.io/infographic/how-to-stake-your-ada)
+
+:::
+

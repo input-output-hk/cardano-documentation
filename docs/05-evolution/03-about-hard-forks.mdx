@@ -1,0 +1,36 @@
+---
+title: About hard forks
+metaTitle: About hard forks
+---
+
+The term _hard fork_ describes a radical change in the blockchain: a change from
+one protocol to another, for example. In most blockchains, a hard fork
+indicates block changes or a change to their interpretation. 
+
+Traditionally, when conducting a hard fork, the current protocol would stop operating,
+new rules and changes would be implemented, and the chain would restart. It is important to
+note that a hard-forked chain _will be different_ from the previous version and
+that the history of the pre-forked blockchain will no longer be available.
+
+The Cardano blockchain hard forked from a Byron federated model to
+a Shelley decentralized one in 2020. However, this hard fork was unique. Instead of
+implementing radical changes, Cardano ensured a smooth transition to a new protocol
+while saving the history of the previous blocks. This means that the chain did
+not change *radically*, instead, it contained Byron blocks, and after a transition
+period, added Shelley blocks. There was no fundamental restart point that erased
+the history of previous activities.
+
+## What is a hard fork combinator?
+
+A combinator is a technical term used to indicate the combination of certain
+processes or things. In the case of Cardano, a hard fork combinator combines
+protocols, thereby enabling the [era-to-era transition](https://iohk.io/en/blog/posts/2020/04/29/from-byron-to-shelley-part-one-the-testnets/) without system
+interruption or restart. It ensured that Byron and Shelley ledgers appeared as *one*
+ledger. Shifting from [Ouroboros BFT](https://eprint.iacr.org/2018/1049.pdf) to [Ouroboros Praos](https://iohk.io/en/research/library/papers/ouroboros-praosan-adaptively-securesemi-synchronous-proof-of-stake-protocol/) did not require all nodes to
+update simultaneously. Instead, nodes could update gradually, in fact, some could
+run Byron blocks, while others could run Shelley blocks.
+
+The hard fork combinator is designed to enable the combination of several
+protocols, without having to make significant adjustments. 
+
+Read more about Cardano's upgrades in the following section. 
