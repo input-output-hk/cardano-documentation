@@ -3,37 +3,116 @@ title: Cardano entropy
 metaTitle: Cardano entropy
 ---
 
-## Cardano's evolution towards a fully decentralized entity
+**Cardano's evolution towards a fully decentralized entity**
 
 The Cardano blockchain has transitioned from a federated system run only by 8 nodes in July 2020, to its present state where block production is fully decentralized. The final part of this transition happened on March 31st, 2021 (D=0 Day), a major milestone in Cardano's journey. As of that date, 100% of block production is the responsibility of stake pool operators (SPOs).
 
-### The entropy parameter
+## The entropy parameter
 
-A truly decentralized state means that we can neither predict nor influence blockchain events going forward. In other words, all future on-chain events must be completely unpredictable. To ensure this, Cardano provides an additional entropy mechanism that can be used to ensure the true randomness of the system. True randomness lies at the core of any complex cryptographic system. For a cryptographic environment such as the Cardano blockchain to work, and to be trusted by the community as truly decentralized and fair, there needs to exist a source of true, unpredictable randomness that ensures that the chain's future direction cannot be manipulated by anyone with knowledge of the past.
+A truly decentralized state means that no one can neither predict nor influence blockchain events going forward. In other words, all future on-chain events must be completely unpredictable. To ensure this, Cardano provides an additional entropy mechanism that can be used to ensure the true randomness of the system. True randomness lies at the core of any complex cryptographic system. For a cryptographic environment such as the Cardano blockchain to work, and to be trusted by the community as truly decentralized and fair, there needs to exist a source of true, unpredictable randomness that ensures that the chain's future direction cannot be manipulated by anyone with knowledge of the past.
 
-Cardano's source of randomness is given through the entropy parameter.  This represents something unpredictable outside the Cardano ecosystem and ensures that nobody could “rig” the randomness of the blockchain. The value of this parameter was calculated based on events that could not have been known in advance, or that anyone could have had insider information about. 
+Cardano's source of randomness is given through the entropy parameter. This represents something unpredictable outside the Cardano ecosystem and ensures that nobody could 'rig' the randomness of the blockchain. The value of this parameter was calculated based on events that could not have been known in advance, or that anyone could have had insider information about. 
 
-The parameter will be updated during the epoch starting on April 5, 2021, and determined by the hash of the last block prior to **Wednesday, April 7, 15:44:51 UTC = slot 151200 of epoch 258;** with this hash value appearing in the first block of slot 151200 or later. 
+The parameter was updated during the epoch starting on April 5, 2021, and determined by the hash of the last block before **Wednesday, April 7, 15:44:51 UTC = slot 151200 of epoch 258;** with this hash value appearing in the first block of slot 151200 or later. 
 
-### Cardano's entropy addition mechanism
+## Cardano's entropy addition mechanism
 
 To understand how the entropy addition mechanism works it is vital to first understand how fully decentralized block production works and how the new transition nonce will affect this process.
 
-The Ouroboros protocol determines which pools are elected as block producers via an evolving sequence of leadership nonces (cryptographic seeds used to generate a sequence of values using a repeatable random number generation algorithm).  These nonces set the schedule for block production. Each leader nonce determines this schedule for a complete 120-hour epoch, during which the nonce governs the choice of stake pools to lead the creation of each block. The leadership nonces and stake distributions evolve in unison to provide the fundamental ledger properties required. 
+The Ouroboros protocol determines which pools are elected as block producers via an evolving sequence of leadership nonces (cryptographic seeds used to generate a sequence of values using a repeatable random number generation algorithm). These nonces set the schedule for block production. Each leader nonce determines this schedule for a complete 120-hour epoch, during which the nonce governs the choice of stake pools to lead the creation of each block. The leadership nonces and stake distributions evolve in unison to provide the fundamental ledger properties required. 
 
-### The transition nonce
+## The transition nonce
 
-Just after March 31st, we added a transition nonce to the running leadership nonce. The transition nonce must rely on random values (which are introduced via on-chain transactions) that cannot be accurately predicted when the stake distribution for the April 10 epoch is settled. This places special emphasis on transactions appearing in the blockchain between the 12-hour mark — when the stake distribution is firmly settled — and the 42-hour mark, when the hash value will be lifted.
+Just after March 31, 2021 a transition nonce was added to the running leadership nonce. The transition nonce must rely on random values (which are introduced via on-chain transactions) that cannot be accurately predicted when the stake distribution for the April 10 epoch is settled. This places special emphasis on transactions appearing in the blockchain between the 12-hour mark — when the stake distribution is firmly settled — and the 42-hour mark, when the hash value will be lifted.
 
-The transition nonce reflects entropy from a variety of external, unpredictable sources. Specifically, all transactions posted to the blockchain before **Wednesday, April 7 at 15:44:51 UTC (slot 151200 of epoch 258)** will play a notable and privileged role in Cardano's history: the transactions' accumulated hash value (reflected in the ‘previous-block hash’ from the first block created on-chain on or after this point in time) will determine the transition nonce, and hence contribute directly to Ouroboros’ perpetual cycle of randomness generation. 
+The transition nonce reflects entropy from a variety of external, unpredictable sources. Specifically, all transactions posted to the blockchain before **Wednesday, April 7 at 15:44:51 UTC (slot 151200 of epoch 258)**  play a notable and privileged role in Cardano's history: the transactions' accumulated hash value (reflected in the ‘previous-block hash’ from the first block created on-chain on or after this point in time) determines the transition nonce, and hence contribute directly to Ouroboros’ perpetual cycle of randomness generation. 
 
-### The entropy addition mechanism
+## The entropy addition mechanism
 
 In Cardano, the entropy addition mechanism works as follows: the system adds specific bitstrings on the blockchain to subsequent leadership nonces (which are the intended targets of the transition nonce). This requires public declaration of the bitstring, and explicit, cryptographically secure approval. More specifically, only a handful of digitally signed votes from genesis delegates can complete the process, and have a specific time limit to do so: votes must appear before the 48-hour mark in the epoch.
 
-The epoch beginning on **Monday, April 5 at 21:44:51 UTC (epoch 258)** invoked the mechanism: in particular, the previous block hash appearing in the first block on or after **Wednesday, April 7 at 15:44:51 UTC (slot 151200 of epoch 258)** will determine the transition nonce; this will take place roughly 42 hours after the epoch has begun and thus leave six hours for the genesis delegates to cast their votes. Recalling the hash chain structure of the Ouroboros blockchain, this hash value depends on the entire blockchain up to that point.
+The epoch beginning on **Monday, April 5 at 21:44:51 UTC (epoch 258)** invoked the mechanism: in particular, the previous block hash appearing in the first block on or after **Wednesday, April 7 at 15:44:51 UTC (slot 151200 of epoch 258)** determined the transition nonce; this took place roughly 42 hours after the epoch had begun and thus left six hours for the genesis delegates to cast their votes. Recalling the hash chain structure of the Ouroboros blockchain, this hash value depended on the entire blockchain up to that point.
 
-The --extra-entropy argument looks different from the _extraEntropy field displayed after a transaction is created. This difference is explained in the [nonce explanation page](https://docs.cardano.org/explore-cardano/explain-nonce/).
+The --extra-entropy argument looks different from the _extraEntropy field displayed after a transaction is created. This difference is explained below.
+
+## Explanation of the nonce value
+
+When using the Cardano command line interface (cardano-CLI), a user supplies a nonce for a transaction, but when they view the contents of the transaction, the nonce returned is different.  
+
+### Steps to reproduce
+
+The cardano-cli governance create-update-proposal command creates an update proposal:
+
+```  
+cardano-cli governance create-update-proposal --epoch 258 --extra-entropy d8b0ee71c3eab43750882bdc0880cf0b46a488d82e5bc9fd5b2fb3e7297bdbd4 --out-file mainnet-258-entropy.proposal $(for i in {1..7}; do echo "--genesis-verification-key-file genesis-keys/genesis$i.vkey "; done)
+ ```
+
+The cardano-cli transaction build-raw command creates a transaction:
+
+```  
+cardano-cli transaction build-raw --tx-in b2bdbe07d5cd4da8b8dbef9eee67ff6fb1877055d0b8309fbd4718591389eac5#0 --tx-out addr1q9jytwcggewzdn6rtfp8fwx6mlm48vae4pl5428cs3u5x82wkertsmcc7m6zve5y7dlmeaqz03jsw37ug5nc4v9l3j8q54uy5u+$((5000000 - 217553)) --fee 217553 --ttl $(cardano-cli query tip --mainnet | jq '.slot + 5000') --update-proposal-file mainnet-258-entropy.proposal --out-file tx-entropy.txbody
+```   
+
+The cardano-cli transaction view command displays the transaction contents:
+
+```  
+cardano-cli transaction view --tx-body-file tx-entropy.txbody  
+```   
+
+In the output, the nonce is different:
+
+```  
+{
+    "auxiliary_data": null,
+    "auxiliary_data_hash": null,
+    "certificates": [],
+    "era": "Mary",
+    "fee": 217553,
+    "inputs": [
+        "b2bdbe07d5cd4da8b8dbef9eee67ff6fb1877055d0b8309fbd4718591389eac5#0"
+    ],
+    "mint": {
+        "lovelace": 0,
+        "policies": {}
+    },
+    "outputs": [
+        {
+            "address": "016445bb08465c26cf435a4274b8dadff753b3b9a87f4aa8f88479431d4eb646b86f18f6f4266684f37fbcf4027c650747dc45278ab0bf8c8e",
+            "amount": {
+                "lovelace": 4782447,
+                "policies": {}
+            }
+        }
+    ],
+    "update": "Update (ProposedPPUpdates (fromList [(KeyHash \"162f94554ac8c225383a2248c245659eda870eaa82d0ef25fc7dcd82\",PParams 
+    {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing}),(KeyHash \"2075a095b3c844a29c24317a94a643ab8e22d54a3a3a72a420260af6\",PParams {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing}),(KeyHash \"268cfc0b89e910ead22e0ade91493d8212f53f3e2164b2e4bef0819b\",PParams {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing}),(KeyHash \"60baee25cbc90047e83fd01e1e57dc0b06d3d0cb150d0ab40bbfead1\",PParams {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing}),(KeyHash \"ad5463153dc3d24b9ff133e46136028bdc1edbb897f5a7cf1b37950c\",PParams {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing}),(KeyHash \"b9547b8a57656539a8d9bc42c008e38d9c8bd9c8adbb1e73ad529497\",PParams {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing}),(KeyHash \"f7b341c14cd58fca4195a9b278cce1ef402dc0e06deb77e543cd1757\",PParams {_minfeeA = SNothing, _minfeeB = SNothing, _maxBBSize = SNothing, _maxTxSize = SNothing, _maxBHSize = SNothing, _keyDeposit = SNothing, _poolDeposit = SNothing, _eMax = SNothing, _nOpt = SNothing, _a0 = SNothing, _rho = SNothing, _tau = SNothing, _d = SNothing, _extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\"), _protocolVersion = SNothing, _minUTxOValue = SNothing, _minPoolCost = SNothing})])) (EpochNo 258)",
+    "validity_interval": {
+        "invalid_before": null,
+        "invalid_hereafter": 26253029
+    },
+    "withdrawals": []
+}  
+```  
+The fields being compared are:
+
+`--extra-entropy d8b0ee71c3eab43750882bdc0880cf0b46a488d82e5bc9fd5b2fb3e7297bdbd4`  
+
+And  
+
+`_extraEntropy = SJust (Nonce \"d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa\")`  
+
+
+### Explanation
+
+Internally, the --extra-entropy argument is hashed using Blake2b-256 before it is placed in the update proposal transaction. This hash is applied to the binary representation, rather than the base16 representation supplied. This additional hash does not affect the quality of the entropy provided. For instance, the above example’s output can be replicated in Python with the following sequence of commands:
+
+```  
+>>> import hashlib
+>>> hashlib.blake2b(bytes.fromhex(
+...   "d8b0ee71c3eab43750882bdc0880cf0b46a488d82e5bc9fd5b2fb3e7297bdbd4"),
+...   digest_size=32).hexdigest()
+'d982e06fd33e7440b43cefad529b7ecafbaa255e38178ad4189a37e4ce9bf1fa'
+```
 
 
 
