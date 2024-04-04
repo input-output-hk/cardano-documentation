@@ -29,6 +29,8 @@
   --ifm-container-width-xl: 100%;
 
   --ifm-body-text-color: #1d1e21;
+
+  --ifm-color-gray-700: #000000 !important;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -52,6 +54,17 @@
   --ifm-background-color: #ffffff !important;
 
   --ifm-menu-link-sublist-icon-filter: invert(0) !important;
+
+  --ifm-toc-link-color: #525860;
+
+  --ifm-font-color-base: #1c1e21;
+
+  --ifm-color-content-secondary: #525860 !important;
+
+  --ifm-color-emphasis-300: #dadde1 !important;
+  --ifm-menu-color: #000000 !important;
+  --ifm-menu-color-background-active: rgba(0, 0, 0, 0.05);
+  --ifm-toc-border-color: #dadde1 !important;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@300;700&display=swap');
@@ -107,7 +120,6 @@ body {
 }
 
 .menu__link {
-  color: #000000;
   margin-bottom: 0.3rem;
 }
 
