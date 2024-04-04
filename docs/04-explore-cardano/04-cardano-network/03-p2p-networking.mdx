@@ -15,11 +15,11 @@ that was defined in a topology file. Since the introduction of Shelley, the
 system has been functioning in a hybrid mode. Moving from the federated state of
 network connectivity to the hybrid one, the teams delivered a manually
 constructed P2P network of SPO relay nodes. This means that SPO block-producing
-nodes can connect to both trusted\* relay nodes and other SPO-run relay nodes.
+nodes can connect to both trusted relay nodes and other SPO-run relay nodes.
 Hybrid connectivity is not automated, however, it enables the exchange of block
 and transaction information without relying on trusted relays only.
 
-\*A trusted relay is the one that the SPO, wallet, or exchange accessing the
+A trusted relay is the one that the SPO, wallet, or exchange accessing the
 network ‘trusts’. Though this role has mostly been performed by IOG, other
 entities, such as the Cardano Foundation, a wallet, or exchanges can also run
 trusted relays. Block-producing nodes can connect to any relays they deem
@@ -46,17 +46,17 @@ trustable.
 
 To ensure efficient communication between nodes, it is desirable to enable
 automated connections of SPO relays to each other, so that less static
-configuration is needed. Dynamic P2P is gradually enabled with the node
+configuration is needed. Dynamic P2P has been gradually enabled since the node
 [v.1.35.6](https://github.com/input-output-hk/cardano-node/releases/tag/1.35.6)
 release. For more details, see
 [this blog post](https://iohk.io/en/blog/posts/2023/03/16/dynamic-p2p-is-coming-to-cardano/).
 
-After Dynamic P2P is deployed, networking will keep evolving with future
+With the deployment of Dynamic P2P, networking keeps evolving with
 additions such as Ouroboros Genesis and peer sharing:
 
 4. Ouroboros Genesis: in development. Anyone running their own node or Daedalus
    wallet will connect to a fully decentralized and self-organized network.
-   Genesis enables secure node bootstrapping and the removal of trusted relays.
+   Genesis enables secure node bootstrapping and the removal of trusted relays. Read this blog post to learn more about [the transition to Genesis](https://iohk.io/en/blog/posts/2024/03/14/approaching-full-p2p-node-operations/).
 
 ![genesis](https://ucarecdn.com/9ce084f4-28d6-4557-919e-d60a18ded168/)
 
@@ -106,7 +106,7 @@ maintains a set of peers mapped into three categories:
   for network measurements without implementing any of the node-to-node
   mini-protocols
 - hot peers ‒ peers that have a connection, which is being used by all three
-  node-to-node mini-protocols
+  node-to-node mini-protocols.
 
 Newly discovered peers are initially added to the cold peer set. The outbound
 governor is then responsible for peer connection management: it defines which
@@ -124,7 +124,7 @@ following activities:
 - promotion of cold peers to warm peers
 - demotion of warm peers to cold peers
 - promotion of warm peers to hot peers
-- demotion of hot peers to warm peers
+- demotion of hot peers to warm peers.
 
 The outbound governor needs to establish and maintain:
 
@@ -135,7 +135,7 @@ The outbound governor needs to establish and maintain:
   geographic locations
 - a target churn frequency for hot or warm changes
 - a target churn frequency for warm or cold changes
-- a target churn frequency for cold or unknown changes
+- a target churn frequency for cold or unknown changes.
 
 ![peer-discovery](https://ucarecdn.com/b6bae79e-5960-4d4e-9f6c-993a100b01c3/)
 
