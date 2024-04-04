@@ -40,7 +40,7 @@ In the current context, determinism means that a given transaction has a 'fixed 
 
 Blockchains are based on the principle of replicating a fixed sequence of transactions (grouped in blocks) to reach a consensus about the state of the world. All blockchains have *historical* determinism, meaning that transactions in the chain have a fixed effect, else the results of validating the chain would be non-deterministic, which would break consensus.
 
-But few blockchains have *prospective* determinism, meaning that a transaction that has not yet been added to the chain does have a fixed effect (or won't apply). Cardano does feature prospective determinism. You can also find out more about [Cardano's transaction cost determinism here](https://docs.cardano.org/smart-contracts/plutus/transaction-costs-determinism/). 
+But few blockchains have *prospective* determinism, meaning that a transaction that has not yet been added to the chain does have a fixed effect (or won't apply). Cardano does feature prospective determinism.  
 
 On blockchains that do not have prospective determinism users cannot know how much gas fees they need to pay for transactions which then results in such users overpaying for transactions. The lack of prospective determinism is also why a risk exists that a transaction on such blockchains can fail while also consuming lots of gas.
 
