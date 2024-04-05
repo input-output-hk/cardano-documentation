@@ -28,7 +28,28 @@ const config: Config = {
     locales: ['en'],
   },
 
-  plugins: [['docusaurus-node-polyfills', { excludeAliases: ['console'] }]],
+  plugins: [
+    ['docusaurus-node-polyfills', { excludeAliases: ['console'] }],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/cardano-testnets/tools/faucet',
+            from: '/cardano-testnet/tools/faucet',
+          },
+        ],
+        createRedirects(existingPath) {
+          if (existingPath.includes('/cardano-testnet')) {
+            return [
+              existingPath.replace('/cardano-testnet', '/cardano-testnets'),
+            ]
+          }
+          return undefined // Return a falsy value: no redirect created
+        },
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -39,7 +60,8 @@ const config: Config = {
           routeBasePath: '/',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/input-output-hk/cardano-documentation',
+          editUrl:
+            'https://github.com/input-output-hk/cardano-documentation/blob/master/',
         },
         // blog: {
         //   showReadingTime: true,

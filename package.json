@@ -17,6 +17,7 @@
   "dependencies": {
     "@ctrl/tinycolor": "^4.0.3",
     "@docusaurus/core": "3.1.1",
+    "@docusaurus/plugin-client-redirects": "3.1.1",
     "@docusaurus/preset-classic": "3.1.1",
     "@emotion/core": "^10.0.22",
     "@emotion/react": "^11.9.3",
@@ -33,6 +34,7 @@
     "@mui/material": "^5.9.2",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.9",
+    "docusaurus-node-polyfills": "^1.0.0",
     "emotion": "^10.0.23",
     "emotion-server": "^10.0.17",
     "emotion-theming": "^10.0.19",
@@ -47,13 +49,12 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-google-recaptcha": "^3.1.0",
+    "react-hook-form": "^7.51.0",
     "react-icons": "^5.0.1",
+    "react-tooltip": "^4.2.21",
     "styled-components": "^4.4.1",
     "styled-icons": "^9.0.1",
-    "victory": "^36.5.3",
-    "docusaurus-node-polyfills": "^1.0.0",
-    "react-tooltip": "^4.2.21",
-    "react-hook-form": "^7.51.0"
+    "victory": "^36.5.3"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.1.1",
