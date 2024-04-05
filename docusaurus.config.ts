@@ -33,6 +33,14 @@ const config: Config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
+        redirects: [
+          {
+            to: '/cardano-testnet/tools/faucet/',
+            from: '/cardano-testnets/tools/faucet/',
+          },
+        ],
+      },
+      {
         createRedirects(existingPath) {
           if (existingPath.includes('/cardano-testnet')) {
             return [
@@ -54,7 +62,8 @@ const config: Config = {
           routeBasePath: '/',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/input-output-hk/cardano-documentation',
+          editUrl:
+            'https://github.com/input-output-hk/cardano-documentation/blob/master/',
         },
         // blog: {
         //   showReadingTime: true,
