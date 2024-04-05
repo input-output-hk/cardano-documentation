@@ -28,7 +28,22 @@ const config: Config = {
     locales: ['en'],
   },
 
-  plugins: [['docusaurus-node-polyfills', { excludeAliases: ['console'] }]],
+  plugins: [
+    ['docusaurus-node-polyfills', { excludeAliases: ['console'] }],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath) {
+          if (existingPath.includes('/cardano-testnet')) {
+            return [
+              existingPath.replace('/cardano-testnet', '/cardano-testnets'),
+            ]
+          }
+          return undefined // Return a falsy value: no redirect created
+        },
+      },
+    ],
+  ],
 
   presets: [
     [
