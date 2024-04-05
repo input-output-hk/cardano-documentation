@@ -35,8 +35,8 @@ const config: Config = {
       {
         redirects: [
           {
-            to: '/cardano-testnets/tools/faucet/',
-            from: '/cardano-testnet/tools/faucet/',
+            to: '/cardano-testnets/tools/faucet',
+            from: '/cardano-testnet/tools/faucet',
           },
         ],
         createRedirects(existingPath) {
