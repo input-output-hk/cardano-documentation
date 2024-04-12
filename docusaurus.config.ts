@@ -38,6 +38,10 @@ const config: Config = {
             to: '/cardano-testnets/tools/faucet',
             from: '/cardano-testnet/tools/faucet',
           },
+          {
+            to: '/release-notes/comp-matrix',
+            from: '/tools/comp-matrix',
+          },
         ],
         createRedirects(existingPath) {
           if (existingPath.includes('/cardano-testnet')) {
