@@ -4,10 +4,7 @@ metaTitle: Compatibility matrix
 sidebar_position: 2
 ---
 
-## Component compatibility with the Cardano node
-
-This Cardano components compatibility matrix shows the runtime Cardano component
-dependencies on a particular version of
+This сomponent compatibility with the Cardano node matrix shows the runtime dependencies of Cardano components on a specific version of 
 [cardano-node](https://github.com/IntersectMBO/cardano-node/releases). (It
 does not reflect any stacks.) The compatibility matrix should be read in
 conjunction with the Cardano component dependencies definition.
@@ -49,3 +46,12 @@ However, if you need compatibility with all components, we recommend using versi
 | **[1.18.0](https://github.com/IntersectMBO/cardano-node/releases/tag/1.18.0)**                | [4.0.0](https://github.com/IntersectMBO/cardano-db-sync/releases/tag/4.0.0)                                                                                                                                                           |                                                                                                                                                                     |                                                                                                                                                                       |                                                                                                                                                                                          |
 | **[1.18.0](https://github.com/IntersectMBO/cardano-node/releases/tag/1.18.0)**                | [3.1.0](https://github.com/IntersectMBO/cardano-db-sync/releases/tag/3.1.0)                                                                                                                                                           |                                                                                                                                                                     | [2.0.0](https://github.com/cardano-foundation/cardano-graphql/releases/tag/2.0.0)                                                                                     | [2020-8-3](https://github.com/cardano-foundation/cardano-wallet/releases/tag/v2020-08-03)                                                                                                |
 
+
+The table below illustrates the key architectural components used in various Cardano blockchain operations. It details essential and optional tools for tasks such as stake pool operations, transaction management, and data handling.
+
+| Stack | Core components | Description | Optional components|
+|--|--|--|--|
+| Stake pool operations  | `cardano-node` `cardano-cli` | Essential for block creation and participating in the consensus process. `cardano-cli` provides command-line interface for managing and interacting with the node. | Monitoring tools like `Prometheus` and `Grafana` for performance metrics.|
+| Address management  | `cardano-addresses` `cardano-cli` | `cardano-addresses` is used for creating and managing cryptographic addresses. It's often bundled with `cardano-node` for ease of use in address operations. | |
+| Handling wallets and transactions  | `cardano-rosetta` `cardano-wallet` | `cardano-wallet` is used for direct wallet management and transactions. `cardano-rosetta` offers a standardized interface for ineracting with the blockchain. | |
+| On-chain data and metadata | `cardano-db-cync` `cardano-graphql` | `cardano-db-sync` populates a PostgreSQL database from node data, making it queryable. `cardano-graphql` allows querying this data via GraphQL.  | `cardano-rosetta` can be used for blockchain agnostic data interaction. |
