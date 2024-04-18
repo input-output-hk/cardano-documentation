@@ -3,20 +3,16 @@ title: Pool metadata management
 metaTitle: Pool metadata management
 ---
 
-## Overview
+Stake pools are registered on-chain, and their on-chain data (such as information required to calculate rewards) is critical to the operation of the ledger. Stake pools also possess metadata that helps users make a rational choice of a stake pool to delegate to. This metadata is stored off-chain as it might reflect sensitive content, and such an approach allows for a degree of decentralized censorship.
 
-Stake pools are registered on-chain, and their on-chain data (such as information required to calculate rewards) is critical to the operation of the ledger. Stake pools also possess metadata that helps users to make a rational choice of a stake pool to delegate to. This metadata is stored off-chain as it might reflect sensitive content, and such an approach allows for a degree of decentralized censorship.
-
-On the other hand, off-chain metadata storage prerequisites a challenge of open access by different users. On-chain stake pool registrations contain an URL pointer to the off-chain metadata and a content hash that can be fetched from a specific stake pool. This might cause both performance and privacy issues. Another crucial aspect to address is the stake pool’s “ticker” name, which is the short name a stake pool is recognized by. Ticker names might reflect prominent brands or trademarks which should not be duplicated as this leads to confusion. Stake pool operators (SPOs) running multiple pools might want to use the same metadata for all their pools and then, this might also lead to these pools appearing with the same ticker name.
-
+On the other hand, off-chain metadata storage prerequisites a challenge of open access by different users. On-chain stake pool registrations contain a URL pointer to the off-chain metadata and a content hash that can be fetched from a specific stake pool. This might cause both performance and privacy issues. Another crucial aspect to address is the stake pool’s 'ticker' name, which is the short name a stake pool is recognized by. Ticker names might reflect prominent brands or trademarks which should not be duplicated as this leads to confusion. Stake pool operators (SPOs) running multiple pools might want to use the same metadata for all their pools and then, this might also lead to these pools appearing with the same ticker name.
 
 ## Use cases
 
-A Stake pool Meta Aggregation Server (SMASH) is introduced to address metadata performance and privacy issues. Delegators, stake pool operators, exchanges, or wallets can deploy and use SMASH to ensure a higher level of metadata accountability and maintenance. SMASH aggregates metadata from existing stake pools and provides an efficient way to fetch it and store it in a semi-centralized environment. SMASH operators (exchanges, wallets, SPOs) are then enabled to validate and manage this metadata curating it for censorship via the delisting feature.
-
+A stake pool metadata aggregation server (SMASH) is introduced to address metadata performance and privacy issues. Delegators, SPOs, exchanges, or wallets can deploy and use SMASH to ensure a higher level of metadata accountability and maintenance. SMASH aggregates metadata from existing stake pools and provides an efficient way to fetch it and store it in a semi-centralized environment. SMASH operators (exchanges, wallets, SPOs) are then enabled to validate and manage this metadata curating it for censorship via the delisting feature.
 
 ## Run your own
 
-The first generation of SMASH server has been deployed by Input Output Global (IOG). It aggregated stake pool metadata and offered a list of valid stake pools with reviewed content and ticker names. Nowadays, various solutions exist to synchronize data from the chain and a SMASH server is provided out-of-the-box as part of the cardano-db-sync project.
+The first generation of the SMASH server has been deployed by Input Output Global (IOG). It aggregated stake pool metadata and offered a list of valid stake pools with reviewed content and ticker names. Nowadays, various solutions exist to synchronize data from the chain and a SMASH server is provided out-of-the-box as part of the cardano-db-sync project.
 
-For running your own, see [the instructions on IntersectMBO/cardano-db-sync](https://github.com/IntersectMBO/cardano-db-sync/blob/master/doc/smash.md#smash-characteristics).
+For running your own, see [these Cardano DB Sync instructions](https://github.com/IntersectMBO/cardano-db-sync/blob/master/doc/smash.md#smash-characteristics).
