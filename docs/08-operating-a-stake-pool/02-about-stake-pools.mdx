@@ -6,39 +6,34 @@ metaTitle: About stake pools, operators, and owners
 This section includes an overview of stake pool operations and explains the ways
 of creating and managing your own stake pool.
 
-A [stake pool](/learn/stake-pools) is a reliable server node that holds and
-maintains the combined stake of various stakeholders in a single entity. Stake
+A [stake pool](/learn/stake-pools) is a reliable server node that represents the
+ combined stake of various stakeholders in a single entity. Stake
 pools use the [Cardano node](https://docs.cardano.org/learn/cardano-node/) to
-validate how the pool interacts with the network and are responsible for
-transaction processing and block production.
+form the backbone of the Cardano network by processing transactions and validating and producing blocks.
 
-Successfully operating a stake pool includes the roles of a stake pool operator
-and one or more stake pool owner(s). It is important to note that there is a
-conceptual difference between these two roles:
+Stake pool roles include a stake pool operator
+and one or more stake pool owner(s). It is important to note the
+conceptual differences between the two:
 
-- A _stake pool operator_ is a person who is assigned responsibility for setting
-  up and keeping the stake pool running, which means that they own or rent a
-  server, hold the key of the stake pool, and hold responsibility for running
-  and monitoring the node. With their key, a stake pool operator can sign
-  blocks, register, re-register, or retire a stake pool, and post updated
-  certificates. A stake pool operator is also empowered to exclude some stake
-  pool owners during re-registration.
-- A _stake pool owner_ is a person who pledges their stake to the pool to
-  increase the pool’s reward earning capacity and desirability. The ability of
-  the owner to [pledge stake](/learn/pledging-rewards) provides protection
-  against Sybil attacks.
+- A _stake pool operator_ is the owner of the cold and VRF signing keys used to create the stake pool. 
+  The operator configures and maintains stake pool infrastructure and is responsible for monitoring and . 
+  The operator is able to register, re-register, or retire a stake pool, update
+  certificates, and ensure that the block-producing node is able to sign and validate blocks and process transactions.
+- A _stake pool owner_ is determined by the stake signing-keys used in stake pool creation. The owner's 
+  [pledge stake](/learn/pledging-rewards) is intended to 
+  provide protection against Sybil attacks.
 
-Usually, the stake pool operator and the owner is the same person, however, a
-stake pool can also have multiple owners, who pledge their stake to form one
-larger pool to ensure it is competitive. Even in this case, there is still only
-one stake pool operator who is responsible for stake pool processes.
+Usually, the stake pool operator and the owner are the same person. However, a
+stake pool can have multiple owners that choose to combine their pledge. It should
+be noted that the stake pool's declared pledge must be met by the combined stake in the 
+owner's wallets and failure to do so will result in the pool being unable to produce blocks.
 
-It is essential that all stake pool owners trust a stake pool operator. All
-operators’ and owners’ rewards are paid out into a single shared reward account
-associated with the reward address of the pool. The holder of the rewards
-account pays out rewards independently to the owners.
+All operator and owner rewards are paid out into a single rewards account
+associated with the reward address of the pool. If a stake pool has multiple owners, it is
+up to the owner of the rewards account to distribute rewards to the operator and 
+other owners.
 
-This makes it clear to all parties that an agreement is needed to define when
+An agreement is likely needed to define when
 and how the accumulated rewards in a shared account should be split. For
 example, they can agree to have the operator control the shared account, or they
 could choose to use a multisig account.
