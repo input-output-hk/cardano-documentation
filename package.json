@@ -53,7 +53,8 @@
     "react-tooltip": "^4.2.21",
     "styled-components": "^4.4.1",
     "styled-icons": "^9.0.1",
-    "victory": "^36.5.3"
+    "victory": "^36.5.3",
+    "puppeteer": "^5.3.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.1.1",
