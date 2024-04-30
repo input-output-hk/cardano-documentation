@@ -90,7 +90,7 @@ export default function Home(): JSX.Element {
               heading="Stake pool operators"
               text="Committed to the health and diversity of Cardano, stake pool operators (SPOs) act as the driving force of the ecosystem, being responsible for transaction processing and block production. Interested in running your own stake pool? Find out how to set up and operate a stake pool. "
               label="Learn more"
-              ctalink="/operating-a-stake-pool/creating-a-stake-pool"
+              ctalink="/operating-a-stake-pool/"
             />
           </GridItem>
         </Grid>
