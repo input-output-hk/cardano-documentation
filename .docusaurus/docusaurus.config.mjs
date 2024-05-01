@@ -28,6 +28,21 @@ export default {
           "console"
         ]
       }
+    ],
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        "redirects": [
+          {
+            "to": "/cardano-testnets/tools/faucet",
+            "from": "/cardano-testnet/tools/faucet"
+          },
+          {
+            "to": "/release-notes/comp-matrix",
+            "from": "/tools/comp-matrix"
+          }
+        ]
+      }
     ]
   ],
   "presets": [
@@ -37,7 +52,7 @@ export default {
         "docs": {
           "sidebarPath": "./sidebars.ts",
           "routeBasePath": "/",
-          "editUrl": "https://github.com/input-output-hk/cardano-documentation"
+          "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/"
         },
         "theme": {
           "customCss": "./src/css/custom.css"

@@ -1,10 +1,18 @@
 ---
-title: Learn about native tokens
+title: Native tokens
 metaTitle: Learn about native tokens
-sidebar_position: 1
 ---
 
-_Native tokens_ is a new feature that enables the transacting of multi-assets on
+:::info
+
+To start working with native tokens, see:
+
+-   [Developer portal native token tutorials](https://developers.cardano.org/docs/native-tokens/)
+-   [Ledger explanations about native tokens](https://cardano-ledger.readthedocs.io/en/latest/explanations/index.html).
+
+:::
+
+_Native tokens_ is a feature that enables the transacting of multi-assets on
 [Cardano](https://cardano.org/). Users can transact with ada, and an unlimited
 number of user-defined (custom) tokens natively.
 
@@ -13,38 +21,32 @@ create smart contracts to handle custom tokens, for example, which removes a
 layer of added complexity and potential for manual errors since the ledger
 handles all token-related functionality.
 
-The native tokens feature extends the existing accounting infrastructure defined
+The native tokens feature extends the accounting infrastructure defined
 in the ledger model (originally designed for processing ada-only transactions)
 to accommodate transactions using a range of assets. These assets include ada
 and a variety of user-defined custom token types.
 
 Read more about
-[native tokens and how they compare to ada and ERC20](https://github.com/input-output-hk/cardano-ledger-specs/blob/master/doc/explanations/features.rst)
-and watch our
+[native tokens and how they compare to ada and ERC20](https://cardano-ledger.readthedocs.io/en/latest/explanations/features.html)
+and watch this
 [native tokens explainer video](https://www.youtube.com/watch?v=PVqsCXh-V5Y).
 
-Browse native tokens created on the Cardano blockchain and see their
-transactions in an interactive dashboard that allows filtering and searching:
-[Native Tokens Dashboard](https://nativetokens.da.iog.solutions/).
-
-### Single asset ledgers
+## Single asset ledgers
 
 Cryptocurrency ledgers that track exactly one type of asset are called
 single-asset ledgers.
 
-### Multi-Asset (MA) support
+## Multi-asset (MA) support
 
 A blockchain, ledger, or cryptocurrency is said to have multi-asset (MA) support
-when the network or ledger supports tracking transfer and ownership of different
+when the network or ledger supports tracking, transfer, and ownership of different
 types of assets on its ledger. In the Cardano environment, this functionality is
 provided by the native tokens feature.
 
-This feature extends the existing accounting infrastructure defined in the
-ledger model, which is designed for processing ada-only transactions, to
-accommodate transactions that simultaneously use a range of assets. These assets
+This feature accommodates transactions that simultaneously use a range of assets. These assets
 include ada and a variety of user-defined custom token types.
 
-### Native versus non-native MA support
+## Native versus non-native MA support
 
 Some cryptocurrency ledgers have built-in support to track ownership and
 transfer of more than one type of asset. This type of MA support is called
@@ -55,7 +57,7 @@ functionality, it is possible to track assets for which there is no ledger
 accounting support. This is done with a layer-2 solution built using smart
 contracts. This type of MA support is non-native.
 
-### Assets and tokens
+## Assets and tokens
 
 **Assets**
 
@@ -65,9 +67,9 @@ credential, or a quantity of goods.
 
 The term _asset_ can refer to either:
 
-- the identifier of a class of objects, such as “ada” or “couttscoins”; or
-- a particular quantity of a specific object, such as “100 lovelace”, “24
-  couttscoins”, “this house” or “these 10 tonnes of coffee”
+- the identifier of a class of objects, such as 'ada' or 'couttscoins'; or
+- a particular quantity of a specific object, such as '100 lovelace', '24
+  couttscoins', 'this house' or 'these 10 tonnes of coffee'.
 
 An asset is uniquely identified by an _asset ID_, which is a pair of both the
 _policy ID_ and _asset name_. It is important to note that although ada can
@@ -106,11 +108,11 @@ bundle, since they are scoped under different policies.
 
 **Tokens**
 
-A _token_ is a short term for “asset token”, which is the on-chain
+A _token_ is a short term for 'asset token', which is the on-chain
 representation of an asset and its basic accounting unit. A token can represent
 one ada, one house, or the value of ten tonnes of coffee, for example.
 
-### Currencies
+## Currencies
 
 _Currency_ is a medium of exchange for goods and services that commonly refers
 to a payment unit. Cardano supports currencies such as ada and native tokens,
@@ -131,11 +133,11 @@ While both ada and native tokens hold value and act as a payment and transaction
 unit, only ada is used for fees and rewards, while only native tokens can be
 customly created.
 
-### Using ada for administrative operations
+## Using ada for administrative operations
 
 Ada is Cardano’s principal currency. It is essential to hold ada (besides other
 currencies) to transfer multi-asset tokens between addresses, since each address
-must hold a minimum ada value (`min-ada-value`, currently set at 1 ada).
+must hold a [minimum ada value](https://cardano-ledger.readthedocs.io/en/latest/explanations/min-utxo-alonzo.html) (`min-ada-value`).
 
 As a consequence of this design, the following apply:
 
@@ -150,9 +152,13 @@ As a consequence of this design, the following apply:
    including the ada in the same output). If the address is not spendable by the
    user that is sending the tokens, the ada sent alongside the tokens no longer
    belongs to the sender.
-   > Note: Before transferring custom tokens, users may choose to use off-chain
-   > communication to negotiate who supplies the ada to cover the min-ada-value
-   > in the output made by the transferring transaction.
+
+:::note
+
+Before transferring custom tokens, users may choose to use off-chain communication to negotiate who supplies the ada to cover the min-ada-value in the output made by the transferring transaction.
+
+:::
+
 4. To recover the ada stored alongside custom tokens in an output O, the user
    must either:
 
@@ -170,7 +176,7 @@ As a consequence of this design, the following apply:
    the transaction was processed requires more total ada to cover the
    `min-ada-value`, since some ada must be supplied in each output.
 
-### Token bundles
+## Token bundles
 
 A token bundle is a heterogeneous (‘mixed’) collection of tokens. Any tokens can
 be bundled together. Token bundles are the standard - and only - way to
@@ -181,12 +187,12 @@ example and explanation below), so that which tokens are fungible with which
 other tokens explicitly adheres to this organization.
 
 In previous versions of the Cardano ledger, ada amounts were specified in
-transaction and UTxO outputs. With the introduction of multi-asset support,
+transaction and UTXO outputs. With the introduction of multi-asset support,
 these amounts have been extended with token bundles, which can specify an ada
 amount alongside quantities of other assets in a single output.
 
 Token bundles are contained in outputs and mint fields of transactions, and the
-outputs in the UTxO set tracked by the ledger. Note that certain fields of a
+outputs in the UTXO set tracked by the ledger. Note that certain fields of a
 transaction must still explicitly specify ada amounts, such as the fee field.
 
 **Token bundle example**
@@ -212,7 +218,7 @@ Token bundles can be found:
 1. As the mint field of a transaction, indicating that the transaction is
    creating the tokens in the bundle.
 2. In an output of a transaction or an output in the current UTXO tracked by the
-   ledger, alongside the address of the output, e.g.
+   ledger, alongside the address of the output, eg
    `Multi { MyAddress, value: TB_Example }`
 
 **Splitting and combining token bundles**
@@ -240,7 +246,7 @@ RushConcertPolicyID {(Tickets, 300),
                      (VIPTickets, 30)}
 ```
 
-### Comparison with ERC20 tokens
+## Comparison with ERC20 tokens
 
 ERC20 is an Ethereum token standard, widely used for the purpose of token
 issuance on various platforms today. The peculiarity of this token type lies in
@@ -271,9 +277,9 @@ bugs. Creating and transacting tokens natively removes the possibility of human
 error, since the ledger itself handles the token logic. Additionally, over- and
 under-flow vulnerabilities that are present for ERC20 are eliminated for native
 tokens, as Cardano’s scripting language does not have fixed-size integers and
-the ledger itself (rather than the ERC20 user code) tracks tokens movement.
+the ledger itself (rather than the ERC20 user code) tracks token movement.
 
-### Minting policy
+## Minting policy
 
 **Overview**
 
@@ -290,9 +296,9 @@ Minting rules can be expressed:
 
 As very basic set of rules that is made up of (ANDs and ORs of):
 
-1.  A specification of what signatures are needed to allow the mint (e.g., a
+1.  A specification of what signatures are needed to allow the mint (eg, a
     multisig specification, where no code is needed).
-2.  A specification of during what slot the script can be spent from (e.g.,
+2.  A specification of during what slot the script can be spent from (eg,
     after slot 15 and before slot 20) With a Plutus Core script.
 
 Adherence to minting policies is checked by the node at the time a transaction
@@ -300,11 +306,11 @@ is processed, by running the code or checking the relevant signatures.
 Transactions must adhere to all the minting policies of all assets that the
 transaction is attempting to mint.
 
-### Important points about minting policies and assets
+## Important points about minting policies and assets
 
 - All assets necessarily have a minting policy. For example, the minting policy
-  of ada is "new ada can never be minted".
-- A token is associated with (e.g., scoped under) exactly one minting policy.
+  of ada is 'new ada can never be minted'.
+- A token is associated with (eg, scoped under) exactly one minting policy.
 - A single policy specifies both minting and burning conditions of tokens scoped
   under it. Adherence to it is checked both at the time of minting as well as
   burning.
@@ -321,7 +327,7 @@ transaction is attempting to mint.
   amount of CAD you can buy with a fixed amount of USD depends on the exchange
   rate of the place where you do the trade.
 
-### Association between an asset and its minting policy
+## Association between an asset and its minting policy
 
 The association between an asset and its minting policy is permanent for safety
 reasons: this feature protects the users and the system from illegitimately
@@ -335,16 +341,16 @@ Having a permanent association between these allows us to guarantee that every
 token was minted in accordance with its minting policy, and not any other policy
 which it might have previously been associated with.
 
-Note that this is not as restrictive as it sounds. In a loose parallel with US
-monetary policy, we can say that the policy is "government and laws set the
-policy", and this is a policy which requires looking up the current laws (which
+Note that this is not as restrictive as it sounds. In a loose parallel with the US
+monetary policy, we can say that the policy is 'government and laws set the
+policy', and this is a policy which requires looking up the current laws (which
 themselves could change), and only minting money in adherence to them.
 
-### Minting policy examples
+## Minting policy examples
 
 - Single-issuer policy
 - Time-locked mint policy
-- One-time mint policy
+- One-time mint policy.
 
 Note: There are many other types of minting policies.
 
@@ -368,10 +374,10 @@ This type of policy can be used to specify when tokens can be spent from an
 address. In particular,
 
 - only in or after a specified time slot
-- only before a specified time slot
+- only before a specified time slot.
 
 This type of policy is usually not used by itself. Usually, it is in conjunction
-with the multisignature or single issuer policy, e.g. This output can be spent
+with the multi-signature or single issuer policy. For example, this output can be spent
 after slot _s_ and only by a transaction signed by key _k_.
 
 This type of policy can be implemented without Plutus smart contracts.
@@ -390,11 +396,11 @@ there'll be no need to ever allow more tickets to be minted.
 **Minting transactions**
 
 To introduce new quantities of new tokens on the ledger (minting) or to remove
-existing tokens (burning), each transaction features a mint field.The
+existing tokens (burning), each transaction features a mint field. The
 transactions where the mint field is not empty are known as minting
 transactions. The use of this field needs to be tightly controlled to ensure
-that the minting and burning of tokens occurs according to the token's minting
-policy
+that the minting and burning of tokens occur according to the token's minting
+policy.
 
 Apart from the mint field, minting transactions must also carry the minting
 policies for the tokens they are minting, so that these tokens can be checked
@@ -411,7 +417,7 @@ associated with multiple and distinct minting policies. For example,
 `(Policy1, SomeTokens)` or `(Policy2, SomeOtherTokens)`. Also, a transaction
 might simultaneously mint some tokens and burn others.
 
-### The native token lifecycle
+## The native token lifecycle
 
 The native token lifecycle consists of five main phases:
 
@@ -419,7 +425,7 @@ The native token lifecycle consists of five main phases:
 2. issuing
 3. using
 4. redeeming
-5. burning
+5. burning.
 
 The following diagram outlines the interaction between the system components:
 
@@ -441,7 +447,7 @@ which may incur fees in ada. The main groups of actors are:
 The lifecycle of multi-asset tokens starts with their creation – **_minting_**,
 which refers to the process whereby new tokens are created by one or more _token
 issuers_ in accordance with the _monetary policy script_ that the _asset
-controller_ has defined. New tokens will usually be created to fulfil specific
+controller_ has defined. New tokens will usually be created to fulfill specific
 purposes. For example, _fungible_ or _non-fungible_ (unique) tokens may be
 created to be used for specific payment, purchasing, or exchange needs. When a
 new token is minted, the total _token supply_ for that token increases, but
@@ -464,11 +470,17 @@ destroys these tokens (removes them from circulation), and the total token
 supply decreases. Any deposits will be returned at this point. The burning
 process is identical for fungible and non-fungible tokens.
 
-> Note: The multi-asset token lifecycle potentially allows tokens to be obtained
-> and reissued by other parties - token holders who act as _reissuers_ for the
-> token. This can be done to e.g., enable trading in multiple asset classes,
-> maintain liquidity in one or more tokens (by acting as a broker), or to
-> eliminate the effort/cost of token minting, issuing or metadata server
-> maintenance. Thus, both reissuers and issuers can gain from such a deal -
-> eliminating cost and effort, maintaining separation and integrity, and
-> injecting value into the asset class.
+:::note
+
+Note: The multi-asset token lifecycle potentially allows tokens to be obtained
+and reissued by other parties - token holders who act as _reissuers_ for the
+token. This can be done to eg, enable trading in multiple asset classes,
+maintain liquidity in one or more tokens (by acting as a broker), or to
+eliminate the effort/cost of token minting, issuing or metadata server
+maintenance. Thus, both reissuers and issuers can gain from such a deal -
+eliminating cost and effort, maintaining separation and integrity, and
+injecting value into the asset class.
+
+:::
+
+
