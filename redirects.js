@@ -277,18 +277,18 @@ export const redirects = [
   },
   {
     to: 'https://www.essentialcardano.io/',
-    from: '/community/essential-cardano/',
+    from: '/community/essential-cardano',
   },
   {
     to: 'https://cardano.stackexchange.com/',
-    from: '/community/cardano-stack-exchange/',
+    from: '/community/cardano-stack-exchange',
   },
   {
     to: 'https://cardano.org/ambassadors/',
-    from: '/community/ambassador-program/',
+    from: '/community/ambassador-program',
   },
   {
     to: 'https://iohk.zendesk.com/hc/en-us',
-    from: '/community/getting-support/',
+    from: '/community/getting-support',
   },
 ]
