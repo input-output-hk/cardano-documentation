@@ -273,7 +273,7 @@ export const redirects = [
   },
   {
     to: 'https://cips.cardano.org/',
-    from: '/community/cips/',
+    from: '/community/cips',
   },
   {
     to: 'https://www.essentialcardano.io/',
