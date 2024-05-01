@@ -24,10 +24,6 @@ export const redirects = [
     from: '/cardano-testnet/local-testnet/',
   },
   {
-    to: '/cardano-testnet/tools/faucet/',
-    from: '/cardano-testnets/tools/faucet',
-  },
-  {
     to: '/cardano-testnets/resources',
     from: '/cardano-testnet/resources/links/',
   },
