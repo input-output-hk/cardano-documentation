@@ -37,7 +37,7 @@ export const redirects = [
   },
   {
     to: 'https://cardano-course.gitbook.io/cardano-course/video-lessons',
-    from: '/development-guidelines/cardano-node-course/',
+    from: '/development-guidelines/cardano-node-course',
   },
   {
     to: 'https://tests.cardano.intersectmbo.org/',
@@ -258,18 +258,6 @@ export const redirects = [
   {
     to: '/learn/transaction-costs-determinism',
     from: '/smart-contracts/plutus/transaction-costs-determinism/',
-  },
-  {
-    to: '/development-guidelines/smart-contracts/plutus',
-    from: '/smart-contracts/plutus/sc-best-practices/',
-  },
-  {
-    to: '/development-guidelines/smart-contracts/plutus',
-    from: '/smart-contracts/plutus/sc-best-practices/',
-  },
-  {
-    to: 'development-guidelines/smart-contracts/plutus',
-    from: '/smart-contracts/plutus/sc-best-practices/',
   },
   {
     to: '/development-guidelines/smart-contracts/plutus',
