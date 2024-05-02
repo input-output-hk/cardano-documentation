@@ -1,6 +1,7 @@
 import { themes as prismThemes } from 'prism-react-renderer'
 import type { Config } from '@docusaurus/types'
 import type * as Preset from '@docusaurus/preset-classic'
+import { redirects } from './redirects'
 
 const config: Config = {
   title: 'Cardano Docs',
@@ -33,16 +34,7 @@ const config: Config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
-        redirects: [
-          {
-            to: '/cardano-testnets/tools/faucet',
-            from: '/cardano-testnet/tools/faucet',
-          },
-          {
-            to: '/release-notes/comp-matrix',
-            from: '/tools/comp-matrix',
-          },
-        ],
+        redirects: redirects,
         createRedirects(existingPath) {
           if (existingPath.includes('/cardano-testnet')) {
             return [
