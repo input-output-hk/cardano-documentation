@@ -38,8 +38,8 @@ following tasks:
 
 The multiplexing layer acts as a central crossing between mini-protocols and the
 network channel. It runs several
-[mini-protocols](/explore-cardano/cardano-network/#utilizing-mini-protocols) in
-parallel in a single channel ‒ TCP connection, for example.
+[mini-protocols](/about-cardano/explore-more/cardano-network/#utilizing-mini-protocols)
+in parallel in a single channel ‒ TCP connection, for example.
 
 Figure 1 reflects how data flows between two nodes, each running three
 mini-protocols using a multiplexer (MUX) and a de-multiplexer (DEMUX).
@@ -64,9 +64,9 @@ the multiplexed data.
 :::note
 
 This is not a generic, but specialized, use of multiplexing. Individual
-mini-protocols have strict constraints on unacknowledged messages that can be
-in flight. The design avoids the conditions in which the use of general TCP
-over TCP multiplexing creates chaotic performance.
+mini-protocols have strict constraints on unacknowledged messages that can be in
+flight. The design avoids the conditions in which the use of general TCP over
+TCP multiplexing creates chaotic performance.
 
 :::
 

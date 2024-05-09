@@ -3,8 +3,8 @@ title: Cardano architecture
 metaTitle: Cardano architecture
 ---
 
-This section describes the high-level architecture of Cardano, providing 
-details on the core components and their interactions. 
+This section describes the high-level architecture of Cardano, providing details
+on the core components and their interactions.
 
 The following diagram outlines the interaction between the system components of
 Cardano:
@@ -28,7 +28,8 @@ combinations of components):
 ## Nodes and remote nodes
 
 A blockchain system consists of a set of nodes distributed across a network that
-communicate with each other to achieve [consensus](/learn/consensus-explained) about the system’s state.
+communicate with each other to achieve
+[consensus](/about-cardano/learn/consensus-explained) about the system’s state.
 
 Nodes are responsible for:
 
@@ -37,14 +38,18 @@ Nodes are responsible for:
   protocol
 - Validating and relaying blocks
 - Producing blocks (some nodes)
-- Providing information about the state of the blockchain to other local clients.
+- Providing information about the state of the blockchain to other local
+  clients.
 
 ### Node process
 
 The `cardano-node` is the top level Cardano component that consists of the other
-subsystems, of which the most significant are [consensus](https://github.com/IntersectMBO/ouroboros-consensus?tab=readme-ov-file#ouroboros-consensus),
+subsystems, of which the most significant are
+[consensus](https://github.com/IntersectMBO/ouroboros-consensus?tab=readme-ov-file#ouroboros-consensus),
 [ledger](https://github.com/IntersectMBO/cardano-ledger?tab=readme-ov-file#cardano-ledger),
-and [networking](https://github.com/IntersectMBO/ouroboros-network?tab=readme-ov-file#ouroboros-network) with ancillary configuration, CLI, logging, and monitoring.
+and
+[networking](https://github.com/IntersectMBO/ouroboros-network?tab=readme-ov-file#ouroboros-network)
+with ancillary configuration, CLI, logging, and monitoring.
 
 ### Node-to-node IPC protocol
 
@@ -82,13 +87,12 @@ these applications to access the raw chain data and to query the current ledger
 state. It also provides the ability to submit new transactions to the system.
 
 The node-to-client protocol uses the same design as the node-to-node protocol,
-but with a different set of mini-protocols, and local pipes rather than
-TCP connections. As such, it is a relatively low-level narrow interface that
-exposes only what the node can provide natively. For example, the node provides
-access to all the raw chain data but does not provide a way to query data on the
-chain. The job of providing data services and more convenient higher level APIs
-is delegated to dedicated clients, such as cardano-db-sync and the wallet
-backend.
+but with a different set of mini-protocols, and local pipes rather than TCP
+connections. As such, it is a relatively low-level narrow interface that exposes
+only what the node can provide natively. For example, the node provides access
+to all the raw chain data but does not provide a way to query data on the chain.
+The job of providing data services and more convenient higher level APIs is
+delegated to dedicated clients, such as cardano-db-sync and the wallet backend.
 
 The node-to-client protocol consists of three mini-protocols:
 
@@ -106,7 +110,8 @@ chain itself.
 
 :::info
 
-Read more about the [networking protocol design here](/explore-cardano/cardano-network/networking-protocol).
+Read more about the
+[networking protocol design here](/about-cardano/explore-more/cardano-network/networking-protocol).
 
 :::
 
@@ -133,20 +138,20 @@ state of the user’s wallet and does all the 'heavy lifting', such as coin
 selection, transaction construction, and submission. The backend interacts with
 a local node via the node-to-client IPC protocol, and interacts with the
 frontend via a HTTP API. The backend also provides a CLI that enables
-interaction with the wallet. The wallet backend can also be used on its own
- – without Daedalus – via its API. This is a convenient way for software developers
+interaction with the wallet. The wallet backend can also be used on its own –
+without Daedalus – via its API. This is a convenient way for software developers
 to integrate Cardano with other applications and systems.
 
 ## Cardano DB Sync
 
-The Cardano node stores only the blockchain itself and the associated information
-needed to validate the blockchain. This design principle is about minimizing
-code complexity (and reducing computational cost and resource use) to keep the
-node's local interfaces as minimal as possible and to use external clients to
-provide a variety of convenient interfaces and extra functionality. In
-particular, the node does not provide a convenient query interface for
+The Cardano node stores only the blockchain itself and the associated
+information needed to validate the blockchain. This design principle is about
+minimizing code complexity (and reducing computational cost and resource use) to
+keep the node's local interfaces as minimal as possible and to use external
+clients to provide a variety of convenient interfaces and extra functionality.
+In particular, the node does not provide a convenient query interface for
 historical information on the blockchain. This data service is provided by a
 separate component using a Structured Query Language (SQL) database.
 
-Learn more about [Cardano DB Sync here](https://github.com/IntersectMBO/cardano-db-sync?tab=readme-ov-file#cardano-db-sync).
-   
+Learn more about
+[Cardano DB Sync here](https://github.com/IntersectMBO/cardano-db-sync?tab=readme-ov-file#cardano-db-sync).

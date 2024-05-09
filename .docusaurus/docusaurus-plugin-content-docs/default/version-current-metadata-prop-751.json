@@ -609,7 +609,7 @@
     "about-cardano/evolution/cardano-design-rationale": {
       "id": "about-cardano/evolution/cardano-design-rationale",
       "title": "Design rationale",
-      "description": "Cardano is an open source proof-of-stake blockchain project that began in 2015 to address existing blockchain challenges in the design and development of cryptocurrencies. It aims to provide a more balanced and sustainable ecosystem that better accounts for the needs of its users as well as other systems seeking integration.",
+      "description": "Cardano is an open source",
       "sidebar": "aboutCardano"
     },
     "about-cardano/evolution/eras-and-phases": {
@@ -657,7 +657,7 @@
     "about-cardano/explore-more/cardano-architecture": {
       "id": "about-cardano/explore-more/cardano-architecture",
       "title": "Cardano architecture",
-      "description": "This section describes the high-level architecture of Cardano, providing",
+      "description": "This section describes the high-level architecture of Cardano, providing details",
       "sidebar": "aboutCardano"
     },
     "about-cardano/explore-more/cardano-network/index": {
@@ -783,7 +783,7 @@
     "about-cardano/learn/stake-pools": {
       "id": "about-cardano/learn/stake-pools",
       "title": "Stake pools",
-      "description": "A stake pool is a reliable server node that focuses on ledger maintenance and holds the combined resources - the 'stake' - of various stakeholders in a single entity. Stake pools are responsible for processing transactions that will be placed in the ledger, as well as producing new blocks. Stake pools are at the core of Ouroboros, Cardano's proof-of-stake protocol.",
+      "description": "A stake pool is a reliable server node that focuses on ledger maintenance and",
       "sidebar": "aboutCardano"
     },
     "about-cardano/learn/transaction-costs-determinism": {
@@ -1023,7 +1023,7 @@
     "stake-pool-operators/about-stake-pools": {
       "id": "stake-pool-operators/about-stake-pools",
       "title": "About stake pools, operators, and owners",
-      "description": "A stake pool is a reliable server node that represents the",
+      "description": "A stake pool is a reliable server node that",
       "sidebar": "stakePoolOperators"
     },
     "stake-pool-operators/creating-keys-and-certificates": {

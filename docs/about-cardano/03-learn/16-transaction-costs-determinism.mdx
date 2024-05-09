@@ -4,12 +4,11 @@ metaTitle: Transaction costs and determinism
 ---
 
 Cardano’s approach to price setting mainly relies on market demand over actual
-supply. On Cardano, more than one type of
-demand competes for the common supply. Thus, it is crucial to consider both
-_relative_ and _absolute_ pricing. One way to do this is to inspect the effects
-of smart contract pricing, non-fungible token (NFT) operations, and so on, with
-respect to some common value – in our case, the consumption of Cardano’s
-processing power.
+supply. On Cardano, more than one type of demand competes for the common supply.
+Thus, it is crucial to consider both _relative_ and _absolute_ pricing. One way
+to do this is to inspect the effects of smart contract pricing, non-fungible
+token (NFT) operations, and so on, with respect to some common value – in our
+case, the consumption of Cardano’s processing power.
 
 The Cardano ledger's design is focused on high assurance, security, and proven
 formal verification. In alignment with this strategy, it is also important to
@@ -18,8 +17,8 @@ predict the impact and outcome of a transaction before its actual execution.
 
 The ability to guarantee the cost of transaction execution and how the
 transaction behaves on the ledger _before_ it is submitted became even more
-prominent with the introduction of smart contract support in 2021. This feature is
-different from other blockchains, including Ethereum, where other network
+prominent with the introduction of smart contract support in 2021. This feature
+is different from other blockchains, including Ethereum, where other network
 activity can influence the gas cost. This ability is also guaranteed by the
 deterministic nature of Cardano and Plutus scripts.
 
@@ -78,10 +77,10 @@ The Alonzo upgrade changed the data on the ledger as follows:
 
 To support Plutus scripts, transactions have the following features:
 
-1. For each of its actions, the transaction carries a user-specified
-   argument, called a redeemer. Depending on the script, a redeemer can serve a
-   different purpose. For example, it can act as the bid the user places in an
-   auction, or the user’s guess in a guessing game, among many other functions.
+1. For each of its actions, the transaction carries a user-specified argument,
+   called a redeemer. Depending on the script, a redeemer can serve a different
+   purpose. For example, it can act as the bid the user places in an auction, or
+   the user’s guess in a guessing game, among many other functions.
 2. The transaction specifies computational execution budgets for each script.
 3. To ensure that a transaction can pay its execution fee, Alonzo introduced
    collateral.
@@ -92,7 +91,7 @@ With the Vasil upgrade, Plutus scripts were upgraded to V2 functionality with an
 improved cost model and new built-ins. The use of reference inputs, inline
 datums, and reference scripts allowed for efficient throughput and significantly
 increased performance.
-[See the complete Vasil feature overview here](/evolution/upgrades/vasil).
+[See the complete Vasil feature overview here](/about-cardano/evolution/upgrades/vasil).
 
 The node performs the checks that ensure the transaction is constructed
 correctly. For example, it must not exceed the maximum execution resource
@@ -133,5 +132,3 @@ Further reading:
 - [No surprises transaction validation: Part 2 (about two phases of validation and collateral](https://iohk.io/en/blog/posts/2021/09/07/no-surprises-transaction-validation-part-2/)
 
 :::
-
-

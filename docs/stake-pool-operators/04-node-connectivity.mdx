@@ -9,11 +9,23 @@ block creation.
 
 ## Cardano networking
 
-Cardano's networking evolved from its initial federated structure to hybrid and the Dynamic peer-to-peer (P2P) model. Networking will keep evolving with future additions such as Ouroboros Genesis and peer-sharing. See [this explainer](/explore-cardano/cardano-network/p2p-networking) for more details about network evolution and P2P. 
+Cardano's networking evolved from its initial federated structure to hybrid and
+the Dynamic peer-to-peer (P2P) model. Networking will keep evolving with future
+additions such as Ouroboros Genesis and peer-sharing. See
+[this explainer](/about-cardano/explore-more/cardano-network/p2p-networking) for
+more details about network evolution and P2P.
 
-In a previous hybrid setup, SPOs could configure a node to connect to, for example, 50 other SPO nodes. This is a pretty large number, since many nodes can be offline, change their addresses, etc. While 20 connections are enough for efficient communication, SPOs had to over-provision because of the static configuration.
+In a previous hybrid setup, SPOs could configure a node to connect to, for
+example, 50 other SPO nodes. This is a pretty large number, since many nodes can
+be offline, change their addresses, etc. While 20 connections are enough for
+efficient communication, SPOs had to over-provision because of the static
+configuration.
 
-In a Dynamic P2P setup, SPOs can target to configure 20 connections, which can be picked from thousands of SPO relays, not just 50. And if any are offline, or go offline, the setup will automatically pick new ones, to meet the set target. This means that the configuration is no longer limited to a static pool of 50 peers.
+In a Dynamic P2P setup, SPOs can target to configure 20 connections, which can
+be picked from thousands of SPO relays, not just 50. And if any are offline, or
+go offline, the setup will automatically pick new ones, to meet the set target.
+This means that the configuration is no longer limited to a static pool of 50
+peers.
 
 ## Connecting core and relay nodes
 
@@ -37,4 +49,3 @@ Developer resources:
 - [Configurations and setup](https://cardano-course.gitbook.io/cardano-course/handbook/create-a-stake-pool/the-setup)
 
 :::
-

@@ -37,7 +37,7 @@ export default function Home(): JSX.Element {
                 heading="3rd Gen"
                 text="Cardano is the first blockchain platform to evolve out of a scientific philosophy and a research-first driven approach. It is being designed for function and scale right from the start."
                 label="What is Cardano?"
-                ctalink="/introduction"
+                ctalink="/about-cardano/introduction"
                 Icon={IdeaIco}
               />
             </GridItem>
@@ -55,7 +55,7 @@ export default function Home(): JSX.Element {
                 heading="Secure, scalable, and interoperable"
                 text="Security is one of the founding principles of Cardano. As it is written in the functional language Haskell, it uses pure functions to build the system, where components can be tested in isolation. More advanced features of Haskell, such as basing the implementation on formal and executable specifications, extensive property-based testing, and running tests in simulation provides a range of powerful methods for ensuring code correctness."
                 label="More on security"
-                ctalink="/evolution/cardano-design-rationale"
+                ctalink="/about-cardano/evolution/cardano-design-rationale"
                 Icon={DiamondsIco}
               />
             </GridItem>
@@ -64,7 +64,7 @@ export default function Home(): JSX.Element {
                 heading="Explore more"
                 text="The high-level architecture of the Cardano platform stack is modular by design and includes various system components that interact together to fulfil different deployment use cases."
                 label="Cardano architecture"
-                ctalink="/explore-cardano/cardano-architecture"
+                ctalink="/about-cardano/explore-more/cardano-architecture"
                 Icon={CircuitIcon}
               />
             </GridItem>
@@ -80,7 +80,7 @@ export default function Home(): JSX.Element {
               heading="New to Cardano?"
               text="If you are new to Cardano and would like to learn more about the basics we have a range of explainers on the components of blockchain and how Cardano stands out from other solutions. From explanations on cryptocurrency and consensus and diving deeper into the types of wallets and delegation instructions, we aim to make your introduction to Cardano seamless and comprehensive."
               label="Get Started"
-              ctalink="/new-to-cardano"
+              ctalink="/about-cardano/new-to-cardano"
               btn="secondary"
             />
           </GridItem>
@@ -91,7 +91,7 @@ export default function Home(): JSX.Element {
               heading="Stake pool operators"
               text="Committed to the health and diversity of Cardano, stake pool operators (SPOs) act as the driving force of the ecosystem, being responsible for transaction processing and block production. Interested in running your own stake pool? Find out how to set up and operate a stake pool. "
               label="Learn more"
-              ctalink="/operating-a-stake-pool/"
+              ctalink="/stake-pool-operators/operating-a-stake-pool/"
             />
           </GridItem>
         </Grid>
@@ -102,7 +102,7 @@ export default function Home(): JSX.Element {
               heading="Stake pools"
               text="A stake pool is a reliable server node that focuses on maintenance and holds the combined stake of various stakeholders in a single entity."
               label="Stake pools explained"
-              ctalink="/learn/stake-pools"
+              ctalink="/about-cardano/learn/stake-pools"
               btn="primary"
             />
           </GridItem>
@@ -112,7 +112,7 @@ export default function Home(): JSX.Element {
               heading="Delegation"
               text="Delegation of stake is a mechanism inherent in the Cardano proof of stake (PoS) protocol that allows the protocol to scale even in a setting where the set of stakeholders are highly distributed."
               label="Delegation explained"
-              ctalink="/learn/delegation"
+              ctalink="/about-cardano/learn/delegation"
               btn="primary"
             />
           </GridItem>

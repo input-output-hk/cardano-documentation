@@ -38,15 +38,15 @@ export default {
             "from": "/cardano-testnet/tools/faucet"
           },
           {
-            "to": "/release-notes/comp-matrix",
+            "to": "/developer-resources/release-notes/comp-matrix",
             "from": "/tools/comp-matrix"
           },
           {
-            "to": "/cardano-testnets/",
+            "to": "/cardano-testnets/environments",
             "from": "/cardano-testnet/overview/"
           },
           {
-            "to": "/cardano-testnets/",
+            "to": "/cardano-testnets/environments",
             "from": "/cardano-testnet/about/testnet-introduction/"
           },
           {
@@ -90,19 +90,19 @@ export default {
             "from": "/development-guidelines/transaction-tutorials/introduction/"
           },
           {
-            "to": "/operating-a-stake-pool/",
+            "to": "/stake-pool-operators/operating-a-stake-pool",
             "from": "/operating-a-stake-pool/stake-pool-operations-101/"
           },
           {
-            "to": "/operating-a-stake-pool/",
+            "to": "/stake-pool-operators/operating-a-stake-pool",
             "from": "/operating-a-stake-pool/creating-a-stake-pool/"
           },
           {
-            "to": "/operating-a-stake-pool/maintenance",
+            "to": "/stake-pool-operators/maintenance",
             "from": "/operating-a-stake-pool/public-stake-pools/"
           },
           {
-            "to": "/operating-a-stake-pool/metadata-management",
+            "to": "/stake-pool-operators/metadata-management",
             "from": "/operating-a-stake-pool/smash/"
           },
           {
@@ -238,7 +238,7 @@ export default {
             "from": "/cardano-sidechains/proof-of-concept-evm-sidechain/transferring-tokens/"
           },
           {
-            "to": "/development-guidelines/native-tokens",
+            "to": "/developer-resources/native-tokens",
             "from": "/native-tokens/learn/"
           },
           {
@@ -266,11 +266,11 @@ export default {
             "from": "/listing-cardano-native-assets-on-an-exchange/"
           },
           {
-            "to": "/development-guidelines/smart-contracts/plutus",
+            "to": "/developer-resources/smart-contracts/plutus",
             "from": "/smart-contracts/plutus/learn-about-plutus/"
           },
           {
-            "to": "/development-guidelines/smart-contracts/plutus",
+            "to": "/developer-resources/smart-contracts/plutus",
             "from": "/smart-contracts/plutus/plutus-resources/"
           },
           {
@@ -286,23 +286,23 @@ export default {
             "from": "/smart-contracts/plutus/plutus-use-cases/"
           },
           {
-            "to": "/learn/collateral-mechanism",
+            "to": "/about-cardano/learn/collateral-mechanism",
             "from": "/smart-contracts/plutus/collateral-mechanism/"
           },
           {
-            "to": "/learn/transaction-costs-determinism",
+            "to": "/about-cardano/learn/transaction-costs-determinism",
             "from": "/smart-contracts/plutus/transaction-costs-determinism/"
           },
           {
-            "to": "/development-guidelines/smart-contracts/plutus",
+            "to": "/developer-resources/smart-contracts/plutus",
             "from": "/smart-contracts/plutus/sc-best-practices/"
           },
           {
-            "to": "/development-guidelines/smart-contracts/marlowe",
+            "to": "/developer-resources/smart-contracts/marlowe",
             "from": "/smart-contracts/marlowe/learn-about-marlowe/"
           },
           {
-            "to": "/development-guidelines/smart-contracts/aiken",
+            "to": "/developer-resources/smart-contracts/aiken",
             "from": "/smart-contracts/aiken/learn-about-aiken/"
           },
           {
@@ -312,10 +312,6 @@ export default {
           {
             "to": "https://www.essentialcardano.io/",
             "from": "/community/essential-cardano"
-          },
-          {
-            "to": "https://cardano.stackexchange.com/",
-            "from": "/community/cardano-stack-exchange"
           },
           {
             "to": "https://cardano.org/ambassadors/",

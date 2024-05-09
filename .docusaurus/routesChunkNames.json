@@ -1,393 +1,350 @@
 {
-  "/__docusaurus/debug-9f6": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
-    "__context": {
-      "plugin": "plugin---docusaurus-debug-14-c-5ff"
-    }
-  },
-  "/__docusaurus/debug/config-eb0": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
-    "__context": {
-      "plugin": "plugin---docusaurus-debug-14-c-5ff"
-    }
-  },
-  "/__docusaurus/debug/content-ad9": {
-    "__comp": "__comp---theme-debug-contentba-8-ce7",
-    "__context": {
-      "plugin": "plugin---docusaurus-debug-14-c-5ff"
-    },
-    "allContent": "allContent---docusaurus-debug-content-246-9aa"
-  },
-  "/__docusaurus/debug/globalData-07c": {
-    "__comp": "__comp---theme-debug-global-dataede-0fa",
-    "__context": {
-      "plugin": "plugin---docusaurus-debug-14-c-5ff"
-    }
-  },
-  "/__docusaurus/debug/metadata-9b8": {
-    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
-    "__context": {
-      "plugin": "plugin---docusaurus-debug-14-c-5ff"
-    }
-  },
-  "/__docusaurus/debug/registry-ddb": {
-    "__comp": "__comp---theme-debug-registry-679-501",
-    "__context": {
-      "plugin": "plugin---docusaurus-debug-14-c-5ff"
-    }
-  },
-  "/__docusaurus/debug/routes-628": {
-    "__comp": "__comp---theme-debug-routes-946-699",
-    "__context": {
-      "plugin": "plugin---docusaurus-debug-14-c-5ff"
-    }
-  },
   "/-13a": {
-    "__comp": "__comp---site-src-pages-index-tsx-1-df-d3e",
+    "__comp": "1df93b7f",
     "__context": {
-      "plugin": "plugin---2-dc-cfd"
+      "plugin": "2dc7a0b6"
     },
-    "config": "config---5-e-9-4f3"
+    "config": "5e9f5e1a"
   },
   "/-f2a": {
-    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__comp": "5e95c892",
     "__context": {
-      "plugin": "plugin---cf-2-0b9"
+      "plugin": "cf21364d"
     }
   },
   "/-75a": {
-    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
-    "version": "version---935-fcf"
+    "__comp": "a7bd4aaa",
+    "version": "935f2afb"
   },
   "/-493": {
-    "__comp": "__comp---theme-doc-roota-94-67a"
+    "__comp": "a94703ab"
   },
   "/about-cardano/evolution/about-hard-forks-4f5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-evolution-about-hard-forks-65-b-2a3"
+    "__comp": "17896441",
+    "content": "65b3da99"
   },
   "/about-cardano/evolution/cardano-design-rationale-204": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-evolution-cardano-design-rationalebf-6-e4b"
+    "__comp": "17896441",
+    "content": "bf675a67"
   },
   "/about-cardano/evolution/eras-and-phases-fad": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-evolution-eras-and-phases-9-be-696"
+    "__comp": "17896441",
+    "content": "9be19b39"
   },
   "/about-cardano/evolution/upgrades/allegra-c60": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-evolution-upgrades-allegra-651-2e3"
+    "__comp": "17896441",
+    "content": "651293c9"
   },
   "/about-cardano/evolution/upgrades/alonzo-796": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-evolution-upgrades-alonzof-75-808"
+    "__comp": "17896441",
+    "content": "f758715f"
   },
   "/about-cardano/evolution/upgrades/byron-to-shelley-4a6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-evolution-upgrades-byron-to-shelley-006-dde"
+    "__comp": "17896441",
+    "content": "006dce5f"
   },
   "/about-cardano/evolution/upgrades/mary-593": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-evolution-upgrades-mary-779-f1c"
+    "__comp": "17896441",
+    "content": "779effac"
   },
   "/about-cardano/evolution/upgrades/valentine-102": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-evolution-upgrades-valentined-89-e90"
+    "__comp": "17896441",
+    "content": "d89c57a9"
   },
   "/about-cardano/evolution/upgrades/vasil-527": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-evolution-upgrades-vasil-82-f-ce8"
+    "__comp": "17896441",
+    "content": "82fa6d87"
   },
   "/about-cardano/explore-more/cardano-architecture-9d6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-explore-more-cardano-architecturebee-1ad"
+    "__comp": "17896441",
+    "content": "bee15165"
   },
   "/about-cardano/explore-more/cardano-network/-ec4": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-explore-more-cardano-network-e-2-b-55e"
+    "__comp": "17896441",
+    "content": "e2bdeb4a"
   },
   "/about-cardano/explore-more/cardano-network/networking-protocol-967": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-explore-more-cardano-network-networking-protocolf-91-c67"
+    "__comp": "17896441",
+    "content": "f91fa50f"
   },
   "/about-cardano/explore-more/cardano-network/p2p-networking-e42": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-explore-more-cardano-network-p-2-p-networking-9-d-4-7b0"
+    "__comp": "17896441",
+    "content": "9d40b9c0"
   },
   "/about-cardano/explore-more/concurrency-ec3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-explore-more-concurrency-617-3f3"
+    "__comp": "17896441",
+    "content": "6175b506"
   },
   "/about-cardano/explore-more/fee-structure-111": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-explore-more-fee-structuref-47-1d2"
+    "__comp": "17896441",
+    "content": "f473ddad"
   },
   "/about-cardano/explore-more/monetary-policy-255": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-explore-more-monetary-policyd-6-d-d09"
+    "__comp": "17896441",
+    "content": "d6d66228"
   },
   "/about-cardano/explore-more/parameter-guide-0dd": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-explore-more-parameter-guidec-30-948"
+    "__comp": "17896441",
+    "content": "c3063d0c"
   },
   "/about-cardano/explore-more/relevant-research-papers-09a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-explore-more-relevant-research-papers-31-b-3de"
+    "__comp": "17896441",
+    "content": "31b0969d"
   },
   "/about-cardano/explore-more/time-4fb": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-explore-more-time-838-be5"
+    "__comp": "17896441",
+    "content": "83812b66"
   },
   "/about-cardano/introduction-e76": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-introductionc-23-28f"
+    "__comp": "17896441",
+    "content": "c237ab2b"
   },
   "/about-cardano/learn/cardano-addresses-a81": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-learn-cardano-addresses-307-5d7"
+    "__comp": "17896441",
+    "content": "30700c61"
   },
   "/about-cardano/learn/cardano-keys-505": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-learn-cardano-keysba-6-865"
+    "__comp": "17896441",
+    "content": "ba6ed1c9"
   },
   "/about-cardano/learn/cardano-node-c53": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-learn-cardano-node-16-a-3f0"
+    "__comp": "17896441",
+    "content": "16a09b37"
   },
   "/about-cardano/learn/chain-confirmation-versus-transaction-confirmation-a11": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-learn-chain-confirmation-versus-transaction-confirmation-535-4de"
+    "__comp": "17896441",
+    "content": "5359340c"
   },
   "/about-cardano/learn/collateral-mechanism-855": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-learn-collateral-mechanismc-7-d-0a0"
+    "__comp": "17896441",
+    "content": "c7d0bcfa"
   },
   "/about-cardano/learn/consensus-explained-fc3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-learn-consensus-explained-7-fd-aac"
+    "__comp": "17896441",
+    "content": "7fd218b1"
   },
   "/about-cardano/learn/delegation-a7b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-learn-delegation-2-bd-bb9"
+    "__comp": "17896441",
+    "content": "2bd70f2f"
   },
   "/about-cardano/learn/eutxo-explainer-481": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-learn-eutxo-explainer-8-a-6-fd9"
+    "__comp": "17896441",
+    "content": "8a68be87"
   },
   "/about-cardano/learn/ouroboros-overview-8e8": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-learn-ouroboros-overview-34-d-164"
+    "__comp": "17896441",
+    "content": "34dbf0be"
   },
   "/about-cardano/learn/pledging-rewards-ee3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-learn-pledging-rewards-475-7d0"
+    "__comp": "17896441",
+    "content": "475b6736"
   },
   "/about-cardano/learn/stake-pools-725": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-learn-stake-pools-512-d00"
+    "__comp": "17896441",
+    "content": "51223c35"
   },
   "/about-cardano/learn/transaction-costs-determinism-768": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-learn-transaction-costs-determinisme-8-d-5cb"
+    "__comp": "17896441",
+    "content": "e8dcf325"
   },
   "/about-cardano/new-to-cardano/-0f9": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-new-to-cardano-0-e-0-74c"
+    "__comp": "17896441",
+    "content": "0e0bfb97"
   },
   "/about-cardano/new-to-cardano/cardano-tracking-tools-356": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-new-to-cardano-cardano-tracking-tools-5-a-7-23c"
+    "__comp": "17896441",
+    "content": "5a7e3d19"
   },
   "/about-cardano/new-to-cardano/how-to-delegate-f09": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-new-to-cardano-how-to-delegatee-61-35b"
+    "__comp": "17896441",
+    "content": "e61c2943"
   },
   "/about-cardano/new-to-cardano/proof-of-stake-b97": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-new-to-cardano-proof-of-stake-90-e-199"
+    "__comp": "17896441",
+    "content": "90e4094c"
   },
   "/about-cardano/new-to-cardano/staking-calculator-a21": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-new-to-cardano-staking-calculator-8-e-7-f30"
+    "__comp": "17896441",
+    "content": "8e74ec01"
   },
   "/about-cardano/new-to-cardano/types-of-wallets-efe": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-new-to-cardano-types-of-wallets-6-c-7-672"
+    "__comp": "17896441",
+    "content": "6c73dadf"
   },
   "/about-cardano/new-to-cardano/what-is-a-blockchain-26d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-new-to-cardano-what-is-a-blockchainfc-1-a87"
+    "__comp": "17896441",
+    "content": "fc1d119b"
   },
   "/about-cardano/new-to-cardano/what-is-a-cryptocurrency-d87": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-new-to-cardano-what-is-a-cryptocurrency-7-fd-f51"
+    "__comp": "17896441",
+    "content": "7fdfd9bb"
   },
   "/about-cardano/new-to-cardano/what-is-a-smart-contract-585": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---about-cardano-new-to-cardano-what-is-a-smart-contractcc-4-c04"
+    "__comp": "17896441",
+    "content": "cc4422ee"
   },
   "/cardano-testnets/environments-07b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnets-environmentsfb-0-ac1"
+    "__comp": "17896441",
+    "content": "fb03230e"
   },
   "/cardano-testnets/getting-started-3e0": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnets-getting-startedc-81-e71"
+    "__comp": "17896441",
+    "content": "c81fa9dc"
   },
   "/cardano-testnets/local-testnet-818": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnets-local-testnet-815-9c7"
+    "__comp": "17896441",
+    "content": "8152d783"
   },
   "/cardano-testnets/resources-e3c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnets-resourcesd-22-0f1"
+    "__comp": "17896441",
+    "content": "d223021b"
   },
   "/cardano-testnets/support-feedback-48a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnets-support-feedbacke-8-c-4d4"
+    "__comp": "17896441",
+    "content": "e8cd0fe1"
   },
   "/cardano-testnets/tools/daedalus-testnet-9ed": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnets-tools-daedalus-testnet-2-fb-162"
+    "__comp": "17896441",
+    "content": "2fbf2882"
   },
   "/cardano-testnets/tools/faucet-61e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnets-tools-faucet-9-cc-556"
+    "__comp": "17896441",
+    "content": "9ccd05aa"
   },
   "/cardano-testnets/tools/plutus-fee-estimator-88d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---cardano-testnets-tools-plutus-fee-estimatorf-68-706"
+    "__comp": "17896441",
+    "content": "f682dbeb"
   },
   "/community/ambassador-program-85d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---community-ambassador-program-143-8d1"
+    "__comp": "17896441",
+    "content": "14316d9a"
   },
   "/community/Cardano-stack-exchange-6c3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---community-cardano-stack-exchange-30-a-f18"
+    "__comp": "17896441",
+    "content": "30aca6da"
   },
   "/community/cips-78a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---community-cipsc-81-d09"
+    "__comp": "17896441",
+    "content": "c81d58b9"
   },
   "/community/community-content-5a5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---community-community-contentf-15-284"
+    "__comp": "17896441",
+    "content": "f157d899"
   },
   "/community/essential-cardano-250": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---community-essential-cardanoe-5-c-a1e"
+    "__comp": "17896441",
+    "content": "e5c660bc"
   },
   "/community/getting-support-3a1": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---community-getting-support-6-c-2-e27"
+    "__comp": "17896441",
+    "content": "6c284bd1"
   },
   "/developer-resources/cardano-node-course-fca": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---developer-resources-cardano-node-coursec-17-d4e"
+    "__comp": "17896441",
+    "content": "c1793426"
   },
   "/developer-resources/native-tokens-1e9": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---developer-resources-native-tokens-645-03e"
+    "__comp": "17896441",
+    "content": "64584d13"
   },
   "/developer-resources/release-notes/comp-matrix-19e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---developer-resources-release-notes-comp-matrix-238-de1"
+    "__comp": "17896441",
+    "content": "2384f086"
   },
   "/developer-resources/release-notes/release-notes-6ab": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---developer-resources-release-notes-release-notes-456-1e3"
+    "__comp": "17896441",
+    "content": "45656ecf"
   },
   "/developer-resources/scalability-solutions/hydra-fa4": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---developer-resources-scalability-solutions-hydra-54-b-019"
+    "__comp": "17896441",
+    "content": "54bb0c9c"
   },
   "/developer-resources/scalability-solutions/mithril-54c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---developer-resources-scalability-solutions-mithrilad-1-578"
+    "__comp": "17896441",
+    "content": "ad13c422"
   },
   "/developer-resources/smart-contracts/aiken-78e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---developer-resources-smart-contracts-aiken-8-b-6-96f"
+    "__comp": "17896441",
+    "content": "8b6dfd3e"
   },
   "/developer-resources/smart-contracts/marlowe-89f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---developer-resources-smart-contracts-marlowe-7-ce-a4b"
+    "__comp": "17896441",
+    "content": "7ce0fce2"
   },
   "/developer-resources/smart-contracts/plutus-96c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---developer-resources-smart-contracts-plutus-630-1dc"
+    "__comp": "17896441",
+    "content": "630dac60"
   },
   "/developer-resources/welcome-65d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---developer-resources-welcome-344-63c"
+    "__comp": "17896441",
+    "content": "34499a1c"
   },
   "/development-guidelines/transaction-tutorials/-b7d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---development-guidelines-transaction-tutorials-329-63b"
+    "__comp": "17896441",
+    "content": "3295e51c"
   },
   "/development-guidelines/transaction-tutorials/minting-transaction-1f9": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---development-guidelines-transaction-tutorials-minting-transaction-1-d-6-565"
+    "__comp": "17896441",
+    "content": "1d6a69e4"
   },
   "/development-guidelines/transaction-tutorials/multiple-purposes-03b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---development-guidelines-transaction-tutorials-multiple-purposesfd-0-439"
+    "__comp": "17896441",
+    "content": "fd0217f2"
   },
   "/development-guidelines/transaction-tutorials/redelegate-transaction-0ad": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---development-guidelines-transaction-tutorials-redelegate-transaction-169-5c4"
+    "__comp": "17896441",
+    "content": "16938b19"
   },
   "/development-guidelines/transaction-tutorials/stake-transaction-4f0": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---development-guidelines-transaction-tutorials-stake-transactiondfd-8a4"
+    "__comp": "17896441",
+    "content": "dfdf7783"
   },
   "/development-guidelines/transaction-tutorials/withdraw-transaction-f44": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---development-guidelines-transaction-tutorials-withdraw-transaction-77-e-83d"
+    "__comp": "17896441",
+    "content": "77e0fe88"
   },
   "/pioneer-programs/plutus-pioneers-c24": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---pioneer-programs-plutus-pioneers-9-cc-c97"
+    "__comp": "17896441",
+    "content": "9cc224ee"
   },
   "/stake-pool-operators/about-stake-pools-358": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---stake-pool-operators-about-stake-poolsb-22-2be"
+    "__comp": "17896441",
+    "content": "b22e2a8f"
   },
   "/stake-pool-operators/creating-keys-and-certificates-a06": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---stake-pool-operators-creating-keys-and-certificatesb-0-f-002"
+    "__comp": "17896441",
+    "content": "b0ff96d9"
   },
   "/stake-pool-operators/guidelines-for-large-spos-efa": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---stake-pool-operators-guidelines-for-large-spose-45-d9b"
+    "__comp": "17896441",
+    "content": "e45adf08"
   },
   "/stake-pool-operators/maintenance-0b2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---stake-pool-operators-maintenance-17-b-6c2"
+    "__comp": "17896441",
+    "content": "17bf1240"
   },
   "/stake-pool-operators/metadata-management-d63": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---stake-pool-operators-metadata-management-172-de2"
+    "__comp": "17896441",
+    "content": "1720c230"
   },
   "/stake-pool-operators/monitoring-d19": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---stake-pool-operators-monitoringa-3-c-808"
+    "__comp": "17896441",
+    "content": "a3c15cf5"
   },
   "/stake-pool-operators/node-connectivity-687": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---stake-pool-operators-node-connectivity-84-e-e5e"
+    "__comp": "17896441",
+    "content": "84e91a79"
   },
   "/stake-pool-operators/operating-a-stake-pool-834": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---stake-pool-operators-operating-a-stake-poolb-1-f-586"
+    "__comp": "17896441",
+    "content": "b1fbef09"
   },
   "/stake-pool-operators/performance-211": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---stake-pool-operators-performance-89-a-526"
+    "__comp": "17896441",
+    "content": "89a6d20a"
   },
   "/stake-pool-operators/ranking-716": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---stake-pool-operators-ranking-330-da8"
+    "__comp": "17896441",
+    "content": "33004b21"
   }
 }
