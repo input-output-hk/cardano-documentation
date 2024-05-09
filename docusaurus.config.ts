@@ -3,12 +3,16 @@ import type { Config } from '@docusaurus/types'
 import type * as Preset from '@docusaurus/preset-classic'
 import { redirects } from './redirects'
 
+const editUrl =
+  'https://github.com/input-output-hk/cardano-documentation/blob/master/'
+
 const config: Config = {
   title: 'Cardano Docs',
   favicon: 'img/cardano-favicon.png',
 
   // Set the production url of your site here
   url: 'https://docs.cardano.org/',
+
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -52,20 +56,11 @@ const config: Config = {
       'classic',
       {
         docs: {
+          editUrl: editUrl,
+          editLocalizedFiles: true,
           sidebarPath: './sidebars.ts',
           routeBasePath: '/',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/input-output-hk/cardano-documentation/blob/master/',
         },
-        // blog: {
-        //   showReadingTime: true,
-        //   // Please change this to your repo.
-        //   // Remove this to remove the "edit this page" links.
-        //   editUrl:
-        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        // },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -87,16 +82,66 @@ const config: Config = {
         src: 'img/cardano-logo.svg',
       },
       items: [
-        // {
-        //   type: 'docSidebar',
-        //   sidebarId: 'tutorialSidebar',
-        //   position: 'left',
-        //   label: 'Tutorial',
-        // },
-        // { to: '/blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/input-output-hk/cardano-documentation',
+          to: 'about-cardano/introduction',
+          label: 'About Cardano',
+          position: 'left',
+        },
+        {
+          to: 'developer-resources/welcome',
+          label: 'Developer resources',
+          position: 'left',
+        },
+        {
+          to: 'stake-pool-operators/operating-a-stake-pool',
+          label: 'Stake pool operations',
+          position: 'left',
+        },
+        {
+          to: 'cardano-testnets/environments',
+          label: 'Cardano testnets',
+          position: 'left',
+        },
+        {
+          to: 'pioneer-programs/plutus-pioneers',
+          label: 'Pioneer programs',
+          position: 'left',
+        },
+        {
+          type: 'dropdown',
+          label: 'Community',
+          position: 'left',
+          items: [
+            {
+              label: 'Support',
+              href: 'https://iohk.zendesk.com/hc/en-us/requests/new',
+            },
+            {
+              label: 'Essential Cardano',
+              href: 'https://www.essentialcardano.io/',
+            },
+            {
+              label: 'Cardano Stack Exchange',
+              href: 'https://cardano.stackexchange.com/',
+            },
+            {
+              label: 'Ambassadors program',
+              href: 'https://cardano.org/ambassadors/',
+            },
+            {
+              label: 'Cardano Improvement Proposals (CIPs)',
+              href: 'https://cips.cardano.org/',
+            },
+          ],
+        },
+        {
+          label: 'Developer portal',
+          href: 'https://developers.cardano.org/',
+          position: 'left',
+        },
+        {
           label: 'GitHub',
+          href: 'https://github.com/input-output-hk/cardano-documentation',
           position: 'right',
         },
       ],

@@ -7,8 +7,8 @@ metaTitle: Learn about native tokens
 
 To start working with native tokens, see:
 
--   [Developer portal native token tutorials](https://developers.cardano.org/docs/native-tokens/)
--   [Ledger explanations about native tokens](https://cardano-ledger.readthedocs.io/en/latest/explanations/index.html).
+- [Developer portal native token tutorials](https://developers.cardano.org/docs/native-tokens/)
+- [Ledger explanations about native tokens](https://cardano-ledger.readthedocs.io/en/latest/explanations/index.html).
 
 :::
 
@@ -21,10 +21,10 @@ create smart contracts to handle custom tokens, for example, which removes a
 layer of added complexity and potential for manual errors since the ledger
 handles all token-related functionality.
 
-The native tokens feature extends the accounting infrastructure defined
-in the ledger model (originally designed for processing ada-only transactions)
-to accommodate transactions using a range of assets. These assets include ada
-and a variety of user-defined custom token types.
+The native tokens feature extends the accounting infrastructure defined in the
+ledger model (originally designed for processing ada-only transactions) to
+accommodate transactions using a range of assets. These assets include ada and a
+variety of user-defined custom token types.
 
 Read more about
 [native tokens and how they compare to ada and ERC20](https://cardano-ledger.readthedocs.io/en/latest/explanations/features.html)
@@ -39,12 +39,13 @@ single-asset ledgers.
 ## Multi-asset (MA) support
 
 A blockchain, ledger, or cryptocurrency is said to have multi-asset (MA) support
-when the network or ledger supports tracking, transfer, and ownership of different
-types of assets on its ledger. In the Cardano environment, this functionality is
-provided by the native tokens feature.
+when the network or ledger supports tracking, transfer, and ownership of
+different types of assets on its ledger. In the Cardano environment, this
+functionality is provided by the native tokens feature.
 
-This feature accommodates transactions that simultaneously use a range of assets. These assets
-include ada and a variety of user-defined custom token types.
+This feature accommodates transactions that simultaneously use a range of
+assets. These assets include ada and a variety of user-defined custom token
+types.
 
 ## Native versus non-native MA support
 
@@ -137,7 +138,9 @@ customly created.
 
 Ada is Cardano’s principal currency. It is essential to hold ada (besides other
 currencies) to transfer multi-asset tokens between addresses, since each address
-must hold a [minimum ada value](https://cardano-ledger.readthedocs.io/en/latest/explanations/min-utxo-alonzo.html) (`min-ada-value`).
+must hold a
+[minimum ada value](https://cardano-ledger.readthedocs.io/en/latest/explanations/min-utxo-alonzo.html)
+(`min-ada-value`).
 
 As a consequence of this design, the following apply:
 
@@ -155,7 +158,9 @@ As a consequence of this design, the following apply:
 
 :::note
 
-Before transferring custom tokens, users may choose to use off-chain communication to negotiate who supplies the ada to cover the min-ada-value in the output made by the transferring transaction.
+Before transferring custom tokens, users may choose to use off-chain
+communication to negotiate who supplies the ada to cover the min-ada-value in
+the output made by the transferring transaction.
 
 :::
 
@@ -298,8 +303,8 @@ As very basic set of rules that is made up of (ANDs and ORs of):
 
 1.  A specification of what signatures are needed to allow the mint (eg, a
     multisig specification, where no code is needed).
-2.  A specification of during what slot the script can be spent from (eg,
-    after slot 15 and before slot 20) With a Plutus Core script.
+2.  A specification of during what slot the script can be spent from (eg, after
+    slot 15 and before slot 20) With a Plutus Core script.
 
 Adherence to minting policies is checked by the node at the time a transaction
 is processed, by running the code or checking the relevant signatures.
@@ -341,8 +346,8 @@ Having a permanent association between these allows us to guarantee that every
 token was minted in accordance with its minting policy, and not any other policy
 which it might have previously been associated with.
 
-Note that this is not as restrictive as it sounds. In a loose parallel with the US
-monetary policy, we can say that the policy is 'government and laws set the
+Note that this is not as restrictive as it sounds. In a loose parallel with the
+US monetary policy, we can say that the policy is 'government and laws set the
 policy', and this is a policy which requires looking up the current laws (which
 themselves could change), and only minting money in adherence to them.
 
@@ -377,8 +382,8 @@ address. In particular,
 - only before a specified time slot.
 
 This type of policy is usually not used by itself. Usually, it is in conjunction
-with the multi-signature or single issuer policy. For example, this output can be spent
-after slot _s_ and only by a transaction signed by key _k_.
+with the multi-signature or single issuer policy. For example, this output can
+be spent after slot _s_ and only by a transaction signed by key _k_.
 
 This type of policy can be implemented without Plutus smart contracts.
 
@@ -478,9 +483,7 @@ token. This can be done to eg, enable trading in multiple asset classes,
 maintain liquidity in one or more tokens (by acting as a broker), or to
 eliminate the effort/cost of token minting, issuing or metadata server
 maintenance. Thus, both reissuers and issuers can gain from such a deal -
-eliminating cost and effort, maintaining separation and integrity, and
-injecting value into the asset class.
+eliminating cost and effort, maintaining separation and integrity, and injecting
+value into the asset class.
 
 :::
-
-

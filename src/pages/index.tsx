@@ -26,7 +26,8 @@ export default function Home(): JSX.Element {
         subHeading="Documentation for the"
         lead="Cardano is a decentralized third-generation proof-of-stake blockchain platform and home to the ada cryptocurrency. It has been designed from the ground up by a team of top engineers and academic experts."
         text="Cardano has a strong focus on sustainability, scalability, and transparency and is a fully open source project that aims to deliver an inclusive, fair, and resilient infrastructure for financial and social applications on a global scale. It is powered by Ouroboros, the ground-breaking proof-of-stake consensus protocol."
-        label="Get started"
+        label1="Learn about Cardano"
+        label2="Explore developer resources"
       />
       <Breakout className={'intro-container'} bgHiLight>
         <SiteWidthWrap className={'intro-sections-wrapper'}>

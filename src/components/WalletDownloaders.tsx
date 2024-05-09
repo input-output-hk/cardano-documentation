@@ -281,7 +281,6 @@ const WalletDownloaders = ({ env }) => {
   const unCacheURL = (url) => {
     return url + '?t=' + new Date().getTime()
   }
-
   return (
     <Box marginTop={4} marginBottom={4}>
       {!hasError && !loading && platformsData && (

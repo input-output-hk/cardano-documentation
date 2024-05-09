@@ -8,12 +8,12 @@
   "className": "docs-version-current",
   "isLast": true,
   "docsSidebars": {
-    "tutorialSidebar": [
+    "aboutCardano": [
       {
         "type": "link",
         "label": "Introduction",
-        "href": "/introduction",
-        "docId": "introduction",
+        "href": "/about-cardano/introduction",
+        "docId": "about-cardano/introduction",
         "unlisted": false
       },
       {
@@ -25,54 +25,61 @@
           {
             "type": "link",
             "label": "What is a blockchain?",
-            "href": "/new-to-cardano/what-is-a-blockchain",
-            "docId": "new-to-cardano/what-is-a-blockchain",
+            "href": "/about-cardano/new-to-cardano/what-is-a-blockchain",
+            "docId": "about-cardano/new-to-cardano/what-is-a-blockchain",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "What is a cryptocurrency?",
-            "href": "/new-to-cardano/what-is-a-cryptocurrency",
-            "docId": "new-to-cardano/what-is-a-cryptocurrency",
+            "href": "/about-cardano/new-to-cardano/what-is-a-cryptocurrency",
+            "docId": "about-cardano/new-to-cardano/what-is-a-cryptocurrency",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Proof of stake",
-            "href": "/new-to-cardano/proof-of-stake",
-            "docId": "new-to-cardano/proof-of-stake",
+            "href": "/about-cardano/new-to-cardano/proof-of-stake",
+            "docId": "about-cardano/new-to-cardano/proof-of-stake",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Cardano tracking tools",
-            "href": "/new-to-cardano/cardano-tracking-tools",
-            "docId": "new-to-cardano/cardano-tracking-tools",
+            "href": "/about-cardano/new-to-cardano/cardano-tracking-tools",
+            "docId": "about-cardano/new-to-cardano/cardano-tracking-tools",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Types of wallets",
-            "href": "/new-to-cardano/types-of-wallets",
-            "docId": "new-to-cardano/types-of-wallets",
+            "href": "/about-cardano/new-to-cardano/types-of-wallets",
+            "docId": "about-cardano/new-to-cardano/types-of-wallets",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "How to delegate?",
-            "href": "/new-to-cardano/how-to-delegate",
-            "docId": "new-to-cardano/how-to-delegate",
+            "href": "/about-cardano/new-to-cardano/how-to-delegate",
+            "docId": "about-cardano/new-to-cardano/how-to-delegate",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Staking calculator",
+            "href": "/about-cardano/new-to-cardano/staking-calculator",
+            "docId": "about-cardano/new-to-cardano/staking-calculator",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "What is a smart contract?",
-            "href": "/new-to-cardano/what-is-a-smart-contract",
-            "docId": "new-to-cardano/what-is-a-smart-contract",
+            "href": "/about-cardano/new-to-cardano/what-is-a-smart-contract",
+            "docId": "about-cardano/new-to-cardano/what-is-a-smart-contract",
             "unlisted": false
           }
         ],
-        "href": "/new-to-cardano/"
+        "href": "/about-cardano/new-to-cardano/"
       },
       {
         "type": "category",
@@ -83,85 +90,85 @@
           {
             "type": "link",
             "label": "Cardano nodes",
-            "href": "/learn/cardano-node",
-            "docId": "learn/cardano-node",
+            "href": "/about-cardano/learn/cardano-node",
+            "docId": "about-cardano/learn/cardano-node",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Stake pools",
-            "href": "/learn/stake-pools",
-            "docId": "learn/stake-pools",
+            "href": "/about-cardano/learn/stake-pools",
+            "docId": "about-cardano/learn/stake-pools",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Delegation",
-            "href": "/learn/delegation",
-            "docId": "learn/delegation",
+            "href": "/about-cardano/learn/delegation",
+            "docId": "about-cardano/learn/delegation",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Pledging and rewards",
-            "href": "/learn/pledging-rewards",
-            "docId": "learn/pledging-rewards",
+            "href": "/about-cardano/learn/pledging-rewards",
+            "docId": "about-cardano/learn/pledging-rewards",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Consensus explained",
-            "href": "/learn/consensus-explained",
-            "docId": "learn/consensus-explained",
+            "href": "/about-cardano/learn/consensus-explained",
+            "docId": "about-cardano/learn/consensus-explained",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Ouroboros overview",
-            "href": "/learn/ouroboros-overview",
-            "docId": "learn/ouroboros-overview",
+            "href": "/about-cardano/learn/ouroboros-overview",
+            "docId": "about-cardano/learn/ouroboros-overview",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Cardano keys",
-            "href": "/learn/cardano-keys",
-            "docId": "learn/cardano-keys",
+            "href": "/about-cardano/learn/cardano-keys",
+            "docId": "about-cardano/learn/cardano-keys",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Cardano addresses",
-            "href": "/learn/cardano-addresses",
-            "docId": "learn/cardano-addresses",
+            "href": "/about-cardano/learn/cardano-addresses",
+            "docId": "about-cardano/learn/cardano-addresses",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Chain confirmation versus transaction confirmation",
-            "href": "/learn/chain-confirmation-versus-transaction-confirmation",
-            "docId": "learn/chain-confirmation-versus-transaction-confirmation",
+            "href": "/about-cardano/learn/chain-confirmation-versus-transaction-confirmation",
+            "docId": "about-cardano/learn/chain-confirmation-versus-transaction-confirmation",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Extended UTXO model",
-            "href": "/learn/eutxo-explainer",
-            "docId": "learn/eutxo-explainer",
+            "href": "/about-cardano/learn/eutxo-explainer",
+            "docId": "about-cardano/learn/eutxo-explainer",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Transaction costs and determinism",
-            "href": "/learn/transaction-costs-determinism",
-            "docId": "learn/transaction-costs-determinism",
+            "href": "/about-cardano/learn/transaction-costs-determinism",
+            "docId": "about-cardano/learn/transaction-costs-determinism",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "About the collateral mechanism",
-            "href": "/learn/collateral-mechanism",
-            "docId": "learn/collateral-mechanism",
+            "href": "/about-cardano/learn/collateral-mechanism",
+            "docId": "about-cardano/learn/collateral-mechanism",
             "unlisted": false
           }
         ]
@@ -175,8 +182,8 @@
           {
             "type": "link",
             "label": "Cardano architecture",
-            "href": "/explore-cardano/cardano-architecture",
-            "docId": "explore-cardano/cardano-architecture",
+            "href": "/about-cardano/explore-more/cardano-architecture",
+            "docId": "about-cardano/explore-more/cardano-architecture",
             "unlisted": false
           },
           {
@@ -188,60 +195,60 @@
               {
                 "type": "link",
                 "label": "Networking protocol design overview",
-                "href": "/explore-cardano/cardano-network/networking-protocol",
-                "docId": "explore-cardano/cardano-network/networking-protocol",
+                "href": "/about-cardano/explore-more/cardano-network/networking-protocol",
+                "docId": "about-cardano/explore-more/cardano-network/networking-protocol",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Peer-to-peer (P2P) networking",
-                "href": "/explore-cardano/cardano-network/p2p-networking",
-                "docId": "explore-cardano/cardano-network/p2p-networking",
+                "href": "/about-cardano/explore-more/cardano-network/p2p-networking",
+                "docId": "about-cardano/explore-more/cardano-network/p2p-networking",
                 "unlisted": false
               }
             ],
-            "href": "/explore-cardano/cardano-network/"
+            "href": "/about-cardano/explore-more/cardano-network/"
           },
           {
             "type": "link",
             "label": "Cardano fee structure",
-            "href": "/explore-cardano/fee-structure",
-            "docId": "explore-cardano/fee-structure",
+            "href": "/about-cardano/explore-more/fee-structure",
+            "docId": "about-cardano/explore-more/fee-structure",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Cardano monetary policy",
-            "href": "/explore-cardano/monetary-policy",
-            "docId": "explore-cardano/monetary-policy",
+            "href": "/about-cardano/explore-more/monetary-policy",
+            "docId": "about-cardano/explore-more/monetary-policy",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Time handling on Cardano",
-            "href": "/explore-cardano/time",
-            "docId": "explore-cardano/time",
+            "href": "/about-cardano/explore-more/time",
+            "docId": "about-cardano/explore-more/time",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Understanding concurrency",
-            "href": "/explore-cardano/concurrency",
-            "docId": "explore-cardano/concurrency",
+            "href": "/about-cardano/explore-more/concurrency",
+            "docId": "about-cardano/explore-more/concurrency",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Cardano protocol parameters reference guide",
-            "href": "/explore-cardano/parameter-guide",
-            "docId": "explore-cardano/parameter-guide",
+            "href": "/about-cardano/explore-more/parameter-guide",
+            "docId": "about-cardano/explore-more/parameter-guide",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Relevant research papers and specifications",
-            "href": "/explore-cardano/relevant-research-papers",
-            "docId": "explore-cardano/relevant-research-papers",
+            "href": "/about-cardano/explore-more/relevant-research-papers",
+            "docId": "about-cardano/explore-more/relevant-research-papers",
             "unlisted": false
           }
         ]
@@ -255,22 +262,22 @@
           {
             "type": "link",
             "label": "Design rationale",
-            "href": "/evolution/cardano-design-rationale",
-            "docId": "evolution/cardano-design-rationale",
+            "href": "/about-cardano/evolution/cardano-design-rationale",
+            "docId": "about-cardano/evolution/cardano-design-rationale",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Development phases and eras",
-            "href": "/evolution/eras-and-phases",
-            "docId": "evolution/eras-and-phases",
+            "href": "/about-cardano/evolution/eras-and-phases",
+            "docId": "about-cardano/evolution/eras-and-phases",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "About hard forks",
-            "href": "/evolution/about-hard-forks",
-            "docId": "evolution/about-hard-forks",
+            "href": "/about-cardano/evolution/about-hard-forks",
+            "docId": "about-cardano/evolution/about-hard-forks",
             "unlisted": false
           },
           {
@@ -282,43 +289,43 @@
               {
                 "type": "link",
                 "label": "Byron to Shelley",
-                "href": "/evolution/upgrades/byron-to-shelley",
-                "docId": "evolution/upgrades/byron-to-shelley",
+                "href": "/about-cardano/evolution/upgrades/byron-to-shelley",
+                "docId": "about-cardano/evolution/upgrades/byron-to-shelley",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Allegra",
-                "href": "/evolution/upgrades/allegra",
-                "docId": "evolution/upgrades/allegra",
+                "href": "/about-cardano/evolution/upgrades/allegra",
+                "docId": "about-cardano/evolution/upgrades/allegra",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Mary",
-                "href": "/evolution/upgrades/mary",
-                "docId": "evolution/upgrades/mary",
+                "href": "/about-cardano/evolution/upgrades/mary",
+                "docId": "about-cardano/evolution/upgrades/mary",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Alonzo",
-                "href": "/evolution/upgrades/alonzo",
-                "docId": "evolution/upgrades/alonzo",
+                "href": "/about-cardano/evolution/upgrades/alonzo",
+                "docId": "about-cardano/evolution/upgrades/alonzo",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Vasil",
-                "href": "/evolution/upgrades/vasil",
-                "docId": "evolution/upgrades/vasil",
+                "href": "/about-cardano/evolution/upgrades/vasil",
+                "docId": "about-cardano/evolution/upgrades/vasil",
                 "unlisted": false
               },
               {
                 "type": "link",
                 "label": "Valentine (SECP)",
-                "href": "/evolution/upgrades/valentine",
-                "docId": "evolution/upgrades/valentine",
+                "href": "/about-cardano/evolution/upgrades/valentine",
+                "docId": "about-cardano/evolution/upgrades/valentine",
                 "unlisted": false
               }
             ]
@@ -326,342 +333,86 @@
         ]
       },
       {
-        "type": "category",
-        "label": "Cardano testnets",
-        "collapsible": true,
-        "collapsed": true,
-        "items": [
-          {
-            "type": "link",
-            "label": "Testnet environments",
-            "href": "/cardano-testnets/environments",
-            "docId": "cardano-testnets/environments",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Getting started with Cardano testnets",
-            "href": "/cardano-testnets/getting-started",
-            "docId": "cardano-testnets/getting-started",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Creating a local testnet",
-            "href": "/cardano-testnets/local-testnet",
-            "docId": "cardano-testnets/local-testnet",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Daedalus wallet for the Cardano testnets",
-            "href": "/cardano-testnets/daedalus-testnet",
-            "docId": "cardano-testnets/daedalus-testnet",
-            "unlisted": false
-          },
-          {
-            "type": "category",
-            "label": "Tools",
-            "collapsible": true,
-            "collapsed": true,
-            "items": [
-              {
-                "type": "link",
-                "label": "Testnets faucet",
-                "href": "/cardano-testnets/tools/faucet",
-                "docId": "cardano-testnets/tools/faucet",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Staking calculator",
-                "href": "/cardano-testnets/tools/staking-calculator",
-                "docId": "cardano-testnets/tools/staking-calculator",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Plutus fee estimator",
-                "href": "/cardano-testnets/tools/plutus-fee-estimator",
-                "docId": "cardano-testnets/tools/plutus-fee-estimator",
-                "unlisted": false
-              }
-            ]
-          },
-          {
-            "type": "link",
-            "label": "Resources",
-            "href": "/cardano-testnets/resources",
-            "docId": "cardano-testnets/resources",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Support and feedback",
-            "href": "/cardano-testnets/support-feedback",
-            "docId": "cardano-testnets/support-feedback",
-            "unlisted": false
-          }
-        ],
-        "href": "/cardano-testnets/"
+        "type": "link",
+        "label": "Glossary",
+        "href": "https://www.essentialcardano.io/glossary?sort=alphabetical",
+        "className": "external-link-with-separator"
+      },
+      {
+        "type": "link",
+        "label": "FAQs",
+        "href": "https://www.essentialcardano.io/faq"
+      }
+    ],
+    "developerResources": [
+      {
+        "type": "link",
+        "label": "Welcome",
+        "href": "/developer-resources/welcome",
+        "docId": "developer-resources/welcome",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "The Cardano node video course",
+        "href": "/developer-resources/cardano-node-course",
+        "docId": "developer-resources/cardano-node-course",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Native tokens",
+        "href": "/developer-resources/native-tokens",
+        "docId": "developer-resources/native-tokens",
+        "unlisted": false
       },
       {
         "type": "category",
-        "label": "Developer resources",
+        "label": "Smart contracts",
         "collapsible": true,
         "collapsed": true,
         "items": [
           {
             "type": "link",
-            "label": "The Cardano node video course",
-            "href": "/development-guidelines/cardano-node-course",
-            "docId": "development-guidelines/cardano-node-course",
+            "label": "Plutus",
+            "href": "/developer-resources/smart-contracts/plutus",
+            "docId": "developer-resources/smart-contracts/plutus",
             "unlisted": false
           },
           {
             "type": "link",
-            "label": "Native tokens",
-            "href": "/development-guidelines/native-tokens",
-            "docId": "development-guidelines/native-tokens",
-            "unlisted": false
-          },
-          {
-            "type": "category",
-            "label": "Smart contracts",
-            "collapsible": true,
-            "collapsed": true,
-            "items": [
-              {
-                "type": "link",
-                "label": "Plutus",
-                "href": "/development-guidelines/smart-contracts/plutus",
-                "docId": "development-guidelines/smart-contracts/plutus",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Marlowe",
-                "href": "/development-guidelines/smart-contracts/marlowe",
-                "docId": "development-guidelines/smart-contracts/marlowe",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Aiken",
-                "href": "/development-guidelines/smart-contracts/aiken",
-                "docId": "development-guidelines/smart-contracts/aiken",
-                "unlisted": false
-              }
-            ]
-          },
-          {
-            "type": "category",
-            "label": "Scalability solutions",
-            "collapsible": true,
-            "collapsed": true,
-            "items": [
-              {
-                "type": "link",
-                "label": "Hydra",
-                "href": "/development-guidelines/scalability/hydra",
-                "docId": "development-guidelines/scalability/hydra",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Mithril",
-                "href": "/development-guidelines/scalability/mithril",
-                "docId": "development-guidelines/scalability/mithril",
-                "unlisted": false
-              }
-            ]
-          },
-          {
-            "type": "category",
-            "label": "Transaction tutorials",
-            "collapsible": true,
-            "collapsed": true,
-            "items": [
-              {
-                "type": "link",
-                "label": "Minting transactions",
-                "href": "/development-guidelines/transaction-tutorials/minting-transaction",
-                "docId": "development-guidelines/transaction-tutorials/minting-transaction",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Staking transactions",
-                "href": "/development-guidelines/transaction-tutorials/stake-transaction",
-                "docId": "development-guidelines/transaction-tutorials/stake-transaction",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Withdrawing transactions",
-                "href": "/development-guidelines/transaction-tutorials/withdraw-transaction",
-                "docId": "development-guidelines/transaction-tutorials/withdraw-transaction",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Redelegation",
-                "href": "/development-guidelines/transaction-tutorials/redelegate-transaction",
-                "docId": "development-guidelines/transaction-tutorials/redelegate-transaction",
-                "unlisted": false
-              },
-              {
-                "type": "link",
-                "label": "Multiple purposes",
-                "href": "/development-guidelines/transaction-tutorials/multiple-purposes",
-                "docId": "development-guidelines/transaction-tutorials/multiple-purposes",
-                "unlisted": false
-              }
-            ],
-            "href": "/development-guidelines/transaction-tutorials/"
-          }
-        ],
-        "href": "/development-guidelines/"
-      },
-      {
-        "type": "category",
-        "label": "Operating a stake pool",
-        "collapsible": true,
-        "collapsed": true,
-        "items": [
-          {
-            "type": "link",
-            "label": "Stake pool operations 101",
-            "href": "/operating-a-stake-pool/stake-pool-operations-101",
-            "docId": "operating-a-stake-pool/stake-pool-operations-101",
+            "label": "Marlowe",
+            "href": "/developer-resources/smart-contracts/marlowe",
+            "docId": "developer-resources/smart-contracts/marlowe",
             "unlisted": false
           },
           {
             "type": "link",
-            "label": "About stake pools, operators, and owners",
-            "href": "/operating-a-stake-pool/about-stake-pools",
-            "docId": "operating-a-stake-pool/about-stake-pools",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Creating and managing a stake pool",
-            "href": "/operating-a-stake-pool/creating-a-stake-pool",
-            "docId": "operating-a-stake-pool/creating-a-stake-pool",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Establishing connectivity between the nodes",
-            "href": "/operating-a-stake-pool/node-connectivity",
-            "docId": "operating-a-stake-pool/node-connectivity",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Creating keys and operational certificates",
-            "href": "/operating-a-stake-pool/creating-keys-and-certificates",
-            "docId": "operating-a-stake-pool/creating-keys-and-certificates",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Stake pool operations and maintenance",
-            "href": "/operating-a-stake-pool/public-stake-pools",
-            "docId": "operating-a-stake-pool/public-stake-pools",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Pool metadata management",
-            "href": "/operating-a-stake-pool/SMASH",
-            "docId": "operating-a-stake-pool/SMASH",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Stake pool performance",
-            "href": "/operating-a-stake-pool/performance",
-            "docId": "operating-a-stake-pool/performance",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Stake pool ranking",
-            "href": "/operating-a-stake-pool/ranking",
-            "docId": "operating-a-stake-pool/ranking",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Guidelines for operating large stake pools",
-            "href": "/operating-a-stake-pool/guidelines-for-large-spos",
-            "docId": "operating-a-stake-pool/guidelines-for-large-spos",
+            "label": "Aiken",
+            "href": "/developer-resources/smart-contracts/aiken",
+            "docId": "developer-resources/smart-contracts/aiken",
             "unlisted": false
           }
         ]
       },
       {
         "type": "category",
-        "label": "Community",
+        "label": "Scalability solutions",
         "collapsible": true,
         "collapsed": true,
         "items": [
           {
             "type": "link",
-            "label": "Cardano Improvement Proposals (CIPs)",
-            "href": "/community/cips",
-            "docId": "community/cips",
+            "label": "Hydra",
+            "href": "/developer-resources/scalability-solutions/hydra",
+            "docId": "developer-resources/scalability-solutions/hydra",
             "unlisted": false
           },
           {
             "type": "link",
-            "label": "Essential Cardano",
-            "href": "/community/essential-cardano",
-            "docId": "community/essential-cardano",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Community content",
-            "href": "/community/community-content",
-            "docId": "community/community-content",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Cardano Stack Exchange",
-            "href": "/community/Cardano-stack-exchange",
-            "docId": "community/Cardano-stack-exchange",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Ambassadors program",
-            "href": "/community/ambassador-program",
-            "docId": "community/ambassador-program",
-            "unlisted": false
-          },
-          {
-            "type": "link",
-            "label": "Getting Support",
-            "href": "/community/getting-support",
-            "docId": "community/getting-support",
-            "unlisted": false
-          }
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Pioneer programs",
-        "collapsible": true,
-        "collapsed": true,
-        "items": [
-          {
-            "type": "link",
-            "label": "Plutus Pioneer program",
-            "href": "/pioneer-programs/plutus-pioneers",
-            "docId": "pioneer-programs/plutus-pioneers",
+            "label": "Mithril",
+            "href": "/developer-resources/scalability-solutions/mithril",
+            "docId": "developer-resources/scalability-solutions/mithril",
             "unlisted": false
           }
         ]
@@ -675,543 +426,659 @@
           {
             "type": "link",
             "label": "Release notes",
-            "href": "/release-notes/release-notes",
-            "docId": "release-notes/release-notes",
+            "href": "/developer-resources/release-notes/release-notes",
+            "docId": "developer-resources/release-notes/release-notes",
             "unlisted": false
           },
           {
             "type": "link",
             "label": "Compatibility matrix",
-            "href": "/release-notes/comp-matrix",
-            "docId": "release-notes/comp-matrix",
+            "href": "/developer-resources/release-notes/comp-matrix",
+            "docId": "developer-resources/release-notes/comp-matrix",
             "unlisted": false
           }
         ]
       },
       {
         "type": "link",
-        "label": "Cardano Ecosystem Tools",
-        "href": "https://developers.cardano.org/tools/",
-        "className": "cardano-ecosystems-external-link"
+        "label": "Weekly development reports",
+        "href": "https://www.essentialcardano.io/development-update",
+        "className": "external-link-with-separator"
       },
       {
         "type": "link",
-        "label": "Glossary",
-        "href": "https://www.essentialcardano.io/glossary?sort=alphabetical",
-        "className": "glossary-external-link"
+        "label": "Builder tools",
+        "href": "https://developers.cardano.org/tools"
+      }
+    ],
+    "stakePoolOperators": [
+      {
+        "type": "link",
+        "label": "Operating a stake pool",
+        "href": "/stake-pool-operators/operating-a-stake-pool",
+        "docId": "stake-pool-operators/operating-a-stake-pool",
+        "unlisted": false
       },
       {
         "type": "link",
-        "label": "Cardano.org",
-        "href": "https://cardano.org/",
-        "className": "cardano-external-link"
+        "label": "About stake pools, operators, and owners",
+        "href": "/stake-pool-operators/about-stake-pools",
+        "docId": "stake-pool-operators/about-stake-pools",
+        "unlisted": false
       },
       {
         "type": "link",
-        "label": "Developer Portal",
-        "href": "https://developers.cardano.org/",
-        "className": "cardano-developers-external-link"
+        "label": "Establishing connectivity between the nodes",
+        "href": "/stake-pool-operators/node-connectivity",
+        "docId": "stake-pool-operators/node-connectivity",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Logging and monitoring",
+        "href": "/stake-pool-operators/monitoring",
+        "docId": "stake-pool-operators/monitoring",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Creating keys and operational certificates",
+        "href": "/stake-pool-operators/creating-keys-and-certificates",
+        "docId": "stake-pool-operators/creating-keys-and-certificates",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Stake pool operations and maintenance",
+        "href": "/stake-pool-operators/maintenance",
+        "docId": "stake-pool-operators/maintenance",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Pool metadata management",
+        "href": "/stake-pool-operators/metadata-management",
+        "docId": "stake-pool-operators/metadata-management",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Stake pool performance",
+        "href": "/stake-pool-operators/performance",
+        "docId": "stake-pool-operators/performance",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Stake pool ranking",
+        "href": "/stake-pool-operators/ranking",
+        "docId": "stake-pool-operators/ranking",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Guidelines for operating large stake pools",
+        "href": "/stake-pool-operators/guidelines-for-large-spos",
+        "docId": "stake-pool-operators/guidelines-for-large-spos",
+        "unlisted": false
+      }
+    ],
+    "cardanoTestnets": [
+      {
+        "type": "link",
+        "label": "Testnet environments",
+        "href": "/cardano-testnets/environments",
+        "docId": "cardano-testnets/environments",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Getting started with Cardano testnets",
+        "href": "/cardano-testnets/getting-started",
+        "docId": "cardano-testnets/getting-started",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Creating a local testnet",
+        "href": "/cardano-testnets/local-testnet",
+        "docId": "cardano-testnets/local-testnet",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Resources",
+        "href": "/cardano-testnets/resources",
+        "docId": "cardano-testnets/resources",
+        "unlisted": false
+      },
+      {
+        "type": "link",
+        "label": "Support and feedback",
+        "href": "/cardano-testnets/support-feedback",
+        "docId": "cardano-testnets/support-feedback",
+        "unlisted": false
+      },
+      {
+        "type": "category",
+        "label": "Tools",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "Testnets faucet",
+            "href": "/cardano-testnets/tools/faucet",
+            "docId": "cardano-testnets/tools/faucet",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Daedalus wallet for the Cardano testnets",
+            "href": "/cardano-testnets/tools/daedalus-testnet",
+            "docId": "cardano-testnets/tools/daedalus-testnet",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Plutus fee estimator",
+            "href": "/cardano-testnets/tools/plutus-fee-estimator",
+            "docId": "cardano-testnets/tools/plutus-fee-estimator",
+            "unlisted": false
+          }
+        ]
+      }
+    ],
+    "pioneerPrograms": [
+      {
+        "type": "link",
+        "label": "Plutus Pioneer program",
+        "href": "/pioneer-programs/plutus-pioneers",
+        "docId": "pioneer-programs/plutus-pioneers",
+        "unlisted": false
       }
     ]
   },
   "docs": {
-    "cardano-testnets/daedalus-testnet": {
-      "id": "cardano-testnets/daedalus-testnet",
-      "title": "Daedalus wallet for the Cardano testnets",
-      "description": "Here you can download any of the special testnet-only versions of the Daedalus",
-      "sidebar": "tutorialSidebar"
+    "about-cardano/evolution/about-hard-forks": {
+      "id": "about-cardano/evolution/about-hard-forks",
+      "title": "About hard forks",
+      "description": "The term hard fork describes a radical change in the blockchain: a change from",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/evolution/cardano-design-rationale": {
+      "id": "about-cardano/evolution/cardano-design-rationale",
+      "title": "Design rationale",
+      "description": "Cardano is an open source proof-of-stake blockchain project that began in 2015 to address existing blockchain challenges in the design and development of cryptocurrencies. It aims to provide a more balanced and sustainable ecosystem that better accounts for the needs of its users as well as other systems seeking integration.",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/evolution/eras-and-phases": {
+      "id": "about-cardano/evolution/eras-and-phases",
+      "title": "Development phases and eras",
+      "description": "This overview is based on CIP-59.",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/evolution/upgrades/allegra": {
+      "id": "about-cardano/evolution/upgrades/allegra",
+      "title": "Allegra",
+      "description": "Allegra was the Shelley protocol upgrade that introduced token locking support to enable various kinds of smart contract use cases.",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/evolution/upgrades/alonzo": {
+      "id": "about-cardano/evolution/upgrades/alonzo",
+      "title": "Alonzo",
+      "description": "Alonzo is the protocol upgrade implemented in September 2021, as part of the Goguen development phase. It built on top of transaction metadata, token locking, and native asset functionality to enable smart contract development.",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/evolution/upgrades/byron-to-shelley": {
+      "id": "about-cardano/evolution/upgrades/byron-to-shelley",
+      "title": "Byron to Shelley",
+      "description": "Cardano's Byron mainnet ran on the Ouroboros Classic consensus protocol. Cardano's Shelley mainnet transitioned to a decentralized network running on the Ouroboros Praos consensus protocol, which enabled more extended capabilities while also supporting the staking process with monetary rewards for ada holders and stake pool operators.",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/evolution/upgrades/mary": {
+      "id": "about-cardano/evolution/upgrades/mary",
+      "title": "Mary",
+      "description": "Mary is the Shelley protocol upgrade implemented in March 2021. It introduced",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/evolution/upgrades/valentine": {
+      "id": "about-cardano/evolution/upgrades/valentine",
+      "title": "Valentine (SECP)",
+      "description": "The Valentine (or SECP) upgrade is Cardano’s intra-era hard fork that followed the Vasil upgrade. Valentine was a small and focused semantic change to the ledger, which brought new built-in functions to Plutus to support SECP elliptic curves (ECDSA and Schnorr). Although an intra-era hard fork requires a hard fork combinator event, it does not change the ledger era, which means that this was an upgrade to the Babbage ledger era.",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/evolution/upgrades/vasil": {
+      "id": "about-cardano/evolution/upgrades/vasil",
+      "title": "Vasil",
+      "description": "Vasil is the protocol upgrade implemented in June 2022. Named after the late Bulgarian mathematician and prominent Cardano community member Vasil Dabov, the Vasil upgrade introduced five key mechanisms to improve the blockchain's performance: CIP-31 (reference inputs), CIP-32 (inline datums), CIP-33 (reference scripts), CIP-40 (collateral outputs), and diffusion pipelining.",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/explore-more/cardano-architecture": {
+      "id": "about-cardano/explore-more/cardano-architecture",
+      "title": "Cardano architecture",
+      "description": "This section describes the high-level architecture of Cardano, providing",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/explore-more/cardano-network/index": {
+      "id": "about-cardano/explore-more/cardano-network/index",
+      "title": "Cardano network",
+      "description": "The Cardano network is a technical infrastructure combining Cardano nodes and",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/explore-more/cardano-network/networking-protocol": {
+      "id": "about-cardano/explore-more/cardano-network/networking-protocol",
+      "title": "Networking protocol design overview",
+      "description": "Transmission Control Protocols (TCP) and Internet Protocols (IP) form a protocol",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/explore-more/cardano-network/p2p-networking": {
+      "id": "about-cardano/explore-more/cardano-network/p2p-networking",
+      "title": "Peer-to-peer (P2P) networking",
+      "description": "Cardano nodes and the interactions between them are combined together within a",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/explore-more/concurrency": {
+      "id": "about-cardano/explore-more/concurrency",
+      "title": "Understanding concurrency",
+      "description": "Concurrency refers to the ability of different actors to perform work simultaneously without interfering with each other. In Cardano's Extended Unspent Transaction Output (EUTXO) model, transactions can be processed in parallel, enabling multiple operations without causing system failures. This approach enhances system throughput while maintaining the performance of individual operations.",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/explore-more/fee-structure": {
+      "id": "about-cardano/explore-more/fee-structure",
+      "title": "Cardano fee structure",
+      "description": "Cardano uses a transaction fee system that covers the processing and long-term",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/explore-more/monetary-policy": {
+      "id": "about-cardano/explore-more/monetary-policy",
+      "title": "Cardano monetary policy",
+      "description": "Cardano achieves true decentralization with the Voltaire development phase, which includes decentralized voting and",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/explore-more/parameter-guide": {
+      "id": "about-cardano/explore-more/parameter-guide",
+      "title": "Cardano protocol parameters reference guide",
+      "description": "Protocol parameters on Cardano are the various settings that define the blockchain's behavior. Some protocol parameters are stable and non-updatable while others can be adjusted to adapt to changing conditions over time.",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/explore-more/relevant-research-papers": {
+      "id": "about-cardano/explore-more/relevant-research-papers",
+      "title": "Relevant research papers and specifications",
+      "description": "Cardano is a third-generation blockchain platform that aims to provide the",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/explore-more/time": {
+      "id": "about-cardano/explore-more/time",
+      "title": "Time handling on Cardano",
+      "description": "Time is necessarily relative to every participant in the blockchain system and is critically important to support and maintain the safety properties of the Ouroboros consensus protocol. Minted blocks are expected to be propagated to all nodes in the system in a timely manner, so time requires the construction of a globally acceptable representation for consensus to be reached.",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/introduction": {
+      "id": "about-cardano/introduction",
+      "title": "Introduction",
+      "description": "Welcome to the central hub for Cardano documentation. Here, you'll find content",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/learn/cardano-addresses": {
+      "id": "about-cardano/learn/cardano-addresses",
+      "title": "Cardano addresses",
+      "description": "The addresses are a blake2b-256 hash of the relevant verifying/public keys",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/learn/cardano-keys": {
+      "id": "about-cardano/learn/cardano-keys",
+      "title": "Cardano keys",
+      "description": "Cardano keys are asymmetric cryptography key pairs used for:",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/learn/cardano-node": {
+      "id": "about-cardano/learn/cardano-node",
+      "title": "Cardano nodes",
+      "description": "The",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/learn/chain-confirmation-versus-transaction-confirmation": {
+      "id": "about-cardano/learn/chain-confirmation-versus-transaction-confirmation",
+      "title": "Chain confirmation versus transaction confirmation",
+      "description": "When discussing Cardano, often-repeated questions are what is Cardano’s transaction time?, and how many network confirmations does Cardano require before a transaction goes through? The answers to these questions require a deeper look at the concepts of chain confirmation and transaction confirmation, and how these relate to the Ouroboros protocol.",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/learn/collateral-mechanism": {
+      "id": "about-cardano/learn/collateral-mechanism",
+      "title": "About the collateral mechanism",
+      "description": "The collateral mechanism is an important feature that has been designed to",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/learn/consensus-explained": {
+      "id": "about-cardano/learn/consensus-explained",
+      "title": "Consensus explained",
+      "description": "Consensus is the process of reaching a majority opinion by everyone involved in",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/learn/delegation": {
+      "id": "about-cardano/learn/delegation",
+      "title": "Delegation",
+      "description": "As Cardano is a proof of stake (PoS) system, owning ada not only allows you to",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/learn/eutxo-explainer": {
+      "id": "about-cardano/learn/eutxo-explainer",
+      "title": "Extended UTXO model",
+      "description": "The EUTXO handbook is now out! Deep dive into Cardano's EUTXO accounting model here.",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/learn/ouroboros-overview": {
+      "id": "about-cardano/learn/ouroboros-overview",
+      "title": "Ouroboros overview",
+      "description": "In mythology, Ouroboros (also, uroboros) is usually depicted as a snake (or sometimes a dragon) eating its own tail in a closed circle. The word Ouroboros itself derives from Ancient Greek, its literal meaning being 'tail eating' or 'tail devourer.'",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/learn/pledging-rewards": {
+      "id": "about-cardano/learn/pledging-rewards",
+      "title": "Pledging and rewards",
+      "description": "Pledging is an important mechanism that encourages the growth of a healthy",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/learn/stake-pools": {
+      "id": "about-cardano/learn/stake-pools",
+      "title": "Stake pools",
+      "description": "A stake pool is a reliable server node that focuses on ledger maintenance and holds the combined resources - the 'stake' - of various stakeholders in a single entity. Stake pools are responsible for processing transactions that will be placed in the ledger, as well as producing new blocks. Stake pools are at the core of Ouroboros, Cardano's proof-of-stake protocol.",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/learn/transaction-costs-determinism": {
+      "id": "about-cardano/learn/transaction-costs-determinism",
+      "title": "Transaction costs and determinism",
+      "description": "Cardano’s approach to price setting mainly relies on market demand over actual",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/new-to-cardano/cardano-tracking-tools": {
+      "id": "about-cardano/new-to-cardano/cardano-tracking-tools",
+      "title": "Cardano tracking tools",
+      "description": "Since Cardano is a public blockchain ledger, it is possible to easily track all",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/new-to-cardano/how-to-delegate": {
+      "id": "about-cardano/new-to-cardano/how-to-delegate",
+      "title": "How to delegate?",
+      "description": "Ada that is held on Cardano represents its holder’s stake in the protocol. The",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/new-to-cardano/index": {
+      "id": "about-cardano/new-to-cardano/index",
+      "title": "New to Cardano?",
+      "description": "The understanding of basic concepts plays an integral role in getting acquainted",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/new-to-cardano/proof-of-stake": {
+      "id": "about-cardano/new-to-cardano/proof-of-stake",
+      "title": "Proof of stake",
+      "description": "Proof of stake (PoS) is a type of",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/new-to-cardano/staking-calculator": {
+      "id": "about-cardano/new-to-cardano/staking-calculator",
+      "title": "Staking calculator",
+      "description": "Staking calculator is a tool used to predict approximate rewards a user may",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/new-to-cardano/types-of-wallets": {
+      "id": "about-cardano/new-to-cardano/types-of-wallets",
+      "title": "Types of wallets",
+      "description": "A blockchain wallet is a safe and secure place where users can keep their",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/new-to-cardano/what-is-a-blockchain": {
+      "id": "about-cardano/new-to-cardano/what-is-a-blockchain",
+      "title": "What is a blockchain?",
+      "description": "A blockchain is a type of database or ledger that is duplicated and distributed",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/new-to-cardano/what-is-a-cryptocurrency": {
+      "id": "about-cardano/new-to-cardano/what-is-a-cryptocurrency",
+      "title": "What is a cryptocurrency?",
+      "description": "A cryptocurrency is a digital asset, which is stored on the ledger and is",
+      "sidebar": "aboutCardano"
+    },
+    "about-cardano/new-to-cardano/what-is-a-smart-contract": {
+      "id": "about-cardano/new-to-cardano/what-is-a-smart-contract",
+      "title": "What is a smart contract?",
+      "description": "Smart contracts on Cardano are simple programs often referred to as validator",
+      "sidebar": "aboutCardano"
     },
     "cardano-testnets/environments": {
       "id": "cardano-testnets/environments",
       "title": "Testnet environments",
       "description": "Discover the various testnet environments available on Cardano to select the one best suited for your testing needs.",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "cardanoTestnets"
     },
     "cardano-testnets/getting-started": {
       "id": "cardano-testnets/getting-started",
       "title": "Getting started with Cardano testnets",
       "description": "To get started and join Cardano testnets, you should install and configure the",
-      "sidebar": "tutorialSidebar"
-    },
-    "cardano-testnets/index": {
-      "id": "cardano-testnets/index",
-      "title": "Cardano testnets",
-      "description": "Cardano testnets sit at the vanguard of network development, providing sandboxed",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "cardanoTestnets"
     },
     "cardano-testnets/local-testnet": {
       "id": "cardano-testnets/local-testnet",
       "title": "Creating a local testnet",
       "description": "A local testnet enables developers and projects building on Cardano to test new features or functionality prior to deployment on global testnet environments. While preview and pre-production environments benefit the wider developer community, a local testnet allows the execution of a hard fork in your own setup and subsequent testing of DApp behavior.",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "cardanoTestnets"
     },
     "cardano-testnets/resources": {
       "id": "cardano-testnets/resources",
       "title": "Resources",
       "description": "Useful materials",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "cardanoTestnets"
     },
     "cardano-testnets/support-feedback": {
       "id": "cardano-testnets/support-feedback",
       "title": "Support and feedback",
       "description": "Support",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "cardanoTestnets"
+    },
+    "cardano-testnets/tools/daedalus-testnet": {
+      "id": "cardano-testnets/tools/daedalus-testnet",
+      "title": "Daedalus wallet for the Cardano testnets",
+      "description": "Here you can download any of the special testnet-only versions of the Daedalus",
+      "sidebar": "cardanoTestnets"
     },
     "cardano-testnets/tools/faucet": {
       "id": "cardano-testnets/tools/faucet",
       "title": "Testnets faucet",
       "description": "Since Cardano testnets are independent networks, separate from the Cardano",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "cardanoTestnets"
     },
     "cardano-testnets/tools/plutus-fee-estimator": {
       "id": "cardano-testnets/tools/plutus-fee-estimator",
       "title": "Plutus fee estimator",
       "description": "The Plutus fee estimator has been developed by IOG performance experts for price",
-      "sidebar": "tutorialSidebar"
-    },
-    "cardano-testnets/tools/staking-calculator": {
-      "id": "cardano-testnets/tools/staking-calculator",
-      "title": "Staking calculator",
-      "description": "Staking calculator is a tool used to predict approximate rewards a user may",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "cardanoTestnets"
     },
     "community/ambassador-program": {
       "id": "community/ambassador-program",
       "title": "Ambassadors program",
-      "description": "The Cardano community is privileged to have committed members of our",
-      "sidebar": "tutorialSidebar"
+      "description": "The Cardano community is privileged to have committed members of our"
     },
     "community/Cardano-stack-exchange": {
       "id": "community/Cardano-stack-exchange",
       "title": "Cardano Stack Exchange",
-      "description": "Cardano Stack Exchange is a",
-      "sidebar": "tutorialSidebar"
+      "description": "Cardano Stack Exchange is a"
     },
     "community/cips": {
       "id": "community/cips",
       "title": "Cardano Improvement Proposals (CIPs)",
-      "description": "Individuals with improvement proposals for Cardano can",
-      "sidebar": "tutorialSidebar"
+      "description": "Individuals with improvement proposals for Cardano can"
     },
     "community/community-content": {
       "id": "community/community-content",
       "title": "Community content",
-      "description": "Community collaboration is central to",
-      "sidebar": "tutorialSidebar"
+      "description": "Community collaboration is central to"
     },
     "community/essential-cardano": {
       "id": "community/essential-cardano",
       "title": "Essential Cardano",
-      "description": "Essential Cardano is an open-source",
-      "sidebar": "tutorialSidebar"
+      "description": "Essential Cardano is an open-source"
     },
     "community/getting-support": {
       "id": "community/getting-support",
       "title": "Getting Support",
-      "description": "Your feedback is important because it helps us improve",
-      "sidebar": "tutorialSidebar"
+      "description": "Your feedback is important because it helps us improve"
     },
-    "development-guidelines/cardano-node-course": {
-      "id": "development-guidelines/cardano-node-course",
+    "developer-resources/cardano-node-course": {
+      "id": "developer-resources/cardano-node-course",
       "title": "The Cardano node video course",
       "description": "The IOG Academy provides this course on YouTube.",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "developerResources"
     },
-    "development-guidelines/index": {
-      "id": "development-guidelines/index",
-      "title": "Developer resources",
-      "description": "Welcome to the developer resources section! Here you will find references to the resources that will help you with developing on Cardano.",
-      "sidebar": "tutorialSidebar"
-    },
-    "development-guidelines/native-tokens": {
-      "id": "development-guidelines/native-tokens",
+    "developer-resources/native-tokens": {
+      "id": "developer-resources/native-tokens",
       "title": "Native tokens",
       "description": "To start working with native tokens, see:",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "developerResources"
     },
-    "development-guidelines/scalability/hydra": {
-      "id": "development-guidelines/scalability/hydra",
+    "developer-resources/release-notes/comp-matrix": {
+      "id": "developer-resources/release-notes/comp-matrix",
+      "title": "Compatibility matrix",
+      "description": "This сomponent compatibility with the Cardano node matrix shows the runtime dependencies of Cardano components on a specific version of",
+      "sidebar": "developerResources"
+    },
+    "developer-resources/release-notes/release-notes": {
+      "id": "developer-resources/release-notes/release-notes",
+      "title": "Release notes",
+      "description": "Here is the latest release information for the Cardano components. Component",
+      "sidebar": "developerResources"
+    },
+    "developer-resources/scalability-solutions/hydra": {
+      "id": "developer-resources/scalability-solutions/hydra",
       "title": "Hydra",
       "description": "Hydra is a layer 2 scaling solution for Cardano rooted in peer-reviewed research that increases transaction throughput and ensures cost efficiency while maintaining rigorous security.",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "developerResources"
     },
-    "development-guidelines/scalability/mithril": {
-      "id": "development-guidelines/scalability/mithril",
+    "developer-resources/scalability-solutions/mithril": {
+      "id": "developer-resources/scalability-solutions/mithril",
       "title": "Mithril",
       "description": "Mithril is a stake-based multi-signature scheme that leverages the existing",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "developerResources"
     },
-    "development-guidelines/smart-contracts/aiken": {
-      "id": "development-guidelines/smart-contracts/aiken",
+    "developer-resources/smart-contracts/aiken": {
+      "id": "developer-resources/smart-contracts/aiken",
       "title": "Aiken",
-      "description": "Aiken is a modern programming language and toolchain for developing smart contracts",
-      "sidebar": "tutorialSidebar"
+      "description": "To get started with Aiken, see:",
+      "sidebar": "developerResources"
     },
-    "development-guidelines/smart-contracts/marlowe": {
-      "id": "development-guidelines/smart-contracts/marlowe",
+    "developer-resources/smart-contracts/marlowe": {
+      "id": "developer-resources/smart-contracts/marlowe",
       "title": "Marlowe",
-      "description": "Marlowe is a set of open source tools designed to simplify the creation,",
-      "sidebar": "tutorialSidebar"
+      "description": "To get started with Marlowe, find the various resources on the",
+      "sidebar": "developerResources"
     },
-    "development-guidelines/smart-contracts/plutus": {
-      "id": "development-guidelines/smart-contracts/plutus",
+    "developer-resources/smart-contracts/plutus": {
+      "id": "developer-resources/smart-contracts/plutus",
       "title": "Plutus",
       "description": "To start developing with Plutus, see:",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "developerResources"
+    },
+    "developer-resources/welcome": {
+      "id": "developer-resources/welcome",
+      "title": "Welcome",
+      "description": "Welcome to the developer resources section! Here you will find references to the",
+      "sidebar": "developerResources"
     },
     "development-guidelines/transaction-tutorials/index": {
       "id": "development-guidelines/transaction-tutorials/index",
       "title": "Transaction tutorials",
-      "description": "A transaction is an event created, signed, and sent by a user to modify the",
-      "sidebar": "tutorialSidebar"
+      "description": "A transaction is an event created, signed, and sent by a user to modify the"
     },
     "development-guidelines/transaction-tutorials/minting-transaction": {
       "id": "development-guidelines/transaction-tutorials/minting-transaction",
       "title": "Minting transactions",
-      "description": "The ability to create and manage custom tokens is one of the distinguishing features of the Cardano blockchain. Minting refers to the process of 'producing new tokens, either as part of an initial coin offering (ICO) or ongoing token issuance'. Minting transactions enable users to generate or burn tokens according to predefined rules. This tutorial explores the details of minting transactions on Cardano.",
-      "sidebar": "tutorialSidebar"
+      "description": "The ability to create and manage custom tokens is one of the distinguishing features of the Cardano blockchain. Minting refers to the process of 'producing new tokens, either as part of an initial coin offering (ICO) or ongoing token issuance'. Minting transactions enable users to generate or burn tokens according to predefined rules. This tutorial explores the details of minting transactions on Cardano."
     },
     "development-guidelines/transaction-tutorials/multiple-purposes": {
       "id": "development-guidelines/transaction-tutorials/multiple-purposes",
       "title": "Multiple purposes",
-      "description": "Cardano allows more complex transactions. So far you've seen various types of transactions: simple script, minting, staking, delegating, etc. But Cardano provides the flexibility to create more complex transactions and mix all the types of transactions needed. For example, adding metadata to minting transactions, or adding a staking component to a simple script transaction. This tutorial shows how to send a transaction with multiple purposes.",
-      "sidebar": "tutorialSidebar"
+      "description": "Cardano allows more complex transactions. So far you've seen various types of transactions: simple script, minting, staking, delegating, etc. But Cardano provides the flexibility to create more complex transactions and mix all the types of transactions needed. For example, adding metadata to minting transactions, or adding a staking component to a simple script transaction. This tutorial shows how to send a transaction with multiple purposes."
     },
     "development-guidelines/transaction-tutorials/redelegate-transaction": {
       "id": "development-guidelines/transaction-tutorials/redelegate-transaction",
       "title": "Redelegation",
-      "description": "This tutorial will show how to redelegate your stake to another stake pool. There can be multiple reasons to redelegate your stake, but the most common ones are:",
-      "sidebar": "tutorialSidebar"
+      "description": "This tutorial will show how to redelegate your stake to another stake pool. There can be multiple reasons to redelegate your stake, but the most common ones are:"
     },
     "development-guidelines/transaction-tutorials/stake-transaction": {
       "id": "development-guidelines/transaction-tutorials/stake-transaction",
       "title": "Staking transactions",
-      "description": "Staking is a fundamental feature of Cardano, allowing you to earn rewards by delegating ada to stake pools. This tutorial shows how to delegate your ada to a stake pool, withdraw rewards, or stop delegating your ada if you decide to switch to another stake pool.",
-      "sidebar": "tutorialSidebar"
+      "description": "Staking is a fundamental feature of Cardano, allowing you to earn rewards by delegating ada to stake pools. This tutorial shows how to delegate your ada to a stake pool, withdraw rewards, or stop delegating your ada if you decide to switch to another stake pool."
     },
     "development-guidelines/transaction-tutorials/withdraw-transaction": {
       "id": "development-guidelines/transaction-tutorials/withdraw-transaction",
       "title": "Withdrawing transactions",
-      "description": "This part of the tutorial will demonstrate how easy it is to claim rewards using the cardano-cli. First, you need to ensure that you already have rewards available in your stake address. Check it with the following command:",
-      "sidebar": "tutorialSidebar"
-    },
-    "evolution/about-hard-forks": {
-      "id": "evolution/about-hard-forks",
-      "title": "About hard forks",
-      "description": "The term hard fork describes a radical change in the blockchain: a change from",
-      "sidebar": "tutorialSidebar"
-    },
-    "evolution/cardano-design-rationale": {
-      "id": "evolution/cardano-design-rationale",
-      "title": "Design rationale",
-      "description": "Cardano is an open source proof-of-stake blockchain project that began in 2015 to address existing blockchain challenges in the design and development of cryptocurrencies. It aims to provide a more balanced and sustainable ecosystem that better accounts for the needs of its users as well as other systems seeking integration.",
-      "sidebar": "tutorialSidebar"
-    },
-    "evolution/eras-and-phases": {
-      "id": "evolution/eras-and-phases",
-      "title": "Development phases and eras",
-      "description": "This overview is based on CIP-59.",
-      "sidebar": "tutorialSidebar"
-    },
-    "evolution/upgrades/allegra": {
-      "id": "evolution/upgrades/allegra",
-      "title": "Allegra",
-      "description": "Allegra was the Shelley protocol upgrade that introduced token locking support to enable various kinds of smart contract use cases.",
-      "sidebar": "tutorialSidebar"
-    },
-    "evolution/upgrades/alonzo": {
-      "id": "evolution/upgrades/alonzo",
-      "title": "Alonzo",
-      "description": "Alonzo is the protocol upgrade implemented in September 2021, as part of the Goguen development phase. It built on top of transaction metadata, token locking, and native asset functionality to enable smart contract development.",
-      "sidebar": "tutorialSidebar"
-    },
-    "evolution/upgrades/byron-to-shelley": {
-      "id": "evolution/upgrades/byron-to-shelley",
-      "title": "Byron to Shelley",
-      "description": "Cardano's Byron mainnet ran on the Ouroboros Classic consensus protocol. Cardano's Shelley mainnet transitioned to a decentralized network running on the Ouroboros Praos consensus protocol, which enabled more extended capabilities while also supporting the staking process with monetary rewards for ada holders and stake pool operators.",
-      "sidebar": "tutorialSidebar"
-    },
-    "evolution/upgrades/mary": {
-      "id": "evolution/upgrades/mary",
-      "title": "Mary",
-      "description": "Mary is the Shelley protocol upgrade implemented in March 2021. It introduced",
-      "sidebar": "tutorialSidebar"
-    },
-    "evolution/upgrades/valentine": {
-      "id": "evolution/upgrades/valentine",
-      "title": "Valentine (SECP)",
-      "description": "The Valentine (or SECP) upgrade is Cardano’s intra-era hard fork that followed the Vasil upgrade. Valentine was a small and focused semantic change to the ledger, which brought new built-in functions to Plutus to support SECP elliptic curves (ECDSA and Schnorr). Although an intra-era hard fork requires a hard fork combinator event, it does not change the ledger era, which means that this was an upgrade to the Babbage ledger era.",
-      "sidebar": "tutorialSidebar"
-    },
-    "evolution/upgrades/vasil": {
-      "id": "evolution/upgrades/vasil",
-      "title": "Vasil",
-      "description": "Vasil is the protocol upgrade implemented in June 2022. Named after the late Bulgarian mathematician and prominent Cardano community member Vasil Dabov, the Vasil upgrade introduced five key mechanisms to improve the blockchain's performance: CIP-31 (reference inputs), CIP-32 (inline datums), CIP-33 (reference scripts), CIP-40 (collateral outputs), and diffusion pipelining.",
-      "sidebar": "tutorialSidebar"
-    },
-    "explore-cardano/cardano-architecture": {
-      "id": "explore-cardano/cardano-architecture",
-      "title": "Cardano architecture",
-      "description": "This section describes the high-level architecture of Cardano, providing",
-      "sidebar": "tutorialSidebar"
-    },
-    "explore-cardano/cardano-network/index": {
-      "id": "explore-cardano/cardano-network/index",
-      "title": "Cardano network",
-      "description": "The Cardano network is a technical infrastructure combining Cardano nodes and",
-      "sidebar": "tutorialSidebar"
-    },
-    "explore-cardano/cardano-network/networking-protocol": {
-      "id": "explore-cardano/cardano-network/networking-protocol",
-      "title": "Networking protocol design overview",
-      "description": "Transmission Control Protocols (TCP) and Internet Protocols (IP) form a protocol",
-      "sidebar": "tutorialSidebar"
-    },
-    "explore-cardano/cardano-network/p2p-networking": {
-      "id": "explore-cardano/cardano-network/p2p-networking",
-      "title": "Peer-to-peer (P2P) networking",
-      "description": "Cardano nodes and the interactions between them are combined together within a",
-      "sidebar": "tutorialSidebar"
-    },
-    "explore-cardano/concurrency": {
-      "id": "explore-cardano/concurrency",
-      "title": "Understanding concurrency",
-      "description": "Concurrency refers to the ability of different actors to perform work simultaneously without interfering with each other. In Cardano's Extended Unspent Transaction Output (EUTXO) model, transactions can be processed in parallel, enabling multiple operations without causing system failures. This approach enhances system throughput while maintaining the performance of individual operations.",
-      "sidebar": "tutorialSidebar"
-    },
-    "explore-cardano/fee-structure": {
-      "id": "explore-cardano/fee-structure",
-      "title": "Cardano fee structure",
-      "description": "Cardano uses a transaction fee system that covers the processing and long-term",
-      "sidebar": "tutorialSidebar"
-    },
-    "explore-cardano/monetary-policy": {
-      "id": "explore-cardano/monetary-policy",
-      "title": "Cardano monetary policy",
-      "description": "Cardano achieves true decentralization with the Voltaire development phase, which includes decentralized voting and",
-      "sidebar": "tutorialSidebar"
-    },
-    "explore-cardano/parameter-guide": {
-      "id": "explore-cardano/parameter-guide",
-      "title": "Cardano protocol parameters reference guide",
-      "description": "Protocol parameters on Cardano are the various settings that define the blockchain's behavior. Some protocol parameters are stable and non-updatable while others can be adjusted to adapt to changing conditions over time.",
-      "sidebar": "tutorialSidebar"
-    },
-    "explore-cardano/relevant-research-papers": {
-      "id": "explore-cardano/relevant-research-papers",
-      "title": "Relevant research papers and specifications",
-      "description": "Cardano is a third-generation blockchain platform that aims to provide the",
-      "sidebar": "tutorialSidebar"
-    },
-    "explore-cardano/time": {
-      "id": "explore-cardano/time",
-      "title": "Time handling on Cardano",
-      "description": "Time is necessarily relative to every participant in the blockchain system and is critically important to support and maintain the safety properties of the Ouroboros consensus protocol. Minted blocks are expected to be propagated to all nodes in the system in a timely manner, so time requires the construction of a globally acceptable representation for consensus to be reached.",
-      "sidebar": "tutorialSidebar"
-    },
-    "introduction": {
-      "id": "introduction",
-      "title": "Introduction",
-      "description": "Welcome to the central hub for Cardano documentation. Here, you'll find content that describes and supports the features on both the Cardano mainnet and testnet environments.",
-      "sidebar": "tutorialSidebar"
-    },
-    "learn/cardano-addresses": {
-      "id": "learn/cardano-addresses",
-      "title": "Cardano addresses",
-      "description": "The addresses are a blake2b-256 hash of the relevant verifying/public keys",
-      "sidebar": "tutorialSidebar"
-    },
-    "learn/cardano-keys": {
-      "id": "learn/cardano-keys",
-      "title": "Cardano keys",
-      "description": "Cardano keys are asymmetric cryptography key pairs used for:",
-      "sidebar": "tutorialSidebar"
-    },
-    "learn/cardano-node": {
-      "id": "learn/cardano-node",
-      "title": "Cardano nodes",
-      "description": "The",
-      "sidebar": "tutorialSidebar"
-    },
-    "learn/chain-confirmation-versus-transaction-confirmation": {
-      "id": "learn/chain-confirmation-versus-transaction-confirmation",
-      "title": "Chain confirmation versus transaction confirmation",
-      "description": "When discussing Cardano, often-repeated questions are what is Cardano’s transaction time?, and how many network confirmations does Cardano require before a transaction goes through? The answers to these questions require a deeper look at the concepts of chain confirmation and transaction confirmation, and how these relate to the Ouroboros protocol.",
-      "sidebar": "tutorialSidebar"
-    },
-    "learn/collateral-mechanism": {
-      "id": "learn/collateral-mechanism",
-      "title": "About the collateral mechanism",
-      "description": "The collateral mechanism is an important feature that has been designed to",
-      "sidebar": "tutorialSidebar"
-    },
-    "learn/consensus-explained": {
-      "id": "learn/consensus-explained",
-      "title": "Consensus explained",
-      "description": "Consensus is the process of reaching a majority opinion by everyone involved in",
-      "sidebar": "tutorialSidebar"
-    },
-    "learn/delegation": {
-      "id": "learn/delegation",
-      "title": "Delegation",
-      "description": "As Cardano is a proof of stake (PoS) system, owning ada not only allows you to",
-      "sidebar": "tutorialSidebar"
-    },
-    "learn/eutxo-explainer": {
-      "id": "learn/eutxo-explainer",
-      "title": "Extended UTXO model",
-      "description": "The EUTXO handbook is now out! Deep dive into Cardano's EUTXO accounting model here.",
-      "sidebar": "tutorialSidebar"
-    },
-    "learn/ouroboros-overview": {
-      "id": "learn/ouroboros-overview",
-      "title": "Ouroboros overview",
-      "description": "In mythology, Ouroboros (also, uroboros) is usually depicted as a snake (or sometimes a dragon) eating its own tail in a closed circle. The word Ouroboros itself derives from Ancient Greek, its literal meaning being 'tail eating' or 'tail devourer.'",
-      "sidebar": "tutorialSidebar"
-    },
-    "learn/pledging-rewards": {
-      "id": "learn/pledging-rewards",
-      "title": "Pledging and rewards",
-      "description": "Pledging is an important mechanism that encourages the growth of a healthy",
-      "sidebar": "tutorialSidebar"
-    },
-    "learn/stake-pools": {
-      "id": "learn/stake-pools",
-      "title": "Stake pools",
-      "description": "A stake pool is a reliable server node that focuses on ledger maintenance and holds the combined resources - the 'stake' - of various stakeholders in a single entity. Stake pools are responsible for processing transactions that will be placed in the ledger, as well as producing new blocks. Stake pools are at the core of Ouroboros, Cardano's proof-of-stake protocol.",
-      "sidebar": "tutorialSidebar"
-    },
-    "learn/transaction-costs-determinism": {
-      "id": "learn/transaction-costs-determinism",
-      "title": "Transaction costs and determinism",
-      "description": "Cardano’s approach to price setting mainly relies on market demand over actual",
-      "sidebar": "tutorialSidebar"
-    },
-    "new-to-cardano/cardano-tracking-tools": {
-      "id": "new-to-cardano/cardano-tracking-tools",
-      "title": "Cardano tracking tools",
-      "description": "Since Cardano is a public blockchain ledger, it is possible to easily track all",
-      "sidebar": "tutorialSidebar"
-    },
-    "new-to-cardano/how-to-delegate": {
-      "id": "new-to-cardano/how-to-delegate",
-      "title": "How to delegate?",
-      "description": "Ada that is held on Cardano represents its holder’s stake in the protocol. The",
-      "sidebar": "tutorialSidebar"
-    },
-    "new-to-cardano/index": {
-      "id": "new-to-cardano/index",
-      "title": "New to Cardano?",
-      "description": "The understanding of basic concepts plays an integral role in getting acquainted",
-      "sidebar": "tutorialSidebar"
-    },
-    "new-to-cardano/proof-of-stake": {
-      "id": "new-to-cardano/proof-of-stake",
-      "title": "Proof of stake",
-      "description": "Proof of stake (PoS) is a type of",
-      "sidebar": "tutorialSidebar"
-    },
-    "new-to-cardano/types-of-wallets": {
-      "id": "new-to-cardano/types-of-wallets",
-      "title": "Types of wallets",
-      "description": "A blockchain wallet is a safe and secure place where users can keep their",
-      "sidebar": "tutorialSidebar"
-    },
-    "new-to-cardano/what-is-a-blockchain": {
-      "id": "new-to-cardano/what-is-a-blockchain",
-      "title": "What is a blockchain?",
-      "description": "A blockchain is a type of database or ledger that is duplicated and distributed",
-      "sidebar": "tutorialSidebar"
-    },
-    "new-to-cardano/what-is-a-cryptocurrency": {
-      "id": "new-to-cardano/what-is-a-cryptocurrency",
-      "title": "What is a cryptocurrency?",
-      "description": "A cryptocurrency is a digital asset, which is stored on the ledger and is",
-      "sidebar": "tutorialSidebar"
-    },
-    "new-to-cardano/what-is-a-smart-contract": {
-      "id": "new-to-cardano/what-is-a-smart-contract",
-      "title": "What is a smart contract?",
-      "description": "Smart contracts on Cardano are simple programs often referred to as validator scripts in which users define custom logic. They are automatically executed by each Cardano node validating the transaction when the transaction attempts to move funds from the script's address. The address of each script is derived from the hash-sum of the compiled script.",
-      "sidebar": "tutorialSidebar"
-    },
-    "operating-a-stake-pool/about-stake-pools": {
-      "id": "operating-a-stake-pool/about-stake-pools",
-      "title": "About stake pools, operators, and owners",
-      "description": "This section includes an overview of stake pool operations and explains the ways",
-      "sidebar": "tutorialSidebar"
-    },
-    "operating-a-stake-pool/creating-a-stake-pool": {
-      "id": "operating-a-stake-pool/creating-a-stake-pool",
-      "title": "Creating and managing a stake pool",
-      "description": "First, you should install the node from source.",
-      "sidebar": "tutorialSidebar"
-    },
-    "operating-a-stake-pool/creating-keys-and-certificates": {
-      "id": "operating-a-stake-pool/creating-keys-and-certificates",
-      "title": "Creating keys and operational certificates",
-      "description": "About the stake pool operator keys",
-      "sidebar": "tutorialSidebar"
-    },
-    "operating-a-stake-pool/guidelines-for-large-spos": {
-      "id": "operating-a-stake-pool/guidelines-for-large-spos",
-      "title": "Guidelines for operating large stake pools",
-      "description": "This section provides guidelines for operators of large stake pools,",
-      "sidebar": "tutorialSidebar"
-    },
-    "operating-a-stake-pool/node-connectivity": {
-      "id": "operating-a-stake-pool/node-connectivity",
-      "title": "Establishing connectivity between the nodes",
-      "description": "Nodes connect to each other within the Cardano networking layer, and this",
-      "sidebar": "tutorialSidebar"
-    },
-    "operating-a-stake-pool/performance": {
-      "id": "operating-a-stake-pool/performance",
-      "title": "Stake pool performance",
-      "description": "A stake pool elected as a slot leader is responsible for producing new blocks",
-      "sidebar": "tutorialSidebar"
-    },
-    "operating-a-stake-pool/public-stake-pools": {
-      "id": "operating-a-stake-pool/public-stake-pools",
-      "title": "Stake pool operations and maintenance",
-      "description": "Stake pool maintenance tutorials",
-      "sidebar": "tutorialSidebar"
-    },
-    "operating-a-stake-pool/ranking": {
-      "id": "operating-a-stake-pool/ranking",
-      "title": "Stake pool ranking",
-      "description": "In the Daedalus wallet and Cardano Explorer, stake pools are ranked based on the",
-      "sidebar": "tutorialSidebar"
-    },
-    "operating-a-stake-pool/SMASH": {
-      "id": "operating-a-stake-pool/SMASH",
-      "title": "Pool metadata management",
-      "description": "Stake pools are registered on-chain, and their on-chain data (such as information required to calculate rewards) is critical to the operation of the ledger. Stake pools also possess metadata that helps users make a rational choice of a stake pool to delegate to. This metadata is stored off-chain as it might reflect sensitive content, and such an approach allows for a degree of decentralized censorship.",
-      "sidebar": "tutorialSidebar"
-    },
-    "operating-a-stake-pool/stake-pool-operations-101": {
-      "id": "operating-a-stake-pool/stake-pool-operations-101",
-      "title": "Stake pool operations 101",
-      "description": "Welcome to your one-stop shop for all things related to stake pool operations!",
-      "sidebar": "tutorialSidebar"
+      "description": "This part of the tutorial will demonstrate how easy it is to claim rewards using the cardano-cli. First, you need to ensure that you already have rewards available in your stake address. Check it with the following command:"
     },
     "pioneer-programs/plutus-pioneers": {
       "id": "pioneer-programs/plutus-pioneers",
       "title": "Plutus Pioneer program",
       "description": "Before you start, note that Plutus Core, Cardano’s native smart contract",
-      "sidebar": "tutorialSidebar"
+      "sidebar": "pioneerPrograms"
     },
-    "release-notes/comp-matrix": {
-      "id": "release-notes/comp-matrix",
-      "title": "Compatibility matrix",
-      "description": "This сomponent compatibility with the Cardano node matrix shows the runtime dependencies of Cardano components on a specific version of",
-      "sidebar": "tutorialSidebar"
+    "stake-pool-operators/about-stake-pools": {
+      "id": "stake-pool-operators/about-stake-pools",
+      "title": "About stake pools, operators, and owners",
+      "description": "A stake pool is a reliable server node that represents the",
+      "sidebar": "stakePoolOperators"
     },
-    "release-notes/release-notes": {
-      "id": "release-notes/release-notes",
-      "title": "Release notes",
-      "description": "Here is the latest release information for the Cardano components. Component",
-      "sidebar": "tutorialSidebar"
+    "stake-pool-operators/creating-keys-and-certificates": {
+      "id": "stake-pool-operators/creating-keys-and-certificates",
+      "title": "Creating keys and operational certificates",
+      "description": "About the stake pool operator keys",
+      "sidebar": "stakePoolOperators"
+    },
+    "stake-pool-operators/guidelines-for-large-spos": {
+      "id": "stake-pool-operators/guidelines-for-large-spos",
+      "title": "Guidelines for operating large stake pools",
+      "description": "This section provides guidelines for operators of large stake pools,",
+      "sidebar": "stakePoolOperators"
+    },
+    "stake-pool-operators/maintenance": {
+      "id": "stake-pool-operators/maintenance",
+      "title": "Stake pool operations and maintenance",
+      "description": "After a successful stake pool registration and its further operation, SPOs might",
+      "sidebar": "stakePoolOperators"
+    },
+    "stake-pool-operators/metadata-management": {
+      "id": "stake-pool-operators/metadata-management",
+      "title": "Pool metadata management",
+      "description": "Stake pools are registered on-chain, and their on-chain data (such as information required to calculate rewards) is critical to the operation of the ledger. Stake pools also possess metadata that helps users make a rational choice of a stake pool to delegate to. This metadata is stored off-chain as it might reflect sensitive content, and such an approach allows for a degree of decentralized censorship.",
+      "sidebar": "stakePoolOperators"
+    },
+    "stake-pool-operators/monitoring": {
+      "id": "stake-pool-operators/monitoring",
+      "title": "Logging and monitoring",
+      "description": "Regular monitoring of active nodes is crucial to determine if the node is running optimally, if the system is performant, or if fine-tuning is required.",
+      "sidebar": "stakePoolOperators"
+    },
+    "stake-pool-operators/node-connectivity": {
+      "id": "stake-pool-operators/node-connectivity",
+      "title": "Establishing connectivity between the nodes",
+      "description": "Nodes connect to each other within the Cardano networking layer, and this",
+      "sidebar": "stakePoolOperators"
+    },
+    "stake-pool-operators/operating-a-stake-pool": {
+      "id": "stake-pool-operators/operating-a-stake-pool",
+      "title": "Operating a stake pool",
+      "description": "Welcome to the stake pool operations section!",
+      "sidebar": "stakePoolOperators"
+    },
+    "stake-pool-operators/performance": {
+      "id": "stake-pool-operators/performance",
+      "title": "Stake pool performance",
+      "description": "A stake pool elected as a slot leader is responsible for producing new blocks",
+      "sidebar": "stakePoolOperators"
+    },
+    "stake-pool-operators/ranking": {
+      "id": "stake-pool-operators/ranking",
+      "title": "Stake pool ranking",
+      "description": "In the Daedalus wallet and Cardano Explorer, stake pools are ranked based on the",
+      "sidebar": "stakePoolOperators"
     }
   }
 }

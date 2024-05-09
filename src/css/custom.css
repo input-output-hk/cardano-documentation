@@ -135,7 +135,7 @@ body {
   font-weight: bold;
 }
 
-.cardano-ecosystems-external-link {
+.external-link-with-separator {
   border-top: 0.01rem solid;
   padding-top: 0.5rem;
 }
@@ -195,6 +195,14 @@ body {
   --ifm-footer-background-color: rgb(29, 30, 33);
 }
 
+.navbar__link {
+  color: #fff !important;
+}
+
+.navbar__logo {
+  flex: 1;
+}
+
 @media (max-width: 1150px) {
   .container-fluid {
     flex-direction: column;
@@ -211,6 +219,24 @@ body {
   }
   .footer {
     padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 999px) {
+  .navbar-sidebar__item {
+    color: #fff !important;
+  }
+
+  .navbar__items {
+    color: #fff !important;
+  }
+
+  .menu__link {
+    color: #fff !important;
+  }
+
+  .menu__link--sublist-caret:after {
+    color: #fff !important;
   }
 }
 
