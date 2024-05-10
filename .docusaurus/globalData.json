@@ -256,30 +256,6 @@
               "sidebar": "cardanoTestnets"
             },
             {
-              "id": "community/ambassador-program",
-              "path": "/community/ambassador-program"
-            },
-            {
-              "id": "community/Cardano-stack-exchange",
-              "path": "/community/Cardano-stack-exchange"
-            },
-            {
-              "id": "community/cips",
-              "path": "/community/cips"
-            },
-            {
-              "id": "community/community-content",
-              "path": "/community/community-content"
-            },
-            {
-              "id": "community/essential-cardano",
-              "path": "/community/essential-cardano"
-            },
-            {
-              "id": "community/getting-support",
-              "path": "/community/getting-support"
-            },
-            {
               "id": "developer-resources/cardano-node-course",
               "path": "/developer-resources/cardano-node-course",
               "sidebar": "developerResources"
@@ -328,30 +304,6 @@
               "id": "developer-resources/welcome",
               "path": "/developer-resources/welcome",
               "sidebar": "developerResources"
-            },
-            {
-              "id": "development-guidelines/transaction-tutorials/index",
-              "path": "/development-guidelines/transaction-tutorials/"
-            },
-            {
-              "id": "development-guidelines/transaction-tutorials/minting-transaction",
-              "path": "/development-guidelines/transaction-tutorials/minting-transaction"
-            },
-            {
-              "id": "development-guidelines/transaction-tutorials/multiple-purposes",
-              "path": "/development-guidelines/transaction-tutorials/multiple-purposes"
-            },
-            {
-              "id": "development-guidelines/transaction-tutorials/redelegate-transaction",
-              "path": "/development-guidelines/transaction-tutorials/redelegate-transaction"
-            },
-            {
-              "id": "development-guidelines/transaction-tutorials/stake-transaction",
-              "path": "/development-guidelines/transaction-tutorials/stake-transaction"
-            },
-            {
-              "id": "development-guidelines/transaction-tutorials/withdraw-transaction",
-              "path": "/development-guidelines/transaction-tutorials/withdraw-transaction"
             },
             {
               "id": "pioneer-programs/plutus-pioneers",

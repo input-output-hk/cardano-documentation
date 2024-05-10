@@ -78,32 +78,12 @@ export default {
             "from": "/development-guidelines/node-tests/"
           },
           {
-            "to": "https://docs.cardano.org/operating-a-stake-pool/monitoring",
-            "from": "/development-guidelines/node-monitoring/"
-          },
-          {
             "to": "https://github.com/IntersectMBO/cardano-cli?tab=readme-ov-file#overview-of-the-cardano-cli-repository",
             "from": "/development-guidelines/use-cli/"
           },
           {
-            "to": "/development-guidelines/transaction-tutorials/",
+            "to": "/developer-resources/welcome",
             "from": "/development-guidelines/transaction-tutorials/introduction/"
-          },
-          {
-            "to": "/stake-pool-operators/operating-a-stake-pool",
-            "from": "/operating-a-stake-pool/stake-pool-operations-101/"
-          },
-          {
-            "to": "/stake-pool-operators/operating-a-stake-pool",
-            "from": "/operating-a-stake-pool/creating-a-stake-pool/"
-          },
-          {
-            "to": "/stake-pool-operators/maintenance",
-            "from": "/operating-a-stake-pool/public-stake-pools/"
-          },
-          {
-            "to": "/stake-pool-operators/metadata-management",
-            "from": "/operating-a-stake-pool/smash/"
           },
           {
             "to": "https://github.com/IntersectMBO/cardano-node?tab=readme-ov-file#overview-of-the-cardano-node-repository",
@@ -266,14 +246,6 @@ export default {
             "from": "/listing-cardano-native-assets-on-an-exchange/"
           },
           {
-            "to": "/developer-resources/smart-contracts/plutus",
-            "from": "/smart-contracts/plutus/learn-about-plutus/"
-          },
-          {
-            "to": "/developer-resources/smart-contracts/plutus",
-            "from": "/smart-contracts/plutus/plutus-resources/"
-          },
-          {
             "to": "https://plutus.readthedocs.io/en/latest/simple-example.html",
             "from": "/smart-contracts/plutus/plutus-scripts/"
           },
@@ -320,6 +292,238 @@ export default {
           {
             "to": "https://iohk.zendesk.com/hc/en-us",
             "from": "/community/getting-support"
+          },
+          {
+            "to": "/about-cardano/introduction",
+            "from": "/introduction/"
+          },
+          {
+            "to": "/about-cardano/new-to-cardano/",
+            "from": "/new-to-cardano/introduction/"
+          },
+          {
+            "to": "/about-cardano/new-to-cardano/what-is-a-blockchain",
+            "from": "/new-to-cardano/what-is-a-blockchain/"
+          },
+          {
+            "to": "/about-cardano/new-to-cardano/what-is-a-cryptocurrency",
+            "from": "/new-to-cardano/what-is-a-cryptocurrency/"
+          },
+          {
+            "to": "/about-cardano/evolution/cardano-design-rationale#cardano-advantages",
+            "from": "/new-to-cardano/why-use-cardano/"
+          },
+          {
+            "to": "/about-cardano/new-to-cardano/proof-of-stake",
+            "from": "/new-to-cardano/proof-of-stake/"
+          },
+          {
+            "to": "/about-cardano/new-to-cardano/cardano-tracking-tools",
+            "from": "/new-to-cardano/cardano-tracking-tools/"
+          },
+          {
+            "to": "/about-cardano/new-to-cardano/types-of-wallets#where-to-store-ada",
+            "from": "/new-to-cardano/how-to-purchase-ada/"
+          },
+          {
+            "to": "/about-cardano/new-to-cardano/types-of-wallets",
+            "from": "/new-to-cardano/types-of-wallets/"
+          },
+          {
+            "to": "/about-cardano/new-to-cardano/how-to-delegate",
+            "from": "/new-to-cardano/how-to-delegate/"
+          },
+          {
+            "to": "/about-cardano/new-to-cardano/what-is-a-smart-contract",
+            "from": "/new-to-cardano/what-is-a-smart-contract/"
+          },
+          {
+            "to": "/about-cardano/learn/cardano-node",
+            "from": "/learn/cardano-node/"
+          },
+          {
+            "to": "/about-cardano/learn/stake-pools",
+            "from": "/learn/stake-pools/"
+          },
+          {
+            "to": "/about-cardano/learn/delegation",
+            "from": "/learn/delegation/"
+          },
+          {
+            "to": "/about-cardano/learn/pledging-rewards",
+            "from": "/learn/pledging-rewards/"
+          },
+          {
+            "to": "/about-cardano/learn/pledging-rewards",
+            "from": "/learn/pledging-and-delegation-options/"
+          },
+          {
+            "to": "/about-cardano/learn/consensus-explained",
+            "from": "/learn/consensus-explained/"
+          },
+          {
+            "to": "/about-cardano/learn/ouroboros-overview",
+            "from": "/learn/ouroboros-overview/"
+          },
+          {
+            "to": "/about-cardano/learn/cardano-keys",
+            "from": "/learn/cardano-keys/"
+          },
+          {
+            "to": "/about-cardano/learn/cardano-addresses",
+            "from": "/learn/cardano-addresses/"
+          },
+          {
+            "to": "/about-cardano/evolution/about-hard-forks",
+            "from": "/learn/about-hard-forks/"
+          },
+          {
+            "to": "/about-cardano/learn/chain-confirmation-versus-transaction-confirmation",
+            "from": "/learn/chain-confirmation-versus-transaction-confirmation/"
+          },
+          {
+            "to": "/about-cardano/learn/eutxo-explainer",
+            "from": "/learn/eutxo-explainer/"
+          },
+          {
+            "to": "/about-cardano/evolution/cardano-design-rationale",
+            "from": "/explore-cardano/cardano-design-rationale/"
+          },
+          {
+            "to": "/about-cardano/evolution/eras-and-phases",
+            "from": "/explore-cardano/eras-and-phases/"
+          },
+          {
+            "to": "/about-cardano/explore-more/cardano-architecture",
+            "from": "/explore-cardano/cardano-architecture/"
+          },
+          {
+            "to": "/about-cardano/explore-more/cardano-network/",
+            "from": "/explore-cardano/cardano-network/about-the-cardano-network/"
+          },
+          {
+            "to": "/about-cardano/explore-more/cardano-network/networking-protocol",
+            "from": "/explore-cardano/cardano-network/networking-protocol/"
+          },
+          {
+            "to": "/about-cardano/explore-more/cardano-network/p2p-networking",
+            "from": "/explore-cardano/cardano-network/p2p-networking/"
+          },
+          {
+            "to": "/about-cardano/introduction",
+            "from": "/explore-cardano/cardano-entropy/"
+          },
+          {
+            "to": "/about-cardano/explore-more/fee-structure",
+            "from": "/explore-cardano/fee-structure/"
+          },
+          {
+            "to": "/about-cardano/explore-more/monetary-policy",
+            "from": "/explore-cardano/monetary-policy/"
+          },
+          {
+            "to": "/about-cardano/introduction",
+            "from": "/explore-cardano/explain-nonce/"
+          },
+          {
+            "to": "/about-cardano/explore-more/time",
+            "from": "/explore-cardano/time/"
+          },
+          {
+            "to": "/about-cardano/explore-more/concurrency",
+            "from": "/explore-cardano/concurrency/"
+          },
+          {
+            "to": "/about-cardano/explore-more/relevant-research-papers",
+            "from": "/explore-cardano/relevant-research-papers/"
+          },
+          {
+            "to": "/about-cardano/explore-more/parameter-guide",
+            "from": "/explore-cardano/parameter-guide/"
+          },
+          {
+            "to": "/about-cardano/evolution/upgrades/vasil",
+            "from": "/cardano-testnet/about/feature-overview/"
+          },
+          {
+            "to": "/about-cardano/evolution/upgrades/valentine",
+            "from": "/cardano-testnet/about/secp/"
+          },
+          {
+            "to": "/cardano-testnets/tools/daedalus-testnet",
+            "from": "/cardano-testnet/daedalus-testnet/"
+          },
+          {
+            "to": "/about-cardano/new-to-cardano/staking-calculator",
+            "from": "/cardano-testnet/tools/staking-calculator/"
+          },
+          {
+            "to": "/cardano-testnets/tools/plutus-fee-estimator",
+            "from": "/cardano-testnet/tools/plutus-fee-estimator/"
+          },
+          {
+            "to": "/stake-pool-operators/monitoring",
+            "from": "/development-guidelines/node-monitoring/"
+          },
+          {
+            "to": "/stake-pool-operators/operating-a-stake-pool",
+            "from": "/operating-a-stake-pool/stake-pool-operations-101/"
+          },
+          {
+            "to": "/stake-pool-operators/about-stake-pools",
+            "from": "/operating-a-stake-pool/about-stake-pools/"
+          },
+          {
+            "to": "/stake-pool-operators/operating-a-stake-pool",
+            "from": "/operating-a-stake-pool/creating-a-stake-pool/"
+          },
+          {
+            "to": "/stake-pool-operators/node-connectivity",
+            "from": "/operating-a-stake-pool/node-connectivity/"
+          },
+          {
+            "to": "/stake-pool-operators/creating-keys-and-certificates",
+            "from": "/operating-a-stake-pool/creating-keys-and-certificates/"
+          },
+          {
+            "to": "/stake-pool-operators/maintenance",
+            "from": "/operating-a-stake-pool/public-stake-pools/"
+          },
+          {
+            "to": "/stake-pool-operators/metadata-management",
+            "from": "/operating-a-stake-pool/smash/"
+          },
+          {
+            "to": "/stake-pool-operators/performance",
+            "from": "/operating-a-stake-pool/performance/"
+          },
+          {
+            "to": "/stake-pool-operators/ranking",
+            "from": "/operating-a-stake-pool/ranking/"
+          },
+          {
+            "to": "/stake-pool-operators/guidelines-for-large-spos",
+            "from": "/operating-a-stake-pool/guidelines-for-large-spos/"
+          },
+          {
+            "to": "https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/reference/native-tokens/04-exchange-scenarios.md",
+            "from": "/native-tokens/exchange-multi-asset-management-scenarios/"
+          },
+          {
+            "to": "https://cardano-ledger.readthedocs.io/en/latest/explanations/listing.html",
+            "from": "/native-tokens/listing-cardano-native-assets-on-an-exchange/"
+          },
+          {
+            "to": "/developer-resources/smart-contracts/plutus",
+            "from": "/smart-contracts/plutus/learn-about-plutus/"
+          },
+          {
+            "to": "/developer-resources/smart-contracts/plutus",
+            "from": "/smart-contracts/plutus/plutus-resources/"
+          },
+          {
+            "to": "/developer-resources/release-notes/release-notes",
+            "from": "/tools/release-notes/"
           }
         ]
       }

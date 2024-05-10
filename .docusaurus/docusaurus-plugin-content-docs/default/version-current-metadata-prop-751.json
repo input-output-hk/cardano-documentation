@@ -849,7 +849,7 @@
     "cardano-testnets/environments": {
       "id": "cardano-testnets/environments",
       "title": "Testnet environments",
-      "description": "Discover the various testnet environments available on Cardano to select the one best suited for your testing needs.",
+      "description": "Cardano testnets sit at the vanguard of network development, providing sandboxed",
       "sidebar": "cardanoTestnets"
     },
     "cardano-testnets/getting-started": {
@@ -893,36 +893,6 @@
       "title": "Plutus fee estimator",
       "description": "The Plutus fee estimator has been developed by IOG performance experts for price",
       "sidebar": "cardanoTestnets"
-    },
-    "community/ambassador-program": {
-      "id": "community/ambassador-program",
-      "title": "Ambassadors program",
-      "description": "The Cardano community is privileged to have committed members of our"
-    },
-    "community/Cardano-stack-exchange": {
-      "id": "community/Cardano-stack-exchange",
-      "title": "Cardano Stack Exchange",
-      "description": "Cardano Stack Exchange is a"
-    },
-    "community/cips": {
-      "id": "community/cips",
-      "title": "Cardano Improvement Proposals (CIPs)",
-      "description": "Individuals with improvement proposals for Cardano can"
-    },
-    "community/community-content": {
-      "id": "community/community-content",
-      "title": "Community content",
-      "description": "Community collaboration is central to"
-    },
-    "community/essential-cardano": {
-      "id": "community/essential-cardano",
-      "title": "Essential Cardano",
-      "description": "Essential Cardano is an open-source"
-    },
-    "community/getting-support": {
-      "id": "community/getting-support",
-      "title": "Getting Support",
-      "description": "Your feedback is important because it helps us improve"
     },
     "developer-resources/cardano-node-course": {
       "id": "developer-resources/cardano-node-course",
@@ -983,36 +953,6 @@
       "title": "Welcome",
       "description": "Welcome to the developer resources section! Here you will find references to the",
       "sidebar": "developerResources"
-    },
-    "development-guidelines/transaction-tutorials/index": {
-      "id": "development-guidelines/transaction-tutorials/index",
-      "title": "Transaction tutorials",
-      "description": "A transaction is an event created, signed, and sent by a user to modify the"
-    },
-    "development-guidelines/transaction-tutorials/minting-transaction": {
-      "id": "development-guidelines/transaction-tutorials/minting-transaction",
-      "title": "Minting transactions",
-      "description": "The ability to create and manage custom tokens is one of the distinguishing features of the Cardano blockchain. Minting refers to the process of 'producing new tokens, either as part of an initial coin offering (ICO) or ongoing token issuance'. Minting transactions enable users to generate or burn tokens according to predefined rules. This tutorial explores the details of minting transactions on Cardano."
-    },
-    "development-guidelines/transaction-tutorials/multiple-purposes": {
-      "id": "development-guidelines/transaction-tutorials/multiple-purposes",
-      "title": "Multiple purposes",
-      "description": "Cardano allows more complex transactions. So far you've seen various types of transactions: simple script, minting, staking, delegating, etc. But Cardano provides the flexibility to create more complex transactions and mix all the types of transactions needed. For example, adding metadata to minting transactions, or adding a staking component to a simple script transaction. This tutorial shows how to send a transaction with multiple purposes."
-    },
-    "development-guidelines/transaction-tutorials/redelegate-transaction": {
-      "id": "development-guidelines/transaction-tutorials/redelegate-transaction",
-      "title": "Redelegation",
-      "description": "This tutorial will show how to redelegate your stake to another stake pool. There can be multiple reasons to redelegate your stake, but the most common ones are:"
-    },
-    "development-guidelines/transaction-tutorials/stake-transaction": {
-      "id": "development-guidelines/transaction-tutorials/stake-transaction",
-      "title": "Staking transactions",
-      "description": "Staking is a fundamental feature of Cardano, allowing you to earn rewards by delegating ada to stake pools. This tutorial shows how to delegate your ada to a stake pool, withdraw rewards, or stop delegating your ada if you decide to switch to another stake pool."
-    },
-    "development-guidelines/transaction-tutorials/withdraw-transaction": {
-      "id": "development-guidelines/transaction-tutorials/withdraw-transaction",
-      "title": "Withdrawing transactions",
-      "description": "This part of the tutorial will demonstrate how easy it is to claim rewards using the cardano-cli. First, you need to ensure that you already have rewards available in your stake address. Check it with the following command:"
     },
     "pioneer-programs/plutus-pioneers": {
       "id": "pioneer-programs/plutus-pioneers",

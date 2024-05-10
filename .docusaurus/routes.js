@@ -3,56 +3,21 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/__docusaurus/debug',
-    component: ComponentCreator('/__docusaurus/debug', '9f6'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/config',
-    component: ComponentCreator('/__docusaurus/debug/config', 'eb0'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/content',
-    component: ComponentCreator('/__docusaurus/debug/content', 'ad9'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/globalData',
-    component: ComponentCreator('/__docusaurus/debug/globalData', '07c'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/metadata',
-    component: ComponentCreator('/__docusaurus/debug/metadata', '9b8'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/registry',
-    component: ComponentCreator('/__docusaurus/debug/registry', 'ddb'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/routes',
-    component: ComponentCreator('/__docusaurus/debug/routes', '628'),
-    exact: true
-  },
-  {
     path: '/',
     component: ComponentCreator('/', '13a'),
     exact: true
   },
   {
     path: '/',
-    component: ComponentCreator('/', 'f2a'),
+    component: ComponentCreator('/', 'b8a'),
     routes: [
       {
         path: '/',
-        component: ComponentCreator('/', '75a'),
+        component: ComponentCreator('/', '856'),
         routes: [
           {
             path: '/',
-            component: ComponentCreator('/', '493'),
+            component: ComponentCreator('/', '687'),
             routes: [
               {
                 path: '/about-cardano/evolution/about-hard-forks',
@@ -349,36 +314,6 @@ export default [
                 sidebar: "cardanoTestnets"
               },
               {
-                path: '/community/ambassador-program',
-                component: ComponentCreator('/community/ambassador-program', '85d'),
-                exact: true
-              },
-              {
-                path: '/community/Cardano-stack-exchange',
-                component: ComponentCreator('/community/Cardano-stack-exchange', '6c3'),
-                exact: true
-              },
-              {
-                path: '/community/cips',
-                component: ComponentCreator('/community/cips', '78a'),
-                exact: true
-              },
-              {
-                path: '/community/community-content',
-                component: ComponentCreator('/community/community-content', '5a5'),
-                exact: true
-              },
-              {
-                path: '/community/essential-cardano',
-                component: ComponentCreator('/community/essential-cardano', '250'),
-                exact: true
-              },
-              {
-                path: '/community/getting-support',
-                component: ComponentCreator('/community/getting-support', '3a1'),
-                exact: true
-              },
-              {
                 path: '/developer-resources/cardano-node-course',
                 component: ComponentCreator('/developer-resources/cardano-node-course', 'fca'),
                 exact: true,
@@ -437,36 +372,6 @@ export default [
                 component: ComponentCreator('/developer-resources/welcome', '65d'),
                 exact: true,
                 sidebar: "developerResources"
-              },
-              {
-                path: '/development-guidelines/transaction-tutorials/',
-                component: ComponentCreator('/development-guidelines/transaction-tutorials/', 'b7d'),
-                exact: true
-              },
-              {
-                path: '/development-guidelines/transaction-tutorials/minting-transaction',
-                component: ComponentCreator('/development-guidelines/transaction-tutorials/minting-transaction', '1f9'),
-                exact: true
-              },
-              {
-                path: '/development-guidelines/transaction-tutorials/multiple-purposes',
-                component: ComponentCreator('/development-guidelines/transaction-tutorials/multiple-purposes', '03b'),
-                exact: true
-              },
-              {
-                path: '/development-guidelines/transaction-tutorials/redelegate-transaction',
-                component: ComponentCreator('/development-guidelines/transaction-tutorials/redelegate-transaction', '0ad'),
-                exact: true
-              },
-              {
-                path: '/development-guidelines/transaction-tutorials/stake-transaction',
-                component: ComponentCreator('/development-guidelines/transaction-tutorials/stake-transaction', '4f0'),
-                exact: true
-              },
-              {
-                path: '/development-guidelines/transaction-tutorials/withdraw-transaction',
-                component: ComponentCreator('/development-guidelines/transaction-tutorials/withdraw-transaction', 'f44'),
-                exact: true
               },
               {
                 path: '/pioneer-programs/plutus-pioneers',
