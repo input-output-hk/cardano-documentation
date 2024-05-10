@@ -127,10 +127,10 @@ const Hero = ({ heading, subHeading, lead, text, label1, label2 }) => {
             <p>{text}</p>
             <ButtonContainer>
               <Link to="/about-cardano/introduction">
-                <Button btn="primary">{label1}</Button>
+                <Button btn="hero">{label1}</Button>
               </Link>
               <Link to="/developer-resources/welcome">
-                <Button btn="primary">{label2}</Button>
+                <Button btn="hero">{label2}</Button>
               </Link>
             </ButtonContainer>
           </div>
