@@ -2581,6 +2581,7 @@
   },
   "docusaurus-plugin-debug": {},
   "docusaurus-theme-classic": {},
+  "@cmfcmf/docusaurus-search-local": {},
   "docusaurus-node-polyfills": {},
   "docusaurus-plugin-client-redirects": {},
   "docusaurus-bootstrap-plugin": {},

@@ -15,6 +15,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@cmfcmf/docusaurus-search-local": "^1.1.0",
     "@ctrl/tinycolor": "^4.0.3",
     "@docusaurus/core": "3.1.1",
     "@docusaurus/plugin-client-redirects": "3.1.1",
@@ -39,6 +40,7 @@
     "path-browserify": "^1.0.1",
     "posthog-js": "^1.76.0",
     "prism-react-renderer": "^2.3.0",
+    "puppeteer": "^5.3.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-google-recaptcha": "^3.1.0",
@@ -47,8 +49,7 @@
     "react-tooltip": "^4.2.21",
     "styled-components": "^6.1.10",
     "styled-icons": "^9.0.1",
-    "victory": "^36.5.3",
-    "puppeteer": "^5.3.1"
+    "victory": "^36.5.3"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.1.1",

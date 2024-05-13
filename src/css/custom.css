@@ -206,6 +206,30 @@ body {
   background-color: #fff;
 }
 
+.aa-DetachedSearchButtonPlaceholder {
+  display: none;
+}
+
+.aa-DetachedSearchButtonQuery {
+  display: none;
+}
+
+.aa-DetachedSearchButton {
+  border-radius: 20px !important;
+  padding: 0 !important;
+  background-color: #fff !important;
+}
+
+.aa-DetachedSearchButtonIcon {
+  color: rgba(62, 52, 211) !important;
+}
+
+@media (max-width: 1445px) {
+  .navbar__link {
+    max-width: 120px;
+  }
+}
+
 @media (max-width: 1380px) {
   .navbar__link {
     font-size: 12px;
@@ -231,7 +255,8 @@ body {
     padding: 3rem 1.5rem;
   }
   .navbar__link {
-    max-width: 88px;
+    font-size: 10.5px;
+    max-width: 81px;
   }
 }
 

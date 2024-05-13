@@ -34,6 +34,12 @@ const config: Config = {
   },
 
   plugins: [
+    [
+      '@cmfcmf/docusaurus-search-local',
+      {
+        indexDocs: true,
+      },
+    ],
     ['docusaurus-node-polyfills', { excludeAliases: ['console'] }],
     [
       '@docusaurus/plugin-client-redirects',

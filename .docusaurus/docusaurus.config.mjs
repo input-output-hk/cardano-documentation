@@ -22,6 +22,12 @@ export default {
   },
   "plugins": [
     [
+      "@cmfcmf/docusaurus-search-local",
+      {
+        "indexDocs": true
+      }
+    ],
+    [
       "docusaurus-node-polyfills",
       {
         "excludeAliases": [

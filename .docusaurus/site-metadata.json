@@ -27,6 +27,11 @@
       "name": "@docusaurus/theme-classic",
       "version": "3.1.1"
     },
+    "@cmfcmf/docusaurus-search-local": {
+      "type": "package",
+      "name": "@cmfcmf/docusaurus-search-local",
+      "version": "1.1.0"
+    },
     "docusaurus-node-polyfills": {
       "type": "package",
       "name": "docusaurus-node-polyfills",
