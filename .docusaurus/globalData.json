@@ -301,6 +301,36 @@
               "sidebar": "developerResources"
             },
             {
+              "id": "developer-resources/transaction-tutorials/index",
+              "path": "/developer-resources/transaction-tutorials/",
+              "sidebar": "developerResources"
+            },
+            {
+              "id": "developer-resources/transaction-tutorials/minting-transaction",
+              "path": "/developer-resources/transaction-tutorials/minting-transaction",
+              "sidebar": "developerResources"
+            },
+            {
+              "id": "developer-resources/transaction-tutorials/multiple-purposes",
+              "path": "/developer-resources/transaction-tutorials/multiple-purposes",
+              "sidebar": "developerResources"
+            },
+            {
+              "id": "developer-resources/transaction-tutorials/redelegate-transaction",
+              "path": "/developer-resources/transaction-tutorials/redelegate-transaction",
+              "sidebar": "developerResources"
+            },
+            {
+              "id": "developer-resources/transaction-tutorials/stake-transaction",
+              "path": "/developer-resources/transaction-tutorials/stake-transaction",
+              "sidebar": "developerResources"
+            },
+            {
+              "id": "developer-resources/transaction-tutorials/withdraw-transaction",
+              "path": "/developer-resources/transaction-tutorials/withdraw-transaction",
+              "sidebar": "developerResources"
+            },
+            {
               "id": "developer-resources/welcome",
               "path": "/developer-resources/welcome",
               "sidebar": "developerResources"

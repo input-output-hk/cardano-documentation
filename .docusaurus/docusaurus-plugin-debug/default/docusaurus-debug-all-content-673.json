@@ -1405,32 +1405,32 @@
                 "permalink": "/developer-resources/welcome"
               },
               "next": {
-                "title": "Native tokens",
-                "permalink": "/developer-resources/native-tokens"
+                "title": "Transaction tutorials",
+                "permalink": "/developer-resources/transaction-tutorials/"
               }
             },
             {
               "id": "developer-resources/native-tokens",
               "title": "Native tokens",
               "description": "To start working with native tokens, see:",
-              "source": "@site/docs/developer-resources/03-native-tokens.mdx",
+              "source": "@site/docs/developer-resources/04-native-tokens.mdx",
               "sourceDirName": "developer-resources",
               "slug": "/developer-resources/native-tokens",
               "permalink": "/developer-resources/native-tokens",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/03-native-tokens.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/04-native-tokens.mdx",
               "tags": [],
               "version": "current",
-              "sidebarPosition": 3,
+              "sidebarPosition": 4,
               "frontMatter": {
                 "title": "Native tokens",
                 "metaTitle": "Learn about native tokens"
               },
               "sidebar": "developerResources",
               "previous": {
-                "title": "The Cardano node video course",
-                "permalink": "/developer-resources/cardano-node-course"
+                "title": "Multiple purposes",
+                "permalink": "/developer-resources/transaction-tutorials/multiple-purposes"
               },
               "next": {
                 "title": "Plutus",
@@ -1441,13 +1441,13 @@
               "id": "developer-resources/release-notes/comp-matrix",
               "title": "Compatibility matrix",
               "description": "This сomponent compatibility with the Cardano node matrix shows the runtime dependencies of Cardano components on a specific version of",
-              "source": "@site/docs/developer-resources/06-release-notes/03-comp-matrix.mdx",
-              "sourceDirName": "developer-resources/06-release-notes",
+              "source": "@site/docs/developer-resources/07-release-notes/03-comp-matrix.mdx",
+              "sourceDirName": "developer-resources/07-release-notes",
               "slug": "/developer-resources/release-notes/comp-matrix",
               "permalink": "/developer-resources/release-notes/comp-matrix",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/06-release-notes/03-comp-matrix.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/07-release-notes/03-comp-matrix.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
@@ -1466,13 +1466,13 @@
               "id": "developer-resources/release-notes/release-notes",
               "title": "Release notes",
               "description": "Here is the latest release information for the Cardano components. Component",
-              "source": "@site/docs/developer-resources/06-release-notes/02-release-notes.mdx",
-              "sourceDirName": "developer-resources/06-release-notes",
+              "source": "@site/docs/developer-resources/07-release-notes/02-release-notes.mdx",
+              "sourceDirName": "developer-resources/07-release-notes",
               "slug": "/developer-resources/release-notes/release-notes",
               "permalink": "/developer-resources/release-notes/release-notes",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/06-release-notes/02-release-notes.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/07-release-notes/02-release-notes.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 1,
@@ -1495,13 +1495,13 @@
               "id": "developer-resources/scalability-solutions/hydra",
               "title": "Hydra",
               "description": "Hydra is a layer 2 scaling solution for Cardano rooted in peer-reviewed research that increases transaction throughput and ensures cost efficiency while maintaining rigorous security.",
-              "source": "@site/docs/developer-resources/05-scalability-solutions/01-hydra.mdx",
-              "sourceDirName": "developer-resources/05-scalability-solutions",
+              "source": "@site/docs/developer-resources/06-scalability-solutions/01-hydra.mdx",
+              "sourceDirName": "developer-resources/06-scalability-solutions",
               "slug": "/developer-resources/scalability-solutions/hydra",
               "permalink": "/developer-resources/scalability-solutions/hydra",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/05-scalability-solutions/01-hydra.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/06-scalability-solutions/01-hydra.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 1,
@@ -1524,13 +1524,13 @@
               "id": "developer-resources/scalability-solutions/mithril",
               "title": "Mithril",
               "description": "Mithril is a stake-based multi-signature scheme that leverages the existing",
-              "source": "@site/docs/developer-resources/05-scalability-solutions/02-mithril.mdx",
-              "sourceDirName": "developer-resources/05-scalability-solutions",
+              "source": "@site/docs/developer-resources/06-scalability-solutions/02-mithril.mdx",
+              "sourceDirName": "developer-resources/06-scalability-solutions",
               "slug": "/developer-resources/scalability-solutions/mithril",
               "permalink": "/developer-resources/scalability-solutions/mithril",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/05-scalability-solutions/02-mithril.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/06-scalability-solutions/02-mithril.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
@@ -1553,13 +1553,13 @@
               "id": "developer-resources/smart-contracts/aiken",
               "title": "Aiken",
               "description": "To get started with Aiken, see:",
-              "source": "@site/docs/developer-resources/04-smart-contracts/03-aiken.mdx",
-              "sourceDirName": "developer-resources/04-smart-contracts",
+              "source": "@site/docs/developer-resources/05-smart-contracts/03-aiken.mdx",
+              "sourceDirName": "developer-resources/05-smart-contracts",
               "slug": "/developer-resources/smart-contracts/aiken",
               "permalink": "/developer-resources/smart-contracts/aiken",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/04-smart-contracts/03-aiken.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/05-smart-contracts/03-aiken.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 3,
@@ -1582,13 +1582,13 @@
               "id": "developer-resources/smart-contracts/marlowe",
               "title": "Marlowe",
               "description": "To get started with Marlowe, find the various resources on the",
-              "source": "@site/docs/developer-resources/04-smart-contracts/02-marlowe.mdx",
-              "sourceDirName": "developer-resources/04-smart-contracts",
+              "source": "@site/docs/developer-resources/05-smart-contracts/02-marlowe.mdx",
+              "sourceDirName": "developer-resources/05-smart-contracts",
               "slug": "/developer-resources/smart-contracts/marlowe",
               "permalink": "/developer-resources/smart-contracts/marlowe",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/04-smart-contracts/02-marlowe.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/05-smart-contracts/02-marlowe.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
@@ -1611,13 +1611,13 @@
               "id": "developer-resources/smart-contracts/plutus",
               "title": "Plutus",
               "description": "To start developing with Plutus, see:",
-              "source": "@site/docs/developer-resources/04-smart-contracts/01-plutus.mdx",
-              "sourceDirName": "developer-resources/04-smart-contracts",
+              "source": "@site/docs/developer-resources/05-smart-contracts/01-plutus.mdx",
+              "sourceDirName": "developer-resources/05-smart-contracts",
               "slug": "/developer-resources/smart-contracts/plutus",
               "permalink": "/developer-resources/smart-contracts/plutus",
               "draft": false,
               "unlisted": false,
-              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/04-smart-contracts/01-plutus.mdx",
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/05-smart-contracts/01-plutus.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 1,
@@ -1634,6 +1634,177 @@
               "next": {
                 "title": "Marlowe",
                 "permalink": "/developer-resources/smart-contracts/marlowe"
+              }
+            },
+            {
+              "id": "developer-resources/transaction-tutorials/index",
+              "title": "Transaction tutorials",
+              "description": "A transaction is an event created, signed, and sent by a user to modify the",
+              "source": "@site/docs/developer-resources/03-transaction-tutorials/index.mdx",
+              "sourceDirName": "developer-resources/03-transaction-tutorials",
+              "slug": "/developer-resources/transaction-tutorials/",
+              "permalink": "/developer-resources/transaction-tutorials/",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/03-transaction-tutorials/index.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "title": "Transaction tutorials",
+                "metaTitle": "Transaction tutorials",
+                "sidebar_position": 3,
+                "collapsible": true,
+                "collapsed": true
+              },
+              "sidebar": "developerResources",
+              "previous": {
+                "title": "The Cardano node video course",
+                "permalink": "/developer-resources/cardano-node-course"
+              },
+              "next": {
+                "title": "Minting transactions",
+                "permalink": "/developer-resources/transaction-tutorials/minting-transaction"
+              }
+            },
+            {
+              "id": "developer-resources/transaction-tutorials/minting-transaction",
+              "title": "Minting transactions",
+              "description": "The ability to create and manage custom tokens is one of the distinguishing features of the Cardano blockchain. Minting refers to the process of 'producing new tokens, either as part of an initial coin offering (ICO) or ongoing token issuance'. Minting transactions enable users to generate or burn tokens according to predefined rules. This tutorial explores the details of minting transactions on Cardano.",
+              "source": "@site/docs/developer-resources/03-transaction-tutorials/02-minting-transaction.mdx",
+              "sourceDirName": "developer-resources/03-transaction-tutorials",
+              "slug": "/developer-resources/transaction-tutorials/minting-transaction",
+              "permalink": "/developer-resources/transaction-tutorials/minting-transaction",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/03-transaction-tutorials/02-minting-transaction.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "title": "Minting transactions",
+                "metaTitle": "Minting transactions"
+              },
+              "sidebar": "developerResources",
+              "previous": {
+                "title": "Transaction tutorials",
+                "permalink": "/developer-resources/transaction-tutorials/"
+              },
+              "next": {
+                "title": "Staking transactions",
+                "permalink": "/developer-resources/transaction-tutorials/stake-transaction"
+              }
+            },
+            {
+              "id": "developer-resources/transaction-tutorials/multiple-purposes",
+              "title": "Multiple purposes",
+              "description": "Cardano allows more complex transactions. So far you've seen various types of transactions: simple script, minting, staking, delegating, etc. But Cardano provides the flexibility to create more complex transactions and mix all the types of transactions needed. For example, adding metadata to minting transactions, or adding a staking component to a simple script transaction. This tutorial shows how to send a transaction with multiple purposes.",
+              "source": "@site/docs/developer-resources/03-transaction-tutorials/06-multiple-purposes.mdx",
+              "sourceDirName": "developer-resources/03-transaction-tutorials",
+              "slug": "/developer-resources/transaction-tutorials/multiple-purposes",
+              "permalink": "/developer-resources/transaction-tutorials/multiple-purposes",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/03-transaction-tutorials/06-multiple-purposes.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 6,
+              "frontMatter": {
+                "title": "Multiple purposes",
+                "metaTitle": "Multiple purposes"
+              },
+              "sidebar": "developerResources",
+              "previous": {
+                "title": "Redelegation",
+                "permalink": "/developer-resources/transaction-tutorials/redelegate-transaction"
+              },
+              "next": {
+                "title": "Native tokens",
+                "permalink": "/developer-resources/native-tokens"
+              }
+            },
+            {
+              "id": "developer-resources/transaction-tutorials/redelegate-transaction",
+              "title": "Redelegation",
+              "description": "This tutorial will show how to redelegate your stake to another stake pool. There can be multiple reasons to redelegate your stake, but the most common ones are:",
+              "source": "@site/docs/developer-resources/03-transaction-tutorials/05-redelegate-transaction.mdx",
+              "sourceDirName": "developer-resources/03-transaction-tutorials",
+              "slug": "/developer-resources/transaction-tutorials/redelegate-transaction",
+              "permalink": "/developer-resources/transaction-tutorials/redelegate-transaction",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/03-transaction-tutorials/05-redelegate-transaction.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 5,
+              "frontMatter": {
+                "title": "Redelegation",
+                "metaTitle": "Redelegation"
+              },
+              "sidebar": "developerResources",
+              "previous": {
+                "title": "Withdrawing transactions",
+                "permalink": "/developer-resources/transaction-tutorials/withdraw-transaction"
+              },
+              "next": {
+                "title": "Multiple purposes",
+                "permalink": "/developer-resources/transaction-tutorials/multiple-purposes"
+              }
+            },
+            {
+              "id": "developer-resources/transaction-tutorials/stake-transaction",
+              "title": "Staking transactions",
+              "description": "Staking is a fundamental feature of Cardano, allowing you to earn rewards by delegating ada to stake pools. This tutorial shows how to delegate your ada to a stake pool, withdraw rewards, or stop delegating your ada if you decide to switch to another stake pool.",
+              "source": "@site/docs/developer-resources/03-transaction-tutorials/03-stake-transaction.mdx",
+              "sourceDirName": "developer-resources/03-transaction-tutorials",
+              "slug": "/developer-resources/transaction-tutorials/stake-transaction",
+              "permalink": "/developer-resources/transaction-tutorials/stake-transaction",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/03-transaction-tutorials/03-stake-transaction.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "title": "Staking transactions",
+                "metaTitle": "Staking transactions"
+              },
+              "sidebar": "developerResources",
+              "previous": {
+                "title": "Minting transactions",
+                "permalink": "/developer-resources/transaction-tutorials/minting-transaction"
+              },
+              "next": {
+                "title": "Withdrawing transactions",
+                "permalink": "/developer-resources/transaction-tutorials/withdraw-transaction"
+              }
+            },
+            {
+              "id": "developer-resources/transaction-tutorials/withdraw-transaction",
+              "title": "Withdrawing transactions",
+              "description": "This part of the tutorial will demonstrate how easy it is to claim rewards using the cardano-cli. First, you need to ensure that you already have rewards available in your stake address. Check it with the following command:",
+              "source": "@site/docs/developer-resources/03-transaction-tutorials/04-withdraw-transaction.mdx",
+              "sourceDirName": "developer-resources/03-transaction-tutorials",
+              "slug": "/developer-resources/transaction-tutorials/withdraw-transaction",
+              "permalink": "/developer-resources/transaction-tutorials/withdraw-transaction",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/input-output-hk/cardano-documentation/blob/master/docs/developer-resources/03-transaction-tutorials/04-withdraw-transaction.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 4,
+              "frontMatter": {
+                "title": "Withdrawing transactions",
+                "metaTitle": "Withdrawing transactions"
+              },
+              "sidebar": "developerResources",
+              "previous": {
+                "title": "Staking transactions",
+                "permalink": "/developer-resources/transaction-tutorials/stake-transaction"
+              },
+              "next": {
+                "title": "Redelegation",
+                "permalink": "/developer-resources/transaction-tutorials/redelegate-transaction"
               }
             },
             {
@@ -2193,6 +2364,38 @@
               {
                 "type": "doc",
                 "id": "developer-resources/cardano-node-course"
+              },
+              {
+                "type": "category",
+                "label": "Transaction tutorials",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "developer-resources/transaction-tutorials/minting-transaction"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "developer-resources/transaction-tutorials/stake-transaction"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "developer-resources/transaction-tutorials/withdraw-transaction"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "developer-resources/transaction-tutorials/redelegate-transaction"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "developer-resources/transaction-tutorials/multiple-purposes"
+                  }
+                ],
+                "link": {
+                  "type": "doc",
+                  "id": "developer-resources/transaction-tutorials/index"
+                }
               },
               {
                 "type": "doc",

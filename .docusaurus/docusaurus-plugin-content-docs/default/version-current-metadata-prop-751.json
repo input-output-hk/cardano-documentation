@@ -360,6 +360,50 @@
         "unlisted": false
       },
       {
+        "type": "category",
+        "label": "Transaction tutorials",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "link",
+            "label": "Minting transactions",
+            "href": "/developer-resources/transaction-tutorials/minting-transaction",
+            "docId": "developer-resources/transaction-tutorials/minting-transaction",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Staking transactions",
+            "href": "/developer-resources/transaction-tutorials/stake-transaction",
+            "docId": "developer-resources/transaction-tutorials/stake-transaction",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Withdrawing transactions",
+            "href": "/developer-resources/transaction-tutorials/withdraw-transaction",
+            "docId": "developer-resources/transaction-tutorials/withdraw-transaction",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Redelegation",
+            "href": "/developer-resources/transaction-tutorials/redelegate-transaction",
+            "docId": "developer-resources/transaction-tutorials/redelegate-transaction",
+            "unlisted": false
+          },
+          {
+            "type": "link",
+            "label": "Multiple purposes",
+            "href": "/developer-resources/transaction-tutorials/multiple-purposes",
+            "docId": "developer-resources/transaction-tutorials/multiple-purposes",
+            "unlisted": false
+          }
+        ],
+        "href": "/developer-resources/transaction-tutorials/"
+      },
+      {
         "type": "link",
         "label": "Native tokens",
         "href": "/developer-resources/native-tokens",
@@ -946,6 +990,42 @@
       "id": "developer-resources/smart-contracts/plutus",
       "title": "Plutus",
       "description": "To start developing with Plutus, see:",
+      "sidebar": "developerResources"
+    },
+    "developer-resources/transaction-tutorials/index": {
+      "id": "developer-resources/transaction-tutorials/index",
+      "title": "Transaction tutorials",
+      "description": "A transaction is an event created, signed, and sent by a user to modify the",
+      "sidebar": "developerResources"
+    },
+    "developer-resources/transaction-tutorials/minting-transaction": {
+      "id": "developer-resources/transaction-tutorials/minting-transaction",
+      "title": "Minting transactions",
+      "description": "The ability to create and manage custom tokens is one of the distinguishing features of the Cardano blockchain. Minting refers to the process of 'producing new tokens, either as part of an initial coin offering (ICO) or ongoing token issuance'. Minting transactions enable users to generate or burn tokens according to predefined rules. This tutorial explores the details of minting transactions on Cardano.",
+      "sidebar": "developerResources"
+    },
+    "developer-resources/transaction-tutorials/multiple-purposes": {
+      "id": "developer-resources/transaction-tutorials/multiple-purposes",
+      "title": "Multiple purposes",
+      "description": "Cardano allows more complex transactions. So far you've seen various types of transactions: simple script, minting, staking, delegating, etc. But Cardano provides the flexibility to create more complex transactions and mix all the types of transactions needed. For example, adding metadata to minting transactions, or adding a staking component to a simple script transaction. This tutorial shows how to send a transaction with multiple purposes.",
+      "sidebar": "developerResources"
+    },
+    "developer-resources/transaction-tutorials/redelegate-transaction": {
+      "id": "developer-resources/transaction-tutorials/redelegate-transaction",
+      "title": "Redelegation",
+      "description": "This tutorial will show how to redelegate your stake to another stake pool. There can be multiple reasons to redelegate your stake, but the most common ones are:",
+      "sidebar": "developerResources"
+    },
+    "developer-resources/transaction-tutorials/stake-transaction": {
+      "id": "developer-resources/transaction-tutorials/stake-transaction",
+      "title": "Staking transactions",
+      "description": "Staking is a fundamental feature of Cardano, allowing you to earn rewards by delegating ada to stake pools. This tutorial shows how to delegate your ada to a stake pool, withdraw rewards, or stop delegating your ada if you decide to switch to another stake pool.",
+      "sidebar": "developerResources"
+    },
+    "developer-resources/transaction-tutorials/withdraw-transaction": {
+      "id": "developer-resources/transaction-tutorials/withdraw-transaction",
+      "title": "Withdrawing transactions",
+      "description": "This part of the tutorial will demonstrate how easy it is to claim rewards using the cardano-cli. First, you need to ensure that you already have rewards available in your stake address. Check it with the following command:",
       "sidebar": "developerResources"
     },
     "developer-resources/welcome": {

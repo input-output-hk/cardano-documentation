@@ -3,21 +3,56 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
+    path: '/__docusaurus/debug',
+    component: ComponentCreator('/__docusaurus/debug', '9f6'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/config',
+    component: ComponentCreator('/__docusaurus/debug/config', 'eb0'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/content',
+    component: ComponentCreator('/__docusaurus/debug/content', 'ad9'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/globalData',
+    component: ComponentCreator('/__docusaurus/debug/globalData', '07c'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/metadata',
+    component: ComponentCreator('/__docusaurus/debug/metadata', '9b8'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/registry',
+    component: ComponentCreator('/__docusaurus/debug/registry', 'ddb'),
+    exact: true
+  },
+  {
+    path: '/__docusaurus/debug/routes',
+    component: ComponentCreator('/__docusaurus/debug/routes', '628'),
+    exact: true
+  },
+  {
     path: '/',
     component: ComponentCreator('/', '13a'),
     exact: true
   },
   {
     path: '/',
-    component: ComponentCreator('/', 'b8a'),
+    component: ComponentCreator('/', 'c99'),
     routes: [
       {
         path: '/',
-        component: ComponentCreator('/', '856'),
+        component: ComponentCreator('/', 'a6b'),
         routes: [
           {
             path: '/',
-            component: ComponentCreator('/', '687'),
+            component: ComponentCreator('/', '1e2'),
             routes: [
               {
                 path: '/about-cardano/evolution/about-hard-forks',
@@ -321,49 +356,85 @@ export default [
               },
               {
                 path: '/developer-resources/native-tokens',
-                component: ComponentCreator('/developer-resources/native-tokens', '1e9'),
+                component: ComponentCreator('/developer-resources/native-tokens', '461'),
                 exact: true,
                 sidebar: "developerResources"
               },
               {
                 path: '/developer-resources/release-notes/comp-matrix',
-                component: ComponentCreator('/developer-resources/release-notes/comp-matrix', '19e'),
+                component: ComponentCreator('/developer-resources/release-notes/comp-matrix', 'f45'),
                 exact: true,
                 sidebar: "developerResources"
               },
               {
                 path: '/developer-resources/release-notes/release-notes',
-                component: ComponentCreator('/developer-resources/release-notes/release-notes', '6ab'),
+                component: ComponentCreator('/developer-resources/release-notes/release-notes', '9c4'),
                 exact: true,
                 sidebar: "developerResources"
               },
               {
                 path: '/developer-resources/scalability-solutions/hydra',
-                component: ComponentCreator('/developer-resources/scalability-solutions/hydra', 'fa4'),
+                component: ComponentCreator('/developer-resources/scalability-solutions/hydra', '58e'),
                 exact: true,
                 sidebar: "developerResources"
               },
               {
                 path: '/developer-resources/scalability-solutions/mithril',
-                component: ComponentCreator('/developer-resources/scalability-solutions/mithril', '54c'),
+                component: ComponentCreator('/developer-resources/scalability-solutions/mithril', '187'),
                 exact: true,
                 sidebar: "developerResources"
               },
               {
                 path: '/developer-resources/smart-contracts/aiken',
-                component: ComponentCreator('/developer-resources/smart-contracts/aiken', '78e'),
+                component: ComponentCreator('/developer-resources/smart-contracts/aiken', 'c5d'),
                 exact: true,
                 sidebar: "developerResources"
               },
               {
                 path: '/developer-resources/smart-contracts/marlowe',
-                component: ComponentCreator('/developer-resources/smart-contracts/marlowe', '89f'),
+                component: ComponentCreator('/developer-resources/smart-contracts/marlowe', '9df'),
                 exact: true,
                 sidebar: "developerResources"
               },
               {
                 path: '/developer-resources/smart-contracts/plutus',
-                component: ComponentCreator('/developer-resources/smart-contracts/plutus', '96c'),
+                component: ComponentCreator('/developer-resources/smart-contracts/plutus', '977'),
+                exact: true,
+                sidebar: "developerResources"
+              },
+              {
+                path: '/developer-resources/transaction-tutorials/',
+                component: ComponentCreator('/developer-resources/transaction-tutorials/', 'fd6'),
+                exact: true,
+                sidebar: "developerResources"
+              },
+              {
+                path: '/developer-resources/transaction-tutorials/minting-transaction',
+                component: ComponentCreator('/developer-resources/transaction-tutorials/minting-transaction', '8fc'),
+                exact: true,
+                sidebar: "developerResources"
+              },
+              {
+                path: '/developer-resources/transaction-tutorials/multiple-purposes',
+                component: ComponentCreator('/developer-resources/transaction-tutorials/multiple-purposes', '2dd'),
+                exact: true,
+                sidebar: "developerResources"
+              },
+              {
+                path: '/developer-resources/transaction-tutorials/redelegate-transaction',
+                component: ComponentCreator('/developer-resources/transaction-tutorials/redelegate-transaction', 'bae'),
+                exact: true,
+                sidebar: "developerResources"
+              },
+              {
+                path: '/developer-resources/transaction-tutorials/stake-transaction',
+                component: ComponentCreator('/developer-resources/transaction-tutorials/stake-transaction', '2a5'),
+                exact: true,
+                sidebar: "developerResources"
+              },
+              {
+                path: '/developer-resources/transaction-tutorials/withdraw-transaction',
+                component: ComponentCreator('/developer-resources/transaction-tutorials/withdraw-transaction', 'c75'),
                 exact: true,
                 sidebar: "developerResources"
               },
