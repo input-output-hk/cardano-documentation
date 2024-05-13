@@ -42,6 +42,19 @@ const StyledButton = styled.button`
       opacity:0.75;
     }
   `}
+
+${(props) =>
+    props.btn === 'hero' &&
+    `text-decoration: none;
+    padding: 1rem 2.5rem;
+    background-color: rgba(0,51,173,1);
+    color: #fff;
+    border-radius: 4rem;
+    min-width: 300px;
+    &:hover {
+      opacity:0.75;
+    }
+  `}
   &:hover {
     svg {
       transform: translateX(3px);
@@ -52,7 +65,9 @@ const StyledButton = styled.button`
 const Button = (props) => (
   <StyledButton {...props}>
     {props.children}
-    {props.btn === 'primary' || props.btn === 'secondary' ? (
+    {props.btn === 'primary' ||
+    props.btn === 'secondary' ||
+    props.btn === 'hero' ? (
       ''
     ) : (
       <FaChevronRight />

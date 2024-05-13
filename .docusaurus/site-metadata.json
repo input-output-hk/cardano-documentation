@@ -17,15 +17,20 @@
       "name": "@docusaurus/plugin-content-pages",
       "version": "3.1.1"
     },
-    "docusaurus-plugin-sitemap": {
+    "docusaurus-plugin-debug": {
       "type": "package",
-      "name": "@docusaurus/plugin-sitemap",
+      "name": "@docusaurus/plugin-debug",
       "version": "3.1.1"
     },
     "docusaurus-theme-classic": {
       "type": "package",
       "name": "@docusaurus/theme-classic",
       "version": "3.1.1"
+    },
+    "@cmfcmf/docusaurus-search-local": {
+      "type": "package",
+      "name": "@cmfcmf/docusaurus-search-local",
+      "version": "1.1.0"
     },
     "docusaurus-node-polyfills": {
       "type": "package",

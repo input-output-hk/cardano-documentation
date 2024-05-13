@@ -1,4 +1,14 @@
 {
+  "@cmfcmf/docusaurus-search-local": {
+    "default": {
+      "titleBoost": 5,
+      "contentBoost": 1,
+      "tagsBoost": 3,
+      "parentCategoriesBoost": 2,
+      "indexDocSidebarParentCategories": 0,
+      "maxSearchResults": 8
+    }
+  },
   "docusaurus-plugin-content-docs": {
     "default": {
       "path": "/",
@@ -8,430 +18,419 @@
           "label": "Next",
           "isLast": true,
           "path": "/",
-          "mainDocId": "introduction",
+          "mainDocId": "about-cardano/introduction",
           "docs": [
             {
-              "id": "cardano-testnets/daedalus-testnet",
-              "path": "/cardano-testnets/daedalus-testnet",
-              "sidebar": "tutorialSidebar"
+              "id": "about-cardano/evolution/about-hard-forks",
+              "path": "/about-cardano/evolution/about-hard-forks",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/evolution/cardano-design-rationale",
+              "path": "/about-cardano/evolution/cardano-design-rationale",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/evolution/eras-and-phases",
+              "path": "/about-cardano/evolution/eras-and-phases",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/evolution/upgrades/allegra",
+              "path": "/about-cardano/evolution/upgrades/allegra",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/evolution/upgrades/alonzo",
+              "path": "/about-cardano/evolution/upgrades/alonzo",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/evolution/upgrades/byron-to-shelley",
+              "path": "/about-cardano/evolution/upgrades/byron-to-shelley",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/evolution/upgrades/mary",
+              "path": "/about-cardano/evolution/upgrades/mary",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/evolution/upgrades/valentine",
+              "path": "/about-cardano/evolution/upgrades/valentine",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/evolution/upgrades/vasil",
+              "path": "/about-cardano/evolution/upgrades/vasil",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/explore-more/cardano-architecture",
+              "path": "/about-cardano/explore-more/cardano-architecture",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/explore-more/cardano-network/index",
+              "path": "/about-cardano/explore-more/cardano-network/",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/explore-more/cardano-network/networking-protocol",
+              "path": "/about-cardano/explore-more/cardano-network/networking-protocol",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/explore-more/cardano-network/p2p-networking",
+              "path": "/about-cardano/explore-more/cardano-network/p2p-networking",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/explore-more/concurrency",
+              "path": "/about-cardano/explore-more/concurrency",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/explore-more/fee-structure",
+              "path": "/about-cardano/explore-more/fee-structure",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/explore-more/monetary-policy",
+              "path": "/about-cardano/explore-more/monetary-policy",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/explore-more/parameter-guide",
+              "path": "/about-cardano/explore-more/parameter-guide",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/explore-more/relevant-research-papers",
+              "path": "/about-cardano/explore-more/relevant-research-papers",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/explore-more/time",
+              "path": "/about-cardano/explore-more/time",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/introduction",
+              "path": "/about-cardano/introduction",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/learn/cardano-addresses",
+              "path": "/about-cardano/learn/cardano-addresses",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/learn/cardano-keys",
+              "path": "/about-cardano/learn/cardano-keys",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/learn/cardano-node",
+              "path": "/about-cardano/learn/cardano-node",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/learn/chain-confirmation-versus-transaction-confirmation",
+              "path": "/about-cardano/learn/chain-confirmation-versus-transaction-confirmation",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/learn/collateral-mechanism",
+              "path": "/about-cardano/learn/collateral-mechanism",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/learn/consensus-explained",
+              "path": "/about-cardano/learn/consensus-explained",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/learn/delegation",
+              "path": "/about-cardano/learn/delegation",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/learn/eutxo-explainer",
+              "path": "/about-cardano/learn/eutxo-explainer",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/learn/ouroboros-overview",
+              "path": "/about-cardano/learn/ouroboros-overview",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/learn/pledging-rewards",
+              "path": "/about-cardano/learn/pledging-rewards",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/learn/stake-pools",
+              "path": "/about-cardano/learn/stake-pools",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/learn/transaction-costs-determinism",
+              "path": "/about-cardano/learn/transaction-costs-determinism",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/new-to-cardano/cardano-tracking-tools",
+              "path": "/about-cardano/new-to-cardano/cardano-tracking-tools",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/new-to-cardano/how-to-delegate",
+              "path": "/about-cardano/new-to-cardano/how-to-delegate",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/new-to-cardano/index",
+              "path": "/about-cardano/new-to-cardano/",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/new-to-cardano/proof-of-stake",
+              "path": "/about-cardano/new-to-cardano/proof-of-stake",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/new-to-cardano/staking-calculator",
+              "path": "/about-cardano/new-to-cardano/staking-calculator",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/new-to-cardano/types-of-wallets",
+              "path": "/about-cardano/new-to-cardano/types-of-wallets",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/new-to-cardano/what-is-a-blockchain",
+              "path": "/about-cardano/new-to-cardano/what-is-a-blockchain",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/new-to-cardano/what-is-a-cryptocurrency",
+              "path": "/about-cardano/new-to-cardano/what-is-a-cryptocurrency",
+              "sidebar": "aboutCardano"
+            },
+            {
+              "id": "about-cardano/new-to-cardano/what-is-a-smart-contract",
+              "path": "/about-cardano/new-to-cardano/what-is-a-smart-contract",
+              "sidebar": "aboutCardano"
             },
             {
               "id": "cardano-testnets/environments",
               "path": "/cardano-testnets/environments",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "cardanoTestnets"
             },
             {
               "id": "cardano-testnets/getting-started",
               "path": "/cardano-testnets/getting-started",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "cardano-testnets/index",
-              "path": "/cardano-testnets/",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "cardanoTestnets"
             },
             {
               "id": "cardano-testnets/local-testnet",
               "path": "/cardano-testnets/local-testnet",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "cardanoTestnets"
             },
             {
               "id": "cardano-testnets/resources",
               "path": "/cardano-testnets/resources",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "cardanoTestnets"
             },
             {
               "id": "cardano-testnets/support-feedback",
               "path": "/cardano-testnets/support-feedback",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "cardanoTestnets"
+            },
+            {
+              "id": "cardano-testnets/tools/daedalus-testnet",
+              "path": "/cardano-testnets/tools/daedalus-testnet",
+              "sidebar": "cardanoTestnets"
             },
             {
               "id": "cardano-testnets/tools/faucet",
               "path": "/cardano-testnets/tools/faucet",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "cardanoTestnets"
             },
             {
               "id": "cardano-testnets/tools/plutus-fee-estimator",
               "path": "/cardano-testnets/tools/plutus-fee-estimator",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "cardanoTestnets"
             },
             {
-              "id": "cardano-testnets/tools/staking-calculator",
-              "path": "/cardano-testnets/tools/staking-calculator",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/cardano-node-course",
+              "path": "/developer-resources/cardano-node-course",
+              "sidebar": "developerResources"
             },
             {
-              "id": "community/ambassador-program",
-              "path": "/community/ambassador-program",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/native-tokens",
+              "path": "/developer-resources/native-tokens",
+              "sidebar": "developerResources"
             },
             {
-              "id": "community/Cardano-stack-exchange",
-              "path": "/community/Cardano-stack-exchange",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/release-notes/comp-matrix",
+              "path": "/developer-resources/release-notes/comp-matrix",
+              "sidebar": "developerResources"
             },
             {
-              "id": "community/cips",
-              "path": "/community/cips",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/release-notes/release-notes",
+              "path": "/developer-resources/release-notes/release-notes",
+              "sidebar": "developerResources"
             },
             {
-              "id": "community/community-content",
-              "path": "/community/community-content",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/scalability-solutions/hydra",
+              "path": "/developer-resources/scalability-solutions/hydra",
+              "sidebar": "developerResources"
             },
             {
-              "id": "community/essential-cardano",
-              "path": "/community/essential-cardano",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/scalability-solutions/mithril",
+              "path": "/developer-resources/scalability-solutions/mithril",
+              "sidebar": "developerResources"
             },
             {
-              "id": "community/getting-support",
-              "path": "/community/getting-support",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/smart-contracts/aiken",
+              "path": "/developer-resources/smart-contracts/aiken",
+              "sidebar": "developerResources"
             },
             {
-              "id": "development-guidelines/cardano-node-course",
-              "path": "/development-guidelines/cardano-node-course",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/smart-contracts/marlowe",
+              "path": "/developer-resources/smart-contracts/marlowe",
+              "sidebar": "developerResources"
             },
             {
-              "id": "development-guidelines/index",
-              "path": "/development-guidelines/",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/smart-contracts/plutus",
+              "path": "/developer-resources/smart-contracts/plutus",
+              "sidebar": "developerResources"
             },
             {
-              "id": "development-guidelines/native-tokens",
-              "path": "/development-guidelines/native-tokens",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/transaction-tutorials/index",
+              "path": "/developer-resources/transaction-tutorials/",
+              "sidebar": "developerResources"
             },
             {
-              "id": "development-guidelines/scalability/hydra",
-              "path": "/development-guidelines/scalability/hydra",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/transaction-tutorials/minting-transaction",
+              "path": "/developer-resources/transaction-tutorials/minting-transaction",
+              "sidebar": "developerResources"
             },
             {
-              "id": "development-guidelines/scalability/mithril",
-              "path": "/development-guidelines/scalability/mithril",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/transaction-tutorials/multiple-purposes",
+              "path": "/developer-resources/transaction-tutorials/multiple-purposes",
+              "sidebar": "developerResources"
             },
             {
-              "id": "development-guidelines/smart-contracts/aiken",
-              "path": "/development-guidelines/smart-contracts/aiken",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/transaction-tutorials/redelegate-transaction",
+              "path": "/developer-resources/transaction-tutorials/redelegate-transaction",
+              "sidebar": "developerResources"
             },
             {
-              "id": "development-guidelines/smart-contracts/marlowe",
-              "path": "/development-guidelines/smart-contracts/marlowe",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/transaction-tutorials/stake-transaction",
+              "path": "/developer-resources/transaction-tutorials/stake-transaction",
+              "sidebar": "developerResources"
             },
             {
-              "id": "development-guidelines/smart-contracts/plutus",
-              "path": "/development-guidelines/smart-contracts/plutus",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/transaction-tutorials/withdraw-transaction",
+              "path": "/developer-resources/transaction-tutorials/withdraw-transaction",
+              "sidebar": "developerResources"
             },
             {
-              "id": "development-guidelines/transaction-tutorials/index",
-              "path": "/development-guidelines/transaction-tutorials/",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "development-guidelines/transaction-tutorials/minting-transaction",
-              "path": "/development-guidelines/transaction-tutorials/minting-transaction",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "development-guidelines/transaction-tutorials/multiple-purposes",
-              "path": "/development-guidelines/transaction-tutorials/multiple-purposes",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "development-guidelines/transaction-tutorials/redelegate-transaction",
-              "path": "/development-guidelines/transaction-tutorials/redelegate-transaction",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "development-guidelines/transaction-tutorials/stake-transaction",
-              "path": "/development-guidelines/transaction-tutorials/stake-transaction",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "development-guidelines/transaction-tutorials/withdraw-transaction",
-              "path": "/development-guidelines/transaction-tutorials/withdraw-transaction",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "evolution/about-hard-forks",
-              "path": "/evolution/about-hard-forks",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "evolution/cardano-design-rationale",
-              "path": "/evolution/cardano-design-rationale",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "evolution/eras-and-phases",
-              "path": "/evolution/eras-and-phases",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "evolution/upgrades/allegra",
-              "path": "/evolution/upgrades/allegra",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "evolution/upgrades/alonzo",
-              "path": "/evolution/upgrades/alonzo",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "evolution/upgrades/byron-to-shelley",
-              "path": "/evolution/upgrades/byron-to-shelley",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "evolution/upgrades/mary",
-              "path": "/evolution/upgrades/mary",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "evolution/upgrades/valentine",
-              "path": "/evolution/upgrades/valentine",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "evolution/upgrades/vasil",
-              "path": "/evolution/upgrades/vasil",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "explore-cardano/cardano-architecture",
-              "path": "/explore-cardano/cardano-architecture",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "explore-cardano/cardano-network/index",
-              "path": "/explore-cardano/cardano-network/",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "explore-cardano/cardano-network/networking-protocol",
-              "path": "/explore-cardano/cardano-network/networking-protocol",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "explore-cardano/cardano-network/p2p-networking",
-              "path": "/explore-cardano/cardano-network/p2p-networking",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "explore-cardano/concurrency",
-              "path": "/explore-cardano/concurrency",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "explore-cardano/fee-structure",
-              "path": "/explore-cardano/fee-structure",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "explore-cardano/monetary-policy",
-              "path": "/explore-cardano/monetary-policy",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "explore-cardano/parameter-guide",
-              "path": "/explore-cardano/parameter-guide",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "explore-cardano/relevant-research-papers",
-              "path": "/explore-cardano/relevant-research-papers",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "explore-cardano/time",
-              "path": "/explore-cardano/time",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "introduction",
-              "path": "/introduction",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "learn/cardano-addresses",
-              "path": "/learn/cardano-addresses",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "learn/cardano-keys",
-              "path": "/learn/cardano-keys",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "learn/cardano-node",
-              "path": "/learn/cardano-node",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "learn/chain-confirmation-versus-transaction-confirmation",
-              "path": "/learn/chain-confirmation-versus-transaction-confirmation",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "learn/collateral-mechanism",
-              "path": "/learn/collateral-mechanism",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "learn/consensus-explained",
-              "path": "/learn/consensus-explained",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "learn/delegation",
-              "path": "/learn/delegation",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "learn/eutxo-explainer",
-              "path": "/learn/eutxo-explainer",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "learn/ouroboros-overview",
-              "path": "/learn/ouroboros-overview",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "learn/pledging-rewards",
-              "path": "/learn/pledging-rewards",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "learn/stake-pools",
-              "path": "/learn/stake-pools",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "learn/transaction-costs-determinism",
-              "path": "/learn/transaction-costs-determinism",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "new-to-cardano/cardano-tracking-tools",
-              "path": "/new-to-cardano/cardano-tracking-tools",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "new-to-cardano/how-to-delegate",
-              "path": "/new-to-cardano/how-to-delegate",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "new-to-cardano/index",
-              "path": "/new-to-cardano/",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "new-to-cardano/proof-of-stake",
-              "path": "/new-to-cardano/proof-of-stake",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "new-to-cardano/types-of-wallets",
-              "path": "/new-to-cardano/types-of-wallets",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "new-to-cardano/what-is-a-blockchain",
-              "path": "/new-to-cardano/what-is-a-blockchain",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "new-to-cardano/what-is-a-cryptocurrency",
-              "path": "/new-to-cardano/what-is-a-cryptocurrency",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "new-to-cardano/what-is-a-smart-contract",
-              "path": "/new-to-cardano/what-is-a-smart-contract",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "operating-a-stake-pool/about-stake-pools",
-              "path": "/operating-a-stake-pool/about-stake-pools",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "operating-a-stake-pool/creating-a-stake-pool",
-              "path": "/operating-a-stake-pool/creating-a-stake-pool",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "operating-a-stake-pool/creating-keys-and-certificates",
-              "path": "/operating-a-stake-pool/creating-keys-and-certificates",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "operating-a-stake-pool/guidelines-for-large-spos",
-              "path": "/operating-a-stake-pool/guidelines-for-large-spos",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "operating-a-stake-pool/node-connectivity",
-              "path": "/operating-a-stake-pool/node-connectivity",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "operating-a-stake-pool/performance",
-              "path": "/operating-a-stake-pool/performance",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "operating-a-stake-pool/public-stake-pools",
-              "path": "/operating-a-stake-pool/public-stake-pools",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "operating-a-stake-pool/ranking",
-              "path": "/operating-a-stake-pool/ranking",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "operating-a-stake-pool/SMASH",
-              "path": "/operating-a-stake-pool/SMASH",
-              "sidebar": "tutorialSidebar"
-            },
-            {
-              "id": "operating-a-stake-pool/stake-pool-operations-101",
-              "path": "/operating-a-stake-pool/stake-pool-operations-101",
-              "sidebar": "tutorialSidebar"
+              "id": "developer-resources/welcome",
+              "path": "/developer-resources/welcome",
+              "sidebar": "developerResources"
             },
             {
               "id": "pioneer-programs/plutus-pioneers",
               "path": "/pioneer-programs/plutus-pioneers",
-              "sidebar": "tutorialSidebar"
+              "sidebar": "pioneerPrograms"
             },
             {
-              "id": "release-notes/comp-matrix",
-              "path": "/release-notes/comp-matrix",
-              "sidebar": "tutorialSidebar"
+              "id": "stake-pool-operators/about-stake-pools",
+              "path": "/stake-pool-operators/about-stake-pools",
+              "sidebar": "stakePoolOperators"
             },
             {
-              "id": "release-notes/release-notes",
-              "path": "/release-notes/release-notes",
-              "sidebar": "tutorialSidebar"
+              "id": "stake-pool-operators/creating-keys-and-certificates",
+              "path": "/stake-pool-operators/creating-keys-and-certificates",
+              "sidebar": "stakePoolOperators"
+            },
+            {
+              "id": "stake-pool-operators/guidelines-for-large-spos",
+              "path": "/stake-pool-operators/guidelines-for-large-spos",
+              "sidebar": "stakePoolOperators"
+            },
+            {
+              "id": "stake-pool-operators/maintenance",
+              "path": "/stake-pool-operators/maintenance",
+              "sidebar": "stakePoolOperators"
+            },
+            {
+              "id": "stake-pool-operators/metadata-management",
+              "path": "/stake-pool-operators/metadata-management",
+              "sidebar": "stakePoolOperators"
+            },
+            {
+              "id": "stake-pool-operators/monitoring",
+              "path": "/stake-pool-operators/monitoring",
+              "sidebar": "stakePoolOperators"
+            },
+            {
+              "id": "stake-pool-operators/node-connectivity",
+              "path": "/stake-pool-operators/node-connectivity",
+              "sidebar": "stakePoolOperators"
+            },
+            {
+              "id": "stake-pool-operators/operating-a-stake-pool",
+              "path": "/stake-pool-operators/operating-a-stake-pool",
+              "sidebar": "stakePoolOperators"
+            },
+            {
+              "id": "stake-pool-operators/performance",
+              "path": "/stake-pool-operators/performance",
+              "sidebar": "stakePoolOperators"
+            },
+            {
+              "id": "stake-pool-operators/ranking",
+              "path": "/stake-pool-operators/ranking",
+              "sidebar": "stakePoolOperators"
             }
           ],
           "draftIds": [],
           "sidebars": {
-            "tutorialSidebar": {
+            "aboutCardano": {
               "link": {
-                "path": "/introduction",
-                "label": "introduction"
+                "path": "/about-cardano/introduction",
+                "label": "about-cardano/introduction"
+              }
+            },
+            "developerResources": {
+              "link": {
+                "path": "/developer-resources/welcome",
+                "label": "developer-resources/welcome"
+              }
+            },
+            "stakePoolOperators": {
+              "link": {
+                "path": "/stake-pool-operators/operating-a-stake-pool",
+                "label": "stake-pool-operators/operating-a-stake-pool"
+              }
+            },
+            "cardanoTestnets": {
+              "link": {
+                "path": "/cardano-testnets/environments",
+                "label": "cardano-testnets/environments"
+              }
+            },
+            "pioneerPrograms": {
+              "link": {
+                "path": "/pioneer-programs/plutus-pioneers",
+                "label": "pioneer-programs/plutus-pioneers"
               }
             }
           }

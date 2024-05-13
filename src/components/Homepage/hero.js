@@ -43,6 +43,7 @@ const StyledHero = styled.div`
       background-size: 62%;
     }
     @media (max-width: 959px) {
+      padding: 4rem 0 2rem 0;
       &:before {
         content: none;
       }
@@ -102,7 +103,18 @@ const StyledHero = styled.div`
   }
 `
 
-const Hero = ({ heading, subHeading, lead, text, label }) => {
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  @media (max-width: 899px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`
+
+const Hero = ({ heading, subHeading, lead, text, label1, label2 }) => {
   return (
     <StyledHero>
       <Breakout className="breakout" bgHiLight>
@@ -114,9 +126,14 @@ const Hero = ({ heading, subHeading, lead, text, label }) => {
             </div>
             <p className="lead">{lead}</p>
             <p>{text}</p>
-            <Link to="/introduction">
-              <Button btn="primary">{label}</Button>
-            </Link>
+            <ButtonContainer>
+              <Link to="/about-cardano/introduction">
+                <Button btn="hero">{label1}</Button>
+              </Link>
+              <Link to="/developer-resources/welcome">
+                <Button btn="hero">{label2}</Button>
+              </Link>
+            </ButtonContainer>
           </div>
         </div>
       </Breakout>

@@ -135,7 +135,7 @@ body {
   font-weight: bold;
 }
 
-.cardano-ecosystems-external-link {
+.external-link-with-separator {
   border-top: 0.01rem solid;
   padding-top: 0.5rem;
 }
@@ -187,12 +187,49 @@ body {
   display: none;
 }
 
-.container {
-  padding-left: 3rem;
-}
-
 .footer--dark {
   --ifm-footer-background-color: rgb(29, 30, 33);
+}
+
+.navbar__link {
+  font-size: 13.8px;
+  color: #fff !important;
+  font-family: 'Chivo', Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+.dropdown__menu {
+  background-color: #fff;
+}
+
+.aa-DetachedSearchButtonPlaceholder {
+  display: none;
+}
+
+.aa-DetachedSearchButtonQuery {
+  display: none;
+}
+
+.aa-DetachedSearchButton {
+  border-radius: 20px !important;
+  padding: 0 !important;
+  background-color: #fff !important;
+}
+
+.aa-DetachedSearchButtonIcon {
+  color: rgba(62, 52, 211) !important;
+}
+
+@media (min-width: 999px) {
+  .container {
+    padding-left: 3rem;
+  }
+}
+
+@media (max-width: 1230px) {
+  .navbar__link {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 1150px) {
@@ -211,6 +248,30 @@ body {
   }
   .footer {
     padding: 3rem 1.5rem;
+  }
+  .navbar__link {
+    font-size: 8.9px;
+  }
+}
+
+@media (max-width: 999px) {
+  .navbar-sidebar__item {
+    color: #fff !important;
+  }
+
+  .navbar__items {
+    color: #fff !important;
+  }
+
+  .menu__link {
+    color: #fff !important;
+  }
+
+  .menu__link--sublist-caret:after {
+    color: #fff !important;
+  }
+  h1 {
+    font-size: 2.8rem;
   }
 }
 

@@ -1,0 +1,53 @@
+---
+title: About stake pools, operators, and owners
+metaTitle: About stake pools, operators, and owners
+---
+
+A [stake pool](/about-cardano/learn/stake-pools) is a reliable server node that
+represents the combined stake of various stakeholders in a single entity. Stake
+pools use the [Cardano node](https://docs.cardano.org/learn/cardano-node/) to
+form the backbone of the Cardano network by processing transactions and
+validating and producing blocks.
+
+Stake pool roles include a stake pool operator and one or more stake pool
+owner(s). It is important to note the conceptual differences between the two:
+
+- A _stake pool operator_ is the owner of the cold and VRF signing keys used to
+  create the stake pool. The operator configures and maintains stake pool
+  infrastructure and is responsible for monitoring it. The operator can
+  register, re-register, or retire a stake pool, update certificates, and ensure
+  that the block-producing node can sign and validate blocks and process
+  transactions.
+- A _stake pool owner_ is determined by the stake signing keys used in stake
+  pool creation. The owner's
+  [pledge stake](/about-cardano/learn/pledging-rewards) is intended to provide
+  protection against Sybil attacks.
+
+Usually, the stake pool operator and the owner are the same person. However, a
+stake pool can have multiple owners that choose to combine their pledge. It
+should be noted that the stake pool's declared pledge must be met by the
+combined stake in the owner's wallets and failure to do so will result in the
+pool being unable to produce blocks.
+
+All operator and owner rewards are paid out into a single rewards account
+associated with the reward address of the pool. If a stake pool has multiple
+owners, it is up to the owner of the rewards account to distribute rewards to
+the operator and other owners.
+
+An agreement is likely needed to define when and how the accumulated rewards in
+a shared account should be split. For example, they can agree to have the
+operator control the shared account, or they can choose to use a multisig
+account.
+
+To run a pool effectively, a bi-directional relationship and trust are crucial.
+If this trust is broken, other parties can lose in regards to accumulated or
+potential rewards, or reputation for the operator.
+
+:::info
+
+Developer resources:
+
+- [Stake pool operations overview](https://developers.cardano.org/docs/operate-a-stake-pool/)
+- [Cardano course: creating a stake pool](https://cardano-course.gitbook.io/cardano-course/handbook/create-a-stake-pool)
+
+:::
