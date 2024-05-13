@@ -114,7 +114,6 @@ const Tile: React.FC<Props> = ({
   boxedTile,
   btn,
 }) => {
-  console.log(Icon)
   return (
     <StyledTile
       className={`tile`}

@@ -192,7 +192,7 @@ body {
 }
 
 .navbar__link {
-  font-size: 14px;
+  font-size: 13.8px;
   color: #fff !important;
   font-family: 'Chivo', Helvetica, Arial, sans-serif;
   overflow: hidden;
@@ -226,16 +226,9 @@ body {
   }
 }
 
-@media (max-width: 1445px) {
-  .navbar__link {
-    max-width: 120px;
-  }
-}
-
-@media (max-width: 1380px) {
+@media (max-width: 1230px) {
   .navbar__link {
     font-size: 12px;
-    max-width: 100px;
   }
 }
 
@@ -257,8 +250,7 @@ body {
     padding: 3rem 1.5rem;
   }
   .navbar__link {
-    font-size: 10.5px;
-    max-width: 81px;
+    font-size: 8.9px;
   }
 }
 
