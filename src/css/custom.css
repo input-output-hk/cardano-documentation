@@ -187,10 +187,6 @@ body {
   display: none;
 }
 
-.container {
-  padding-left: 3rem;
-}
-
 .footer--dark {
   --ifm-footer-background-color: rgb(29, 30, 33);
 }
@@ -222,6 +218,12 @@ body {
 
 .aa-DetachedSearchButtonIcon {
   color: rgba(62, 52, 211) !important;
+}
+
+@media (min-width: 999px) {
+  .container {
+    padding-left: 3rem;
+  }
 }
 
 @media (max-width: 1445px) {
@@ -275,6 +277,9 @@ body {
 
   .menu__link--sublist-caret:after {
     color: #fff !important;
+  }
+  h1 {
+    font-size: 2.8rem;
   }
 }
 

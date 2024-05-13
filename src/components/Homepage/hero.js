@@ -43,6 +43,7 @@ const StyledHero = styled.div`
       background-size: 62%;
     }
     @media (max-width: 959px) {
+      padding: 4rem 0 2rem 0;
       &:before {
         content: none;
       }

@@ -30,6 +30,7 @@ const StyledTile = styled.div<{ bannerTile; boxedTile }>`
   p {
     position: relative;
     overflow: hidden;
+    margin-bottom: 0;
   }
   p.heightAuto {
     height: auto;
