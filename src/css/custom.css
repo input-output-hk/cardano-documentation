@@ -192,10 +192,12 @@ body {
 }
 
 .navbar__link {
-  font-size: 13.8px;
+  font-size: 14px;
   color: #fff !important;
   font-family: 'Chivo', Helvetica, Arial, sans-serif;
+  font-weight: 600;
   overflow: hidden;
+  padding: var(--ifm-navbar-item-padding-vertical) 0.57rem !important;
 }
 
 .dropdown__menu {

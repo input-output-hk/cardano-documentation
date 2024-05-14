@@ -11,8 +11,8 @@ import Markdown from '@input-output-hk/front-end-core-components/components/Mark
 import { FaDownload, FaCogs } from 'react-icons/fa'
 import { MdClose } from 'react-icons/md'
 
-import testnetsTheme from '../components/utils/testnetsTheme'
-import content from '../components/utils/testnetsContent'
+import testnetsTheme from './utils/testnetsTheme'
+import content from './utils/testnetsContent'
 
 const LoadingContainer = styled.div`
   position: relative;
@@ -190,7 +190,7 @@ const WalletDownloaders = ({ env }) => {
     try {
       setLoading(true)
 
-      const result = await fetch(envs[env].endpoint, { mode: 'no-cors' })
+      const result = await fetch(envs[env].endpoint)
 
       const jsonResult = await result.json()
       if (!validateData(jsonResult)) throw new Error('Invalid data')
