@@ -2,7 +2,6 @@ import { themes as prismThemes } from 'prism-react-renderer'
 import type { Config } from '@docusaurus/types'
 import type * as Preset from '@docusaurus/preset-classic'
 import { redirects } from './redirects'
-import GithubLogo from './src/components/images/github-logo.svg'
 
 const editUrl =
   'https://github.com/input-output-hk/cardano-documentation/blob/master/'

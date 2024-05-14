@@ -48,7 +48,7 @@ export const redirects = [
     from: '/development-guidelines/use-cli/',
   },
   {
-    to: '/developer-resources/welcome',
+    to: '/developer-resources/transaction-tutorials/',
     from: '/development-guidelines/transaction-tutorials/introduction/',
   },
   {
@@ -493,5 +493,33 @@ export const redirects = [
   {
     to: '/developer-resources/release-notes/release-notes',
     from: '/tools/release-notes/',
+  },
+  {
+    to: '/',
+    from: '/en/latest/',
+  },
+  {
+    to: '/developer-resources/transaction-tutorials/',
+    from: '/development-guidelines/transaction-tutorials/minting-transaction/',
+  },
+  {
+    to: '/developer-resources/transaction-tutorials/',
+    from: '/transaction-tutorials/stake-transaction/',
+  },
+  {
+    to: '/developer-resources/transaction-tutorials/',
+    from: '/development-guidelines/transaction-tutorials/withdraw-transaction/',
+  },
+  {
+    to: '/developer-resources/transaction-tutorials/',
+    from: '/transaction-tutorials/redelegate-transaction/',
+  },
+  {
+    to: '/developer-resources/transaction-tutorials/',
+    from: '/development-guidelines/transaction-tutorials/multiple-purposes/',
+  },
+  {
+    to: 'https://cardano.stackexchange.com/',
+    from: '/community/cardano-stack-exchange/',
   },
 ]
