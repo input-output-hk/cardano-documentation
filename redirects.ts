@@ -522,4 +522,12 @@ export const redirects = [
     to: 'https://cardano.stackexchange.com/',
     from: '/community/cardano-stack-exchange/',
   },
+  {
+    to: '/developer-resources/transaction-tutorials/',
+    from: '/development-guidelines/transaction-tutorials/stake-transaction/',
+  },
+  {
+    to: '/developer-resources/transaction-tutorials/',
+    from: '/development-guidelines/transaction-tutorials/redelegate-transaction/',
+  },
 ]
