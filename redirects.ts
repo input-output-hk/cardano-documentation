@@ -530,4 +530,8 @@ export const redirects = [
     to: '/developer-resources/transaction-tutorials/',
     from: '/development-guidelines/transaction-tutorials/redelegate-transaction/',
   },
+  {
+    to: '/developer-resources/release-notes/comp-matrix',
+    from: '/release-notes/comp-matrix',
+  },
 ]
