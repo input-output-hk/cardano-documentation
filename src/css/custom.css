@@ -297,3 +297,19 @@ body {
     padding: 3rem 1.5rem;
   }
 }
+
+/* Position the "Edit this page" button at the top of the document */
+@media (min-width: 650px) {
+  .container article {
+    position: relative;
+  }
+  .breadcrumbs {
+    padding-top: 0.5rem;
+    padding-right: 8.75rem;
+  }
+  .theme-edit-this-page {
+    position: absolute;
+    top: 0.625rem;
+    right: 0;
+  }
+}
