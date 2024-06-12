@@ -426,10 +426,7 @@ export const redirects = [
     to: '/about-cardano/new-to-cardano/staking-calculator',
     from: '/cardano-testnet/tools/staking-calculator/',
   },
-  {
-    to: '/cardano-testnets/tools/plutus-fee-estimator',
-    from: '/cardano-testnet/tools/plutus-fee-estimator/',
-  },
+
   {
     to: '/stake-pool-operators/monitoring',
     from: '/development-guidelines/node-monitoring/',
