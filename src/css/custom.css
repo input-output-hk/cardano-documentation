@@ -304,12 +304,18 @@ body {
     position: relative;
   }
   .breadcrumbs {
-    padding-top: 0.5rem;
+    margin-top: 0.5rem;
     padding-right: 8.75rem;
   }
   .theme-edit-this-page {
     position: absolute;
-    top: 0.625rem;
+    top: 0.3125rem;
     right: 0;
+
+    font-size: 0.8rem;
+  }
+  .theme-edit-this-page svg {
+    width: 16px;
+    height: 16px;
   }
 }
