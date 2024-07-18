@@ -319,3 +319,13 @@ body {
     height: 16px;
   }
 }
+
+/* Footer License Details */
+.copyright-license a {
+  color: white;
+  font-weight: bold;
+}
+.copyright-license img {
+  height: 18px;
+  margin: -1px 0 -3px 0.4rem;
+}
