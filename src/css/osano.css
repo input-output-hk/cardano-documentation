@@ -352,3 +352,45 @@
   color: var(--osano-close-color); /* 1 */
   stroke: var(--osano-close-color); /* 1 */
 }
+
+.osano-cm-disclosure--collapse {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.osano-cm-disclosure {
+  margin: 0;
+  padding: 0;
+}
+.osano-cm-toggle {
+  padding-top: 1.5em;
+}
+label[for='osano-cm-drawer-toggle--category_MARKETING'] {
+  display: none;
+}
+p[id='osano-cm-drawer-toggle--category_MARKETING--description'] {
+  display: none;
+}
+div[aria-controls='osano-cm-MARKETING_disclosures'] {
+  display: none;
+}
+ul[id='osano-cm-MARKETING_disclosures'] {
+  display: none;
+}
+label[for='osano-cm-dialog-toggle--category_MARKETING'] {
+  display: none;
+}
+label[for='osano-cm-drawer-toggle--category_PERSONALIZATION'] {
+  display: none;
+}
+p[id='osano-cm-drawer-toggle--category_PERSONALIZATION--description'] {
+  display: none;
+}
+div[aria-controls='osano-cm-PERSONALIZATION_disclosures'] {
+  display: none;
+}
+ul[id='osano-cm-PERSONALIZATION_disclosures'] {
+  display: none;
+}
+label[for='osano-cm-dialog-toggle--category_PERSONALIZATION'] {
+  display: none;
+}
