@@ -34,6 +34,20 @@ const config: Config = {
     locales: ['en'],
   },
 
+  customFields: {
+    posthogApiKey: 'phc_GB82t5tMT4EVKUpOCPTOuhezu3trmJUCGtSnFHB3fK3',
+    posthogApiHost: 'https://eu.posthog.com',
+    posthogProjectId: 11673,
+  },
+
+  scripts: [
+    {
+      // GDPR
+      src: 'https://cmp.osano.com/AzZXI3TYiFWNB5yus/b2ba081d-c77c-4db8-bbf7-46c47e1d7f80/osano.js',
+      async: false,
+    },
+  ],
+
   plugins: [
     [
       '@cmfcmf/docusaurus-search-local',
@@ -69,7 +83,10 @@ const config: Config = {
           routeBasePath: '/',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('./src/css/osano.css'),
+          ],
         },
       } satisfies Preset.Options,
     ],
