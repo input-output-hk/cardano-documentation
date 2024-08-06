@@ -34,6 +34,20 @@ const config: Config = {
     locales: ['en'],
   },
 
+  customFields: {
+    posthogApiKey: 'phc_GB82t5tMT4EVKUpOCPTOuhezu3trmJUCGtSnFHB3fK3',
+    posthogApiHost: 'https://eu.posthog.com',
+    posthogProjectId: 11673,
+  },
+
+  scripts: [
+    {
+      // GDPR
+      src: 'https://cmp.osano.com/AzZXI3TYiFWNB5yus/b2ba081d-c77c-4db8-bbf7-46c47e1d7f80/osano.js',
+      async: false,
+    },
+  ],
+
   plugins: [
     [
       '@cmfcmf/docusaurus-search-local',
@@ -69,7 +83,10 @@ const config: Config = {
           routeBasePath: '/',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('./src/css/osano.css'),
+          ],
         },
       } satisfies Preset.Options,
     ],
@@ -253,13 +270,15 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Cardano is an open-source project.
+      copyright: `<p>Cardano is an open-source project.
 
       Cardano is a software platform ONLY and does not conduct any independent diligence on, or substantive review of, any blockchain asset, digital currency, cryptocurrency or associated funds. You are fully and solely responsible for evaluating your investments, for determining whether you will exchange blockchain assets based on your own judgement, and for all your decisions as to whether to exchange blockchain assets with Cardano. In many cases, blockchain assets you exchange on the basis of your research may not increase in value, and may decrease in value. Similarly, blockchain assets you exchange on the basis of your research may fall or rise in value after your exchange.
 
-      Past performance is not indicative of future results. Any investment in blockchain assets involves the risk of loss of part or all of your investment. The value of the blockchain assets you exchange is subject to market and other investment risks.
+      Past performance is not indicative of future results. Any investment in blockchain assets involves the risk of loss of part or all of your investment. The value of the blockchain assets you exchange is subject to market and other investment risks.</p>
 
-      © IOHK 2015-${new Date().getFullYear()} - IOHK Supported Project`,
+      <p class="copyright-license">This work is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">CC BY 4.0<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p>
+      
+      <p>© IOHK 2015-${new Date().getFullYear()} - IOHK Supported Project</p>`,
     },
     prism: {
       theme: prismThemes.github,
