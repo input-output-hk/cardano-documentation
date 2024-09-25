@@ -3,11 +3,11 @@ title: Chang
 metaTitle: Chang - on-chain participatory governance
 ---
 
-The Chang upgrade will usher in the Conway ledger era, a deeply transformative advancement for Cardano's governance, where any ada holder can submit or participate in the voting process for governance actions.
+The Chang upgrade ushered in the Conway ledger era, a deeply transformative advancement for Cardano's governance, where any ada holder can submit or participate in the voting process for governance actions. The upgrade is happening in two stages, Chang #1 and Chang #2.
 
 Conway, named after the eminent mathematician [John Horton Conway](https://en.wikipedia.org/wiki/John_Horton_Conway), builds upon previous phases, emphasizing decentralized decision-making and enhanced smart contract functionalities.
 
-## What will Chang enable?
+## What is Chang enabling?
 
 :::info
 
@@ -15,9 +15,9 @@ Learn more about Cardano governance and related terminology in [CIP-1694](https:
 
 :::
 
-Chang will enable on-chain participatory governance through the implementation of mechanisms outlined in CIP-1694. This upgrade will ensure transparency, inclusivity, and resilience of governance within the Cardano ecosystem. The Conway era is based on liquid democracy, which enables individual empowerment through democratic consent by leveraging a voting process with the option of direct and representative voting. Ada holders can vote individually on every governance matter, or delegate their voting power to [delegate representatives (DReps)](https://iohk.io/en/blog/posts/2022/04/11/introducing-the-concept-of-delegate-representatives-dreps/) they trust in decision making. DReps consolidate the voting influence of numerous ada holders, ensuring that each participant can contribute to the future of Cardano’s development.
+Chang enabled on-chain participatory governance through the implementation of mechanisms outlined in CIP-1694. This upgrade will ensure transparency, inclusivity, and resilience of governance within the Cardano ecosystem. The Conway era is based on liquid democracy, which enables individual empowerment through democratic consent by leveraging a voting process with the option of direct and representative voting. Ada holders can vote individually on every governance matter, or delegate their voting power to [delegate representatives (DReps)](https://iohk.io/en/blog/posts/2022/04/11/introducing-the-concept-of-delegate-representatives-dreps/) they trust in decision making. DReps consolidate the voting influence of numerous ada holders, ensuring that each participant can contribute to the future of Cardano’s development.
 
-With the introduction of [PlutusV3](https://iohk.io/en/blog/posts/2024/02/12/unlocking-more-opportunities-with-plutus-v3/), Plutus scripts will be available for use as part of the governance system, enabling sophisticated voting possibilities like supporting DAOs, for example. Chang also brings advanced Plutus cryptographic primitives, other new primitives, and performance enhancements to the platform. These additions provide developers with a richer smart contract creation toolkit, enhancing both developer and user experiences, and unlocking new possibilities for decentralized applications (DApps) on Cardano.
+With the introduction of [PlutusV3](https://iohk.io/en/blog/posts/2024/02/12/unlocking-more-opportunities-with-plutus-v3/), Plutus scripts are available for use as part of the governance system, enabling sophisticated voting possibilities like supporting DAOs, for example. Chang also brings advanced Plutus cryptographic primitives, other new primitives, and performance enhancements to the platform. These additions provide developers with a richer smart contract creation toolkit, enhancing both developer and user experiences, and unlocking new possibilities for decentralized applications (DApps) on Cardano.
 
 ### Chang’s key features
 
@@ -36,22 +36,22 @@ With the introduction of [PlutusV3](https://iohk.io/en/blog/posts/2024/02/12/unl
 
 Conway also introduces several new functionalities:
 
-- Reference scripts will be enabled for Plutus V1 scripts. This will enable legacy scripts to take advantage of reference scripts, reducing DApp costs and increasing on-chain capacity.
+- Reference scripts are enabled for Plutus V1 scripts. This enables legacy scripts to take advantage of reference scripts, reducing DApp costs and increasing on-chain capacity.
 - The `minFeeRefScriptsCoinsPerByte` protocol parameter refines the Plutus cost model and improves fee calculations by allowing separate tuning of the costs for reference scripts.
-- Adjustments to SPO deposits: SPO deposits will be tracked individually, distinguishing between stake address registration deposits and stake pool registration deposits. This distinction has been retroactively applied all the way back to Shelley, facilitated by the static nature of deposits since their introduction.
+- Adjustments to SPO deposits: SPO deposits are tracked individually, distinguishing between stake address registration deposits and stake pool registration deposits. This distinction has been retroactively applied all the way back to Shelley, facilitated by the static nature of deposits since their introduction.
 - General ledger rules improvements.
 
 ## The Chang upgrade in stages
 
-Chang will be gradually implemented in two stages. The first stage will establish foundational governance features, and the second will emphasize community-driven decision-making and governance.
+Chang will be gradually implemented in two stages. The first stage established foundational governance features, and the second will emphasize community-driven decision-making and governance.
 
 **First stage/bootstrapping**
 
-The first stage is scheduled to begin in the summer of 2024. Its purpose is to enable initial governance features and lay the groundwork for Conway-era functionality. During this time, DReps will be able to register and ada holders can delegate their voting power. PlutusV3 will also be introduced, which includes new governance features.
+The first stage was completed in August, 2024. Its purpose is to enable initial governance features and lay the groundwork for Conway-era functionality. During this time, DReps can register and ada holders can delegate their voting power. PlutusV3 was introduced, which included new governance features.
 
-An interim constitution will be established with safeguards supported by a technical guardrails script. An interim constitutional committee will oversee the constitutionality of governance actions during the interim period, prior to ratification of a full constitution. The bootstrap period will be used to form the group of DReps. Limited governance actions will be supported, including parameter changes, hard forks, and 'Info' actions.
+An interim constitution was established with safeguards supported by a technical guardrails script. An interim constitutional committee will oversee the constitutionality of governance actions during the interim period, prior to ratification of a full constitution. The bootstrap period will be used to form the group of DReps. Limited governance actions will be supported, including parameter changes, hard forks, and 'Info' actions.
 
-During the interim period, only SPOs and the interim constitutional committee will be able to vote on governance actions, including possible protocol parameter changes. As an exception, DReps will be able to participate in 'Info' actions at this stage.
+During the interim period, only SPOs and the interim constitutional committee can vote on governance actions, including possible protocol parameter changes. As an exception, DReps will can participate in 'Info' actions at this stage.
 
 The goal of the first stage is to ensure security and continuity during the governance bootstrapping phase, allowing DReps to register and campaign for delegation, while developing and ratifying a final constitution by early 2025.
 
