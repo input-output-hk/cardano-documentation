@@ -1,7 +1,7 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 
-import Hero from '../components/Homepage/hero'
+import Hero from '../components/Homepage/Hero'
 
 import ExploreGrid from '../components/Homepage/Explore/ExploreGrid'
 import SectionHeading from '../components/Homepage/SectionHeading'
