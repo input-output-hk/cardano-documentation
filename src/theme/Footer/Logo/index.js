@@ -6,9 +6,7 @@ import ThemedImage from '@theme/ThemedImage'
 import styles from './styles.module.css'
 import { useLocation } from '@docusaurus/router'
 export function LogoImage({ logo }) {
-  console.log(logo)
   const { withBaseUrl } = useBaseUrlUtils()
-  const location = useLocation()
   const sources = {
     light: withBaseUrl(logo.src),
     dark: withBaseUrl(logo.srcDark ?? logo.src),
@@ -25,6 +23,7 @@ export function LogoImage({ logo }) {
   )
 }
 export default function FooterLogo({ logo }) {
+  const { pathname } = useLocation()
   return logo.href ? (
     <Link
       href={logo.href}
@@ -36,7 +35,7 @@ export default function FooterLogo({ logo }) {
   ) : (
     <LogoImage
       logo={
-        location.pathname === '/'
+        pathname === '/'
           ? logo
           : {
               alt: 'Cardano Logo',

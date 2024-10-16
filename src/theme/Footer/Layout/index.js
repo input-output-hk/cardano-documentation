@@ -4,7 +4,7 @@ import Section from '@site/src/components/Homepage/Section'
 import FooterLinkItem from '../LinkItem'
 import { useLocation } from '@docusaurus/router'
 export default function FooterLayout({ style, links, logo, copyright }) {
-  const location = useLocation()
+  const { pathname } = useLocation()
   return (
     <footer
       className={clsx(
@@ -12,7 +12,7 @@ export default function FooterLayout({ style, links, logo, copyright }) {
         {
           'footer--dark': style === 'dark',
         },
-        location.pathname === '/' ? 'footer-home' : 'footer-default',
+        pathname === '/' ? 'footer-home' : 'footer-default',
       )}
     >
       <Section>

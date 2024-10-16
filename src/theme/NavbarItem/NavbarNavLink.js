@@ -4,8 +4,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 import isInternalUrl from '@docusaurus/isInternalUrl'
 import { isRegexpStringMatch } from '@docusaurus/theme-common'
 import ChevronDown from '@site/src/components/icons/ChevronDown.svg'
-import ArrowRight from '@site/src/components/icons/ArrowRight.svg'
-import styled from '@emotion/styled'
 import IconExternalLink from '../Icon/ExternalLink'
 
 export default function NavbarNavLink({
