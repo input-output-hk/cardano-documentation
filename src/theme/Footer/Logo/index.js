@@ -4,8 +4,11 @@ import Link from '@docusaurus/Link'
 import { useBaseUrlUtils } from '@docusaurus/useBaseUrl'
 import ThemedImage from '@theme/ThemedImage'
 import styles from './styles.module.css'
+import { useLocation } from '@docusaurus/router'
 export function LogoImage({ logo }) {
+  console.log(logo)
   const { withBaseUrl } = useBaseUrlUtils()
+  const location = useLocation()
   const sources = {
     light: withBaseUrl(logo.src),
     dark: withBaseUrl(logo.srcDark ?? logo.src),
@@ -31,6 +34,15 @@ export default function FooterLogo({ logo }) {
       <LogoImage logo={logo} />
     </Link>
   ) : (
-    <LogoImage logo={logo} />
+    <LogoImage
+      logo={
+        location.pathname === '/'
+          ? logo
+          : {
+              alt: 'Cardano Logo',
+              src: 'assets/cardano-logo-blue.svg',
+            }
+      }
+    />
   )
 }

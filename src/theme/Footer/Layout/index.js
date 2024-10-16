@@ -2,12 +2,18 @@ import React from 'react'
 import clsx from 'clsx'
 import Section from '@site/src/components/Homepage/Section'
 import FooterLinkItem from '../LinkItem'
+import { useLocation } from '@docusaurus/router'
 export default function FooterLayout({ style, links, logo, copyright }) {
+  const location = useLocation()
   return (
     <footer
-      className={clsx('footer', {
-        'footer--dark': style === 'dark',
-      })}
+      className={clsx(
+        'footer',
+        {
+          'footer--dark': style === 'dark',
+        },
+        location.pathname === '/' ? 'footer-home' : 'footer-default',
+      )}
     >
       <Section>
         <div className="footer-content">

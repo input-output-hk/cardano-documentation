@@ -6,10 +6,7 @@ import { isRegexpStringMatch } from '@docusaurus/theme-common'
 import ChevronDown from '@site/src/components/icons/ChevronDown.svg'
 import ArrowRight from '@site/src/components/icons/ArrowRight.svg'
 import styled from '@emotion/styled'
-
-const ArrowExternal = styled(ArrowRight)`
-  transform: rotate(-45deg);
-`
+import IconExternalLink from '../Icon/ExternalLink'
 
 export default function NavbarNavLink({
   activeBasePath,
@@ -36,7 +33,7 @@ export default function NavbarNavLink({
         children: (
           <>
             {label}
-            {isExternalLink && <ArrowExternal />}
+            {isExternalLink && <IconExternalLink />}
             {isDropdown && <ChevronDown />}
           </>
         ),
