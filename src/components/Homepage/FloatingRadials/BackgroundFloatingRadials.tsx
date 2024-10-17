@@ -75,7 +75,7 @@ const floating2 = keyframes`
   `
 
 const TabletUpFloatingRadial = styled(FloatingRadial)`
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: none;
   }
 `

@@ -28,8 +28,18 @@ const StyledEntry = styled(motion.div)`
   }
 `
 
+const BrandText = styled.span`
+  color: #fff;
+  font-family: 'Inter';
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+`
+
 type Props = {
-  imgSrc: string
+  imgSrc?: string
+  text?: string
   color?: string
   theme?: string
   url: string
@@ -38,6 +48,7 @@ type Props = {
 
 export const GridSectionEntry: React.FC<Props> = ({
   imgSrc,
+  text,
   color,
   theme,
   url,
@@ -56,7 +67,8 @@ export const GridSectionEntry: React.FC<Props> = ({
         hidden: { opacity: 0, y: 100 },
       }}
     >
-      <img src={useBaseUrl(imgSrc)} />
+      {imgSrc && <img src={useBaseUrl(imgSrc)} />}
+      {text && <BrandText>{text}</BrandText>}
     </StyledEntry>
   </Link>
 )

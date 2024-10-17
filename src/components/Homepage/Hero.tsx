@@ -23,7 +23,7 @@ const StyledHero = styled.div`
   }
 
   .site-hero {
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       margin: 9.625rem -0.5rem -3.75rem -0.5rem;
     }
     .heading-msg {
@@ -31,7 +31,7 @@ const StyledHero = styled.div`
       text-align: left;
       color: #fff;
 
-      @media (max-width: 768px) {
+      @media (max-width: 767px) {
         width: 100%;
       }
       h1 {
@@ -39,12 +39,14 @@ const StyledHero = styled.div`
         font-size: 2.25rem;
         font-weight: 600;
         line-height: normal;
+        z-index: 1;
       }
       h2 {
         font-size: 1rem;
         line-height: 1.5rem;
         font-weight: 400;
         margin-bottom: 1rem;
+        z-index: 1;
       }
       p {
         font-weight: 400;
@@ -52,7 +54,7 @@ const StyledHero = styled.div`
         line-height: 1.4;
         margin-bottom: 2.5rem;
 
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
           margin-bottom: 0;
         }
       }
@@ -74,16 +76,17 @@ const RiveContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: auto 0;
-  right: -500px;
+  right: -300px;
   top: 0;
 
   @media (max-width: 1024px) {
-    right: -300px;
+    top: 0px;
+    right: -200px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     top: -100px;
-    right: -45%;
+    right: -25%;
   }
 `
 

@@ -32,7 +32,7 @@ const StyledTile = styled(motion.div)<{ bannerTile; boxedTile }>`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     max-width: 289px;
     height: 390px;
   }
@@ -49,7 +49,7 @@ const StyledTile = styled(motion.div)<{ bannerTile; boxedTile }>`
     padding-top: 1.75rem;
     margin-top: auto;
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       justify-self: flex-end;
     }
   }
@@ -129,7 +129,7 @@ const IconWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     min-height: 75px;
   }
 `
@@ -157,7 +157,6 @@ const Tile: React.FC<Props> = ({
   btn,
   index,
 }) => {
-  const isTabletUp = useMediaQuery('(min-width: 768px)')
   return (
     <Link href={ctalink}>
       <StyledTile

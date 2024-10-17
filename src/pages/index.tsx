@@ -16,7 +16,7 @@ import exploreContent from '../components/Homepage/Explore/ExploreContent'
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext()
-  const isTabletUp = useMediaQuery('(min-width: 768px)')
+  const isTabletUp = useMediaQuery('(min-width: 767px)')
   return (
     <Layout
       title={`Welcome to ${siteConfig.title}`}

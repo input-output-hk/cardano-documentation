@@ -17,7 +17,7 @@ const StyledGrid = styled.div`
     row-gap: 3rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-template-columns: 1fr;
     row-gap: 1.5rem;
   }
@@ -28,7 +28,7 @@ const GridSection = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     :nth-child(3) {
       padding-top: 1.5rem;
     }
@@ -113,7 +113,7 @@ const WebsitesGrid = () => (
       <GridSectionHeading>Sustainability:</GridSectionHeading>
       <GridSectionEntry
         color={'#0128AA'}
-        imgSrc={'assets/websites-grid/intersect.svg'}
+        text={'Intersect'}
         url={''}
         index={3}
       />

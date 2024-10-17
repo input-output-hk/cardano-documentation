@@ -5,8 +5,9 @@ import {
   Alignment,
   useStateMachineInput,
 } from '@rive-app/react-webgl'
+import { useReduceMotion } from '@site/src/hooks/useReduceMotion'
 import { useSpring } from 'framer-motion'
-import { FC, useEffect, useRef, useState } from 'react'
+import { FC, useEffect, useRef } from 'react'
 
 const RiveArtboard: FC<{
   src: string
@@ -14,82 +15,95 @@ const RiveArtboard: FC<{
   layourFit?: string
 }> = ({ src, artboard }) => {
   const ref = useRef<HTMLDivElement>(null)
+  const reduceMotion = useReduceMotion()
   const { rive, RiveComponent } = useRive({
     src: src,
+    stateMachines: 'State Machine 1',
     artboard: artboard,
-    stateMachines: ['State Machine 1'], // Replace with your actual state machine name
     layout: new Layout({
       fit: Fit.Cover,
       alignment: Alignment.Center,
     }),
-    autoplay: true,
+    autoplay: false,
+    useOffscreenRenderer: true,
   })
-
-  // Inputs for controlling the position of each part
-  const half1X = useStateMachineInput(rive, 'State Machine 1', 'half1X')
-  const half1Y = useStateMachineInput(rive, 'State Machine 1', 'half1Y')
-  const half2X = useStateMachineInput(rive, 'State Machine 1', 'half2X')
-  const half2Y = useStateMachineInput(rive, 'State Machine 1', 'half2Y')
-
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const x = useStateMachineInput(rive, 'State Machine 1', 'X')
+  const y = useStateMachineInput(rive, 'State Machine 1', 'Y')
 
   const xSpring = useSpring(0, { stiffness: 300, damping: 70 })
   const ySpring = useSpring(0, { stiffness: 300, damping: 70 })
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+    if (reduceMotion) {
+      rive?.pause()
+    } else {
+      rive?.play()
     }
-
-    window.addEventListener('mousemove', handleMouseMove)
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-    }
-  }, [])
+  }, [rive, reduceMotion])
 
   useEffect(() => {
-    // Normalize the mouse position relative to the viewport size (0 to 1)
-    const normalizedX = mousePosition.x / window.innerWidth
-    const normalizedY = mousePosition.y / window.innerHeight
+    if (!ref.current) return
 
-    // Convert normalized values to a range suitable for Rive, e.g., -100 to 100
-    const xValue = normalizedX * 200 - 100
-    const yValue = normalizedY * 200 - 100
+    let active = true
+    let context: any = window
 
-    xSpring.set(xValue)
-    ySpring.set(yValue)
-  }, [mousePosition])
+    if (!context) return
 
-  useEffect(() => {
-    if (!half1X || !half1Y || !half2X || !half2Y) {
-      console.error('One or more inputs are not found:', {
-        half1X,
-        half1Y,
-        half2X,
-        half2Y,
-      })
-      return
+    if (!x || !y) return
+    x.value = 0
+    y.value = 0
+
+    let mouseListener = (e: MouseEvent) => {
+      const rect = ref.current?.getBoundingClientRect()
+
+      const normalizedX = ((e.clientX - rect!.left) / rect!.width) * 0.5
+      const normalizedY = ((e.clientY - rect!.top) / rect!.height) * 0.5
+
+      const xValue = Math.min(1, Math.max(0, normalizedX))
+      const yValue = Math.min(1, Math.max(0, normalizedY))
+
+      const xValueNormalized = xValue * 250 - 99
+      const yValueNormalized = yValue * 250 - 99
+
+      if (x && x.value !== undefined) {
+        xSpring.set(xValueNormalized)
+      }
+      if (y && y.value !== undefined) {
+        ySpring.set(yValueNormalized)
+      }
     }
 
     xSpring.on('change', (value) => {
-      if (half1X) half1X.value = value
-      if (half2X) half2X.value = value
+      if (active && x && x.value !== undefined) {
+        x.value = value
+      }
     })
 
     ySpring.on('change', (value) => {
-      if (half1Y) half1Y.value = value
-      if (half2Y) half2Y.value = value
+      if (active && y && y.value !== undefined) {
+        y.value = value
+      }
     })
-  }, [xSpring, ySpring, half1X, half1Y, half2X, half2Y])
+
+    context.addEventListener('mousemove', mouseListener)
+
+    return () => {
+      active = false
+      context.removeEventListener('mousemove', mouseListener)
+    }
+  }, [ref, x, y])
 
   return (
     <div
       ref={ref}
-      style={{ width: '100%', height: '380px', overflow: 'hidden' }}
+      style={{ width: '100%', height: '450px', overflow: 'visible' }}
     >
       <RiveComponent
-        style={{ width: '100%', height: '100%', overflow: 'hidden' }}
+        style={{
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden',
+        }}
       />
     </div>
   )

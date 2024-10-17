@@ -14,7 +14,7 @@ const SubNav = styled.div`
   display: flex;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding: 0.5rem 1.5rem;
   }
 `
