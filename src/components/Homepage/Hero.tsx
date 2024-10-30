@@ -53,6 +53,8 @@ const StyledHero = styled.div`
         font-size: 1rem;
         line-height: 1.4;
         margin-bottom: 2.5rem;
+        position: relative;
+        z-index: 1;
 
         @media (max-width: 767px) {
           margin-bottom: 0;
@@ -76,17 +78,16 @@ const RiveContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: auto 0;
-  right: -300px;
+  right: -32%;
   top: 0;
 
   @media (max-width: 1024px) {
-    top: 0px;
-    right: -200px;
+    top: -25px;
   }
 
   @media (max-width: 767px) {
     top: -100px;
-    right: -25%;
+    right: -40%;
   }
 `
 

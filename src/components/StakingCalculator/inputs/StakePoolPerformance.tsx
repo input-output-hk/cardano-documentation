@@ -1,29 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import FormControl from '@material-ui/core/FormControl'
-import FormHelperText from '@material-ui/core/FormHelperText'
 import Slider from '@material-ui/core/Slider'
-
-const Container = styled.div`
-  text-align: center;
-
-  .MuiFormHelperText-root {
-    text-align: center;
-  }
-`
-
-const InputLabel = styled.label`
-  font-size: 1.2rem;
-`
+import {
+  ControlsContainer,
+  CalculatorControlsInputLabel,
+  StyledFormHelperText,
+  StyledSlider,
+} from '../../SharedComponents'
 
 const StakePoolPerformance = ({ value, label, onChange, helperText }) => (
-  <Container>
+  <ControlsContainer>
     <FormControl fullWidth>
-      <InputLabel>
+      <CalculatorControlsInputLabel>
         {label} ({Math.round(value * 100)}%)
-      </InputLabel>
-      <Slider
+      </CalculatorControlsInputLabel>
+      <StyledSlider
         value={value}
         min={0}
         max={1}
@@ -43,9 +35,9 @@ const StakePoolPerformance = ({ value, label, onChange, helperText }) => (
           },
         ]}
       />
-      <FormHelperText>{helperText}</FormHelperText>
+      <StyledFormHelperText>{helperText}</StyledFormHelperText>
     </FormControl>
-  </Container>
+  </ControlsContainer>
 )
 
 StakePoolPerformance.propTypes = {

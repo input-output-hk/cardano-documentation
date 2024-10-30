@@ -1,24 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import FormControl from '@material-ui/core/FormControl'
-import Slider from '@material-ui/core/Slider'
-
-const Container = styled.div`
-  text-align: center;
-`
-
-const InputLabel = styled.label`
-  font-size: 1.2rem;
-`
+import {
+  ControlsContainer,
+  CalculatorControlsInputLabel,
+  StyledSlider,
+  StyledFormHelperText,
+} from '../../SharedComponents'
 
 const TotalStakePools = ({ value, label, onChange }) => (
-  <Container>
+  <ControlsContainer>
     <FormControl fullWidth>
-      <InputLabel>
+      <CalculatorControlsInputLabel>
         {label} ({value})
-      </InputLabel>
-      <Slider
+      </CalculatorControlsInputLabel>
+      <StyledSlider
         value={value}
         min={100}
         max={1000}
@@ -42,8 +38,9 @@ const TotalStakePools = ({ value, label, onChange }) => (
           },
         ]}
       />
+      <StyledFormHelperText>LABEL</StyledFormHelperText>
     </FormControl>
-  </Container>
+  </ControlsContainer>
 )
 
 TotalStakePools.propTypes = {

@@ -9,7 +9,7 @@ const SubNav = styled.div`
   border-bottom: 1px solid #505660;
   width: 100%;
   z-index: 1;
-  background-color: #fff;
+  background-color: var(--ifm-breadcrumbs-background-color);
   padding: 0.5rem 2rem;
   display: flex;
   align-items: center;

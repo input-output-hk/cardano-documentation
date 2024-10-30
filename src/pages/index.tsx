@@ -28,7 +28,7 @@ export default function Home(): JSX.Element {
         lead="Cardano is a decentralized, third-generation, proof-of-stake blockchain, native home to the ada cryptocurrency."
       />
 
-      <Backdrop color="#0133AC">
+      <Backdrop color="var(--ifm-homepage-backdrop-color)">
         <BackgroundFloatingRadials />
         <Section>
           <PaddingWrapper>

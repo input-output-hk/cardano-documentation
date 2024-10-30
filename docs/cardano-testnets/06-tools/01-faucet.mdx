@@ -4,6 +4,7 @@ metaTitle: Testnets faucet
 ---
 
 import Faucet from '../../../src/components/Faucet'
+import FaucetAddresses from '../../../src/components/FaucetAddresses'
 
 Since Cardano testnets are independent networks, separate from the Cardano
 mainnet, they require their own tokens.
@@ -13,7 +14,7 @@ testnets. While these tokens have no 'real world' value, they enable users to
 experiment with Cardano testnet features, without having to spend real ada on
 the mainnet.
 
-**To request tokens using the faucet:**
+### To request tokens using the faucet:
 
 1. Select the desired action type:
    - Enter the account address where you want to top up funds
@@ -24,7 +25,7 @@ the mainnet.
 3. Click **Receive test ada**
 4. Funds will be in the testnet account you specified within a few minutes.
 
-**Delegation**
+### Delegation
 
 If you're an SPO and wish to test stake pool operations on preview or
 pre-production testnets, you can request some test ada to be delegated to your
@@ -33,10 +34,13 @@ pool delegation' from the action menu.
 
 <Faucet />
 
-_When you have finished using your test tokens, please return them to the faucet
+When you have finished using your test tokens, please return them to the faucet
 so that other members of the community can use them. You can return your test
-tokens to the relevant address:_
+tokens to the relevant address:
 
-Pre-production faucet address: `addr_test1vzpwq95z3xyum8vqndgdd9mdnmafh3djcxnc6jemlgdmswcve6tkw`
-
-Preview faucet address: `addr_test1vqeux7xwusdju9dvsj8h7mca9aup2k439kfmwy773xxc2hcu7zy99`
+<FaucetAddresses
+  preProduction={
+    'addr_test1vzpwq95z3xyum8vqndgdd9mdnmafh3djcxnc6jemlgdmswcve6tkw'
+  }
+  preview={'addr_test1vqeux7xwusdju9dvsj8h7mca9aup2k439kfmwy773xxc2hcu7zy99'}
+/>

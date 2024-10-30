@@ -36,11 +36,11 @@ export default function FooterLogo({ logo }) {
     <LogoImage
       logo={
         pathname === '/'
-          ? logo
-          : {
+          ? {
               alt: 'Cardano Logo',
-              src: 'assets/cardano-logo-blue.svg',
+              src: logo.srcDark,
             }
+          : logo
       }
     />
   )

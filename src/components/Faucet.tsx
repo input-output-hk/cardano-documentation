@@ -2,26 +2,47 @@ import React, { useState, Fragment, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import FormControl from '@material-ui/core/FormControl'
-import InputLabel from '@material-ui/core/InputLabel'
-import MenuItem from '@material-ui/core/MenuItem'
-import Select from '@material-ui/core/Select'
 import Box from '@material-ui/core/Box'
-import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Markdown from '@input-output-hk/front-end-core-components/components/Markdown'
-import Link from '@input-output-hk/front-end-core-components/components/Link'
 import moment from 'moment'
 import ReCaptcha from 'react-google-recaptcha'
+import ChevronDown from './icons/ChevronDown.svg'
 
 import content from './utils/testnetsContent'
+import { StyledTextField, TextFieldWrapper } from './SharedComponents'
+import { InputAdornment } from '@material-ui/core'
 
 const Container = styled(Box)`
+  max-width: 100% !important;
+
   &.loading {
     form {
       opacity: 0.5;
     }
+  }
+`
+
+const RequestFunds = styled.button`
+  display: flex;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  background-color: var(--ifm-color-primary);
+  color: #fff;
+  border-radius: 22.5rem;
+  flex-direction: row-reverse;
+  transform: scale(1);
+  transition: all 0.2s ease-in-out;
+  border: none;
+
+  &[aria-disabled='true'] {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: rgba(0, 0, 0, 0.25);
   }
 `
 
@@ -277,100 +298,136 @@ const FaucetInner = ({
               variant="outlined"
               fullWidth
               style={{
-                marginBottom: '2rem',
+                marginBottom: '1.5rem',
               }}
             >
-              <InputLabel id="demo-simple-select-outlined-label">
-                Environment
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={environment}
-                onChange={(
-                  e: React.ChangeEvent<{
-                    name?: string
-                    value: string
-                  }>,
-                ) => setEnvironment(e.target.value)}
-                label="Environment"
-              >
-                {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
-                <MenuItem value="preview">Preview Testnet</MenuItem>
-                <MenuItem value="preprod">Preprod Testnet</MenuItem>
-              </Select>
+              <TextFieldWrapper>
+                <span>Environment</span>
+                <StyledTextField
+                  select
+                  value={environment}
+                  fullWidth
+                  SelectProps={{
+                    native: true,
+                  }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <ChevronDown />
+                      </InputAdornment>
+                    ),
+                    disableUnderline: true,
+                  }}
+                  onChange={(
+                    e: React.ChangeEvent<{
+                      name?: string
+                      value: string
+                    }>,
+                  ) => setEnvironment(e.target.value)}
+                >
+                  {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
+                  <option value="preview">Preview Testnet</option>
+                  <option value="preprod">Preprod Testnet</option>
+                </StyledTextField>
+                <span>Please select an environment</span>
+              </TextFieldWrapper>
             </FormControl>
 
             <FormControl
               variant="outlined"
               fullWidth
               style={{
-                marginBottom: '2rem',
+                marginBottom: '1.5rem',
               }}
             >
-              <InputLabel id="demo-simple-select-outlined-label">
-                Action
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={isPoolDelegation ? 'delegation' : 'testada'}
-                onChange={(e) =>
-                  setIsPoolDelegation(e.target.value === 'delegation')
-                }
-                label="Environment"
-              >
-                {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
-                <MenuItem value="testada">Receive test ADA</MenuItem>
-                <MenuItem value="delegation">Receive pool delegation</MenuItem>
-              </Select>
+              <TextFieldWrapper>
+                <span>Action</span>
+                <StyledTextField
+                  select
+                  value={isPoolDelegation ? 'delegation' : 'testada'}
+                  fullWidth
+                  SelectProps={{
+                    native: true,
+                  }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <ChevronDown />
+                      </InputAdornment>
+                    ),
+                    disableUnderline: true,
+                  }}
+                  onChange={(e) =>
+                    setIsPoolDelegation(e.target.value === 'delegation')
+                  }
+                >
+                  {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
+                  <option value="testada">Receive test ADA</option>
+                  <option value="delegation">Receive pool delegation</option>
+                </StyledTextField>
+                <span>Please select an action</span>
+              </TextFieldWrapper>
             </FormControl>
 
             {isPoolDelegation && (
-              <Box marginBottom={2}>
-                <TextField
-                  value={values.poolId}
-                  required
-                  label="Pool ID"
-                  error={Boolean(errors.address)}
-                  helperText="The Pool ID to delegate to"
-                  fullWidth
-                  onChange={valueOnChange('poolId')}
-                  disabled={status === statuses.loading}
-                />
+              <Box marginBottom={3}>
+                <TextFieldWrapper>
+                  <span>Pool ID</span>
+                  <StyledTextField
+                    value={values.poolId}
+                    required
+                    error={Boolean(errors.address)}
+                    fullWidth
+                    placeholder="Pool ID"
+                    onChange={valueOnChange('poolId')}
+                    disabled={status === statuses.loading}
+                    InputProps={{
+                      disableUnderline: true,
+                    }}
+                  />
+                  <span>Please enter the Pool ID to delegate to</span>
+                </TextFieldWrapper>
               </Box>
             )}
 
             {!isPoolDelegation && (
-              <Box marginBottom={2}>
-                <TextField
-                  value={values.address}
-                  required
-                  label="Address"
-                  error={Boolean(errors.address)}
-                  helperText={
-                    errors.address || content.faucet_content.address_helper_text
-                  }
-                  fullWidth
-                  onChange={valueOnChange('address')}
-                  disabled={status === statuses.loading}
-                />
+              <Box marginBottom={3}>
+                <TextFieldWrapper>
+                  <span>Address (required)</span>
+                  <StyledTextField
+                    value={values.address}
+                    required
+                    error={Boolean(errors.address)}
+                    fullWidth
+                    placeholder="Address"
+                    onChange={valueOnChange('address')}
+                    disabled={status === statuses.loading}
+                    InputProps={{
+                      disableUnderline: true,
+                    }}
+                  />
+                  <span>Please enter the address to send funds to</span>
+                </TextFieldWrapper>
               </Box>
             )}
 
             {hasApiKey && (
-              <Box marginBottom={2}>
-                <TextField
-                  value={values.apiKey}
-                  label="API Key"
-                  error={Boolean(errors.apiKey)}
-                  helperText={
-                    errors.apiKey || content.faucet_content.api_key_helper_text
-                  }
-                  fullWidth
-                  onChange={valueOnChange('apiKey')}
-                  disabled={status === statuses.loading}
-                />
+              <Box marginBottom={4}>
+                <TextFieldWrapper>
+                  <span>API Key (optional)</span>
+                  <StyledTextField
+                    value={values.apiKey}
+                    placeholder="API Key"
+                    error={Boolean(errors.apiKey)}
+                    fullWidth
+                    onChange={valueOnChange('apiKey')}
+                    disabled={status === statuses.loading}
+                    InputProps={{
+                      disableUnderline: true,
+                    }}
+                  />
+                  <span>Enter an API key to bypass rate limiting</span>
+                </TextFieldWrapper>
               </Box>
             )}
 
@@ -378,7 +435,7 @@ const FaucetInner = ({
               // @ts-ignore
               Object.entries(environments).map(([env, { sitekey }]) =>
                 env === environment ? (
-                  <Box marginBottom={2} key={env}>
+                  <Box marginBottom={4} key={env}>
                     {errors.reCaptcha && (
                       <Typography color="error">
                         <strong>{errors.reCaptcha}</strong>
@@ -393,15 +450,14 @@ const FaucetInner = ({
                 ) : null,
               )}
 
-            <Box display="flex" justifyContent="flex-end">
-              <Button
+            <Box display="flex" justifyContent="flex-start">
+              <RequestFunds
                 disabled={status === statuses.loading}
                 type="submit"
-                color="primary"
-                variant="contained"
+                aria-disabled={status === statuses.loading}
               >
                 {content.faucet_content.request_funds}
-              </Button>
+              </RequestFunds>
             </Box>
           </form>
         </Container>

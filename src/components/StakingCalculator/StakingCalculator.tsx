@@ -3,16 +3,9 @@ import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
 import { TinyColor } from '@ctrl/tinycolor'
 import Link from '@input-output-hk/front-end-core-components/components/Link'
-import {
-  MdClose,
-  MdVisibility,
-  MdVisibilityOff,
-  MdRotateLeft,
-  MdFileUpload,
-} from 'react-icons/md'
+import { MdClose } from 'react-icons/md'
 import { FaTwitter, FaFacebookF, FaClipboard } from 'react-icons/fa'
 import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
@@ -21,25 +14,72 @@ import content from '../utils/testnetsContent'
 import Delegator from './Delegator'
 import Operator from './Operator'
 import BTCSymbol from './BTCSymbol'
-import CardanoLogo from './CardanoLogo'
-import DelegatorIcon from './DelegatorIcon'
-import OperatorIcon from './OperatorIcon'
+
+import Reset from '../icons/Reset.svg'
+import Share from '../icons/Share.svg'
+
+import DelegateStakePool from '../icons/DelegateStakePool.svg'
+import RunStakePool from '../icons/RunStakePool.svg'
+import Selected from '../icons/RadioSelected.svg'
+import Unselected from '../icons/RadioUnselected.svg'
 
 const Container = styled.div`
-  max-width: 80rem;
-  margin: 4rem 0;
+  margin: 2rem 0;
+  font-family: 'Chivo';
+  font-size: 0.813rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.375rem;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
 `
 
-const Introduction = styled(Box)`
-  p {
-    margin: 0;
-    font-size: 1.8rem;
+const Heading = styled.div`
+  border-bottom: 1px solid #505660;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    &:first-of-type {
-      font-weight: 600;
-      font-size: 2.2rem;
-      margin-bottom: 0.6rem;
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: normal !important;
+    margin: 0 !important;
+
+    @media (max-width: 767px) {
+      font-size: 13px;
+      line-height: 22px;
     }
+  }
+
+  div {
+    display: flex;
+    justify-content: row;
+    gap: 0.5rem;
+  }
+
+  button {
+    display: flex;
+    padding: 0.5rem 1rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 360px;
+    background-color: transparent;
+    color: var(--ifm-link-color);
+    border: 1px solid var(--ifm-link-color);
+    max-height: 2.375rem;
+
+    svg {
+      margin-left: 0.625rem;
+    }
+  }
+
+  button:first-child {
+    background: #1342b2;
+    color: #fff;
+    border: none;
   }
 `
 
@@ -170,116 +210,154 @@ const AnimatedClipboard = styled.span`
   animation-iteration-count: 1;
 `
 
-const CalculatorPicker = styled.div`
+const BasicOptionsContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  padding-top: 2.5rem;
 
-  > div {
-    flex: 1;
-    margin: 2rem;
-    overflow: hidden;
-    position: relative;
-
-    button {
-      border-radius: 0.4rem;
-      padding: 3rem 1.5rem;
-      height: 100%;
-
-      &.MuiButton-contained {
-        padding: 3.1rem 1.6rem;
-      }
-
-      > .MuiButton-label {
-        font-weight: 900;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        z-index: 2;
-
-        svg {
-          height: 4rem;
-          margin-bottom: 1rem;
-        }
-      }
-    }
-
-    > div {
-      position: absolute;
-      bottom: 0;
-
-      svg {
-        width: 13rem;
-      }
-    }
-
-    &:first-of-type > div {
-      left: 0;
-      transform: translate(-45%, 45%);
-    }
-
-    &:last-of-type > div {
-      right: 0;
-      transform: translate(45%, 45%);
-    }
+  p {
+    margin-bottom: 0.5rem;
+    text-align: center;
   }
 
-  @media screen and (max-width: 600px) {
-    flex-direction: column;
-
-    > div {
-      max-width: 25rem;
-      width: 100%;
-      margin: 2rem auto;
-    }
-  }
-`
-
-const Actions = styled.div`
-  > div {
+  div {
     display: flex;
-
-    > div {
-      flex: 1;
-      margin: 1rem 2rem;
-    }
-
-    &:last-of-type {
-      margin-bottom: 1rem;
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    > div {
-      flex-direction: column;
-
-      > div {
-        max-width: 25rem;
-        width: 100%;
-        margin: 1rem auto;
-      }
-    }
+    width: 100%;
+    gap: 1.5rem;
   }
 `
 
-const HalfWidthGroup = styled.div`
+const RadioButton = styled.button`
+  font-family: 'Chivo';
+  text-align: left;
+  font-size: 0.813rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  display: flex;
+  align-items: center;
+  max-height: 65px;
+  padding: 10px 16px 8px 16px;
+  min-height: 4.063rem;
+
+  border-radius: 4px;
+  border: 1px solid #505660;
+
+  background-color: #fff;
+  color: #1c1e21;
+  flex: 1 0 0;
+
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+  }
+
+  span {
+    margin-left: 0.25rem;
+  }
+
+  &[aria-selected='true'] {
+    background-color: #1342b2;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  @media (max-width: 767px) {
+    line-height: 1rem;
+  }
+`
+
+export const HalfAndHalfGroup = styled.div`
   width: 100%;
-  margin: 4rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 1.5rem;
+  gap: 1.5rem;
+
+  div {
+    flex-basis: 50%;
+  }
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+`
+
+export const HalfWidthGroup = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
 
   > div {
     display: inline-block;
     width: 50%;
-    padding-left: 2rem;
     vertical-align: text-top;
+    gap: 0.25rem;
+  }
 
-    &:first-of-type {
-      padding-right: 2rem;
-      padding-left: 0;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    padding-top: 0;
+
+    > div {
+      width: 100%;
+      vertical-align: text-top;
+    }
+  }
+
+  &:first-of-type {
+    padding-top: 2.5rem;
+  }
+`
+
+export const FragmentedHalfWidthGroup = styled(HalfWidthGroup)`
+  @media (max-width: 767px) {
+    padding-top: 1.5rem;
+
+    .empty-filler {
+      display: none;
     }
   }
 `
 
-const FullWidthGroup = styled.div`
+export const FullWidthGroup = styled.div`
   width: 100%;
-  padding: 6rem 4rem;
+`
+
+export const AdvancedOptionsContainer = styled.div`
+  margin: 2.5rem 0 0 0;
+
+  button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: var(--ifm-link-color);
+    font-family: 'Chivo';
+    font-weight: 400;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: 1.5rem;
+
+    svg {
+      margin-left: 1px;
+      transform: rotate(0deg);
+    }
+
+    &[aria-expanded='true'] svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding-bottom: 1.5rem;
+  }
 `
 
 const Inputs = styled.div``
@@ -424,6 +502,7 @@ const Calculator = ({
   const toggleShowAdvancedOptions = (e) => {
     e.preventDefault()
     setShowAdvancedOptions(!showAdvancedOptions)
+    console.log(showAdvancedOptions)
   }
 
   const reset = () => {
@@ -512,144 +591,109 @@ const Calculator = ({
   const CalculatorComponent = type === 'delegator' ? Delegator : Operator
   return (
     <Container ref={containerRef}>
-      <Introduction paddingBottom={1} textAlign="center">
-        <p>{content.staking_calculator.select_a_calculator}</p>
-        <p>{content.staking_calculator.i_want_to}</p>
-      </Introduction>
-      <CalculatorPicker>
+      <Heading>
+        <h3>{content.staking_calculator.select_a_calculator}</h3>
         <div>
-          <Button
-            variant={type === 'delegator' ? 'contained' : 'outlined'}
-            onClick={updateType('delegator')}
+          <button color="primary" onClick={onReset}>
+            {content.staking_calculator.reset}
+            <Reset />
+          </button>
+          <button
             color="primary"
-            fullWidth
+            onClick={(e) => {
+              e.preventDefault()
+              setShareModalVisible(true)
+            }}
           >
-            <DelegatorIcon active={type === 'delegator'} />
-            <span>{content.staking_calculator.delegate_my_stake}</span>
-          </Button>
-          <CardanoLogo active={type === 'delegator'} />
-        </div>
-        <div>
-          <Button
-            variant={type === 'operator' ? 'contained' : 'outlined'}
-            onClick={updateType('operator')}
-            color="primary"
-            fullWidth
-          >
-            <OperatorIcon active={type === 'operator'} />
-            <span>{content.staking_calculator.run_a_stake_pool}</span>
-          </Button>
-          <CardanoLogo active={type === 'operator'} />
-        </div>
-      </CalculatorPicker>
-      <Actions>
-        <div>
-          <div>
-            <Button
-              color="primary"
-              variant={showAdvancedOptions ? 'contained' : 'outlined'}
-              onClick={toggleShowAdvancedOptions}
-              fullWidth
-            >
-              {content.staking_calculator.show_advanced_options}
-              <Box component="span" marginLeft={0.8}>
-                {showAdvancedOptions ? <MdVisibilityOff /> : <MdVisibility />}
-              </Box>
-            </Button>
-          </div>
-          <div>
-            <Button
-              color="primary"
-              variant="outlined"
-              onClick={onReset}
-              fullWidth
-            >
-              {content.staking_calculator.reset}
-              <Box component="span" marginLeft={0.8}>
-                <MdRotateLeft />
-              </Box>
-            </Button>
-          </div>
-        </div>
-        <div>
-          <div>
-            <Button
-              color="primary"
-              variant="outlined"
-              onClick={(e) => {
-                e.preventDefault()
-                setShareModalVisible(true)
+            {content.staking_calculator.share}
+            <Share />
+          </button>
+          {shareModalVisible && (
+            <Modal
+              open={shareModalVisible}
+              onClose={() => {
+                setShareModalVisible(false)
               }}
-              fullWidth
+              disableScrollLock
             >
-              {content.staking_calculator.share}
-              <Box component="span" marginLeft={0.8}>
-                <MdFileUpload />
-              </Box>
-            </Button>
-            {shareModalVisible && (
-              <Modal
-                open={shareModalVisible}
-                onClose={() => {
-                  setShareModalVisible(false)
-                }}
-                disableScrollLock
-              >
-                <ModalContent ref={modalContent}>
-                  <CloseModal
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      setShareModalVisible(false)
-                    }}
-                  >
-                    <MdClose />
-                  </CloseModal>
-                  <ModalContentInner>
-                    <Box textAlign="center">
-                      <ShareLinks>
-                        <div>
-                          <TwitterLink
-                            href={`https://twitter.com/intent/tweet?text=${getShareableLink()}`}
-                          >
-                            <FaTwitter />{' '}
-                            <span>{content.staking_calculator.tweet}</span>
-                          </TwitterLink>
-                        </div>
-                        <div>
-                          <FacebookLink
-                            href={`https://www.facebook.com/dialog/share?href=${getShareableLink()}&display=popup&app_id=282617186477949&redirect_uri=https://facebook.com/`}
-                          >
-                            <FaFacebookF />{' '}
-                            <span>{content.staking_calculator.share}</span>
-                          </FacebookLink>
-                        </div>
-                      </ShareLinks>
-                      <p>
-                        <CopyToClipboardLink
-                          href="#copy-to-clipboard"
-                          onClick={copyShareableLink}
+              <ModalContent ref={modalContent}>
+                <CloseModal
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setShareModalVisible(false)
+                  }}
+                >
+                  <MdClose />
+                </CloseModal>
+                <ModalContentInner>
+                  <Box textAlign="center">
+                    <ShareLinks>
+                      <div>
+                        <TwitterLink
+                          href={`https://twitter.com/intent/tweet?text=${getShareableLink()}`}
                         >
-                          <FaClipboard />{' '}
-                          <span className="text">
-                            {content.staking_calculator.copy_to_clipboard}
-                          </span>
-                          {copied && (
-                            <AnimatedClipboard>
-                              <FaClipboard />
-                            </AnimatedClipboard>
-                          )}
-                        </CopyToClipboardLink>
-                      </p>
-                    </Box>
-                  </ModalContentInner>
-                </ModalContent>
-              </Modal>
-            )}
-          </div>
-          <div />
+                          <FaTwitter />{' '}
+                          <span>{content.staking_calculator.tweet}</span>
+                        </TwitterLink>
+                      </div>
+                      <div>
+                        <FacebookLink
+                          href={`https://www.facebook.com/dialog/share?href=${getShareableLink()}&display=popup&app_id=282617186477949&redirect_uri=https://facebook.com/`}
+                        >
+                          <FaFacebookF />{' '}
+                          <span>{content.staking_calculator.share}</span>
+                        </FacebookLink>
+                      </div>
+                    </ShareLinks>
+                    <p>
+                      <CopyToClipboardLink
+                        href="#copy-to-clipboard"
+                        onClick={copyShareableLink}
+                      >
+                        <FaClipboard />{' '}
+                        <span className="text">
+                          {content.staking_calculator.copy_to_clipboard}
+                        </span>
+                        {copied && (
+                          <AnimatedClipboard>
+                            <FaClipboard />
+                          </AnimatedClipboard>
+                        )}
+                      </CopyToClipboardLink>
+                    </p>
+                  </Box>
+                </ModalContentInner>
+              </ModalContent>
+            </Modal>
+          )}
         </div>
-      </Actions>
+      </Heading>
+      <BasicOptionsContainer>
+        <p>{content.staking_calculator.i_want_to}</p>
+        <div>
+          <RadioButton
+            onClick={updateType('delegator')}
+            aria-selected={type === 'delegator'}
+          >
+            <div>
+              <DelegateStakePool />
+              <span>{content.staking_calculator.delegate_my_stake}</span>
+            </div>
+            {type === 'delegator' ? <Selected /> : <Unselected />}
+          </RadioButton>
+          <RadioButton
+            onClick={updateType('operator')}
+            aria-selected={type === 'operator'}
+          >
+            <div>
+              <RunStakePool />
+              <span>{content.staking_calculator.run_a_stake_pool}</span>
+            </div>
+            {type === 'operator' ? <Selected /> : <Unselected />}
+          </RadioButton>
+        </div>
+      </BasicOptionsContainer>
       <Inputs>
         <CalculatorComponent
           values={values}
@@ -658,14 +702,13 @@ const Calculator = ({
           toADA={toADA}
           fromADA={fromADA}
           showAdvancedOptions={showAdvancedOptions}
-          HalfWidthGroup={HalfWidthGroup}
-          FullWidthGroup={FullWidthGroup}
           getCurrencySymbol={getCurrencySymbol}
           currencies={currencies}
           normalizeLargeNumber={normalizeLargeNumber}
           getDistributableRewards={getDistributableRewards}
           getTotalADAInCirculation={getTotalADAInCirculation}
           containerRef={containerRef}
+          toggleShowAdvancedOptions={toggleShowAdvancedOptions}
         />
       </Inputs>
     </Container>

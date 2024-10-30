@@ -9,9 +9,6 @@ export default function FooterLayout({ style, links, logo, copyright }) {
     <footer
       className={clsx(
         'footer',
-        {
-          'footer--dark': style === 'dark',
-        },
         pathname === '/' ? 'footer-home' : 'footer-default',
       )}
     >
