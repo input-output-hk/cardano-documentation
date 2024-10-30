@@ -34,15 +34,20 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   gap: 0.5rem;
 
   @media (max-width: 767px) {
     flex-direction: column;
   }
+
+  @media (max-width: 1240px) and (min-width: 1030px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 `
 
-const DownloadBox = styled(Box)`
+const DownloadBox = styled.div`
   padding: 1.5rem 1rem 1.25rem 1rem;
   background-color: var(--controls-background-color);
   border-radius: 4px;
@@ -50,6 +55,11 @@ const DownloadBox = styled(Box)`
   font-family: 'Chivo';
   font-weight: 400;
   line-height: 1.375rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: center;
 
   a {
     display: flex;
@@ -69,12 +79,13 @@ const MainLabel = styled.span`
   padding-bottom: 0.25rem;
 `
 
-const DownloadButton = styled(MuiButton)`
+const DownloadButton = styled.a`
   font-family: 'Chivo';
   font-style: normal;
   font-weight: 400;
   line-height: 1.375rem;
-  color: #fff;
+  color: #fff !important;
+  text-decoration: none !important;
   display: flex;
   padding: 0.5rem 1rem;
   justify-content: center;
@@ -159,124 +170,124 @@ const WalletDownloaders = ({ env }) => {
     },
   }
 
-  const [platformsData, setPlatformsData] = useState(null)
+  // const [platformsData, setPlatformsData] = useState(null)
 
-  const [loading, setLoading] = useState(true)
+  // const [loading, setLoading] = useState(true)
 
-  const [hasError, setHasError] = useState(false)
+  // const [hasError, setHasError] = useState(false)
 
   const [activeModal, setActiveModal] = useState('')
 
-  const checksumRefs = {
-    windows: useRef(null),
-    darwin: useRef(null),
-    linux: useRef(null),
-  }
+  // const checksumRefs = {
+  //   windows: useRef(null),
+  //   darwin: useRef(null),
+  //   linux: useRef(null),
+  // }
 
-  const validateData = (data) => {
-    if (!data.platforms) return false
-    const validPlatforms = ['windows', 'darwin', 'linux']
+  // const validateData = (data) => {
+  //   if (!data.platforms) return false
+  //   const validPlatforms = ['windows', 'darwin', 'linux']
 
-    if (Object.keys(data.platforms).length !== validPlatforms.length)
-      return false
-    let valid = true
+  //   if (Object.keys(data.platforms).length !== validPlatforms.length)
+  //     return false
+  //   let valid = true
 
-    validPlatforms.forEach((platform) => {
-      if (!data.platforms[platform]) {
-        valid = false
-      } else {
-        const validKeys = ['signature', 'hash', 'URL', 'version', 'SHA256']
+  //   validPlatforms.forEach((platform) => {
+  //     if (!data.platforms[platform]) {
+  //       valid = false
+  //     } else {
+  //       const validKeys = ['signature', 'hash', 'URL', 'version', 'SHA256']
 
-        if (Object.keys(data.platforms[platform]).length !== validKeys.length) {
-          valid = false
-        } else {
-          validKeys.forEach((key) => {
-            if (
-              typeof data.platforms[platform][key] !== 'string' ||
-              !data.platforms[platform][key]
-            )
-              valid = false
-          })
-        }
-      }
-    })
+  //       if (Object.keys(data.platforms[platform]).length !== validKeys.length) {
+  //         valid = false
+  //       } else {
+  //         validKeys.forEach((key) => {
+  //           if (
+  //             typeof data.platforms[platform][key] !== 'string' ||
+  //             !data.platforms[platform][key]
+  //           )
+  //             valid = false
+  //         })
+  //       }
+  //     }
+  //   })
 
-    return valid
-  }
+  //   return valid
+  // }
 
-  const loadDaedalusData = async () => {
-    try {
-      setLoading(true)
+  // const loadDaedalusData = async () => {
+  //   try {
+  //     setLoading(true)
 
-      const result = await fetch(envs[env].endpoint)
+  //     const result = await fetch(envs[env].endpoint)
 
-      const jsonResult = await result.json()
-      if (!validateData(jsonResult)) throw new Error('Invalid data')
-      setPlatformsData(
-        Object.keys(jsonResult.platforms).map((platform) => ({
-          ...jsonResult.platforms[platform],
-          key: platform,
-        })),
-      )
-      setLoading(false)
-    } catch (error) {
-      console.error(error.message, error)
-      setHasError(true)
-      setLoading(false)
-    }
-  }
+  //     const jsonResult = await result.json()
+  //     if (!validateData(jsonResult)) throw new Error('Invalid data')
+  //     setPlatformsData(
+  //       Object.keys(jsonResult.platforms).map((platform) => ({
+  //         ...jsonResult.platforms[platform],
+  //         key: platform,
+  //       })),
+  //     )
+  //     setLoading(false)
+  //   } catch (error) {
+  //     console.error(error.message, error)
+  //     setHasError(true)
+  //     setLoading(false)
+  //   }
+  // }
 
-  useEffect(() => {
-    loadDaedalusData()
-  }, [])
+  // useEffect(() => {
+  //   loadDaedalusData()
+  // }, [])
 
-  const getOrderedPlatforms = (order) => {
-    const platforms = []
+  // const getOrderedPlatforms = (order) => {
+  //   const platforms = []
 
-    order.forEach((platform) => {
-      platforms.push(
-        platformsData.filter(({ key }) => platform === key).shift(),
-      )
-    })
+  //   order.forEach((platform) => {
+  //     platforms.push(
+  //       platformsData.filter(({ key }) => platform === key).shift(),
+  //     )
+  //   })
 
-    return platforms.filter((platform) => Boolean(platform))
-  }
+  //   return platforms.filter((platform) => Boolean(platform))
+  // }
 
-  const checksumOnClick = (SHA256, platform) => (e) => {
-    e.preventDefault()
-    const el = checksumRefs[platform].current
+  // const checksumOnClick = (SHA256, platform) => (e) => {
+  //   e.preventDefault()
+  //   const el = checksumRefs[platform].current
 
-    if (!el) return
-    el.select()
-    el.setSelectionRange(0, SHA256.length)
-    navigator.clipboard.writeText(SHA256)
-  }
+  //   if (!el) return
+  //   el.select()
+  //   el.setSelectionRange(0, SHA256.length)
+  //   navigator.clipboard.writeText(SHA256)
+  // }
 
-  const openModal = (name) => (e) => {
-    e.preventDefault()
-    setActiveModal(name)
-  }
+  // const openModal = (name) => (e) => {
+  //   e.preventDefault()
+  //   setActiveModal(name)
+  // }
 
-  const getFilename = (URL) => URL.replace(/^.*\/(.*?)$/, '$1')
+  // const getFilename = (URL) => URL.replace(/^.*\/(.*?)$/, '$1')
 
-  const renderTemplateString = (
-    content,
-    { SHA256, URL, version, hash, signature },
-  ) => {
-    const params = {
-      sha256: 'SHA256 checksum',
-      version: '6.0.1',
-      hash: '9bf726789218098',
-      signature: 'signatrue',
-      filename: 'dummy',
-    }
+  // const renderTemplateString = (
+  //   content,
+  //   { SHA256, URL, version, hash, signature },
+  // ) => {
+  //   const params = {
+  //     sha256: 'SHA256 checksum',
+  //     version: '6.0.1',
+  //     hash: '9bf726789218098',
+  //     signature: 'signatrue',
+  //     filename: 'dummy',
+  //   }
 
-    return content.replace(/{{\s?([^}\s]+)\s?}}/g, (original, key) => {
-      return params[key] || original
-    })
-  }
+  //   return content.replace(/{{\s?([^}\s]+)\s?}}/g, (original, key) => {
+  //     return params[key] || original
+  //   })
+  // }
 
-  const getPGPFilename = (URL) => `${getFilename(URL)}.asc`
+  // const getPGPFilename = (URL) => `${getFilename(URL)}.asc`
 
   // const getPGPBlob = (signature) => {
   //   if (window) {
@@ -344,38 +355,32 @@ const WalletDownloaders = ({ env }) => {
               full_label,
               short_label,
             }) => (
-              <DownloadBox
-                flex={1}
-                key={key}
-                display="flex"
-                flexDirection="column"
-                justifyContent="flex-end"
-                textAlign="center"
-              >
+              <DownloadBox key={key}>
                 <MainLabel>{full_label}</MainLabel>
                 <span>
                   {version}: {version}
                 </span>
-                <DownloadButton href={URL} variant="contained">
+                <DownloadButton href={URL}>
                   {short_label}
                   <DownloadIcon />
                 </DownloadButton>
                 <span>{'SHA256 checksum'}</span>
                 <CopyInputContainer>
                   <CopyInput
-                    ref={checksumRefs[key]}
+                    // ref={checksumRefs[key]}
                     title={'content.downloaders_content.copy_to_clipboard'}
                     aria-label={'content.downloaders_content.copy_to_clipboard'}
                     value={SHA256}
                     readOnly
                   />
-                  <Copy onClick={checksumOnClick(SHA256, key)}>
+                  {/* <Copy onClick={checksumOnClick(SHA256, key)}> */}
+                  <Copy>
                     <CopyIcon />
                   </Copy>
                 </CopyInputContainer>
                 <Link
                   href="#"
-                  onClick={openModal(`${key}_checksum`)}
+                  // onClick={openModal(`${key}_checksum`)}
                   tracking={{
                     category: gaCategory,
                     label: `view_checksum_instructions_${key}_${version}`,
@@ -385,11 +390,12 @@ const WalletDownloaders = ({ env }) => {
                 </Link>
                 <Modal
                   open={activeModal === `${key}_checksum`}
-                  onClose={openModal('')}
+                  // onClose={openModal('')}
                   disableScrollLock
                 >
                   <ModalContent>
-                    <CloseModal href="#" onClick={openModal('')}>
+                    {/* <CloseModal href="#" onClick={openModal('')}> */}
+                    <CloseModal>
                       <MdClose />
                     </CloseModal>
                     <ModalContentInner>
@@ -418,7 +424,7 @@ const WalletDownloaders = ({ env }) => {
                 </Link>
                 <Link
                   href="#"
-                  onClick={openModal(`${key}_pgp`)}
+                  // onClick={openModal(`${key}_pgp`)}
                   tracking={{
                     category: gaCategory,
                     label: `view_pgp_instructions_${key}_${version}`,
@@ -428,11 +434,12 @@ const WalletDownloaders = ({ env }) => {
                 </Link>
                 <Modal
                   open={activeModal === `${key}_pgp`}
-                  onClose={openModal('')}
+                  // onClose={openModal('')}
                   disableScrollLock
                 >
                   <ModalContent>
-                    <CloseModal href="#" onClick={openModal('')}>
+                    {/* <CloseModal href="#" onClick={openModal('')}> */}
+                    <CloseModal>
                       <MdClose />
                     </CloseModal>
                     <ModalContentInner>
@@ -452,14 +459,14 @@ const WalletDownloaders = ({ env }) => {
         </Container>
       </>
       {/* )} */}
-      {loading && (
+      {/* {loading && (
         <LoadingContainer>
           <div>
             <CircularProgress />
           </div>
         </LoadingContainer>
-      )}
-      {hasError && (
+      )} */}
+      {/* {hasError && (
         <ErrorContainer pl={12} pr={12}>
           <Typography variant="h1" color="error">
             <FaCogs />
@@ -468,7 +475,7 @@ const WalletDownloaders = ({ env }) => {
             {content.downloaders_content.no_releases_available}
           </Typography>
         </ErrorContainer>
-      )}
+      )} */}
     </Box>
   )
 }
