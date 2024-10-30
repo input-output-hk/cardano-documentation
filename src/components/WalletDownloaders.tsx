@@ -278,23 +278,17 @@ const WalletDownloaders = ({ env }) => {
 
   const getPGPFilename = (URL) => `${getFilename(URL)}.asc`
 
-  const getPGPBlob = (signature) =>
-    window.Blob && new window.Blob([signature], { type: 'text/txt' })
+  // const getPGPBlob = (signature) => {
+  //   if (window) {
+  //     return window.Blob && new window.Blob([signature], { type: 'text/txt' })
+  //   }
+  // }
 
-  const getPGPSignatureHref = (signature) => {
-    const blob = getPGPBlob(signature)
+  // const getPGPSignatureHref = (signature) => {
+  //   const blob = getPGPBlob(signature)
 
-    return blob ? URL.createObjectURL(blob) : '#'
-  }
-
-  const onDownloadPGPSignature = (signature, URL) => (e) => {
-    // @ts-ignore
-    if (window.navigator.msSaveBlob || e.target.href === '#') e.preventDefault()
-    // @ts-ignore
-    if (window.navigator.msSaveBlob)
-      // @ts-ignore
-      window.navigator.msSaveBlob(getPGPBlob(signature), getPGPFilename(URL))
-  }
+  //   return blob ? URL.createObjectURL(blob) : '#'
+  // }
 
   const unCacheURL = (url) => {
     return url + '?t=' + new Date().getTime()
@@ -362,7 +356,7 @@ const WalletDownloaders = ({ env }) => {
                 <span>
                   {version}: {version}
                 </span>
-                <DownloadButton href={unCacheURL(URL)} variant="contained">
+                <DownloadButton href={URL} variant="contained">
                   {short_label}
                   <DownloadIcon />
                 </DownloadButton>
@@ -410,13 +404,14 @@ const WalletDownloaders = ({ env }) => {
                   </ModalContent>
                 </Modal>
                 <Link
-                  onClick={onDownloadPGPSignature(signature, URL)}
+                  // onClick={onDownloadPGPSignature(signature, URL)}
                   tracking={{
                     category: gaCategory,
                     label: `download_pgp_signature_${key}_${version}`,
                   }}
-                  href={getPGPSignatureHref(signature)}
-                  download={getPGPFilename(URL)}
+                  href={'https://google.com'}
+                  // href={getPGPSignatureHref(signature)}
+                  // download={getPGPFilename(URL)}
                 >
                   {'PGP signature'}
                   <DownloadIcon />
