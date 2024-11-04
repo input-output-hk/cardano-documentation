@@ -38,13 +38,12 @@ export default function Home(): JSX.Element {
             <SectionHeading color={'#fff'}>
               You can do wonderful things with Cardano
             </SectionHeading>
-            {isTabletUp ? (
-              <ExploreGrid>{exploreContent}</ExploreGrid>
-            ) : (
-              <ExploreMobileCarousel>{exploreContent}</ExploreMobileCarousel>
-            )}
+            {isTabletUp && <ExploreGrid>{exploreContent}</ExploreGrid>}
           </PaddingWrapper>
         </Section>
+        {!isTabletUp && (
+          <ExploreMobileCarousel>{exploreContent}</ExploreMobileCarousel>
+        )}
       </Backdrop>
       <Backdrop color="#fff">
         <Section>

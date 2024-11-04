@@ -17,6 +17,8 @@ const DotContainer = styled.div`
   gap: 0.5rem;
   justify-content: center;
   bottom: 0;
+  margin-left: -2rem;
+  margin-top: 1.6rem;
 `
 
 const Dot = styled(BasicDot)<{ selected: boolean }>`
@@ -55,8 +57,15 @@ const Controls: FC<ControlProps> = ({
 const CarouselContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   overflow: hidden;
+  max-width: 1248px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-bottom: 3.5rem;
+
+  margin-top: -2.5rem;
 `
 
 type Props = {
@@ -93,10 +102,10 @@ const MobileCarousel: FC<Props> = ({ children }) => {
   return (
     <CarouselContainer>
       <Swiper
-        slidesPerView={1.2} /* Show one slide at a time */
-        spaceBetween={16} /* Adjust spacing between slides */
-        ref={sliderRef} /* Center the slides */
-        style={{ width: '100%' }} /* Ensure swiper takes full width */
+        slidesPerView={1.2}
+        spaceBetween={15}
+        ref={sliderRef}
+        style={{ width: '100%' }}
       >
         {children &&
           children.map((child, index) => (

@@ -28,6 +28,10 @@ const StyledTile = styled(motion.div)`
   color: #fff;
   max-width: 364px;
   transition: box-shadow 0.2s ease-in-out;
+  border-radius: 0.5rem;
+
+  font-size: 0.813rem;
+  font-style: normal;
 
   .button-arrow-right {
     transform: translateX(0);
@@ -68,12 +72,17 @@ const StyledTile = styled(motion.div)`
   p {
     position: relative;
     margin-bottom: 0;
-    font-size: 0.813rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: 1.375rem;
     padding-bottom: 1.5rem;
+    line-height: 1.375rem;
   }
+
+  strong {
+    font-weight: 700;
+    line-height: 1.5rem;
+    padding-bottom: 0.5rem;
+  }
+
   p.heightAuto {
     height: auto;
   }
@@ -130,6 +139,7 @@ const Tile: React.FC<Props> = ({ heading, text, ctalink, Icon, single }) => {
           ) : (
             ''
           )}
+          <strong>{heading}</strong>
           <p className={`truncate ${single ? `heightAuto` : ''}`}>{text}</p>
           <Link to={ctalink}>
             <StyledButton>

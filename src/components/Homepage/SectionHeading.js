@@ -8,6 +8,7 @@ const Heading = styled.h2`
   font-weight: 600;
   line-height: 2.215rem;
   justify-self: center;
+  text-align: center;
 `
 
 const SectionHeading = (props) => <Heading {...props}>{props.children}</Heading>

@@ -84,16 +84,16 @@ const Heading = styled.div`
 `
 
 const ModalContent = styled.div`
+  border-radius: 0.5rem;
   position: absolute;
   left: 50%;
   top: 50%;
-  height: 100vh;
   max-height: 25rem;
   width: 100vw;
   max-width: 30rem;
   transform: translate(-50%, -50%);
-  padding: 6rem 2rem 2rem 2rem;
-  background-color: ${testnetsTheme.palette.background.paper};
+  padding: 3rem 2rem 2rem 2rem;
+  background-color: var(--ifm-background-color);
 `
 
 const ModalContentInner = styled.div`
@@ -124,65 +124,88 @@ const CloseModal = styled(Link)`
   position: absolute;
   right: 1rem;
   top: 1rem;
-  color: ${testnetsTheme.palette.text.primary};
+  color: var(--ifm-font-color-base);
   font-size: 3rem;
 
   &:hover {
-    color: ${testnetsTheme.palette.text.primary};
+    color: var(--ifm-font-color-base);
   }
 `
 
 const ShareLinks = styled.div`
   display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
   font-size: 2.2rem;
+  justify-content: space-around;
+  padding-top: 1rem;
 
   > div {
-    flex: 1;
-    margin: 1rem;
+    a {
+      border: 1px var(--ifm-font-color-base) solid;
+    }
   }
 
   span {
     font-size: 1.6rem;
     vertical-align: text-top;
   }
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 `
 
 const TwitterLink = styled(Link)`
   color: #fff;
   background-color: #00acee;
-  padding: 0.4rem 0.8rem 0;
+  padding: 0.8rem 0.8rem 0;
   border-radius: 0.4rem;
 
   &:hover {
     color: #fff;
+    text-decoration: none;
   }
 `
 
 const FacebookLink = styled(Link)`
   color: #fff;
   background-color: #3b5998;
-  padding: 0.4rem 0.8rem 0;
+  padding: 0.8rem 0.8rem 0;
   border-radius: 0.4rem;
 
   &:hover {
     color: #fff;
+    text-decoration: none;
   }
 `
 
 const CopyToClipboardLink = styled(Link)`
-  color: ${testnetsTheme.palette.primary.contrastText};
+  color: var(--ifm-font-color-base);
   padding: 0.4rem 0.8rem 0;
   border-radius: 0.4rem;
   font-size: 2.2rem;
   position: relative;
+  display: inline-flex;
+  gap: 0.25rem;
 
   &:hover {
-    color: ${testnetsTheme.palette.primary.contrastText};
+    color: var(--ifm-font-color-base);
+    text-decoration: none;
   }
 
   span.text {
     font-size: 1.6rem;
     vertical-align: text-top;
+    @media (max-width: 767px) {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    font-size: 1.2rem;
+    svg {
+      align-self: center;
+    }
   }
 `
 
@@ -263,6 +286,7 @@ const RadioButton = styled.button`
     background-color: #1342b2;
     font-weight: 700;
     color: #fff;
+    border-color: #1342b2;
   }
 
   @media (max-width: 767px) {
@@ -628,6 +652,7 @@ const Calculator = ({
                 </CloseModal>
                 <ModalContentInner>
                   <Box textAlign="center">
+                    <span>Share via:</span>
                     <ShareLinks>
                       <div>
                         <TwitterLink
@@ -646,6 +671,7 @@ const Calculator = ({
                         </FacebookLink>
                       </div>
                     </ShareLinks>
+                    <span>or</span>
                     <p>
                       <CopyToClipboardLink
                         href="#copy-to-clipboard"

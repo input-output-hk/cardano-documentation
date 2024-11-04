@@ -6,7 +6,7 @@ export const CopyInputContainer = styled.div`
   display: flex;
   margin-bottom: 1rem;
   margin-top: 0.25rem;
-  border: 1px solid var(--text-field-content-color) !important;
+  border: 1px solid var(--text-field-content-color);
   border-radius: 4px;
 `
 
@@ -132,7 +132,7 @@ export const TextFieldWrapper = styled.div`
 export const StyledTextField = styled(TextField)`
   padding: 1rem !important;
   border-radius: 0.25rem !important;
-  border: 1px solid var(--text-field-content-color) !important;
+  border: 1px solid var(--text-field-content-color);
   margin: 0.25rem 0 !important;
 
   &:focus-within {

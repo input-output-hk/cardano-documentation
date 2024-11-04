@@ -13,20 +13,20 @@ const StyledGrid = styled.section`
     text-decoration: none;
   }
 
-  > :nth-child(1),
-  > :nth-child(2),
-  > :nth-child(3) {
+  :nth-child(1),
+  :nth-child(2),
+  :nth-child(3) {
     flex: 1 1 calc(33.33% - 2rem);
   }
 
-  > :nth-child(4),
-  > :nth-child(5) {
+  :nth-child(4),
+  :nth-child(5) {
     flex: 1 1 calc(50% - 2rem);
     display: flex;
     justify-content: flex-end;
   }
 
-  > :nth-child(5) {
+  :nth-child(5) {
     justify-content: flex-start;
   }
 
@@ -56,7 +56,6 @@ const StyledGrid = styled.section`
 
     > :nth-child(5) {
       justify-content: center;
-      flex: 1 1 100%;
     }
   }
 `

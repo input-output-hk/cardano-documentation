@@ -19,13 +19,20 @@ const SubNav = styled.div`
   }
 `
 
+const DocContainer = styled.div`
+  @media (min-width: 997px) {
+    flex-grow: 1;
+    max-width: calc(100% - var(--doc-sidebar-width));
+  }
+`
+
 export default function DocRootLayoutMain({
   hiddenSidebarContainer,
   children,
 }) {
   const sidebar = useDocsSidebar()
   return (
-    <div>
+    <DocContainer>
       <SubNav>
         <DocBreadcrumbs />
       </SubNav>
@@ -45,6 +52,6 @@ export default function DocRootLayoutMain({
           {children}
         </div>
       </main>
-    </div>
+    </DocContainer>
   )
 }

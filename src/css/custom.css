@@ -50,6 +50,7 @@
   --ifm-menu-color-active: #1c1e21;
   --ifm-menu-list-background-color: #ecf1f7;
   --ifm-sidebar-nav-menu-color-background: #1c1e21;
+  --ifm-separator-color: #505660;
 
   /* Table of contents styles */
   --ifm-toc-heading-color: #1c1e21;
@@ -288,6 +289,14 @@ body {
   background-color: var(--ifm-menu-color-background);
 }
 
+.theme-doc-sidebar-item-link-level-2 .menu__link {
+  border-radius: 0;
+}
+
+.theme-doc-sidebar-item-link-level-2 .menu__link--active {
+  font-weight: 400;
+}
+
 .theme-doc-sidebar-item-category-level-2 a {
   background-color: var(--ifm-menu-color-background);
 }
@@ -352,8 +361,9 @@ body {
 }
 
 .external-link-with-separator {
-  border-top: 0.01rem solid;
-  padding-top: 0.5rem;
+  border-top: 1px solid var(--ifm-separator-color);
+  padding-top: 1.5rem;
+  margin-top: 1.5rem !important;
 }
 
 .footer {
@@ -444,6 +454,9 @@ body {
 
 .footer__copyright {
   margin-bottom: 3rem;
+  font-size: 0.8125rem;
+  font-style: normal;
+  line-height: 1.375rem;
 }
 
 .footer-bottom-links {
@@ -499,6 +512,12 @@ body {
 
 .dropdown--right {
   padding: 0 !important;
+}
+
+.navbar__items--right > :nth-child(1) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar__items--right > :nth-child(3) {
@@ -655,6 +674,10 @@ body {
   .menu__list-item--collapsed .menu__list-item-collapsible {
     background-color: rgba(0, 0, 0, 0) !important;
   }
+
+  .menu__list-item:not(:first-child) {
+    margin-top: 0.5rem;
+  }
 }
 
 .aa-DetachedSearchButtonPlaceholder {
@@ -744,7 +767,8 @@ body {
 }
 
 @media (min-width: 997px) {
-  .markdown {
+  .markdown,
+  .pagination-nav {
     margin-left: 1rem;
   }
   .toc-heading-content-wrapper {
@@ -781,6 +805,31 @@ body {
 .theme-doc-breadcrumbs {
   margin-bottom: 0 !important;
   --ifm-breadcrumb-size-multiplier: 0.9314 !important;
+}
+
+.breadcrumbs__link {
+  margin: 0 -0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.breadcrumbs__home {
+  padding: 0.5rem;
+}
+
+.breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.breadcrumbs__item:not(:last-child):after {
+  background: url('@site/src/components/icons/ChevronDown.svg') !important;
+  transform: rotate(270deg);
+
+  width: 24px;
+  height: 24px;
+  margin: 0;
 }
 
 .breadcrumbs__home svg {
@@ -848,12 +897,16 @@ body {
 
 @media (max-width: 1180px) {
   .navbar__link {
-    font-size: 0.688rem;
+    font-size: 0.6rem;
   }
 
   .navbar__link > svg {
     width: 1.125rem;
     height: 1.125rem;
+  }
+
+  .dropdown--right .dropdown__menu {
+    left: -150%;
   }
 }
 
@@ -957,6 +1010,10 @@ body {
   font-weight: 600;
 }
 
+.theme-admonition p {
+  margin-bottom: 0.25rem !important;
+}
+
 @media (max-width: 996px) {
   .markdown h1 {
     font-size: 1.75rem;
@@ -1007,6 +1064,15 @@ body {
   line-height: 1.375rem;
 }
 
+.pagination-nav__sublabel {
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+.pagination-nav__label {
+  line-height: 1.5rem;
+}
+
 @media (max-width: 767px) {
   .pagination-nav__label {
     display: none;
@@ -1014,6 +1080,20 @@ body {
   .pagination-labels-wrapper div {
     margin-top: 5px;
   }
+}
+
+code,
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.theme-code-block {
+  width: 100% !important;
+}
+
+.markdown li ul li::marker {
+  content: '•  ';
 }
 
 /* Footer License Details */
