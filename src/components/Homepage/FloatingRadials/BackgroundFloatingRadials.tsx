@@ -5,72 +5,95 @@ import FloatingRadial from './FloatingRadial'
 const floating1 = keyframes`
     0% {
       transform: translate(0, 0px);
+      opacity: 0;
     }
     10% {
       transform: translate(10px, 10px);
+      opacity: 1;
     }
     20% {
       transform: translate(-15px, -15px);
+      opacity: 0;
     }
     30% {
       transform: translate(10px, 10px);
+      opacity: 1;
     }
     40% {
       transform: translate(0px, -20px);
+      opacity: 1;
     }
+
     50% {
       transform: translate(20px, 10px);
+      opacity: 0;
     }
     60% {
       transform: translate(-20px, 0px);
+      opacity: 1;
     }
     70% {
       transform: translate(-0px, -20px);
+      opacity: 1;
     }
     80% {
       transform: translate(20px, 0px);
+      opacity: 0;
     }
     90% {
       transform: translate(-30px, -10px);
+      opacity: 0;
     }
     100% {
       transform: translate(0, -0px);
+      opacity: 1;
     }
   `
 
 const floating2 = keyframes`
     0% {
       transform: translate(0, 0px);
+      opacity: 0;
     }
     10% {
       transform: translate(-30px, -25px);
+      opacity: 1;
     }
     20% {
       transform: translate(10px, 10px);
+      opacity: 0;
     }
     30% {
       transform: translate(10px, -20px);
+      opacity: 1;
     }
     40% {
       transform: translate(-10px, 10px);
+      opacity: 1;
     }
     50% {
       transform: translate(-20px, 0px);
+      opacity: 0;
     }
     60% {
-      transform: translate(20px, 10px);
+      transform: translate(10px, 10px);
+      opacity: 0;
     }
     70% {
-      transform: translate(20px, 0px);
+      transform: translate(10px, 0px);
+      opacity: 1;
     }
     80% {
       transform: translate(-0px, -20px);
+      opacity: 0;
     }
     90% {
-      transform: translate(25px, 20px);
+      transform: translate(10px, 20px);
+      opacity: 1;
     }
     100% {
       transform: translate(0, -0px);
+      opacity: 1;
     }
   `
 

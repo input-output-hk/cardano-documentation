@@ -103,7 +103,7 @@ const MobileCarousel: FC<Props> = ({ children }) => {
     <CarouselContainer>
       <Swiper
         slidesPerView={1.2}
-        spaceBetween={15}
+        spaceBetween={24}
         ref={sliderRef}
         style={{ width: '100%' }}
       >

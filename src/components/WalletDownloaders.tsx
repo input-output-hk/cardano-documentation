@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import Box from '@material-ui/core/Box'
-import MuiButton from '@material-ui/core/Button'
-import CircularProgress from '@material-ui/core/CircularProgress'
-import Typography from '@material-ui/core/Typography'
+
 import Modal from '@material-ui/core/Modal'
 import styled from 'styled-components'
 import { TinyColor } from '@ctrl/tinycolor'
@@ -16,6 +13,10 @@ import { MdClose } from 'react-icons/md'
 import testnetsTheme from './utils/testnetsTheme'
 import content from './utils/testnetsContent'
 import { CopyInputContainer, CopyInput, Copy } from './SharedComponents'
+
+const DownloadersWrapper = styled.div`
+  margin: 0.5rem 0;
+`
 
 const LoadingContainer = styled.div`
   position: relative;
@@ -101,8 +102,9 @@ const DownloadButton = styled.a`
   }
 `
 
-const ErrorContainer = styled(Box)`
+const ErrorContainer = styled.div`
   text-align: center;
+  padding: 0 1.5rem;
 `
 
 const ModalContent = styled.div`
@@ -339,7 +341,7 @@ const WalletDownloaders = ({ env }) => {
   ]
 
   return (
-    <Box marginTop={4} marginBottom={4}>
+    <DownloadersWrapper>
       {/* {!hasError && !loading && platformsData && ( */}
       <>
         <h3>{envs[env].title}</h3>
@@ -476,7 +478,7 @@ const WalletDownloaders = ({ env }) => {
           </Typography>
         </ErrorContainer>
       )} */}
-    </Box>
+    </DownloadersWrapper>
   )
 }
 

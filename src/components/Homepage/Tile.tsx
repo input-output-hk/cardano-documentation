@@ -49,7 +49,7 @@ const StyledTile = styled(motion.div)`
   }
 
   @media (max-width: 767px) {
-    max-width: 289px;
+    max-width: 100%;
     height: 390px;
   }
 

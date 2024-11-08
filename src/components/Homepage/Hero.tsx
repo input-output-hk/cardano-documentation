@@ -7,7 +7,7 @@ import nodesRiv from '@site/static/assets/nodes.riv'
 const StyledHero = styled.div`
   background-color: #002170;
   position: relative;
-  padding: 6rem 0;
+  padding: 7.3rem 0;
   overflow: hidden;
 
   .heroHeading {
@@ -52,7 +52,7 @@ const StyledHero = styled.div`
         font-weight: 400;
         font-size: 1rem;
         line-height: 1.4;
-        margin-bottom: 2.5rem;
+        margin-bottom: 0;
         position: relative;
         z-index: 1;
 
@@ -79,7 +79,7 @@ const RiveContainer = styled.div`
   align-items: center;
   margin: auto 0;
   right: -32%;
-  top: 0;
+  top: -35px;
 
   @media (max-width: 1024px) {
     top: -25px;

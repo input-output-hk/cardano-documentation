@@ -1,9 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-import useBaseUrl from '@docusaurus/useBaseUrl'
-
-import Link from '@docusaurus/Link'
 import GridSectionEntry from './GridSectionEntry'
 
 const StyledGrid = styled.div`
