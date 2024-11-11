@@ -127,7 +127,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          to: 'pioneer-programs/plutus-pioneers',
+          to: '/pioneer-programs/education',
           label: 'Education',
           position: 'left',
         },
