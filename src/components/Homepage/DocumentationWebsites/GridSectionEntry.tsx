@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 
 import useBaseUrl from '@docusaurus/useBaseUrl'
 
-import M from '@site/static/assets/websites-grid/mythril.svg'
 import Link from '@docusaurus/Link'
 import { motion } from 'framer-motion'
 
@@ -54,7 +53,7 @@ export const GridSectionEntry: React.FC<Props> = ({
   url,
   index,
 }) => (
-  <Link href={url}>
+  <Link href={url} target="_blank">
     <StyledEntry
       color={color}
       theme={theme}

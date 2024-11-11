@@ -1,6 +1,5 @@
 import React, { useState, Fragment, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import FormControl from '@material-ui/core/FormControl'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
@@ -12,47 +11,7 @@ import ReCaptcha from 'react-google-recaptcha'
 import ChevronDown from './icons/ChevronDown.svg'
 
 import content from './utils/testnetsContent'
-import { StyledTextField, TextFieldWrapper } from './SharedComponents'
-import { InputAdornment } from '@material-ui/core'
-
-const Container = styled(Box)`
-  max-width: 100% !important;
-
-  &.loading {
-    form {
-      opacity: 0.5;
-    }
-  }
-`
-
-const RequestFunds = styled.button`
-  display: flex;
-  width: fit-content;
-  padding: 0.5rem 1rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.625rem;
-  background-color: var(--ifm-color-primary);
-  color: #fff;
-  border-radius: 22.5rem;
-  flex-direction: row-reverse;
-  transform: scale(1);
-  transition: all 0.2s ease-in-out;
-  border: none;
-
-  &[aria-disabled='true'] {
-    background-color: rgba(0, 0, 0, 0.15);
-    color: rgba(0, 0, 0, 0.25);
-  }
-`
-
-const LoadingContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 1;
-  transform: translate(-50%, -50%);
-`
+import { ButtonBase, InputAdornment, TextField } from '@material-ui/core'
 
 const DEFAULT_VALUES = {
   address: '',
@@ -249,17 +208,21 @@ const FaucetInner = ({
   return (
     <Fragment>
       {[statuses.ready, statuses.loading].includes(status) && (
-        <Container
-          className={status === statuses.loading ? 'loading' : ''}
+        <Box
+          className={
+            status === statuses.loading
+              ? 'faucet-container-loading'
+              : 'faucet-container'
+          }
           maxWidth="40rem"
           marginTop={4}
           marginBottom={4}
           position="relative"
         >
           {status === statuses.loading && (
-            <LoadingContainer>
+            <div className="loading-container">
               <CircularProgress />
-            </LoadingContainer>
+            </div>
           )}
           <form onSubmit={onSubmit}>
             {serverError && (
@@ -301,9 +264,10 @@ const FaucetInner = ({
                 marginBottom: '1.5rem',
               }}
             >
-              <TextFieldWrapper>
+              <div className="faucet-text-field-wrapper">
                 <span>Environment</span>
-                <StyledTextField
+                <TextField
+                  className="faucet-text-field"
                   select
                   value={environment}
                   fullWidth
@@ -328,9 +292,9 @@ const FaucetInner = ({
                   {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
                   <option value="preview">Preview Testnet</option>
                   <option value="preprod">Preprod Testnet</option>
-                </StyledTextField>
+                </TextField>
                 <span>Please select an environment</span>
-              </TextFieldWrapper>
+              </div>
             </FormControl>
 
             <FormControl
@@ -340,9 +304,10 @@ const FaucetInner = ({
                 marginBottom: '1.5rem',
               }}
             >
-              <TextFieldWrapper>
+              <div className="faucet-text-field-wrapper">
                 <span>Action</span>
-                <StyledTextField
+                <TextField
+                  className="faucet-text-field"
                   select
                   value={isPoolDelegation ? 'delegation' : 'testada'}
                   fullWidth
@@ -364,16 +329,17 @@ const FaucetInner = ({
                   {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
                   <option value="testada">Receive test ADA</option>
                   <option value="delegation">Receive pool delegation</option>
-                </StyledTextField>
+                </TextField>
                 <span>Please select an action</span>
-              </TextFieldWrapper>
+              </div>
             </FormControl>
 
             {isPoolDelegation && (
               <Box marginBottom={3}>
-                <TextFieldWrapper>
+                <div className="faucet-text-field-wrapper">
                   <span>Pool ID</span>
-                  <StyledTextField
+                  <TextField
+                    className="faucet-text-field"
                     value={values.poolId}
                     required
                     error={Boolean(errors.address)}
@@ -386,15 +352,16 @@ const FaucetInner = ({
                     }}
                   />
                   <span>Please enter the Pool ID to delegate to</span>
-                </TextFieldWrapper>
+                </div>
               </Box>
             )}
 
             {!isPoolDelegation && (
               <Box marginBottom={3}>
-                <TextFieldWrapper>
+                <div className="faucet-text-field-wrapper">
                   <span>Address (required)</span>
-                  <StyledTextField
+                  <TextField
+                    className="faucet-text-field"
                     value={values.address}
                     required
                     error={Boolean(errors.address)}
@@ -407,15 +374,16 @@ const FaucetInner = ({
                     }}
                   />
                   <span>Please enter the address to send funds to</span>
-                </TextFieldWrapper>
+                </div>
               </Box>
             )}
 
             {hasApiKey && (
-              <Box marginBottom={4}>
-                <TextFieldWrapper>
+              <Box className="faucet-api-box">
+                <div className="faucet-text-field-wrapper">
                   <span>API Key (optional)</span>
-                  <StyledTextField
+                  <TextField
+                    className="faucet-text-field"
                     value={values.apiKey}
                     placeholder="API Key"
                     error={Boolean(errors.apiKey)}
@@ -427,7 +395,7 @@ const FaucetInner = ({
                     }}
                   />
                   <span>Enter an API key to bypass rate limiting</span>
-                </TextFieldWrapper>
+                </div>
               </Box>
             )}
 
@@ -450,17 +418,30 @@ const FaucetInner = ({
                 ) : null,
               )}
 
-            <Box display="flex" justifyContent="flex-start">
-              <RequestFunds
-                disabled={status === statuses.loading}
-                type="submit"
-                aria-disabled={status === statuses.loading}
-              >
-                {content.faucet_content.request_funds}
-              </RequestFunds>
-            </Box>
+            <ButtonBase
+              style={{
+                fontFamily: 'Chivo',
+                fontSize: '0.8125rem',
+                lineHeight: '1.375rem',
+                fontWeight: '400',
+                width: 'fit-content',
+                padding: '0.5rem 1rem',
+                backgroundColor: 'var(--ifm-color-primary)',
+                color: '#fff',
+                borderRadius: '22.5rem',
+                transform: 'scale(1)',
+                transition: 'all 0.2s ease-in-out',
+                border: 'none',
+                margin: '2rem 0 !important',
+              }}
+              disabled={status === statuses.loading}
+              type="submit"
+              aria-disabled={status === statuses.loading}
+            >
+              {content.faucet_content.request_funds}
+            </ButtonBase>
           </form>
-        </Container>
+        </Box>
       )}
       {status === statuses.success && result && (
         <Box marginTop={4} marginBottom={4}>

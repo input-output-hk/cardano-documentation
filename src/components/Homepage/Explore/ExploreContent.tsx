@@ -16,28 +16,28 @@ const exploreContent = [
   <Tile
     heading="Explore developer resources"
     text="Learn about Cardano’s features and find references to developer resources, including guides and tutorials, to kickstart your development journey."
-    ctalink="https://iohk.io/en/research/library/"
+    ctalink="/developer-resources/welcome/"
     Icon={ExploreDeveloperResources}
     index={2}
   />,
   <Tile
     heading="Stake pool operations"
     text="Learn about stake pool operation basics, including node connectivity, keys, operational certificates, maintenance, and more, with references to detailed developer tutorials."
-    ctalink="/about-cardano/evolution/cardano-design-rationale"
+    ctalink="/stake-pool-operators/operating-a-stake-pool/"
     Icon={StakePoolOperators}
     index={3}
   />,
   <Tile
     heading="Testnets"
     text="Get started with Cardano's testnet environments and explore how to engage with them effectively."
-    ctalink="/about-cardano/explore-more/cardano-architecture"
+    ctalink="/cardano-testnets/environments/"
     Icon={Testnets}
     index={4}
   />,
   <Tile
     heading="Education"
     text="Explore learning opportunities on Cardano, including details about the Plutus Pioneer program and upcoming educational resources."
-    ctalink="/about-cardano/explore-more/cardano-architecture"
+    ctalink="/pioneer-programs/plutus-pioneers/"
     Icon={Education}
     index={5}
   />,

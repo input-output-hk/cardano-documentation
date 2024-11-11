@@ -1,26 +1,5 @@
 import React, { useRef } from 'react'
-import { Box } from '@material-ui/core'
-import styled from '@emotion/styled'
-import { CopyInputContainer, CopyInput, Copy } from './SharedComponents'
 import CopyIcon from '@site/src/components/icons/Copy.svg'
-
-const CopyAddressContainer = styled(CopyInputContainer)`
-  margin: 0.5rem 0 1.5rem 0 !important;
-  border-color: rgba(0, 0, 0, 0.3) !important;
-`
-const CopyAddressInput = styled(CopyInput)`
-  padding: 0.25rem 0.5rem !important;
-  font-family: 'Chivo';
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5rem;
-  color: var(--ifm-font-color-base);
-`
-
-const CopyAddress = styled(Copy)`
-  top: 0.2rem !important;
-`
 
 const FaucetAddresses = ({ preProduction, preview }) => {
   const preProdRef = useRef(null)
@@ -38,24 +17,38 @@ const FaucetAddresses = ({ preProduction, preview }) => {
       })
   }
   return (
-    <Box marginTop={0.5} gridRowGap={2}>
+    <div className="addresses-wrapper">
       <strong>Pre-production faucet address:</strong>
-      <CopyAddressContainer>
-        <CopyAddressInput ref={preProdRef} value={preProduction} readOnly />
-        <CopyAddress
+      <div className="copy-address-container">
+        <input
+          className="copy-address-input"
+          ref={preProdRef}
+          value={preProduction}
+          readOnly
+        />
+        <button
+          className="copy-address"
           onClick={() => handleCopyToClipboard(preProduction, preProdRef)}
         >
           <CopyIcon />
-        </CopyAddress>
-      </CopyAddressContainer>
+        </button>
+      </div>
       <strong>Preview faucet address:</strong>
-      <CopyAddressContainer>
-        <CopyAddressInput ref={previewRef} value={preview} readOnly />
-        <CopyAddress onClick={() => handleCopyToClipboard(preview, previewRef)}>
+      <div className="copy-address-container">
+        <input
+          className="copy-address-input"
+          ref={previewRef}
+          value={preview}
+          readOnly
+        />
+        <button
+          className="copy-address"
+          onClick={() => handleCopyToClipboard(preview, previewRef)}
+        >
           <CopyIcon />
-        </CopyAddress>
-      </CopyAddressContainer>
-    </Box>
+        </button>
+      </div>
+    </div>
   )
 }
 

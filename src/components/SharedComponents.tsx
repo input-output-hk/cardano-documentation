@@ -132,7 +132,7 @@ export const TextFieldWrapper = styled.div`
 export const StyledTextField = styled(TextField)`
   padding: 1rem !important;
   border-radius: 0.25rem !important;
-  border: 1px solid var(--text-field-content-color);
+  border: 1px solid var(--text-field-content-color) !important;
   margin: 0.25rem 0 !important;
 
   &:focus-within {

@@ -49,13 +49,13 @@ const WebsitesGrid = () => (
       <GridSectionEntry
         color={'#F1F5FF'}
         imgSrc={'assets/websites-grid/dev-portal.svg'}
-        url={''}
+        url={'https://developers.cardano.org/'}
         index={0}
       />
       <GridSectionEntry
         color={'#F1F5FF'}
         imgSrc={'assets/websites-grid/node-tests.svg'}
-        url={''}
+        url={'https://tests.cardano.intersectmbo.org/'}
         index={4}
       />
     </GridSection>
@@ -65,25 +65,25 @@ const WebsitesGrid = () => (
       <GridSectionEntry
         color={'#4BB4D51A'}
         imgSrc={'assets/websites-grid/plutus.svg'}
-        url={''}
+        url={'https://plutus.cardano.intersectmbo.org/docs/'}
         index={1}
       />
       <GridSectionEntry
         color={'#511CF7'}
         imgSrc={'assets/websites-grid/marlowe.svg'}
-        url={''}
+        url={'https://docs.marlowe.iohk.io/docs/introduction'}
         index={5}
       />
       <GridSectionEntry
         color={'#25272E'}
         imgSrc={'assets/websites-grid/aiken.png'}
-        url={''}
+        url={'https://aiken-lang.org/'}
         index={8}
       />
       <GridSectionEntry
         color={'#F1F5FF'}
         imgSrc={'assets/websites-grid/builder-tools.svg'}
-        url={''}
+        url={'https://developers.cardano.org/tools/'}
         index={10}
       />
     </GridSection>
@@ -95,13 +95,13 @@ const WebsitesGrid = () => (
           'linear-gradient(90deg, rgba(93, 160, 180, 0.40) 0%, rgba(243, 215, 235, 0.40) 100%);'
         }
         imgSrc={'assets/websites-grid/hydra.svg'}
-        url={''}
+        url={'https://hydra.family/head-protocol/'}
         index={2}
       />
       <GridSectionEntry
         color={'#000000'}
         imgSrc={'assets/websites-grid/mythril.svg'}
-        url={''}
+        url={'https://mithril.network/doc/'}
         index={6}
       />
     </GridSection>
@@ -111,25 +111,25 @@ const WebsitesGrid = () => (
       <GridSectionEntry
         color={'#0128AA'}
         text={'Intersect'}
-        url={''}
+        url={'https://docs.intersectmbo.org/'}
         index={3}
       />
       <GridSectionEntry
         color={'#016C83'}
         imgSrc={'assets/websites-grid/sancho-net.svg'}
-        url={''}
+        url={'https://sancho.network/'}
         index={7}
       />
       <GridSectionEntry
         theme={'linear-gradient(90deg, #EAEFFD 0%, #FCF3F0 100%);'}
         imgSrc={'assets/websites-grid/gov-tool.svg'}
-        url={''}
+        url={'https://docs.gov.tools/'}
         index={9}
       />
       <GridSectionEntry
         color={'rgba(42, 65, 232, 0.10)'}
         imgSrc={'assets/websites-grid/catalyst.svg'}
-        url={''}
+        url={'https://docs.projectcatalyst.io/'}
         index={11}
       />
     </GridSection>

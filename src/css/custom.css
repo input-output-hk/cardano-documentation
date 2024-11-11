@@ -1103,3 +1103,329 @@ pre {
   height: 1.125rem;
   margin: -0.063rem 0 -0.188rem 0.4rem;
 }
+
+/* custom components css (necessary for proper build rendering) */
+/* Faucet */
+.addresses-wrapper {
+  margin-top: 0.25rem;
+}
+
+.copy-address-container {
+  position: relative;
+  display: flex;
+  margin-bottom: 1rem;
+  margin-top: 0.25rem;
+  border: 1px solid var(--text-field-content-color);
+  border-radius: 4px;
+  margin: 0.5rem 0 1.5rem 0 !important;
+  border-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.copy-address-input {
+  display: flex;
+  padding: 0.5rem;
+  width: 100%;
+  max-width: calc(100% - 2.5rem);
+  background-color: transparent;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: stretch;
+  border-radius: 4px;
+  border: none;
+  text-overflow: ellipsis;
+
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.375rem;
+  padding: 0.25rem 0.5rem !important;
+  font-family: 'Chivo';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  color: var(--ifm-font-color-base);
+}
+
+.copy-address {
+  position: absolute;
+  right: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: none;
+  border: none;
+
+  top: 0.2rem !important;
+}
+
+.copy-address:hover {
+  cursor: pointer;
+}
+
+.copy-address:active {
+  transform: scale(0.8);
+}
+
+.faucet-container {
+  max-width: 100% !important;
+}
+
+.faucet-container-loading {
+  max-width: 100% !important;
+  form {
+    opacity: 0.5;
+  }
+}
+
+.loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+
+.faucet-text-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.faucet-text-field-wrapper span {
+  margin-left: 1px;
+  font-size: 0.813rem;
+}
+
+.faucet-text-field-wrapper p {
+  margin: 0;
+}
+
+.faucet-text-field {
+  padding: 1rem !important;
+  border-radius: 0.25rem !important;
+  border: 1px solid var(--text-field-content-color) !important;
+  margin: 0.25rem 0 !important;
+  width: 100% !important;
+
+  font-family: 'Chivo';
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.faucet-text-field:focus-within {
+  border: 2px solid var(--ifm-link-color);
+}
+
+.faucet-text-field select,
+.faucet-text-field input {
+  padding: 0;
+}
+
+.faucet-text-field .MuiInputAdornment-root,
+.faucet-text-field .MuiTypography-root,
+.faucet-text-field input,
+.faucet-text-field select {
+  color: var(--text-field-content-color) !important;
+}
+
+.faucet-text-field select:focus {
+  background-color: #fff;
+  background-color: transparent !important;
+}
+
+.faucet-text-field .MuiInputAdornment-root svg {
+  fill: var(--text-field-content-color) !important;
+}
+
+.faucet-text-field .MuiSelect-icon {
+  display: none;
+}
+
+.faucet-api-box {
+  padding-bottom: 2rem;
+  display: block !important;
+}
+
+/* Daedalus Wallet Downloaders */
+.wallet-downloaders-wrapper {
+  margin: 0.5rem 0;
+}
+
+.wallet-loading-container {
+  position: relative;
+  width: 100%;
+  height: 25rem;
+}
+
+.wallet-loading-container > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wallet-downloaders-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* flex-wrap: wrap; */
+  gap: 0.5rem;
+}
+
+@media (max-width: 767px) {
+  .wallet-downloaders-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1240px) and (min-width: 1030px) {
+  .wallet-downloaders-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.wallet-download-box {
+  padding: 1.5rem 1rem 1.25rem 1rem;
+  background-color: var(--controls-background-color);
+  border-radius: 4px;
+  font-size: 0.813rem;
+  font-family: 'Chivo';
+  font-weight: 400;
+  line-height: 1.375rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: center;
+}
+
+.wallet-download-box a {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+  align-items: center;
+}
+
+.wallet-download-box a svg {
+  margin-left: 0.25rem;
+}
+
+.wallet-download-label {
+  font-weight: 700 !important;
+  line-height: 1.5rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+.wallet-download-link {
+  font-family: 'Chivo';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.375rem;
+  color: #fff !important;
+  text-decoration: none !important;
+  display: flex;
+  padding: 0.5rem 1rem;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 360px;
+  background-color: #1342b2;
+
+  margin: 1rem 0 !important;
+}
+
+.wallet-download-link svg {
+  margin-left: 0.625rem;
+}
+
+.wallet-download-modal-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100vh;
+  max-height: 60rem;
+  width: 100vw;
+  max-width: 120rem;
+  transform: translate(-50%, -50%);
+  padding: 6rem;
+  background-color: var(--ifm-background-color);
+}
+
+.wallet-download-modal-content-inner {
+  overflow-y: auto;
+  height: 100%;
+  padding: 0.7rem;
+  scrollbar-width: thin;
+}
+
+.wallet-download-modal-content-inner::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+.wallet-download-modal-content-inner::-webkit-scrollbar-track {
+  background-color: var(--ifm-body-text-color);
+}
+
+.wallet-download-modal-content-inner::-webkit-scrollbar-thumb {
+  border-radius: 0.35rem;
+  background-color: var(--ifm-body-text-color);
+}
+
+.wallet-download-modal-content-close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: var(--ifm-body-text-color);
+  font-size: 3rem;
+}
+
+.wallet-download-modal-content-close:hover {
+  color: var(--ifm-body-text-color);
+}
+
+.wallet-download-copy-input-container {
+  position: relative;
+  display: flex;
+  margin-bottom: 1rem;
+  margin-top: 0.25rem;
+  border: 1px solid var(--text-field-content-color);
+  border-radius: 4px;
+}
+
+.wallet-download-copy-input {
+  display: flex;
+  padding: 0.5rem;
+  width: 100%;
+  max-width: calc(100% - 2.5rem);
+  background-color: transparent;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: stretch;
+  border-radius: 4px;
+  border: none;
+  text-overflow: ellipsis;
+
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.375rem;
+}
+
+.wallet-download-copy {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: none;
+  border: none;
+}
+
+.wallet-download-copy:hover {
+  cursor: pointer;
+}
+
+.wallet-download-copy:active {
+  transform: scale(0.8);
+}

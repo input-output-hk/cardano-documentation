@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 
 import Modal from '@material-ui/core/Modal'
-import styled from 'styled-components'
 import { TinyColor } from '@ctrl/tinycolor'
 import Link from '@input-output-hk/front-end-core-components/components/Link'
 import Markdown from '@input-output-hk/front-end-core-components/components/Markdown'
@@ -12,149 +11,6 @@ import { MdClose } from 'react-icons/md'
 
 import testnetsTheme from './utils/testnetsTheme'
 import content from './utils/testnetsContent'
-import { CopyInputContainer, CopyInput, Copy } from './SharedComponents'
-
-const DownloadersWrapper = styled.div`
-  margin: 0.5rem 0;
-`
-
-const LoadingContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 25rem;
-
-  > div {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-`
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  /* flex-wrap: wrap; */
-  gap: 0.5rem;
-
-  @media (max-width: 767px) {
-    flex-direction: column;
-  }
-
-  @media (max-width: 1240px) and (min-width: 1030px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-`
-
-const DownloadBox = styled.div`
-  padding: 1.5rem 1rem 1.25rem 1rem;
-  background-color: var(--controls-background-color);
-  border-radius: 4px;
-  font-size: 0.813rem;
-  font-family: 'Chivo';
-  font-weight: 400;
-  line-height: 1.375rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  text-align: center;
-
-  a {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0.25rem;
-    align-items: center;
-
-    svg {
-      margin-left: 0.25rem;
-    }
-  }
-`
-
-const MainLabel = styled.span`
-  font-weight: 700;
-  line-height: 1.5rem;
-  padding-bottom: 0.25rem;
-`
-
-const DownloadButton = styled.a`
-  font-family: 'Chivo';
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.375rem;
-  color: #fff !important;
-  text-decoration: none !important;
-  display: flex;
-  padding: 0.5rem 1rem;
-  justify-content: center;
-  align-items: center;
-  align-self: stretch;
-  border-radius: 360px;
-  background-color: #1342b2;
-
-  margin: 1rem 0 !important;
-
-  svg {
-    margin-left: 0.625rem;
-  }
-`
-
-const ErrorContainer = styled.div`
-  text-align: center;
-  padding: 0 1.5rem;
-`
-
-const ModalContent = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 100vh;
-  max-height: 60rem;
-  width: 100vw;
-  max-width: 120rem;
-  transform: translate(-50%, -50%);
-  padding: 6rem;
-  background-color: ${testnetsTheme.palette.background.paper};
-`
-
-const ModalContentInner = styled.div`
-  overflow-y: auto;
-  height: 100%;
-  padding: 0.7rem;
-  scrollbar-width: thin;
-
-  &::-webkit-scrollbar {
-    width: 0.7rem;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: ${new TinyColor(testnetsTheme.palette.text.primary)
-      .setAlpha(0.2)
-      .toString()};
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: ${new TinyColor(testnetsTheme.palette.text.primary)
-      .setAlpha(0.5)
-      .toString()};
-    border-radius: 0.35rem;
-  }
-`
-
-const CloseModal = styled(Link)`
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  color: ${testnetsTheme.palette.text.primary};
-  font-size: 3rem;
-
-  &:hover {
-    color: ${testnetsTheme.palette.text.primary};
-  }
-`
 
 const WalletDownloaders = ({ env }) => {
   const gaCategory = 'byron_daedalus_downloaders'
@@ -341,11 +197,11 @@ const WalletDownloaders = ({ env }) => {
   ]
 
   return (
-    <DownloadersWrapper>
+    <div className="wallet-downloaders-wrapper">
       {/* {!hasError && !loading && platformsData && ( */}
       <>
         <h3>{envs[env].title}</h3>
-        <Container>
+        <div className="wallet-downloaders-container">
           {dummyData.map(
             ({
               key,
@@ -357,18 +213,19 @@ const WalletDownloaders = ({ env }) => {
               full_label,
               short_label,
             }) => (
-              <DownloadBox key={key}>
-                <MainLabel>{full_label}</MainLabel>
+              <div className="wallet-download-box" key={key}>
+                <span className="wallet-download-label">{full_label}</span>
                 <span>
                   {version}: {version}
                 </span>
-                <DownloadButton href={URL}>
+                <a className="wallet-download-link" href={URL}>
                   {short_label}
                   <DownloadIcon />
-                </DownloadButton>
+                </a>
                 <span>{'SHA256 checksum'}</span>
-                <CopyInputContainer>
-                  <CopyInput
+                <div className="wallet-download-copy-input-container">
+                  <input
+                    className="wallet-download-copy-input"
                     // ref={checksumRefs[key]}
                     title={'content.downloaders_content.copy_to_clipboard'}
                     aria-label={'content.downloaders_content.copy_to_clipboard'}
@@ -376,10 +233,10 @@ const WalletDownloaders = ({ env }) => {
                     readOnly
                   />
                   {/* <Copy onClick={checksumOnClick(SHA256, key)}> */}
-                  <Copy>
+                  <button className="wallet-download-copy">
                     <CopyIcon />
-                  </Copy>
-                </CopyInputContainer>
+                  </button>
+                </div>
                 <Link
                   href="#"
                   // onClick={openModal(`${key}_checksum`)}
@@ -395,12 +252,12 @@ const WalletDownloaders = ({ env }) => {
                   // onClose={openModal('')}
                   disableScrollLock
                 >
-                  <ModalContent>
+                  <div className="wallet-download-modal-content">
                     {/* <CloseModal href="#" onClick={openModal('')}> */}
-                    <CloseModal>
+                    <Link className="wallet-download-modal-content-close">
                       <MdClose />
-                    </CloseModal>
-                    <ModalContentInner>
+                    </Link>
+                    <div className="wallet-download-modal-content-inner ">
                       {/* <Markdown
                           source={renderTemplateString(
                             content.downloaders_content[key]
@@ -408,8 +265,8 @@ const WalletDownloaders = ({ env }) => {
                             { SHA256, signature, hash, URL, version },
                           )}
                         /> */}
-                    </ModalContentInner>
-                  </ModalContent>
+                    </div>
+                  </div>
                 </Modal>
                 <Link
                   // onClick={onDownloadPGPSignature(signature, URL)}
@@ -439,12 +296,12 @@ const WalletDownloaders = ({ env }) => {
                   // onClose={openModal('')}
                   disableScrollLock
                 >
-                  <ModalContent>
+                  <div className="wallet-download-modal-content">
                     {/* <CloseModal href="#" onClick={openModal('')}> */}
-                    <CloseModal>
+                    <Link className="wallet-download-modal-content-close">
                       <MdClose />
-                    </CloseModal>
-                    <ModalContentInner>
+                    </Link>
+                    <div className="wallet-download-modal-content-inner ">
                       {/* <Markdown
                             source={renderTemplateString(
                               content.downloaders_content[key]
@@ -452,33 +309,33 @@ const WalletDownloaders = ({ env }) => {
                               { SHA256, signature, hash, URL, version },
                             )}
                           /> */}
-                    </ModalContentInner>
-                  </ModalContent>
+                    </div>
+                  </div>
                 </Modal>
-              </DownloadBox>
+              </div>
             ),
           )}
-        </Container>
+        </div>
       </>
       {/* )} */}
       {/* {loading && (
-        <LoadingContainer>
+        <div className='wallet-loading-container'>
           <div>
             <CircularProgress />
           </div>
-        </LoadingContainer>
+        </div>
       )} */}
       {/* {hasError && (
-        <ErrorContainer pl={12} pr={12}>
+        <Box pl={12} pr={12}>
           <Typography variant="h1" color="error">
             <FaCogs />
           </Typography>
           <Typography variant="h3" color="error">
             {content.downloaders_content.no_releases_available}
           </Typography>
-        </ErrorContainer>
+        </Box>
       )} */}
-    </DownloadersWrapper>
+    </div>
   )
 }
 
