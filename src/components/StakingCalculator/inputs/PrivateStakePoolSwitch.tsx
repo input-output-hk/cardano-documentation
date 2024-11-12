@@ -7,9 +7,18 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import Switch from '@material-ui/core/Switch'
 
 const StyledFormGroup = styled(FormGroup)`
-  .MuiFormControlLabel-root {
-    margin-left: 0;
+  span {
+    font-family: 'Chivo';
   }
+
+  p {
+    font-family: 'Chivo';
+    font-size: 0.813rem;
+    line-height: 1.375rem;
+  }
+`
+const StyledFormHelperText = styled(FormHelperText)`
+  color: var(--ifm-font-color-base);
 `
 
 const PrivateStakePoolSwitch = ({ checked, onChange, label, helperText }) => (
@@ -24,7 +33,7 @@ const PrivateStakePoolSwitch = ({ checked, onChange, label, helperText }) => (
       }
       label={label}
     />
-    {helperText && <FormHelperText>{helperText}</FormHelperText>}
+    {helperText && <StyledFormHelperText>{helperText}</StyledFormHelperText>}
   </StyledFormGroup>
 )
 

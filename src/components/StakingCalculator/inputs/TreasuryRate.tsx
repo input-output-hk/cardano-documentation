@@ -1,30 +1,15 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import Box from '@material-ui/core/Box'
 import InputAdornment from '@material-ui/core/InputAdornment'
-import FormControl from '@material-ui/core/FormControl'
-import TextField from '@material-ui/core/TextField'
-import FormHelperText from '@material-ui/core/FormHelperText'
 import Slider from '@material-ui/core/Slider'
-
-const Container = styled.div`
-  text-align: center;
-
-  .MuiFormHelperText-root {
-    text-align: center;
-  }
-`
-
-const InputLabel = styled.label`
-  font-size: 1.2rem;
-`
-
-const TextFieldInput = styled(TextField)`
-  input {
-    text-align: center;
-  }
-`
+import {
+  AdvancedOptionsTextField,
+  ControlsContainerWithInput,
+  InputLabel,
+  StyledFormControl,
+  StyledSlider,
+  TextFieldSliderWrapper,
+} from '../../SharedComponents'
 
 const TreasuryRate = ({ value, label, onChange, helperText }) => {
   const [textValue, setTextValue] = useState(`${value * 100}`)
@@ -38,46 +23,43 @@ const TreasuryRate = ({ value, label, onChange, helperText }) => {
   }
 
   return (
-    <Container>
-      <FormControl fullWidth>
-        <InputLabel>
-          {label}
-          <Box component="span" display="block" margin="0 auto" maxWidth="8rem">
-            <TextFieldInput
-              value={textValue}
-              onChange={textOnChange}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="start">%</InputAdornment>
-                ),
-              }}
-            />
-          </Box>
-        </InputLabel>
-        <Slider
-          value={value}
-          min={0}
-          max={1}
-          step={0.001}
-          onChange={(_, v: number | any) => {
-            if (v === value) return
-            onChange(v)
-            setTextValue(`${Math.round(v * 1000) / 10}`)
-          }}
-          marks={[
-            {
-              value: 0,
-              label: '0%',
-            },
-            {
-              value: 1,
-              label: '100%',
-            },
-          ]}
-        />
-        <FormHelperText>{helperText}</FormHelperText>
-      </FormControl>
-    </Container>
+    <ControlsContainerWithInput>
+      <StyledFormControl>
+        <InputLabel>{label}</InputLabel>
+        <TextFieldSliderWrapper>
+          <AdvancedOptionsTextField
+            value={textValue}
+            onChange={textOnChange}
+            InputProps={{
+              endAdornment: <InputAdornment position="end">%</InputAdornment>,
+              disableUnderline: true,
+            }}
+          />
+          <StyledSlider
+            value={value}
+            min={0}
+            max={1}
+            step={0.001}
+            onChange={(_, v: number | any) => {
+              if (v === value) return
+              onChange(v)
+              setTextValue(`${Math.round(v * 1000) / 10}`)
+            }}
+            marks={[
+              {
+                value: 0,
+                label: '0%',
+              },
+              {
+                value: 1,
+                label: '100%',
+              },
+            ]}
+          />
+        </TextFieldSliderWrapper>
+        <span>{helperText}</span>
+      </StyledFormControl>
+    </ControlsContainerWithInput>
   )
 }
 

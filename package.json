@@ -50,6 +50,10 @@
     "styled-components": "^6.1.10",
     "styled-icons": "^9.0.1",
     "victory": "^36.5.3",
+    "swiper": "^11.1.14",
+    "framer-motion": "^11.11.7",
+    "@rive-app/react-webgl": "^4.14.4",
+    "file-loader": "^6.2.0",
     "react-player": "^2.16.0"
   },
   "devDependencies": {

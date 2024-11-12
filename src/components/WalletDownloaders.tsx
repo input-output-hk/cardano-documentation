@@ -1,129 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react'
-import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button'
-import CircularProgress from '@material-ui/core/CircularProgress'
-import Typography from '@material-ui/core/Typography'
+
 import Modal from '@material-ui/core/Modal'
-import styled from 'styled-components'
-import { TinyColor } from '@ctrl/tinycolor'
 import Link from '@input-output-hk/front-end-core-components/components/Link'
 import Markdown from '@input-output-hk/front-end-core-components/components/Markdown'
-import { FaDownload, FaCogs } from 'react-icons/fa'
+import { FaCogs } from 'react-icons/fa'
+import DownloadIcon from '@site/src/components/icons/Download.svg'
+import CopyIcon from '@site/src/components/icons/Copy.svg'
 import { MdClose } from 'react-icons/md'
 
-import testnetsTheme from './utils/testnetsTheme'
 import content from './utils/testnetsContent'
-
-const LoadingContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 25rem;
-
-  > div {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-`
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  > div {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-`
-
-const ErrorContainer = styled(Box)`
-  text-align: center;
-`
-
-const ChecksumArea = styled.textarea`
-  border: 0.1rem solid
-    ${new TinyColor(testnetsTheme.palette.text.primary)
-      .setAlpha(0.2)
-      .toString()};
-  padding: 0.5rem;
-  display: block;
-  margin: 0 auto;
-  resize: none;
-  background-color: ${new TinyColor(testnetsTheme.palette.background.default)
-    .lighten(5)
-    .toString()};
-  color: ${testnetsTheme.palette.text.primary};
-  scrollbar-width: thin;
-  cursor: pointer;
-
-  &::-webkit-scrollbar {
-    width: 0.7rem;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: ${new TinyColor(testnetsTheme.palette.text.primary)
-      .setAlpha(0.2)
-      .toString()};
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: ${new TinyColor(testnetsTheme.palette.text.primary)
-      .setAlpha(0.5)
-      .toString()};
-    border-radius: 0.35rem;
-  }
-`
-
-const ModalContent = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 100vh;
-  max-height: 60rem;
-  width: 100vw;
-  max-width: 120rem;
-  transform: translate(-50%, -50%);
-  padding: 6rem;
-  background-color: ${testnetsTheme.palette.background.paper};
-`
-
-const ModalContentInner = styled.div`
-  overflow-y: auto;
-  height: 100%;
-  padding: 0.7rem;
-  scrollbar-width: thin;
-
-  &::-webkit-scrollbar {
-    width: 0.7rem;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: ${new TinyColor(testnetsTheme.palette.text.primary)
-      .setAlpha(0.2)
-      .toString()};
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: ${new TinyColor(testnetsTheme.palette.text.primary)
-      .setAlpha(0.5)
-      .toString()};
-    border-radius: 0.35rem;
-  }
-`
-
-const CloseModal = styled(Link)`
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  color: ${testnetsTheme.palette.text.primary};
-  font-size: 3rem;
-
-  &:hover {
-    color: ${testnetsTheme.palette.text.primary};
-  }
-`
+import { CircularProgress, Typography, Box } from '@material-ui/core'
 
 const WalletDownloaders = ({ env }) => {
   const gaCategory = 'byron_daedalus_downloaders'
@@ -281,160 +167,149 @@ const WalletDownloaders = ({ env }) => {
   const unCacheURL = (url) => {
     return url + '?t=' + new Date().getTime()
   }
+
   return (
-    <Box marginTop={4} marginBottom={4}>
+    <div className="wallet-downloaders-wrapper">
       {!hasError && !loading && platformsData && (
         <>
           <h3>{envs[env].title}</h3>
-          <Container>
+          <div className="wallet-downloaders-container">
             {getOrderedPlatforms(
               content.downloaders_content.platforms_order.map(
                 (platform) => platform.platform_name,
               ),
             ).map(({ key, signature, hash, URL, version, SHA256 }) => (
-              <Box
-                flex={1}
-                key={key}
-                display="flex"
-                flexDirection="column"
-                justifyContent="flex-end"
-                textAlign="center"
-              >
-                <span>
-                  <strong>{content.downloaders_content[key].full_label}</strong>
+              <div className="wallet-download-box" key={key}>
+                <span className="wallet-download-label">
+                  {content.downloaders_content[key].full_label}
                 </span>
                 <span>
                   {content.downloaders_content.version}: {version}
                 </span>
-                <Box marginTop={1} marginBottom={1}>
-                  <Button
-                    component={Link}
-                    href={unCacheURL(URL)}
-                    variant="contained"
-                    tracking={{
-                      category: gaCategory,
-                      label: `download_${key}_${version}`,
-                    }}
-                  >
-                    {content.downloaders_content[key].short_label}
-                    <Box component="span" marginLeft={1}>
-                      <FaDownload />
-                    </Box>
-                  </Button>
-                </Box>
-                <Box>
-                  <span>{content.downloaders_content.sha_checksum}</span>
-                  <ChecksumArea
+                <a className="wallet-download-link" href={URL}>
+                  {content.downloaders_content[key].short_label}
+                  <DownloadIcon />
+                </a>
+                <span>{content.downloaders_content.sha_checksum}</span>
+                <div className="wallet-download-copy-input-container">
+                  <input
+                    className="wallet-download-copy-input"
                     ref={checksumRefs[key]}
-                    title={content.downloaders_content.copy_to_clipboard}
-                    onClick={checksumOnClick(SHA256, key)}
-                    aria-label={content.downloaders_content.copy_to_clipboard}
+                    title={'content.downloaders_content.copy_to_clipboard'}
+                    aria-label={'content.downloaders_content.copy_to_clipboard'}
                     value={SHA256}
                     readOnly
-                    rows={3}
                   />
-                  <Link
-                    href="#"
-                    onClick={openModal(`${key}_checksum`)}
-                    tracking={{
-                      category: gaCategory,
-                      label: `view_checksum_instructions_${key}_${version}`,
-                    }}
+                  <button
+                    onClick={checksumOnClick(SHA256, key)}
+                    className="wallet-download-copy"
                   >
-                    {content.downloaders_content.verify_checksum}
-                  </Link>
-                  <Modal
-                    open={activeModal === `${key}_checksum`}
-                    onClose={openModal('')}
-                    disableScrollLock
-                  >
-                    <ModalContent>
-                      <CloseModal href="#" onClick={openModal('')}>
-                        <MdClose />
-                      </CloseModal>
-                      <ModalContentInner>
-                        <Markdown
-                          source={renderTemplateString(
-                            content.downloaders_content[key]
-                              .checksum_instructions,
-                            { SHA256, signature, hash, URL, version },
-                          )}
-                        />
-                      </ModalContentInner>
-                    </ModalContent>
-                  </Modal>
-                </Box>
-                <Box marginTop={1}>
-                  <Link
-                    onClick={onDownloadPGPSignature(signature, URL)}
-                    tracking={{
-                      category: gaCategory,
-                      label: `download_pgp_signature_${key}_${version}`,
-                    }}
-                    href={getPGPSignatureHref(signature)}
-                    download={getPGPFilename(URL)}
-                  >
-                    {content.downloaders_content.pgp_signature}
-                    <Box marginLeft={1} component="span">
-                      <FaDownload />
-                    </Box>
-                  </Link>
-                  <Box>
+                    <CopyIcon />
+                  </button>
+                </div>
+                <Link
+                  href="#"
+                  onClick={openModal(`${key}_checksum`)}
+                  tracking={{
+                    category: gaCategory,
+                    label: `view_checksum_instructions_${key}_${version}`,
+                  }}
+                >
+                  {content.downloaders_content.verify_checksum}
+                </Link>
+                <Modal
+                  open={activeModal === `${key}_checksum`}
+                  onClose={openModal('')}
+                  disableScrollLock
+                >
+                  <div className="wallet-download-modal-content">
+                    <Link
+                      className="wallet-download-modal-content-close"
+                      href="#"
+                      onClick={openModal('')}
+                    >
+                      <MdClose />
+                    </Link>
+                    <div className="wallet-download-modal-content-inner ">
+                      <Markdown
+                        source={renderTemplateString(
+                          content.downloaders_content[key]
+                            .checksum_instructions,
+                          { SHA256, signature, hash, URL, version },
+                        )}
+                      />
+                    </div>
+                  </div>
+                </Modal>
+                <Link
+                  onClick={onDownloadPGPSignature(signature, URL)}
+                  tracking={{
+                    category: gaCategory,
+                    label: `download_pgp_signature_${key}_${version}`,
+                  }}
+                  href={getPGPSignatureHref(signature)}
+                  download={getPGPFilename(URL)}
+                >
+                  {content.downloaders_content.pgp_signature}
+                  <DownloadIcon />
+                </Link>
+                <Link
+                  href="#"
+                  onClick={openModal(`${key}_pgp`)}
+                  tracking={{
+                    category: gaCategory,
+                    label: `view_pgp_instructions_${key}_${version}`,
+                  }}
+                >
+                  {content.downloaders_content.verify_signature}
+                </Link>
+                <Modal
+                  open={activeModal === `${key}_pgp`}
+                  onClose={openModal('')}
+                  disableScrollLock
+                >
+                  <div className="wallet-download-modal-content">
                     <Link
                       href="#"
-                      onClick={openModal(`${key}_pgp`)}
-                      tracking={{
-                        category: gaCategory,
-                        label: `view_pgp_instructions_${key}_${version}`,
-                      }}
+                      onClick={openModal('')}
+                      className="wallet-download-modal-content-close"
                     >
-                      {content.downloaders_content.verify_signature}
+                      <MdClose />
                     </Link>
-                    <Modal
-                      open={activeModal === `${key}_pgp`}
-                      onClose={openModal('')}
-                      disableScrollLock
-                    >
-                      <ModalContent>
-                        <CloseModal href="#" onClick={openModal('')}>
-                          <MdClose />
-                        </CloseModal>
-                        <ModalContentInner>
-                          <Markdown
-                            source={renderTemplateString(
-                              content.downloaders_content[key]
-                                .signature_instructions,
-                              { SHA256, signature, hash, URL, version },
-                            )}
-                          />
-                        </ModalContentInner>
-                      </ModalContent>
-                    </Modal>
-                  </Box>
-                </Box>
-              </Box>
+                    <div className="wallet-download-modal-content-inner">
+                      <Markdown
+                        source={renderTemplateString(
+                          content.downloaders_content[key]
+                            .signature_instructions,
+                          { SHA256, signature, hash, URL, version },
+                        )}
+                      />
+                    </div>
+                  </div>
+                </Modal>
+              </div>
             ))}
-          </Container>
+          </div>
         </>
       )}
       {loading && (
-        <LoadingContainer>
+        <div className="wallet-loading-container">
           <div>
             <CircularProgress />
           </div>
-        </LoadingContainer>
+        </div>
       )}
       {hasError && (
-        <ErrorContainer pl={12} pr={12}>
+        <Box paddingTop={5}>
           <Typography variant="h1" color="error">
             <FaCogs />
           </Typography>
           <Typography variant="h3" color="error">
             {content.downloaders_content.no_releases_available}
           </Typography>
-        </ErrorContainer>
+        </Box>
       )}
-    </Box>
+    </div>
   )
 }
 

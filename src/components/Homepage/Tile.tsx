@@ -1,15 +1,58 @@
 import React, { ComponentType, SVGProps } from 'react'
-import Button from './button'
 import Link from '@docusaurus/Link'
 import styled from '@emotion/styled'
+import { motion } from 'framer-motion'
 
-const StyledTile = styled.div<{ bannerTile; boxedTile }>`
-  > * {
-    margin-bottom: 1rem;
-  }
+import ArrowRight from '../icons/ArrowRight.svg'
+
+const StyledButton = styled.button`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  background: none;
+  color: var(--ifm-homepage-tile-link-color);
+  gap: 0.625rem;
+`
+
+const StyledTile = styled(motion.div)`
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 2rem 1.5rem;
+  background-color: var(--ifm-homepage-tile-backdrop-color);
+  color: #fff;
+  max-width: 364px;
+  transition: box-shadow 0.2s ease-in-out;
+  border-radius: 0.5rem;
+
+  font-size: 0.813rem;
+  font-style: normal;
+
+  .button-arrow-right {
+    transform: translateX(0);
+
+    transition: transform 0.2s ease-in-out;
+  }
+  :hover {
+    box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.16);
+
+    .button-arrow-right {
+      transform: translateX(40%);
+
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+
+  @media (max-width: 767px) {
+    max-width: 100%;
+    height: 390px;
+  }
+
   > div {
     height: 100%;
     display: flex;
@@ -17,119 +60,96 @@ const StyledTile = styled.div<{ bannerTile; boxedTile }>`
   }
   svg {
     max-width: 3rem;
-    color: rgba(0, 51, 173, 1);
-  }
-  img {
-    width: 50px;
-    height: 45px;
   }
   a {
-    padding-top: 1rem;
+    padding-top: 1.75rem;
     margin-top: auto;
+
+    @media (max-width: 767px) {
+      justify-self: flex-end;
+    }
   }
   p {
     position: relative;
-    overflow: hidden;
     margin-bottom: 0;
+    font-weight: 400;
+    padding-bottom: 1.5rem;
+    line-height: 1.375rem;
   }
+
+  strong {
+    font-weight: 700;
+    line-height: 1.5rem;
+    padding-bottom: 0.5rem;
+  }
+
   p.heightAuto {
     height: auto;
   }
-  @media (max-width: 1100px) {
-    margin: 0;
-  }
+
   h3 {
-    margin: 0.5rem 0;
+    font-size: 0.813rem;
+    margin: 1rem 0 0.5rem 0;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.5rem;
   }
-  ${(props) =>
-    props.bannerTile &&
-    `display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.5rem;
-    background-image: url(img/cardano-zoom-white.png), linear-gradient(to right, #0033ad 7%, #335cbe 94%);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
-    transform: translateY(-8rem);
-    width: 100%;
-    padding: 2rem 18rem 1rem 18rem;
-    @media(max-width:959px) {
-      padding: 2rem 8rem;
-    }
-    @media(max-width:767px) {
-      padding: 1rem 2rem;
-      margin-bottom: 2rem;
-      transform: translateY(-10rem);
-    }
-    @media(max-width:1044px) {
-      background-size: cover;
-    }
-    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.24);
-    > div {
-      margin: 0 auto !important;
-    }
-    * {
-      color: #fff;
-      margin: 0 auto 1rem auto;
-    }
-    a, button {
-      margin: 0 auto;
-    }`}
-  ${(props) =>
-    props.boxedTile &&
-    `border-radius: 0.5rem;
-    padding: 1rem 2vw;
-    text-align: center;
-    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.08);
-    h2 {
-      margin-bottom: 1rem;
-    }
-    button {
-      min-width:10rem;
-      margin:2rem auto 0 auto;
-    }`}
+`
+
+const IconWrapper = styled.div`
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (max-width: 767px) {
+    min-height: 75px;
+  }
 `
 
 type Props = {
   heading: string
   text: string
-  label: string
   ctalink: string
   Icon?: ComponentType<SVGProps<SVGSVGElement> & { title?: string }>
   single?: boolean
-  bannerTile?: boolean
-  boxedTile?: boolean
-  btn?: 'primary' | 'secondary'
+  index?: number
 }
 
-const Tile: React.FC<Props> = ({
-  heading,
-  text,
-  label,
-  ctalink,
-  Icon,
-  single,
-  bannerTile,
-  boxedTile,
-  btn,
-}) => {
+const Tile: React.FC<Props> = ({ heading, text, ctalink, Icon, single }) => {
   return (
-    <StyledTile
-      className={`tile`}
-      bannerTile={bannerTile}
-      boxedTile={boxedTile}
-      theme={'default'}
-    >
-      <div>
-        {Icon ? <Icon /> : ''}
-        {bannerTile || boxedTile ? <h2>{heading}</h2> : <h3>{heading}</h3>}
-        <p className={`truncate ${single ? `heightAuto` : ''}`}>{text}</p>
-        <Link to={ctalink}>
-          <Button btn={btn}>{label}</Button>
-        </Link>
-      </div>
-    </StyledTile>
+    <Link href={ctalink}>
+      <StyledTile
+        className={`tile`}
+        theme={'default'}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.35, delay: 0.25 }}
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 100 },
+        }}
+      >
+        <div>
+          {Icon ? (
+            <IconWrapper>
+              <Icon />
+            </IconWrapper>
+          ) : (
+            ''
+          )}
+          <strong>{heading}</strong>
+          <p className={`truncate ${single ? `heightAuto` : ''}`}>{text}</p>
+          <Link to={ctalink}>
+            <StyledButton>
+              Discover more
+              <ArrowRight className="button-arrow-right" />
+            </StyledButton>
+          </Link>
+        </div>
+      </StyledTile>
+    </Link>
   )
 }
 

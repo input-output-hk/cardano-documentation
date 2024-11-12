@@ -3,12 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import TextField from '@material-ui/core/TextField'
-
-const Container = styled.div`
-  p {
-    margin: 0;
-  }
-`
+import { TextFieldWrapper, StyledTextField } from '../../SharedComponents'
 
 const getValue = (value) => {
   if (value.indexOf('.') > -1) {
@@ -20,10 +15,9 @@ const getValue = (value) => {
 }
 
 const ExchangeRate = ({ value, onChange, label, helperText, symbol }) => (
-  <Container>
-    <TextField
-      label={label}
-      helperText={helperText}
+  <TextFieldWrapper>
+    <span>{label}</span>
+    <StyledTextField
       value={getValue(`${value}`)}
       type="number"
       fullWidth
@@ -36,9 +30,11 @@ const ExchangeRate = ({ value, onChange, label, helperText, symbol }) => (
         startAdornment: (
           <InputAdornment position="start">{symbol}</InputAdornment>
         ),
+        disableUnderline: true,
       }}
     />
-  </Container>
+    <span>{helperText}</span>
+  </TextFieldWrapper>
 )
 
 ExchangeRate.propTypes = {

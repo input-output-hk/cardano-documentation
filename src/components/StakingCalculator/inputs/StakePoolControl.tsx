@@ -2,39 +2,91 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import FormControl from '@material-ui/core/FormControl'
-import Typography from '@material-ui/core/Typography'
-import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
-import Box from '@material-ui/core/Box'
-import FormHelperText from '@material-ui/core/FormHelperText'
-import Slider from '@material-ui/core/Slider'
+import {
+  StyledSlider,
+  StyledFormHelperText,
+  TextFieldWrapper,
+  StyledTextField,
+  StyledFormControl,
+} from '../../SharedComponents'
 
 const Container = styled.div`
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Chivo';
+  background-color: var(--controls-background-color);
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-top: 1.5rem;
 
-  .MuiFormHelperText-root {
-    text-align: center;
+  @media (max-width: 767px) {
+    aspect-ratio: 1/1;
   }
 `
 
-const InputLabel = styled.label`
-  font-size: 1.2rem;
+const DataContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
 
-  span {
-    margin-top: 0.4rem;
-    display: block;
+  align-items: center;
+
+  div:nth-child(2) {
+    flex-basis: 65%;
+  }
+
+  @media (max-width: 767px) {
+    div:nth-child(2) {
+      flex-basis: auto;
+      width: 100%;
+    }
+
+    flex-direction: column;
   }
 `
 
-const SaturationPoint = styled.span`
-  cursor: pointer;
-  display: block;
+const ControllerTextField = styled(StyledTextField)`
+  div:first-child {
+    flex-basis: 0;
+  }
 `
 
-const TextFieldInput = styled(TextField)`
-  input {
-    text-align: center;
+const PoolDataWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  width: 100%;
+  flex-basis: 35%;
+  color: var(--controls-color);
+
+  @media (max-width: 767px) {
+    flex-direction: row;
+
+    div {
+      flex-basis: 50% !important;
+    }
   }
+`
+
+const Value = styled.span`
+  font-size: 1rem;
+  line-height: 1.5rem;
+`
+
+const StakePoolTotalStake = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`
+
+const StakePoolSaturation = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 `
 
 const StakePoolControl = ({
@@ -45,7 +97,7 @@ const StakePoolControl = ({
   adaSymbol,
   minValue,
   normalizeLargeNumber,
-  saturated,
+  saturationLabelHeading,
   saturationLabel,
   totalADAInCirculation,
   totalStakePools,
@@ -73,36 +125,34 @@ const StakePoolControl = ({
 
   return (
     <Container>
-      <FormControl fullWidth>
-        <InputLabel>
-          {label} ({normalizeLargeNumber(value * 100, 6)}%)
-          <Typography color={saturated ? 'error' : 'inherit'} component="span">
-            <Box
-              component="span"
-              display="block"
-              maxWidth="25rem"
-              margin="0 auto"
-            >
-              <TextFieldInput
-                value={adaAmount}
-                type="number"
-                fullWidth
-                onChange={(e) => setADAAmount(e.target.value)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      {adaSymbol}
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Box>
-            <SaturationPoint onClick={saturationPointOnClick}>
-              {saturationLabel}
-            </SaturationPoint>
-          </Typography>
-        </InputLabel>
-        <Slider
+      <StyledFormControl>
+        <DataContainer>
+          <PoolDataWrapper>
+            <StakePoolTotalStake>
+              <span>{label}</span>
+              <Value>{normalizeLargeNumber(value * 100, 6)}</Value>
+            </StakePoolTotalStake>
+            <StakePoolSaturation>
+              <span>{saturationLabelHeading}</span>
+              <Value onClick={saturationPointOnClick}>{saturationLabel}</Value>
+            </StakePoolSaturation>
+          </PoolDataWrapper>
+          <TextFieldWrapper>
+            <ControllerTextField
+              value={adaAmount}
+              type="number"
+              fullWidth
+              onChange={(e) => setADAAmount(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">{adaSymbol}</InputAdornment>
+                ),
+                disableUnderline: true,
+              }}
+            />
+          </TextFieldWrapper>
+        </DataContainer>
+        <StyledSlider
           value={Math.min(Math.sqrt(value), Math.sqrt(0.3))}
           min={0}
           max={Math.sqrt(0.02)}
@@ -153,8 +203,8 @@ const StakePoolControl = ({
             },
           ]}
         />
-        <FormHelperText>{helperText}</FormHelperText>
-      </FormControl>
+        <StyledFormHelperText>{helperText}</StyledFormHelperText>
+      </StyledFormControl>
     </Container>
   )
 }

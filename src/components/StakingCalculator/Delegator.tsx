@@ -15,6 +15,13 @@ import InfluenceFactor from './inputs/InfluenceFactor'
 import Rewards from './Rewards'
 import TreasuryRate from './inputs/TreasuryRate'
 import ExpansionRate from './inputs/ExpansionRate'
+import {
+  AdvancedOptionsContainer,
+  FullWidthGroup,
+  HalfAndHalfGroup,
+  HalfWidthGroup,
+} from './StakingCalculator'
+import ChevronDown from '../icons/ChevronDown.svg'
 
 const Delegator = ({
   values,
@@ -23,14 +30,13 @@ const Delegator = ({
   toADA,
   fromADA,
   showAdvancedOptions,
-  HalfWidthGroup,
-  FullWidthGroup,
   getCurrencySymbol,
   normalizeLargeNumber,
   currencies,
   getDistributableRewards,
   getTotalADAInCirculation,
   containerRef,
+  toggleShowAdvancedOptions,
 }) => {
   const [rewards, setRewards] = useState({
     graphData: [],
@@ -169,101 +175,98 @@ const Delegator = ({
   return (
     <Fragment>
       <HalfWidthGroup>
-        <div>
-          <ADAAmount
-            value={values.ada}
-            onChange={(value) => setValue('ada', value)}
-            label={content.staking_calculator.ada_label}
-            helperText={content.staking_calculator.ada_descriptor}
-            adaSymbol={getCurrencySymbol('ADA')}
-          />
-        </div>
-        <div>
-          <SelectCurrency
-            value={values.currency}
-            onChange={(value) => setValue('currency', value)}
-            label={content.staking_calculator.currency_label}
-            helperText={content.staking_calculator.currency_descriptor}
-            currencies={currencies}
-          />
-        </div>
+        <ADAAmount
+          value={values.ada}
+          onChange={(value) => setValue('ada', value)}
+          label={content.staking_calculator.ada_label}
+          helperText={content.staking_calculator.ada_descriptor}
+          adaSymbol={getCurrencySymbol('ADA')}
+        />
+        <SelectCurrency
+          value={values.currency}
+          onChange={(value) => setValue('currency', value)}
+          label={content.staking_calculator.currency_label}
+          helperText={content.staking_calculator.currency_descriptor}
+          currencies={currencies}
+        />
       </HalfWidthGroup>
+      <AdvancedOptionsContainer>
+        <button
+          color="primary"
+          onClick={(e) => toggleShowAdvancedOptions(e)}
+          aria-expanded={showAdvancedOptions}
+        >
+          {showAdvancedOptions
+            ? content.staking_calculator.hide_advanced_options
+            : content.staking_calculator.show_advanced_options}{' '}
+          <ChevronDown />
+        </button>
+      </AdvancedOptionsContainer>
       {showAdvancedOptions && (
         <Fragment>
           <HalfWidthGroup>
             {values.currency.key !== 'ADA' && (
-              <div>
-                <ExchangeRate
-                  value={values.currency.exchangeRate}
-                  onChange={(value) =>
-                    setValue('currency', {
-                      ...values.currency,
-                      exchangeRate: value,
-                    })
-                  }
-                  label={content.staking_calculator.exchange_rate_label}
-                  helperText={
-                    <Markdown
-                      source={content.staking_calculator.exchange_rate_descriptor.replace(
-                        /{{\s?currency\s?}}/g,
-                        values.currency.key,
-                      )}
-                    />
-                  }
-                  symbol={getCurrencySymbol(values.currency.key)}
-                />
-              </div>
-            )}
-            <div>
-              <StakePoolFixedFee
-                value={values.stakePoolFixedFee}
-                onChange={(value) => setValue('stakePoolFixedFee', value)}
-                label={content.staking_calculator.fixed_fee_label}
+              <ExchangeRate
+                value={values.currency.exchangeRate}
+                onChange={(value) =>
+                  setValue('currency', {
+                    ...values.currency,
+                    exchangeRate: value,
+                  })
+                }
+                label={content.staking_calculator.exchange_rate_label}
                 helperText={
                   <Markdown
-                    source={
-                      values.currency.key === 'ADA'
-                        ? content.staking_calculator.fixed_fee_descriptor_ada
-                        : content.staking_calculator.fixed_fee_descriptor.replace(
-                            /{{\s?amount\s?}}/g,
-                            normalizeLargeNumber(
-                              parseFloat(toADA(values.stakePoolFixedFee)),
-                              6,
-                            ),
-                          )
-                    }
+                    source={content.staking_calculator.exchange_rate_descriptor.replace(
+                      /{{\s?currency\s?}}/g,
+                      values.currency.key,
+                    )}
                   />
                 }
                 symbol={getCurrencySymbol(values.currency.key)}
               />
-            </div>
+            )}
+            <StakePoolFixedFee
+              value={values.stakePoolFixedFee}
+              onChange={(value) => setValue('stakePoolFixedFee', value)}
+              label={content.staking_calculator.fixed_fee_label}
+              helperText={
+                <Markdown
+                  source={
+                    values.currency.key === 'ADA'
+                      ? content.staking_calculator.fixed_fee_descriptor_ada
+                      : content.staking_calculator.fixed_fee_descriptor.replace(
+                          /{{\s?amount\s?}}/g,
+                          normalizeLargeNumber(
+                            parseFloat(toADA(values.stakePoolFixedFee)),
+                            6,
+                          ),
+                        )
+                  }
+                />
+              }
+              symbol={getCurrencySymbol(values.currency.key)}
+            />
           </HalfWidthGroup>
           <HalfWidthGroup>
-            <div>
-              <TransactionFeesPerEpoch
-                value={values.transactionFeesPerEpoch}
-                onChange={(value) => setValue('transactionFeesPerEpoch', value)}
-                label={
-                  content.staking_calculator.transaction_fees_per_epoch_label
-                }
-                adaSymbol={getCurrencySymbol('ADA')}
-                helperText={
-                  content.staking_calculator
-                    .transaction_fees_per_epoch_descriptor
-                }
-              />
-            </div>
-            <div>
-              <OperatorsStake
-                value={values.operatorsStake}
-                onChange={(value) => setValue('operatorsStake', value)}
-                label={content.staking_calculator.operators_stake_label}
-                helperText={
-                  content.staking_calculator.operators_stake_descriptor
-                }
-                adaSymbol={getCurrencySymbol('ADA')}
-              />
-            </div>
+            <TransactionFeesPerEpoch
+              value={values.transactionFeesPerEpoch}
+              onChange={(value) => setValue('transactionFeesPerEpoch', value)}
+              label={
+                content.staking_calculator.transaction_fees_per_epoch_label
+              }
+              adaSymbol={getCurrencySymbol('ADA')}
+              helperText={
+                content.staking_calculator.transaction_fees_per_epoch_descriptor
+              }
+            />
+            <OperatorsStake
+              value={values.operatorsStake}
+              onChange={(value) => setValue('operatorsStake', value)}
+              label={content.staking_calculator.operators_stake_label}
+              helperText={content.staking_calculator.operators_stake_descriptor}
+              adaSymbol={getCurrencySymbol('ADA')}
+            />
           </HalfWidthGroup>
           <FullWidthGroup>
             <StakePoolControl
@@ -276,9 +279,9 @@ const Delegator = ({
               saturated={values.stakePoolControl > 1 / values.totalStakePools}
               totalADAInCirculation={values.totalADAInCirculation}
               totalStakePools={values.totalStakePools}
+              saturationLabelHeading={content.staking_calculator.saturation}
               saturationLabel={
                 <Fragment>
-                  {content.staking_calculator.saturation}{' '}
                   {getCurrencySymbol('ADA')}{' '}
                   {normalizeLargeNumber(
                     (1 / values.totalStakePools) * values.totalADAInCirculation,
@@ -291,14 +294,12 @@ const Delegator = ({
               minValue={0}
             />
           </FullWidthGroup>
-          <FullWidthGroup>
+          <HalfAndHalfGroup>
             <TotalStakePools
               value={values.totalStakePools}
               onChange={(value) => setValue('totalStakePools', value)}
               label={content.staking_calculator.total_stake_pools_label}
             />
-          </FullWidthGroup>
-          <FullWidthGroup>
             <StakePoolMargin
               value={values.stakePoolMargin}
               onChange={(value) => setValue('stakePoolMargin', value)}
@@ -307,8 +308,8 @@ const Delegator = ({
                 content.staking_calculator.stake_pool_margin_descriptor
               }
             />
-          </FullWidthGroup>
-          <FullWidthGroup>
+          </HalfAndHalfGroup>
+          <HalfAndHalfGroup>
             <StakePoolPerformance
               value={values.stakePoolPerformance}
               onChange={(value) => setValue('stakePoolPerformance', value)}
@@ -317,8 +318,6 @@ const Delegator = ({
                 content.staking_calculator.stake_pool_performance_descriptor
               }
             />
-          </FullWidthGroup>
-          <FullWidthGroup>
             <InfluenceFactor
               value={values.influenceFactor}
               onChange={(value) => setValue('influenceFactor', value)}
@@ -327,23 +326,21 @@ const Delegator = ({
                 content.staking_calculator.influence_factor_descriptor
               }
             />
-          </FullWidthGroup>
-          <FullWidthGroup>
+          </HalfAndHalfGroup>
+          <HalfAndHalfGroup>
             <TreasuryRate
               value={values.treasuryRate}
               onChange={(value) => setValue('treasuryRate', value)}
               label={content.staking_calculator.treasury_rate_label}
               helperText={content.staking_calculator.treasury_rate_descriptor}
             />
-          </FullWidthGroup>
-          <FullWidthGroup>
             <ExpansionRate
               value={values.expansionRate}
               onChange={(value) => setValue('expansionRate', value)}
               label={content.staking_calculator.expansion_rate_label}
               helperText={content.staking_calculator.expansion_rate_descriptor}
             />
-          </FullWidthGroup>
+          </HalfAndHalfGroup>
         </Fragment>
       )}
       <Rewards
