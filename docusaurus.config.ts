@@ -98,7 +98,7 @@ const config: Config = {
   themeConfig: {
     image: 'assets/cardano-logo.svg',
     colorMode: {
-      defaultMode: 'dark',
+      defaultMode: 'light',
     },
     navbar: {
       logo: {
