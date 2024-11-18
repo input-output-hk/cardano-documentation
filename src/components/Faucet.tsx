@@ -12,6 +12,7 @@ import ChevronDown from './icons/ChevronDown.svg'
 
 import content from './utils/testnetsContent'
 import { ButtonBase, InputAdornment, TextField } from '@material-ui/core'
+import { useLocation } from '@docusaurus/router'
 
 const DEFAULT_VALUES = {
   address: '',
@@ -205,9 +206,13 @@ const FaucetInner = ({
     }
   }, [reCaptchaRef, serverError])
 
+  const isCorrectUrl =
+    window.location.href ===
+    'https://docs.cardano.org/cardano-testnets/tools/faucet/'
+
   return (
     <Fragment>
-      {[statuses.ready, statuses.loading].includes(status) && (
+      {[statuses.ready, statuses.loading].includes(status) && isCorrectUrl && (
         <Box
           className={
             status === statuses.loading
@@ -480,6 +485,18 @@ const FaucetInner = ({
             </Button>
           </Box>
         </Box>
+      )}
+      {!isCorrectUrl && (
+        <p className="">
+          The testnets faucet is only available on docs.cardano.org
+          <br />
+          <a
+            href="https://docs.cardano.org/cardano-testnets/tools/faucet/"
+            target="_blank"
+          >
+            Please click here to proceed.
+          </a>
+        </p>
       )}
     </Fragment>
   )
