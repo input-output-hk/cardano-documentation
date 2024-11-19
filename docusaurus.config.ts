@@ -48,7 +48,14 @@ const config: Config = {
       src: 'https://cmp.osano.com/AzZXI3TYiFWNB5yus/b2ba081d-c77c-4db8-bbf7-46c47e1d7f80/osano.js',
       async: false,
     },
+    //GA
+    {
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-C4Y892QLL8',
+      async: false,
+    },
   ],
+
+  clientModules: [require.resolve('./src/clientModules/gtag.js')],
 
   plugins: [
     customWebpackPlugin,

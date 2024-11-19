@@ -12,6 +12,7 @@ import ChevronDown from './icons/ChevronDown.svg'
 
 import content from './utils/testnetsContent'
 import { ButtonBase, InputAdornment, TextField } from '@material-ui/core'
+import BrowserOnly from '@docusaurus/BrowserOnly'
 
 const DEFAULT_VALUES = {
   address: '',
@@ -136,7 +137,7 @@ const FaucetInner = ({
         isPoolDelegation,
         reCaptchaResponse: values.reCaptcha,
       }
-      console.log(endpointParams)
+
       if (reCaptcha) endpointParams.reCaptchaResponse = values.reCaptcha
       url =
         nativeToken === 'Ada'
@@ -206,34 +207,41 @@ const FaucetInner = ({
   }, [reCaptchaRef, serverError])
 
   return (
-    <Fragment>
-      {[statuses.ready, statuses.loading].includes(status) && (
-        <Box
-          className={
-            status === statuses.loading
-              ? 'faucet-container-loading'
-              : 'faucet-container'
-          }
-          maxWidth="40rem"
-          marginTop={4}
-          marginBottom={4}
-          position="relative"
-        >
-          {status === statuses.loading && (
-            <div className="loading-container">
-              <CircularProgress />
-            </div>
-          )}
-          <form onSubmit={onSubmit}>
-            {serverError && (
-              <Box marginBottom={2}>
-                <Typography color="error">
-                  <strong>{serverError}</strong>
-                </Typography>
-              </Box>
-            )}
+    <BrowserOnly>
+      {() => {
+        const isCorrectDomain =
+          window.location.href ===
+          'https://docs.cardano.org/cardano-testnets/tools/faucet/'
 
-            {/* Temporarily disable ability to choose token recieved as per request of devops
+        return isCorrectDomain ? (
+          <Fragment>
+            {[statuses.ready, statuses.loading].includes(status) && (
+              <Box
+                className={
+                  status === statuses.loading
+                    ? 'faucet-container-loading'
+                    : 'faucet-container'
+                }
+                maxWidth="40rem"
+                marginTop={4}
+                marginBottom={4}
+                position="relative"
+              >
+                {status === statuses.loading && (
+                  <div className="loading-container">
+                    <CircularProgress />
+                  </div>
+                )}
+                <form onSubmit={onSubmit}>
+                  {serverError && (
+                    <Box marginBottom={2}>
+                      <Typography color="error">
+                        <strong>{serverError}</strong>
+                      </Typography>
+                    </Box>
+                  )}
+
+                  {/* Temporarily disable ability to choose token recieved as per request of devops
               <FormControl
                 variant="outlined"
                 fullWidth
@@ -257,231 +265,247 @@ const FaucetInner = ({
               </FormControl>
              */}
 
-            <FormControl
-              variant="outlined"
-              fullWidth
-              style={{
-                marginBottom: '1.5rem',
-              }}
-            >
-              <div className="faucet-text-field-wrapper">
-                <span>Environment</span>
-                <TextField
-                  className="faucet-text-field"
-                  select
-                  value={environment}
-                  fullWidth
-                  SelectProps={{
-                    native: true,
-                  }}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <ChevronDown />
-                      </InputAdornment>
-                    ),
-                    disableUnderline: true,
-                  }}
-                  onChange={(
-                    e: React.ChangeEvent<{
-                      name?: string
-                      value: string
-                    }>,
-                  ) => setEnvironment(e.target.value)}
-                >
-                  {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
-                  <option value="preview">Preview Testnet</option>
-                  <option value="preprod">Preprod Testnet</option>
-                </TextField>
-                <span>Please select an environment</span>
-              </div>
-            </FormControl>
-
-            <FormControl
-              variant="outlined"
-              fullWidth
-              style={{
-                marginBottom: '1.5rem',
-              }}
-            >
-              <div className="faucet-text-field-wrapper">
-                <span>Action</span>
-                <TextField
-                  className="faucet-text-field"
-                  select
-                  value={isPoolDelegation ? 'delegation' : 'testada'}
-                  fullWidth
-                  SelectProps={{
-                    native: true,
-                  }}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <ChevronDown />
-                      </InputAdornment>
-                    ),
-                    disableUnderline: true,
-                  }}
-                  onChange={(e) =>
-                    setIsPoolDelegation(e.target.value === 'delegation')
-                  }
-                >
-                  {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
-                  <option value="testada">Receive test ADA</option>
-                  <option value="delegation">Receive pool delegation</option>
-                </TextField>
-                <span>Please select an action</span>
-              </div>
-            </FormControl>
-
-            {isPoolDelegation && (
-              <Box marginBottom={3}>
-                <div className="faucet-text-field-wrapper">
-                  <span>Pool ID</span>
-                  <TextField
-                    className="faucet-text-field"
-                    value={values.poolId}
-                    required
-                    error={Boolean(errors.address)}
+                  <FormControl
+                    variant="outlined"
                     fullWidth
-                    placeholder="Pool ID"
-                    onChange={valueOnChange('poolId')}
-                    disabled={status === statuses.loading}
-                    InputProps={{
-                      disableUnderline: true,
+                    style={{
+                      marginBottom: '1.5rem',
                     }}
-                  />
-                  <span>Please enter the Pool ID to delegate to</span>
-                </div>
-              </Box>
-            )}
+                  >
+                    <div className="faucet-text-field-wrapper">
+                      <span>Environment</span>
+                      <TextField
+                        className="faucet-text-field"
+                        select
+                        value={environment}
+                        fullWidth
+                        SelectProps={{
+                          native: true,
+                        }}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <ChevronDown />
+                            </InputAdornment>
+                          ),
+                          disableUnderline: true,
+                        }}
+                        onChange={(
+                          e: React.ChangeEvent<{
+                            name?: string
+                            value: string
+                          }>,
+                        ) => setEnvironment(e.target.value)}
+                      >
+                        {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
+                        <option value="preview">Preview Testnet</option>
+                        <option value="preprod">Preprod Testnet</option>
+                      </TextField>
+                      <span>Please select an environment</span>
+                    </div>
+                  </FormControl>
 
-            {!isPoolDelegation && (
-              <Box marginBottom={3}>
-                <div className="faucet-text-field-wrapper">
-                  <span>Address (required)</span>
-                  <TextField
-                    className="faucet-text-field"
-                    value={values.address}
-                    required
-                    error={Boolean(errors.address)}
+                  <FormControl
+                    variant="outlined"
                     fullWidth
-                    placeholder="Address"
-                    onChange={valueOnChange('address')}
-                    disabled={status === statuses.loading}
-                    InputProps={{
-                      disableUnderline: true,
+                    style={{
+                      marginBottom: '1.5rem',
                     }}
-                  />
-                  <span>Please enter the address to send funds to</span>
-                </div>
-              </Box>
-            )}
+                  >
+                    <div className="faucet-text-field-wrapper">
+                      <span>Action</span>
+                      <TextField
+                        className="faucet-text-field"
+                        select
+                        value={isPoolDelegation ? 'delegation' : 'testada'}
+                        fullWidth
+                        SelectProps={{
+                          native: true,
+                        }}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <ChevronDown />
+                            </InputAdornment>
+                          ),
+                          disableUnderline: true,
+                        }}
+                        onChange={(e) =>
+                          setIsPoolDelegation(e.target.value === 'delegation')
+                        }
+                      >
+                        {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
+                        <option value="testada">Receive test ADA</option>
+                        <option value="delegation">
+                          Receive pool delegation
+                        </option>
+                      </TextField>
+                      <span>Please select an action</span>
+                    </div>
+                  </FormControl>
 
-            {hasApiKey && (
-              <Box className="faucet-api-box">
-                <div className="faucet-text-field-wrapper">
-                  <span>API Key (optional)</span>
-                  <TextField
-                    className="faucet-text-field"
-                    value={values.apiKey}
-                    placeholder="API Key"
-                    error={Boolean(errors.apiKey)}
-                    fullWidth
-                    onChange={valueOnChange('apiKey')}
-                    disabled={status === statuses.loading}
-                    InputProps={{
-                      disableUnderline: true,
-                    }}
-                  />
-                  <span>Enter an API key to bypass rate limiting</span>
-                </div>
-              </Box>
-            )}
+                  {isPoolDelegation && (
+                    <Box marginBottom={3}>
+                      <div className="faucet-text-field-wrapper">
+                        <span>Pool ID</span>
+                        <TextField
+                          className="faucet-text-field"
+                          value={values.poolId}
+                          required
+                          error={Boolean(errors.address)}
+                          fullWidth
+                          placeholder="Pool ID"
+                          onChange={valueOnChange('poolId')}
+                          disabled={status === statuses.loading}
+                          InputProps={{
+                            disableUnderline: true,
+                          }}
+                        />
+                        <span>Please enter the Pool ID to delegate to</span>
+                      </div>
+                    </Box>
+                  )}
 
-            {reCaptcha &&
-              // @ts-ignore
-              Object.entries(environments).map(([env, { sitekey }]) =>
-                env === environment ? (
-                  <Box marginBottom={4} key={env}>
-                    {errors.reCaptcha && (
-                      <Typography color="error">
-                        <strong>{errors.reCaptcha}</strong>
-                      </Typography>
+                  {!isPoolDelegation && (
+                    <Box marginBottom={3}>
+                      <div className="faucet-text-field-wrapper">
+                        <span>Address (required)</span>
+                        <TextField
+                          className="faucet-text-field"
+                          value={values.address}
+                          required
+                          error={Boolean(errors.address)}
+                          fullWidth
+                          placeholder="Address"
+                          onChange={valueOnChange('address')}
+                          disabled={status === statuses.loading}
+                          InputProps={{
+                            disableUnderline: true,
+                          }}
+                        />
+                        <span>Please enter the address to send funds to</span>
+                      </div>
+                    </Box>
+                  )}
+
+                  {hasApiKey && (
+                    <Box className="faucet-api-box">
+                      <div className="faucet-text-field-wrapper">
+                        <span>API Key (optional)</span>
+                        <TextField
+                          className="faucet-text-field"
+                          value={values.apiKey}
+                          placeholder="API Key"
+                          error={Boolean(errors.apiKey)}
+                          fullWidth
+                          onChange={valueOnChange('apiKey')}
+                          disabled={status === statuses.loading}
+                          InputProps={{
+                            disableUnderline: true,
+                          }}
+                        />
+                        <span>Enter an API key to bypass rate limiting</span>
+                      </div>
+                    </Box>
+                  )}
+
+                  {reCaptcha &&
+                    // @ts-ignore
+                    Object.entries(environments).map(([env, { sitekey }]) =>
+                      env === environment ? (
+                        <Box marginBottom={4} key={env}>
+                          {errors.reCaptcha && (
+                            <Typography color="error">
+                              <strong>{errors.reCaptcha}</strong>
+                            </Typography>
+                          )}
+                          <ReCaptcha
+                            sitekey={sitekey}
+                            onChange={valueOnChange('reCaptcha')}
+                            ref={reCaptchaRef}
+                          />
+                        </Box>
+                      ) : null,
                     )}
-                    <ReCaptcha
-                      sitekey={sitekey}
-                      onChange={valueOnChange('reCaptcha')}
-                      ref={reCaptchaRef}
-                    />
-                  </Box>
-                ) : null,
-              )}
 
-            <ButtonBase
-              style={{
-                fontFamily: 'Chivo',
-                fontSize: '0.8125rem',
-                lineHeight: '1.375rem',
-                fontWeight: '400',
-                width: 'fit-content',
-                padding: '0.5rem 1rem',
-                backgroundColor: 'var(--ifm-color-primary)',
-                color: '#fff',
-                borderRadius: '22.5rem',
-                transform: 'scale(1)',
-                transition: 'all 0.2s ease-in-out',
-                border: 'none',
-                margin: '2rem 0 !important',
-              }}
-              disabled={status === statuses.loading}
-              type="submit"
-              aria-disabled={status === statuses.loading}
-            >
-              {content.faucet_content.request_funds}
-            </ButtonBase>
-          </form>
-        </Box>
-      )}
-      {status === statuses.success && result && (
-        <Box marginTop={4} marginBottom={4}>
-          <h3>{content.faucet_content.success_heading}</h3>
-          <Markdown
-            source={content.faucet_content.transaction_successful
-              .replace(/{{\samount\s}}/g, getTransactionAmount())
-              .replace(/{{\saddress\s}}/, values.address)}
-          />
-          {result.txid && getTransactionURL && (
-            <Fragment>
-              <p>{content.faucet_content.verify_transaction_hash}</p>
-              <p>
-                <strong>
-                  {result.txid}
-                  {/* Remove link since no explorer post casil
+                  <ButtonBase
+                    style={{
+                      fontFamily: 'Chivo',
+                      fontSize: '0.8125rem',
+                      lineHeight: '1.375rem',
+                      fontWeight: '400',
+                      width: 'fit-content',
+                      padding: '0.5rem 1rem',
+                      backgroundColor: 'var(--ifm-color-primary)',
+                      color: '#fff',
+                      borderRadius: '22.5rem',
+                      transform: 'scale(1)',
+                      transition: 'all 0.2s ease-in-out',
+                      border: 'none',
+                      margin: '2rem 0 !important',
+                    }}
+                    disabled={status === statuses.loading}
+                    type="submit"
+                    aria-disabled={status === statuses.loading}
+                  >
+                    {content.faucet_content.request_funds}
+                  </ButtonBase>
+                </form>
+              </Box>
+            )}
+            {status === statuses.success && result && (
+              <Box marginTop={4} marginBottom={4}>
+                <h3>{content.faucet_content.success_heading}</h3>
+                <Markdown
+                  source={content.faucet_content.transaction_successful
+                    .replace(/{{\samount\s}}/g, getTransactionAmount())
+                    .replace(/{{\saddress\s}}/, values.address)}
+                />
+                {result.txid && getTransactionURL && (
+                  <Fragment>
+                    <p>{content.faucet_content.verify_transaction_hash}</p>
+                    <p>
+                      <strong>
+                        {result.txid}
+                        {/* Remove link since no explorer post casil
                   <Link href={getTransactionURL({ txid: result.txid })}>
                     
                   </Link>
                   */}
-                </strong>
-              </p>
-            </Fragment>
-          )}
-          {result.txid && !getTransactionURL && (
-            <Fragment>
-              <p>{content.faucet_content.verify_transaction_hash}</p>
-              <p>
-                <strong>{result.txid}</strong>
-              </p>
-            </Fragment>
-          )}
-          <Box marginTop={2}>
-            <Button onClick={reset} variant="contained" color="primary">
-              {content.faucet_content.request_more_funds}
-            </Button>
-          </Box>
-        </Box>
-      )}
-    </Fragment>
+                      </strong>
+                    </p>
+                  </Fragment>
+                )}
+                {result.txid && !getTransactionURL && (
+                  <Fragment>
+                    <p>{content.faucet_content.verify_transaction_hash}</p>
+                    <p>
+                      <strong>{result.txid}</strong>
+                    </p>
+                  </Fragment>
+                )}
+                <Box marginTop={2}>
+                  <Button onClick={reset} variant="contained" color="primary">
+                    {content.faucet_content.request_more_funds}
+                  </Button>
+                </Box>
+              </Box>
+            )}
+          </Fragment>
+        ) : (
+          <p>
+            The testnets faucet is only available on docs.cardano.org
+            <br />
+            <a
+              href="https://docs.cardano.org/cardano-testnets/tools/faucet/"
+              target="_blank"
+            >
+              Please click here to proceed.
+            </a>
+          </p>
+        )
+      }}
+    </BrowserOnly>
   )
 }
 
