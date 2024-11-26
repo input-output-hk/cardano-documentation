@@ -134,7 +134,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          to: '/pioneer-programs/education',
+          to: '/pioneer-programs/community-education/',
           label: 'Education',
           position: 'left',
         },
