@@ -2,44 +2,6 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-`
-
-const LoadingSpinner = styled.div`
-  border-width: 0.5rem;
-  border-style: solid;
-  border-color: #1f1f1f #1f1f1f #1f1f1f #ef131d;
-  width: 3.625rem;
-  height: 3.625rem;
-  border-radius: 50%;
-  position: relative;
-  -webkit-animation: spin 2s infinite;
-  animation: spin 2s infinite;
-  &:before,
-  &:after {
-    content: '';
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background: transparent;
-    position: absolute;
-    left: 0.125rem;
-  }
-  &:before {
-    top: 0.063rem;
-  }
-  &:after {
-    bottom: 0.063rem;
-  }
-  @keyframes spin {
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-`
-
 const HubspotForm = (props) => {
   const { componentId, region, portalId, formId, onFormSubmitted } = props
 
@@ -83,9 +45,9 @@ const HubspotForm = (props) => {
     <>
       <div id={componentId} />
       {!formReady && (
-        <Container>
-          <LoadingSpinner />
-        </Container>
+        <div className="hs-loading-container">
+          <div className="hs-loading-spinner" />
+        </div>
       )}
     </>
   )
