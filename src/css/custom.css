@@ -382,6 +382,11 @@ body {
     grid-column: 1/4;
     margin-bottom: 3.5rem;
   }
+
+  .footer__col:last-child {
+    grid-column: 1/4;
+    margin-bottom: 3.5rem;
+  }
 }
 
 @media (max-width: 767px) {
@@ -1428,4 +1433,102 @@ pre {
 
 .wallet-download-copy:active {
   transform: scale(0.8);
+}
+
+/* HubspotForm styles  */
+.hs-form {
+  padding-left: 0;
+  border-radius: 8px;
+}
+.hs-form input,
+.hs-form select,
+.hs-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--ifm-body-text-color);
+  border-radius: 0.25rem;
+  background-color: transparent;
+}
+.hs-form input:focus,
+.hs-form select:focus,
+.hs-form textarea:focus {
+  outline: none;
+  /* border-color: pink; */
+}
+.hs-error-msg {
+  color: #cc0000 !important;
+}
+ul {
+  list-style-type: none;
+}
+.inputs-list {
+  padding-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+.hs-form label {
+  display: inline-block;
+  margin-bottom: 5px;
+  color: var(--ifm-body-text-color);
+  font-size: 0.813rem;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  width: fit-content;
+
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+.hs-form input[type='submit'] {
+  background-color: var(--ifm-link-color);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  font-size: 0.813rem;
+  transition: background-color 0.3s ease;
+}
+
+.no-list {
+  padding: 0;
+  margin: 0;
+}
+
+.footer-home .hs-form input[type='submit'],
+.footer-home .hs-form input[type='submit']:hover {
+  background-color: #6684cf;
+}
+
+.footer-home a {
+  color: #6684cf;
+}
+
+.hs-form input[type='submit']:hover {
+  background-color: var(--ifm-link-color);
+}
+
+.hubspot-form .footer__title {
+  margin-bottom: 0 !important;
+}
+
+.hs_submit {
+  margin-top: 10px;
+}
+
+@media (max-width: 1024px) {
+  .hs-form input,
+  .hs-form select,
+  .hs-form textarea,
+  .hs-form {
+    width: 250px;
+  }
+
+  input[type='checkbox'],
+  input[type='radio'] {
+    width: fit-content;
+
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
 }
