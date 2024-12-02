@@ -9,8 +9,8 @@ const ContactHubspotForm = ({ formId, portalId, region }) => {
   }, [])
 
   return submitted ? (
-    <div>
-      <h3>Enquiry submitted</h3>
+    <div className="hs-form-submitted-message">
+      <h3 className="hs-form-submitted-title">Enquiry submitted</h3>
       <p>We'll be in touch soon!</p>
     </div>
   ) : (

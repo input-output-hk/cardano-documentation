@@ -1553,6 +1553,18 @@ pre {
   animation: spin 2s infinite;
 }
 
+.hs-form-submitted-message {
+  color: var(--ifm-body-text-color);
+}
+
+.footer-home .hs-form-submitted-message {
+  color: #fff;
+}
+
+.hs-form-submitted-title {
+  padding-top: 1.5rem;
+}
+
 @media (max-width: 1024px) {
   .hs-form input,
   .hs-form select,
