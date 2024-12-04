@@ -1,6 +1,8 @@
 import React from 'react'
 import LinkItem from '@theme/Footer/LinkItem'
 import FooterLogo from '../../Logo'
+import ContactHubspotForm from '@site/src/components/HubspotForm/ContactHubspotForm'
+
 function ColumnLinkItem({ item }) {
   return item.html ? (
     <li
@@ -36,6 +38,14 @@ export default function FooterLinksMultiColumn({ columns, logo }) {
       {columns.map((column, i) => (
         <Column key={i} column={column} />
       ))}
+      <div className="col footer__col hubspot-form">
+        <div className="footer__title">Subscribe to our newsletter</div>
+        <ContactHubspotForm
+          formId="fd033cc7-cfde-4dd1-ad5a-111418db5538"
+          portalId="8848114"
+          region="na1"
+        />
+      </div>
     </div>
   )
 }
