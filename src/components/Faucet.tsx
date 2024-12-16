@@ -209,9 +209,9 @@ const FaucetInner = ({
   return (
     <BrowserOnly>
       {() => {
-        const isCorrectDomain =
-          window.location.href ===
-          'https://docs.cardano.org/cardano-testnets/tools/faucet'
+        const isCorrectDomain = window.location.href.includes(
+          'https://docs.cardano.org',
+        )
 
         return isCorrectDomain ? (
           <Fragment>
