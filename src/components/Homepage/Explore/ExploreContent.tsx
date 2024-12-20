@@ -36,7 +36,7 @@ const exploreContent = [
   />,
   <Tile
     heading="Education"
-    text="Explore learning opportunities on Cardano, including details about the Plutus Pioneer program and upcoming educational resources."
+    text="Explore learning opportunities on Cardano, including details about the Plutus Pioneer program and other educational resources."
     ctalink="/pioneer-programs/education/"
     Icon={Education}
     index={5}
