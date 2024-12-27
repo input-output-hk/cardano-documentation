@@ -284,7 +284,14 @@ const FaucetInner = ({
                         }}
                         InputProps={{
                           endAdornment: (
-                            <InputAdornment position="end">
+                            <InputAdornment
+                              position="end"
+                              style={{
+                                position: 'absolute',
+                                right: 0,
+                                zIndex: -1,
+                              }}
+                            >
                               <ChevronDown />
                             </InputAdornment>
                           ),
@@ -324,7 +331,14 @@ const FaucetInner = ({
                         }}
                         InputProps={{
                           endAdornment: (
-                            <InputAdornment position="end">
+                            <InputAdornment
+                              position="end"
+                              style={{
+                                position: 'absolute',
+                                right: 0,
+                                zIndex: -1,
+                              }}
+                            >
                               <ChevronDown />
                             </InputAdornment>
                           ),

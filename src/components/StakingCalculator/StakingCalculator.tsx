@@ -368,6 +368,7 @@ export const AdvancedOptionsContainer = styled.div`
     font-size: 1rem;
     font-style: normal;
     line-height: 1.5rem;
+    cursor: pointer;
 
     svg {
       margin-left: 1px;
