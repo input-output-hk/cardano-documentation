@@ -22,7 +22,10 @@ const SelectCurrency = ({ value, onChange, label, helperText, currencies }) => (
       }}
       InputProps={{
         endAdornment: (
-          <InputAdornment position="end">
+          <InputAdornment
+            position="end"
+            style={{ position: 'absolute', right: 0, zIndex: -1 }}
+          >
             <ChevronDown />
           </InputAdornment>
         ),

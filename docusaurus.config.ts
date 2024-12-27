@@ -53,6 +53,10 @@ const config: Config = {
       src: 'https://www.googletagmanager.com/gtag/js?id=G-C4Y892QLL8',
       async: false,
     },
+    {
+      src: '/custom-ga.js',
+      async: false,
+    },
   ],
 
   clientModules: [require.resolve('./src/clientModules/gtag.js')],
