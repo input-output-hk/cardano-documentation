@@ -30,7 +30,7 @@ export default function FooterLayout({ style, links, logo, copyright }) {
             <li key={'bottom-2'} className="footer__item">
               <FooterLinkItem
                 item={{
-                  href: 'https://static.iohk.io/terms/iohktermsandconditions.pdf',
+                  href: 'https://static.iohk.io/terms/iog-terms-and-conditions.pdf',
                   label: 'IOHK Terms & Conditions',
                 }}
               />
