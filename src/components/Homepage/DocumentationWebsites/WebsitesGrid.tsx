@@ -63,8 +63,8 @@ const WebsitesGrid = () => (
     <GridSection>
       <GridSectionHeading>Smart contracts:</GridSectionHeading>
       <GridSectionEntry
-        color={'#4BB4D51A'}
-        imgSrc={'assets/websites-grid/plutus.svg'}
+        color={'#F1F5FF'}
+        imgSrc={'assets/websites-grid/plinth.svg'}
         url={'https://plutus.cardano.intersectmbo.org/docs/'}
         index={1}
       />
@@ -115,22 +115,16 @@ const WebsitesGrid = () => (
         index={3}
       />
       <GridSectionEntry
-        color={'#016C83'}
-        imgSrc={'assets/websites-grid/sancho-net.svg'}
-        url={'https://sancho.network/'}
-        index={7}
-      />
-      <GridSectionEntry
         theme={'linear-gradient(90deg, #EAEFFD 0%, #FCF3F0 100%);'}
         imgSrc={'assets/websites-grid/gov-tool.svg'}
         url={'https://docs.gov.tools/'}
-        index={9}
+        index={7}
       />
       <GridSectionEntry
         color={'rgba(42, 65, 232, 0.10)'}
         imgSrc={'assets/websites-grid/catalyst.svg'}
         url={'https://docs.projectcatalyst.io/'}
-        index={11}
+        index={9}
       />
     </GridSection>
   </StyledGrid>
