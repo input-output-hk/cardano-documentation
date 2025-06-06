@@ -186,6 +186,7 @@ const config: Config = {
                   </defs>
                 </svg>`,
           href: 'https://github.com/input-output-hk/cardano-documentation',
+          'aria-label': 'Github',
           position: 'right',
         },
       ],
