@@ -32,7 +32,7 @@ const GridSection = styled.div`
   }
 `
 
-const GridSectionHeading = styled.h4`
+const GridSectionHeading = styled.span`
   color: #1c1e21;
 
   font-size: 16px;
@@ -50,12 +50,14 @@ const WebsitesGrid = () => (
         color={'#F1F5FF'}
         imgSrc={'assets/websites-grid/dev-portal.svg'}
         url={'https://developers.cardano.org/'}
+        altText={'Cardano dev portal'}
         index={0}
       />
       <GridSectionEntry
         color={'#F1F5FF'}
         imgSrc={'assets/websites-grid/node-tests.svg'}
         url={'https://tests.cardano.intersectmbo.org/'}
+        altText={'Cardano node tests'}
         index={4}
       />
     </GridSection>
@@ -66,24 +68,28 @@ const WebsitesGrid = () => (
         color={'#F1F5FF'}
         imgSrc={'assets/websites-grid/plinth.svg'}
         url={'https://plutus.cardano.intersectmbo.org/docs/'}
+        altText={'Plinth docs'}
         index={1}
       />
       <GridSectionEntry
         color={'#511CF7'}
         imgSrc={'assets/websites-grid/marlowe.svg'}
         url={'https://docs.marlowe.iohk.io/docs/introduction'}
+        altText={'Marlowe docs'}
         index={5}
       />
       <GridSectionEntry
         color={'#25272E'}
         imgSrc={'assets/websites-grid/aiken.png'}
         url={'https://aiken-lang.org/'}
+        altText={'Aiken'}
         index={8}
       />
       <GridSectionEntry
         color={'#F1F5FF'}
         imgSrc={'assets/websites-grid/builder-tools.svg'}
         url={'https://developers.cardano.org/tools/'}
+        altText={'Cardano dev portal builder tools'}
         index={10}
       />
     </GridSection>
@@ -96,12 +102,14 @@ const WebsitesGrid = () => (
         }
         imgSrc={'assets/websites-grid/hydra.svg'}
         url={'https://hydra.family/head-protocol/'}
+        altText={'Hydra docs'}
         index={2}
       />
       <GridSectionEntry
         color={'#000000'}
         imgSrc={'assets/websites-grid/mythril.svg'}
         url={'https://mithril.network/doc/'}
+        altText={'Mithril docs'}
         index={6}
       />
     </GridSection>
@@ -112,18 +120,21 @@ const WebsitesGrid = () => (
         color={'#0128AA'}
         text={'Intersect'}
         url={'https://docs.intersectmbo.org/'}
+        altText={'Intersect docs'}
         index={3}
       />
       <GridSectionEntry
         theme={'linear-gradient(90deg, #EAEFFD 0%, #FCF3F0 100%);'}
         imgSrc={'assets/websites-grid/gov-tool.svg'}
         url={'https://docs.gov.tools/'}
+        altText={'Cardano Gov tool docs'}
         index={7}
       />
       <GridSectionEntry
         color={'rgba(42, 65, 232, 0.10)'}
         imgSrc={'assets/websites-grid/catalyst.svg'}
         url={'https://docs.projectcatalyst.io/'}
+        altText={'Project catalyst'}
         index={9}
       />
     </GridSection>
