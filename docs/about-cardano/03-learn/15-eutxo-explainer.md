@@ -13,7 +13,7 @@ Cardano (like Bitcoin) is an Unspent Transaction Output (UTXO)-based blockchain,
 
 ## Overview of the UTXO model
 
-In the UTXO model, a transaction has *inputs* and *outputs*, where the inputs are unspent outputs from previous transactions. Assets are stored on the ledger in unspent outputs, rather than in accounts. In abstract terms, think of a transaction as the action that unlocks previous outputs, and creates new ones.
+In the UTXO model, a transaction has inputs and outputs, where the inputs are outputs from previous transactions. A transaction can only have previously unspent transaction outputs as its inputs.
 
 ### Transaction output
 
