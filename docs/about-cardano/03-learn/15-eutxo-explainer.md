@@ -25,7 +25,7 @@ A transaction input is the output of a previous transaction. Transaction inputs 
 
 In summary, transactions consume unspent outputs from previous transactions, and produce new outputs that can be used as inputs for future transactions.
 
-![eutxo](https://ucarecdn.com/2a252deb-412f-4019-ae1e-e6dba7dea50b/)
+![eutxo](https://ucarecdn.com/f4b3f730-2880-4098-897b-92346c73b8af/)
 
 The users' wallets manage these UTXOs and initiate transactions involving the UTXOs owned by the user. Every node maintains a record of all currently unspent transaction outputs (UTXOs), called the UTXO set. In technical terms, this is the chainstate, which is stored in the data directory of every node. When a new block is added to the chain, the chainstate is updated accordingly. This new block contains the list of latest transactions (including, of course, a record of spent UTXOs, and new ones created since the chainstate was last updated). Every node maintains an exact copy of the chainstate.
 
