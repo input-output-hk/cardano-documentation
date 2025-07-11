@@ -13,8 +13,7 @@ Conway, named after the eminent mathematician [John Horton Conway](https://en.wi
 
 :::info
 
-Learn more about Cardano governance and related terminology in [CIP-1694](https://github.com/cardano-foundation/CIPs/tree/master/CIP-1694) and [this glossary](https://docs.intersectmbo.org/cardano-governance/key-terms/general-glossary).
-
+Learn more about Cardano governance and related terminology in [CIP-1694](https://github.com/cardano-foundation/CIPs/tree/master/CIP-1694).
 :::
 
 Chang enables on-chain participatory governance through the implementation of mechanisms outlined in CIP-1694. This upgrade ensures transparency, inclusivity, and resilience of governance in the Cardano ecosystem. The Conway era is based on liquid democracy, which enables individual empowerment through democratic consent by leveraging a voting process with the option of direct and representative voting. Ada holders can vote individually on every governance matter, or delegate their voting power to [delegate representatives (DReps)](https://iohk.io/en/blog/posts/2022/04/11/introducing-the-concept-of-delegate-representatives-dreps/) they trust in decision making. DReps consolidate the voting influence of numerous ada holders, ensuring that each participant can contribute to the future of Cardano’s development.
@@ -32,7 +31,7 @@ With the introduction of [PlutusV3](https://iohk.io/en/blog/posts/2024/02/12/unl
 - **BLS12-381 primitives.** This collection of new built-in functions is fundamental for cryptographic operations that allow for efficient verification of zero-knowledge proofs.
 - **New hash primitives**. Blake2b-224 and [Keccak-256](https://cips.cardano.org/cip/CIP-101) are new cryptographic hash functions used for validating transaction signatures (improving compatibility with Ethereum), and secure data verification respectively.
 - **Sums of products (SOPs)**. PlutusV3 introduces SOPs, a new approach to encoding data types in Plutus Core. This method improves script efficiency and code generation for Plutus Core compilers, leading to faster program execution and streamlined smart contract development.
-- **Bitwise primitives**. The Chang upgrade brings two new bitwise primitives – \`integerToByteString\` and \`byteStringToInteger\`. Additional primitives will be added to Plutus V1, V2, and V3 with future upgrades. These primitives offer robust capabilities for low-level bit manipulations. This enhances performance optimization, cryptographic support, integer-string conversions, and efficient algorithms and data structures within smart contracts.
+- **Bitwise primitives**. The Chang upgrade brings two new bitwise primitives – `integerToByteString` and `byteStringToInteger`. Additional primitives will be added to Plutus V1, V2, and V3 with future upgrades. These primitives offer robust capabilities for low-level bit manipulations. This enhances performance optimization, cryptographic support, integer-string conversions, and efficient algorithms and data structures within smart contracts.
 
 ## Additional functionalities 
 
@@ -66,7 +65,3 @@ The second stage, which emphasized decentralized governance, was initiated by th
 The Cardano Constitutional Convention was held simultaneously in Buenos Aires - Argentina, and Nairobi - Kenya from December 4 to 6, 2024. After 63 workshops across 51 countries, participants came together to refine and strengthen the constitution. The draft constitution was agreed to by 95% of elected delegates. 
 
 The delegate-approved Cardano constitution is the foundational document that translates the community’s values and decisions into a clear set of principles, rules, and responsibilities. It defines the governance framework for the Cardano ecosystem, outlining stakeholders' roles and obligations, including DReps, SPOs, and others. This constitution guides Cardano toward becoming a sustainable platform for Web3 products and services.
-
-## Chang readiness
-
-You can check [engineering and ecosystem readiness for the Plomin upgrade here](https://cardanoupgrades.docs.intersectmbo.org/plomin-upgrade/chang-upgrade-2-readiness).
