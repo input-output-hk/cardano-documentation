@@ -43,6 +43,7 @@ type Props = {
   theme?: string
   url: string
   index: number
+  altText
 }
 
 export const GridSectionEntry: React.FC<Props> = ({
@@ -52,6 +53,7 @@ export const GridSectionEntry: React.FC<Props> = ({
   theme,
   url,
   index,
+  altText,
 }) => (
   <Link href={url} target="_blank">
     <StyledEntry
@@ -66,7 +68,7 @@ export const GridSectionEntry: React.FC<Props> = ({
         hidden: { opacity: 0, y: 100 },
       }}
     >
-      {imgSrc && <img src={useBaseUrl(imgSrc)} />}
+      {imgSrc && <img src={useBaseUrl(imgSrc)} alt={altText} />}
       {text && <BrandText>{text}</BrandText>}
     </StyledEntry>
   </Link>

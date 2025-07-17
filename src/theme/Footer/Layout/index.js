@@ -18,7 +18,7 @@ export default function FooterLayout({ style, links, logo, copyright }) {
           {(logo || copyright) && (
             <div className="footer__bottom">{copyright}</div>
           )}
-          <div className="footer-bottom-links">
+          <ul className="footer-bottom-links">
             <li key={'bottom-1'} className="footer__item">
               <FooterLinkItem
                 item={{
@@ -35,7 +35,7 @@ export default function FooterLayout({ style, links, logo, copyright }) {
                 }}
               />
             </li>
-          </div>
+          </ul>
         </div>
       </Section>
     </footer>
