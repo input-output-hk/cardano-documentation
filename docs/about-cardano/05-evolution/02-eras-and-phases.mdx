@@ -57,7 +57,21 @@ Going forward, the teams decided to use names in *a,b,c* order, after individual
 
 ### Babbage era
 
-The Babbage ledger era introduced such features as inline datums, reference scripts, and reference inputs. However, the release is also known as *Vasil,* named to honor the late Bulgarian mathematician and Cardano ambassador Vasil Dabov.  
+The Babbage ledger era introduced features such as inline datums, reference scripts, and reference inputs as part of the _Basho development phase_. The release is also known as Vasil, named to honor the late Bulgarian mathematician and Cardano ambassador Vasil Dabov.
+
+The Vasil upgrade significantly enhanced Cardano’s performance and developer experience. It introduced reference inputs ([CIP-31](https://cips.cardano.org/cip/CIP-31)), which allow transactions to read UTXO data without consuming it; inline datums ([CIP-32](https://cips.cardano.org/cip/CIP-32)), which embed datums directly inside outputs; and reference scripts ([CIP-33](https://cips.cardano.org/cip/CIP-33)), enabling developers to reuse existing scripts rather than resubmitting them. It also added collateral outputs ([CIP-40](https://cips.cardano.org/cip/CIP-40)) for improved fallback handling and diffusion pipelining to enhance block propagation and network throughput.
+
+These features collectively improved the efficiency, expressivity, and scalability of the Cardano network, laying a stronger foundation for advanced smart contracts and DApp development.
+
+### Conway era
+
+The Conway ledger era is part of Cardano’s _Voltaire development phase_, focused on transforming the network into a self-governing system. It encompasses two hard forks: _Chang_, which introduced the initial governance framework, and _Plomin_, which completed the governance feature set (including DReps, treasury withdrawals, and full governance actions) under [CIP-1694](https://cips.cardano.org/cip/CIP-1694).
+
+## Future plans
+
+With on-chain governance now operational, Cardano’s roadmap shifts toward refining governance, focusing on improving usability, governance tooling, voter participation, and ecosystem integration.
+
+Two additional eras are currently planned: Dijkstra, which will focus on Plutus v4, consensus and ledger integration, and Conway refactors for transition, and Euler, whose full scope is to be determined. More details about these upcoming eras will be shared closer to their respective upgrades.
 
 ## Intra-era hard forks
 
