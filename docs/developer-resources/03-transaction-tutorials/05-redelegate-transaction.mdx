@@ -12,7 +12,7 @@ This tutorial will show how to redelegate your stake to another stake pool. Ther
 To do that, you need to create a new certificate that you are sending in a transaction, as in the first part of the tutorial:
 
 ```
-cardano-cli stake-address delegation-certificate \
+cardano-cli latest stake-address delegation-certificate \
     --stake-verification-key-file stake.vkey \
     --stake-pool-id pool1vzqtn3mtfvvuy8ghksy34gs9g97tszj5f8mr3sn7asy5vk577ec \
     --out-file new-delegation.cert
@@ -31,7 +31,7 @@ afb33e353a9880b7cbd9e5eb2cbffa024d1b3b938ee2c739e53dd187094e8f0d     0        10
 Build:
 
 ```
-cardano-cli transaction build \
+cardano-cli latest transaction build \
     --witness-override 2 \
     --tx-in 2b1bfc342c1f5531df4cfa220eac79574142c7263d97885d2ad8588ca1a7e22b#0 \
     --change-address $(cat payment.addr) \
@@ -40,13 +40,13 @@ cardano-cli transaction build \
 
 Sign:
 
-cardano-cli transaction sign \
+cardano-cli latest transaction sign \
     --tx-file new-delegation.tx \
     --signing-key-file payment.skey \
     --signing-key-file stake.skey \
     --out-file new-delegation.signed
 
-cardano-cli transaction submit --tx-file new-delegation.signed 
+cardano-cli latest transaction submit --tx-file new-delegation.signed
 ```
 
 If you check your stake address details, you'll see that you have delegated your stake to a new stake pool and you have zero rewards for now:

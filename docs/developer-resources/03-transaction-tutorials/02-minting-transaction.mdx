@@ -35,8 +35,8 @@ You can now create the script by writing the following code into `transactions-t
 You can get the `PolicyId` with the following command:
 
 ```
-$ cardano-cli transaction policyid \
-    --script-file transactions-tutorial-policy/policy.script 
+$ cardano-cli latest transaction policyid \
+    --script-file transactions-tutorial-policy/policy.script
 C38b0924e32e677f7787f0a0247b177588ec135db927688d8a63310a
 ```
 
@@ -55,7 +55,7 @@ export TOKEN_NAME=54657374546F6B656E
 Build the transaction:
 
 ```
-cardano-cli transaction build \
+cardano-cli latest transaction build \
     --tx-in f947f84f1156995afd695247a8dc8a508fd40d371ce0afb801029769a0104874#0 \
     --mint "1 $(echo $POLICY_ID).$(echo $TOKEN_NAME)" \
     --testnet-magic 1 \
