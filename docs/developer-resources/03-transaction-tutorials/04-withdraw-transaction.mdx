@@ -29,7 +29,7 @@ afb33e353a9880b7cbd9e5eb2cbffa024d1b3b938ee2c739e53dd187094e8f0d     1        99
 Use the second UTXO with TxIx=1. You're ready to create your withdrawal transaction:
 
 ```
-cardano-cli transaction build \
+cardano-cli latest transaction build \
     --tx-in afb33e353a9880b7cbd9e5eb2cbffa024d1b3b938ee2c739e53dd187094e8f0d#1 \
     --withdrawal $(cat stake.addr)+29385845 \
     --change-address $(cat payment.addr) \
@@ -39,13 +39,13 @@ cardano-cli transaction build \
 Note that this transaction will take funds from the stake address, so it will need to be signed with the `stake.skey` file:
 
 ```
-cardano-cli transaction sign \
+cardano-cli latest transaction sign \
     --tx-file withdrawal-tx.raw \
     --signing-key-file payment.skey \
     --signing-key-file stake.skey \
     --out-file withdrawal-tx.signed
 
-cardano-cli transaction submit --tx-file withdrawal-tx.signed
+cardano-cli latest transaction submit --tx-file withdrawal-tx.signed
 ```
 
 Finally, verify that you have received your rewards in your payment address:

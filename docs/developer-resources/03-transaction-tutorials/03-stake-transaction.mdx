@@ -10,7 +10,7 @@ To delegate ada, first, you need to generate a stake key pair. This involves cre
 Assuming you already have your `payment.vkey` and `payment.skey`, which you can easily generate using the `cardano-cli address key-gen` command, proceed by creating the `stake.vkey` and `stake.skey`:
 
 ```
-cardano-cli stake-address key-gen \
+cardano-cli latest stake-address key-gen \
     --verification-key-file stake.vkey \
     --signing-key-file stake.skey
 ```
@@ -29,7 +29,7 @@ Note that the example includes the `--stake-verification-key-file` argument. Thi
 
 ```
 # stake.addr
-cardano-cli stake-address build \
+cardano-cli latest stake-address build \
     --stake-verification-key-file stake.vkey \
     --out-file stake.addr
 ```
@@ -42,7 +42,7 @@ This command generates a certificate, which indicates the intention to register 
 
 ```
 # registration.cert
-cardano-cli stake-address registration-certificate \
+cardano-cli latest stake-address registration-certificate \
     --stake-verification-key-file stake.vkey \
     --out-file reg.cert
 ```
@@ -51,7 +51,7 @@ Create a delegation certificate:
 
 ```
 # delegate.cert
-cardano-cli stake-address delegation-certificate \
+cardano-cli latest stake-address delegation-certificate \
     --stake-verification-key-file stake.vkey \
     --stake-pool-id pool18pn6p9ef58u4ga3wagp44qhzm8f6zncl57g6qgh0pk3yytwz54h \
     --out-file delegation.cert
@@ -77,7 +77,7 @@ It's time to build, sign, and submit your transaction.
 The command below introduces two new arguments of transaction creation: `--witness-override` and `certificate-file`. The first one specifies that the transaction will require two signatures. Therefore, transaction fees will be higher. `certificate-file` adds your new certificates to the transaction:
 
 ```
-cardano-cli transaction build \
+cardano-cli latest transaction build \
     --witness-override 2 \
     --tx-in 142c46bb93b9c80140a6302e4a8a360e6f46f55aaf001c825ca790bb23572754#0 \
     --certificate-file reg.cert \
@@ -89,13 +89,13 @@ cardano-cli transaction build \
 In the signing phase, you need to add two signatures: `payment.skey` and `stake.skey`:
 
 ```
-cardano-cli transaction sign \
+cardano-cli latest transaction sign \
     --tx-body-file delegateTx.raw \
     --signing-key-file payment.skey \
     --signing-key-file stake.skey \
     --out-file delegateTx.signed
-	
-cardano-cli transaction submit \
+
+cardano-cli latest transaction submit \
     --tx-file delegateTx.signed
 Transaction successfully submitted.
 ```
