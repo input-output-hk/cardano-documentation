@@ -112,6 +112,13 @@ const WebsitesGrid = () => (
         altText={'Mithril docs'}
         index={6}
       />
+      <GridSectionEntry
+        color={'rgba(32, 8, 48, 1)'}
+        imgSrc={'assets/websites-grid/leios.svg'}
+        url={'https://leios.cardano-scaling.org/'}
+        altText={'Leios docs'}
+        index={6}
+      />
     </GridSection>
 
     <GridSection>
