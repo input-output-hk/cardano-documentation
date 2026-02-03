@@ -401,12 +401,12 @@ body {
 }
 
 .footer__bottom {
-  color: #505660;
+  color: #b4afa8;
 }
 
 .footer-default {
   background-color: var(--ifm-footer-background-color) !important;
-  border-top: 1px solid #505660 !important;
+  border-top: 1px solid #b4afa8 !important;
 }
 
 .footer__link-item {
