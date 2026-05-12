@@ -84,6 +84,7 @@ const config: Config = {
         },
       },
     ],
+    'docusaurus-plugin-copy-page-button',
   ],
 
   presets: [
