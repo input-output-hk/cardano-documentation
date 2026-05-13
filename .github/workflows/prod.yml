@@ -19,10 +19,10 @@ jobs:
   deploy-prod:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: 'master'
-      - uses: amondnet/vercel-action@v25.2.0
+      - uses: amondnet/vercel-action@v42.2.0
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

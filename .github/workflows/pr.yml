@@ -1,13 +1,11 @@
 name: Preview Deploy
 
 on:
-  - pull_request
+  pull_request:
 
 env:
-  NEXT_TELEMETRY_DISABLED: 1
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -17,14 +15,55 @@ jobs:
   deploy-preview:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
+      - name: Install Vercel CLI
+        run: npm i -g vercel@latest
+
+      - name: Pull Vercel config
+        run:
+          vercel pull --yes --environment=preview --token=${{
+          secrets.VERCEL_TOKEN }}
+
+      - name: Get project name
+        id: project
+        run: |
+          name=$(curl -sf -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+            "https://api.vercel.com/v9/projects/${{ secrets.VERCEL_PROJECT_ID }}?teamId=${{ secrets.VERCEL_ORG_ID }}" \
+            | jq -r '.name')
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy
+        id: deploy
+        run: |
+          url=$(vercel deploy --yes --token=${{ secrets.VERCEL_TOKEN }} \
+            --meta githubCommitAuthorLogin="${{ github.actor }}" \
+            --meta githubCommitAuthorName="${{ github.actor }}" \
+            --meta githubCommitRef="${{ github.head_ref }}" \
+            --meta githubCommitSha="${{ github.sha }}" \
+            --meta githubOrg="${{ github.repository_owner }}" \
+            --meta githubRepo="${{ github.event.repository.name }}" \
+            --meta githubCommitOrg="${{ github.repository_owner }}" \
+            --meta githubCommitRepo="${{ github.event.repository.name }}" \
+            --meta githubDeployment="1" \
+            --meta githubPrId="${{ github.event.pull_request.number }}")
+          echo "deploy_url=$url" >> "$GITHUB_OUTPUT"
+
+      - name: Set alias
+        run:
+          vercel alias set ${{ steps.deploy.outputs.deploy_url }} pr-${{
+          github.event.pull_request.number }}-${{ steps.project.outputs.name
+          }}.vercel.app --token=${{ secrets.VERCEL_TOKEN }} --scope=${{
+          secrets.VERCEL_ORG_ID }}
+
+      - name: Comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          fetch-depth: 2
-      - uses: amondnet/vercel-action@v25.2.0
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
-          scope: ${{ secrets.VERCEL_ORG_ID}}
-          working-directory: ./
+          header: preview
+          message: |
+            Deploy preview for **${{ steps.project.outputs.name }}** ready!
+
+            ✅ Preview: ${{ steps.deploy.outputs.deploy_url }}
+            🔗 Alias: https://pr-${{ github.event.pull_request.number }}-${{ steps.project.outputs.name }}.vercel.app
+
+            Built with commit ${{ github.sha }}
