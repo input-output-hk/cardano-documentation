@@ -16,6 +16,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 1
+
+      - name: Get commit author info
+        id: author
+        run: |
+          echo "name=$(git log -1 --pretty=format:'%an')" >> "$GITHUB_OUTPUT"
+          echo "email=$(git log -1 --pretty=format:'%ae')" >> "$GITHUB_OUTPUT"
 
       - name: Install Vercel CLI
         run: npm i -g vercel@latest
@@ -37,8 +46,9 @@ jobs:
         id: deploy
         run: |
           url=$(vercel deploy --yes --token=${{ secrets.VERCEL_TOKEN }} \
-            --meta githubCommitAuthorLogin="${{ github.actor }}" \
-            --meta githubCommitAuthorName="${{ github.actor }}" \
+            --meta githubCommitAuthorLogin="${{ github.event.pull_request.user.login }}" \
+            --meta githubCommitAuthorName="${{ steps.author.outputs.name }}" \
+            --meta githubCommitAuthorEmail="${{ steps.author.outputs.email }}" \
             --meta githubCommitRef="${{ github.head_ref }}" \
             --meta githubCommitSha="${{ github.sha }}" \
             --meta githubOrg="${{ github.repository_owner }}" \
