@@ -1,0 +1,43 @@
+---
+title: Scalus
+metaTitle: Learn about Scalus
+sidebar_position: 4
+---
+
+:::info
+
+To get started with Scalus, see:
+
+- [Scalus website](https://scalus.org)
+- [Getting started guide](https://scalus.org/docs/get-started)
+- [GitHub repository](https://github.com/scalus3/scalus)
+
+:::
+
+Scalus lets you build a complete Cardano DApp in one language, Scala 3: the
+validators, the off-chain code, and the tests. Validators compile to Plutus Core
+(UPLC) and run on Cardano like scripts written in any other language.
+
+Because everything is Scala, you write contract logic once and reuse it
+on-chain, in JVM backend services, and in the browser. Data types are shared too,
+so on-chain and off-chain code stay in sync.
+
+## What Scalus includes
+
+- **An optimizing compiler.** Scalus optimizes the UPLC it generates to reduce
+  script size and execution costs. You can choose how data types are represented
+  on-chain: as Plutus `Data` or as sums of products (SoP).
+- **An emulator.** An in-memory Cardano node that validates each transaction
+  against the Cardano ledger rules. It runs on the JVM and in JavaScript and
+  TypeScript, and works as a provider for MeshJS and Lucid Evolution.
+- **Testing tools.** Write unit tests, property-based tests, and scenario tests
+  that explore many sequences of transactions and report the sequence that
+  breaks your contract. Run integration tests against a local Yaci DevKit
+  network.
+- **A transaction builder** with a Blockfrost provider for public networks.
+- **A Plutus script evaluator for JavaScript and TypeScript.** It calculates
+  execution costs off-chain. Yaci DevKit uses it as its default transaction
+  evaluator.
+
+Scalus supports Plutus V1, V2, and V3 scripts and generates
+[CIP-57](https://cips.cardano.org/cip/CIP-57) blueprints.
