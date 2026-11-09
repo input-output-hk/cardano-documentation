@@ -1,0 +1,71 @@
+# Dijkstra
+
+Dijkstra is Cardano's **ledger era** that follows Conway. Unlike the van Rossem intra-era hard fork, Dijkstra introduces a new era, which allows changes to block structure, serialization formats, and protocol parameters.
+
+The upgrade is delivered in two phases:
+
+| Phase | What happens | Protocol version | Target |
+| :---- | :---- | :---- | :---- |
+| **Phase 1** – Dijkstra hard fork | New ledger era; activates Ouroboros Linear Leios and a set of ledger and Plutus improvements | 12 | Q4 2026 |
+| **Phase 2** – Peras activation | Intra-era hard fork within Dijkstra that activates Ouroboros Peras | Version bump within Dijkstra | Q2 2027 |
+
+Phase 1 already includes the codec extensions and protocol parameters that Peras needs, so Phase 2 can be enacted without another new era.
+
+Each phase is rolled out to the preview testnet, then pre-production, and then mainnet. On mainnet, each hard fork requires a governance action ratified by DReps, SPOs, and the Constitutional Committee, as defined in [CIP-1694](https://cips.cardano.org/cip/CIP-1694).
+
+:::note Target dates are subject to development progress and community governance. Check the [Intersect knowledge base](https://cardanoupgrades.docs.intersectmbo.org/dijkstra-era-upgrade/dijkstra-upgrade-overview) for the latest status. :::
+
+## Phase 1: Dijkstra hard fork
+
+### Ouroboros Linear Leios
+
+Dijkstra's headline feature is **Ouroboros Linear** **Leios** ([CIP-164](https://cips.cardano.org/cip/CIP-0164)), which increases network throughput without changing Ouroboros Praos's security guarantees.
+
+Linear Leios uses two types of blocks:
+
+- **Ranking blocks (RBs)** – standard Praos blocks, extended to announce and certify endorser blocks.  
+- **Endorser blocks (EBs)** – larger blocks that reference transactions by hash rather than containing them directly.
+
+A stake-based committee certifies each endorser block, requiring a 75% quorum of active stake. If no certified endorser block is available, ranking blocks carry transactions directly, as in standard Praos. Linear Leios ships fully in Phase 1; throughput can then be raised gradually through protocol parameter updates.
+
+### Ledger and transaction improvements
+
+- **Nested transactions** ([CIP-118](https://cips.cardano.org/cip/CIP-0118)) – transactions can contain sub-transactions with their own witnesses and execution contexts  
+- **Guard scripts** ([CIP-112](https://cips.cardano.org/cip/CIP-0112)) – a new script type that observes transaction validity  
+- **Account address enhancement, phase 1** ([CIP-159](https://cips.cardano.org/cip/CIP-0159)) – ledger-level groundwork for account-style addresses  
+- **Removal of the `isValid` field** ([CIP-167](https://cips.cardano.org/cip/CIP-0167)) – simplifies transactions and script execution  
+- **Non-segregated block body serialization** ([CIP-176](https://cips.cardano.org/cip/CIP-0176)) – a new block body format required for Leios and future extensions.
+
+### Plutus V4
+
+A new **Plutus V4 script context** lets smart contracts see the new Dijkstra transaction and ledger structures, including nested transactions and guard scripts.
+
+### Fees and protocol parameters
+
+- **Fee function update** – transaction fees account for reference inputs  
+- **Reference script pricing and limits** – values that were hardcoded in Conway become protocol parameters, with bounds set through the Constitution and guardrails script  
+- **Fair minimum fees** ([CIP-23](https://cips.cardano.org/cip/CIP-0023)) – the parameter is defined in Phase 1; the fee rule activates either in Phase 1 or in a later intra-era hard fork
+
+### Staking and governance
+
+- **Reward withdrawals without DRep delegation** ([CIP-181](https://cips.cardano.org/cip/CIP-0181)) – ada holders can withdraw staking rewards without first delegating to a DRep.  
+- **Pledge leverage-based staking rewards** ([CIP-50](https://cips.cardano.org/cip/CIP-0050)) – adds a leverage parameter that is inactive by default, so reward behavior does not change at the hard fork. The community can later set it through governance.
+
+## Phase 2: Ouroboros Peras
+
+**Ouroboros Peras** ([CIP-140](https://cips.cardano.org/cip/CIP-0140)) adds a voting layer on top of Praos chain selection. Committees of stake pool operators vote on recent blocks, and blocks with enough votes are treated as settled much faster than under standard Praos. Block production stays the same – only settlement speeds up.
+
+Peras activation requires Phase 1 to be live on mainnet, the Peras node implementation to be released, and a governance action ratified by DReps, SPOs, and the Constitutional Committee.
+
+## What it means for the community
+
+- **Ada holders** – no token migration needed; keep wallets and tools up to date to use new features  
+- **Stake pool operators** – upgrade to a Dijkstra-compatible node before each hard fork and take part in testnet validation  
+- **DApp developers, wallets, and builders** – plan for Plutus V4, nested transactions, guard scripts, and the new block and transaction formats; test against the latest node on preview and pre-production test networks.
+
+## Further reading
+
+For full details on each feature, readiness tracking, and upgrade bulletins, see the Intersect knowledge base:
+
+- [Dijkstra upgrade overview](https://cardanoupgrades.docs.intersectmbo.org/dijkstra-era-upgrade/dijkstra-upgrade-overview)  
+- [Dijkstra upgrade readiness](https://cardanoupgrades.docs.intersectmbo.org/dijkstra-era-upgrade/dijkstra-upgrade-readiness)
