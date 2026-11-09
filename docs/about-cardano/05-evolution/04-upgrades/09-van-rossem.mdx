@@ -1,0 +1,50 @@
+---
+title: Van Rossem
+metaTitle: Van Rossem - an intra-era hard fork moving mainnet from protocol version 10 to protocol version 11
+---
+
+# Van Rossem 
+
+Van Rossem is a Cardano upgrade enacted on **18 July 2026** at **epoch 644**, moving mainnet from protocol version 10 to **protocol version 11**.
+
+It is an **intra-era hard fork**: the ledger stays in the Conway era, and the upgrade introduces no new transaction format or significant breaking changes. Instead, it expands what Plutus smart contracts can do and tightens several ledger rules.
+
+The on-chain governance framework introduced with Plomin enacted van Rossem through a hard fork ratified by delegated representatives (DReps), stake pool operators (SPOs), and the Constitutional Committee, in line with [CIP-1694](https://cips.cardano.org/cip/CIP-1694).
+
+## Why the name?
+
+The upgrade honors **Max van Rossem**, a Dutch Cardano community member who passed away in October 2025\. He was a developer, stake pool operator, DRep, and constitutional delegate who helped shape the Cardano Constitution and the governance system that ratified this upgrade.
+
+## Key features
+
+### Plutus upgrades
+
+- **All built-in functions available across Plutus V1, V2, and V3** – scripts written in older Plutus versions can use built-ins that were previously limited to newer versions  
+- **Case expressions for built-in types** – `case` expressions on `Bool`, `Integer`, and `Data` in Untyped Plutus Core (UPLC) make data matching more efficient  
+- **New built-in functions and native types**, introduced across all Plutus versions:  
+  - [CIP-138](https://cips.cardano.org/cip/CIP-0138): array type  
+  - [CIP-153](https://cips.cardano.org/cip/CIP-0153): `MaryEraValue` type for working with multi-asset values  
+  - [CIP-109](https://cips.cardano.org/cip/CIP-0109): modular exponentiation  
+  - [CIP-132](https://cips.cardano.org/cip/CIP-0132): `dropList`  
+  - [CIP-133](https://cips.cardano.org/cip/CIP-0133): multi-scalar multiplication over BLS12-381.
+
+### Ledger and node enhancements
+
+- **VRF key uniqueness** – the ledger enforces that no two stake pools can register the same VRF key  
+- **Revised reference input rules** – predicate checks for Plutus V1 and V2 scripts that use reference inputs have been adjusted  
+- **Constitutional Committee voting restriction** – a rule previously enforced only in the mempool is now a ledger rule  
+- **Clearer withdrawal validation** – the non-matching withdrawals check returns clearer errors and validates more safely  
+- **Better diagnostics** – error reporting improves when protocol parameter hashes don't match.
+
+## What it means for the community
+
+- **Ada holders** – no action or token migration needed; keep wallets and tools up to date  
+- **Stake pool operators** – upgrade to node 11.0 (or later) to stay in sync with the network  
+- **DApp developers, wallets, and builders** – Plutus scripts gain new built-ins and performance improvements; test integrations against the latest node release.
+
+## Further reading
+
+For full details, readiness tracking, and upgrade communications, see the Intersect knowledge base:
+
+- [van Rossem hard fork overview](https://cardanoupgrades.docs.intersectmbo.org/van-rossem-upgrade/van-rossem-hard-fork-overview)  
+- [van Rossem upgrade readiness](https://cardanoupgrades.docs.intersectmbo.org/van-rossem-upgrade/van-rossem-upgrade-readiness)
