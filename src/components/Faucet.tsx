@@ -56,32 +56,22 @@ const FaucetInner = ({
   content,
   getEndpoint,
   hasApiKey,
-  getTransactionURL,
   reCaptcha,
-  getNativeAssetEndpoint,
   environments,
 }) => {
   const [values, setValues] = useState(DEFAULT_VALUES)
   const [errors, setErrors] = useState(DEFAULT_ERRORS)
   const [serverError, setServerError] = useState('')
   const [result, setResult] = useState(null)
-  const [nativeToken, setNativeToken] = useState('Ada')
   const [environment, setEnvironment] = useState('preview')
   const [status, setStatus] = useState(statuses.ready)
   const [isPoolDelegation, setIsPoolDelegation] = useState(false)
 
   const reCaptchaRef = useRef(null)
-  let url: string | URL | Request
 
   const resetCaptcha = () => {
     reCaptchaRef.current?.reset()
     setValues((currentValues) => ({ ...currentValues, reCaptcha: false }))
-  }
-
-  const handleTokenSelectChange = (event: {
-    target: { value: React.SetStateAction<string> }
-  }) => {
-    setNativeToken(event.target.value)
   }
 
   const valueOnChange = (key: string) => (e: { target: { value: any } }) => {
@@ -117,14 +107,10 @@ const FaucetInner = ({
         apiKey,
         poolId: values.poolId,
         isPoolDelegation,
-        reCaptchaResponse: values.reCaptcha,
+        reCaptchaResponse: reCaptcha ? values.reCaptcha : null,
       }
 
-      if (reCaptcha) endpointParams.reCaptchaResponse = values.reCaptcha
-      url =
-        nativeToken === 'Ada'
-          ? getEndpoint(endpointParams)
-          : getNativeAssetEndpoint(endpointParams)
+      const url = getEndpoint(endpointParams)
       const response = await fetch(url, { method: 'GET' })
       if (response.status === 404) {
         setServerError(content.faucet_content.endpoint_not_found)
@@ -185,8 +171,6 @@ const FaucetInner = ({
 
       setResult({
         txid: jsonResult.txid,
-        amount: jsonResult.amount,
-        unit: jsonResult.unit,
         isPoolDelegation: endpointParams.isPoolDelegation,
         poolId: endpointParams.poolId,
         address: endpointParams.address,
@@ -242,30 +226,6 @@ const FaucetInner = ({
                       </Typography>
                     </Box>
                   )}
-
-                  {/* Temporarily disable ability to choose token recieved as per request of devops
-              <FormControl
-                variant="outlined"
-                fullWidth
-                style={{
-                  marginBottom: '2rem',
-                }}
-              >
-                <InputLabel id="demo-simple-select-outlined-label">
-                  Choose
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-outlined-label"
-                  id="demo-simple-select-outlined"
-                  value={nativeToken}
-                  onChange={handleTokenSelectChange}
-                  label="Token Type"
-                >
-                  <MenuItem value="Ada">tAda</MenuItem>
-                  <MenuItem value="Testcoin">Testcoin</MenuItem>
-                </Select>
-              </FormControl>
-             */}
 
                   <FormControl
                     variant="outlined"
@@ -488,22 +448,7 @@ const FaucetInner = ({
                         )
                   }
                 />
-                {result.txid && getTransactionURL && (
-                  <Fragment>
-                    <p>{content.faucet_content.verify_transaction_hash}</p>
-                    <p>
-                      <strong>
-                        {result.txid}
-                        {/* Remove link since no explorer post casil
-                  <Link href={getTransactionURL({ txid: result.txid })}>
-                    
-                  </Link>
-                  */}
-                      </strong>
-                    </p>
-                  </Fragment>
-                )}
-                {result.txid && !getTransactionURL && (
+                {result.txid && (
                   <Fragment>
                     <p>{content.faucet_content.verify_transaction_hash}</p>
                     <p>
@@ -539,29 +484,18 @@ const FaucetInner = ({
 FaucetInner.propTypes = {
   content: PropTypes.object.isRequired,
   getEndpoint: PropTypes.func.isRequired,
-  getNativeAssetEndpoint: PropTypes.func.isRequired,
   hasApiKey: PropTypes.bool.isRequired,
-  getTransactionURL: PropTypes.func,
   reCaptcha: PropTypes.shape({
     version: PropTypes.number.isRequired,
   }),
 }
 
-const FaucetWrapper = ({
-  getEndpoint,
-  getNativeAssetEndpoint,
-  hasApiKey,
-  getTransactionURL,
-  reCaptcha,
-  environments,
-}) => (
+const FaucetWrapper = ({ getEndpoint, hasApiKey, reCaptcha, environments }) => (
   <FaucetInner
     content={content}
     getEndpoint={getEndpoint}
     hasApiKey={hasApiKey}
-    getTransactionURL={getTransactionURL}
     reCaptcha={reCaptcha}
-    getNativeAssetEndpoint={getNativeAssetEndpoint}
     environments={environments}
   />
 )
@@ -587,35 +521,31 @@ const Faucet = () => {
         reCaptchaResponse,
         isPoolDelegation,
         poolId,
-      }) =>
-        isPoolDelegation
-          ? `${environments[environment].baseUrl}/delegate?poolid=${poolId}&api_key=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
-          : `${environments[environment].baseUrl}/send-money?address=${address}&api_key=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
-      }
+      }) => {
+        const params = new URLSearchParams()
+        params.set(
+          isPoolDelegation ? 'poolid' : 'address',
+          isPoolDelegation ? poolId : address,
+        )
+        if (apiKey) params.set('api_key', apiKey)
+        if (typeof reCaptchaResponse === 'string' && reCaptchaResponse) {
+          params.set('g-recaptcha-response', reCaptchaResponse)
+        }
+        const endpoint = isPoolDelegation ? 'delegate' : 'send-money'
+        return `${environments[environment].baseUrl}/${endpoint}?${params.toString()}`
+      }}
       hasApiKey
-      getTransactionURL={({ txid }) =>
-        `https://explorer.cardano-testnet.iohkdev.io/tx/${txid}`
-      }
       reCaptcha={{
         version: 2,
       }}
       environments={environments}
-      getNativeAssetEndpoint={({ address, apiKey, reCaptchaResponse }) =>
-        `https://ext.earthtools.ca/send-money/${address}?${
-          apiKey
-            ? `api_key=${apiKey}`
-            : `asset=${`6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7`}`
-        }&g-recaptcha-response=${reCaptchaResponse}`
-      }
     />
   )
 }
 
 FaucetWrapper.propTypes = {
   getEndpoint: PropTypes.func.isRequired,
-  getNativeAssetEndpoint: PropTypes.func.isRequired,
   hasApiKey: PropTypes.bool.isRequired,
-  getTransactionURL: PropTypes.func,
   reCaptcha: PropTypes.shape({
     version: PropTypes.number.isRequired,
   }),
