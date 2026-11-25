@@ -125,53 +125,73 @@ const FaucetInner = ({
         nativeToken === 'Ada'
           ? getEndpoint(endpointParams)
           : getNativeAssetEndpoint(endpointParams)
-      const result = await fetch(url, { method: 'GET' })
-      const jsonResult = await result.json()
-      if (result.status === 200 && jsonResult.error) {
+      const response = await fetch(url, { method: 'GET' })
+      if (response.status === 404) {
+        setServerError(content.faucet_content.endpoint_not_found)
+        setStatus(statuses.ready)
+        return
+      }
+
+      // Proxies may return HTML, plain text, or an empty body instead of JSON.
+      const body = await response.json().catch(() => null)
+      const jsonResult =
+        body && typeof body === 'object' && !Array.isArray(body) ? body : null
+
+      if (response.status === 429) {
+        const retryHeader = response.headers.get('Retry-After')?.trim()
+        const headerRetryTime = retryHeader
+          ? /^\d+$/.test(retryHeader)
+            ? Date.now() + Number(retryHeader) * 1000
+            : Date.parse(retryHeader)
+          : NaN
+        const bodyRetryTime =
+          typeof jsonResult?.retryAfter === 'number'
+            ? jsonResult.retryAfter
+            : typeof jsonResult?.retryAfter === 'string'
+              ? Date.parse(jsonResult.retryAfter)
+              : NaN
+        const retryAt = moment(
+          Number.isFinite(headerRetryTime) ? headerRetryTime : bodyRetryTime,
+        )
         setServerError(
-          parseServerError(jsonResult.error.tag) ||
-            content.faucet_content.server_error,
+          retryAt.isValid()
+            ? content.faucet_content.too_many_attempts_retry.replace(
+                /{{\stime\s}}/g,
+                retryAt.format('LLL'),
+              )
+            : content.faucet_content.too_many_attempts,
         )
         setStatus(statuses.ready)
-      } else if (result.status === 200) {
-        setResult({
-          txid: jsonResult.txid,
-          amount: jsonResult.amount,
-          unit: jsonResult.unit,
-          isPoolDelegation: endpointParams.isPoolDelegation,
-          poolId: endpointParams.poolId,
-          address: endpointParams.address,
-        })
-        setStatus(statuses.success)
-      } else {
-        switch (result.status) {
-          case 404:
-            setServerError(content.faucet_content.endpoint_not_found)
-            setStatus(statuses.ready)
-            return
-
-          case 429:
-            if (jsonResult.retryAfter) {
-              setServerError(
-                content.faucet_content.too_many_attempts_retry.replace(
-                  /{{\stime\s}}/g,
-                  moment(jsonResult.retryAfter).format('LLL'),
-                ),
-              )
-            } else {
-              setServerError(content.faucet_content.too_many_attempts)
-            }
-            setStatus(statuses.ready)
-            return
-
-          default:
-            setServerError(
-              jsonResult.message || content.faucet_content.server_error,
-            )
-            setStatus(statuses.ready)
-            return
-        }
+        return
       }
+
+      if (
+        response.status !== 200 ||
+        jsonResult?.error ||
+        typeof jsonResult?.txid !== 'string' ||
+        !jsonResult.txid.trim()
+      ) {
+        const errorTag = jsonResult?.error?.tag
+        const message =
+          typeof errorTag === 'string'
+            ? parseServerError(errorTag)
+            : typeof jsonResult?.message === 'string'
+              ? jsonResult.message
+              : ''
+        setServerError(message || content.faucet_content.server_error)
+        setStatus(statuses.ready)
+        return
+      }
+
+      setResult({
+        txid: jsonResult.txid,
+        amount: jsonResult.amount,
+        unit: jsonResult.unit,
+        isPoolDelegation: endpointParams.isPoolDelegation,
+        poolId: endpointParams.poolId,
+        address: endpointParams.address,
+      })
+      setStatus(statuses.success)
     } catch (error) {
       setServerError(content.faucet_content.server_error)
       setStatus(statuses.ready)
