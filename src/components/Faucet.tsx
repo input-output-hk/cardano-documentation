@@ -304,7 +304,6 @@ const FaucetInner = ({
                           }>,
                         ) => setEnvironment(e.target.value)}
                       >
-                        {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
                         <option value="preview">Preview Testnet</option>
                         <option value="preprod">Preprod Testnet</option>
                       </TextField>
@@ -348,7 +347,6 @@ const FaucetInner = ({
                           setIsPoolDelegation(e.target.value === 'delegation')
                         }
                       >
-                        {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
                         <option value="testada">Receive test ADA</option>
                         <option value="delegation">
                           Receive pool delegation
@@ -555,10 +553,6 @@ const FaucetWrapper = ({
 
 const Faucet = () => {
   const environments = {
-    vasil: {
-      baseUrl: 'https://faucet.vasil-dev.world.dev.cardano.org',
-      sitekey: '6LdZdHshAAAAAIxTr6hYueaq2X3Jljegh4sqW9oU',
-    },
     preview: {
       baseUrl: 'https://faucet.preview.world.dev.cardano.org',
       sitekey: '6Le8dnshAAAAAGGl12gnWxuSJEGYbgJi3-9ptHsr',
