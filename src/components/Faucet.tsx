@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect, useRef } from 'react'
+import React, { useState, Fragment, useRef } from 'react'
 import PropTypes from 'prop-types'
 import FormControl from '@material-ui/core/FormControl'
 import Box from '@material-ui/core/Box'
@@ -72,6 +72,11 @@ const FaucetInner = ({
 
   const reCaptchaRef = useRef(null)
   let url: string | URL | Request
+
+  const resetCaptcha = () => {
+    reCaptchaRef.current?.reset()
+    setValues((currentValues) => ({ ...currentValues, reCaptcha: false }))
+  }
 
   const tokens = {
     '6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7': 'Testcoin',
@@ -190,21 +195,18 @@ const FaucetInner = ({
     } catch (error) {
       setServerError(content.faucet_content.server_error)
       setStatus(statuses.ready)
+    } finally {
+      // A submitted token may have been consumed, even if the request failed.
+      resetCaptcha()
     }
   }
 
   const reset = (e: { preventDefault: () => void }) => {
     e.preventDefault()
+    resetCaptcha()
     setStatus(statuses.ready)
     setResult(null)
   }
-
-  useEffect(() => {
-    if (reCaptchaRef.current && serverError) {
-      reCaptchaRef.current.reset()
-      setValues({ ...values, reCaptcha: null })
-    }
-  }, [reCaptchaRef, serverError])
 
   return (
     <BrowserOnly>
@@ -278,6 +280,7 @@ const FaucetInner = ({
                         className="faucet-text-field"
                         select
                         value={environment}
+                        disabled={status === statuses.loading}
                         fullWidth
                         SelectProps={{
                           native: true,
@@ -302,7 +305,10 @@ const FaucetInner = ({
                             name?: string
                             value: string
                           }>,
-                        ) => setEnvironment(e.target.value)}
+                        ) => {
+                          resetCaptcha()
+                          setEnvironment(e.target.value)
+                        }}
                       >
                         <option value="preview">Preview Testnet</option>
                         <option value="preprod">Preprod Testnet</option>
