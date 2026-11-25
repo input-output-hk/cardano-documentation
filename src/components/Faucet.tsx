@@ -555,11 +555,11 @@ const Faucet = () => {
   const environments = {
     preview: {
       baseUrl: 'https://faucet.preview.play.dev.cardano.org',
-      sitekey: '6Le8dnshAAAAAGGl12gnWxuSJEGYbgJi3-9ptHsr',
+      sitekey: '6LcU5S4uAAAAAIx0Za5hUkuGKoaT38zNkbO2PZ7z',
     },
     preprod: {
       baseUrl: 'https://faucet.preprod.play.dev.cardano.org',
-      sitekey: '6Le7eHshAAAAAGnu2_6MS70cCvnGsvWRFpzVphN-',
+      sitekey: '6Lcd5S4uAAAAAHBfcKiyoMRaaR1xroEhf0x8B8jk',
     },
   }
 
