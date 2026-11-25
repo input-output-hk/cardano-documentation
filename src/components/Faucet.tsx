@@ -122,7 +122,8 @@ const FaucetInner = ({
   const onSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     const newErrors = {}
-    if (!values.reCaptcha)
+    const apiKey = hasApiKey ? values.apiKey.trim() : ''
+    if (reCaptcha && !apiKey && !values.reCaptcha)
       // @ts-ignore
       newErrors.reCaptcha = content.faucet_content.please_complete_recaptcha
     if (Object.keys(newErrors).length > 0) {
@@ -137,7 +138,7 @@ const FaucetInner = ({
       const endpointParams = {
         environment: environment,
         address: values.address,
-        apiKey: values.apiKey,
+        apiKey,
         poolId: values.poolId,
         isPoolDelegation,
         reCaptchaResponse: values.reCaptcha,
@@ -422,7 +423,7 @@ const FaucetInner = ({
                             disableUnderline: true,
                           }}
                         />
-                        <span>Enter an API key to bypass rate limiting</span>
+                        <span>{content.faucet_content.api_key_helper_text}</span>
                       </div>
                     </Box>
                   )}

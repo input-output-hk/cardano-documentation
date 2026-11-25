@@ -78,7 +78,8 @@ export default {
     too_many_attempts: 'Too many requests',
     too_many_attempts_retry: 'Too many requests, retry after {{ time }}',
     address_helper_text: 'The address to send funds to',
-    api_key_helper_text: 'Optional API key to bypass rate limiting',
+    api_key_helper_text:
+      'Use an API key for your assigned rate limit. CAPTCHA is optional when using a valid API key.',
     request_funds: 'Request funds',
     request_more_funds: 'Request more funds',
     success_heading: 'Success',
