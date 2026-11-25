@@ -81,12 +81,13 @@ export default {
     api_key_helper_text:
       'Use an API key for your assigned rate limit. CAPTCHA is optional when using a valid API key.',
     request_funds: 'Request funds',
-    request_more_funds: 'Request more funds',
-    success_heading: 'Success',
+    request_again: 'Make another request',
+    success_heading: 'Transaction submitted',
     verify_transaction_hash: 'Please verify the following transaction hash:',
-    // transaction_successful: 'Your transaction has been successful and __{{ amount }}__ have been sent to __{{ address }}__.',
-    transaction_successful:
-      'Your transaction has been successful and test funds have been sent to __{{ address }}__.',
+    transaction_submitted:
+      'A transaction to send test funds to __{{ address }}__ has been submitted. Wait for confirmation on the selected network.',
+    delegation_submitted:
+      'A transaction to delegate faucet stake to pool __{{ poolId }}__ has been submitted. Wait for confirmation on the selected network.',
     please_complete_recaptcha: 'Please complete the ReCAPTCHA',
   },
   downloaders_content: {

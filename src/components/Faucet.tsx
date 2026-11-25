@@ -78,10 +78,6 @@ const FaucetInner = ({
     setValues((currentValues) => ({ ...currentValues, reCaptcha: false }))
   }
 
-  const tokens = {
-    '6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7': 'Testcoin',
-  }
-
   const handleTokenSelectChange = (event: {
     target: { value: React.SetStateAction<string> }
   }) => {
@@ -97,26 +93,6 @@ const FaucetInner = ({
     }
 
     setErrors({ ...errors, [key]: '' })
-  }
-
-  const getTransactionAmount = () => {
-    if (result && result.unit && result.unit === 'lovelace') {
-      if (
-        result &&
-        result.amount &&
-        typeof result.amount === 'number' &&
-        !isNaN(result.amount) &&
-        result.amount > 0
-      ) {
-        return `${Math.round(result.amount / 1e6)} Ada`
-      } else {
-        return content.faucet_content.funds
-      }
-    } else {
-      return `${
-        result.amount === 'number' ? result.amount.toString() : result.amount
-      } ${tokens[result.unit]}`
-    }
   }
 
   const onSubmit = async (e: { preventDefault: () => void }) => {
@@ -162,6 +138,9 @@ const FaucetInner = ({
           txid: jsonResult.txid,
           amount: jsonResult.amount,
           unit: jsonResult.unit,
+          isPoolDelegation: endpointParams.isPoolDelegation,
+          poolId: endpointParams.poolId,
+          address: endpointParams.address,
         })
         setStatus(statuses.success)
       } else {
@@ -331,6 +310,7 @@ const FaucetInner = ({
                         className="faucet-text-field"
                         select
                         value={isPoolDelegation ? 'delegation' : 'testada'}
+                        disabled={status === statuses.loading}
                         fullWidth
                         SelectProps={{
                           native: true,
@@ -476,9 +456,17 @@ const FaucetInner = ({
               <Box marginTop={4} marginBottom={4}>
                 <h3>{content.faucet_content.success_heading}</h3>
                 <Markdown
-                  source={content.faucet_content.transaction_successful
-                    .replace(/{{\samount\s}}/g, getTransactionAmount())
-                    .replace(/{{\saddress\s}}/, values.address)}
+                  source={
+                    result.isPoolDelegation
+                      ? content.faucet_content.delegation_submitted.replace(
+                          /{{\spoolId\s}}/,
+                          () => result.poolId,
+                        )
+                      : content.faucet_content.transaction_submitted.replace(
+                          /{{\saddress\s}}/,
+                          () => result.address,
+                        )
+                  }
                 />
                 {result.txid && getTransactionURL && (
                   <Fragment>
@@ -505,7 +493,7 @@ const FaucetInner = ({
                 )}
                 <Box marginTop={2}>
                   <Button onClick={reset} variant="contained" color="primary">
-                    {content.faucet_content.request_more_funds}
+                    {content.faucet_content.request_again}
                   </Button>
                 </Box>
               </Box>
