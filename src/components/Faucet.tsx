@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect, useRef } from 'react'
+import React, { useState, Fragment, useRef } from 'react'
 import PropTypes from 'prop-types'
 import FormControl from '@material-ui/core/FormControl'
 import Box from '@material-ui/core/Box'
@@ -56,31 +56,22 @@ const FaucetInner = ({
   content,
   getEndpoint,
   hasApiKey,
-  getTransactionURL,
   reCaptcha,
-  getNativeAssetEndpoint,
   environments,
 }) => {
   const [values, setValues] = useState(DEFAULT_VALUES)
   const [errors, setErrors] = useState(DEFAULT_ERRORS)
   const [serverError, setServerError] = useState('')
   const [result, setResult] = useState(null)
-  const [nativeToken, setNativeToken] = useState('Ada')
   const [environment, setEnvironment] = useState('preview')
   const [status, setStatus] = useState(statuses.ready)
   const [isPoolDelegation, setIsPoolDelegation] = useState(false)
 
   const reCaptchaRef = useRef(null)
-  let url: string | URL | Request
 
-  const tokens = {
-    '6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7': 'Testcoin',
-  }
-
-  const handleTokenSelectChange = (event: {
-    target: { value: React.SetStateAction<string> }
-  }) => {
-    setNativeToken(event.target.value)
+  const resetCaptcha = () => {
+    reCaptchaRef.current?.reset()
+    setValues((currentValues) => ({ ...currentValues, reCaptcha: false }))
   }
 
   const valueOnChange = (key: string) => (e: { target: { value: any } }) => {
@@ -94,30 +85,11 @@ const FaucetInner = ({
     setErrors({ ...errors, [key]: '' })
   }
 
-  const getTransactionAmount = () => {
-    if (result && result.unit && result.unit === 'lovelace') {
-      if (
-        result &&
-        result.amount &&
-        typeof result.amount === 'number' &&
-        !isNaN(result.amount) &&
-        result.amount > 0
-      ) {
-        return `${Math.round(result.amount / 1e6)} Ada`
-      } else {
-        return content.faucet_content.funds
-      }
-    } else {
-      return `${
-        result.amount === 'number' ? result.amount.toString() : result.amount
-      } ${tokens[result.unit]}`
-    }
-  }
-
   const onSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     const newErrors = {}
-    if (!values.reCaptcha)
+    const apiKey = hasApiKey ? values.apiKey.trim() : ''
+    if (reCaptcha && !apiKey && !values.reCaptcha)
       // @ts-ignore
       newErrors.reCaptcha = content.faucet_content.please_complete_recaptcha
     if (Object.keys(newErrors).length > 0) {
@@ -132,79 +104,93 @@ const FaucetInner = ({
       const endpointParams = {
         environment: environment,
         address: values.address,
-        apiKey: values.apiKey,
+        apiKey,
         poolId: values.poolId,
         isPoolDelegation,
-        reCaptchaResponse: values.reCaptcha,
+        reCaptchaResponse: reCaptcha ? values.reCaptcha : null,
       }
 
-      if (reCaptcha) endpointParams.reCaptchaResponse = values.reCaptcha
-      url =
-        nativeToken === 'Ada'
-          ? getEndpoint(endpointParams)
-          : getNativeAssetEndpoint(endpointParams)
-      const result = await fetch(url, { method: 'GET' })
-      const jsonResult = await result.json()
-      if (result.status === 200 && jsonResult.error) {
+      const url = getEndpoint(endpointParams)
+      const response = await fetch(url, { method: 'GET' })
+      if (response.status === 404) {
+        setServerError(content.faucet_content.endpoint_not_found)
+        setStatus(statuses.ready)
+        return
+      }
+
+      // Proxies may return HTML, plain text, or an empty body instead of JSON.
+      const body = await response.json().catch(() => null)
+      const jsonResult =
+        body && typeof body === 'object' && !Array.isArray(body) ? body : null
+
+      if (response.status === 429) {
+        const retryHeader = response.headers.get('Retry-After')?.trim()
+        const headerRetryTime = retryHeader
+          ? /^\d+$/.test(retryHeader)
+            ? Date.now() + Number(retryHeader) * 1000
+            : Date.parse(retryHeader)
+          : NaN
+        const bodyRetryTime =
+          typeof jsonResult?.retryAfter === 'number'
+            ? jsonResult.retryAfter
+            : typeof jsonResult?.retryAfter === 'string'
+              ? Date.parse(jsonResult.retryAfter)
+              : NaN
+        const retryAt = moment(
+          Number.isFinite(headerRetryTime) ? headerRetryTime : bodyRetryTime,
+        )
         setServerError(
-          parseServerError(jsonResult.error.tag) ||
-            content.faucet_content.server_error,
+          retryAt.isValid()
+            ? content.faucet_content.too_many_attempts_retry.replace(
+                /{{\stime\s}}/g,
+                retryAt.format('LLL'),
+              )
+            : content.faucet_content.too_many_attempts,
         )
         setStatus(statuses.ready)
-      } else if (result.status === 200) {
-        setResult({
-          txid: jsonResult.txid,
-          amount: jsonResult.amount,
-          unit: jsonResult.unit,
-        })
-        setStatus(statuses.success)
-      } else {
-        switch (result.status) {
-          case 404:
-            setServerError(content.faucet_content.endpoint_not_found)
-            setStatus(statuses.ready)
-            return
-
-          case 429:
-            if (jsonResult.retryAfter) {
-              setServerError(
-                content.faucet_content.too_many_attempts_retry.replace(
-                  /{{\stime\s}}/g,
-                  moment(jsonResult.retryAfter).format('LLL'),
-                ),
-              )
-            } else {
-              setServerError(content.faucet_content.too_many_attempts)
-            }
-            setStatus(statuses.ready)
-            return
-
-          default:
-            setServerError(
-              jsonResult.message || content.faucet_content.server_error,
-            )
-            setStatus(statuses.ready)
-            return
-        }
+        return
       }
+
+      if (
+        response.status !== 200 ||
+        jsonResult?.error ||
+        typeof jsonResult?.txid !== 'string' ||
+        !jsonResult.txid.trim()
+      ) {
+        const errorTag = jsonResult?.error?.tag
+        const message =
+          typeof errorTag === 'string'
+            ? parseServerError(errorTag)
+            : typeof jsonResult?.message === 'string'
+              ? jsonResult.message
+              : ''
+        setServerError(message || content.faucet_content.server_error)
+        setStatus(statuses.ready)
+        return
+      }
+
+      setResult({
+        txid: jsonResult.txid,
+        isPoolDelegation: endpointParams.isPoolDelegation,
+        poolId: endpointParams.poolId,
+        address: endpointParams.address,
+      })
+      setStatus(statuses.success)
     } catch (error) {
       setServerError(content.faucet_content.server_error)
       setStatus(statuses.ready)
+    } finally {
+      // A submitted token may have been consumed, even if the request failed.
+      resetCaptcha()
     }
   }
 
   const reset = (e: { preventDefault: () => void }) => {
     e.preventDefault()
+    resetCaptcha()
     setStatus(statuses.ready)
     setResult(null)
   }
-
-  useEffect(() => {
-    if (reCaptchaRef.current && serverError) {
-      reCaptchaRef.current.reset()
-      setValues({ ...values, reCaptcha: null })
-    }
-  }, [reCaptchaRef, serverError])
 
   return (
     <BrowserOnly>
@@ -241,30 +227,6 @@ const FaucetInner = ({
                     </Box>
                   )}
 
-                  {/* Temporarily disable ability to choose token recieved as per request of devops
-              <FormControl
-                variant="outlined"
-                fullWidth
-                style={{
-                  marginBottom: '2rem',
-                }}
-              >
-                <InputLabel id="demo-simple-select-outlined-label">
-                  Choose
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-outlined-label"
-                  id="demo-simple-select-outlined"
-                  value={nativeToken}
-                  onChange={handleTokenSelectChange}
-                  label="Token Type"
-                >
-                  <MenuItem value="Ada">tAda</MenuItem>
-                  <MenuItem value="Testcoin">Testcoin</MenuItem>
-                </Select>
-              </FormControl>
-             */}
-
                   <FormControl
                     variant="outlined"
                     fullWidth
@@ -278,6 +240,7 @@ const FaucetInner = ({
                         className="faucet-text-field"
                         select
                         value={environment}
+                        disabled={status === statuses.loading}
                         fullWidth
                         SelectProps={{
                           native: true,
@@ -302,9 +265,11 @@ const FaucetInner = ({
                             name?: string
                             value: string
                           }>,
-                        ) => setEnvironment(e.target.value)}
+                        ) => {
+                          resetCaptcha()
+                          setEnvironment(e.target.value)
+                        }}
                       >
-                        {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
                         <option value="preview">Preview Testnet</option>
                         <option value="preprod">Preprod Testnet</option>
                       </TextField>
@@ -325,6 +290,7 @@ const FaucetInner = ({
                         className="faucet-text-field"
                         select
                         value={isPoolDelegation ? 'delegation' : 'testada'}
+                        disabled={status === statuses.loading}
                         fullWidth
                         SelectProps={{
                           native: true,
@@ -348,7 +314,6 @@ const FaucetInner = ({
                           setIsPoolDelegation(e.target.value === 'delegation')
                         }
                       >
-                        {/*<MenuItem value="vasil">Vasil Dev</MenuItem>*/}
                         <option value="testada">Receive test ADA</option>
                         <option value="delegation">
                           Receive pool delegation
@@ -418,7 +383,7 @@ const FaucetInner = ({
                             disableUnderline: true,
                           }}
                         />
-                        <span>Enter an API key to bypass rate limiting</span>
+                        <span>{content.faucet_content.api_key_helper_text}</span>
                       </div>
                     </Box>
                   )}
@@ -471,26 +436,19 @@ const FaucetInner = ({
               <Box marginTop={4} marginBottom={4}>
                 <h3>{content.faucet_content.success_heading}</h3>
                 <Markdown
-                  source={content.faucet_content.transaction_successful
-                    .replace(/{{\samount\s}}/g, getTransactionAmount())
-                    .replace(/{{\saddress\s}}/, values.address)}
+                  source={
+                    result.isPoolDelegation
+                      ? content.faucet_content.delegation_submitted.replace(
+                          /{{\spoolId\s}}/,
+                          () => result.poolId,
+                        )
+                      : content.faucet_content.transaction_submitted.replace(
+                          /{{\saddress\s}}/,
+                          () => result.address,
+                        )
+                  }
                 />
-                {result.txid && getTransactionURL && (
-                  <Fragment>
-                    <p>{content.faucet_content.verify_transaction_hash}</p>
-                    <p>
-                      <strong>
-                        {result.txid}
-                        {/* Remove link since no explorer post casil
-                  <Link href={getTransactionURL({ txid: result.txid })}>
-                    
-                  </Link>
-                  */}
-                      </strong>
-                    </p>
-                  </Fragment>
-                )}
-                {result.txid && !getTransactionURL && (
+                {result.txid && (
                   <Fragment>
                     <p>{content.faucet_content.verify_transaction_hash}</p>
                     <p>
@@ -500,7 +458,7 @@ const FaucetInner = ({
                 )}
                 <Box marginTop={2}>
                   <Button onClick={reset} variant="contained" color="primary">
-                    {content.faucet_content.request_more_funds}
+                    {content.faucet_content.request_again}
                   </Button>
                 </Box>
               </Box>
@@ -526,46 +484,31 @@ const FaucetInner = ({
 FaucetInner.propTypes = {
   content: PropTypes.object.isRequired,
   getEndpoint: PropTypes.func.isRequired,
-  getNativeAssetEndpoint: PropTypes.func.isRequired,
   hasApiKey: PropTypes.bool.isRequired,
-  getTransactionURL: PropTypes.func,
   reCaptcha: PropTypes.shape({
     version: PropTypes.number.isRequired,
   }),
 }
 
-const FaucetWrapper = ({
-  getEndpoint,
-  getNativeAssetEndpoint,
-  hasApiKey,
-  getTransactionURL,
-  reCaptcha,
-  environments,
-}) => (
+const FaucetWrapper = ({ getEndpoint, hasApiKey, reCaptcha, environments }) => (
   <FaucetInner
     content={content}
     getEndpoint={getEndpoint}
     hasApiKey={hasApiKey}
-    getTransactionURL={getTransactionURL}
     reCaptcha={reCaptcha}
-    getNativeAssetEndpoint={getNativeAssetEndpoint}
     environments={environments}
   />
 )
 
 const Faucet = () => {
   const environments = {
-    vasil: {
-      baseUrl: 'https://faucet.vasil-dev.world.dev.cardano.org',
-      sitekey: '6LdZdHshAAAAAIxTr6hYueaq2X3Jljegh4sqW9oU',
-    },
     preview: {
-      baseUrl: 'https://faucet.preview.world.dev.cardano.org',
-      sitekey: '6Le8dnshAAAAAGGl12gnWxuSJEGYbgJi3-9ptHsr',
+      baseUrl: 'https://faucet.preview.play.dev.cardano.org',
+      sitekey: '6LcU5S4uAAAAAIx0Za5hUkuGKoaT38zNkbO2PZ7z',
     },
     preprod: {
-      baseUrl: 'https://faucet.preprod.world.dev.cardano.org',
-      sitekey: '6Le7eHshAAAAAGnu2_6MS70cCvnGsvWRFpzVphN-',
+      baseUrl: 'https://faucet.preprod.play.dev.cardano.org',
+      sitekey: '6Lcd5S4uAAAAAHBfcKiyoMRaaR1xroEhf0x8B8jk',
     },
   }
 
@@ -578,35 +521,31 @@ const Faucet = () => {
         reCaptchaResponse,
         isPoolDelegation,
         poolId,
-      }) =>
-        isPoolDelegation
-          ? `${environments[environment].baseUrl}/delegate?poolid=${poolId}&api_key=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
-          : `${environments[environment].baseUrl}/send-money?address=${address}&api_key=${apiKey}&g-recaptcha-response=${reCaptchaResponse}`
-      }
+      }) => {
+        const params = new URLSearchParams()
+        params.set(
+          isPoolDelegation ? 'poolid' : 'address',
+          isPoolDelegation ? poolId : address,
+        )
+        if (apiKey) params.set('api_key', apiKey)
+        if (typeof reCaptchaResponse === 'string' && reCaptchaResponse) {
+          params.set('g-recaptcha-response', reCaptchaResponse)
+        }
+        const endpoint = isPoolDelegation ? 'delegate' : 'send-money'
+        return `${environments[environment].baseUrl}/${endpoint}?${params.toString()}`
+      }}
       hasApiKey
-      getTransactionURL={({ txid }) =>
-        `https://explorer.cardano-testnet.iohkdev.io/tx/${txid}`
-      }
       reCaptcha={{
         version: 2,
       }}
       environments={environments}
-      getNativeAssetEndpoint={({ address, apiKey, reCaptchaResponse }) =>
-        `https://ext.earthtools.ca/send-money/${address}?${
-          apiKey
-            ? `api_key=${apiKey}`
-            : `asset=${`6b8d07d69639e9413dd637a1a815a7323c69c86abbafb66dbfdb1aa7`}`
-        }&g-recaptcha-response=${reCaptchaResponse}`
-      }
     />
   )
 }
 
 FaucetWrapper.propTypes = {
   getEndpoint: PropTypes.func.isRequired,
-  getNativeAssetEndpoint: PropTypes.func.isRequired,
   hasApiKey: PropTypes.bool.isRequired,
-  getTransactionURL: PropTypes.func,
   reCaptcha: PropTypes.shape({
     version: PropTypes.number.isRequired,
   }),

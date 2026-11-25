@@ -82,7 +82,18 @@ cardano-cli address key-gen \
 This creates two files: `payment.vkey` (the public verification key) and
 `payment.skey` (the private signing key).
 
-Both verification keys (payment.vkey and stake.vkey) are used to build the
+Next, create the stake key pair used by the address-building command below:
+
+```shell
+cardano-cli stake-address key-gen \
+--verification-key-file stake.vkey \
+--signing-key-file stake.skey
+```
+
+This creates `stake.vkey` (the public stake verification key) and `stake.skey`
+(the private stake signing key).
+
+Both verification keys (`payment.vkey` and `stake.vkey`) are used to build the
 address and the resulting payment address is associated with these keys.
 
 To build the address, run:
@@ -124,7 +135,7 @@ ada:
 If you're working in a _pre-production environment_ and have an API key, you can
 run the following command to fund your address:
 
-`curl -X POST -s 'https://faucet.preprod.world.dev.cardano.org/send-money/YOURADDRESS?api_key=YOURAPIKEY'`
+`curl -X POST -s 'https://faucet.preprod.play.dev.cardano.org/send-money/YOURADDRESS?api_key=YOURAPIKEY'`
 
 ### Creating, signing, and submitting transactions
 

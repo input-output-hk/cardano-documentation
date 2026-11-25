@@ -14,23 +14,39 @@ testnets. While these tokens have no 'real world' value, they enable users to
 experiment with Cardano testnet features, without having to spend real ada on
 the mainnet.
 
-### To request tokens using the faucet:
+### Request test ada
 
-1. Select the desired action type:
-   - Enter the account address where you want to top up funds
-   - Enter the pool ID in bech32 format (`pool18ttg8k...a1c`) where you want to
-     delegate funds
-2. If you have been issued with an API key, please enter this to access any
-   additional funds you may have been allocated
-3. Click **Receive test ada**
-4. Funds will be in the testnet account you specified within a few minutes.
+1. Under **Environment**, select **Preview Testnet** or **Preprod Testnet** to
+   match the network you are using.
+2. Under **Action**, select **Receive test ADA**.
+3. Enter the testnet address where you want to receive funds.
+4. If you have been issued with an API key, enter it to use your assigned
+   rate limit. A valid API key does not require CAPTCHA. Otherwise, complete
+   the CAPTCHA challenge.
+5. Click **Request funds**.
+
+The **Transaction submitted** message identifies the destination address and
+shows the transaction hash. Wait for confirmation on the selected network,
+then check the receiving address's balance. Submission does not mean the
+transaction is already confirmed.
 
 ### Delegation
 
-If you're an SPO and wish to test stake pool operations on preview or
-pre-production testnets, you can request some test ada to be delegated to your
-pool. For this, choose the environment you're working in, and select 'receive
-pool delegation' from the action menu.
+If you're an SPO, you can request faucet stake to be delegated to your pool
+to test stake pool operations.
+
+1. Under **Environment**, select the network where your pool is registered:
+   **Preview Testnet** or **Preprod Testnet**.
+2. Under **Action**, select **Receive pool delegation**.
+3. Enter your pool ID in bech32 format (`pool1...`).
+4. Enter an API key with delegation permission, if you have one, or complete
+   the CAPTCHA challenge. API keys use their assigned rate limit.
+5. Click **Request funds**.
+
+The **Transaction submitted** message identifies the pool and shows the
+transaction hash. Wait for confirmation on the selected network, then check
+the delegation to your pool. Delegation assigns faucet stake to your pool;
+it does not transfer the faucet's funds to your wallet.
 
 <Faucet />
 
