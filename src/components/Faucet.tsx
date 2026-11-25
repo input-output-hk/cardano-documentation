@@ -554,11 +554,11 @@ const FaucetWrapper = ({
 const Faucet = () => {
   const environments = {
     preview: {
-      baseUrl: 'https://faucet.preview.world.dev.cardano.org',
+      baseUrl: 'https://faucet.preview.play.dev.cardano.org',
       sitekey: '6Le8dnshAAAAAGGl12gnWxuSJEGYbgJi3-9ptHsr',
     },
     preprod: {
-      baseUrl: 'https://faucet.preprod.world.dev.cardano.org',
+      baseUrl: 'https://faucet.preprod.play.dev.cardano.org',
       sitekey: '6Le7eHshAAAAAGnu2_6MS70cCvnGsvWRFpzVphN-',
     },
   }
